@@ -1,0 +1,446 @@
+{
+  "schema_version": "spectrafit-core/bench-ladder/2",
+  "generated_utc": "2026-08-16T11:25:21Z",
+  "environment": {
+    "git": {
+      "commit": "990a4c742e45cc269b9bb15220df5baa8898f58b",
+      "branch": "fix/jax-compile-budget-max-map-count",
+      "dirty": false
+    },
+    "host": {
+      "hostname": "terra",
+      "cpu": "AMD EPYC Processor (with IBPB)",
+      "cores": 16,
+      "ram_gb": 31.3,
+      "vm_max_map_count": 65530,
+      "os": "Linux-5.15.0-186-generic-x86_64-with-glibc2.35",
+      "kernel": "5.15.0-186-generic",
+      "thread_env": {
+        "OMP_NUM_THREADS": null,
+        "OPENBLAS_NUM_THREADS": null,
+        "MKL_NUM_THREADS": null,
+        "NUMEXPR_NUM_THREADS": null,
+        "VECLIB_MAXIMUM_THREADS": null,
+        "RAYON_NUM_THREADS": null,
+        "XLA_FLAGS": null,
+        "JAX_PLATFORMS": null,
+        "SPECTRAFIT_BENCH_JAX_COMPILE_BUDGET": null
+      },
+      "cpu_flags": [
+        "avx",
+        "avx2",
+        "fma",
+        "sse4_2"
+      ],
+      "cpu_max_mhz": null,
+      "cpu_governor": null,
+      "cpu_quota": null,
+      "memory_max_gb": null,
+      "container": null,
+      "ci": null
+    },
+    "versions": {
+      "python": "3.13.13",
+      "rustc": "1.97.1 (8bab26f4f 2026-07-14)",
+      "packages": {
+        "numpy": "2.5.1",
+        "scipy": "1.18.0",
+        "lmfit": "1.3.4",
+        "jax": "0.11.0",
+        "jaxlib": "0.11.0",
+        "optimistix": "0.1.0",
+        "spectrafit-core": "0.1.0"
+      },
+      "uv_lock_sha256": "d053e90cd63fc0826d513e36e5f4311a55142d36a843244ab6c797a9a9654b1f",
+      "blas": {
+        "name": "scipy-openblas",
+        "version": "0.3.33.112.0"
+      }
+    }
+  },
+  "methodology": {
+    "timing": {
+      "clock": "time.perf_counter (monotonic)",
+      "unit": "milliseconds",
+      "timed_region": "Backend.run only \u2014 model construction and result serialization are outside the timer",
+      "warmup": "one untimed solve per (case, backend) before the timed reps",
+      "reps_semantics": "the suite phase runs max(1, reps // 2) timed solves; the analyzed phase runs the full reps. Both are recorded per rung as reps_effective and reps_requested",
+      "aggregate": "median of the per-rep timings"
+    },
+    "accuracy": {
+      "primary": "r^2 of the fit against the noisy data",
+      "gate": "max |delta r^2| between spectrafit and the baseline solver",
+      "recovered": "a solve counts as recovered when its r^2 is within r2_ceiling_tol of the noiseless-truth curve's r^2 against the same noisy data \u2014 the best any solver can reach on that case",
+      "reduced_chi2_dof": "n - n_free, reported per backend as fit_dof",
+      "information_criteria": "Gaussian log-likelihood AIC/BIC (N*ln(chi2/N) + 2k / + k*ln(N)), matched across backends",
+      "param_recovery": "max relative shape-parameter error vs planted truth, components matched by graph index"
+    },
+    "determinism": {
+      "catalog_seed": 20260603,
+      "noise": "numpy default_rng, seeded per Monte-Carlo draw (1000 + k)",
+      "stochastic_solvers": "lmfit differential_evolution is seeded (seed=0)",
+      "known_nondeterminism": "wall-clock timings; jax compile scheduling"
+    },
+    "comparability_caveats": [
+      "solver stopping tolerances are NOT normalized across backends \u2014 each runs at its own library default, recorded per backend under config.solvers",
+      "jax's compiled-executable cache is bounded (see oracles.backends._jax), so its cold-time column reflects a partly cold cache; this removes a cross-case compile-reuse advantage the other backends never had",
+      "backends do not all support every case (see config.backend_support), so an aggregate is not over an identical case set for every backend"
+    ]
+  },
+  "config": {
+    "catalog": {
+      "n_cases": 151,
+      "fingerprint_sha256": "181a87d3082581d715e0a45dbaa0e58b495b7fc0ab72829c61d271e861babded",
+      "n_points_distinct": [
+        120,
+        160,
+        180,
+        200,
+        240,
+        600,
+        1200
+      ]
+    },
+    "solvers": {
+      "spectrafit": {
+        "library": "spectrafit-core",
+        "algorithm": "per-case, from BenchCase.solver_hint",
+        "bounds": "box bounds via Parameter min/max",
+        "version": "0.1.0",
+        "stopping": {
+          "max_iterations_when_global": 500,
+          "max_iterations_otherwise": 2000
+        },
+        "runtime": {
+          "entrypoint": "fit_fast (compact path \u2014 timed region excludes serialization)"
+        }
+      },
+      "lmfit": {
+        "library": "lmfit",
+        "algorithm": "leastsq (MINPACK LM) \u2014 lmfit default",
+        "bounds": "box bounds via Parameter min/max",
+        "version": "1.3.4",
+        "stopping": {
+          "ftol": "lmfit/MINPACK default (1.49e-8)",
+          "xtol": "lmfit/MINPACK default (1.49e-8)"
+        },
+        "runtime": {
+          "algorithm_when_solver_hint_global": "differential_evolution, seed=0"
+        }
+      },
+      "jax": {
+        "library": "optimistix",
+        "algorithm": "LevenbergMarquardt",
+        "bounds": "unsupported \u2014 optimistix's local LM driver takes no box",
+        "version": "0.1.0",
+        "stopping": {
+          "rtol": 1e-08,
+          "atol": 1e-08,
+          "max_steps": 200,
+          "throw_on_nonconvergence": false
+        },
+        "runtime": {
+          "jit": true,
+          "float64": true,
+          "device": "cpu:0",
+          "compile_budget": 64,
+          "jax_version": "0.11.0"
+        }
+      },
+      "scipy-ls-lm": {
+        "library": "scipy.optimize.least_squares",
+        "algorithm": "lm",
+        "bounds": "unbounded",
+        "version": "1.18.0",
+        "stopping": {
+          "ftol": "scipy default (1e-8)",
+          "xtol": "scipy default (1e-8)",
+          "gtol": "scipy default (1e-8)",
+          "max_nfev": "scipy default (None \u2192 method-dependent)"
+        },
+        "runtime": {}
+      },
+      "scipy-ls-trf": {
+        "library": "scipy.optimize.least_squares",
+        "algorithm": "trf",
+        "bounds": "box bounds",
+        "version": "1.18.0",
+        "stopping": {
+          "ftol": "scipy default (1e-8)",
+          "xtol": "scipy default (1e-8)",
+          "gtol": "scipy default (1e-8)",
+          "max_nfev": "scipy default (None \u2192 method-dependent)"
+        },
+        "runtime": {}
+      },
+      "scipy-ls-dogbox": {
+        "library": "scipy.optimize.least_squares",
+        "algorithm": "dogbox",
+        "bounds": "box bounds",
+        "version": "1.18.0",
+        "stopping": {
+          "ftol": "scipy default (1e-8)",
+          "xtol": "scipy default (1e-8)",
+          "gtol": "scipy default (1e-8)",
+          "max_nfev": "scipy default (None \u2192 method-dependent)"
+        },
+        "runtime": {}
+      }
+    },
+    "backend_support": {
+      "spectrafit": 151,
+      "lmfit": 151,
+      "jax": 127,
+      "scipy-ls-lm": 147,
+      "scipy-ls-trf": 147,
+      "scipy-ls-dogbox": 147
+    },
+    "r2_ceiling_tol": 0.001,
+    "python_build": [
+      "main",
+      "May 10 2026 19:26:54"
+    ]
+  },
+  "rungs": [
+    {
+      "run_uid": "09a318477af2c6b9",
+      "reps_requested": 4,
+      "reps_effective": 2,
+      "exit_status": 0,
+      "started_utc": "2026-08-15T18:40:25Z",
+      "finished_utc": "2026-08-15T19:57:53Z",
+      "wall_seconds": 4648.2,
+      "resources": {
+        "peak_rss_gb": 2.62,
+        "mmap_regions": 6023,
+        "jax_cache_clears": 7,
+        "jax_compile_budget": 64,
+        "load_average_start": [
+          1.39,
+          1.68,
+          1.81
+        ],
+        "load_average_end": [
+          3.05,
+          2.72,
+          2.26
+        ]
+      },
+      "headline": {
+        "geomean_speedup_vs_baseline": 15.971475901391555,
+        "harmonic_mean_speedup_vs_baseline": 13.106952045359836,
+        "max_abs_delta_r2": 0.00012843321392019824,
+        "spectrafit_win_rate": 0.8807947019867549,
+        "n_cases": 151,
+        "regressions": 0,
+        "backends": [
+          "spectrafit",
+          "lmfit",
+          "jax",
+          "scipy-ls-lm",
+          "scipy-ls-trf",
+          "scipy-ls-dogbox"
+        ],
+        "saturated_categories": [
+          "fixed",
+          "reality",
+          "scaling",
+          "tied"
+        ],
+        "baseline_solver_id": "lmfit"
+      }
+    },
+    {
+      "run_uid": "f3199af16a55d5bb",
+      "reps_requested": 10,
+      "reps_effective": 5,
+      "exit_status": 0,
+      "started_utc": "2026-08-15T19:57:53Z",
+      "finished_utc": "2026-08-15T21:37:30Z",
+      "wall_seconds": 5976.6,
+      "resources": {
+        "peak_rss_gb": 2.59,
+        "mmap_regions": 6023,
+        "jax_cache_clears": 7,
+        "jax_compile_budget": 64,
+        "load_average_start": [
+          3.05,
+          2.72,
+          2.26
+        ],
+        "load_average_end": [
+          1.51,
+          2.22,
+          2.12
+        ]
+      },
+      "headline": {
+        "geomean_speedup_vs_baseline": 15.784640466632906,
+        "harmonic_mean_speedup_vs_baseline": 13.13918250520835,
+        "max_abs_delta_r2": 0.00012843321392019824,
+        "spectrafit_win_rate": 0.8807947019867549,
+        "n_cases": 151,
+        "regressions": 0,
+        "backends": [
+          "spectrafit",
+          "lmfit",
+          "jax",
+          "scipy-ls-lm",
+          "scipy-ls-trf",
+          "scipy-ls-dogbox"
+        ],
+        "saturated_categories": [
+          "fixed",
+          "reality",
+          "scaling",
+          "tied"
+        ],
+        "baseline_solver_id": "lmfit"
+      }
+    },
+    {
+      "run_uid": "4937c966908c693d",
+      "reps_requested": 20,
+      "reps_effective": 10,
+      "exit_status": 0,
+      "started_utc": "2026-08-15T21:37:30Z",
+      "finished_utc": "2026-08-15T23:55:29Z",
+      "wall_seconds": 8278.5,
+      "resources": {
+        "peak_rss_gb": 2.64,
+        "mmap_regions": 6019,
+        "jax_cache_clears": 7,
+        "jax_compile_budget": 64,
+        "load_average_start": [
+          1.51,
+          2.22,
+          2.12
+        ],
+        "load_average_end": [
+          1.95,
+          2.61,
+          2.16
+        ]
+      },
+      "headline": {
+        "geomean_speedup_vs_baseline": 16.15948049631364,
+        "harmonic_mean_speedup_vs_baseline": 13.474854743654836,
+        "max_abs_delta_r2": 0.00012843321392019824,
+        "spectrafit_win_rate": 0.8807947019867549,
+        "n_cases": 151,
+        "regressions": 0,
+        "backends": [
+          "spectrafit",
+          "lmfit",
+          "jax",
+          "scipy-ls-lm",
+          "scipy-ls-trf",
+          "scipy-ls-dogbox"
+        ],
+        "saturated_categories": [
+          "fixed",
+          "reality",
+          "scaling",
+          "tied"
+        ],
+        "baseline_solver_id": "lmfit"
+      }
+    },
+    {
+      "run_uid": "0d27c9c150519994",
+      "reps_requested": 50,
+      "reps_effective": 25,
+      "exit_status": 0,
+      "started_utc": "2026-08-15T23:55:29Z",
+      "finished_utc": "2026-08-16T04:05:13Z",
+      "wall_seconds": 14983.8,
+      "resources": {
+        "peak_rss_gb": 2.62,
+        "mmap_regions": 6013,
+        "jax_cache_clears": 7,
+        "jax_compile_budget": 64,
+        "load_average_start": [
+          1.95,
+          2.61,
+          2.16
+        ],
+        "load_average_end": [
+          1.22,
+          2.39,
+          2.22
+        ]
+      },
+      "headline": {
+        "geomean_speedup_vs_baseline": 16.364170082147368,
+        "harmonic_mean_speedup_vs_baseline": 13.726658761095841,
+        "max_abs_delta_r2": 0.00012843321392019824,
+        "spectrafit_win_rate": 0.8807947019867549,
+        "n_cases": 151,
+        "regressions": 0,
+        "backends": [
+          "spectrafit",
+          "lmfit",
+          "jax",
+          "scipy-ls-lm",
+          "scipy-ls-trf",
+          "scipy-ls-dogbox"
+        ],
+        "saturated_categories": [
+          "fixed",
+          "reality",
+          "scaling",
+          "tied"
+        ],
+        "baseline_solver_id": "lmfit"
+      }
+    },
+    {
+      "run_uid": "cf325194993b9e69",
+      "reps_requested": 100,
+      "reps_effective": 50,
+      "exit_status": 0,
+      "started_utc": "2026-08-16T04:05:13Z",
+      "finished_utc": "2026-08-16T11:25:21Z",
+      "wall_seconds": 26407.8,
+      "resources": {
+        "peak_rss_gb": 2.71,
+        "mmap_regions": 6021,
+        "jax_cache_clears": 7,
+        "jax_compile_budget": 64,
+        "load_average_start": [
+          1.22,
+          2.39,
+          2.22
+        ],
+        "load_average_end": [
+          2.44,
+          3.2,
+          2.83
+        ]
+      },
+      "headline": {
+        "geomean_speedup_vs_baseline": 16.445870855459038,
+        "harmonic_mean_speedup_vs_baseline": 13.778490843602889,
+        "max_abs_delta_r2": 0.00012843321392019824,
+        "spectrafit_win_rate": 0.8807947019867549,
+        "n_cases": 151,
+        "regressions": 0,
+        "backends": [
+          "spectrafit",
+          "lmfit",
+          "jax",
+          "scipy-ls-lm",
+          "scipy-ls-trf",
+          "scipy-ls-dogbox"
+        ],
+        "saturated_categories": [
+          "fixed",
+          "reality",
+          "scaling",
+          "tied"
+        ],
+        "baseline_solver_id": "lmfit"
+      }
+    }
+  ]
+}

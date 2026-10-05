@@ -1,0 +1,713 @@
+{
+ "generator": "nist_table2.py",
+ "tolerance": {
+  "ftol": 1e-12,
+  "xtol": 1e-12,
+  "gtol": 1e-12
+ },
+ "start_point": "START2",
+ "start_point_label": "Start 2",
+ "versions": {
+  "spectrafit_core": {
+   "version": "0.1.2",
+   "wheel_tags": [
+    "cp313-cp313-manylinux_2_28_x86_64"
+   ],
+   "installed_from": "index",
+   "archive_hash": null
+  },
+  "python": "3.13.13",
+  "lmfit": "1.3.4",
+  "scipy": "1.18.0",
+  "numpy": "2.5.1"
+ },
+ "host": {
+  "node": "terra",
+  "platform": "Linux-5.15.0-187-generic-x86_64-with-glibc2.35",
+  "machine": "x86_64",
+  "kernel": "5.15.0-187-generic",
+  "libc": "glibc 2.35",
+  "cpu": "AMD EPYC Processor (with IBPB)",
+  "blas_lapack": {
+   "numpy": {
+    "blas": {
+     "name": "scipy-openblas",
+     "version": "0.3.33.112.0"
+    },
+    "lapack": {
+     "name": "scipy-openblas",
+     "version": "0.3.33.112.0"
+    }
+   },
+   "scipy": {
+    "blas": {
+     "name": "scipy-openblas",
+     "version": "0.3.31.dev"
+    },
+    "lapack": {
+     "name": "scipy-openblas",
+     "version": "0.3.31.dev"
+    }
+   },
+   "loaded": [
+    "/usr/lib/x86_64-linux-gnu/libm.so.6",
+    "numpy.libs/libscipy_openblas64_-017048f4.so",
+    "scipy.libs/libscipy_openblas-5f890258.so"
+   ]
+  },
+  "libc_build": "ldd (Ubuntu GLIBC 2.35-0ubuntu3.15) 2.35",
+  "simd": [
+   "avx",
+   "avx2",
+   "fma",
+   "sse4_1",
+   "sse4_2"
+  ]
+ },
+ "columns": [
+  "spectrafit_core",
+  "sigma",
+  "lmfit",
+  "scipy_lm",
+  "scipy_trf"
+ ],
+ "measure": "log-relative error (significant figures of agreement, capped at 15) of the least accurately recovered parameter against NIST's certified values; the sigma column applies the same measure to spectrafit-core's fitted standard errors against NIST's certified standard deviations",
+ "datasets": [
+  {
+   "name": "Thurber",
+   "difficulty": "Higher",
+   "n_params": 7,
+   "n_obs": 37,
+   "model": "(b1 + b2\u00b7x + b3\u00b7x\u00b2 + b4\u00b7x\u00b3) / (1 + b5\u00b7x + b6\u00b7x\u00b2 + b7\u00b7x\u00b3)",
+   "columns": {
+    "spectrafit_core": 6.495870166390748,
+    "sigma": 5.848817662355736,
+    "lmfit": 4.938871763851521,
+    "scipy_lm": 6.994563302074774,
+    "scipy_trf": 7.162779240440536
+   },
+   "null_reasons": {},
+   "per_param": {
+    "b1": 9.299970808941602,
+    "b2": 7.290583103948941,
+    "b3": 7.042190598314477,
+    "b4": 6.862525425924182,
+    "b5": 7.281198162650413,
+    "b6": 7.24641998183896,
+    "b7": 6.495870166390748
+   },
+   "sigma_per_param": {
+    "b1": 7.881162749487958,
+    "b2": 5.860471013484277,
+    "b3": 5.861722880307606,
+    "b4": 5.850671021912632,
+    "b5": 5.9271342793088495,
+    "b6": 5.925840261291999,
+    "b7": 5.848817662355736
+   }
+  },
+  {
+   "name": "MGH09",
+   "difficulty": "Higher",
+   "n_params": 4,
+   "n_obs": 11,
+   "model": "b1\u00b7(x\u00b2+b2\u00b7x)/(x\u00b2+b3\u00b7x+b4)",
+   "columns": {
+    "spectrafit_core": 6.498360675661228,
+    "sigma": 6.61262138889639,
+    "lmfit": 5.709511422896236,
+    "scipy_lm": 6.07078411004626,
+    "scipy_trf": 5.843349222676769
+   },
+   "null_reasons": {},
+   "per_param": {
+    "b1": 7.855433082488254,
+    "b2": 6.498360675661228,
+    "b3": 7.0601145007924435,
+    "b4": 6.678883886622636
+   },
+   "sigma_per_param": {
+    "b1": 7.110535378081548,
+    "b2": 6.61262138889639,
+    "b3": 6.755937909954805,
+    "b4": 6.69181060157896
+   }
+  },
+  {
+   "name": "Rat43",
+   "difficulty": "Higher",
+   "n_params": 4,
+   "n_obs": 15,
+   "model": "b1 / (1 + exp(b2 - b3\u00b7x))^(1/b4)",
+   "columns": {
+    "spectrafit_core": 7.0052170022389575,
+    "sigma": 7.2724954013712715,
+    "lmfit": 4.629654280802089,
+    "scipy_lm": 6.259112297265117,
+    "scipy_trf": 7.070749821711893
+   },
+   "null_reasons": {},
+   "per_param": {
+    "b1": 8.310129108637387,
+    "b2": 7.342408800794821,
+    "b3": 8.110530271835112,
+    "b4": 7.0052170022389575
+   },
+   "sigma_per_param": {
+    "b1": 7.763270920350688,
+    "b2": 7.674607488047159,
+    "b3": 7.566628325410076,
+    "b4": 7.2724954013712715
+   }
+  },
+  {
+   "name": "BoxBOD",
+   "difficulty": "Higher",
+   "n_params": 2,
+   "n_obs": 6,
+   "model": "b1\u00b7(1\u2212exp(\u2212b2\u00b7x))",
+   "columns": {
+    "spectrafit_core": 7.151356320830165,
+    "sigma": 7.102359129994139,
+    "lmfit": 6.876739208461067,
+    "scipy_lm": 7.193605976789144,
+    "scipy_trf": 7.348783640442766
+   },
+   "null_reasons": {},
+   "per_param": {
+    "b1": 7.807473452467194,
+    "b2": 7.151356320830165
+   },
+   "sigma_per_param": {
+    "b1": 7.364052403435256,
+    "b2": 7.102359129994139
+   }
+  },
+  {
+   "name": "Bennett5",
+   "difficulty": "Higher",
+   "n_params": 3,
+   "n_obs": 154,
+   "model": "b1\u00b7(b2+x)^(\u22121/b3)",
+   "columns": {
+    "spectrafit_core": 8.249107901707966,
+    "sigma": 7.050456999731152,
+    "lmfit": 7.178129665060589,
+    "scipy_lm": 5.226351928844308,
+    "scipy_trf": 5.078089697346388
+   },
+   "null_reasons": {},
+   "per_param": {
+    "b1": 8.249107901707966,
+    "b2": 8.891407535624625,
+    "b3": 8.981228510552485
+   },
+   "sigma_per_param": {
+    "b1": 7.050456999731152,
+    "b2": 7.079788774440141,
+    "b3": 7.09101951998827
+   }
+  },
+  {
+   "name": "Rat42",
+   "difficulty": "Higher",
+   "n_params": 3,
+   "n_obs": 9,
+   "model": "b1 / (1 + exp(b2 - b3\u00b7x))",
+   "columns": {
+    "spectrafit_core": 8.519399409506825,
+    "sigma": 8.13777687926379,
+    "lmfit": 6.170804486849255,
+    "scipy_lm": 8.036847445716377,
+    "scipy_trf": 7.970346249080564
+   },
+   "null_reasons": {},
+   "per_param": {
+    "b1": 8.832473593519998,
+    "b2": 8.961960781961734,
+    "b3": 8.519399409506825
+   },
+   "sigma_per_param": {
+    "b1": 8.13777687926379,
+    "b2": 8.453447274299219,
+    "b3": 8.580459468537773
+   }
+  },
+  {
+   "name": "Eckerle4",
+   "difficulty": "Higher",
+   "n_params": 3,
+   "n_obs": 35,
+   "model": "(b1/b2)\u00b7exp(-\u00bd\u00b7((x-b3)/b2)\u00b2)",
+   "columns": {
+    "spectrafit_core": 9.591021304918963,
+    "sigma": null,
+    "lmfit": 6.870868118179422,
+    "scipy_lm": 9.304380532388462,
+    "scipy_trf": 9.386725970728614
+   },
+   "null_reasons": {
+    "sigma": {
+     "code": "nonlinear_projection",
+     "params": [
+      "b1"
+     ],
+     "detail": "NIST b1 = amplitude * sigma, a product of two fitted parameters; a single fitted standard error does not propagate through it."
+    }
+   },
+   "per_param": {
+    "b1": 10.022649545245695,
+    "b2": 9.591021304918963,
+    "b3": 10.983615906161123
+   },
+   "sigma_per_param": {
+    "b1": null,
+    "b2": 9.588682057087324,
+    "b3": 9.584406231406872
+   }
+  },
+  {
+   "name": "Kirby2",
+   "difficulty": "Average",
+   "n_params": 5,
+   "n_obs": 151,
+   "model": "(b1 + b2\u00b7x + b3\u00b7x\u00b2) / (1 + b4\u00b7x + b5\u00b7x\u00b2)",
+   "columns": {
+    "spectrafit_core": 7.3922417464053405,
+    "sigma": 7.728827601511219,
+    "lmfit": 6.708223779489927,
+    "scipy_lm": 4.951611937826081,
+    "scipy_trf": 4.954698979671715
+   },
+   "null_reasons": {},
+   "per_param": {
+    "b1": 7.3922417464053405,
+    "b2": 7.542201027250477,
+    "b3": 7.784899380335288,
+    "b4": 7.48452714059639,
+    "b5": 8.050962762981497
+   },
+   "sigma_per_param": {
+    "b1": 8.192151982720482,
+    "b2": 7.926999746041993,
+    "b3": 7.8266402550502425,
+    "b4": 7.728827601511219,
+    "b5": 7.931626448943394
+   }
+  },
+  {
+   "name": "Lanczos2",
+   "difficulty": "Average",
+   "n_params": 6,
+   "n_obs": 24,
+   "model": "b1\u00b7exp(-b2\u00b7x) + b3\u00b7exp(-b4\u00b7x) + b5\u00b7exp(-b6\u00b7x)",
+   "columns": {
+    "spectrafit_core": 7.978175647850465,
+    "sigma": 7.951774872933294,
+    "lmfit": 7.455273989296741,
+    "scipy_lm": 6.857881112822158,
+    "scipy_trf": 6.194326286648515
+   },
+   "null_reasons": {},
+   "per_param": {
+    "b1": 7.978175647850465,
+    "b2": 8.29545622704192,
+    "b3": 8.52227657179609,
+    "b4": 8.675780662711482,
+    "b5": 8.629972157524511,
+    "b6": 9.376939209867142
+   },
+   "sigma_per_param": {
+    "b1": 8.542707450354422,
+    "b2": 8.129678524649298,
+    "b3": 7.951774872933294,
+    "b4": 8.526696070703405,
+    "b5": 8.051439880359913,
+    "b6": 8.05169109439581
+   }
+  },
+  {
+   "name": "Roszman1",
+   "difficulty": "Average",
+   "n_params": 4,
+   "n_obs": 25,
+   "model": "b1 - b2\u00b7x - arctan(b3/(x-b4))/\u03c0",
+   "columns": {
+    "spectrafit_core": 8.16218544316742,
+    "sigma": 8.665181069080594,
+    "lmfit": 6.074365005217208,
+    "scipy_lm": 7.345854614114207,
+    "scipy_trf": 6.539272349939269
+   },
+   "null_reasons": {},
+   "per_param": {
+    "b1": 8.859217632005038,
+    "b2": 8.16218544316742,
+    "b3": 9.024673977634068,
+    "b4": 8.474107538576632
+   },
+   "sigma_per_param": {
+    "b1": 9.56907512407483,
+    "b2": 9.495637529172534,
+    "b3": 9.440502827637584,
+    "b4": 8.665181069080594
+   }
+  },
+  {
+   "name": "MGH17",
+   "difficulty": "Average",
+   "n_params": 5,
+   "n_obs": 33,
+   "model": "b1 + b2\u00b7exp(\u2212b4\u00b7x) + b3\u00b7exp(\u2212b5\u00b7x)",
+   "columns": {
+    "spectrafit_core": 8.514742943993848,
+    "sigma": 8.06736324983426,
+    "lmfit": 5.762313985155152,
+    "scipy_lm": 7.367093091429086,
+    "scipy_trf": 6.271853405378621
+   },
+   "null_reasons": {},
+   "per_param": {
+    "b1": 9.993403521069622,
+    "b2": 8.637991945327594,
+    "b3": 8.514742943993848,
+    "b4": 9.163773131476393,
+    "b5": 9.086294630791613
+   },
+   "sigma_per_param": {
+    "b1": 10.376729552478656,
+    "b2": 8.06736324983426,
+    "b3": 8.068650964427535,
+    "b4": 8.439031755318776,
+    "b5": 8.766408200444168
+   }
+  },
+  {
+   "name": "Hahn1",
+   "difficulty": "Average",
+   "n_params": 7,
+   "n_obs": 236,
+   "model": "(b1 + b2\u00b7x + b3\u00b7x\u00b2 + b4\u00b7x\u00b3) / (1 + b5\u00b7x + b6\u00b7x\u00b2 + b7\u00b7x\u00b3)",
+   "columns": {
+    "spectrafit_core": 8.594866579143195,
+    "sigma": 9.375903627176962,
+    "lmfit": 6.647581720958902,
+    "scipy_lm": 2.1668083554614466,
+    "scipy_trf": 2.166350733448111
+   },
+   "null_reasons": {},
+   "per_param": {
+    "b1": 8.759057400088897,
+    "b2": 8.936981486789781,
+    "b3": 9.17915475618522,
+    "b4": 8.594866579143195,
+    "b5": 10.00432479836666,
+    "b6": 9.300908451825569,
+    "b7": 8.855133090439168
+   },
+   "sigma_per_param": {
+    "b1": 9.593753374766358,
+    "b2": 9.516693263699642,
+    "b3": 9.393071966333661,
+    "b4": 9.683706858701989,
+    "b5": 9.777802832505122,
+    "b6": 9.375903627176962,
+    "b7": 9.646308637353242
+   }
+  },
+  {
+   "name": "Lanczos1",
+   "difficulty": "Average",
+   "n_params": 6,
+   "n_obs": 24,
+   "model": "b1\u00b7exp(-b2\u00b7x) + b3\u00b7exp(-b4\u00b7x) + b5\u00b7exp(-b6\u00b7x)",
+   "columns": {
+    "spectrafit_core": 8.747301725058655,
+    "sigma": 0.5992550861904169,
+    "lmfit": 10.557491370620053,
+    "scipy_lm": 10.556969519986616,
+    "scipy_trf": 10.58580833098804
+   },
+   "null_reasons": {},
+   "per_param": {
+    "b1": 8.747301725058655,
+    "b2": 9.046453828459152,
+    "b3": 9.29544105933999,
+    "b4": 9.435654374446047,
+    "b5": 9.441978990761442,
+    "b6": 10.138398334055166
+   },
+   "sigma_per_param": {
+    "b1": 0.5992550891555832,
+    "b2": 0.5992550929572149,
+    "b3": 0.5992550861904169,
+    "b4": 0.5992550890919048,
+    "b5": 0.5992550870065645,
+    "b6": 0.5992550869532347
+   }
+  },
+  {
+   "name": "Gauss3",
+   "difficulty": "Average",
+   "n_params": 8,
+   "n_obs": 250,
+   "model": "b1\u00b7exp(-b2\u00b7x) + b3\u00b7exp(-(x-b4)\u00b2/b5\u00b2) + b6\u00b7exp(-(x-b7)\u00b2/b8\u00b2)",
+   "columns": {
+    "spectrafit_core": 8.874016200308361,
+    "sigma": 8.638075248955467,
+    "lmfit": 6.821825444693999,
+    "scipy_lm": 9.027516870968846,
+    "scipy_trf": 8.99731958802656
+   },
+   "null_reasons": {},
+   "per_param": {
+    "b1": 11.073834171227118,
+    "b2": 9.5331772168075,
+    "b3": 9.7242384499104,
+    "b4": 9.702580298881852,
+    "b5": 8.874016200308361,
+    "b6": 8.973647786053883,
+    "b7": 9.6992119589538,
+    "b8": 9.136461392005664
+   },
+   "sigma_per_param": {
+    "b1": 9.793350789088866,
+    "b2": 9.190006193935782,
+    "b3": 8.657971964048187,
+    "b4": 9.527261731021746,
+    "b5": 8.981640156176825,
+    "b6": 8.638075248955467,
+    "b7": 9.088924496272766,
+    "b8": 9.038213083124218
+   }
+  },
+  {
+   "name": "Chwirut2",
+   "difficulty": "Lower",
+   "n_params": 3,
+   "n_obs": 54,
+   "model": "exp(-b1\u00b7x) / (b2 + b3\u00b7x)",
+   "columns": {
+    "spectrafit_core": 7.181438461914964,
+    "sigma": 7.598718086705598,
+    "lmfit": 6.646565167397906,
+    "scipy_lm": 7.230457491829308,
+    "scipy_trf": 7.204106385503445
+   },
+   "null_reasons": {},
+   "per_param": {
+    "b1": 7.181438461914964,
+    "b2": 7.530767491783367,
+    "b3": 7.483756845001734
+   },
+   "sigma_per_param": {
+    "b1": 7.598718086705598,
+    "b2": 8.071558335485648,
+    "b3": 8.798699047390757
+   }
+  },
+  {
+   "name": "Chwirut1",
+   "difficulty": "Lower",
+   "n_params": 3,
+   "n_obs": 214,
+   "model": "exp(-b1\u00b7x) / (b2 + b3\u00b7x)",
+   "columns": {
+    "spectrafit_core": 7.347593166906291,
+    "sigma": 7.702293005051829,
+    "lmfit": 6.187836814515567,
+    "scipy_lm": 7.415850495413521,
+    "scipy_trf": 7.476229467602103
+   },
+   "null_reasons": {},
+   "per_param": {
+    "b1": 7.347593166906291,
+    "b2": 8.174173865124004,
+    "b3": 7.719508395935763
+   },
+   "sigma_per_param": {
+    "b1": 7.702293005051829,
+    "b2": 8.389487680910337,
+    "b3": 8.74482307863595
+   }
+  },
+  {
+   "name": "Lanczos3",
+   "difficulty": "Lower",
+   "n_params": 6,
+   "n_obs": 24,
+   "model": "b1\u00b7exp(-b2\u00b7x) + b3\u00b7exp(-b4\u00b7x) + b5\u00b7exp(-b6\u00b7x)",
+   "columns": {
+    "spectrafit_core": 7.828069044720556,
+    "sigma": 7.872658288304991,
+    "lmfit": 5.9185024891864915,
+    "scipy_lm": 5.367717623816371,
+    "scipy_trf": 5.919592554486416
+   },
+   "null_reasons": {},
+   "per_param": {
+    "b1": 7.828069044720556,
+    "b2": 8.119357458015573,
+    "b3": 8.438938610266263,
+    "b4": 8.562888622815649,
+    "b5": 8.564274827296405,
+    "b6": 9.289504451978303
+   },
+   "sigma_per_param": {
+    "b1": 8.366722070877975,
+    "b2": 7.978849249745547,
+    "b3": 7.872658288304991,
+    "b4": 8.437943499625776,
+    "b5": 7.967904006150707,
+    "b6": 7.981219155881413
+   }
+  },
+  {
+   "name": "Misra1b",
+   "difficulty": "Lower",
+   "n_params": 2,
+   "n_obs": 14,
+   "model": "b1\u00b7(1\u2212(1+b2\u00b7x/2)^(\u22122))",
+   "columns": {
+    "spectrafit_core": 8.033172016202009,
+    "sigma": 7.774855518252271,
+    "lmfit": 7.873830455671339,
+    "scipy_lm": 7.284478322520026,
+    "scipy_trf": 7.277407742928184
+   },
+   "null_reasons": {},
+   "per_param": {
+    "b1": 8.09938823975326,
+    "b2": 8.033172016202009
+   },
+   "sigma_per_param": {
+    "b1": 7.774855518252271,
+    "b2": 8.775403922588191
+   }
+  },
+  {
+   "name": "Gauss2",
+   "difficulty": "Lower",
+   "n_params": 8,
+   "n_obs": 250,
+   "model": "b1\u00b7exp(-b2\u00b7x) + b3\u00b7exp(-(x-b4)\u00b2/b5\u00b2) + b6\u00b7exp(-(x-b7)\u00b2/b8\u00b2)",
+   "columns": {
+    "spectrafit_core": 9.916579403214724,
+    "sigma": 9.909576746146518,
+    "lmfit": 6.84479792717967,
+    "scipy_lm": 8.970132686818477,
+    "scipy_trf": 9.167264530204529
+   },
+   "null_reasons": {},
+   "per_param": {
+    "b1": 11.887696304348355,
+    "b2": 11.01597136927977,
+    "b3": 10.198184321976377,
+    "b4": 10.593517858310008,
+    "b5": 9.916579403214724,
+    "b6": 10.841164890675937,
+    "b7": 10.612874893115777,
+    "b8": 10.0656763921061
+   },
+   "sigma_per_param": {
+    "b1": 10.749017938507578,
+    "b2": 10.32195621459093,
+    "b3": 10.719491265343263,
+    "b4": 10.320951294372124,
+    "b5": 9.963812210648419,
+    "b6": 10.332390923493215,
+    "b7": 10.013143391977191,
+    "b8": 9.909576746146518
+   }
+  },
+  {
+   "name": "Misra1a",
+   "difficulty": "Lower",
+   "n_params": 2,
+   "n_obs": 14,
+   "model": "b1\u00b7(1\u2212exp(\u2212b2\u00b7x))",
+   "columns": {
+    "spectrafit_core": 10.41374959027353,
+    "sigma": 10.126771195227988,
+    "lmfit": 8.02958645683699,
+    "scipy_lm": 7.852280129994423,
+    "scipy_trf": 7.829558474654931
+   },
+   "null_reasons": {},
+   "per_param": {
+    "b1": 10.659046511103313,
+    "b2": 10.41374959027353
+   },
+   "sigma_per_param": {
+    "b1": 10.126771195227988,
+    "b2": 12.68867525686444
+   }
+  },
+  {
+   "name": "Gauss1",
+   "difficulty": "Lower",
+   "n_params": 8,
+   "n_obs": 250,
+   "model": "b1\u00b7exp(-b2\u00b7x) + b3\u00b7exp(-(x-b4)\u00b2/b5\u00b2) + b6\u00b7exp(-(x-b7)\u00b2/b8\u00b2)",
+   "columns": {
+    "spectrafit_core": 10.579901979312375,
+    "sigma": 10.5317156131576,
+    "lmfit": 7.121863025049225,
+    "scipy_lm": 8.070374253582791,
+    "scipy_trf": 8.053399443277044
+   },
+   "null_reasons": {},
+   "per_param": {
+    "b1": 11.241264027085258,
+    "b2": 10.806846784736251,
+    "b3": 11.032274126873533,
+    "b4": 11.321359621803662,
+    "b5": 10.579901979312375,
+    "b6": 10.96443490916517,
+    "b7": 10.830738506441232,
+    "b8": 11.037203779939777
+   },
+   "sigma_per_param": {
+    "b1": 11.131321783657622,
+    "b2": 10.5317156131576,
+    "b3": 12.935326611551222,
+    "b4": 11.769110984475322,
+    "b5": 11.77027488913561,
+    "b6": 11.150719547509516,
+    "b7": 11.731032912850274,
+    "b8": 11.468945870099498
+   }
+  },
+  {
+   "name": "DanWood",
+   "difficulty": "Lower",
+   "n_params": 2,
+   "n_obs": 6,
+   "model": "b1\u00b7x^b2",
+   "columns": {
+    "spectrafit_core": 10.594205710258413,
+    "sigma": null,
+    "lmfit": 7.17628701588522,
+    "scipy_lm": 8.815194935319834,
+    "scipy_trf": 9.240683476979633
+   },
+   "null_reasons": {
+    "sigma": {
+     "code": "nonlinear_projection",
+     "params": [
+      "b2"
+     ],
+     "detail": "NIST b2 = -1/shape, a reciprocal of a fitted parameter; a fitted standard error does not propagate through it by a constant factor."
+    }
+   },
+   "per_param": {
+    "b1": 10.594205710258413,
+    "b2": 10.920736856497648
+   },
+   "sigma_per_param": {
+    "b1": 10.73890388984104,
+    "b2": null
+   }
+  }
+ ]
+}

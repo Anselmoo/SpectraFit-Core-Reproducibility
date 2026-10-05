@@ -1,0 +1,40 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite it as below, together with the spectrafit-core release it reproduces."
+title: "SpectraFit-Core-Reproducibility: every published result of spectrafit-core, regenerated from the release"
+abstract: >-
+  A pinned, thin consumer of the spectrafit-core release that regenerates the
+  NIST StRD agreement tables, the figures and the timing comparison reported in
+  the SoftwareX article on spectrafit-core, on a recorded host, and checks every
+  number stated in the text against the regenerated data.
+type: software
+authors:
+  - given-names: "Anselm W."
+    family-names: Hahn
+    email: anselm.hahn@gmail.com
+    alias: "Anselm Hahn"
+    orcid: "https://orcid.org/0000-0003-4543-4833"
+    affiliation: "Max Planck Institute for Chemical Energy Conversion"
+repository-code: "https://github.com/Anselmoo/SpectraFit-Core-Reproducibility"
+license: MIT
+version: 1.0.0
+keywords:
+  - reproducibility
+  - benchmark
+  - NIST StRD
+  - nonlinear least squares
+  - curve-fitting
+references:
+  - type: software
+    title: "SpectraFit-Core: a Rust-cored nonlinear curve-fitting library with a self-auditing cross-backend benchmark"
+    authors:
+      - given-names: "Anselm W."
+        family-names: Hahn
+        orcid: "https://orcid.org/0000-0003-4543-4833"
+    doi: "10.5281/zenodo.23170069"
+    version: "0.1.2"
+    identifiers:
+      - type: doi
+        value: "10.5281/zenodo.23043544"
+        description: "Concept DOI of spectrafit-core: always resolves to the latest version."
+    repository-code: "https://github.com/Anselmoo/SpectraFit-Core"
+    license: MIT

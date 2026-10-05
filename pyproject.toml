@@ -1,0 +1,27 @@
+# Environment for regenerating the paper's results. Not a package: nothing here is
+# installed, the file only pins what `uv run --locked reproduce.py` resolves.
+[project]
+name = "spectrafit-core-reproducibility"
+version = "1.0.0"
+description = "Pinned environment that regenerates every published result of spectrafit-core (NIST StRD agreement, timing benchmark, the numbers the article states) from the release"
+requires-python = ">=3.13,<3.15"
+dependencies = [
+    "spectrafit-core==0.1.2",
+    "lmfit==1.3.4",
+    "scipy==1.18.0",
+    "numpy==2.5.1",
+    "matplotlib>=3.9",
+]
+
+[dependency-groups]
+# Only for `reproduce.py --benchmark`: the harness CLI and the JAX comparator, at
+# the versions the archived ladder recorded.
+benchmark = [
+    "spectrafit-core[benchmark,jax]==0.1.2",
+    "jax==0.11.0",
+    "jaxlib==0.11.0",
+    "optimistix==0.1.0",
+]
+
+[tool.uv]
+package = false

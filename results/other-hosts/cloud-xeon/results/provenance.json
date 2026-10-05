@@ -1,0 +1,69 @@
+{
+ "generated_utc": "2026-10-03T18:29:29Z",
+ "command": "reproduce.py --source ../upstream",
+ "software": {
+  "repository": "https://github.com/Anselmoo/SpectraFit-Core.git",
+  "tag": "v0.1.0",
+  "commit": "0c5d366efce809e09b6570b7e99176b4f5709595",
+  "source_date_epoch": 1790674443,
+  "doi": "10.5281/zenodo.23043544",
+  "wheel": "spectrafit-core==0.1.0 from PyPI, hash-pinned in uv.lock"
+ },
+ "environment": {
+  "python": "3.13.15",
+  "implementation": "CPython",
+  "platform": "Linux-6.18.44-fc-v64-x86_64-with-glibc2.39",
+  "machine": "x86_64",
+  "cpu": "Intel(R) Xeon(R) Processor @ 2.80GHz",
+  "cores": 2,
+  "packages": {
+   "spectrafit-core": "0.1.0",
+   "lmfit": "1.3.4",
+   "scipy": "1.18.0",
+   "numpy": "2.5.1",
+   "matplotlib": "3.11.2"
+  },
+  "uv_lock_sha256": "55f9f074f24dc1af3f1c0febd141b64fa88502621b8c960b3167f2e4acb1e485"
+ },
+ "upstream_scripts_sha256": {
+  "extract_bench_summary.py": "543c62b92dc63572d193aed9c874e64a8c163338e07440065c5644312a019601",
+  "fig_architecture.py": "e27a1fc489bdbf5b4c814abd4a4180cad881a80b05d24efd5d7e7886c21231db",
+  "fig_benchmark_profile.py": "ffa90f65ba33760416f6e9968004ff5381f28e05229d12a2952d7c69fa28c6d1",
+  "fig_nist_dual.py": "39fe7f10bdb58722c5ee73c911bfee9b251b4fbdd1a707e1f17bda3be9e1f9dc",
+  "nist_head_to_head.py": "3c04082670dfb29e5dd7bb19c97873ec2d86a2707dbc3c5d893df7a1246ec5e6",
+  "nist_table2.py": "1ac230ba6bf3bed4e5ff35a1efee34fa4813b654a7a217e18b0f615a52df4979"
+ },
+ "archived_inputs_sha256": {
+  "reproducibility/figures/bench_summary.json": "6fea7fdeb2d2eab7a00b4bd57450d442dab31cd4dc51788e715099fc548d9103",
+  "reproducibility/ladder/ladder.json": "1cd63265c4fa5c2797d4b20ca3e36aae1e87b1ed1a55ee49836abd2300dc3c6e",
+  "reproducibility/seed-sweep/sweep.json": "2f42367c8239e922eb1616261daec04061b04b7e38488db4f0edab0fd5d59dfb",
+  "reproducibility/figures/param_agreement.json": "466200db504b29556c6832d8182ca75ec0f039a1fe2a3ef90a6c557689b0a6cd",
+  "reproducibility/figures/audit_bias.json": "f1ffe39376c8b40b4f943e87b3d62e85762f7da3a72e1d3ffdab38f649d9e1fd"
+ },
+ "drift_vs_release_archive": {
+  "n_cells": 108,
+  "n_cells_moved_by_0.05_or_more": 38,
+  "largest_change_per_column": {
+   "spectrafit_core": {
+    "dataset": "Misra1b",
+    "delta": -2.269312671996765
+   },
+   "sigma": {
+    "dataset": "Misra1b",
+    "delta": -2.478395166120154
+   },
+   "lmfit": {
+    "dataset": "Lanczos2",
+    "delta": 0.03765761215401753
+   },
+   "scipy_lm": {
+    "dataset": "Lanczos2",
+    "delta": -0.8302200736725007
+   },
+   "scipy_trf": {
+    "dataset": "Lanczos3",
+    "delta": 0.5065801180024732
+   }
+  }
+ }
+}

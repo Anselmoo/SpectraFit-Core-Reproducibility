@@ -1,0 +1,40 @@
+{
+  "excluded_stratum": {
+    "n": 31,
+    "median_worst_to_best_ratio": 1.000127185645824,
+    "max_worst_to_best_ratio": 1948.6617936901155,
+    "median_param_err_pct": 38.33206254979727
+  },
+  "n_all_six": 127,
+  "n_with_truth": 124,
+  "n_well_conditioned": 93,
+  "well_conditioned_threshold_pct": 10.0,
+  "per_backend": {
+    "spectrafit": {
+      "median_pct": 1.4910843057193814,
+      "worst_pct": 9.785932381254321
+    },
+    "lmfit": {
+      "median_pct": 1.4910418888042174,
+      "worst_pct": 9.78541834767812
+    },
+    "jax": {
+      "median_pct": 1.4910634778741578,
+      "worst_pct": 9.785808317018176
+    },
+    "scipy-ls-lm": {
+      "median_pct": 1.49108257580144,
+      "worst_pct": 9.785489548015654
+    },
+    "scipy-ls-trf": {
+      "median_pct": 1.4911026949032045,
+      "worst_pct": 9.785808049702371
+    },
+    "scipy-ls-dogbox": {
+      "median_pct": 1.4910826154319818,
+      "worst_pct": 9.785492012017283
+    }
+  },
+  "max_cross_backend_spread_pct_points": 0.2333018141978946,
+  "median_spectrafit_vs_lmfit_relative_gap": 1.2964058901067397e-05
+}

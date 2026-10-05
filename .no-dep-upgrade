@@ -1,0 +1,6 @@
+This repository pins its dependencies on purpose (uv.lock, pins.toml): the results it
+regenerates are only comparable at exactly these versions.
+
+~/.scripts/installers/install_project_deps.sh skips any ~/projects/* directory that
+contains this file, so `update_dev_env.sh --project-deps` never runs `uv lock --upgrade` here.
+Change a pin deliberately, one package at a time, never by a blanket upgrade.

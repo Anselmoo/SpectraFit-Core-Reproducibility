@@ -1,0 +1,284 @@
+[
+ {
+  "id": "nist-01",
+  "source": "regenerated",
+  "statement": "22 of the 27 NIST problems are implemented",
+  "observed": 22,
+  "ok": true,
+  "holds_on_release_archive": true
+ },
+ {
+  "id": "nist-02",
+  "source": "regenerated",
+  "statement": "spectrafit-core recovers every certified value to more than six significant figures; the minimum is 6.5, on Thurber",
+  "observed": {
+   "min": 6.495870166390748,
+   "dataset": "Thurber"
+  },
+  "ok": true,
+  "holds_on_release_archive": true
+ },
+ {
+  "id": "nist-03",
+  "source": "regenerated",
+  "statement": "lmfit clears the four-figure threshold on all 22, minimum 4.6",
+  "observed": 4.629654280802089,
+  "ok": true,
+  "holds_on_release_archive": true
+ },
+ {
+  "id": "nist-04",
+  "source": "regenerated",
+  "statement": "the two SciPy configurations fall to 2.2 on Hahn1 and clear the threshold elsewhere",
+  "observed": {
+   "scipy_lm": {
+    "Hahn1": 2.1668083554614466
+   },
+   "scipy_trf": {
+    "Hahn1": 2.166350733448111
+   }
+  },
+  "ok": true,
+  "holds_on_release_archive": true
+ },
+ {
+  "id": "nist-05",
+  "source": "regenerated",
+  "statement": "spectrafit-core is the most accurate on 15 datasets, the two SciPy configurations on seven between them, and lmfit on none",
+  "observed": {
+   "spectrafit_core": 15,
+   "lmfit": 0,
+   "scipy_lm": 2,
+   "scipy_trf": 5
+  },
+  "ok": true,
+  "holds_on_release_archive": true
+ },
+ {
+  "id": "nist-06",
+  "source": "regenerated",
+  "statement": "spectrafit-core is the least accurate of the four on Lanczos1 only",
+  "observed": [
+   "Lanczos1"
+  ],
+  "ok": true,
+  "holds_on_release_archive": true
+ },
+ {
+  "id": "nist-07",
+  "source": "regenerated",
+  "statement": "standard errors are defined on 20 of the 22 datasets (not Eckerle4, DanWood)",
+  "observed": [
+   "DanWood",
+   "Eckerle4"
+  ],
+  "ok": true,
+  "holds_on_release_archive": true
+ },
+ {
+  "id": "nist-08",
+  "source": "regenerated",
+  "statement": "the median standard-error agreement lies between 7.8 and 7.9 significant figures, and with one exception none falls below 5.8",
+  "observed": {
+   "median": 7.823756903278631,
+   "min_without_Lanczos1": 5.848817662355736
+  },
+  "ok": true,
+  "holds_on_release_archive": true
+ },
+ {
+  "id": "nist-09",
+  "source": "regenerated",
+  "statement": "Lanczos1: values agree to 8.7 figures, standard errors to 0.6",
+  "observed": {
+   "value": 8.747301725058655,
+   "sigma": 0.5992550861904169
+  },
+  "ok": true,
+  "holds_on_release_archive": true
+ },
+ {
+  "id": "nist-10",
+  "source": "regenerated",
+  "statement": "parameters recovered by spectrafit-core and lmfit differ by up to 3.5 significant figures",
+  "observed": 3.4580389542631496,
+  "ok": true,
+  "holds_on_release_archive": true
+ },
+ {
+  "id": "nist-11",
+  "source": "regenerated",
+  "statement": "the fitted curves agree to within 8e-7 of the range of a dataset",
+  "observed": 7.717809601868267e-07,
+  "ok": true,
+  "holds_on_release_archive": true
+ },
+ {
+  "id": "nist-12",
+  "source": "regenerated",
+  "statement": "a rerun at 1e-15 raises the agreement of spectrafit-core on most datasets and lowers none",
+  "observed": {
+   "raised": 17,
+   "lowered": 0,
+   "unchanged": 5
+  },
+  "ok": true,
+  "holds_on_release_archive": true
+ },
+ {
+  "id": "bench-01",
+  "source": "archived",
+  "statement": "151 cases",
+  "observed": 151,
+  "ok": true
+ },
+ {
+  "id": "bench-02",
+  "source": "archived",
+  "statement": "16.4 times faster than lmfit in geometric mean, 13.8 in harmonic mean",
+  "observed": {
+   "geomean": 16.445870855459038,
+   "harmonic": 13.778490843602889
+  },
+  "ok": true
+ },
+ {
+  "id": "bench-03",
+  "source": "archived",
+  "statement": "factors 6.2, 7.9 and 6.5 against the SciPy configurations and 4.9 against JAX",
+  "observed": {
+   "lmfit": 16.445870855459038,
+   "jax": 4.936372698871563,
+   "scipy-ls-lm": 6.247651942332766,
+   "scipy-ls-trf": 7.923987011586038,
+   "scipy-ls-dogbox": 6.490549047003157
+  },
+  "ok": true
+ },
+ {
+  "id": "bench-04",
+  "source": "archived",
+  "statement": "fastest backend on 131 of the 151 cases",
+  "observed": 131,
+  "ok": true
+ },
+ {
+  "id": "bench-05",
+  "source": "archived",
+  "statement": "by category the speedup ranges from 8.9 to 28.3; tied-parameter cases 14.1",
+  "observed": {
+   "easy": 12.72,
+   "complex": 23.99,
+   "reality": 17.87,
+   "optfn": 28.32,
+   "scaling": 16.31,
+   "edge": 14.34,
+   "lineshapes": 8.85,
+   "fixed": 10.03,
+   "tied": 14.12
+  },
+  "ok": true
+ },
+ {
+  "id": "bench-06",
+  "source": "archived",
+  "statement": "the headline moves between 15.8 and 16.4 across the five depths",
+  "observed": [
+   15.971475901391555,
+   15.784640466632906,
+   16.15948049631364,
+   16.364170082147368,
+   16.445870855459038
+  ],
+  "ok": true
+ },
+ {
+  "id": "bench-07",
+  "source": "archived",
+  "statement": "15.95 with a standard deviation of 0.38 across 50 seeds",
+  "observed": {
+   "n": 50,
+   "mean": 15.951910722213228,
+   "sd": 0.37628519237900354
+  },
+  "ok": true
+ },
+ {
+  "id": "bench-08",
+  "source": "archived",
+  "statement": "the 20 cases it loses are the optimisation functions",
+  "observed": [
+   "optfn"
+  ],
+  "ok": true
+ },
+ {
+  "id": "bench-09",
+  "source": "archived",
+  "statement": "excluding the optimisation-function category lowers the headline to 15.1",
+  "observed": 15.136743061198057,
+  "ok": true
+ },
+ {
+  "id": "agree-02",
+  "source": "archived",
+  "statement": "CX-017: the six backends report the same coefficient of determination to three significant figures; parameter errors lie between 660 % and 1.3 million %",
+  "observed": {
+   "r2": {
+    "spectrafit": 0.9623586280009413,
+    "lmfit": 0.9623585558391385,
+    "jax": 0.9623332553532431,
+    "scipy-ls-lm": 0.9623585103712614,
+    "scipy-ls-trf": 0.9623584668994349,
+    "scipy-ls-dogbox": 0.962113627367539
+   },
+   "param_err_pct": {
+    "spectrafit": 167655.7373493728,
+    "lmfit": 100998.64040787941,
+    "jax": 660.8029377496126,
+    "scipy-ls-lm": 80823.3496688106,
+    "scipy-ls-trf": 68118.40947390138,
+    "scipy-ls-dogbox": 1287681.437950858
+   }
+  },
+  "ok": true
+ },
+ {
+  "id": "agree-01",
+  "source": "archived",
+  "statement": "on 93 cases the six backends agree to within 0.23 percentage points; 31 remain",
+  "observed": {
+   "n": 93,
+   "spread": 0.2333018141978946,
+   "excluded": 31
+  },
+  "ok": true
+ },
+ {
+  "id": "bias-01",
+  "source": "archived",
+  "statement": "about 75 microseconds against 3 for plain array code, roughly a factor of 25",
+  "observed": {
+   "numpy_us": 2.966833500067878,
+   "wheel_us": 74.91353999739658,
+   "ratio": 25.250335078015887,
+   "n_points": 97
+  },
+  "ok": true
+ },
+ {
+  "id": "bias-02",
+  "source": "archived",
+  "statement": "35 registered kernels: 23 agree bit for bit, 12 do not; all but one of those to better than 4e-16, the exception at 5e-7",
+  "observed": {
+   "n": 35,
+   "exact": 23,
+   "nonzero": 12,
+   "largest_two": [
+    3.367538917781003e-16,
+    4.58906797240477e-07
+   ]
+  },
+  "ok": true
+ }
+]

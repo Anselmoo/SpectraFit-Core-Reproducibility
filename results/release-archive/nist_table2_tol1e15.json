@@ -1,0 +1,713 @@
+{
+ "generator": "nist_table2.py",
+ "tolerance": {
+  "ftol": 1e-15,
+  "xtol": 1e-15,
+  "gtol": 1e-15
+ },
+ "start_point": "START2",
+ "start_point_label": "Start 2",
+ "versions": {
+  "spectrafit_core": {
+   "version": "0.1.1",
+   "wheel_tags": [
+    "cp313-cp313-manylinux_2_28_x86_64"
+   ],
+   "installed_from": "wheel file spectrafit_core-0.1.1-cp313-cp313-manylinux_2_28_x86_64.whl",
+   "archive_hash": null
+  },
+  "python": "3.13.13",
+  "lmfit": "1.3.4",
+  "scipy": "1.18.0",
+  "numpy": "2.5.1"
+ },
+ "host": {
+  "node": "terra",
+  "platform": "Linux-5.15.0-187-generic-x86_64-with-glibc2.35",
+  "machine": "x86_64",
+  "kernel": "5.15.0-187-generic",
+  "libc": "glibc 2.35",
+  "cpu": "AMD EPYC Processor (with IBPB)",
+  "blas_lapack": {
+   "numpy": {
+    "blas": {
+     "name": "scipy-openblas",
+     "version": "0.3.33.112.0"
+    },
+    "lapack": {
+     "name": "scipy-openblas",
+     "version": "0.3.33.112.0"
+    }
+   },
+   "scipy": {
+    "blas": {
+     "name": "scipy-openblas",
+     "version": "0.3.31.dev"
+    },
+    "lapack": {
+     "name": "scipy-openblas",
+     "version": "0.3.31.dev"
+    }
+   },
+   "loaded": [
+    "/usr/lib/x86_64-linux-gnu/libm.so.6",
+    "numpy.libs/libscipy_openblas64_-017048f4.so",
+    "scipy.libs/libscipy_openblas-5f890258.so"
+   ]
+  },
+  "libc_build": "ldd (Ubuntu GLIBC 2.35-0ubuntu3.15) 2.35",
+  "simd": [
+   "avx",
+   "avx2",
+   "fma",
+   "sse4_1",
+   "sse4_2"
+  ]
+ },
+ "columns": [
+  "spectrafit_core",
+  "sigma",
+  "lmfit",
+  "scipy_lm",
+  "scipy_trf"
+ ],
+ "measure": "log-relative error (significant figures of agreement, capped at 15) of the least accurately recovered parameter against NIST's certified values; the sigma column applies the same measure to spectrafit-core's fitted standard errors against NIST's certified standard deviations",
+ "datasets": [
+  {
+   "name": "Thurber",
+   "difficulty": "Higher",
+   "n_params": 7,
+   "n_obs": 37,
+   "model": "(b1 + b2\u00b7x + b3\u00b7x\u00b2 + b4\u00b7x\u00b3) / (1 + b5\u00b7x + b6\u00b7x\u00b2 + b7\u00b7x\u00b3)",
+   "columns": {
+    "spectrafit_core": 7.195897265818917,
+    "sigma": 6.548849540103491,
+    "lmfit": 4.938875757383268,
+    "scipy_lm": 7.331606205960373,
+    "scipy_trf": 6.995131122828421
+   },
+   "null_reasons": {},
+   "per_param": {
+    "b1": 10.239957220060122,
+    "b2": 7.992344996407249,
+    "b3": 7.7423938358381585,
+    "b4": 7.56289555017249,
+    "b5": 7.981882170631337,
+    "b6": 7.947526120734566,
+    "b7": 7.195897265818917
+   },
+   "sigma_per_param": {
+    "b1": 8.582658137395681,
+    "b2": 6.560536654702566,
+    "b3": 6.561818533687508,
+    "b4": 6.550731541477873,
+    "b5": 6.6271923243347315,
+    "b6": 6.625960887754125,
+    "b7": 6.548849540103491
+   }
+  },
+  {
+   "name": "MGH09",
+   "difficulty": "Higher",
+   "n_params": 4,
+   "n_obs": 11,
+   "model": "b1\u00b7(x\u00b2+b2\u00b7x)/(x\u00b2+b3\u00b7x+b4)",
+   "columns": {
+    "spectrafit_core": 7.687804418815193,
+    "sigma": 7.801519250981957,
+    "lmfit": 5.709480849906145,
+    "scipy_lm": 7.449856075108704,
+    "scipy_trf": 7.668374737965996
+   },
+   "null_reasons": {},
+   "per_param": {
+    "b1": 9.046502641533786,
+    "b2": 7.687804418815193,
+    "b3": 8.245873156459279,
+    "b4": 7.868967329123813
+   },
+   "sigma_per_param": {
+    "b1": 8.296466633501186,
+    "b2": 7.801519250981957,
+    "b3": 7.944600665301474,
+    "b4": 7.880929751444855
+   }
+  },
+  {
+   "name": "Rat43",
+   "difficulty": "Higher",
+   "n_params": 4,
+   "n_obs": 15,
+   "model": "b1 / (1 + exp(b2 - b3\u00b7x))^(1/b4)",
+   "columns": {
+    "spectrafit_core": 8.819511004809714,
+    "sigma": 8.94443610611033,
+    "lmfit": 4.6296710607903115,
+    "scipy_lm": 6.8031297674415745,
+    "scipy_trf": 7.22364760409565
+   },
+   "null_reasons": {},
+   "per_param": {
+    "b1": 10.359429248730923,
+    "b2": 8.914088446112395,
+    "b3": 9.09094440009889,
+    "b4": 8.819511004809714
+   },
+   "sigma_per_param": {
+    "b1": 9.328782378654143,
+    "b2": 9.154150341024497,
+    "b3": 8.94443610611033,
+    "b4": 9.039035430886841
+   }
+  },
+  {
+   "name": "BoxBOD",
+   "difficulty": "Higher",
+   "n_params": 2,
+   "n_obs": 6,
+   "model": "b1\u00b7(1\u2212exp(\u2212b2\u00b7x))",
+   "columns": {
+    "spectrafit_core": 9.165977404806464,
+    "sigma": 9.118296617099116,
+    "lmfit": 6.876739208461067,
+    "scipy_lm": 8.252238795408603,
+    "scipy_trf": 7.970640445944369
+   },
+   "null_reasons": {},
+   "per_param": {
+    "b1": 9.817722117291707,
+    "b2": 9.165977404806464
+   },
+   "sigma_per_param": {
+    "b1": 9.341595461754512,
+    "b2": 9.118296617099116
+   }
+  },
+  {
+   "name": "Bennett5",
+   "difficulty": "Higher",
+   "n_params": 3,
+   "n_obs": 154,
+   "model": "b1\u00b7(b2+x)^(\u22121/b3)",
+   "columns": {
+    "spectrafit_core": 9.806393896702977,
+    "sigma": 6.854506987180043,
+    "lmfit": 7.1762894002199165,
+    "scipy_lm": 5.228185210458983,
+    "scipy_trf": 5.0825219574604965
+   },
+   "null_reasons": {},
+   "per_param": {
+    "b1": 9.806393896702977,
+    "b2": 10.348614242430434,
+    "b3": 10.490329966416521
+   },
+   "sigma_per_param": {
+    "b1": 6.854506987180043,
+    "b2": 6.854958864939922,
+    "b3": 6.855238388330842
+   }
+  },
+  {
+   "name": "Rat42",
+   "difficulty": "Higher",
+   "n_params": 3,
+   "n_obs": 9,
+   "model": "b1 / (1 + exp(b2 - b3\u00b7x))",
+   "columns": {
+    "spectrafit_core": 10.221007762550894,
+    "sigma": 9.823189128213478,
+    "lmfit": 6.170804486849255,
+    "scipy_lm": 8.003909905679736,
+    "scipy_trf": 7.95178893803397
+   },
+   "null_reasons": {},
+   "per_param": {
+    "b1": 10.491309798589988,
+    "b2": 11.71716477557968,
+    "b3": 10.221007762550894
+   },
+   "sigma_per_param": {
+    "b1": 9.823189128213478,
+    "b2": 10.238259157196167,
+    "b3": 10.167749437166062
+   }
+  },
+  {
+   "name": "Eckerle4",
+   "difficulty": "Higher",
+   "n_params": 3,
+   "n_obs": 35,
+   "model": "(b1/b2)\u00b7exp(-\u00bd\u00b7((x-b3)/b2)\u00b2)",
+   "columns": {
+    "spectrafit_core": 10.634690503547816,
+    "sigma": null,
+    "lmfit": 6.870869854602427,
+    "scipy_lm": 9.304380532388462,
+    "scipy_trf": 9.292113083239112
+   },
+   "null_reasons": {
+    "sigma": {
+     "code": "nonlinear_projection",
+     "params": [
+      "b1"
+     ],
+     "detail": "NIST b1 = amplitude * sigma, a product of two fitted parameters; a single fitted standard error does not propagate through it."
+    }
+   },
+   "per_param": {
+    "b1": 10.649522470493936,
+    "b2": 10.634690503547816,
+    "b3": 11.063408300406223
+   },
+   "sigma_per_param": {
+    "b1": null,
+    "b2": 10.601145761127931,
+    "b3": 10.555746106773729
+   }
+  },
+  {
+   "name": "Kirby2",
+   "difficulty": "Average",
+   "n_params": 5,
+   "n_obs": 151,
+   "model": "(b1 + b2\u00b7x + b3\u00b7x\u00b2) / (1 + b4\u00b7x + b5\u00b7x\u00b2)",
+   "columns": {
+    "spectrafit_core": 7.3922417464053405,
+    "sigma": 7.728827601511219,
+    "lmfit": 6.706594174836501,
+    "scipy_lm": 4.951563532337674,
+    "scipy_trf": 4.9546989990661015
+   },
+   "null_reasons": {},
+   "per_param": {
+    "b1": 7.3922417464053405,
+    "b2": 7.542201027250477,
+    "b3": 7.784899380335288,
+    "b4": 7.48452714059639,
+    "b5": 8.050962762981497
+   },
+   "sigma_per_param": {
+    "b1": 8.192151982720482,
+    "b2": 7.926999746041993,
+    "b3": 7.8266402550502425,
+    "b4": 7.728827601511219,
+    "b5": 7.931626448943394
+   }
+  },
+  {
+   "name": "Lanczos2",
+   "difficulty": "Average",
+   "n_params": 6,
+   "n_obs": 24,
+   "model": "b1\u00b7exp(-b2\u00b7x) + b3\u00b7exp(-b4\u00b7x) + b5\u00b7exp(-b6\u00b7x)",
+   "columns": {
+    "spectrafit_core": 7.98161029838098,
+    "sigma": 7.888702250426678,
+    "lmfit": 7.455273989296741,
+    "scipy_lm": 6.857881112822158,
+    "scipy_trf": 6.597850653823468
+   },
+   "null_reasons": {},
+   "per_param": {
+    "b1": 7.98161029838098,
+    "b2": 8.298954421352827,
+    "b3": 8.52555062169573,
+    "b4": 8.679153311501663,
+    "b5": 8.63326151984971,
+    "b6": 9.380247659340757
+   },
+   "sigma_per_param": {
+    "b1": 8.354073788595798,
+    "b2": 8.234663129006925,
+    "b3": 7.888702250426678,
+    "b4": 8.331666867228495,
+    "b5": 7.974946510807123,
+    "b6": 7.973473091256935
+   }
+  },
+  {
+   "name": "Roszman1",
+   "difficulty": "Average",
+   "n_params": 4,
+   "n_obs": 25,
+   "model": "b1 - b2\u00b7x - arctan(b3/(x-b4))/\u03c0",
+   "columns": {
+    "spectrafit_core": 9.713919621001827,
+    "sigma": 10.164207072484897,
+    "lmfit": 6.074365005217208,
+    "scipy_lm": 6.961087752655233,
+    "scipy_trf": 6.539272349939269
+   },
+   "null_reasons": {},
+   "per_param": {
+    "b1": 10.471131074048357,
+    "b2": 9.713919621001827,
+    "b3": 10.886620039530778,
+    "b4": 10.059880541837586
+   },
+   "sigma_per_param": {
+    "b1": 12.925518416305076,
+    "b2": 10.752320865831907,
+    "b3": 11.026617065108514,
+    "b4": 10.164207072484897
+   }
+  },
+  {
+   "name": "Hahn1",
+   "difficulty": "Average",
+   "n_params": 7,
+   "n_obs": 236,
+   "model": "(b1 + b2\u00b7x + b3\u00b7x\u00b2 + b4\u00b7x\u00b3) / (1 + b5\u00b7x + b6\u00b7x\u00b2 + b7\u00b7x\u00b3)",
+   "columns": {
+    "spectrafit_core": 10.184361145008255,
+    "sigma": 10.306778096981562,
+    "lmfit": 6.647260265994941,
+    "scipy_lm": 2.166808355483695,
+    "scipy_trf": 2.166350733448111
+   },
+   "null_reasons": {},
+   "per_param": {
+    "b1": 10.403778851675595,
+    "b2": 10.51498288923975,
+    "b3": 11.134174847621411,
+    "b4": 10.184361145008255,
+    "b5": 11.807986688582515,
+    "b6": 11.167368628271689,
+    "b7": 10.630656762301305
+   },
+   "sigma_per_param": {
+    "b1": 11.300308303032415,
+    "b2": 10.723855366250946,
+    "b3": 10.518333572855283,
+    "b4": 11.231033228740765,
+    "b5": 11.216253722569043,
+    "b6": 10.306778096981562,
+    "b7": 11.86421121543684
+   }
+  },
+  {
+   "name": "Gauss3",
+   "difficulty": "Average",
+   "n_params": 8,
+   "n_obs": 250,
+   "model": "b1\u00b7exp(-b2\u00b7x) + b3\u00b7exp(-(x-b4)\u00b2/b5\u00b2) + b6\u00b7exp(-(x-b7)\u00b2/b8\u00b2)",
+   "columns": {
+    "spectrafit_core": 10.444857926784097,
+    "sigma": 10.357880712666047,
+    "lmfit": 6.821825444693999,
+    "scipy_lm": 9.06512612407093,
+    "scipy_trf": 8.74313319309737
+   },
+   "null_reasons": {},
+   "per_param": {
+    "b1": 11.832877692440057,
+    "b2": 10.815367092467252,
+    "b3": 10.678201710376793,
+    "b4": 10.561060940754224,
+    "b5": 10.811384265868236,
+    "b6": 10.89920622958448,
+    "b7": 10.444857926784097,
+    "b8": 11.075602514654724
+   },
+   "sigma_per_param": {
+    "b1": 11.08122397024927,
+    "b2": 10.357880712666047,
+    "b3": 10.403232039930243,
+    "b4": 11.110450208131402,
+    "b5": 10.968500715184158,
+    "b6": 10.706500712274877,
+    "b7": 11.81268433421974,
+    "b8": 11.103812378845955
+   }
+  },
+  {
+   "name": "Lanczos1",
+   "difficulty": "Average",
+   "n_params": 6,
+   "n_obs": 24,
+   "model": "b1\u00b7exp(-b2\u00b7x) + b3\u00b7exp(-b4\u00b7x) + b5\u00b7exp(-b6\u00b7x)",
+   "columns": {
+    "spectrafit_core": 10.517854804443726,
+    "sigma": 3.4754327947662564,
+    "lmfit": 10.557491370620053,
+    "scipy_lm": 10.557042541337255,
+    "scipy_trf": 10.560169611925879
+   },
+   "null_reasons": {},
+   "per_param": {
+    "b1": 11.002898143570137,
+    "b2": 10.517854804443726,
+    "b3": 11.173538462956811,
+    "b4": 10.898982118511245,
+    "b5": 10.632020096615149,
+    "b6": 11.597906273287226
+   },
+   "sigma_per_param": {
+    "b1": 3.4754329429112003,
+    "b2": 3.4754329781244224,
+    "b3": 3.4754327947662564,
+    "b4": 3.4754328580205636,
+    "b5": 3.475432796863292,
+    "b6": 3.4754328423643277
+   }
+  },
+  {
+   "name": "MGH17",
+   "difficulty": "Average",
+   "n_params": 5,
+   "n_obs": 33,
+   "model": "b1 + b2\u00b7exp(\u2212b4\u00b7x) + b3\u00b7exp(\u2212b5\u00b7x)",
+   "columns": {
+    "spectrafit_core": 10.851630524229988,
+    "sigma": 10.67914662847187,
+    "lmfit": 5.762313985155152,
+    "scipy_lm": 7.010935738856019,
+    "scipy_trf": 6.271851559917876
+   },
+   "null_reasons": {},
+   "per_param": {
+    "b1": 11.08620061672091,
+    "b2": 11.358208285462327,
+    "b3": 11.187049865290868,
+    "b4": 11.414187670302304,
+    "b5": 10.851630524229988
+   },
+   "sigma_per_param": {
+    "b1": 10.67914662847187,
+    "b2": 11.005669249439379,
+    "b3": 10.680253100980956,
+    "b4": 12.482425632977678,
+    "b5": 11.059352946362687
+   }
+  },
+  {
+   "name": "Lanczos3",
+   "difficulty": "Lower",
+   "n_params": 6,
+   "n_obs": 24,
+   "model": "b1\u00b7exp(-b2\u00b7x) + b3\u00b7exp(-b4\u00b7x) + b5\u00b7exp(-b6\u00b7x)",
+   "columns": {
+    "spectrafit_core": 7.828069044720556,
+    "sigma": 7.872658288304991,
+    "lmfit": 5.9185024891864915,
+    "scipy_lm": 5.367716734069214,
+    "scipy_trf": 5.91305331202587
+   },
+   "null_reasons": {},
+   "per_param": {
+    "b1": 7.828069044720556,
+    "b2": 8.119357458015573,
+    "b3": 8.438938610266263,
+    "b4": 8.562888622815649,
+    "b5": 8.564274827296405,
+    "b6": 9.289504451978303
+   },
+   "sigma_per_param": {
+    "b1": 8.366722070877975,
+    "b2": 7.978849249745547,
+    "b3": 7.872658288304991,
+    "b4": 8.437943499625776,
+    "b5": 7.967904006150707,
+    "b6": 7.981219155881413
+   }
+  },
+  {
+   "name": "Misra1b",
+   "difficulty": "Lower",
+   "n_params": 2,
+   "n_obs": 14,
+   "model": "b1\u00b7(1\u2212(1+b2\u00b7x/2)^(\u22122))",
+   "columns": {
+    "spectrafit_core": 8.033172016202009,
+    "sigma": 7.774855518252271,
+    "lmfit": 7.873830455671339,
+    "scipy_lm": 7.284512041283303,
+    "scipy_trf": 7.277407742928184
+   },
+   "null_reasons": {},
+   "per_param": {
+    "b1": 8.09938823975326,
+    "b2": 8.033172016202009
+   },
+   "sigma_per_param": {
+    "b1": 7.774855518252271,
+    "b2": 8.775403922588191
+   }
+  },
+  {
+   "name": "Chwirut2",
+   "difficulty": "Lower",
+   "n_params": 3,
+   "n_obs": 54,
+   "model": "exp(-b1\u00b7x) / (b2 + b3\u00b7x)",
+   "columns": {
+    "spectrafit_core": 9.832078509202594,
+    "sigma": 10.364686911126153,
+    "lmfit": 6.646565167397906,
+    "scipy_lm": 8.66893789609807,
+    "scipy_trf": 9.146593530485106
+   },
+   "null_reasons": {},
+   "per_param": {
+    "b1": 9.832078509202594,
+    "b2": 10.181622751363355,
+    "b3": 10.271729812520626
+   },
+   "sigma_per_param": {
+    "b1": 10.364686911126153,
+    "b2": 10.620263744920653,
+    "b3": 11.21406310621111
+   }
+  },
+  {
+   "name": "Chwirut1",
+   "difficulty": "Lower",
+   "n_params": 3,
+   "n_obs": 214,
+   "model": "exp(-b1\u00b7x) / (b2 + b3\u00b7x)",
+   "columns": {
+    "spectrafit_core": 9.8698683869744,
+    "sigma": 10.202303913875696,
+    "lmfit": 6.187836814515567,
+    "scipy_lm": 7.786712559797864,
+    "scipy_trf": 8.425153409054246
+   },
+   "null_reasons": {},
+   "per_param": {
+    "b1": 9.8698683869744,
+    "b2": 10.690138237295132,
+    "b3": 10.327971865294097
+   },
+   "sigma_per_param": {
+    "b1": 10.202303913875696,
+    "b2": 11.713763410228374,
+    "b3": 11.268677509312832
+   }
+  },
+  {
+   "name": "Gauss2",
+   "difficulty": "Lower",
+   "n_params": 8,
+   "n_obs": 250,
+   "model": "b1\u00b7exp(-b2\u00b7x) + b3\u00b7exp(-(x-b4)\u00b2/b5\u00b2) + b6\u00b7exp(-(x-b7)\u00b2/b8\u00b2)",
+   "columns": {
+    "spectrafit_core": 9.916579403214724,
+    "sigma": 9.909576746146518,
+    "lmfit": 6.84479792717967,
+    "scipy_lm": 8.970132686818477,
+    "scipy_trf": 9.167851782376125
+   },
+   "null_reasons": {},
+   "per_param": {
+    "b1": 11.887696304348355,
+    "b2": 11.01597136927977,
+    "b3": 10.198184321976377,
+    "b4": 10.593517858310008,
+    "b5": 9.916579403214724,
+    "b6": 10.841164890675937,
+    "b7": 10.612874893115777,
+    "b8": 10.0656763921061
+   },
+   "sigma_per_param": {
+    "b1": 10.749017938507578,
+    "b2": 10.32195621459093,
+    "b3": 10.719491265343263,
+    "b4": 10.320951294372124,
+    "b5": 9.963812210648419,
+    "b6": 10.332390923493215,
+    "b7": 10.013143391977191,
+    "b8": 9.909576746146518
+   }
+  },
+  {
+   "name": "Misra1a",
+   "difficulty": "Lower",
+   "n_params": 2,
+   "n_obs": 14,
+   "model": "b1\u00b7(1\u2212exp(\u2212b2\u00b7x))",
+   "columns": {
+    "spectrafit_core": 10.413754028303135,
+    "sigma": 10.126661502141292,
+    "lmfit": 8.069315729835946,
+    "scipy_lm": 7.8360525928406926,
+    "scipy_trf": 7.831875243935199
+   },
+   "null_reasons": {},
+   "per_param": {
+    "b1": 10.659048867180239,
+    "b2": 10.413754028303135
+   },
+   "sigma_per_param": {
+    "b1": 10.126661502141292,
+    "b2": 12.649016284515216
+   }
+  },
+  {
+   "name": "Gauss1",
+   "difficulty": "Lower",
+   "n_params": 8,
+   "n_obs": 250,
+   "model": "b1\u00b7exp(-b2\u00b7x) + b3\u00b7exp(-(x-b4)\u00b2/b5\u00b2) + b6\u00b7exp(-(x-b7)\u00b2/b8\u00b2)",
+   "columns": {
+    "spectrafit_core": 10.579901979312375,
+    "sigma": 10.5317156131576,
+    "lmfit": 7.121863025049225,
+    "scipy_lm": 8.070374253582791,
+    "scipy_trf": 8.053399443277044
+   },
+   "null_reasons": {},
+   "per_param": {
+    "b1": 11.241264027085258,
+    "b2": 10.806846784736251,
+    "b3": 11.032274126873533,
+    "b4": 11.321359621803662,
+    "b5": 10.579901979312375,
+    "b6": 10.96443490916517,
+    "b7": 10.830738506441232,
+    "b8": 11.037203779939777
+   },
+   "sigma_per_param": {
+    "b1": 11.131321783657622,
+    "b2": 10.5317156131576,
+    "b3": 12.935326611551222,
+    "b4": 11.769110984475322,
+    "b5": 11.77027488913561,
+    "b6": 11.150719547509516,
+    "b7": 11.731032912850274,
+    "b8": 11.468945870099498
+   }
+  },
+  {
+   "name": "DanWood",
+   "difficulty": "Lower",
+   "n_params": 2,
+   "n_obs": 6,
+   "model": "b1\u00b7x^b2",
+   "columns": {
+    "spectrafit_core": 11.18853064295692,
+    "sigma": null,
+    "lmfit": 7.17618935354231,
+    "scipy_lm": 9.621663409941553,
+    "scipy_trf": 9.240683476979633
+   },
+   "null_reasons": {
+    "sigma": {
+     "code": "nonlinear_projection",
+     "params": [
+      "b2"
+     ],
+     "detail": "NIST b2 = -1/shape, a reciprocal of a fitted parameter; a fitted standard error does not propagate through it by a constant factor."
+    }
+   },
+   "per_param": {
+    "b1": 11.18853064295692,
+    "b2": 11.207549777611499
+   },
+   "sigma_per_param": {
+    "b1": 11.111549967178744,
+    "b2": null
+   }
+  }
+ ]
+}

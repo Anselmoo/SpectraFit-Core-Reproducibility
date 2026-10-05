@@ -1,0 +1,41 @@
+{
+  "title": "SpectraFit-Core-Reproducibility: every published result of spectrafit-core 0.1.2, regenerated from the release",
+  "upload_type": "software",
+  "description": "<p>A pinned, thin consumer of the spectrafit-core release that regenerates the NIST StRD agreement tables, the figures and the timing comparison reported in the SoftwareX article on spectrafit-core, on a recorded host (terra, Linux x86-64), and checks every number stated in the text against the regenerated data. The compiled library is the published PyPI wheel; the harness and the figure scripts come from the release tag; the archived timing measurement is verified by SHA-256, not re-measured.</p>",
+  "creators": [
+    {
+      "name": "Hahn, Anselm W.",
+      "affiliation": "Max Planck Institute for Chemical Energy Conversion",
+      "orcid": "0000-0003-4543-4833"
+    }
+  ],
+  "license": "MIT",
+  "keywords": [
+    "reproducibility",
+    "benchmark",
+    "NIST StRD",
+    "nonlinear least squares",
+    "curve fitting",
+    "spectrafit-core"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "10.5281/zenodo.23043544",
+      "relation": "references",
+      "resource_type": "software",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "10.5281/zenodo.23170069",
+      "relation": "references",
+      "resource_type": "software",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "https://github.com/Anselmoo/SpectraFit-Core/tree/v0.1.2",
+      "relation": "isDerivedFrom",
+      "resource_type": "software",
+      "scheme": "url"
+    }
+  ]
+}

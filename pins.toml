@@ -1,0 +1,28 @@
+# What the paper is pinned to. reproduce.py refuses to run against anything else.
+
+[software]
+name = "spectrafit-core"
+version = "0.1.2"
+doi = "10.5281/zenodo.23043544"          # Zenodo record of the release
+wheel = "spectrafit-core==0.1.2 from PyPI, hash-pinned in uv.lock"
+
+[source]
+repository = "https://github.com/Anselmoo/SpectraFit-Core.git"
+tag = "v0.1.2"
+commit = "1e304188a7376caf128fcb432a16554ed44ad32a"
+source_date_epoch = 1791201843             # commit time of the tag; fixes figure timestamps
+
+# Checked at start-up against the installed environment.
+[packages]
+spectrafit-core = "0.1.2"
+lmfit = "1.3.4"
+scipy = "1.18.0"
+numpy = "2.5.1"
+
+# Measurements taken from the release, not regenerated here. SHA-256 at the tag.
+[archived_inputs]
+"reproducibility/figures/bench_summary.json" = "6fea7fdeb2d2eab7a00b4bd57450d442dab31cd4dc51788e715099fc548d9103"
+"reproducibility/ladder/ladder.json" = "1cd63265c4fa5c2797d4b20ca3e36aae1e87b1ed1a55ee49836abd2300dc3c6e"
+"reproducibility/seed-sweep/sweep.json" = "2f42367c8239e922eb1616261daec04061b04b7e38488db4f0edab0fd5d59dfb"
+"reproducibility/figures/param_agreement.json" = "466200db504b29556c6832d8182ca75ec0f039a1fe2a3ef90a6c557689b0a6cd"
+"reproducibility/figures/audit_bias.json" = "f1ffe39376c8b40b4f943e87b3d62e85762f7da3a72e1d3ffdab38f649d9e1fd"

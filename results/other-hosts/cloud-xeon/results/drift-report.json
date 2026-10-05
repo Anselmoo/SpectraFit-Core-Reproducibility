@@ -1,0 +1,294 @@
+{
+ "n_cells": 108,
+ "n_cells_moved_by_0.05_or_more": 38,
+ "largest_change_per_column": {
+  "spectrafit_core": {
+   "dataset": "Misra1b",
+   "delta": -2.269312671996765
+  },
+  "sigma": {
+   "dataset": "Misra1b",
+   "delta": -2.478395166120154
+  },
+  "lmfit": {
+   "dataset": "Lanczos2",
+   "delta": 0.03765761215401753
+  },
+  "scipy_lm": {
+   "dataset": "Lanczos2",
+   "delta": -0.8302200736725007
+  },
+  "scipy_trf": {
+   "dataset": "Lanczos3",
+   "delta": 0.5065801180024732
+  }
+ },
+ "moved_cells": [
+  {
+   "dataset": "Thurber",
+   "column": "scipy_lm",
+   "archived": 6.706891533702043,
+   "regenerated": 6.933322288418207,
+   "delta": 0.22643075471616392
+  },
+  {
+   "dataset": "Thurber",
+   "column": "scipy_trf",
+   "archived": 7.2916135752364815,
+   "regenerated": 7.0742959364481495,
+   "delta": -0.217317638788332
+  },
+  {
+   "dataset": "MGH09",
+   "column": "scipy_lm",
+   "archived": 6.2001506911097595,
+   "regenerated": 6.07078411004626,
+   "delta": -0.12936658106349963
+  },
+  {
+   "dataset": "Rat43",
+   "column": "scipy_lm",
+   "archived": 6.680659466382175,
+   "regenerated": 6.365891433715396,
+   "delta": -0.31476803266677944
+  },
+  {
+   "dataset": "Rat43",
+   "column": "scipy_trf",
+   "archived": 6.609855170578778,
+   "regenerated": 6.909761406318075,
+   "delta": 0.29990623573929653
+  },
+  {
+   "dataset": "Bennett5",
+   "column": "spectrafit_core",
+   "archived": 8.526625179821629,
+   "regenerated": 8.249107901707966,
+   "delta": -0.2775172781136632
+  },
+  {
+   "dataset": "Bennett5",
+   "column": "scipy_lm",
+   "archived": 6.356211835957447,
+   "regenerated": 5.614204862354797,
+   "delta": -0.74200697360265
+  },
+  {
+   "dataset": "Bennett5",
+   "column": "scipy_trf",
+   "archived": 6.251912131432144,
+   "regenerated": 6.060718988102414,
+   "delta": -0.19119314332973047
+  },
+  {
+   "dataset": "Eckerle4",
+   "column": "scipy_lm",
+   "archived": 9.567295308568289,
+   "regenerated": 9.25096272502019,
+   "delta": -0.3163325835480997
+  },
+  {
+   "dataset": "Eckerle4",
+   "column": "scipy_trf",
+   "archived": 9.114977189521369,
+   "regenerated": 9.21677832611235,
+   "delta": 0.10180113659098033
+  },
+  {
+   "dataset": "Kirby2",
+   "column": "spectrafit_core",
+   "archived": 8.475844345146555,
+   "regenerated": 7.3922417464053405,
+   "delta": -1.0836025987412148
+  },
+  {
+   "dataset": "Kirby2",
+   "column": "sigma",
+   "archived": 8.815681722141726,
+   "regenerated": 7.728827601511219,
+   "delta": -1.0868541206305062
+  },
+  {
+   "dataset": "Lanczos2",
+   "column": "scipy_lm",
+   "archived": 7.64960863292515,
+   "regenerated": 6.8193885592526495,
+   "delta": -0.8302200736725007
+  },
+  {
+   "dataset": "Lanczos2",
+   "column": "scipy_trf",
+   "archived": 6.00651447442035,
+   "regenerated": 6.228424649684226,
+   "delta": 0.2219101752638757
+  },
+  {
+   "dataset": "Roszman1",
+   "column": "scipy_lm",
+   "archived": 6.582141568305261,
+   "regenerated": 7.345854614114207,
+   "delta": 0.7637130458089461
+  },
+  {
+   "dataset": "Roszman1",
+   "column": "scipy_trf",
+   "archived": 6.541352642337112,
+   "regenerated": 6.352051207012208,
+   "delta": -0.1893014353249045
+  },
+  {
+   "dataset": "MGH17",
+   "column": "scipy_lm",
+   "archived": 6.7541258577682886,
+   "regenerated": 6.820975895235932,
+   "delta": 0.06685003746764373
+  },
+  {
+   "dataset": "MGH17",
+   "column": "scipy_trf",
+   "archived": 6.682993411107128,
+   "regenerated": 6.836340173459464,
+   "delta": 0.1533467623523368
+  },
+  {
+   "dataset": "Hahn1",
+   "column": "spectrafit_core",
+   "archived": 7.0227192647149135,
+   "regenerated": 8.594866579143195,
+   "delta": 1.5721473144282818
+  },
+  {
+   "dataset": "Hahn1",
+   "column": "sigma",
+   "archived": 7.795092915374623,
+   "regenerated": 9.375903627176962,
+   "delta": 1.5808107118023393
+  },
+  {
+   "dataset": "Lanczos1",
+   "column": "scipy_trf",
+   "archived": 10.490389451310305,
+   "regenerated": 10.436310149368806,
+   "delta": -0.054079301941499125
+  },
+  {
+   "dataset": "Gauss3",
+   "column": "scipy_lm",
+   "archived": 8.720930989848547,
+   "regenerated": 9.210644357087519,
+   "delta": 0.48971336723897174
+  },
+  {
+   "dataset": "Gauss3",
+   "column": "scipy_trf",
+   "archived": 8.874615631515194,
+   "regenerated": 8.776759269568464,
+   "delta": -0.09785636194673053
+  },
+  {
+   "dataset": "Chwirut2",
+   "column": "scipy_lm",
+   "archived": 7.169928744126286,
+   "regenerated": 7.25602577503129,
+   "delta": 0.08609703090500442
+  },
+  {
+   "dataset": "Chwirut1",
+   "column": "scipy_trf",
+   "archived": 7.420015381160902,
+   "regenerated": 7.525815420331574,
+   "delta": 0.10580003917067149
+  },
+  {
+   "dataset": "Lanczos3",
+   "column": "spectrafit_core",
+   "archived": 7.88088602321462,
+   "regenerated": 7.828069044720556,
+   "delta": -0.05281697849406353
+  },
+  {
+   "dataset": "Lanczos3",
+   "column": "sigma",
+   "archived": 7.7629969408110355,
+   "regenerated": 7.872658288304991,
+   "delta": 0.1096613474939554
+  },
+  {
+   "dataset": "Lanczos3",
+   "column": "scipy_lm",
+   "archived": 5.870923221531861,
+   "regenerated": 6.07876866541201,
+   "delta": 0.20784544388014936
+  },
+  {
+   "dataset": "Lanczos3",
+   "column": "scipy_trf",
+   "archived": 5.004845874439585,
+   "regenerated": 5.511425992442058,
+   "delta": 0.5065801180024732
+  },
+  {
+   "dataset": "Misra1b",
+   "column": "spectrafit_core",
+   "archived": 10.302484688198774,
+   "regenerated": 8.033172016202009,
+   "delta": -2.269312671996765
+  },
+  {
+   "dataset": "Misra1b",
+   "column": "sigma",
+   "archived": 10.253250684372425,
+   "regenerated": 7.774855518252271,
+   "delta": -2.478395166120154
+  },
+  {
+   "dataset": "Gauss2",
+   "column": "scipy_lm",
+   "archived": 8.951781511472557,
+   "regenerated": 9.187629394225304,
+   "delta": 0.23584788275274704
+  },
+  {
+   "dataset": "Gauss2",
+   "column": "scipy_trf",
+   "archived": 8.986407717839235,
+   "regenerated": 9.272074297249954,
+   "delta": 0.2856665794107194
+  },
+  {
+   "dataset": "Misra1a",
+   "column": "spectrafit_core",
+   "archived": 10.297665575328546,
+   "regenerated": 10.41374959027353,
+   "delta": 0.11608401494498466
+  },
+  {
+   "dataset": "Misra1a",
+   "column": "sigma",
+   "archived": 10.010980628250277,
+   "regenerated": 10.126771195227988,
+   "delta": 0.1157905669777115
+  },
+  {
+   "dataset": "Misra1a",
+   "column": "scipy_lm",
+   "archived": 7.877559858716731,
+   "regenerated": 7.778017144873499,
+   "delta": -0.0995427138432321
+  },
+  {
+   "dataset": "DanWood",
+   "column": "scipy_lm",
+   "archived": 9.199334008019282,
+   "regenerated": 8.660704887753477,
+   "delta": -0.5386291202658047
+  },
+  {
+   "dataset": "DanWood",
+   "column": "scipy_trf",
+   "archived": 9.518408496753782,
+   "regenerated": 9.96932092706591,
+   "delta": 0.4509124303121279
+  }
+ ]
+}
