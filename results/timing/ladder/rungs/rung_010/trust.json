@@ -1,0 +1,995 @@
+{
+  "schema_version": "1.0",
+  "run_id": "2026-10-06_run_003",
+  "block": {
+    "rung": 2,
+    "wires": [
+      {
+        "wire_id": "W1",
+        "name": "synth_invariants",
+        "status": "skipped",
+        "evidence": "synth-invariants test never ran (no lastfailed cache); not asserted",
+        "details": {}
+      },
+      {
+        "wire_id": "W2a",
+        "name": "metric_identity",
+        "status": "pass",
+        "evidence": "r²/rmse/reduced-χ² recomputed from full arrays; max |Δ|=1.42e-14 vs stored",
+        "details": {
+          "max_abs_delta": 1.4210854715202004e-14
+        }
+      },
+      {
+        "wire_id": "W2b",
+        "name": "coverage",
+        "status": "pass",
+        "evidence": "mean 1σ coverage over MC ensemble = 0.67 (target ≈0.68)",
+        "details": {
+          "mean_coverage": 0.6696140596299495
+        }
+      },
+      {
+        "wire_id": "W2c",
+        "name": "jacobian_kappa",
+        "status": "pass",
+        "evidence": "κ(J) finite for 158 spectrafit (subject) entries; 301/924 oracle-backend entries absent (lmfit/jax do not expose κ — disclosed per-backend limitation, not a gap)",
+        "details": {
+          "n_subject_finite": 158,
+          "n_absent_oracles": 301,
+          "n_absent": 303
+        }
+      },
+      {
+        "wire_id": "W2d",
+        "name": "solver_output_oracle",
+        "status": "skipped",
+        "evidence": "solver-output-oracle test never ran (no lastfailed cache); not asserted",
+        "details": {}
+      },
+      {
+        "wire_id": "W3",
+        "name": "results_roundtrip",
+        "status": "skipped",
+        "evidence": "results-roundtrip test never ran (no lastfailed cache); not asserted",
+        "details": {}
+      },
+      {
+        "wire_id": "W4",
+        "name": "api_schema",
+        "status": "skipped",
+        "evidence": "api-schema test never ran (no lastfailed cache); not asserted",
+        "details": {}
+      },
+      {
+        "wire_id": "W5",
+        "name": "render_fidelity",
+        "status": "skipped",
+        "evidence": "Playwright JSON-vs-render differential (runs in CI only)",
+        "details": {}
+      },
+      {
+        "wire_id": "W6",
+        "name": "gate_state_parity",
+        "status": "skipped",
+        "evidence": "gate-state-parity test never ran (no lastfailed cache); not asserted",
+        "details": {}
+      },
+      {
+        "wire_id": "W7",
+        "name": "inference_validity",
+        "status": "pass",
+        "evidence": "seeded bootstrap CI reproduces bitwise (deterministic inference)",
+        "details": {}
+      },
+      {
+        "wire_id": "W8",
+        "name": "nist_certified_validation",
+        "status": "pass",
+        "evidence": "Gauss1/Gauss2/Gauss3/Lanczos1/BoxBOD/Misra1a/Misra1b/MGH17/Bennett5/MGH09/Lanczos2/Lanczos3/Eckerle4/Roszman1/DanWood/Kirby2/Hahn1/Thurber/Rat42/Rat43/Chwirut1/Chwirut2 reproduce NIST certified values to ≥4 sig figs (min 6.5)",
+        "details": {
+          "n_datasets": 22,
+          "min_sig_figs": 6.495870166390748,
+          "threshold_sig_figs": 4.0
+        }
+      },
+      {
+        "wire_id": "W9",
+        "name": "nested_adequacy",
+        "status": "pass",
+        "evidence": "BIC selected order 2 == true order 2 (BIC recovered); AIC selected 3 (over-selected); LRT p=1.78e-251",
+        "details": {
+          "true_order": 2,
+          "selected_order_bic": 2,
+          "selected_order_aic": 3,
+          "recovered_true_order_bic": true,
+          "recovered_true_order_aic": false,
+          "lrt_p": 1.781477810452338e-251
+        }
+      },
+      {
+        "wire_id": "W10",
+        "name": "sigma_calibration",
+        "status": "pass",
+        "evidence": "σ-calibration PASS (equivalence): coverage=0.672 (nominal=0.6827); CI=[0.6577, 0.6853] within ±0.03 band [0.6527, 0.7127]; strict binomial p=0.0692 (> α); KS p=3.73e-12 (secondary diagnostic)",
+        "details": {
+          "n": 5908,
+          "coverage": 0.6716316858496953,
+          "nominal": 0.6827,
+          "equivalence_margin": 0.03,
+          "band_lo": 0.6527,
+          "band_hi": 0.7127,
+          "coverage_ci_lo": 0.657748019414321,
+          "coverage_ci_hi": 0.6852996587524804,
+          "binomial_p": 0.06921363683021131,
+          "ks_p": 3.726088936587645e-12,
+          "alpha": 0.025
+        }
+      },
+      {
+        "wire_id": "W11",
+        "name": "speed_inference",
+        "status": "pass",
+        "evidence": "speed inference PASS: geomean speedup=20.20× CI=[17.43, 23.52] excludes 1.0; sign p=6.84e-49, Wilcoxon p=2.62e-28 (secondary diagnostics)",
+        "details": {
+          "geomean_speedup": 20.196530803060078,
+          "ci_lo": 17.431536191630535,
+          "ci_hi": 23.516374727709085,
+          "excludes_one": true,
+          "sign_p": 6.842277657836021e-49,
+          "wilcoxon_p": 2.619767310188155e-28,
+          "alpha": 0.025
+        }
+      },
+      {
+        "wire_id": "S1",
+        "name": "hook-reference-liveness",
+        "status": "skipped",
+        "evidence": "no .claude/hooks dir",
+        "details": {}
+      },
+      {
+        "wire_id": "S2",
+        "name": "anchor-trigger-liveness",
+        "status": "skipped",
+        "evidence": "no INDEX.yaml",
+        "details": {}
+      },
+      {
+        "wire_id": "S3",
+        "name": "doc-owner-truth",
+        "status": "skipped",
+        "evidence": "no 'BenchReport contract' claim found",
+        "details": {}
+      },
+      {
+        "wire_id": "S4",
+        "name": "ffi-stub-completeness",
+        "status": "skipped",
+        "evidence": "no _core.pyi",
+        "details": {}
+      },
+      {
+        "wire_id": "S5",
+        "name": "model-list-parity",
+        "status": "skipped",
+        "evidence": "could not read Rust ModelTypeStr or Python ModelType",
+        "details": {}
+      }
+    ],
+    "n_claims_audited": 13,
+    "n_claims_total": 21,
+    "nist_validation": {
+      "threshold_sig_figs": 4.0,
+      "datasets": [
+        {
+          "name": "Gauss1",
+          "model": "b1·exp(-b2·x) + b3·exp(-(x-b4)²/b5²) + b6·exp(-(x-b7)²/b8²)",
+          "n_params": 8,
+          "params": [
+            {
+              "name": "b1",
+              "certified": 98.778210871,
+              "fitted": 98.77821087043324,
+              "sig_figs_agreed": 11.241264027085258
+            },
+            {
+              "name": "b2",
+              "certified": 0.010497276517,
+              "fitted": 0.010497276516836232,
+              "sig_figs_agreed": 10.806846784736251
+            },
+            {
+              "name": "b3",
+              "certified": 100.48990633,
+              "fitted": 100.48990632906707,
+              "sig_figs_agreed": 11.032274126873533
+            },
+            {
+              "name": "b4",
+              "certified": 67.481111276,
+              "fitted": 67.48111127632197,
+              "sig_figs_agreed": 11.321359621803662
+            },
+            {
+              "name": "b5",
+              "certified": 23.12977336,
+              "fitted": 23.12977335939149,
+              "sig_figs_agreed": 10.579901979312375
+            },
+            {
+              "name": "b6",
+              "certified": 71.994503004,
+              "fitted": 71.99450300321861,
+              "sig_figs_agreed": 10.96443490916517
+            },
+            {
+              "name": "b7",
+              "certified": 178.99805021,
+              "fitted": 178.99805020735693,
+              "sig_figs_agreed": 10.830738506441232
+            },
+            {
+              "name": "b8",
+              "certified": 18.389389025,
+              "fitted": 18.389389025168796,
+              "sig_figs_agreed": 11.037203779939777
+            }
+          ],
+          "min_sig_figs": 10.579901979312375,
+          "passed": true
+        },
+        {
+          "name": "Gauss2",
+          "model": "b1·exp(-b2·x) + b3·exp(-(x-b4)²/b5²) + b6·exp(-(x-b7)²/b8²)",
+          "n_params": 8,
+          "params": [
+            {
+              "name": "b1",
+              "certified": 99.018328406,
+              "fitted": 99.01832840612823,
+              "sig_figs_agreed": 11.887696304348355
+            },
+            {
+              "name": "b2",
+              "certified": 0.010994945399,
+              "fitted": 0.01099494539910598,
+              "sig_figs_agreed": 11.01597136927977
+            },
+            {
+              "name": "b3",
+              "certified": 101.88022528,
+              "fitted": 101.88022527354487,
+              "sig_figs_agreed": 10.198184321976377
+            },
+            {
+              "name": "b4",
+              "certified": 107.03095519,
+              "fitted": 107.03095518727108,
+              "sig_figs_agreed": 10.593517858310008
+            },
+            {
+              "name": "b5",
+              "certified": 23.578584029,
+              "fitted": 23.578584031857186,
+              "sig_figs_agreed": 9.916579403214724
+            },
+            {
+              "name": "b6",
+              "certified": 72.045589471,
+              "fitted": 72.04558946996141,
+              "sig_figs_agreed": 10.841164890675937
+            },
+            {
+              "name": "b7",
+              "certified": 153.27010194,
+              "fitted": 153.2701019437375,
+              "sig_figs_agreed": 10.612874893115777
+            },
+            {
+              "name": "b8",
+              "certified": 19.525972636,
+              "fitted": 19.52597263432144,
+              "sig_figs_agreed": 10.0656763921061
+            }
+          ],
+          "min_sig_figs": 9.916579403214724,
+          "passed": true
+        },
+        {
+          "name": "Gauss3",
+          "model": "b1·exp(-b2·x) + b3·exp(-(x-b4)²/b5²) + b6·exp(-(x-b7)²/b8²)",
+          "n_params": 8,
+          "params": [
+            {
+              "name": "b1",
+              "certified": 98.94036897,
+              "fitted": 98.94036896916528,
+              "sig_figs_agreed": 11.073834171227118
+            },
+            {
+              "name": "b2",
+              "certified": 0.010945879335,
+              "fitted": 0.010945879331793189,
+              "sig_figs_agreed": 9.5331772168075
+            },
+            {
+              "name": "b3",
+              "certified": 100.69553078,
+              "fitted": 100.6955307609992,
+              "sig_figs_agreed": 9.7242384499104
+            },
+            {
+              "name": "b4",
+              "certified": 111.63619459,
+              "fitted": 111.6361945678576,
+              "sig_figs_agreed": 9.702580298881852
+            },
+            {
+              "name": "b5",
+              "certified": 23.300500029,
+              "fitted": 23.300499997857816,
+              "sig_figs_agreed": 8.874016200308361
+            },
+            {
+              "name": "b6",
+              "certified": 73.705031418,
+              "fitted": 73.7050314963158,
+              "sig_figs_agreed": 8.973647786053883
+            },
+            {
+              "name": "b7",
+              "certified": 147.76164251,
+              "fitted": 147.76164248046413,
+              "sig_figs_agreed": 9.6992119589538
+            },
+            {
+              "name": "b8",
+              "certified": 19.66822123,
+              "fitted": 19.668221244364936,
+              "sig_figs_agreed": 9.136461392005664
+            }
+          ],
+          "min_sig_figs": 8.874016200308361,
+          "passed": true
+        },
+        {
+          "name": "Lanczos1",
+          "model": "b1·exp(-b2·x) + b3·exp(-b4·x) + b5·exp(-b6·x)",
+          "n_params": 6,
+          "params": [
+            {
+              "name": "b1",
+              "certified": 0.095100000027,
+              "fitted": 0.09510000019716836,
+              "sig_figs_agreed": 8.747301725058655
+            },
+            {
+              "name": "b2",
+              "certified": 1.0000000001,
+              "fitted": 1.0000000009985581,
+              "sig_figs_agreed": 9.046453828459152
+            },
+            {
+              "name": "b3",
+              "certified": 0.86070000013,
+              "fitted": 0.860700000565924,
+              "sig_figs_agreed": 9.29544105933999
+            },
+            {
+              "name": "b4",
+              "certified": 3.0000000002,
+              "fitted": 3.000000001300188,
+              "sig_figs_agreed": 9.435654374446047
+            },
+            {
+              "name": "b5",
+              "certified": 1.5575999998,
+              "fitted": 1.5575999992370408,
+              "sig_figs_agreed": 9.441978990761442
+            },
+            {
+              "name": "b6",
+              "certified": 5.0000000001,
+              "fitted": 5.000000000463556,
+              "sig_figs_agreed": 10.138398334055166
+            }
+          ],
+          "min_sig_figs": 8.747301725058655,
+          "passed": true
+        },
+        {
+          "name": "BoxBOD",
+          "model": "b1·(1−exp(−b2·x))",
+          "n_params": 2,
+          "params": [
+            {
+              "name": "b1",
+              "certified": 213.80940889,
+              "fitted": 213.80941222083683,
+              "sig_figs_agreed": 7.807473452467194
+            },
+            {
+              "name": "b2",
+              "certified": 0.54723748542,
+              "fitted": 0.5472374467993554,
+              "sig_figs_agreed": 7.151356320830165
+            }
+          ],
+          "min_sig_figs": 7.151356320830165,
+          "passed": true
+        },
+        {
+          "name": "Misra1a",
+          "model": "b1·(1−exp(−b2·x))",
+          "n_params": 2,
+          "params": [
+            {
+              "name": "b1",
+              "certified": 238.94212918,
+              "fitted": 238.94212918523897,
+              "sig_figs_agreed": 10.659046511103313
+            },
+            {
+              "name": "b2",
+              "certified": 0.00055015643181,
+              "fitted": 0.0005501564317887804,
+              "sig_figs_agreed": 10.41374959027353
+            }
+          ],
+          "min_sig_figs": 10.41374959027353,
+          "passed": true
+        },
+        {
+          "name": "Misra1b",
+          "model": "b1·(1−(1+b2·x/2)^(−2))",
+          "n_params": 2,
+          "params": [
+            {
+              "name": "b1",
+              "certified": 337.99746163,
+              "fitted": 337.9974643185938,
+              "sig_figs_agreed": 8.09938823975326
+            },
+            {
+              "name": "b2",
+              "certified": 0.00039039091287,
+              "fitted": 0.0003903909092531734,
+              "sig_figs_agreed": 8.033172016202009
+            }
+          ],
+          "min_sig_figs": 8.033172016202009,
+          "passed": true
+        },
+        {
+          "name": "MGH17",
+          "model": "b1 + b2·exp(−b4·x) + b3·exp(−b5·x)",
+          "n_params": 5,
+          "params": [
+            {
+              "name": "b1",
+              "certified": 0.37541005211,
+              "fitted": 0.37541005207188444,
+              "sig_figs_agreed": 9.993403521069622
+            },
+            {
+              "name": "b2",
+              "certified": 1.9358469127,
+              "fitted": 1.9358469082446783,
+              "sig_figs_agreed": 8.637991945327594
+            },
+            {
+              "name": "b3",
+              "certified": -1.4646871366,
+              "fitted": -1.4646871321228472,
+              "sig_figs_agreed": 8.514742943993848
+            },
+            {
+              "name": "b4",
+              "certified": 0.01286753464,
+              "fitted": 0.012867534631174848,
+              "sig_figs_agreed": 9.163773131476393
+            },
+            {
+              "name": "b5",
+              "certified": 0.022122699662,
+              "fitted": 0.022122699680136082,
+              "sig_figs_agreed": 9.086294630791613
+            }
+          ],
+          "min_sig_figs": 8.514742943993848,
+          "passed": true
+        },
+        {
+          "name": "Bennett5",
+          "model": "b1·(b2+x)^(−1/b3)",
+          "n_params": 3,
+          "params": [
+            {
+              "name": "b1",
+              "certified": -2523.5058043,
+              "fitted": -2523.5057900801044,
+              "sig_figs_agreed": 8.249107901707966
+            },
+            {
+              "name": "b2",
+              "certified": 46.736564644,
+              "fitted": 46.73656458398646,
+              "sig_figs_agreed": 8.891407535624625
+            },
+            {
+              "name": "b3",
+              "certified": 0.93218483193,
+              "fitted": 0.9321848329033601,
+              "sig_figs_agreed": 8.981228510552485
+            }
+          ],
+          "min_sig_figs": 8.249107901707966,
+          "passed": true
+        },
+        {
+          "name": "MGH09",
+          "model": "b1·(x²+b2·x)/(x²+b3·x+b4)",
+          "n_params": 4,
+          "params": [
+            {
+              "name": "b1",
+              "certified": 0.19280693458,
+              "fitted": 0.1928069372696116,
+              "sig_figs_agreed": 7.855433082488254
+            },
+            {
+              "name": "b2",
+              "certified": 0.19128232873,
+              "fitted": 0.191282268012459,
+              "sig_figs_agreed": 6.498360675661228
+            },
+            {
+              "name": "b3",
+              "certified": 0.12305650693,
+              "fitted": 0.12305649621505164,
+              "sig_figs_agreed": 7.0601145007924435
+            },
+            {
+              "name": "b4",
+              "certified": 0.13606233068,
+              "fitted": 0.13606230217939894,
+              "sig_figs_agreed": 6.678883886622636
+            }
+          ],
+          "min_sig_figs": 6.498360675661228,
+          "passed": true
+        },
+        {
+          "name": "Lanczos2",
+          "model": "b1·exp(-b2·x) + b3·exp(-b4·x) + b5·exp(-b6·x)",
+          "n_params": 6,
+          "params": [
+            {
+              "name": "b1",
+              "certified": 0.096251029939,
+              "fitted": 0.09625103095111472,
+              "sig_figs_agreed": 7.978175647850465
+            },
+            {
+              "name": "b2",
+              "certified": 1.0057332849,
+              "fitted": 1.0057332899936207,
+              "sig_figs_agreed": 8.29545622704192
+            },
+            {
+              "name": "b3",
+              "certified": 0.86424689056,
+              "fitted": 0.8642468931563382,
+              "sig_figs_agreed": 8.52227657179609
+            },
+            {
+              "name": "b4",
+              "certified": 3.0078283915,
+              "fitted": 3.0078283978455955,
+              "sig_figs_agreed": 8.675780662711482
+            },
+            {
+              "name": "b5",
+              "certified": 1.5529016879,
+              "fitted": 1.5529016842594097,
+              "sig_figs_agreed": 8.629972157524511
+            },
+            {
+              "name": "b6",
+              "certified": 5.00287981,
+              "fitted": 5.002879812100297,
+              "sig_figs_agreed": 9.376939209867142
+            }
+          ],
+          "min_sig_figs": 7.978175647850465,
+          "passed": true
+        },
+        {
+          "name": "Lanczos3",
+          "model": "b1·exp(-b2·x) + b3·exp(-b4·x) + b5·exp(-b6·x)",
+          "n_params": 6,
+          "params": [
+            {
+              "name": "b1",
+              "certified": 0.086816414977,
+              "fitted": 0.08681641626683098,
+              "sig_figs_agreed": 7.828069044720556
+            },
+            {
+              "name": "b2",
+              "certified": 0.95498101505,
+              "fitted": 0.9549810223049977,
+              "sig_figs_agreed": 8.119357458015573
+            },
+            {
+              "name": "b3",
+              "certified": 0.84400777463,
+              "fitted": 0.8440077777019054,
+              "sig_figs_agreed": 8.438938610266263
+            },
+            {
+              "name": "b4",
+              "certified": 2.9515951832,
+              "fitted": 2.9515951912754765,
+              "sig_figs_agreed": 8.562888622815649
+            },
+            {
+              "name": "b5",
+              "certified": 1.5825685901,
+              "fitted": 1.5825685857839376,
+              "sig_figs_agreed": 8.564274827296405
+            },
+            {
+              "name": "b6",
+              "certified": 4.9863565084,
+              "fitted": 4.9863565109602295,
+              "sig_figs_agreed": 9.289504451978303
+            }
+          ],
+          "min_sig_figs": 7.828069044720556,
+          "passed": true
+        },
+        {
+          "name": "Eckerle4",
+          "model": "(b1/b2)·exp(-½·((x-b3)/b2)²)",
+          "n_params": 3,
+          "params": [
+            {
+              "name": "b1",
+              "certified": 1.5543827178,
+              "fitted": 1.5543827179475396,
+              "sig_figs_agreed": 10.022649545245695
+            },
+            {
+              "name": "b2",
+              "certified": 4.0888321754,
+              "fitted": 4.088832176448523,
+              "sig_figs_agreed": 9.591021304918963
+            },
+            {
+              "name": "b3",
+              "certified": 451.54121844,
+              "fitted": 451.541218435311,
+              "sig_figs_agreed": 10.983615906161123
+            }
+          ],
+          "min_sig_figs": 9.591021304918963,
+          "passed": true
+        },
+        {
+          "name": "Roszman1",
+          "model": "b1 - b2·x - arctan(b3/(x-b4))/π",
+          "n_params": 4,
+          "params": [
+            {
+              "name": "b1",
+              "certified": 0.20196866396,
+              "fitted": 0.20196866368070293,
+              "sig_figs_agreed": 8.859217632005038
+            },
+            {
+              "name": "b2",
+              "certified": -6.1953516256e-6,
+              "fitted": -6.195351582953783e-6,
+              "sig_figs_agreed": 8.16218544316742
+            },
+            {
+              "name": "b3",
+              "certified": 1204.4556708,
+              "fitted": 1204.4556719379334,
+              "sig_figs_agreed": 9.024673977634068
+            },
+            {
+              "name": "b4",
+              "certified": -181.34269537,
+              "fitted": -181.3426959786849,
+              "sig_figs_agreed": 8.474107538576632
+            }
+          ],
+          "min_sig_figs": 8.16218544316742,
+          "passed": true
+        },
+        {
+          "name": "DanWood",
+          "model": "b1·x^b2",
+          "n_params": 2,
+          "params": [
+            {
+              "name": "b1",
+              "certified": 0.76886226176,
+              "fitted": 0.7688622617404277,
+              "sig_figs_agreed": 10.594205710258413
+            },
+            {
+              "name": "b2",
+              "certified": 3.8604055871,
+              "fitted": 3.8604055871463334,
+              "sig_figs_agreed": 10.920736856497648
+            }
+          ],
+          "min_sig_figs": 10.594205710258413,
+          "passed": true
+        },
+        {
+          "name": "Kirby2",
+          "model": "(b1 + b2·x + b3·x²) / (1 + b4·x + b5·x²)",
+          "n_params": 5,
+          "params": [
+            {
+              "name": "b1",
+              "certified": 1.6745063063,
+              "fitted": 1.6745063741648731,
+              "sig_figs_agreed": 7.3922417464053405
+            },
+            {
+              "name": "b2",
+              "certified": -0.13927397867,
+              "fitted": -0.13927398266640004,
+              "sig_figs_agreed": 7.542201027250477
+            },
+            {
+              "name": "b3",
+              "certified": 0.0025961181191,
+              "fitted": 0.0025961181617015173,
+              "sig_figs_agreed": 7.784899380335288
+            },
+            {
+              "name": "b4",
+              "certified": -0.001724181187,
+              "fitted": -0.0017241811304990486,
+              "sig_figs_agreed": 7.48452714059639
+            },
+            {
+              "name": "b5",
+              "certified": 0.000021664802578,
+              "fitted": 0.000021664802770660186,
+              "sig_figs_agreed": 8.050962762981497
+            }
+          ],
+          "min_sig_figs": 7.3922417464053405,
+          "passed": true
+        },
+        {
+          "name": "Hahn1",
+          "model": "(b1 + b2·x + b3·x² + b4·x³) / (1 + b5·x + b6·x² + b7·x³)",
+          "n_params": 7,
+          "params": [
+            {
+              "name": "b1",
+              "certified": 1.0776351733,
+              "fitted": 1.0776351714232157,
+              "sig_figs_agreed": 8.759057400088897
+            },
+            {
+              "name": "b2",
+              "certified": -0.12269296921,
+              "fitted": -0.12269296906814711,
+              "sig_figs_agreed": 8.936981486789781
+            },
+            {
+              "name": "b3",
+              "certified": 0.004086375061,
+              "fitted": 0.004086375058294899,
+              "sig_figs_agreed": 9.17915475618522
+            },
+            {
+              "name": "b4",
+              "certified": -1.4262662514e-6,
+              "fitted": -1.4262662477747828e-6,
+              "sig_figs_agreed": 8.594866579143195
+            },
+            {
+              "name": "b5",
+              "certified": -0.0057609940901,
+              "fitted": -0.005760994090670391,
+              "sig_figs_agreed": 10.00432479836666
+            },
+            {
+              "name": "b6",
+              "certified": 0.00024053735503,
+              "fitted": 0.00024053735490969766,
+              "sig_figs_agreed": 9.300908451825569
+            },
+            {
+              "name": "b7",
+              "certified": -1.2314450199e-7,
+              "fitted": -1.231445018180976e-7,
+              "sig_figs_agreed": 8.855133090439168
+            }
+          ],
+          "min_sig_figs": 8.594866579143195,
+          "passed": true
+        },
+        {
+          "name": "Thurber",
+          "model": "(b1 + b2·x + b3·x² + b4·x³) / (1 + b5·x + b6·x² + b7·x³)",
+          "n_params": 7,
+          "params": [
+            {
+              "name": "b1",
+              "certified": 1288.13968,
+              "fitted": 1288.1396793543574,
+              "sig_figs_agreed": 9.299970808941602
+            },
+            {
+              "name": "b2",
+              "certified": 1491.0792535,
+              "fitted": 1491.0793298690915,
+              "sig_figs_agreed": 7.290583103948941
+            },
+            {
+              "name": "b3",
+              "certified": 583.23836877,
+              "fitted": 583.2384216943445,
+              "sig_figs_agreed": 7.042190598314477
+            },
+            {
+              "name": "b4",
+              "certified": 75.416644291,
+              "fitted": 75.41665464103404,
+              "sig_figs_agreed": 6.862525425924182
+            },
+            {
+              "name": "b5",
+              "certified": 0.96629502864,
+              "fitted": 0.9662950792121693,
+              "sig_figs_agreed": 7.281198162650413
+            },
+            {
+              "name": "b6",
+              "certified": 0.39797285797,
+              "fitted": 0.39797288053490304,
+              "sig_figs_agreed": 7.24641998183896
+            },
+            {
+              "name": "b7",
+              "certified": 0.049727297349,
+              "fitted": 0.04972731322440048,
+              "sig_figs_agreed": 6.495870166390748
+            }
+          ],
+          "min_sig_figs": 6.495870166390748,
+          "passed": true
+        },
+        {
+          "name": "Rat42",
+          "model": "b1 / (1 + exp(b2 - b3·x))",
+          "n_params": 3,
+          "params": [
+            {
+              "name": "b1",
+              "certified": 72.462237576,
+              "fitted": 72.46223746942923,
+              "sig_figs_agreed": 8.832473593519998
+            },
+            {
+              "name": "b2",
+              "certified": 2.6180768402,
+              "fitted": 2.618076843057733,
+              "sig_figs_agreed": 8.961960781961734
+            },
+            {
+              "name": "b3",
+              "certified": 0.067359200066,
+              "fitted": 0.06735920026970305,
+              "sig_figs_agreed": 8.519399409506825
+            }
+          ],
+          "min_sig_figs": 8.519399409506825,
+          "passed": true
+        },
+        {
+          "name": "Rat43",
+          "model": "b1 / (1 + exp(b2 - b3·x))^(1/b4)",
+          "n_params": 4,
+          "params": [
+            {
+              "name": "b1",
+              "certified": 699.6415127,
+              "fitted": 699.6415092743226,
+              "sig_figs_agreed": 8.310129108637387
+            },
+            {
+              "name": "b2",
+              "certified": 5.2771253025,
+              "fitted": 5.277125062623002,
+              "sig_figs_agreed": 7.342408800794821
+            },
+            {
+              "name": "b3",
+              "certified": 0.75962938329,
+              "fitted": 0.7596293774005941,
+              "sig_figs_agreed": 8.110530271835112
+            },
+            {
+              "name": "b4",
+              "certified": 1.2792483859,
+              "fitted": 1.279248259502677,
+              "sig_figs_agreed": 7.0052170022389575
+            }
+          ],
+          "min_sig_figs": 7.0052170022389575,
+          "passed": true
+        },
+        {
+          "name": "Chwirut1",
+          "model": "exp(-b1·x) / (b2 + b3·x)",
+          "n_params": 3,
+          "params": [
+            {
+              "name": "b1",
+              "certified": 0.1902781837,
+              "fitted": 0.19027817515335174,
+              "sig_figs_agreed": 7.347593166906291
+            },
+            {
+              "name": "b2",
+              "certified": 0.0061314004477,
+              "fitted": 0.006131400406643132,
+              "sig_figs_agreed": 8.174173865124004
+            },
+            {
+              "name": "b3",
+              "certified": 0.010530908399,
+              "fitted": 0.010530908599889593,
+              "sig_figs_agreed": 7.719508395935763
+            }
+          ],
+          "min_sig_figs": 7.347593166906291,
+          "passed": true
+        },
+        {
+          "name": "Chwirut2",
+          "model": "exp(-b1·x) / (b2 + b3·x)",
+          "n_params": 3,
+          "params": [
+            {
+              "name": "b1",
+              "certified": 0.16657666537,
+              "fitted": 0.16657665440078112,
+              "sig_figs_agreed": 7.181438461914964
+            },
+            {
+              "name": "b2",
+              "certified": 0.0051653291286,
+              "fitted": 0.005165328976429486,
+              "sig_figs_agreed": 7.530767491783367
+            },
+            {
+              "name": "b3",
+              "certified": 0.012150007096,
+              "fitted": 0.012150007494859267,
+              "sig_figs_agreed": 7.483756845001734
+            }
+          ],
+          "min_sig_figs": 7.181438461914964,
+          "passed": true
+        }
+      ],
+      "min_sig_figs": 6.495870166390748,
+      "passed": true,
+      "total_available": 27
+    }
+  }
+}

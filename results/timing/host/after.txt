@@ -1,0 +1,1052 @@
+# terra host snapshot: after
+# taken 2026-10-07T09:30:35Z by cloud@terra
+
+===== uname -a =====
+Linux terra 5.15.0-187-generic #197-Ubuntu SMP Fri Jul 17 19:17:01 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux
+
+===== lsb_release -a =====
+Distributor ID:	Ubuntu
+Description:	Ubuntu 22.04.5 LTS
+Release:	22.04
+Codename:	jammy
+
+===== ldd --version =====
+ldd (Ubuntu GLIBC 2.35-0ubuntu3.15) 2.35
+
+===== libc6 / libm =====
+libc-bin 2.35-0ubuntu3.15
+libc6 2.35-0ubuntu3.15
+libgcc-s1 12.3.0-1ubuntu1~22.04.3
+libgfortran5 12.3.0-1ubuntu1~22.04.3
+libstdc++6 12.3.0-1ubuntu1~22.04.3
+3dd5511ae94785c9f921429b0f2b2f7aabb461b6f0e6de6dfdbef15f24bdfee6  /lib/x86_64-linux-gnu/libm.so.6
+b2cf6c33b74d2f22543b7a469a75b538911e690f769d0b238843a49465b83793  /lib/x86_64-linux-gnu/libc.so.6
+
+===== lscpu =====
+Architecture:                            x86_64
+CPU op-mode(s):                          32-bit, 64-bit
+Address sizes:                           40 bits physical, 48 bits virtual
+Byte Order:                              Little Endian
+CPU(s):                                  16
+On-line CPU(s) list:                     0-15
+Vendor ID:                               AuthenticAMD
+Model name:                              AMD EPYC Processor (with IBPB)
+CPU family:                              23
+Model:                                   1
+Thread(s) per core:                      1
+Core(s) per socket:                      1
+Socket(s):                               16
+Stepping:                                2
+BogoMIPS:                                5799.99
+Flags:                                   fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm rep_good nopl cpuid extd_apicid tsc_known_freq pni pclmulqdq ssse3 fma cx16 sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm cmp_legacy svm cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw topoext perfctr_core ssbd ibrs ibpb vmmcall fsgsbase tsc_adjust bmi1 avx2 smep bmi2 rdseed adx smap clflushopt clwb sha_ni xsaveopt xsavec xgetbv1 arat
+Virtualization:                          AMD-V
+Hypervisor vendor:                       KVM
+Virtualization type:                     full
+NUMA node(s):                            1
+NUMA node0 CPU(s):                       0-15
+Vulnerability Gather data sampling:      Not affected
+Vulnerability Indirect target selection: Not affected
+Vulnerability Itlb multihit:             Not affected
+Vulnerability L1tf:                      Not affected
+Vulnerability Mds:                       Not affected
+Vulnerability Meltdown:                  Not affected
+Vulnerability Mmio stale data:           Not affected
+Vulnerability Reg file data sampling:    Not affected
+Vulnerability Retbleed:                  Mitigation; untrained return thunk; SMT disabled
+Vulnerability Spec rstack overflow:      Mitigation; SMT disabled
+Vulnerability Spec store bypass:         Mitigation; Speculative Store Bypass disabled via prctl and seccomp
+Vulnerability Spectre v1:                Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+Vulnerability Spectre v2:                Mitigation; Retpolines; IBPB conditional; STIBP disabled; RSB filling; PBRSB-eIBRS Not affected; BHI Not affected
+Vulnerability Srbds:                     Not affected
+Vulnerability Tsa:                       Not affected
+Vulnerability Tsx async abort:           Not affected
+Vulnerability Vmscape:                   Not affected
+
+===== cpu flags (cpu0) =====
+flags		: fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat pse36 clflush mmx fxsr sse sse2 syscall nx mmxext fxsr_opt pdpe1gb rdtscp lm rep_good nopl cpuid extd_apicid tsc_known_freq pni pclmulqdq ssse3 fma cx16 sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx f16c rdrand hypervisor lahf_lm cmp_legacy svm cr8_legacy abm sse4a misalignsse 3dnowprefetch osvw topoext perfctr_core ssbd ibrs ibpb vmmcall fsgsbase tsc_adjust bmi1 avx2 smep bmi2 rdseed adx smap clflushopt clwb sha_ni xsaveopt xsavec xgetbv1 arat
+
+===== vm.max_map_count =====
+65530
+
+===== ulimit -a =====
+real-time non-blocking time  (microseconds, -R) unlimited
+core file size              (blocks, -c) 0
+data seg size               (kbytes, -d) unlimited
+scheduling priority                 (-e) 0
+file size                   (blocks, -f) unlimited
+pending signals                     (-i) 127896
+max locked memory           (kbytes, -l) 4107556
+max memory size             (kbytes, -m) unlimited
+open files                          (-n) 1048576
+pipe size                (512 bytes, -p) 8
+POSIX message queues         (bytes, -q) 819200
+real-time priority                  (-r) 0
+stack size                  (kbytes, -s) 8192
+cpu time                   (seconds, -t) unlimited
+max user processes                  (-u) 127896
+virtual memory              (kbytes, -v) unlimited
+file locks                          (-x) unlimited
+
+===== free -h =====
+               total        used        free      shared  buff/cache   available
+Mem:            31Gi       1,6Gi        21Gi       2,0Mi       8,6Gi        29Gi
+Swap:             0B          0B          0B
+
+===== df -h =====
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/vda1       158G   44G  108G  29% /
+/dev/vda1       158G   44G  108G  29% /
+
+===== uptime / loadavg =====
+ 11:30:36 up 3 days,  3:44,  1 user,  load average: 3,27, 1,93, 1,60
+3.27 1.93 1.60 1/514 115771
+
+===== processes (top 20 by cpu) =====
+    PID ELAPSED %CPU %MEM COMMAND
+  44447   98480  0.8  0.9 2.1.286
+   5406  272373  0.1  0.1 copilot-runtime
+  41895  132003  0.1  1.6 MainThread
+      1  272669  0.0  0.0 systemd
+      2  272669  0.0  0.0 kthreadd
+      3  272669  0.0  0.0 rcu_gp
+      4  272669  0.0  0.0 rcu_par_gp
+      5  272669  0.0  0.0 slub_flushwq
+      6  272669  0.0  0.0 netns
+      8  272669  0.0  0.0 kworker/0:0H-events_highpri
+     10  272669  0.0  0.0 mm_percpu_wq
+     11  272669  0.0  0.0 rcu_tasks_rude_
+     12  272669  0.0  0.0 rcu_tasks_trace
+     13  272669  0.0  0.0 ksoftirqd/0
+     14  272669  0.0  0.0 rcu_sched
+     15  272669  0.0  0.0 migration/0
+     16  272669  0.0  0.0 idle_inject/0
+     18  272669  0.0  0.0 cpuhp/0
+     19  272669  0.0  0.0 cpuhp/1
+     20  272669  0.0  0.0 idle_inject/1
+
+===== tmux sessions =====
+timing: 1 windows (created Tue Oct  6 09:24:05 2026)
+
+===== thread / XLA / budget variables (empty = unset) =====
+OMP_NUM_THREADS=
+OPENBLAS_NUM_THREADS=
+MKL_NUM_THREADS=
+NUMEXPR_NUM_THREADS=
+VECLIB_MAXIMUM_THREADS=
+RAYON_NUM_THREADS=
+XLA_FLAGS=
+JAX_PLATFORMS=
+SPECTRAFIT_BENCH_JAX_COMPILE_BUDGET=
+
+===== apt timers =====
+NEXT                         LEFT          LAST                         PASSED  UNIT                    ACTIVATES
+Wed 2026-10-07 13:18:58 CEST 1h 48min left Wed 2026-10-07 00:34:00 CEST 10h ago apt-daily.timer         apt-daily.service
+Wed 2026-10-07 18:42:45 CEST 7h left       Wed 2026-10-07 02:25:57 CEST 9h ago  apt-daily-upgrade.timer apt-daily-upgrade.service
+
+2 timers listed.
+
+===== unattended-upgrades =====
+enabled
+active
+
+===== tool versions =====
+uv 0.12.23 (x86_64-unknown-linux-gnu)
+Python 3.13.13
+rustc 1.97.1 (8bab26f4f 2026-07-14)
+git version 2.34.1
+
+===== python packages (benchmark environment) =====
+spectrafit-core 0.1.2
+lmfit 1.3.4
+scipy 1.18.0
+numpy 2.5.1
+jax 0.11.0
+jaxlib 0.11.0
+optimistix 0.1.0
+pytest 9.1.1
+matplotlib 3.11.2
+spectrafit-core RECORD sha256 920784f43ae522861096fe5f4a8d3d7fec931db6a23a129a68e462a1d7a7fa09
+spectrafit-core spectrafit_core/_core.cpython-313-x86_64-linux-gnu.so 66a78742b59902412dd416dfcbc516327ec38078ccacfe8c9073721bbc3a663b
+
+===== reboot-required =====
+*** System restart required ***
+
+===== dpkg-query -W (all packages) =====
+acpid	1:2.0.33-1ubuntu1
+adduser	3.118ubuntu5
+adwaita-icon-theme	41.0-1ubuntu1
+amd64-microcode	3.20191218.1ubuntu2.3
+apparmor	3.0.4-2ubuntu2.5
+apport	2.20.11-0ubuntu82.10
+apport-symptoms	0.24
+apt	2.4.14
+apt-listchanges	3.24
+apt-utils	2.4.14
+base-files	12ubuntu4.7
+base-passwd	3.5.52build1
+bash	5.1-6ubuntu1.1
+bash-completion	1:2.11-5ubuntu1
+bcache-tools	1.0.8-4ubuntu3
+bind9-dnsutils	1:9.18.39-0ubuntu0.22.04.6
+bind9-host	1:9.18.39-0ubuntu0.22.04.6
+bind9-libs:amd64	1:9.18.39-0ubuntu0.22.04.6
+binfmt-support	2.2.1-2
+binutils	2.38-4ubuntu2.12
+binutils-common:amd64	2.38-4ubuntu2.12
+binutils-x86-64-linux-gnu	2.38-4ubuntu2.12
+bsdextrautils	2.37.2-4ubuntu3.6
+bsdutils	1:2.37.2-4ubuntu3.6
+btop	1.2.3-2
+btrfs-progs	5.16.2-1
+build-essential	12.9ubuntu3
+busybox-initramfs	1:1.30.1-7ubuntu3.1
+busybox-static	1:1.30.1-7ubuntu3.1
+byobu	5.133-1
+bzip2	1.0.8-5ubuntu0.1
+bzip2-doc	1.0.8-5ubuntu0.1
+ca-certificates	20260601~22.04.1
+cloud-guest-utils	0.32-22-g45fe84a5-0ubuntu1
+cloud-init	26.1-0ubuntu1~22.04.1
+cmake	3.22.1-1ubuntu1.22.04.2
+cmake-data	3.22.1-1ubuntu1.22.04.2
+command-not-found	22.04.0
+console-setup	1.205ubuntu3
+console-setup-linux	1.205ubuntu3
+containerd.io	2.3.6-1~ubuntu.22.04~jammy
+coreutils	8.32-4.1ubuntu1.4
+cpio	2.13+dfsg-7ubuntu0.2
+cpp	4:11.2.0-1ubuntu1
+cpp-11	11.4.0-1ubuntu1~22.04.3
+cron	3.0pl1-137ubuntu3
+cryptsetup	2:2.4.3-1ubuntu1.3
+cryptsetup-bin	2:2.4.3-1ubuntu1.3
+cryptsetup-initramfs	2:2.4.3-1ubuntu1.3
+curl	7.81.0-1ubuntu1.29
+dash	0.5.11+git20210903+057cd650a4ed-3build1
+dbus	1.12.20-2ubuntu4.1
+dbus-user-session	1.12.20-2ubuntu4.1
+dconf-gsettings-backend:amd64	0.40.0-3ubuntu0.1
+dconf-service	0.40.0-3ubuntu0.1
+debconf	1.5.79ubuntu1
+debconf-i18n	1.5.79ubuntu1
+debianutils	5.5-1ubuntu2
+dh-elpa-helper	2.0.9ubuntu1
+diffutils	1:3.8-0ubuntu2.1
+dirmngr	2.2.27-3ubuntu2.5
+distro-info	1.1ubuntu0.2
+distro-info-data	0.72-0ubuntu0.22.04.1
+dmeventd	2:1.02.175-2.1ubuntu5
+dmidecode	3.3-3ubuntu0.2
+dmsetup	2:1.02.175-2.1ubuntu5
+docker-buildx-plugin	0.37.1-1~ubuntu.22.04~jammy
+docker-ce	5:29.8.2-1~ubuntu.22.04~jammy
+docker-ce-cli	5:29.8.2-1~ubuntu.22.04~jammy
+docker-ce-rootless-extras	5:29.8.2-1~ubuntu.22.04~jammy
+docker-compose-plugin	5.6.0-1~ubuntu.22.04~jammy
+docker-model-plugin	1.2.6-1~ubuntu.22.04~jammy
+dosfstools	4.2-1build3
+dpkg	1.21.1ubuntu2.6
+dpkg-dev	1.21.1ubuntu2.6
+e2fsprogs	1.46.5-2ubuntu1.2
+eatmydata	130-2build1
+ed	1.18-1
+eject	2.37.2-4ubuntu3.6
+emacsen-common	3.0.4
+fakeroot	1.28-1ubuntu1
+fd-find	8.3.1-1ubuntu0.1
+fdisk	2.37.2-4ubuntu3.6
+file	1:5.41-3ubuntu0.1
+finalrd	9build1
+findutils	4.8.0-1ubuntu3
+firmware-sof-signed	2.0-1ubuntu4.7
+fontconfig	2.13.1-4.2ubuntu5
+fontconfig-config	2.13.1-4.2ubuntu5
+fonts-dejavu-core	2.37-2build1
+fonts-freefont-ttf	20120503-10build1
+fonts-ipafont-gothic	00303-21ubuntu1
+fonts-liberation	1:1.07.4-11
+fonts-noto-color-emoji	2.047-0ubuntu0.22.04.1
+fonts-tlwg-loma-otf	1:0.7.3-1
+fonts-unifont	1:14.0.01-1
+fonts-wqy-zenhei	0.9.45-8
+friendly-recovery	0.2.42
+ftp	20210827-4build1
+fuse3	3.10.5-1build1
+g++	4:11.2.0-1ubuntu1
+g++-11	11.4.0-1ubuntu1~22.04.3
+gawk	1:5.1.0-1ubuntu0.2
+gcc	4:11.2.0-1ubuntu1
+gcc-11	11.4.0-1ubuntu1~22.04.3
+gcc-11-base:amd64	11.4.0-1ubuntu1~22.04.3
+gcc-12-base:amd64	12.3.0-1ubuntu1~22.04.3
+gdisk	1.0.8-4build1
+gettext-base	0.21-4ubuntu4
+gfortran	4:11.2.0-1ubuntu1
+gfortran-11	11.4.0-1ubuntu1~22.04.3
+gh	2.102.0
+gir1.2-glib-2.0:amd64	1.72.0-1
+gir1.2-packagekitglib-1.0	1.2.5-2ubuntu3.1
+git	1:2.34.1-1ubuntu1.17
+git-man	1:2.34.1-1ubuntu1.17
+glab	1.113.0
+gnupg	2.2.27-3ubuntu2.5
+gnupg-l10n	2.2.27-3ubuntu2.5
+gnupg-utils	2.2.27-3ubuntu2.5
+google-chrome-stable	154.0.8037.97-1
+gpg	2.2.27-3ubuntu2.5
+gpg-agent	2.2.27-3ubuntu2.5
+gpg-wks-client	2.2.27-3ubuntu2.5
+gpg-wks-server	2.2.27-3ubuntu2.5
+gpgconf	2.2.27-3ubuntu2.5
+gpgsm	2.2.27-3ubuntu2.5
+gpgv	2.2.27-3ubuntu2.5
+grep	3.7-1build1
+groff-base	1.22.4-8build1
+grub-common	2.06-2ubuntu7.2
+grub-gfxpayload-lists	0.7
+grub-pc	2.06-2ubuntu7.2
+grub-pc-bin	2.06-2ubuntu7.2
+grub2-common	2.06-2ubuntu7.2
+gtk-update-icon-cache	3.24.33-1ubuntu2.2
+gzip	1.10-4ubuntu4.2
+haveged	1.9.14-1ubuntu1
+hdparm	9.60+ds-1build3
+hicolor-icon-theme	0.17-2
+hostname	3.23ubuntu2
+htop	3.0.5-7build2
+humanity-icon-theme	0.6.16
+icu-devtools	70.1-2
+info	6.8-4build1
+init	1.62
+init-system-helpers	1.62
+initramfs-tools	0.140ubuntu13.5
+initramfs-tools-bin	0.140ubuntu13.5
+initramfs-tools-core	0.140ubuntu13.5
+install-info	6.8-4build1
+intel-microcode	3.20260210.0ubuntu0.22.04.1
+iproute2	5.15.0-1ubuntu2.2
+iptables	1.8.7-1ubuntu5.2
+iputils-ping	3:20211215-1ubuntu0.1
+iputils-tracepath	3:20211215-1ubuntu0.1
+irqbalance	1.8.0-1ubuntu0.2
+isc-dhcp-client	4.4.1-2.3ubuntu2.4
+isc-dhcp-common	4.4.1-2.3ubuntu2.4
+iso-codes	4.9.0-1
+iucode-tool	2.3.1-1build1
+joe	4.6-1build2
+jq	1.6-2.1ubuntu3.2
+kbd	2.3.0-3ubuntu4.22.04
+keyboard-configuration	1.205ubuntu3
+klibc-utils	2.0.10-4ubuntu0.2
+kmod	29-1ubuntu1.1
+kpartx	0.8.8-1ubuntu1.22.04.4
+less	590-1ubuntu0.22.04.3
+libacl1:amd64	2.3.1-1
+libaio1:amd64	0.3.112-13build1
+libalgorithm-diff-perl	1.201-1
+libalgorithm-diff-xs-perl	0.04-6build3
+libalgorithm-merge-perl	0.08-3
+libapparmor1:amd64	3.0.4-2ubuntu2.5
+libappstream4:amd64	0.15.2-2
+libapt-pkg6.0:amd64	2.4.14
+libarchive13:amd64	3.6.0-1ubuntu1.8
+libargon2-1:amd64	0~20171227-0.3
+libasan6:amd64	11.4.0-1ubuntu1~22.04.3
+libasound2:amd64	1.2.6.1-1ubuntu1.2
+libasound2-data	1.2.6.1-1ubuntu1.2
+libassuan0:amd64	2.5.5-1build1
+libatk-bridge2.0-0:amd64	2.38.0-3
+libatk1.0-0:amd64	2.36.0-3build1
+libatk1.0-data	2.36.0-3build1
+libatm1:amd64	1:2.5.1-4build2
+libatomic1:amd64	12.3.0-1ubuntu1~22.04.3
+libatspi2.0-0:amd64	2.44.0-3
+libattr1:amd64	1:2.5.1-1ubuntu0.1
+libaudit-common	1:3.0.7-1ubuntu0.1
+libaudit1:amd64	1:3.0.7-1ubuntu0.1
+libauthen-sasl-perl	2.1600-1.1ubuntu0.1
+libavahi-client3:amd64	0.8-5ubuntu5.5
+libavahi-common-data:amd64	0.8-5ubuntu5.5
+libavahi-common3:amd64	0.8-5ubuntu5.5
+libbinutils:amd64	2.38-4ubuntu2.12
+libblas-dev:amd64	3.10.0-2ubuntu1
+libblas3:amd64	3.10.0-2ubuntu1
+libblkid1:amd64	2.37.2-4ubuntu3.6
+libbpf0:amd64	1:0.5.0-1ubuntu22.04.1
+libbrotli-dev:amd64	1.0.9-2build6
+libbrotli1:amd64	1.0.9-2build6
+libbsd0:amd64	0.11.5-1
+libbz2-1.0:amd64	1.0.8-5ubuntu0.1
+libbz2-dev:amd64	1.0.8-5ubuntu0.1
+libc-bin	2.35-0ubuntu3.15
+libc-dev-bin	2.35-0ubuntu3.15
+libc-devtools	2.35-0ubuntu3.15
+libc6:amd64	2.35-0ubuntu3.15
+libc6-dev:amd64	2.35-0ubuntu3.15
+libcairo-gobject2:amd64	1.16.0-5ubuntu2.1
+libcairo2:amd64	1.16.0-5ubuntu2.1
+libcap-ng0:amd64	0.7.9-2.2build3
+libcap2:amd64	1:2.44-1ubuntu0.22.04.3
+libcap2-bin	1:2.44-1ubuntu0.22.04.3
+libcbor0.8:amd64	0.8.0-2ubuntu1
+libcc1-0:amd64	12.3.0-1ubuntu1~22.04.3
+libclang-cpp14	1:14.0.0-1ubuntu1.1
+libclone-perl	0.45-1build3
+libcolord2:amd64	1.4.6-1
+libcom-err2:amd64	1.46.5-2ubuntu1.2
+libcrypt-dev:amd64	1:4.4.27-1
+libcrypt1:amd64	1:4.4.27-1
+libcryptsetup12:amd64	2:2.4.3-1ubuntu1.3
+libctf-nobfd0:amd64	2.38-4ubuntu2.12
+libctf0:amd64	2.38-4ubuntu2.12
+libcups2:amd64	2.4.1op1-1ubuntu4.21
+libcurl3-gnutls:amd64	7.81.0-1ubuntu1.29
+libcurl4:amd64	7.81.0-1ubuntu1.29
+libdata-dump-perl	1.25-1
+libdatrie1:amd64	0.2.13-2
+libdb5.3:amd64	5.3.28+dfsg1-0.8ubuntu3
+libdbus-1-3:amd64	1.12.20-2ubuntu4.1
+libdconf1:amd64	0.40.0-3ubuntu0.1
+libdebconfclient0:amd64	0.261ubuntu1
+libdeflate0:amd64	1.10-2
+libdevmapper-event1.02.1:amd64	2:1.02.175-2.1ubuntu5
+libdevmapper1.02.1:amd64	2:1.02.175-2.1ubuntu5
+libdns-export1110	1:9.11.19+dfsg-2.1ubuntu3
+libdpkg-perl	1.21.1ubuntu2.6
+libdrm-amdgpu1:amd64	2.4.113-2~ubuntu0.22.04.1
+libdrm-common	2.4.113-2~ubuntu0.22.04.1
+libdrm-intel1:amd64	2.4.113-2~ubuntu0.22.04.1
+libdrm-nouveau2:amd64	2.4.113-2~ubuntu0.22.04.1
+libdrm-radeon1:amd64	2.4.113-2~ubuntu0.22.04.1
+libdrm2:amd64	2.4.113-2~ubuntu0.22.04.1
+libdw1:amd64	0.186-1ubuntu0.1
+libeatmydata1:amd64	130-2build1
+libedit2:amd64	3.1-20210910-1build1
+libefiboot1:amd64	37-6ubuntu2
+libefivar1:amd64	37-6ubuntu2
+libelf1:amd64	0.186-1ubuntu0.1
+libencode-locale-perl	1.05-1.1
+libepoxy0:amd64	1.5.10-1
+liberror-perl	0.17029-1
+libestr0:amd64	0.1.10-2.1build3
+libevent-core-2.1-7:amd64	2.1.12-stable-1ubuntu0.2
+libexpat1:amd64	2.4.7-1ubuntu0.9
+libexpat1-dev:amd64	2.4.7-1ubuntu0.9
+libext2fs2:amd64	1.46.5-2ubuntu1.2
+libfakeroot:amd64	1.28-1ubuntu1
+libfastjson4:amd64	0.99.9-1build2
+libfdisk1:amd64	2.37.2-4ubuntu3.6
+libffi-dev:amd64	3.4.2-4
+libffi8:amd64	3.4.2-4
+libfido2-1:amd64	1.10.0-1
+libfile-basedir-perl	0.09-1
+libfile-desktopentry-perl	0.22-2
+libfile-fcntllock-perl	0.22-3build7
+libfile-listing-perl	6.14-1
+libfile-mimeinfo-perl	0.31-1
+libflashrom1:amd64	1.2-5build1
+libfont-afm-perl	1.20-3
+libfontconfig-dev:amd64	2.13.1-4.2ubuntu5
+libfontconfig1:amd64	2.13.1-4.2ubuntu5
+libfontconfig1-dev:amd64	2.13.1-4.2ubuntu5
+libfontenc1:amd64	1:1.1.4-1build3
+libfreetype-dev:amd64	2.11.1+dfsg-1ubuntu0.4
+libfreetype6:amd64	2.11.1+dfsg-1ubuntu0.4
+libfreetype6-dev:amd64	2.11.1+dfsg-1ubuntu0.4
+libfribidi0:amd64	1.0.8-2ubuntu3.1
+libftdi1-2:amd64	1.5-5build3
+libfuse3-3:amd64	3.10.5-1build1
+libgbm1:amd64	23.2.1-1ubuntu3.1~22.04.4
+libgcc-11-dev:amd64	11.4.0-1ubuntu1~22.04.3
+libgcc-s1:amd64	12.3.0-1ubuntu1~22.04.3
+libgcrypt20:amd64	1.9.4-3ubuntu3.3
+libgd3:amd64	2.3.0-2ubuntu2.3
+libgdbm-compat4:amd64	1.23-1
+libgdbm6:amd64	1.23-1
+libgdk-pixbuf-2.0-0:amd64	2.42.8+dfsg-1ubuntu0.5
+libgdk-pixbuf2.0-bin	2.42.8+dfsg-1ubuntu0.5
+libgdk-pixbuf2.0-common	2.42.8+dfsg-1ubuntu0.5
+libgfortran-11-dev:amd64	11.4.0-1ubuntu1~22.04.3
+libgfortran5:amd64	12.3.0-1ubuntu1~22.04.3
+libgirepository-1.0-1:amd64	1.72.0-1
+libgl1:amd64	1.4.0-1
+libgl1-amber-dri:amd64	21.3.9-0ubuntu1~22.04.2
+libgl1-mesa-dri:amd64	23.2.1-1ubuntu3.1~22.04.4
+libglapi-mesa:amd64	23.2.1-1ubuntu3.1~22.04.4
+libglib2.0-0:amd64	2.72.4-0ubuntu2.10
+libglib2.0-bin	2.72.4-0ubuntu2.10
+libglib2.0-data	2.72.4-0ubuntu2.10
+libglvnd0:amd64	1.4.0-1
+libglx-mesa0:amd64	23.2.1-1ubuntu3.1~22.04.4
+libglx0:amd64	1.4.0-1
+libgmp10:amd64	2:6.2.1+dfsg-3ubuntu1
+libgnutls30:amd64	3.7.3-4ubuntu1.9
+libgomp1:amd64	12.3.0-1ubuntu1~22.04.3
+libgpg-error0:amd64	1.43-3
+libgpm2:amd64	1.20.7-10build1
+libgraphite2-3:amd64	1.3.14-1ubuntu0.1
+libgssapi-krb5-2:amd64	1.19.2-2ubuntu0.10
+libgstreamer1.0-0:amd64	1.20.3-0ubuntu1.1
+libgtk-3-0:amd64	3.24.33-1ubuntu2.2
+libgtk-3-bin	3.24.33-1ubuntu2.2
+libgtk-3-common	3.24.33-1ubuntu2.2
+libharfbuzz0b:amd64	2.7.4-1ubuntu3.2
+libhavege2:amd64	1.9.14-1ubuntu1
+libhogweed6:amd64	3.7.3-1build2
+libhtml-form-perl	6.07-1
+libhtml-format-perl	2.12-1.1
+libhtml-parser-perl:amd64	3.76-1ubuntu0.1
+libhtml-tagset-perl	3.20-4
+libhtml-tree-perl	5.07-2
+libhttp-cookies-perl	6.10-1
+libhttp-daemon-perl	6.13-1ubuntu0.2
+libhttp-date-perl	6.05-1ubuntu0.1
+libhttp-message-perl	6.36-1
+libhttp-negotiate-perl	6.01-1
+libice6:amd64	2:1.0.10-1build2
+libicu-dev:amd64	70.1-2
+libicu70:amd64	70.1-2
+libidn2-0:amd64	2.3.2-2build1
+libinih1:amd64	53-1ubuntu3
+libintl-perl	1.26-3build2
+libintl-xs-perl	1.26-3build2
+libio-html-perl	1.004-2
+libio-socket-ssl-perl	2.074-2
+libio-stringy-perl	2.111-3
+libip4tc2:amd64	1.8.7-1ubuntu5.2
+libip6tc2:amd64	1.8.7-1ubuntu5.2
+libipc-system-simple-perl	1.30-1
+libisc-export1105:amd64	1:9.11.19+dfsg-2.1ubuntu3
+libisl23:amd64	0.24-2build1
+libisns0:amd64	0.101-0ubuntu2.1
+libitm1:amd64	12.3.0-1ubuntu1~22.04.3
+libjansson4:amd64	2.13.1-1.1build3
+libjbig0:amd64	2.1-3.1ubuntu0.22.04.1
+libjpeg-turbo8:amd64	2.1.2-0ubuntu1
+libjpeg8:amd64	8c-2ubuntu10
+libjq1:amd64	1.6-2.1ubuntu3.2
+libjson-c5:amd64	0.15-3~ubuntu1.22.04.2
+libjsoncpp25:amd64	1.9.5-3
+libk5crypto3:amd64	1.19.2-2ubuntu0.10
+libkeyutils1:amd64	1.6.1-2ubuntu3
+libklibc:amd64	2.0.10-4ubuntu0.2
+libkmod2:amd64	29-1ubuntu1.1
+libkrb5-3:amd64	1.19.2-2ubuntu0.10
+libkrb5support0:amd64	1.19.2-2ubuntu0.10
+libksba8:amd64	1.6.0-2ubuntu0.2
+liblapack-dev:amd64	3.10.0-2ubuntu1
+liblapack3:amd64	3.10.0-2ubuntu1
+liblcms2-2:amd64	2.12~rc1-2ubuntu0.1
+libldap-2.5-0:amd64	2.5.20+dfsg-0ubuntu0.22.04.1
+libldap-common	2.5.20+dfsg-0ubuntu0.22.04.1
+libllvm14:amd64	1:14.0.0-1ubuntu1.1
+libllvm15:amd64	1:15.0.7-0ubuntu0.22.04.3
+liblmdb0:amd64	0.9.24-1build2
+liblocale-gettext-perl	1.07-4build3
+liblsan0:amd64	12.3.0-1ubuntu1~22.04.3
+liblvm2cmd2.03:amd64	2.03.11-2.1ubuntu5
+liblwp-mediatypes-perl	6.04-1
+liblwp-protocol-https-perl	6.10-1
+liblz4-1:amd64	1.9.3-2build2
+liblzma-dev:amd64	5.2.5-2ubuntu1.1
+liblzma5:amd64	5.2.5-2ubuntu1.1
+liblzo2-2:amd64	2.10-2build3
+libmagic-mgc	1:5.41-3ubuntu0.1
+libmagic1:amd64	1:5.41-3ubuntu0.1
+libmailtools-perl	2.21-1
+libmaxminddb0:amd64	1.5.2-1build2
+libmd0:amd64	1.0.4-1build1
+libmnl0:amd64	1.0.4-3build2
+libmodule-find-perl	0.15-1
+libmodule-scandeps-perl	1.31-1ubuntu0.1
+libmount1:amd64	2.37.2-4ubuntu3.6
+libmpc3:amd64	1.2.1-2build1
+libmpdec3:amd64	2.5.1-2build2
+libmpfr6:amd64	4.1.0-3build3
+libncurses-dev:amd64	6.3-2ubuntu0.3
+libncurses6:amd64	6.3-2ubuntu0.3
+libncursesw5-dev:amd64	6.3-2ubuntu0.3
+libncursesw6:amd64	6.3-2ubuntu0.3
+libnet-dbus-perl	1.2.0-1build3
+libnet-http-perl	6.22-1
+libnet-smtp-ssl-perl	1.04-1
+libnet-ssleay-perl:amd64	1.92-1build2
+libnetfilter-conntrack3:amd64	1.0.9-1
+libnetplan0:amd64	0.107.1-3ubuntu0.22.04.5
+libnettle8:amd64	3.7.3-1build2
+libnewt0.52:amd64	0.52.21-5ubuntu2
+libnfnetlink0:amd64	1.0.1-3build3
+libnftables1:amd64	1.0.2-1ubuntu3.1
+libnftnl11:amd64	1.2.1-1build1
+libnghttp2-14:amd64	1.43.0-1ubuntu0.4
+libnl-3-200:amd64	3.5.0-0.1
+libnl-genl-3-200:amd64	3.5.0-0.1
+libnpth0:amd64	1.6-3build2
+libnsl-dev:amd64	1.3.0-2build2
+libnsl2:amd64	1.3.0-2build2
+libnspr4:amd64	2:4.35-0ubuntu0.22.04.1
+libnss-systemd:amd64	249.11-0ubuntu3.22
+libnss3:amd64	2:3.98-0ubuntu0.22.04.4
+libnuma1:amd64	2.0.14-3ubuntu2
+libonig5:amd64	6.9.7.1-2build1
+libopenblas-dev:amd64	0.3.20+ds-1
+libopenblas-pthread-dev:amd64	0.3.20+ds-1
+libopenblas0:amd64	0.3.20+ds-1
+libopenblas0-pthread:amd64	0.3.20+ds-1
+libopeniscsiusr	2.1.5-1ubuntu1.1
+libp11-kit0:amd64	0.24.0-6ubuntu0.1
+libpackagekit-glib2-18:amd64	1.2.5-2ubuntu3.1
+libpam-cap:amd64	1:2.44-1ubuntu0.22.04.3
+libpam-modules:amd64	1.4.0-11ubuntu2.8
+libpam-modules-bin	1.4.0-11ubuntu2.8
+libpam-runtime	1.4.0-11ubuntu2.8
+libpam-systemd:amd64	249.11-0ubuntu3.22
+libpam0g:amd64	1.4.0-11ubuntu2.8
+libpango-1.0-0:amd64	1.50.6+ds-2ubuntu1
+libpangocairo-1.0-0:amd64	1.50.6+ds-2ubuntu1
+libpangoft2-1.0-0:amd64	1.50.6+ds-2ubuntu1
+libparted2:amd64	3.4-2build1
+libpcap0.8:amd64	1.10.1-4ubuntu1.22.04.2
+libpci3:amd64	1:3.7.0-6
+libpciaccess0:amd64	0.16-3
+libpcre2-8-0:amd64	10.39-3ubuntu0.1
+libpcre3:amd64	2:8.39-13ubuntu0.22.04.1
+libperl5.34:amd64	5.34.0-3ubuntu1.9
+libpfm4:amd64	4.11.1+git32-gd0b85fb-1ubuntu0.1
+libpipeline1:amd64	1.5.5-1
+libpixman-1-0:amd64	0.40.0-1ubuntu0.22.04.1
+libpng-dev:amd64	1.6.37-3ubuntu0.6
+libpng-tools	1.6.37-3ubuntu0.6
+libpng16-16:amd64	1.6.37-3ubuntu0.6
+libpolkit-agent-1-0:amd64	0.105-33ubuntu0.2
+libpolkit-gobject-1-0:amd64	0.105-33ubuntu0.2
+libpopt0:amd64	1.18-3build1
+libproc-processtable-perl:amd64	0.634-1build1
+libprocps8:amd64	2:3.3.17-6ubuntu2.1
+libpsl5:amd64	0.21.0-1.2build2
+libpthread-stubs0-dev:amd64	0.4-1build2
+libpython3-stdlib:amd64	3.10.6-1~22.04.1
+libpython3.10:amd64	3.10.12-1~22.04.18
+libpython3.10-minimal:amd64	3.10.12-1~22.04.18
+libpython3.10-stdlib:amd64	3.10.12-1~22.04.18
+libquadmath0:amd64	12.3.0-1ubuntu1~22.04.3
+libreadline-dev:amd64	8.1.2-1
+libreadline8:amd64	8.1.2-1
+librhash0:amd64	1.4.2-1ubuntu1
+librsvg2-2:amd64	2.52.5+dfsg-3ubuntu0.2
+librsvg2-common:amd64	2.52.5+dfsg-3ubuntu0.2
+librtmp1:amd64	2.4+20151223.gitfa8646d.1-2build4
+libsasl2-2:amd64	2.1.27+dfsg2-3ubuntu1.2
+libsasl2-modules:amd64	2.1.27+dfsg2-3ubuntu1.2
+libsasl2-modules-db:amd64	2.1.27+dfsg2-3ubuntu1.2
+libseccomp2:amd64	2.5.3-2ubuntu3~22.04.1
+libselinux1:amd64	3.3-1build2
+libsemanage-common	3.3-1build2
+libsemanage2:amd64	3.3-1build2
+libsensors-config	1:3.6.0-7ubuntu1
+libsensors5:amd64	1:3.6.0-7ubuntu1
+libsepol2:amd64	3.3-1build1
+libsgutils2-2:amd64	1.46-1ubuntu0.22.04.2
+libsigsegv2:amd64	2.13-1ubuntu3
+libslang2:amd64	2.3.2-5build4
+libsm6:amd64	2:1.2.3-1build2
+libsmartcols1:amd64	2.37.2-4ubuntu3.6
+libsodium23:amd64	1.0.18-1ubuntu0.22.04.1
+libsort-naturally-perl	1.03-2
+libsqlite3-0:amd64	3.37.2-2ubuntu0.8
+libsqlite3-dev:amd64	3.37.2-2ubuntu0.8
+libss2:amd64	1.46.5-2ubuntu1.2
+libssh-4:amd64	0.9.6-2ubuntu0.22.04.8
+libssl-dev:amd64	3.0.2-0ubuntu1.30
+libssl3:amd64	3.0.2-0ubuntu1.30
+libstdc++-11-dev:amd64	11.4.0-1ubuntu1~22.04.3
+libstdc++6:amd64	12.3.0-1ubuntu1~22.04.3
+libstemmer0d:amd64	2.2.0-1build1
+libsystemd0:amd64	249.11-0ubuntu3.22
+libtasn1-6:amd64	4.18.0-4ubuntu0.2
+libtcl8.6:amd64	8.6.12+dfsg-1build1
+libterm-readkey-perl	2.38-1build4
+libtext-charwidth-perl	0.04-10build3
+libtext-iconv-perl	1.7-7build3
+libtext-wrapi18n-perl	0.06-9
+libthai-data	0.1.29-1build1
+libthai0:amd64	0.1.29-1build1
+libtie-ixhash-perl	1.23-2.1
+libtiff5:amd64	4.3.0-6ubuntu0.13
+libtimedate-perl	2.3300-2
+libtinfo6:amd64	6.3-2ubuntu0.3
+libtirpc-common	1.3.2-2ubuntu0.1
+libtirpc-dev:amd64	1.3.2-2ubuntu0.1
+libtirpc3:amd64	1.3.2-2ubuntu0.1
+libtk8.6:amd64	8.6.12-1build1
+libtry-tiny-perl	0.31-1
+libtsan0:amd64	11.4.0-1ubuntu1~22.04.3
+libtss2-esys-3.0.2-0:amd64	3.2.0-1ubuntu1.1
+libtss2-mu0:amd64	3.2.0-1ubuntu1.1
+libtss2-sys1:amd64	3.2.0-1ubuntu1.1
+libtss2-tcti-cmd0:amd64	3.2.0-1ubuntu1.1
+libtss2-tcti-device0:amd64	3.2.0-1ubuntu1.1
+libtss2-tcti-mssim0:amd64	3.2.0-1ubuntu1.1
+libtss2-tcti-swtpm0:amd64	3.2.0-1ubuntu1.1
+libubsan1:amd64	12.3.0-1ubuntu1~22.04.3
+libuchardet0:amd64	0.0.7-1build2
+libudev1:amd64	249.11-0ubuntu3.22
+libunistring2:amd64	1.0-1
+libunwind8:amd64	1.3.2-2build2.1
+liburcu8:amd64	0.13.1-1
+liburi-perl	5.10-1
+liburing2:amd64	2.1-2build1
+libusb-1.0-0:amd64	2:1.0.25-1ubuntu2
+libutempter0:amd64	1.2.1-2build2
+libuuid1:amd64	2.37.2-4ubuntu3.6
+libuv1:amd64	1.43.0-1ubuntu0.1
+libvulkan1:amd64	1.3.204.1-2
+libwayland-client0:amd64	1.20.0-1ubuntu0.1
+libwayland-cursor0:amd64	1.20.0-1ubuntu0.1
+libwayland-egl1:amd64	1.20.0-1ubuntu0.1
+libwayland-server0:amd64	1.20.0-1ubuntu0.1
+libwebp7:amd64	1.2.2-2ubuntu0.22.04.2
+libwrap0:amd64	7.6.q-31build2
+libwww-perl	6.61-1ubuntu0.1
+libwww-robotrules-perl	6.02-1
+libx11-6:amd64	2:1.7.5-1ubuntu0.3
+libx11-data	2:1.7.5-1ubuntu0.3
+libx11-dev:amd64	2:1.7.5-1ubuntu0.3
+libx11-protocol-perl	0.56-7.1
+libx11-xcb1:amd64	2:1.7.5-1ubuntu0.3
+libxau-dev:amd64	1:1.0.9-1build5
+libxau6:amd64	1:1.0.9-1build5
+libxaw7:amd64	2:1.0.14-1
+libxcb-dri2-0:amd64	1.14-3ubuntu3
+libxcb-dri3-0:amd64	1.14-3ubuntu3
+libxcb-glx0:amd64	1.14-3ubuntu3
+libxcb-present0:amd64	1.14-3ubuntu3
+libxcb-randr0:amd64	1.14-3ubuntu3
+libxcb-render0:amd64	1.14-3ubuntu3
+libxcb-shape0:amd64	1.14-3ubuntu3
+libxcb-shm0:amd64	1.14-3ubuntu3
+libxcb-sync1:amd64	1.14-3ubuntu3
+libxcb-xfixes0:amd64	1.14-3ubuntu3
+libxcb1:amd64	1.14-3ubuntu3
+libxcb1-dev:amd64	1.14-3ubuntu3
+libxcomposite1:amd64	1:0.4.5-1build2
+libxcursor1:amd64	1:1.2.0-2build4
+libxdamage1:amd64	1:1.1.5-2build2
+libxdmcp-dev:amd64	1:1.1.3-0ubuntu5
+libxdmcp6:amd64	1:1.1.3-0ubuntu5
+libxext-dev:amd64	2:1.3.4-1build1
+libxext6:amd64	2:1.3.4-1build1
+libxfixes3:amd64	1:6.0.0-1
+libxfont2:amd64	1:2.0.5-1ubuntu0.2
+libxft-dev:amd64	2.3.4-1
+libxft2:amd64	2.3.4-1
+libxi6:amd64	2:1.8-1build1
+libxinerama1:amd64	2:1.1.4-3
+libxkbcommon0:amd64	1.4.0-1
+libxkbfile1:amd64	1:1.1.0-1build3
+libxml-parser-perl:amd64	2.46-3ubuntu0.1
+libxml-twig-perl	1:3.52-1
+libxml-xpathengine-perl	0.14-1
+libxml2:amd64	2.9.13+dfsg-1ubuntu0.13
+libxml2-dev:amd64	2.9.13+dfsg-1ubuntu0.13
+libxmlb2:amd64	0.3.24-1~ubuntu0.22.04.1
+libxmu6:amd64	2:1.1.3-3
+libxmuu1:amd64	2:1.1.3-3
+libxpm4:amd64	1:3.5.12-1ubuntu0.22.04.4
+libxrandr2:amd64	2:1.5.2-1build1
+libxrender-dev:amd64	1:0.9.10-1build4
+libxrender1:amd64	1:0.9.10-1build4
+libxshmfence1:amd64	1.3-1build4
+libxss-dev:amd64	1:1.2.3-1build2
+libxss1:amd64	1:1.2.3-1build2
+libxt6:amd64	1:1.2.1-1
+libxtables12:amd64	1.8.7-1ubuntu5.2
+libxtst6:amd64	2:1.2.3-1build4
+libxv1:amd64	2:1.0.11-1build2
+libxxf86dga1:amd64	2:1.1.5-0ubuntu3
+libxxf86vm1:amd64	1:1.1.4-1build3
+libxxhash0:amd64	0.8.1-1
+libyaml-0-2:amd64	0.2.2-1build2
+libz3-4:amd64	4.8.12-1
+libz3-dev:amd64	4.8.12-1
+libzstd1:amd64	1.4.8+dfsg-3build1
+linux-base	4.5ubuntu9+22.04.1
+linux-firmware	20220329.git681281e4-0ubuntu3.42
+linux-generic	5.15.0.198.171
+linux-headers-5.15.0-187	5.15.0-187.197
+linux-headers-5.15.0-187-generic	5.15.0-187.197
+linux-headers-5.15.0-198	5.15.0-198.208
+linux-headers-5.15.0-198-generic	5.15.0-198.208
+linux-headers-generic	5.15.0.198.171
+linux-image-5.15.0-141-generic	5.15.0-141.151
+linux-image-5.15.0-177-generic	5.15.0-177.187
+linux-image-5.15.0-179-generic	5.15.0-179.189
+linux-image-5.15.0-181-generic	5.15.0-181.191
+linux-image-5.15.0-185-generic	5.15.0-185.195
+linux-image-5.15.0-186-generic	5.15.0-186.196
+linux-image-5.15.0-187-generic	5.15.0-187.197
+linux-image-5.15.0-194-generic	5.15.0-194.204
+linux-image-5.15.0-198-generic	5.15.0-198.208
+linux-image-generic	5.15.0.198.171
+linux-libc-dev:amd64	5.15.0-198.208
+linux-modules-5.15.0-141-generic	5.15.0-141.151
+linux-modules-5.15.0-177-generic	5.15.0-177.187
+linux-modules-5.15.0-179-generic	5.15.0-179.189
+linux-modules-5.15.0-181-generic	5.15.0-181.191
+linux-modules-5.15.0-185-generic	5.15.0-185.195
+linux-modules-5.15.0-186-generic	5.15.0-186.196
+linux-modules-5.15.0-187-generic	5.15.0-187.197
+linux-modules-5.15.0-194-generic	5.15.0-194.204
+linux-modules-5.15.0-198-generic	5.15.0-198.208
+linux-modules-extra-5.15.0-141-generic	5.15.0-141.151
+linux-modules-extra-5.15.0-177-generic	5.15.0-177.187
+linux-modules-extra-5.15.0-179-generic	5.15.0-179.189
+linux-modules-extra-5.15.0-181-generic	5.15.0-181.191
+linux-modules-extra-5.15.0-185-generic	5.15.0-185.195
+linux-modules-extra-5.15.0-186-generic	5.15.0-186.196
+linux-modules-extra-5.15.0-187-generic	5.15.0-187.197
+linux-modules-extra-5.15.0-194-generic	5.15.0-194.204
+linux-modules-extra-5.15.0-198-generic	5.15.0-198.208
+llvm	1:14.0-55~exp2
+llvm-14	1:14.0.0-1ubuntu1.1
+llvm-14-dev	1:14.0.0-1ubuntu1.1
+llvm-14-linker-tools	1:14.0.0-1ubuntu1.1
+llvm-14-runtime	1:14.0.0-1ubuntu1.1
+llvm-14-tools	1:14.0.0-1ubuntu1.1
+llvm-runtime:amd64	1:14.0-55~exp2
+locales	2.35-0ubuntu3.15
+login	1:4.8.1-2ubuntu2.2
+logrotate	3.19.0-1ubuntu1.1
+logsave	1.46.5-2ubuntu1.2
+lsb-base	11.1.0ubuntu4
+lsb-release	11.1.0ubuntu4
+lshw	02.19.git.2021.06.19.996aaad9c7-2ubuntu0.22.04.1
+lsof	4.93.2+dfsg-1.1build2
+lto-disabled-list	24
+lvm2	2.03.11-2.1ubuntu5
+make	4.3-4.1build1
+man-db	2.10.2-1
+manpages	5.10-1ubuntu1
+manpages-dev	5.10-1ubuntu1
+mawk	1.3.4.20200120-3
+mdadm	4.2-0ubuntu2
+media-types	7.0.0
+mesa-vulkan-drivers:amd64	23.2.1-1ubuntu3.1~22.04.4
+mount	2.37.2-4ubuntu3.6
+mtr-tiny	0.95-1
+multipath-tools	0.8.8-1ubuntu1.22.04.4
+nano	6.2-1ubuntu0.2
+ncdu	1.15.1-1
+ncurses-base	6.3-2ubuntu0.3
+ncurses-bin	6.3-2ubuntu0.3
+ncurses-term	6.3-2ubuntu0.3
+needrestart	3.5-5ubuntu2.5
+net-tools	1.60+git20181103.0eebece-1ubuntu5.4
+netbase	6.3
+netcat-openbsd	1.218-4ubuntu1
+netplan-generator	0.107.1-3ubuntu0.22.04.5
+netplan.io	0.107.1-3ubuntu0.22.04.5
+networkd-dispatcher	2.1-2ubuntu0.22.04.2
+nftables	1.0.2-1ubuntu3.1
+open-iscsi	2.1.5-1ubuntu1.1
+openssh-client	1:8.9p1-3ubuntu0.17
+openssh-server	1:8.9p1-3ubuntu0.17
+openssh-sftp-server	1:8.9p1-3ubuntu0.17
+openssl	3.0.2-0ubuntu1.30
+os-prober	1.79ubuntu2
+packagekit	1.2.5-2ubuntu3.1
+packagekit-tools	1.2.5-2ubuntu3.1
+parted	3.4-2build1
+passwd	1:4.8.1-2ubuntu2.2
+pastebinit	1.5.1-1ubuntu1
+patch	2.7.6-7build2
+patchelf	0.14.3-1
+pci.ids	0.0~2022.01.22-1ubuntu0.1
+pciutils	1:3.7.0-6
+perl	5.34.0-3ubuntu1.9
+perl-base	5.34.0-3ubuntu1.9
+perl-modules-5.34	5.34.0-3ubuntu1.9
+perl-openssl-defaults:amd64	5build2
+pigz	2.6-1
+pinentry-curses	1.1.1-1build2
+pkexec	0.105-33ubuntu0.2
+pkg-config	0.29.2-1ubuntu3
+policycoreutils	3.3-1build1
+policykit-1	0.105-33ubuntu0.2
+polkitd	0.105-33ubuntu0.2
+pollinate	4.33-3ubuntu2.3
+powermgmt-base	1.36ubuntu0.22.04.1
+procps	2:3.3.17-6ubuntu2.1
+psmisc	23.4-2build3
+publicsuffix	20211207.1025-1
+pv	1.6.6-1build2
+python-apt-common	2.4.0ubuntu4.1
+python-babel-localedata	2.8.0+dfsg.1-7
+python3	3.10.6-1~22.04.1
+python3-apport	2.20.11-0ubuntu82.10
+python3-apt	2.4.0ubuntu4.1
+python3-attr	21.2.0-1ubuntu1
+python3-babel	2.8.0+dfsg.1-7
+python3-blinker	1.4+dfsg1-0.4
+python3-certifi	2020.6.20-1
+python3-cffi-backend:amd64	1.15.0-1build2
+python3-chardet	4.0.0-1
+python3-click	8.0.3-1
+python3-colorama	0.4.4-1
+python3-commandnotfound	22.04.0
+python3-configobj	5.0.6-5ubuntu0.1
+python3-cryptography	3.4.8-1ubuntu2.4
+python3-dbus	1.2.18-3build1
+python3-debconf	1.5.79ubuntu1
+python3-debian	0.1.43ubuntu1.1
+python3-distro	1.7.0-1
+python3-distro-info	1.1ubuntu0.2
+python3-distupgrade	1:22.04.21
+python3-distutils	3.10.8-1~22.04
+python3-gdbm:amd64	3.10.8-1~22.04
+python3-gi	3.42.1-0ubuntu1
+python3-httplib2	0.20.2-2ubuntu0.1
+python3-idna	3.3-1ubuntu0.2
+python3-importlib-metadata	4.6.4-1
+python3-jeepney	0.7.1-3
+python3-jinja2	3.0.3-1ubuntu0.4
+python3-json-pointer	2.0-0ubuntu1
+python3-jsonpatch	1.32-2
+python3-jsonschema	3.2.0-0ubuntu2
+python3-jwt	2.3.0-1ubuntu0.4
+python3-keyring	23.5.0-1
+python3-launchpadlib	1.10.16-1
+python3-lazr.restfulclient	0.14.4-1
+python3-lazr.uri	1.0.6-2
+python3-lib2to3	3.10.8-1~22.04
+python3-markupsafe	2.0.1-2build1
+python3-minimal	3.10.6-1~22.04.1
+python3-more-itertools	8.10.0-2
+python3-netifaces:amd64	0.11.0-1build2
+python3-netplan	0.107.1-3ubuntu0.22.04.5
+python3-newt:amd64	0.52.21-5ubuntu2
+python3-oauthlib	3.2.0-1ubuntu0.1
+python3-openssl	21.0.0-1ubuntu0.1
+python3-pkg-resources	59.6.0-1.2ubuntu0.22.04.3
+python3-problem-report	2.20.11-0ubuntu82.10
+python3-pygments	2.11.2+dfsg-2ubuntu0.1
+python3-pyparsing	2.4.7-1
+python3-pyrsistent:amd64	0.18.1-1build1
+python3-requests	2.25.1+dfsg-2ubuntu0.4
+python3-secretstorage	3.3.1-1
+python3-serial	3.5-1
+python3-setuptools	59.6.0-1.2ubuntu0.22.04.3
+python3-six	1.16.0-3ubuntu1
+python3-software-properties	0.99.22.9
+python3-systemd	234-3ubuntu2
+python3-tz	2022.1-1ubuntu0.22.04.1
+python3-update-manager	1:22.04.22
+python3-urllib3	1.26.5-1~exp1ubuntu0.7
+python3-wadllib	1.3.6-1
+python3-xkit	0.5.0ubuntu5
+python3-yaml	5.4.1-1ubuntu1
+python3-zipp	1.0.0-3ubuntu0.1
+python3.10	3.10.12-1~22.04.18
+python3.10-minimal	3.10.12-1~22.04.18
+qemu-guest-agent	1:6.2+dfsg-2ubuntu6.31
+readline-common	8.1.2-1
+ripgrep	13.0.0-2ubuntu0.1
+rpcsvc-proto	1.4.2-0ubuntu6
+rsync	3.2.7-0ubuntu0.22.04.7
+rsyslog	8.2112.0-2ubuntu2.5
+run-one	1.17-0ubuntu1
+screen	4.9.0-1ubuntu0.1
+sed	4.8-1ubuntu2.1
+selinux-utils	3.3-1build2
+sensible-utils	0.0.17
+sg3-utils	1.46-1ubuntu0.22.04.2
+sg3-utils-udev	1.46-1ubuntu0.22.04.2
+shared-mime-info	2.1-2
+shellcheck	0.8.0-2
+snapd	2.76.3+ubuntu22.04
+software-properties-common	0.99.22.9
+squashfs-tools	1:4.5-3build1
+ssh-import-id	5.11-0ubuntu1
+strace	5.16-0ubuntu3
+sudo	1.9.9-1ubuntu2.6
+systemd	249.11-0ubuntu3.22
+systemd-hwe-hwdb	249.11.6
+systemd-sysv	249.11-0ubuntu3.22
+systemd-timesyncd	249.11-0ubuntu3.22
+sysvinit-utils	3.01-1ubuntu1
+tar	1.34+dfsg-1ubuntu0.1.22.04.6
+tcl	8.6.11+1build2
+tcl-dev:amd64	8.6.11+1build2
+tcl8.6	8.6.12+dfsg-1build1
+tcl8.6-dev:amd64	8.6.12+dfsg-1build1
+tcpdump	4.99.1-3ubuntu0.2
+telnet	0.17-44build1
+thin-provisioning-tools	0.9.0-2ubuntu1
+time	1.9-0.1build2
+tk	8.6.11+1build2
+tk-dev:amd64	8.6.11+1build2
+tk8.6	8.6.12-1build1
+tk8.6-dev:amd64	8.6.12-1build1
+tmux	3.2a-4ubuntu0.2
+tnftp	20210827-4build1
+tpm-udev	0.6
+tree	2.0.2-1
+tzdata	2026c-0ubuntu0.22.04.1
+ubuntu-advantage-tools	37.2ubuntu~22.04.1
+ubuntu-drivers-common	1:0.9.6.2~0.22.04.11
+ubuntu-keyring	2021.03.26
+ubuntu-minimal	1.481.5
+ubuntu-mono	20.10-0ubuntu2
+ubuntu-pro-client	37.2ubuntu~22.04.1
+ubuntu-pro-client-l10n	37.2ubuntu~22.04.1
+ubuntu-release-upgrader-core	1:22.04.21
+ubuntu-standard	1.481.5
+ucf	3.0043
+udev	249.11-0ubuntu3.22
+ufw	0.36.1-4ubuntu0.1
+unattended-upgrades	2.8ubuntu1
+unzip	6.0-26ubuntu3.2
+update-manager-core	1:22.04.22
+update-notifier-common	3.192.54.8
+usb.ids	2022.04.02-1
+usbutils	1:014-1build1
+usrmerge	25ubuntu2
+util-linux	2.37.2-4ubuntu3.6
+uuid-dev:amd64	2.37.2-4ubuntu3.6
+uuid-runtime	2.37.2-4ubuntu3.6
+vim	2:8.2.3995-1ubuntu2.36
+vim-common	2:8.2.3995-1ubuntu2.36
+vim-runtime	2:8.2.3995-1ubuntu2.36
+vim-tiny	2:8.2.3995-1ubuntu2.36
+wget	1.21.2-2ubuntu1.5
+whiptail	0.52.21-5ubuntu2
+wireless-regdb	2026.05.30-0ubuntu1~22.04.1
+x11-common	1:7.7+23ubuntu2
+x11-utils	7.7+5build2
+x11-xkb-utils	7.7+5build4
+x11-xserver-utils	7.7+9build1
+x11proto-core-dev	2021.5-1
+x11proto-dev	2021.5-1
+xauth	1:1.1-1build2
+xbitmaps	1.1.1-2.1ubuntu1
+xdg-user-dirs	0.17-2ubuntu4
+xdg-utils	1.1.3-4.1ubuntu3~22.04.1
+xfonts-cyrillic	1:1.0.5
+xfonts-encodings	1:1.0.5-0ubuntu2
+xfonts-scalable	1:1.0.3-1.2ubuntu1
+xfonts-utils	1:7.7+6build2
+xfsprogs	5.13.0-1ubuntu2.1
+xkb-data	2.33-1
+xorg-sgml-doctools	1:1.11-1.1
+xserver-common	2:21.1.4-2ubuntu1.7~22.04.16
+xterm	372-1ubuntu1
+xtrans-dev	1.4.0-1
+xvfb	2:21.1.4-2ubuntu1.7~22.04.16
+xxd	2:8.2.3995-1ubuntu2.36
+xz-utils	5.2.5-2ubuntu1.1
+zip	3.0-12build2
+zlib1g:amd64	1:1.2.11.dfsg-2ubuntu9.2
+zlib1g-dev:amd64	1:1.2.11.dfsg-2ubuntu9.2
+zsh	5.8.1-1
+zsh-common	5.8.1-1
+zstd	1.4.8+dfsg-3build1

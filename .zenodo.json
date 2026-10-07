@@ -1,7 +1,7 @@
 {
   "title": "SpectraFit-Core-Reproducibility: every published result of spectrafit-core 0.1.2, regenerated from the release",
   "upload_type": "software",
-  "description": "<p>A pinned, thin consumer of the spectrafit-core release that regenerates the NIST StRD agreement tables, the figures and the timing comparison reported in the SoftwareX article on spectrafit-core, on a recorded host (terra, Linux x86-64), and checks every number stated in the text against the regenerated data. The compiled library is the published PyPI wheel; the harness and the figure scripts come from the release tag; the archived timing measurement is verified by SHA-256, not re-measured.</p>",
+  "description": "<p>A pinned, thin consumer of the spectrafit-core release that regenerates the NIST StRD agreement tables, the figures and the timing comparison reported in the SoftwareX article on spectrafit-core, on a recorded host (terra, Linux x86-64), and checks every number stated in the text against the regenerated data. The compiled library is the published PyPI wheel; the harness and the figure scripts come from the release tag.</p><p>Version 1.1.0 adds the timing benchmark of record, measured on terra on 6 and 7 October 2026 with the spectrafit-core 0.1.2 wheel and the v0.1.2 harness: 160 cases on six backends at five repetition depths, a 50-seed catalogue sweep, cross-backend parameter agreement and the serialisation-bias audit, with full per-run payloads and provenance. The 151-case archive measured before the release is kept and labelled as superseded.</p>",
   "creators": [
     {
       "name": "Hahn, Anselm W.",
@@ -37,5 +37,6 @@
       "resource_type": "software",
       "scheme": "url"
     }
-  ]
+  ],
+  "version": "1.1.0"
 }
