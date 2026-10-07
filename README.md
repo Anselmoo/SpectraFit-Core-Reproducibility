@@ -1,5 +1,7 @@
 # SpectraFit-Core-Reproducibility
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23210105.svg)](https://doi.org/10.5281/zenodo.23210105)
+
 Results and figures of the SoftwareX article on `spectrafit-core`, regenerated from
 the published release, with every number stated in the article checked against the
 regenerated data.
@@ -227,7 +229,7 @@ Every number the article states is recomputed from `results/timing/` in
 
 | | How |
 |---|---|
-| Findable | software DOI `10.5281/zenodo.23043544`; tag and commit in `pins.toml`; `ro-crate-metadata.json` lists every file with size, digest and description |
+| Findable | this repository: DOI `10.5281/zenodo.23210105` (1.1.0), concept DOI `10.5281/zenodo.23171640`; software DOI `10.5281/zenodo.23043544`; tag and commit in `pins.toml`; `ro-crate-metadata.json` lists every file with size, digest and description |
 | Accessible | wheel from PyPI, source from GitHub, both by open protocols; no credentials |
 | Interoperable | JSON results, PDF and PNG figures, RO-Crate 1.1 metadata |
 | Reusable | MIT licence (`LICENSE`); `provenance.json` records host, versions and script hashes; `uv.lock` fixes the environment; `checksums.sha256` verifies with `sha256sum -c`; `CITATION.cff` |
