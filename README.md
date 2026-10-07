@@ -12,7 +12,7 @@ copy of the benchmark suite:
 | compiled library | PyPI wheel `spectrafit-core==0.1.2` | hash in `uv.lock` |
 | comparators | lmfit 1.3.4, SciPy 1.18.0, NumPy 2.5.1 | `pins.toml`, `uv.lock` |
 | NIST fixtures, harness, figure scripts | GitHub `Anselmoo/SpectraFit-Core` at tag `v0.1.2` | commit hash in `pins.toml` |
-| timing data | the same tag, `reproducibility/` | SHA-256 in `pins.toml` |
+| timing data | measured on terra with that wheel and the tag's harness, `results/timing/` | SHA-256 in `pins.toml [timing_inputs]` |
 
 ## Run it
 
@@ -55,37 +55,62 @@ the scripts from the tag.
 | `figures/figure2_nist.{pdf,png}` | Figure 2 | `fig_nist_dual.py` |
 | `figures/figure3_benchmark.{pdf,png}` | Figure 3 | `fig_benchmark_profile.py` |
 
-**Taken from the release archive, verified by SHA-256, not re-measured**
-(`results/archived/`)
+**Measured on terra with spectrafit-core 0.1.2, verified by SHA-256 on every run, not re-measured on every run**
+(`results/timing/`)
 
 | File | Article |
 |---|---|
-| `bench_summary.json` | Section 3.2, Figure 3 |
-| `ladder.json` | five repetition depths |
-| `sweep.json` | 50 seeds |
-| `param_agreement.json` | 93 cases, 0.23 percentage points |
+| `bench_summary.json` | Section 3.2, Figure 3 (160 cases × 6 backends, repetition depth 50) |
+| `ladder/ladder.json` | five repetition depths |
+| `seed-sweep/sweep.json` | 50 catalogue seeds |
+| `param_agreement.json` | 94 cases, 0.74 percentage points |
 | `audit_bias.json` | serialisation bias, kernel parity |
 
-The reason is cost and meaning, not convenience. The archived ladder took about
-17 hours on a 16-core host (`terra`, AMD EPYC, Linux x86-64, 15 to 16 August 2026,
-commit `990a4c7`). A wall-clock ratio measured on a laptop is a different
-measurement, not a reproduction of that one. To measure one rung on the current
-host and see it next to the archived value:
+The measurement took 26 hours on terra (16 cores, 6 to 7 October 2026). A wall-clock ratio
+measured on another machine is a different measurement, not a reproduction of this one,
+so `reproduce.py` checks the stored files against `pins.toml` and recomputes every claim
+from them instead of timing again. `results/timing/README.md` says how they were measured
+and how the measurement differs from the archived one.
+
+The timing measured by `bench/` in this repository:
+
+| Script | What it does |
+|---|---|
+| `bench/run_timing.sh` | the detached chain: ladder, seed sweep, summary, agreement, bias; stops at the first failure |
+| `bench/seed_sweep.py`, `bench/_seed_point.py` | seed sweep over the release harness. 0.1.2 has no `--seed` / `--headline-only`, so the release's `cli.run` is called with `seed=` and `analyzed_ids=` bound |
+| `bench/assemble.py` | records host and configuration before the first rung; builds `results/timing/` (schema `bench-ladder/2`, `bench-seed-sweep/1`, `bench-provenance/2`) and checks it against the archived files |
+| `bench/host_snapshot.sh` | host snapshot before and after |
+| `bench/compare.py` | the comparison table below |
+
+To measure again (about 26 h on 16 cores; the export of the tag goes to `<root>/src`, see
+`results/timing/README.md`):
+
+```bash
+uv sync --locked --group benchmark --group audit
+tmux new -d -s timing "bash bench/run_timing.sh <root>"
+```
+
+**The 151-case archive of the release** (`results/archived/`) is still verified by SHA-256
+and copied on every run. It was measured before the first release (commits `990a4c7` and
+`0fd4b5d`, 15 to 17 August 2026) and is superseded for the paper.
+
+To measure one rung on the current host and see it next to the measured value:
 
 ```bash
 uv run --locked --group benchmark reproduce.py --benchmark --reps 4
 ```
 
-The archived run at `--reps 4` took 77 minutes on 16 cores. The result is written
-to `results/provenance.json` under `benchmark_on_this_host`; it never replaces the
-archived files.
+The measured rung at `--reps 4` took 70 minutes on terra. The result is written to
+`results/provenance.json` under `benchmark_on_this_host`; it never replaces the stored files.
 
 ## What a run writes
 
 ```
 results/
   nist_table2.json, nist_table2_tol1e15.json, nist_head_to_head.json   regenerated
-  archived/            the five timing files, as shipped in the release
+  timing/              the timing of record, measured with 0.1.2 (ladder, seed sweep,
+                       summary, agreement, bias, host snapshots, provenance)
+  archived/            the 151-case timing files as shipped in the release (superseded)
   release-archive/     the three NIST files as shipped in the release
   claims-report.json   every number the article states, recomputed, with pass/fail
   drift-report.json    regenerated Table 1 against the release's archived copy
@@ -112,38 +137,91 @@ On a different operating system or CPU the last digits of the fits differ, so
 The results of record are produced on **terra**, a dedicated 16-core Linux
 machine (AMD EPYC, Ubuntu 22.04) that is independent of the machines on which
 spectrafit-core is developed and tested: it is not a CI runner and not a
-developer's laptop, and it runs nothing else during a measurement. The archived
-timing benchmark was measured on terra on 15 and 16 August 2026, and the NIST
-tables shipped since the 0.1.1 release were generated there too, so accuracy and speed come
-from one machine.
+developer's laptop, and it runs no other benchmark during a measurement (see
+`results/timing/README.md` for what else was present). The timing of record was
+measured on terra on 6 and 7 October 2026, and the NIST tables shipped since the 0.1.1
+release were generated there too, so accuracy and speed come from one machine.
 
 - `host/` holds snapshots of terra before and after its package update (kernel,
   glibc, CPU, installed packages, tool versions); `results/provenance.json`
-  records kernel, C library, CPU features and the BLAS/LAPACK loaded for every run.
-- The timing benchmark is **not repeated**. The archived measurement is taken from
-  the release and verified by SHA-256; `--benchmark` adds one rung measured with
-  the release build, recorded next to the archived value for comparison only.
-- The archived timing run was made at spectrafit-core commit `990a4c7`, on a branch
-  that caps the number of functions the JAX backend keeps compiled (`compile_budget`
-  64). The cap was not part of 0.1.0 or 0.1.1: without it the JAX backend runs out
-  of memory mappings on terra (`vm.max_map_count` 65530), and a one-rung check with
-  the 0.1.1 release aborted after 58 minutes (`LLVM ERROR: Unable to allocate
-  section memory`). The cap was released in 0.1.2, which this repository pins, and
-  it lives only in the JAX backend; the other five backends do not use it.
-- The rung measured with the 0.1.2 release on terra (`results/provenance.json`,
-  `benchmark_on_this_host`, run `2026-10-05_run_001`) next to the archived rung at the same
-  `--reps 4`:
-
-  | | cases | geometric-mean speed-up | harmonic-mean speed-up | largest \|Δr²\| | spectrafit-core wins | regressions |
-  |---|---|---|---|---|---|---|
-  | archived, `990a4c7`, 15 Aug 2026 | 151 | 15.97× | 13.11× | 1.28e-04 | 88.1 % | 0 |
-  | 0.1.2 release | 160 | 16.24× | 13.33× | 1.29e-04 | 87.5 % | 0 |
-
-  The case sets differ: the harness released in 0.1.2 generates 160 cases
-  where the archived run had 151, so the two rows are compared, not
-  equated. The article's timing numbers are the archived ones.
+  records kernel, C library, CPU features and the BLAS/LAPACK loaded for every run,
+  and `results/timing/host/` holds snapshots taken before and after the timing
+  measurement.
+- The timing of record (`results/timing/`) was measured on terra with the published
+  0.1.2 wheel and the v0.1.2 harness, from 6 October 2026 07:24 UTC to 7 October
+  09:30 UTC, at the repetition depths, `--mc` and seeds of the archived run.
+- The JAX backend runs with the compile budget of 0.1.2 (64, its default). Without the
+  budget the JAX backend runs out of memory mappings on terra (`vm.max_map_count`
+  65530): a one-rung check with the 0.1.1 release aborted after 58 minutes (`LLVM
+  ERROR: Unable to allocate section memory`).
 - `results/other-hosts/` keeps runs on other machines for comparison; they are not
   the results of record. Each has its own `README.md`.
+
+## Timing: archive against measurement
+
+The archived timing (151 cases, pre-release commit `990a4c7`, August 2026) next to
+the measurement of record (160 cases, release 0.1.2, October 2026), computed the same
+way by `bench/compare.py`:
+
+| | 151 cases, `990a4c7`, Aug 2026 (archived) | 160 cases, 0.1.2, Oct 2026 (of record) |
+|---|---|---|
+| cases | 151 | 160 |
+| categories | 9 | 10 |
+| geometric-mean speed-up vs lmfit | 16.45 | 16.75 |
+| harmonic-mean speed-up vs lmfit | 13.78 | 13.75 |
+| largest \|Δr²\| | 1.28e-04 | 1.29e-04 |
+| spectrafit-core win rate (gate) | 88.1 % | 87.5 % |
+| regressions | 0 | 0 |
+| fastest backend on | 131 of 151 | 140 of 160 |
+| categories where it is not fastest | optfn | optfn |
+| headline without optfn | 15.14 | 15.71 |
+| factor vs jax | 4.94 | 5.30 |
+| factor vs scipy-ls-lm | 6.25 | 7.07 |
+| factor vs scipy-ls-trf | 7.92 | 8.96 |
+| factor vs scipy-ls-dogbox | 6.49 | 7.50 |
+| category complex | 23.99 (35) | 24.84 (35) |
+| category easy | 12.72 (20) | 14.37 (20) |
+| category edge | 14.34 (20) | 16.33 (20) |
+| category fixed | 10.03 (4) | 12.14 (4) |
+| category lineshapes | 8.85 (24) | 10.07 (27) |
+| category optfn | 28.32 (20) | 26.29 (20) |
+| category reality | 17.87 (16) | 19.58 (16) |
+| category robust | — | 5.64 (6) |
+| category scaling | 16.31 (8) | 17.42 (8) |
+| category tied | 14.12 (4) | 14.91 (4) |
+| depth 2 (--reps 4) | 15.97 | 16.33 |
+| depth 5 (--reps 10) | 15.78 | 16.31 |
+| depth 10 (--reps 20) | 16.16 | 16.46 |
+| depth 25 (--reps 50) | 16.36 | 16.50 |
+| depth 50 (--reps 100) | 16.45 | 16.75 |
+| seeds | 50 | 50 |
+| seed mean ± sd | 15.95 ± 0.38 | 16.30 ± 0.41 |
+| seed range | 15.08 to 16.67 | 15.54 to 17.55 |
+| agreement: cases on all six / with truth | 127 / 124 | 136 / 131 |
+| agreement: well-conditioned cases | 93 | 94 |
+| agreement: max cross-backend spread | 0.23 pp | 0.74 pp |
+| agreement: excluded stratum | 31 | 37 |
+| bias: wheel per evaluation | 74.9 µs | 139.2 µs |
+| bias: NumPy per evaluation | 2.97 µs | 6.72 µs |
+| bias: ratio | 25.3 | 20.7 |
+| parity: kernels / exact / largest | 35 / 23 / 4.59e-07 | 35 / 23 / 4.59e-07 |
+
+The two columns are compared, not equated. The case sets differ, and so do the
+library build and the harness version: 0.1.2 adds three line-shape cases and the six
+`robust` cases. Two rows moved by more than the case set alone explains:
+
+- **The serialisation bias** (`audit_bias.json`) is measured by the same script. The
+  release's `measure_audit_bias.py` equals the one that wrote the archived file
+  (spectrafit-core `0bf1bef`) apart from comments and its repository-depth fix. Both
+  terms roughly doubled: 74.9 → 139.2 µs through the wheel and 2.97 → 6.72 µs in
+  plain NumPy, so the ratio fell from 25 to 21. Two independent readings with 0.1.2
+  on terra agree (139.2 µs). The archived file names no host. The cause is not
+  established; the paper uses the 0.1.2 value.
+- **The largest cross-backend spread** of the parameter agreement rose from 0.23 to
+  0.74 percentage points on 94 well-conditioned cases (93 before).
+
+Every number the article states is recomputed from `results/timing/` in
+`results/claims-report.json`.
 
 ## FAIR
 

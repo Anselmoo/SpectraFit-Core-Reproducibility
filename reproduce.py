@@ -3,8 +3,8 @@
 
 Why this exists
 ---------------
-The paper describes spectrafit-core 0.1.0. Its numbers must therefore come from
-0.1.0 as a reader can install it, not from a development checkout. This script
+The paper describes spectrafit-core 0.1.2. Its numbers must therefore come from
+0.1.2 as a reader can install it, not from a development checkout. This script
 is a thin, pinned *consumer* of the release:
 
 * the compiled library comes from the PyPI wheel pinned in ``uv.lock``;
@@ -22,16 +22,20 @@ Regenerated on every run (seconds):
 * ``results/nist_head_to_head.json``     per-dataset curves behind Figure 2
 * ``figures/figure1_architecture.*``     Figure 1
 * ``figures/figure2_nist.*``             Figure 2
-* ``figures/figure3_benchmark.*``        Figure 3, drawn from the archived timing
+* ``figures/figure3_benchmark.*``        Figure 3, drawn from the measured timing
 
-Taken from the release archive and verified by SHA-256, not re-measured:
+Measured on terra with the 0.1.2 wheel and the v0.1.2 harness (``bench/``), stored in
+``results/timing/`` and verified here by the SHA-256 in ``pins.toml [timing_inputs]``:
 
-* the timing benchmark (``bench_summary.json``, the ladder, the seed sweep) and
-  the two measurements derived from a full benchmark run (``param_agreement.json``,
-  ``audit_bias.json``). Wall-clock timing depends on the host, and the archived
-  ladder took about 17 hours on a 16-core machine. ``--benchmark`` re-measures one
-  rung on the current host and reports it next to the archived value; it never
-  replaces the archived files.
+* the timing benchmark (``bench_summary.json``, the five-depth ladder, the 50-seed
+  sweep), ``param_agreement.json`` and ``audit_bias.json``. Wall-clock timing depends
+  on the host and the measurement took 26 hours on 16 cores, so it is not repeated on
+  every run. ``--benchmark`` re-measures one rung on the current host and reports it
+  next to the measured value; it never replaces the stored files.
+
+The 151-case timing archive shipped in the release (measured before the release) is
+still verified by SHA-256 and copied to ``results/archived/``; the paper no longer
+uses it.
 
 After regeneration the script checks every number the paper states against the
 data (``results/claims-report.json``) and exits non-zero if one no longer holds.
@@ -69,11 +73,7 @@ PINS = tomllib.loads((HERE / "pins.toml").read_text())
 CACHE = HERE / ".cache"
 RESULTS = HERE / "results"
 FIGURES = HERE / "figures"
-# Three scripts of the release (fig_architecture.py, extract_bench_summary.py,
-# measure_audit_bias.py) look for the repository root one directory above where it
-# is: they were written for a path three levels deep and ship two levels deep. The
-# scripts are run unmodified, so the export nests ``reproducibility/`` one level
-# down, which puts ``crates/`` and ``python/`` where the scripts look for them.
+# The release's figure scripts, run unmodified in the release's own layout.
 UPSTREAM_FIGS = Path("reproducibility") / "figures"
 
 # script -> extra argv. Order matters: fig_nist_dual reads nist_head_to_head.json.
@@ -93,6 +93,12 @@ REGENERATED_JSON = ["nist_head_to_head.json", "nist_table2.json", "nist_table2_t
 # crate manifests that fig_architecture.py counts.
 EXPORT_PATHS = ["reproducibility", "python/oracles", "crates", "Cargo.toml"]
 SOLVERS = ["spectrafit_core", "lmfit", "scipy_lm", "scipy_trf"]
+TIMING = RESULTS / "timing"
+# The measured timing, put where the release's fig_benchmark_profile.py reads it.
+TIMING_OVERLAY = {
+    "results/timing/bench_summary.json": "reproducibility/figures/bench_summary.json",
+    "results/timing/ladder/ladder.json": "reproducibility/ladder/ladder.json",
+}
 
 
 def sha256(path: Path) -> str:
@@ -159,11 +165,43 @@ def ensure_source(source: Path | None) -> Path:
                          cwd=source, capture_output=True, check=True).stdout
     with tarfile.open(fileobj=io.BytesIO(tar)) as tf:
         tf.extractall(work, filter="data")
+    kept = CACHE / "archived-inputs"
+    if kept.exists():
+        shutil.rmtree(kept)
+    kept.mkdir()
     for rel, digest in PINS["archived_inputs"].items():
         got = sha256(work / rel)
         if got != digest:
             raise SystemExit(f"archived input {rel} has sha256 {got}, pinned {digest}")
+        shutil.copyfile(work / rel, kept / Path(rel).name)
     return work
+
+
+def verify_timing() -> None:
+    """The measured timing files must be the ones whose SHA-256 pins.toml records."""
+    for rel, digest in PINS["timing_inputs"].items():
+        path = HERE / rel
+        if not path.exists():
+            raise SystemExit(f"timing input {rel} is missing")
+        got = sha256(path)
+        if got != digest:
+            raise SystemExit(f"timing input {rel} has sha256 {got}, pinned {digest}")
+
+
+def overlay_timing(source: Path) -> None:
+    """Replace the release's 151-case timing inputs of Figure 3 by the measured ones.
+
+    ``fig_benchmark_profile.py`` reads ``bench_summary.json`` next to itself and the
+    repetition ladder (``../ladder/ladder.json`` plus ``../ladder/rungs/*/manifest.json``)
+    for the depth it states. The script is not changed; only its inputs are.
+    """
+    for rel, dest in TIMING_OVERLAY.items():
+        shutil.copyfile(HERE / rel, source / dest)
+    rungs = source / "reproducibility" / "ladder" / "rungs"
+    shutil.rmtree(rungs)
+    for manifest in sorted((TIMING / "ladder" / "rungs").glob("*/manifest.json")):
+        (rungs / manifest.parent.name).mkdir(parents=True)
+        shutil.copyfile(manifest, rungs / manifest.parent.name / "manifest.json")
 
 
 def harness_path(source: Path) -> Path:
@@ -210,6 +248,7 @@ def regenerate(source: Path) -> dict[str, dict]:
     for script, argv in MEASUREMENTS:
         print(f"  measuring  {script} {' '.join(argv)}".rstrip())
         run([sys.executable, script, *argv], cwd=figs, env=env)
+    overlay_timing(source)
     for stem in FIGURE_MAP:
         print(f"  drawing    {stem}.py")
         run([sys.executable, f"{stem}.py"], cwd=figs, env=env)
@@ -228,8 +267,8 @@ def collect(source: Path, into_results: Path, into_figures: Path) -> None:
             shutil.copyfile(figs / f"{stem}.{ext}", into_figures / f"{name}.{ext}")
     archived = into_results / "archived"
     archived.mkdir(exist_ok=True)
-    for rel in PINS["archived_inputs"]:
-        shutil.copyfile(source / rel, archived / Path(rel).name)
+    for rel in PINS["archived_inputs"]:  # as verified, before overlay_timing replaced them
+        shutil.copyfile(CACHE / "archived-inputs" / Path(rel).name, archived / Path(rel).name)
     # The three NIST files as the release shipped them, for the drift report.
     shipped = into_results / "release-archive"
     shipped.mkdir(exist_ok=True)
@@ -277,12 +316,12 @@ def claims(results: Path, nist_dir: Path | None = None) -> list[dict]:
     t = json.loads((nist_dir / "nist_table2.json").read_text())
     t15 = json.loads((nist_dir / "nist_table2_tol1e15.json").read_text())
     h2h = json.loads((nist_dir / "nist_head_to_head.json").read_text())
-    arch = results / "archived"
-    bench = json.loads((arch / "bench_summary.json").read_text())
-    ladder = json.loads((arch / "ladder.json").read_text())
-    sweep = json.loads((arch / "sweep.json").read_text())
-    agree = json.loads((arch / "param_agreement.json").read_text())
-    bias = json.loads((arch / "audit_bias.json").read_text())
+    timing = TIMING  # the stored measurement, in --check mode too
+    bench = json.loads((timing / "bench_summary.json").read_text())
+    ladder = json.loads((timing / "ladder" / "ladder.json").read_text())
+    sweep = json.loads((timing / "seed-sweep" / "sweep.json").read_text())
+    agree = json.loads((timing / "param_agreement.json").read_text())
+    bias = json.loads((timing / "audit_bias.json").read_text())
 
     rows = t["datasets"]
     col = lambda c: {r["name"]: r["columns"][c] for r in rows}  # noqa: E731
@@ -336,7 +375,7 @@ def claims(results: Path, nist_dir: Path | None = None) -> list[dict]:
     def c(cid: str, source: str, statement: str, observed: object, ok: bool) -> dict:
         return {"id": cid, "source": source, "statement": statement, "observed": observed, "ok": bool(ok)}
 
-    reg, arc = "regenerated", "archived"
+    reg, arc = "regenerated", "measured-0.1.2"
     return [
         c("nist-01", reg, "22 of the 27 NIST problems are implemented", len(rows), len(rows) == 22),
         c("nist-02", reg, "spectrafit-core recovers every certified value to more than six "
@@ -370,40 +409,40 @@ def claims(results: Path, nist_dir: Path | None = None) -> list[dict]:
         c("nist-12", reg, "a rerun at 1e-15 raises the agreement of spectrafit-core on most datasets and lowers none",
           {"raised": raised, "lowered": lowered, "unchanged": len(sf) - raised - lowered},
           lowered == 0 and raised >= 11),
-        c("bench-01", arc, "151 cases", len(cases), len(cases) == 151),
-        c("bench-02", arc, "16.4 times faster than lmfit in geometric mean, 13.8 in harmonic mean",
+        c("bench-01", arc, "160 cases", len(cases), len(cases) == 160),
+        c("bench-02", arc, "16.8 times faster than lmfit in geometric mean, 13.7 in harmonic mean",
           {"geomean": _gm(speed), "harmonic": len(speed) / sum(1 / x for x in speed)},
-          round(_gm(speed), 1) == 16.4 and round(len(speed) / sum(1 / x for x in speed), 1) == 13.8),
-        c("bench-03", arc, "factors 6.2, 7.9 and 6.5 against the SciPy configurations and 4.9 against JAX",
+          round(_gm(speed), 1) == 16.8 and round(len(speed) / sum(1 / x for x in speed), 1) == 13.7),
+        c("bench-03", arc, "factors 7.1, 9.0 and 7.5 against the SciPy configurations and 5.3 against JAX",
           ratio, [round(ratio[s], 1) for s in
-                  ("scipy-ls-lm", "scipy-ls-trf", "scipy-ls-dogbox", "jax")] == [6.2, 7.9, 6.5, 4.9]),
-        c("bench-04", arc, "fastest backend on 131 of the 151 cases", fastest, fastest == 131),
-        c("bench-05", arc, "by category the speedup ranges from 8.9 to 28.3; tied-parameter cases 14.1",
+                  ("scipy-ls-lm", "scipy-ls-trf", "scipy-ls-dogbox", "jax")] == [7.1, 9.0, 7.5, 5.3]),
+        c("bench-04", arc, "fastest backend on 140 of the 160 cases", fastest, fastest == 140),
+        c("bench-05", arc, "by category the speedup ranges from 5.6 to 26.3; tied-parameter cases 14.9",
           {k: round(v, 2) for k, v in cat.items()},
-          round(min(cat.values()), 1) == 8.9 and round(max(cat.values()), 1) == 28.3
-          and round(cat["tied"], 1) == 14.1),
-        c("bench-06", arc, "the headline moves between 15.8 and 16.4 across the five depths",
-          depth, len(depth) == 5 and round(min(depth), 1) == 15.8 and round(max(depth), 1) == 16.4),
-        c("bench-07", arc, "15.95 with a standard deviation of 0.38 across 50 seeds",
+          round(min(cat.values()), 1) == 5.6 and round(max(cat.values()), 1) == 26.3
+          and round(cat["tied"], 1) == 14.9),
+        c("bench-06", arc, "the headline moves between 16.3 and 16.8 across the five depths",
+          depth, len(depth) == 5 and round(min(depth), 1) == 16.3 and round(max(depth), 1) == 16.8),
+        c("bench-07", arc, "16.30 with a standard deviation of 0.41 across 50 seeds",
           {"n": len(seeds), "mean": st.mean(seeds), "sd": st.stdev(seeds)},
-          len(seeds) == 50 and round(st.mean(seeds), 2) == 15.95 and round(st.stdev(seeds), 2) == 0.38),
+          len(seeds) == 50 and round(st.mean(seeds), 2) == 16.30 and round(st.stdev(seeds), 2) == 0.41),
         c("bench-08", arc, "the 20 cases it loses are the optimisation functions",
           sorted(lost), lost == {"optfn"} and len(cases) - fastest == 20),
-        c("bench-09", arc, "excluding the optimisation-function category lowers the headline to 15.1",
-          no_optfn, round(no_optfn, 1) == 15.1),
+        c("bench-09", arc, "excluding the optimisation-function category lowers the headline to 15.7",
+          no_optfn, round(no_optfn, 1) == 15.7),
         c("agree-02", arc, "CX-017: the six backends report the same coefficient of determination to three "
           "significant figures; parameter errors lie between 660 % and 1.3 million %",
           {"r2": cx_r2, "param_err_pct": cx_err},
           len(cx) == 6 and {f"{v:.3g}" for v in cx_r2.values()} == {"0.962"}
           and 660 <= min(cx_err.values()) < 670 and 1.25e6 <= max(cx_err.values()) < 1.35e6),
-        c("agree-01", arc, "on 93 cases the six backends agree to within 0.23 percentage points; 31 remain",
+        c("agree-01", arc, "on 94 cases the six backends agree to within 0.74 percentage points; 37 remain",
           {"n": agree["n_well_conditioned"], "spread": agree["max_cross_backend_spread_pct_points"],
            "excluded": agree["excluded_stratum"]["n"]},
-          agree["n_well_conditioned"] == 93 and agree["excluded_stratum"]["n"] == 31
-          and round(agree["max_cross_backend_spread_pct_points"], 2) == 0.23),
-        c("bias-01", arc, "about 75 microseconds against 3 for plain array code, roughly a factor of 25",
-          bias["bias"], round(bias["bias"]["wheel_us"]) == 75 and round(bias["bias"]["numpy_us"]) == 3
-          and round(bias["bias"]["ratio"]) == 25),
+          agree["n_well_conditioned"] == 94 and agree["excluded_stratum"]["n"] == 37
+          and round(agree["max_cross_backend_spread_pct_points"], 2) == 0.74),
+        c("bias-01", arc, "about 139 microseconds against 7 for plain array code, roughly a factor of 21",
+          bias["bias"], round(bias["bias"]["wheel_us"]) == 139 and round(bias["bias"]["numpy_us"]) == 7
+          and round(bias["bias"]["ratio"]) == 21),
         c("bias-02", arc, "35 registered kernels: 23 agree bit for bit, 12 do not; all but one of those "
           "to better than 4e-16, the exception at 5e-7",
           {"n": len(dev), "exact": bias["parity"]["n_exact"], "nonzero": len(nonzero),
@@ -421,8 +460,8 @@ def benchmark(source: Path, reps: int) -> dict:
     workdir = CACHE / "benchmark-run"
     workdir.mkdir(parents=True, exist_ok=True)
     env = os.environ | {"PYTHONPATH": str(harness_path(source))}
-    print(f"  benchmarking 151 cases x 6 backends at --reps {reps}; the archived run took "
-          "77 minutes at --reps 4 on 16 cores")
+    print(f"  benchmarking 160 cases x 6 backends at --reps {reps}; the measured rung took "
+          "70 minutes at --reps 4 on terra (16 cores)")
     run([sys.executable, "-m", "oracles.cli", "run", "--reps", str(reps)], cwd=workdir, env=env)
     manifests = sorted(workdir.rglob("manifest.json"), key=lambda p: p.stat().st_mtime)
     if not manifests:
@@ -525,6 +564,8 @@ def provenance(source: Path, versions: dict[str, str], extra: dict) -> dict:
             for s in sorted({m for m, _ in MEASUREMENTS} | {f"{f}.py" for f in FIGURE_MAP}
                             | {"extract_bench_summary.py"})
         },
+        "timing": dict(PINS["timing"]),
+        "timing_inputs_sha256": dict(PINS["timing_inputs"]),
         "archived_inputs_sha256": dict(PINS["archived_inputs"]),
         **extra,
     }
@@ -548,11 +589,12 @@ def main() -> int:
     ap.add_argument("--check", action="store_true",
                     help="regenerate into .cache/ and compare with the stored results; write nothing")
     ap.add_argument("--benchmark", action="store_true", help="also re-measure one timing rung on this host")
-    ap.add_argument("--reps", type=int, default=4, help="--reps for --benchmark (default 4, the shallowest archived rung)")
+    ap.add_argument("--reps", type=int, default=4, help="--reps for --benchmark (default 4, the shallowest measured rung)")
     args = ap.parse_args()
 
     repository = repository_state()  # before anything below writes into the tree
     versions = check_environment()
+    verify_timing()
     source = ensure_source(args.source)
     print(f"source     {PINS['source']['tag']} @ {PINS['source']['commit'][:12]}")
     print(f"library    spectrafit-core {versions['spectrafit-core']} (wheel), "

@@ -1,0 +1,5 @@
+seed=20260613 reps=10 mc=8 analyzed_ids=['RL-001']
+benchmark complete → .spectrafit_reports/benchmark/2026-10-07_run_016
+  peak_rss_gb=1.57 mmap_regions=9245 jax_cache_clears=1 jax_compile_budget=64
+  160 cases · geomean speedup vs lmfit 16.11x · max |Δr²| 3.09e-05 · spectrafit win-rate 88%
+  serve it for the web UI: uv run poe serve  (then `cd web && npm run dev`)

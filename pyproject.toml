@@ -2,7 +2,7 @@
 # installed, the file only pins what `uv run --locked reproduce.py` resolves.
 [project]
 name = "spectrafit-core-reproducibility"
-version = "1.0.0"
+version = "1.1.0"
 description = "Pinned environment that regenerates every published result of spectrafit-core (NIST StRD agreement, timing benchmark, the numbers the article states) from the release"
 requires-python = ">=3.13,<3.15"
 dependencies = [
@@ -21,6 +21,11 @@ benchmark = [
     "jax==0.11.0",
     "jaxlib==0.11.0",
     "optimistix==0.1.0",
+]
+# Only for measure_audit_bias.py: it imports tests/parity/test_kernel_parity.py of the
+# release, which imports pytest. Nothing here runs a test.
+audit = [
+    "pytest==9.1.1",
 ]
 
 [tool.uv]

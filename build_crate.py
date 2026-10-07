@@ -29,6 +29,7 @@ MIT_ID = "https://spdx.org/licenses/MIT"
 MANIFEST_LICENCE_ID = "#licence-manifest"
 NIST_ID = "https://www.itl.nist.gov/div898/strd/nls/nls_main.shtml"
 RUN_ID = "#regeneration"
+TIMING_RUN_ID = "#timing-measurement"
 
 DESCRIPTIONS = {
     "reproduce.py": "Entry point. Regenerates results/ and figures/ from the pinned release and "
@@ -56,12 +57,30 @@ DESCRIPTIONS = {
                                  "copy archived in the release.",
     "results/provenance.json": "Release commit, host, package versions and script hashes of the run "
                                "that wrote results/ and figures/.",
-    "results/archived/bench_summary.json": "Timing of 151 cases on six backends at the deepest "
-                                           "repetition depth. Taken from the release; not re-measured.",
-    "results/archived/ladder.json": "Headline speedup at five repetition depths. Taken from the release.",
-    "results/archived/sweep.json": "Headline speedup over 50 independent seeds. Taken from the release.",
-    "results/archived/param_agreement.json": "Cross-backend parameter agreement. Taken from the release.",
-    "results/archived/audit_bias.json": "Serialisation-bias measurement and kernel parity. Taken from the release.",
+    "results/archived/README.md": "Labels the 151-case timing archive of the release as superseded for the paper.",
+    "results/archived/bench_summary.json": "151 cases, pre-release commit 990a4c7, as shipped in the release. "
+                                           "Superseded for the paper by results/timing/.",
+    "results/archived/ladder.json": "151-case repetition ladder as shipped in the release. Superseded.",
+    "results/archived/sweep.json": "151-case 50-seed sweep as shipped in the release. Superseded.",
+    "results/archived/param_agreement.json": "151-case parameter agreement as shipped in the release. Superseded.",
+    "results/archived/audit_bias.json": "Serialisation bias and kernel parity as shipped in the release. Superseded.",
+    "results/timing/README.md": "How the timing of record was measured, and how it differs from the archive.",
+    "results/timing/provenance.json": "Run-level provenance of the timing measurement: export digests, driver "
+                                      "digests, every chain step with exit code and load, preflight.",
+    "results/timing/bench_summary.json": "Timing of 160 cases on six backends at the deepest repetition depth "
+                                         "(reps 100). Measured on terra with spectrafit-core 0.1.2.",
+    "results/timing/param_agreement.json": "Cross-backend parameter agreement, from bench_summary.json.",
+    "results/timing/audit_bias.json": "Serialisation-bias measurement and kernel parity, measured on terra.",
+    "results/timing/ladder/ladder.json": "Headline speedup at five repetition depths (bench-ladder/2).",
+    "results/timing/seed-sweep/sweep.json": "Headline speedup over 50 catalogue seeds (bench-seed-sweep/1).",
+    "results/timing/host/before.txt": "Host snapshot taken before the timing measurement.",
+    "results/timing/host/after.txt": "Host snapshot taken after the timing measurement.",
+    "bench/run_timing.sh": "The detached chain that measured results/timing/; stops at the first failure.",
+    "bench/seed_sweep.py": "Seed-sweep driver over the release harness (replaces the unreleased 0fd4b5d driver).",
+    "bench/_seed_point.py": "One seed point: the release's cli.run with seed= and analyzed_ids= bound.",
+    "bench/assemble.py": "Builds results/timing/ from a finished chain and checks it against the archived schema.",
+    "bench/host_snapshot.sh": "Host snapshot taken before and after the timing measurement.",
+    "bench/compare.py": "Prints the 151-case archive against the 160-case measurement, for the README.",
     "results/release-archive/nist_table2.json": "Table 1 as archived in the v0.1.0 release, kept for the drift report.",
     "results/release-archive/nist_table2_tol1e15.json": "The 1e-15 run as archived in the v0.1.0 release.",
     "results/release-archive/nist_head_to_head.json": "The Figure 2 data as archived in the v0.1.0 release.",
@@ -69,10 +88,11 @@ DESCRIPTIONS = {
     "figures/figure1_architecture.png": "Figure 1, raster.",
     "figures/figure2_nist.pdf": "Figure 2, vector. Drawn from results/nist_head_to_head.json.",
     "figures/figure2_nist.png": "Figure 2, raster.",
-    "figures/figure3_benchmark.pdf": "Figure 3, vector. Drawn from results/archived/bench_summary.json.",
+    "figures/figure3_benchmark.pdf": "Figure 3, vector. Drawn from results/timing/bench_summary.json and the ladder.",
     "figures/figure3_benchmark.png": "Figure 3, raster.",
 }
-FORMATS = {".json": "application/json", ".pdf": "application/pdf", ".png": "image/png",
+FORMATS = {".gz": "application/gzip", ".log": "text/plain", ".sh": "text/x-shellscript",
+           ".json": "application/json", ".pdf": "application/pdf", ".png": "image/png",
            ".py": "text/x-python", ".toml": "application/toml", ".md": "text/markdown",
            ".txt": "text/plain", ".cff": "application/x-yaml", ".lock": "application/toml"}
 REGENERATED = ["results/nist_table2.json", "results/nist_table2_tol1e15.json", "results/nist_head_to_head.json",
@@ -98,6 +118,20 @@ def files() -> list[str]:
     return out
 
 
+def pattern_description(rel: str) -> str | None:
+    """Descriptions for the per-rung and per-seed files, which are too many to list."""
+    parts = rel.split("/")
+    if len(parts) == 6 and parts[:2] == ["results", "timing"] and parts[3] == "rungs":
+        point = parts[4].replace("rung_", "repetition depth ").replace("seed_", "catalogue seed ")
+        what = {"manifest.json": "run manifest (headline, per-case points)",
+                "provenance.json": "provenance record (bench-provenance/2)",
+                "trust.json": "audit trust ledger", "run.log": "console log of the run",
+                "results.json.gz": "full per-case results, gzip without timestamp",
+                "audit.json.gz": "per-fit audit sidecar, gzip without timestamp"}.get(parts[5])
+        return f"{point}: {what}" if what else None
+    return None
+
+
 def file_entity(rel: str) -> dict:
     path = HERE / rel
     entity: dict = {"@id": rel, "@type": "File", "contentSize": path.stat().st_size, "sha256": sha256(path)}
@@ -105,6 +139,8 @@ def file_entity(rel: str) -> dict:
         entity["encodingFormat"] = FORMATS[path.suffix]
     if rel in DESCRIPTIONS:
         entity["description"] = DESCRIPTIONS[rel]
+    elif desc := pattern_description(rel):
+        entity["description"] = desc
     if rel.startswith("results/nist_") or rel.startswith("results/release-archive/"):
         entity["isBasedOn"] = {"@id": NIST_ID}
     return entity
@@ -127,9 +163,10 @@ def crate() -> dict:
                 f"Everything the paper reports, regenerated from the public release of {sw['name']} "
                 f"{sw['version']}: the compiled library from the PyPI wheel, the benchmark harness and "
                 f"the figure scripts from the repository at tag {src['tag']}. The NIST comparison and "
-                "all three figures are regenerated on every run. The wall-clock benchmark is taken "
-                "from the release archive, verified by SHA-256, and not re-measured. Each number in "
-                "the prose is recomputed from these files in results/claims-report.json."
+                "all three figures are regenerated on every run. The wall-clock benchmark was "
+                "measured on terra with the same wheel and harness (results/timing/, 160 cases) and "
+                "is verified by SHA-256 on every run. Each number in the prose is recomputed from "
+                "these files in results/claims-report.json."
             ),
             "datePublished": prov.get("generated_utc", "")[:10] or None,
             "author": {"@id": AUTHOR_ID},
@@ -166,13 +203,27 @@ def crate() -> dict:
             "endTime": prov["generated_utc"],
             "agent": {"@id": AUTHOR_ID},
             "instrument": [{"@id": "reproduce.py"}, {"@id": SOFTWARE_ID}],
-            "object": [{"@id": r} for r in parts if r.startswith("results/archived/")],
+            "object": [{"@id": r} for r in parts if r.startswith("results/timing/") and r.count("/") == 2],
             "result": [{"@id": r} for r in REGENERATED if r in parts],
             "description": (
                 f"`{prov['command'].strip()}` on {env.get('platform')} ({env.get('cpu')}, "
                 f"{env.get('cores')} cores), Python {env.get('python')}; "
                 + ", ".join(f"{k} {v}" for k, v in env.get("packages", {}).items()) + "."
             ),
+        })
+    timing = PINS.get("timing")
+    if timing:
+        graph.append({
+            "@id": TIMING_RUN_ID,
+            "@type": "CreateAction",
+            "name": "Timing measurement of record",
+            "startTime": timing["started_utc"],
+            "endTime": timing["finished_utc"],
+            "agent": {"@id": AUTHOR_ID},
+            "instrument": [{"@id": r} for r in parts if r.startswith("bench/")] + [{"@id": SOFTWARE_ID}],
+            "result": [{"@id": r} for r in parts if r.startswith("results/timing/")],
+            "description": f"On {timing['host']}: {timing['library']}; harness {timing['harness']}; "
+                           f"ladder {timing['ladder']}; seed sweep {timing['seed_sweep']}.",
         })
     graph += [file_entity(rel) for rel in parts]
     graph.append({"@id": CHECKSUMS_NAME, "@type": "File",
