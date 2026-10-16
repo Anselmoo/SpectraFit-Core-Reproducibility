@@ -175,6 +175,20 @@ def seconds(a: str, b: str) -> float:
     return round((datetime.strptime(b, f) - datetime.strptime(a, f)).total_seconds(), 1)
 
 
+def steal(start: list | None, end: list | None) -> dict | None:
+    """Steal time between two readings of the aggregate ``cpu`` line of /proc/stat.
+
+    Fields: user nice system idle iowait irq softirq steal [guest guest_nice]. Guest time
+    is already counted in user/nice, so the total is the sum of the first eight fields.
+    """
+    if not start or not end or len(start) < 8 or len(end) < 8:
+        return None
+    d = [b - a for a, b in zip(start[:8], end[:8], strict=True)]
+    total = sum(d)
+    return {"steal_ticks": d[7], "total_ticks": total,
+            "steal_fraction": round(d[7] / total, 8) if total > 0 else None}
+
+
 def key_paths(node: object, prefix: str = "") -> set[str]:
     """Every key path in a JSON document; list items and per-name maps collapse to one."""
     out: set[str] = set()
@@ -376,7 +390,9 @@ def build(root: Path, out: Path, partial: bool) -> int:
     env = cfg = None
 
     # ---- ladder: one invocation of the release's bench_ladder.py per depth
-    for i, reps in enumerate(LADDER_REPS, start=1):
+    # (a smoke chain, run_timing.sh --smoke, has a single rung at --ladder 2 as step 1)
+    ladder = [(1, 2), *enumerate(LADDER_REPS, start=1)] if partial else list(enumerate(LADDER_REPS, start=1))
+    for i, reps in ladder:
         eff = max(1, reps // 2)
         d = root / "ladder" / f"r{reps:03d}" / f"rung_{eff:03d}"
         if not (d / "provenance.json").exists():
@@ -406,7 +422,9 @@ def build(root: Path, out: Path, partial: bool) -> int:
             "local_run_dir": raw["local_run_dir"],
             # load averages: the chain's own reading at the start and end of this step
             "resources": raw["resources"] | {"load_average_start": step.get("load_start"),
-                                             "load_average_end": step.get("load_end")},
+                                             "load_average_end": step.get("load_end"),
+                                             "steal": steal(step.get("proc_stat_cpu_start"),
+                                                            step.get("proc_stat_cpu_end"))},
         }
         dest = out / "ladder" / "rungs" / f"rung_{eff:03d}"
         artifacts = copy_run(d / "run", dest)
@@ -419,6 +437,9 @@ def build(root: Path, out: Path, partial: bool) -> int:
     seed_dirs = sorted((root / "seed-sweep").glob("seed_*")) if (root / "seed-sweep").is_dir() else []
     for d in seed_dirs:
         point = load(d / "point.json")
+        res = point["resources"]
+        if "proc_stat_cpu_start" in res:
+            point["resources"] = res | {"steal": steal(res.get("proc_stat_cpu_start"), res.get("proc_stat_cpu_end"))}
         if env is None:  # sweep-only (smoke) build: take host/versions from the ladder rung of capture
             raise SystemExit("seed sweep needs a ladder rung for the environment record")
         manifest = load(d / "run" / "manifest.json")
@@ -455,6 +476,12 @@ def build(root: Path, out: Path, partial: bool) -> int:
         if (root / f"host-{label}.txt").exists():
             (out / "host").mkdir(exist_ok=True)
             shutil.copyfile(root / f"host-{label}.txt", out / "host" / f"{label}.txt")
+    # Per-minute host records of the whole chain (steal, swap, run queue; busiest processes
+    # with their thread counts), gzipped without timestamps.
+    for name in ("vmstat.log", "threads.log"):
+        if (root / name).exists():
+            (out / "host").mkdir(exist_ok=True)
+            gzip_n(root / name, out / "host" / f"{name}.gz")
 
     # ---- run-level provenance
     dump(out / "provenance.json", {
@@ -466,7 +493,10 @@ def build(root: Path, out: Path, partial: bool) -> int:
         "uv_lock_sha256": cap["uv_lock_sha256"],
         "drivers_sha256": {f"bench/{p.name}": sha256(p) for p in sorted((W / "bench").iterdir())
                            if p.is_file() and p.suffix in {".py", ".sh"}},
-        "chain_steps": [steps[k] for k in sorted(steps)],
+        "chain_steps": [steps[k] | {"steal": steal(steps[k].get("proc_stat_cpu_start"),
+                                                     steps[k].get("proc_stat_cpu_end"))}
+                        for k in sorted(steps)],
+        "background_records": [p.name for p in (root / "vmstat.log", root / "threads.log") if p.exists()],
         "capture": {k: cap[k] for k in ("captured_utc", "python", "host_extra")},
         "null_fields": NULL_FIELDS,
         "preflight": (root / "preflight.txt").read_text(encoding="utf-8") if (root / "preflight.txt").exists() else None,
@@ -475,7 +505,11 @@ def build(root: Path, out: Path, partial: bool) -> int:
 
     # ---- checks
     archive = root / "src" / "reproducibility"
-    allowed_extra = {"rungs[].resources", "params.catalog_fingerprint_sha256"}
+    # Recorded since release 1.2.0 of this repository, absent from the archived records.
+    allowed_extra = {"rungs[].resources", "params.catalog_fingerprint_sha256",
+                     "resources.steal", "resources.steal.steal_ticks", "resources.steal.total_ticks",
+                     "resources.steal.steal_fraction", "resources.proc_stat_cpu_start",
+                     "resources.proc_stat_cpu_end"}
     pairs = [(out / "ladder" / "ladder.json", archive / "ladder" / "ladder.json"),
              (out / "seed-sweep" / "sweep.json", archive / "seed-sweep" / "sweep.json")]
     pairs += [(p, archive / "ladder" / "rungs" / "rung_002" / "provenance.json")

@@ -2,7 +2,7 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23210105.svg)](https://doi.org/10.5281/zenodo.23210105)
 
-Results and figures of the SoftwareX article on `spectrafit-core`, regenerated from
+Results and figures of the article on `spectrafit-core`, regenerated from
 the published release, with every number stated in the article checked against the
 regenerated data.
 
@@ -56,6 +56,21 @@ the scripts from the tag.
 | `figures/figure1_architecture.{pdf,png}` | Figure 1 | `fig_architecture.py` |
 | `figures/figure2_nist.{pdf,png}` | Figure 2 | `fig_nist_dual.py` |
 | `figures/figure3_benchmark.{pdf,png}` | Figure 3 | `fig_benchmark_profile.py` |
+| `results/eels_fe2o3.json` | Section 3.3, constrained fit of a measured spectrum | `scripts/fig_eels.py` (this repository) |
+| `figures/figure4_eels.{pdf,png}` | Figure 4 | `scripts/fig_eels.py` (this repository) |
+
+The release's figure scripts print the package id ("spectrafit-core", "spectrafit") in
+three labels of Figure 2 and two of Figure 3; `reproduce.py` replaces it by the product
+name "SpectraFit-Core" in the exported scripts before drawing (`LABEL_PATCHES`, each edit
+must match exactly once). The hashes of the scripts as released and as patched are in
+`results/provenance.json` under `label_patches`. Nothing else in the release's scripts is
+changed.
+
+Figure 4 is the one figure the release has no script for. `scripts/fig_eels.py` adds it
+using only the public API of the pinned wheel. It reads the Fe L2,3 spectrum of Fe2O3 from
+the release export (`reproducibility/spectra/eelsdb-fe2o3-l23/`, redistributed there under
+the Open Database License with attribution to the EELS Data Base, contributor Qiang Xu),
+and its SHA-256 is recorded in `results/provenance.json`.
 
 **Measured on terra with spectrafit-core 0.1.2, verified by SHA-256 on every run, not re-measured on every run**
 (`results/timing/`)
@@ -88,9 +103,15 @@ To measure again (about 26 h on 16 cores; the export of the tag goes to `<root>/
 `results/timing/README.md`):
 
 ```bash
-uv sync --locked --group benchmark --group audit
+bash bench/preflight.sh <root> <SpectraFit-Core checkout>   # export, environment, six backends, host
 tmux new -d -s timing "bash bench/run_timing.sh <root>"
 ```
+
+The full procedure on the host of record, including the update and reboot before the
+measurement, the smoke test (`run_timing.sh <root> --smoke`) and resuming a stopped chain
+(`--from-step K`), is in `bench/RUNBOOK.md`. Since release 1.2.0 the chain records the
+steal time of every step and every seed (`/proc/stat`), and `vmstat` and the busiest
+processes with their thread counts once a minute.
 
 **The 151-case archive of the release** (`results/archived/`) is still verified by SHA-256
 and copied on every run. It was measured before the first release (commits `990a4c7` and
@@ -110,6 +131,7 @@ The measured rung at `--reps 4` took 70 minutes on terra. The result is written 
 ```
 results/
   nist_table2.json, nist_table2_tol1e15.json, nist_head_to_head.json   regenerated
+  eels_fe2o3.json      the fit behind Figure 4, regenerated
   timing/              the timing of record, measured with 0.1.2 (ladder, seed sweep,
                        summary, agreement, bias, host snapshots, provenance)
   archived/            the 151-case timing files as shipped in the release (superseded)
@@ -118,7 +140,7 @@ results/
   drift-report.json    regenerated Table 1 against the release's archived copy
   provenance.json      repository commit, host (kernel, C library, CPU flags,
                        BLAS/LAPACK built and loaded), versions, script hashes
-figures/               three figures, PDF and PNG
+figures/               four figures, PDF and PNG
 ro-crate-metadata.json RO-Crate 1.1 description of this repository
 checksums.sha256       SHA-256 of every file above
 ```

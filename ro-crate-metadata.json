@@ -14,7 +14,7 @@
   {
    "@id": "./",
    "@type": "Dataset",
-   "name": "SpectraFit-Core-Reproducibility: results and figures of the SoftwareX article on spectrafit-core 0.1.2",
+   "name": "SpectraFit-Core-Reproducibility: results and figures of the article on spectrafit-core 0.1.2",
    "description": "Everything the paper reports, regenerated from the public release of spectrafit-core 0.1.2: the compiled library from the PyPI wheel, the benchmark harness and the figure scripts from the repository at tag v0.1.2. The NIST comparison and all three figures are regenerated on every run. The wall-clock benchmark was measured on terra with the same wheel and harness (results/timing/, 160 cases) and is verified by SHA-256 on every run. Each number in the prose is recomputed from these files in results/claims-report.json.",
    "datePublished": "2026-10-07",
    "author": {
@@ -2440,15 +2440,15 @@
   {
    "@id": ".zenodo.json",
    "@type": "File",
-   "contentSize": 1929,
-   "sha256": "bec6b688f9961cf08d3b7a192579fa670d3fb9efe73e8482834232886dd363d1",
+   "contentSize": 1919,
+   "sha256": "01edc938debf740a20b3e6810ea7d19433b0e4a20eb310f35d5b916cb9092d1f",
    "encodingFormat": "application/json"
   },
   {
    "@id": "CITATION.cff",
    "@type": "File",
-   "contentSize": 2122,
-   "sha256": "4572c96561d80578db58c5a572e603622ae1da61fecccd608fb15ad8dea0d77b",
+   "contentSize": 2112,
+   "sha256": "d9ed95e55e48fe13a6874c8c6d18f417257615a38265871677ecfb079fc23710",
    "encodingFormat": "application/x-yaml",
    "description": "How to cite this repository."
   },
@@ -2462,8 +2462,8 @@
   {
    "@id": "README.md",
    "@type": "File",
-   "contentSize": 14104,
-   "sha256": "437d45151911d2853d971ab933e67da2cafcb38fb3f4a6ef566cfd8006b7e34f",
+   "contentSize": 14094,
+   "sha256": "da95843a36243cbc0c801ac095efeee6ed321af9e46bd4ca0465a097ac723080",
    "encodingFormat": "text/markdown",
    "description": "What this repository is, how to rerun it, and what is regenerated versus archived."
   },
@@ -2518,8 +2518,8 @@
   {
    "@id": "build_crate.py",
    "@type": "File",
-   "contentSize": 14263,
-   "sha256": "285b2f827824479347213b4f5428863e064270f33b84791a7818ab3378ab508d",
+   "contentSize": 14253,
+   "sha256": "063b87051fe16aaaa09552ab2f1caf72ae789e0217fb80046ba66a6c05c1976f",
    "encodingFormat": "text/x-python",
    "description": "Writes this RO-Crate metadata document."
   },
@@ -2606,8 +2606,8 @@
   {
    "@id": "reproduce.py",
    "@type": "File",
-   "contentSize": 32707,
-   "sha256": "1e9f1a237458ea7a991b2296a8a3b3ad57a6bc41b239a4df8bd7821fec8c8785",
+   "contentSize": 32697,
+   "sha256": "c6591d98cc300524519c2ab2ae6e83cf0f9a94c391a7408ccfc1389e4dca0da7",
    "encodingFormat": "text/x-python",
    "description": "Entry point. Regenerates results/ and figures/ from the pinned release and checks every number the paper states."
   },
