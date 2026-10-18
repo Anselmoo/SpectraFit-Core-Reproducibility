@@ -83,7 +83,9 @@ and its SHA-256 is recorded in `results/provenance.json`.
 | `param_agreement.json` | 94 cases, 0.74 percentage points |
 | `audit_bias.json` | serialisation bias, kernel parity |
 
-The measurement took 26 hours on terra (16 cores, 6 to 7 October 2026). A wall-clock ratio
+The measurement took 26 hours on terra (16 cores, 16 to 17 October 2026); it repeats a
+first measurement with the same release (6 to 7 October, `results/timing-2026-10-06/`),
+which agrees with it to the second significant figure on every headline number. A wall-clock ratio
 measured on another machine is a different measurement, not a reproduction of this one,
 so `reproduce.py` checks the stored files against `pins.toml` and recomputes every claim
 from them instead of timing again. `results/timing/README.md` says how they were measured
@@ -163,7 +165,7 @@ machine (AMD EPYC, Ubuntu 22.04) that is independent of the machines on which
 spectrafit-core is developed and tested: it is not a CI runner and not a
 developer's laptop, and it runs no other benchmark during a measurement (see
 `results/timing/README.md` for what else was present). The timing of record was
-measured on terra on 6 and 7 October 2026, and the NIST tables shipped since the 0.1.1
+measured on terra on 16 and 17 October 2026, and the NIST tables shipped since the 0.1.1
 release were generated there too, so accuracy and speed come from one machine.
 
 - `host/` holds snapshots of terra before and after its package update (kernel,
@@ -172,8 +174,12 @@ release were generated there too, so accuracy and speed come from one machine.
   and `results/timing/host/` holds snapshots taken before and after the timing
   measurement.
 - The timing of record (`results/timing/`) was measured on terra with the published
-  0.1.2 wheel and the v0.1.2 harness, from 6 October 2026 07:24 UTC to 7 October
-  09:30 UTC, at the repetition depths, `--mc` and seeds of the archived run.
+  0.1.2 wheel and the v0.1.2 harness, from 16 October 2026 20:39 UTC to 17 October
+  22:54 UTC, at the repetition depths, `--mc` and seeds of the archived run, on kernel
+  5.15.0-198 with the host's automatic updates stopped. Its steal time was 0.015 %.
+- The first measurement with 0.1.2 (`results/timing-2026-10-06/`, 6 October 07:24 UTC
+  to 7 October 09:30 UTC, kernel 5.15.0-187) is kept next to it; its NIST tables and
+  those regenerated after the kernel update are numerically identical.
 - The JAX backend runs with the compile budget of 0.1.2 (64, its default). Without the
   budget the JAX backend runs out of memory mappings on terra (`vm.max_map_count`
   65530): a one-rung check with the 0.1.1 release aborted after 58 minutes (`LLVM
@@ -181,10 +187,10 @@ release were generated there too, so accuracy and speed come from one machine.
 - `results/other-hosts/` keeps runs on other machines for comparison; they are not
   the results of record. Each has its own `README.md`.
 
-## Timing: archive against measurement
+## Timing: archive against measurements
 
 The archived timing (151 cases, pre-release commit `990a4c7`, August 2026) next to
-the measurement of record (160 cases, release 0.1.2, October 2026), computed the same
+the two measurements with release 0.1.2 (160 cases, October 2026), computed the same
 way by `bench/compare.py`:
 
 | | 151 cases, `990a4c7`, Aug 2026 (archived) | 160 cases, 0.1.2, Oct 2026 (of record) |
@@ -230,17 +236,20 @@ way by `bench/compare.py`:
 | bias: ratio | 25.3 | 20.7 |
 | parity: kernels / exact / largest | 35 / 23 / 4.59e-07 | 35 / 23 / 4.59e-07 |
 
-The two columns are compared, not equated. The case sets differ, and so do the
-library build and the harness version: 0.1.2 adds three line-shape cases and the six
-`robust` cases. Two rows moved by more than the case set alone explains:
+The two 0.1.2 runs measure the same thing twice; their differences are the
+run-to-run variation of this host (the four `tied` cases, with a geometric mean of
+four values, move most). The archive is compared, not equated, with them. The case
+sets differ, and so do the library build and the harness version: 0.1.2 adds three
+line-shape cases and the six `robust` cases. Two rows moved by more than the case set
+alone explains:
 
 - **The serialisation bias** (`audit_bias.json`) is measured by the same script. The
   release's `measure_audit_bias.py` equals the one that wrote the archived file
   (spectrafit-core `0bf1bef`) apart from comments and its repository-depth fix. Both
-  terms roughly doubled: 74.9 → 139.2 µs through the wheel and 2.97 → 6.72 µs in
-  plain NumPy, so the ratio fell from 25 to 21. Two independent readings with 0.1.2
-  on terra agree (139.2 µs). The archived file names no host. The cause is not
-  established; the paper uses the 0.1.2 value.
+  terms roughly doubled: 74.9 → 138.3 µs through the wheel and 2.97 → 6.81 µs in
+  plain NumPy, so the ratio fell from 25 to 20. Three independent readings with 0.1.2
+  on terra agree (139.2, 139.2 and 138.3 µs). The archived file names no host. The
+  cause is not established; the paper uses the 0.1.2 value of record.
 - **The largest cross-backend spread** of the parameter agreement rose from 0.23 to
   0.74 percentage points on 94 well-conditioned cases (93 before).
 

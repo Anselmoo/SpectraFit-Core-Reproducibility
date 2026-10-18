@@ -408,6 +408,14 @@ def claims(results: Path, nist_dir: Path | None = None) -> list[dict]:
                 for c in cases if c["m"].get(s) and c["m"][s].get("med_ms")])
         for s in bench["solvers"][1:]
     }
+    hm_ratio = {}
+    for s in bench["solvers"][1:]:
+        r = [c["m"][s]["med_ms"] / c["m"]["spectrafit"]["med_ms"]
+             for c in cases if c["m"].get(s) and c["m"][s].get("med_ms")]
+        hm_ratio[s] = len(r) / sum(1 / x for x in r)
+    scipy_cfg = ("scipy-ls-lm", "scipy-ls-trf", "scipy-ls-dogbox")
+    medians = {s: st.median(c["m"][s]["med_ms"] for c in cases if c["m"].get(s) and c["m"][s].get("med_ms"))
+               for s in ("spectrafit", "lmfit")}
 
     def quickest(case: dict) -> str:
         timed = {s: m["med_ms"] for s, m in case["m"].items() if m and m.get("med_ms") is not None}
@@ -470,26 +478,34 @@ def claims(results: Path, nist_dir: Path | None = None) -> list[dict]:
           {"raised": raised, "lowered": lowered, "unchanged": len(sf) - raised - lowered},
           lowered == 0 and raised >= 11),
         c("bench-01", arc, "160 cases", len(cases), len(cases) == 160),
-        c("bench-02", arc, "16.8 times faster than lmfit in geometric mean, 13.7 in harmonic mean",
+        c("bench-02", arc, "16.7 times faster than lmfit in geometric mean, 13.7 in harmonic mean",
           {"geomean": _gm(speed), "harmonic": len(speed) / sum(1 / x for x in speed)},
-          round(_gm(speed), 1) == 16.8 and round(len(speed) / sum(1 / x for x in speed), 1) == 13.7),
-        c("bench-03", arc, "factors 7.1, 9.0 and 7.5 against the SciPy configurations and 5.3 against JAX",
+          round(_gm(speed), 1) == 16.7 and round(len(speed) / sum(1 / x for x in speed), 1) == 13.7),
+        c("bench-03", arc, "factors 7.1, 9.0 and 7.6 against the SciPy configurations and 5.4 against JAX",
           ratio, [round(ratio[s], 1) for s in
-                  ("scipy-ls-lm", "scipy-ls-trf", "scipy-ls-dogbox", "jax")] == [7.1, 9.0, 7.5, 5.3]),
+                  ("scipy-ls-lm", "scipy-ls-trf", "scipy-ls-dogbox", "jax")] == [7.1, 9.0, 7.6, 5.4]),
         c("bench-04", arc, "fastest backend on 140 of the 160 cases", fastest, fastest == 140),
-        c("bench-05", arc, "by category the speedup ranges from 5.6 to 26.3; tied-parameter cases 14.9",
+        c("bench-05", arc, "by category the speedup ranges from 5.7 to 26.1; tied-parameter cases 16.0",
           {k: round(v, 2) for k, v in cat.items()},
-          round(min(cat.values()), 1) == 5.6 and round(max(cat.values()), 1) == 26.3
-          and round(cat["tied"], 1) == 14.9),
-        c("bench-06", arc, "the headline moves between 16.3 and 16.8 across the five depths",
-          depth, len(depth) == 5 and round(min(depth), 1) == 16.3 and round(max(depth), 1) == 16.8),
-        c("bench-07", arc, "16.30 with a standard deviation of 0.41 across 50 seeds",
+          round(min(cat.values()), 1) == 5.7 and round(max(cat.values()), 1) == 26.1
+          and round(cat["tied"], 1) == 16.0),
+        c("bench-06", arc, "the headline moves between 16.5 and 16.8 across the five depths",
+          depth, len(depth) == 5 and round(min(depth), 1) == 16.5 and round(max(depth), 1) == 16.8),
+        c("bench-07", arc, "16.19 with a standard deviation of 0.36 across 50 seeds",
           {"n": len(seeds), "mean": st.mean(seeds), "sd": st.stdev(seeds)},
-          len(seeds) == 50 and round(st.mean(seeds), 2) == 16.30 and round(st.stdev(seeds), 2) == 0.41),
+          len(seeds) == 50 and round(st.mean(seeds), 2) == 16.19 and round(st.stdev(seeds), 2) == 0.36),
         c("bench-08", arc, "the 20 cases it loses are the optimisation functions",
           sorted(lost), lost == {"optfn"} and len(cases) - fastest == 20),
         c("bench-09", arc, "excluding the optimisation-function category lowers the headline to 15.7",
           no_optfn, round(no_optfn, 1) == 15.7),
+        c("bench-10", arc, "against the three SciPy configurations the harmonic means are 1.3 to 2.1",
+          {s: round(hm_ratio[s], 3) for s in scipy_cfg},
+          round(min(hm_ratio[s] for s in scipy_cfg), 1) == 1.3 and round(max(hm_ratio[s] for s in scipy_cfg), 1) == 2.1),
+        c("bench-11", arc, "against JAX the geometric and harmonic means are 5.4 and 4.8",
+          {"geomean": ratio["jax"], "harmonic": hm_ratio["jax"]},
+          round(ratio["jax"], 1) == 5.4 and round(hm_ratio["jax"], 1) == 4.8),
+        c("bench-12", arc, "the median solve takes 0.48 ms with spectrafit-core and 7.0 ms with lmfit",
+          medians, round(medians["spectrafit"], 2) == 0.48 and round(medians["lmfit"], 1) == 7.0),
         c("agree-02", arc, "CX-017: the six backends report the same coefficient of determination to three "
           "significant figures; parameter errors lie between 660 % and 1.3 million %",
           {"r2": cx_r2, "param_err_pct": cx_err},
@@ -500,9 +516,9 @@ def claims(results: Path, nist_dir: Path | None = None) -> list[dict]:
            "excluded": agree["excluded_stratum"]["n"]},
           agree["n_well_conditioned"] == 94 and agree["excluded_stratum"]["n"] == 37
           and round(agree["max_cross_backend_spread_pct_points"], 2) == 0.74),
-        c("bias-01", arc, "about 139 microseconds against 7 for plain array code, roughly a factor of 21",
-          bias["bias"], round(bias["bias"]["wheel_us"]) == 139 and round(bias["bias"]["numpy_us"]) == 7
-          and round(bias["bias"]["ratio"]) == 21),
+        c("bias-01", arc, "about 138 microseconds against 6.8 for plain array code, roughly a factor of 20",
+          bias["bias"], round(bias["bias"]["wheel_us"]) == 138 and round(bias["bias"]["numpy_us"], 1) == 6.8
+          and round(bias["bias"]["ratio"]) == 20),
         c("bias-02", arc, "35 registered kernels: 23 agree bit for bit, 12 do not; all but one of those "
           "to better than 4e-16, the exception at 5e-7",
           {"n": len(dev), "exact": bias["parity"]["n_exact"], "nonzero": len(nonzero),

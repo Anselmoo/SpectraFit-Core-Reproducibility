@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Print every timing number the paper reports, archive against measurement, as Markdown.
+"""Print every timing number the paper reports, archive against measurements, as Markdown.
 
-Left: the 151-case archive shipped in the release (``results/archived/``, pre-release
-commit 990a4c7 / 0fd4b5d, 15 to 17 August 2026). Right: the 160-case measurement of
-record (``results/timing/``, spectrafit-core 0.1.2, 6 to 7 October 2026). Same
+Columns: the 151-case archive shipped in the release (``results/archived/``, pre-release
+commit 990a4c7 / 0fd4b5d, 15 to 17 August 2026); the first 160-case measurement with
+spectrafit-core 0.1.2 (``results/timing-2026-10-06/``, 6 to 7 October 2026), if present;
+and the measurement of record (``results/timing/``, 16 to 17 October 2026). Same
 computations as the claims in ``reproduce.py``. Standard library only.
 
     python bench/compare.py > table.md
@@ -54,7 +55,11 @@ def numbers(bench: dict, ladder: dict, sweep: dict, agree: dict, bias: dict) -> 
         "headline without optfn": f"{gm([s for c, s in zip(cases, speed) if c['category'] != 'optfn']):.2f}",
     }
     for b in BACKENDS:
-        out[f"factor vs {b}"] = f"{gm([c['m'][b]['med_ms'] / c['m']['spectrafit']['med_ms'] for c in cases if c['m'].get(b) and c['m'][b].get('med_ms')]):.2f}"
+        r = [c['m'][b]['med_ms'] / c['m']['spectrafit']['med_ms'] for c in cases if c['m'].get(b) and c['m'][b].get('med_ms')]
+        out[f"factor vs {b}"] = f"{gm(r):.2f}"
+        out[f"harmonic factor vs {b}"] = f"{len(r) / sum(1 / x for x in r):.2f}"
+    for b in ("spectrafit", "lmfit"):
+        out[f"median solve {b}"] = f"{st.median(c['m'][b]['med_ms'] for c in cases if c['m'].get(b) and c['m'][b].get('med_ms')):.3f} ms"
     for k in sorted(set(by_cat) | {"robust"}):
         out[f"category {k}"] = f"{gm(by_cat[k]):.2f} ({len(by_cat[k])})" if k in by_cat else "—"
     for eff in sorted(depth):
@@ -81,12 +86,16 @@ def load(base: Path, ladder: str, sweep: str) -> dict[str, str]:
 
 
 def main() -> None:
-    old = load(ROOT / "archived", "ladder.json", "sweep.json")
-    new = load(ROOT / "timing", "ladder/ladder.json", "seed-sweep/sweep.json")
-    print("| | 151 cases, `990a4c7`, Aug 2026 (archived) | 160 cases, 0.1.2, Oct 2026 (of record) |")
-    print("|---|---|---|")
-    for k in dict.fromkeys([*old, *new]):
-        print(f"| {k} | {old.get(k, '—')} | {new.get(k, '—')} |")
+    cols = [("151 cases, `990a4c7`, Aug 2026 (archived)", load(ROOT / "archived", "ladder.json", "sweep.json"))]
+    if (ROOT / "timing-2026-10-06").is_dir():
+        cols.append(("160 cases, 0.1.2, 6–7 Oct 2026 (run 1)",
+                     load(ROOT / "timing-2026-10-06", "ladder/ladder.json", "seed-sweep/sweep.json")))
+    cols.append(("160 cases, 0.1.2, 16–17 Oct 2026 (of record)",
+                 load(ROOT / "timing", "ladder/ladder.json", "seed-sweep/sweep.json")))
+    print("| | " + " | ".join(label for label, _ in cols) + " |")
+    print("|---" * (len(cols) + 1) + "|")
+    for k in dict.fromkeys(k for _, c in cols for k in c):
+        print(f"| {k} | " + " | ".join(c.get(k, "—") for _, c in cols) + " |")
 
 
 if __name__ == "__main__":
