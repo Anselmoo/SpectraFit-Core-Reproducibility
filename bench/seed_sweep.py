@@ -19,6 +19,13 @@ Differences from 0fd4b5d, all forced by 0.1.2 not having the options it used:
   into the ``bench-provenance/2`` and ``bench-seed-sweep/1`` documents;
 * the sweep stops at the first seed that exits non-zero instead of running the rest.
 
+Recorded per seed besides the load average: the aggregate ``cpu`` line of /proc/stat at
+the start and end of the point (``resources.proc_stat_cpu_start`` / ``_end``), from which
+``bench/assemble.py`` derives the steal time of that seed. ``--skip-complete`` resumes an
+interrupted sweep: a seed whose ``point.json`` records exit 0 and a run directory is kept
+as it is; a seed directory without such a record is an interrupted point and stops the
+sweep, because this driver never overwrites a point.
+
     python bench/seed_sweep.py --src <export> --out <dir> --commit <sha> \\
         --seed-base 20260603 --seeds 50 --reps 10 --mc 8
 """
@@ -76,6 +83,25 @@ def loadavg() -> list[float]:
     return [round(x, 2) for x in os.getloadavg()]
 
 
+def proc_stat_cpu() -> list[int] | None:
+    """The aggregate cpu line of /proc/stat (user ... steal guest guest_nice), Linux only."""
+    try:
+        with open("/proc/stat", encoding="ascii") as fh:
+            return [int(v) for v in fh.readline().split()[1:]]
+    except OSError:
+        return None
+
+
+def complete(dest: Path) -> dict | None:
+    """The recorded point of a seed that already ran successfully, else None."""
+    try:
+        point = json.loads((dest / "point.json").read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        return None
+    ok = point.get("exit_status") == 0 and point.get("local_run_dir") and (dest / "run" / "manifest.json").exists()
+    return point if ok else None
+
+
 def parse_resources(stdout: str) -> dict:
     import re
 
@@ -97,11 +123,14 @@ def one_seed(seed: int, args: argparse.Namespace, env: dict) -> dict:
     reports = args.src / ".spectrafit_reports" / "benchmark"
     dest = args.out / f"seed_{seed}"
     if dest.exists():
-        raise SystemExit(f"{dest} exists; this driver never overwrites a point")
+        if args.skip_complete and (done := complete(dest)) is not None:
+            print(f"  seed_{seed}: complete, kept ({done['timing']['finished_utc']})", flush=True)
+            return done
+        raise SystemExit(f"{dest} exists without a complete point; this driver never overwrites a point")
     dest.mkdir(parents=True)
     started = now()
     uid_raw = f"{platform.node()}|{stamp(started)}|{args.commit}|{args.reps * 1_000_003 + seed}"
-    load_start = loadavg()
+    load_start, cpu_start = loadavg(), proc_stat_cpu()
     before = newest_run(reports)
     print(f"  seed_{seed}: reps={args.reps} (suite depth {max(1, args.reps // 2)}) "
           f"started {stamp(started)}", flush=True)
@@ -111,7 +140,7 @@ def one_seed(seed: int, args: argparse.Namespace, env: dict) -> dict:
         cwd=args.src, env=env, capture_output=True, text=True, check=False,
     )
     finished = now()
-    load_end = loadavg()
+    load_end, cpu_end = loadavg(), proc_stat_cpu()
     (dest / "run.log").write_text(proc.stdout + proc.stderr, encoding="utf-8")
     after = newest_run(reports)
     produced = after if after and after != before else None
@@ -122,9 +151,12 @@ def one_seed(seed: int, args: argparse.Namespace, env: dict) -> dict:
                      for p in sorted((dest / "run").iterdir()) if p.is_file()]
         manifest = json.loads((dest / "run" / "manifest.json").read_text(encoding="utf-8"))
         headline = {k: manifest.get(k) for k in HEADLINE_KEYS}
-    fp = subprocess.run([sys.executable, "-c", FINGERPRINT.format(seed=seed)], cwd=args.src,
-                        env=env, capture_output=True, text=True, timeout=600, check=False)
-    fingerprint = fp.stdout.strip() if len(fp.stdout.strip()) == 64 else None
+    try:
+        fp = subprocess.run([sys.executable, "-c", FINGERPRINT.format(seed=seed)], cwd=args.src,
+                            env=env, capture_output=True, text=True, timeout=600, check=False)
+        fingerprint = fp.stdout.strip() if len(fp.stdout.strip()) == 64 else None
+    except subprocess.TimeoutExpired:  # recorded as missing; never ends the sweep
+        fingerprint = None
     point = {
         "run_uid": hashlib.sha256(uid_raw.encode()).hexdigest()[:16],
         "capture": "live",
@@ -142,7 +174,8 @@ def one_seed(seed: int, args: argparse.Namespace, env: dict) -> dict:
         "exit_status": proc.returncode,
         "local_run_dir": produced,
         "resources": {**parse_resources(proc.stdout),
-                      "load_average_start": load_start, "load_average_end": load_end},
+                      "load_average_start": load_start, "load_average_end": load_end,
+                      "proc_stat_cpu_start": cpu_start, "proc_stat_cpu_end": cpu_end},
         "headline": headline,
         "artifacts": artifacts,
     }
@@ -162,6 +195,8 @@ def main() -> int:
     ap.add_argument("--seeds", type=int, default=50)
     ap.add_argument("--reps", type=int, default=10)
     ap.add_argument("--mc", type=int, default=8)
+    ap.add_argument("--skip-complete", action="store_true",
+                    help="keep seeds whose point.json records a successful run (resume)")
     args = ap.parse_args()
     args.src, args.out = args.src.resolve(), args.out.resolve()
     args.out.mkdir(parents=True, exist_ok=True)

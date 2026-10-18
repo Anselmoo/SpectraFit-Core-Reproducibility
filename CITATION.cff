@@ -4,7 +4,7 @@ title: "SpectraFit-Core-Reproducibility: every published result of spectrafit-co
 abstract: >-
   A pinned, thin consumer of the spectrafit-core release that regenerates the
   NIST StRD agreement tables, the figures and the timing comparison reported in
-  the SoftwareX article on spectrafit-core, on a recorded host, and checks every
+  the article on spectrafit-core, on a recorded host, and checks every
   number stated in the text against the regenerated data. The timing benchmark
   (160 cases, six backends, five repetition depths, 50 catalogue seeds) was
   measured on that host with the published 0.1.2 wheel and release harness.
@@ -18,13 +18,10 @@ authors:
     affiliation: "Max Planck Institute for Chemical Energy Conversion"
 repository-code: "https://github.com/Anselmoo/SpectraFit-Core-Reproducibility"
 license: MIT
-version: 1.1.0
-date-released: 2026-10-07
-doi: "10.5281/zenodo.23210105"
+version: 1.2.0
+date-released: 2026-10-18
+doi: "10.5281/zenodo.23171640"
 identifiers:
-  - type: doi
-    value: "10.5281/zenodo.23210105"
-    description: "Version DOI of this repository's release 1.1.0."
   - type: doi
     value: "10.5281/zenodo.23171640"
     description: "Concept DOI of this repository: always resolves to the latest version."

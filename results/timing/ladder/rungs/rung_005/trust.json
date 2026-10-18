@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "run_id": "2026-10-06_run_002",
+  "run_id": "2026-10-17_run_002",
   "block": {
     "rung": 2,
     "wires": [
@@ -130,11 +130,11 @@
         "wire_id": "W11",
         "name": "speed_inference",
         "status": "pass",
-        "evidence": "speed inference PASS: geomean speedup=20.45× CI=[17.63, 23.84] excludes 1.0; sign p=6.84e-49, Wilcoxon p=2.62e-28 (secondary diagnostics)",
+        "evidence": "speed inference PASS: geomean speedup=20.31× CI=[17.47, 23.60] excludes 1.0; sign p=6.84e-49, Wilcoxon p=2.62e-28 (secondary diagnostics)",
         "details": {
-          "geomean_speedup": 20.44620976534961,
-          "ci_lo": 17.63439554707141,
-          "ci_hi": 23.836522252554044,
+          "geomean_speedup": 20.310168688143683,
+          "ci_lo": 17.473722631017313,
+          "ci_hi": 23.603848702914057,
           "excludes_one": true,
           "sign_p": 6.842277657836021e-49,
           "wilcoxon_p": 2.619767310188155e-28,

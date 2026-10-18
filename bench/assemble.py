@@ -20,6 +20,10 @@ Two subcommands:
     ``audit.json`` gzipped without timestamps (``gzip -n`` equivalent), the three derived
     files, the host snapshots and a run-level ``provenance.json``. Then checks the result
     against the archived files of the release (same key paths) and against itself.
+    Refuses, before writing anything, a run root that is not a complete run of this
+    checkout's drivers (``guard()``: preflight, host and per-minute records, ten
+    successful steps and every seed with its /proc/stat reading, drivers unchanged since
+    the run's commit). ``--partial`` (smoke test) skips this check.
 
 Fields the release cannot supply are written as null and listed in ``NULL_FIELDS``;
 nothing is copied from the archived 151-case records.
@@ -32,6 +36,7 @@ import gzip
 import hashlib
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -173,6 +178,20 @@ def gzip_n(src: Path, dest: Path) -> None:
 def seconds(a: str, b: str) -> float:
     f = "%Y-%m-%dT%H:%M:%SZ"
     return round((datetime.strptime(b, f) - datetime.strptime(a, f)).total_seconds(), 1)
+
+
+def steal(start: list | None, end: list | None) -> dict | None:
+    """Steal time between two readings of the aggregate ``cpu`` line of /proc/stat.
+
+    Fields: user nice system idle iowait irq softirq steal [guest guest_nice]. Guest time
+    is already counted in user/nice, so the total is the sum of the first eight fields.
+    """
+    if not start or not end or len(start) < 8 or len(end) < 8:
+        return None
+    d = [b - a for a, b in zip(start[:8], end[:8], strict=True)]
+    total = sum(d)
+    return {"steal_ticks": d[7], "total_ticks": total,
+            "steal_fraction": round(d[7] / total, 8) if total > 0 else None}
 
 
 def key_paths(node: object, prefix: str = "") -> set[str]:
@@ -366,7 +385,79 @@ def summary(rec: dict, with_seed: bool) -> dict:
                   "resources": rec["resources"], "headline": rec["headline"]}
 
 
+# Files of bench/ that decide what a run measured and recorded. A run root is only built
+# by a checkout whose copies of these files equal those of the commit the run started from.
+DRIVERS = ("bench/run_timing.sh", "bench/seed_sweep.py", "bench/preflight.sh", "bench/host_snapshot.sh")
+N_STEPS = 10  # bench/run_timing.sh, full chain
+
+
+def guard(root: Path) -> list[str]:
+    """Reasons why ``root`` is not a complete run of the current drivers (empty: it is).
+
+    A full build refuses a run root that lacks what bench/run_timing.sh at this
+    repository's drivers writes: a preflight without FAIL lines naming the commit, both
+    host snapshots, the per-minute vmstat and thread records, ten successful steps each
+    with its /proc/stat reading, and a /proc/stat reading for every seed. A run root of an
+    older chain (run 1 has none of these) or an incomplete run therefore cannot be
+    published as a run of this one.
+    """
+    why: list[str] = []
+    pf = root / "preflight.txt"
+    commit = None
+    if not pf.exists():
+        why.append("no preflight.txt (a run root of an older chain?)")
+    else:
+        text = pf.read_text(encoding="utf-8")
+        if any(line.startswith("FAIL") for line in text.splitlines()):
+            why.append("preflight.txt has FAIL lines")
+        m = re.search(r"^# repository \S+ @ ([0-9a-f]{40})", text, re.M)
+        if m:
+            commit = m.group(1)
+        else:
+            why.append("preflight.txt names no repository commit")
+    for name in ("capture.json", "host-before.txt", "host-after.txt", "vmstat.log", "threads.log"):
+        if not (root / name).exists():
+            why.append(f"no {name}")
+    stepfile = root / "steps.jsonl"
+    steps = [json.loads(x) for x in stepfile.read_text().splitlines() if x.strip()] if stepfile.exists() else []
+    last = {s["step"]: s for s in steps}  # a resumed chain appends; the last record of a step counts
+    for k in range(1, N_STEPS + 1):
+        s = last.get(k)
+        if s is None:
+            why.append(f"steps.jsonl: no record of step {k}")
+            continue
+        if s.get("rc") != 0:
+            why.append(f"steps.jsonl: step {k} rc={s.get('rc')}")
+        for f in ("proc_stat_cpu_start", "proc_stat_cpu_end"):
+            if not s.get(f):
+                why.append(f"steps.jsonl: step {k} lacks {f}")
+    seeds = sorted((root / "seed-sweep").glob("seed_*")) if (root / "seed-sweep").is_dir() else []
+    if not seeds:
+        why.append("no seed-sweep/seed_*")
+    for d in seeds:
+        res = load(d / "point.json").get("resources", {}) if (d / "point.json").exists() else {}
+        if not (res.get("proc_stat_cpu_start") and res.get("proc_stat_cpu_end")):
+            why.append(f"{d.name}: point.json lacks resources.proc_stat_cpu_start/_end")
+    if commit:
+        repo = Path(__file__).resolve().parents[1]
+        git = ["git", "-C", str(repo)]
+        if subprocess.run([*git, "cat-file", "-e", f"{commit}^{{commit}}"], capture_output=True).returncode:
+            why.append(f"run commit {commit[:12]} is not in this repository")
+        elif subprocess.run([*git, "diff", "--quiet", commit, "--", *DRIVERS]).returncode:
+            why.append(f"bench drivers differ from run commit {commit[:12]} (git diff {commit[:12]} -- bench/)")
+    return why
+
+
 def build(root: Path, out: Path, partial: bool) -> int:
+    if not partial:
+        why = guard(root)
+        if why:
+            print(f"REFUSED {root}: not a complete run of these drivers; nothing written")
+            for w in why[:20]:
+                print("  ", w)
+            if len(why) > 20:
+                print(f"   ... and {len(why) - 20} more")
+            return 1
     cap = load(root / "capture.json")
     steps = {s["step"]: s for s in map(json.loads, (root / "steps.jsonl").read_text().splitlines())} \
         if (root / "steps.jsonl").exists() else {}
@@ -376,7 +467,9 @@ def build(root: Path, out: Path, partial: bool) -> int:
     env = cfg = None
 
     # ---- ladder: one invocation of the release's bench_ladder.py per depth
-    for i, reps in enumerate(LADDER_REPS, start=1):
+    # (a smoke chain, run_timing.sh --smoke, has a single rung at --ladder 2 as step 1)
+    ladder = [(1, 2), *enumerate(LADDER_REPS, start=1)] if partial else list(enumerate(LADDER_REPS, start=1))
+    for i, reps in ladder:
         eff = max(1, reps // 2)
         d = root / "ladder" / f"r{reps:03d}" / f"rung_{eff:03d}"
         if not (d / "provenance.json").exists():
@@ -406,7 +499,9 @@ def build(root: Path, out: Path, partial: bool) -> int:
             "local_run_dir": raw["local_run_dir"],
             # load averages: the chain's own reading at the start and end of this step
             "resources": raw["resources"] | {"load_average_start": step.get("load_start"),
-                                             "load_average_end": step.get("load_end")},
+                                             "load_average_end": step.get("load_end"),
+                                             "steal": steal(step.get("proc_stat_cpu_start"),
+                                                            step.get("proc_stat_cpu_end"))},
         }
         dest = out / "ladder" / "rungs" / f"rung_{eff:03d}"
         artifacts = copy_run(d / "run", dest)
@@ -419,6 +514,9 @@ def build(root: Path, out: Path, partial: bool) -> int:
     seed_dirs = sorted((root / "seed-sweep").glob("seed_*")) if (root / "seed-sweep").is_dir() else []
     for d in seed_dirs:
         point = load(d / "point.json")
+        res = point["resources"]
+        if "proc_stat_cpu_start" in res:
+            point["resources"] = res | {"steal": steal(res.get("proc_stat_cpu_start"), res.get("proc_stat_cpu_end"))}
         if env is None:  # sweep-only (smoke) build: take host/versions from the ladder rung of capture
             raise SystemExit("seed sweep needs a ladder rung for the environment record")
         manifest = load(d / "run" / "manifest.json")
@@ -455,6 +553,12 @@ def build(root: Path, out: Path, partial: bool) -> int:
         if (root / f"host-{label}.txt").exists():
             (out / "host").mkdir(exist_ok=True)
             shutil.copyfile(root / f"host-{label}.txt", out / "host" / f"{label}.txt")
+    # Per-minute host records of the whole chain (steal, swap, run queue; busiest processes
+    # with their thread counts), gzipped without timestamps.
+    for name in ("vmstat.log", "threads.log"):
+        if (root / name).exists():
+            (out / "host").mkdir(exist_ok=True)
+            gzip_n(root / name, out / "host" / f"{name}.gz")
 
     # ---- run-level provenance
     dump(out / "provenance.json", {
@@ -466,7 +570,10 @@ def build(root: Path, out: Path, partial: bool) -> int:
         "uv_lock_sha256": cap["uv_lock_sha256"],
         "drivers_sha256": {f"bench/{p.name}": sha256(p) for p in sorted((W / "bench").iterdir())
                            if p.is_file() and p.suffix in {".py", ".sh"}},
-        "chain_steps": [steps[k] for k in sorted(steps)],
+        "chain_steps": [steps[k] | {"steal": steal(steps[k].get("proc_stat_cpu_start"),
+                                                     steps[k].get("proc_stat_cpu_end"))}
+                        for k in sorted(steps)],
+        "background_records": [p.name for p in (root / "vmstat.log", root / "threads.log") if p.exists()],
         "capture": {k: cap[k] for k in ("captured_utc", "python", "host_extra")},
         "null_fields": NULL_FIELDS,
         "preflight": (root / "preflight.txt").read_text(encoding="utf-8") if (root / "preflight.txt").exists() else None,
@@ -475,7 +582,11 @@ def build(root: Path, out: Path, partial: bool) -> int:
 
     # ---- checks
     archive = root / "src" / "reproducibility"
-    allowed_extra = {"rungs[].resources", "params.catalog_fingerprint_sha256"}
+    # Recorded since release 1.2.0 of this repository, absent from the archived records.
+    allowed_extra = {"rungs[].resources", "params.catalog_fingerprint_sha256",
+                     "resources.steal", "resources.steal.steal_ticks", "resources.steal.total_ticks",
+                     "resources.steal.steal_fraction", "resources.proc_stat_cpu_start",
+                     "resources.proc_stat_cpu_end"}
     pairs = [(out / "ladder" / "ladder.json", archive / "ladder" / "ladder.json"),
              (out / "seed-sweep" / "sweep.json", archive / "seed-sweep" / "sweep.json")]
     pairs += [(p, archive / "ladder" / "rungs" / "rung_002" / "provenance.json")

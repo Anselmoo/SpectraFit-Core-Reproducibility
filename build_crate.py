@@ -81,6 +81,12 @@ DESCRIPTIONS = {
     "bench/assemble.py": "Builds results/timing/ from a finished chain and checks it against the archived schema.",
     "bench/host_snapshot.sh": "Host snapshot taken before and after the timing measurement.",
     "bench/compare.py": "Prints the 151-case archive against the 160-case measurement, for the README.",
+    "bench/preflight.sh": "Prepares a run root (export of the pinned commit) and refuses a host or environment "
+                          "that would make a timing run non-comparable; writes preflight.txt.",
+    "bench/RUNBOOK.md": "Step-by-step procedure for a timing measurement on the host of record, in two parts "
+                        "around the reboot.",
+    "results/timing/host/vmstat.log.gz": "vmstat every 60 s over the whole timing chain (steal, swap, run queue).",
+    "results/timing/host/threads.log.gz": "Busiest processes with their thread counts, every 60 s over the chain.",
     "results/release-archive/nist_table2.json": "Table 1 as archived in the v0.1.0 release, kept for the drift report.",
     "results/release-archive/nist_table2_tol1e15.json": "The 1e-15 run as archived in the v0.1.0 release.",
     "results/release-archive/nist_head_to_head.json": "The Figure 2 data as archived in the v0.1.0 release.",
@@ -90,6 +96,12 @@ DESCRIPTIONS = {
     "figures/figure2_nist.png": "Figure 2, raster.",
     "figures/figure3_benchmark.pdf": "Figure 3, vector. Drawn from results/timing/bench_summary.json and the ladder.",
     "figures/figure3_benchmark.png": "Figure 3, raster.",
+    "scripts/fig_eels.py": "Fits the Fe L2,3 spectrum of Figure 4 with and without four expression edges "
+                           "and draws Figure 4; the one figure the release has no script for.",
+    "results/eels_fe2o3.json": "Free and constrained fit of the Fe L2,3 spectrum of Fe2O3 (both starts of the "
+                               "free fit, steps, coefficients of determination, branching ratio). Regenerated.",
+    "figures/figure4_eels.pdf": "Figure 4, vector. Drawn from the fits in results/eels_fe2o3.json.",
+    "figures/figure4_eels.png": "Figure 4, raster.",
 }
 FORMATS = {".gz": "application/gzip", ".log": "text/plain", ".sh": "text/x-shellscript",
            ".json": "application/json", ".pdf": "application/pdf", ".png": "image/png",
@@ -98,7 +110,8 @@ FORMATS = {".gz": "application/gzip", ".log": "text/plain", ".sh": "text/x-shell
 REGENERATED = ["results/nist_table2.json", "results/nist_table2_tol1e15.json", "results/nist_head_to_head.json",
                "figures/figure1_architecture.pdf", "figures/figure1_architecture.png",
                "figures/figure2_nist.pdf", "figures/figure2_nist.png",
-               "figures/figure3_benchmark.pdf", "figures/figure3_benchmark.png"]
+               "figures/figure3_benchmark.pdf", "figures/figure3_benchmark.png",
+               "results/eels_fe2o3.json", "figures/figure4_eels.pdf", "figures/figure4_eels.png"]
 
 
 def sha256(path: Path) -> str:
@@ -158,12 +171,12 @@ def crate() -> dict:
         {
             "@id": "./",
             "@type": "Dataset",
-            "name": f"SpectraFit-Core-Reproducibility: results and figures of the SoftwareX article on {sw['name']} {sw['version']}",
+            "name": f"SpectraFit-Core-Reproducibility: results and figures of the article on {sw['name']} {sw['version']}",
             "description": (
                 f"Everything the paper reports, regenerated from the public release of {sw['name']} "
                 f"{sw['version']}: the compiled library from the PyPI wheel, the benchmark harness and "
                 f"the figure scripts from the repository at tag {src['tag']}. The NIST comparison and "
-                "all three figures are regenerated on every run. The wall-clock benchmark was "
+                "all four figures are regenerated on every run. The wall-clock benchmark was "
                 "measured on terra with the same wheel and harness (results/timing/, 160 cases) and "
                 "is verified by SHA-256 on every run. Each number in the prose is recomputed from "
                 "these files in results/claims-report.json."

@@ -1,0 +1,246 @@
+{
+  "schema_version": "spectrafit-core/bench-provenance/2",
+  "run_uid": "13f9df8b1200945f",
+  "capture": "live",
+  "params": {
+    "reps_requested": 10,
+    "reps_effective": 5,
+    "mc": 8,
+    "seed": 20260616,
+    "catalog_fingerprint_sha256": "f2aafc6efe4ecaae025646fa15d2ab231c00899d3bab3617a9cf3c95fb21534c",
+    "xla_flags": "",
+    "headline_only": true
+  },
+  "timing": {
+    "started_utc": "2026-10-07T01:26:50Z",
+    "finished_utc": "2026-10-07T01:40:42Z",
+    "wall_seconds": 832.0
+  },
+  "exit_status": 0,
+  "local_run_dir": "2026-10-07_run_019",
+  "resources": {
+    "peak_rss_gb": 1.57,
+    "mmap_regions": 9242,
+    "jax_cache_clears": 1,
+    "jax_compile_budget": 64,
+    "load_average_start": [
+      1.28,
+      1.15,
+      1.18
+    ],
+    "load_average_end": [
+      4.0,
+      2.16,
+      1.54
+    ]
+  },
+  "headline": {
+    "geomean_speedup_vs_baseline": 15.988825859142496,
+    "harmonic_mean_speedup_vs_baseline": 12.938288582675284,
+    "max_abs_delta_r2": 1.9611709175748615e-05,
+    "spectrafit_win_rate": 0.875,
+    "n_cases": 160,
+    "regressions": 0,
+    "backends": [
+      "spectrafit",
+      "lmfit",
+      "jax",
+      "scipy-ls-lm",
+      "scipy-ls-trf",
+      "scipy-ls-dogbox"
+    ],
+    "saturated_categories": [
+      "fixed",
+      "reality",
+      "scaling",
+      "tied"
+    ],
+    "baseline_solver_id": "lmfit"
+  },
+  "artifacts": [
+    {
+      "path": "audit.json",
+      "bytes": 74824,
+      "sha256": "e8c0309ec0f0735c2f2c94f954aeb339e17b2a08e43f93268b28ac16f5859f69"
+    },
+    {
+      "path": "manifest.json",
+      "bytes": 112682,
+      "sha256": "6da2edeb1dd84a3d5df3a935f5a9e59f8b1e016da28a5a17f4645075195323d3"
+    },
+    {
+      "path": "results.json",
+      "bytes": 960332,
+      "sha256": "152490c45beeb8fd9a1467aa63009460f53f535bd8ee9b2fac891b256a561688"
+    },
+    {
+      "path": "trust.json",
+      "bytes": 30672,
+      "sha256": "08788a8622e9ba1f20048805e2bb792fc75bd325b6446a1a5af4d937172a2671"
+    }
+  ],
+  "environment": {
+    "git": {
+      "commit": "1e304188a7376caf128fcb432a16554ed44ad32a",
+      "branch": "tag v0.1.2 (git archive export)",
+      "dirty": false
+    },
+    "host": {
+      "hostname": "terra",
+      "cpu": "AMD EPYC Processor (with IBPB)",
+      "cores": 16,
+      "ram_gb": 31.3,
+      "vm_max_map_count": 65530,
+      "os": "Linux-5.15.0-187-generic-x86_64-with-glibc2.35",
+      "kernel": "5.15.0-187-generic",
+      "thread_env": {
+        "OMP_NUM_THREADS": null,
+        "OPENBLAS_NUM_THREADS": null,
+        "MKL_NUM_THREADS": null,
+        "NUMEXPR_NUM_THREADS": null,
+        "VECLIB_MAXIMUM_THREADS": null,
+        "RAYON_NUM_THREADS": null,
+        "XLA_FLAGS": null,
+        "JAX_PLATFORMS": null,
+        "SPECTRAFIT_BENCH_JAX_COMPILE_BUDGET": null
+      },
+      "cpu_flags": [
+        "avx",
+        "avx2",
+        "fma",
+        "sse4_2"
+      ],
+      "cpu_max_mhz": null,
+      "cpu_governor": null,
+      "cpu_quota": null,
+      "memory_max_gb": null,
+      "container": null,
+      "ci": null
+    },
+    "versions": {
+      "python": "3.13.13",
+      "rustc": "1.97.1 (8bab26f4f 2026-07-14)",
+      "packages": {
+        "numpy": "2.5.1",
+        "scipy": "1.18.0",
+        "lmfit": "1.3.4",
+        "jax": "0.11.0",
+        "jaxlib": "0.11.0",
+        "optimistix": "0.1.0",
+        "spectrafit-core": "0.1.2"
+      },
+      "uv_lock_sha256": "f4c9540f6a15f9a4e82a8e6abcd88dde47d367cb91a83620bfe081c594384a19",
+      "blas": {
+        "name": "scipy-openblas",
+        "version": "0.3.33.112.0"
+      }
+    }
+  },
+  "methodology": {
+    "timing": {
+      "clock": "time.perf_counter (monotonic)",
+      "unit": "milliseconds",
+      "timed_region": "Backend.run only \u2014 model construction and result serialization are outside the timer",
+      "warmup": "one untimed solve per (case, backend) before the timed reps",
+      "reps_semantics": "the suite phase runs max(1, reps // 2) timed solves; the analyzed phase runs the full reps. Both are recorded per rung as reps_effective and reps_requested",
+      "aggregate": "median of the per-rep timings"
+    },
+    "accuracy": {
+      "primary": "r^2 of the fit against the noisy data",
+      "gate": "max |delta r^2| between spectrafit and the baseline solver",
+      "recovered": "a solve counts as recovered when its r^2 is within r2_ceiling_tol of the noiseless-truth curve's r^2 against the same noisy data \u2014 the best any solver can reach on that case",
+      "reduced_chi2_dof": "n - n_free, reported per backend as fit_dof",
+      "information_criteria": "Gaussian log-likelihood AIC/BIC (N*ln(chi2/N) + 2k / + k*ln(N)), matched across backends",
+      "param_recovery": "max relative shape-parameter error vs planted truth, components matched by graph index"
+    },
+    "determinism": {
+      "catalog_seed": 20260603,
+      "noise": "numpy default_rng, seeded per Monte-Carlo draw (1000 + k)",
+      "stochastic_solvers": "lmfit differential_evolution is seeded (seed=0)",
+      "known_nondeterminism": "wall-clock timings; jax compile scheduling"
+    },
+    "comparability_caveats": [
+      "solver stopping tolerances are NOT normalized across backends \u2014 each runs at its own library default, recorded per backend under config.solvers",
+      "jax's compiled-executable cache is bounded (see oracles.backends._jax), so its cold-time column reflects a partly cold cache; this removes a cross-case compile-reuse advantage the other backends never had",
+      "backends do not all support every case (see config.backend_support), so an aggregate is not over an identical case set for every backend"
+    ]
+  },
+  "config": {
+    "catalog": {
+      "n_cases": 160,
+      "fingerprint_sha256": "6f2a25ee6cfdb9442a5a5966cf9632912df46241630b23676bf44197e3d62b3f",
+      "n_points_distinct": [
+        120,
+        160,
+        180,
+        200,
+        240,
+        600,
+        1200
+      ]
+    },
+    "solvers": {
+      "spectrafit": {
+        "library": null,
+        "algorithm": null,
+        "bounds": null,
+        "version": "0.1.2",
+        "stopping": null,
+        "runtime": null
+      },
+      "lmfit": {
+        "library": null,
+        "algorithm": null,
+        "bounds": null,
+        "version": "1.3.4",
+        "stopping": null,
+        "runtime": null
+      },
+      "jax": {
+        "library": null,
+        "algorithm": null,
+        "bounds": null,
+        "version": "0.1.0",
+        "stopping": null,
+        "runtime": null
+      },
+      "scipy-ls-lm": {
+        "library": null,
+        "algorithm": null,
+        "bounds": null,
+        "version": "1.18.0",
+        "stopping": null,
+        "runtime": null
+      },
+      "scipy-ls-trf": {
+        "library": null,
+        "algorithm": null,
+        "bounds": null,
+        "version": "1.18.0",
+        "stopping": null,
+        "runtime": null
+      },
+      "scipy-ls-dogbox": {
+        "library": null,
+        "algorithm": null,
+        "bounds": null,
+        "version": "1.18.0",
+        "stopping": null,
+        "runtime": null
+      }
+    },
+    "backend_support": {
+      "spectrafit": 160,
+      "lmfit": 160,
+      "jax": 136,
+      "scipy-ls-lm": 156,
+      "scipy-ls-trf": 156,
+      "scipy-ls-dogbox": 156
+    },
+    "r2_ceiling_tol": 0.001,
+    "python_build": [
+      "main",
+      "May 10 2026 19:26:54"
+    ]
+  }
+}

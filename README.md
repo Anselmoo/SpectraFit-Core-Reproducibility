@@ -2,7 +2,7 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23210105.svg)](https://doi.org/10.5281/zenodo.23210105)
 
-Results and figures of the SoftwareX article on `spectrafit-core`, regenerated from
+Results and figures of the article on `spectrafit-core`, regenerated from
 the published release, with every number stated in the article checked against the
 regenerated data.
 
@@ -56,6 +56,21 @@ the scripts from the tag.
 | `figures/figure1_architecture.{pdf,png}` | Figure 1 | `fig_architecture.py` |
 | `figures/figure2_nist.{pdf,png}` | Figure 2 | `fig_nist_dual.py` |
 | `figures/figure3_benchmark.{pdf,png}` | Figure 3 | `fig_benchmark_profile.py` |
+| `results/eels_fe2o3.json` | Section 3.3, constrained fit of a measured spectrum | `scripts/fig_eels.py` (this repository) |
+| `figures/figure4_eels.{pdf,png}` | Figure 4 | `scripts/fig_eels.py` (this repository) |
+
+The release's figure scripts print the package id ("spectrafit-core", "spectrafit") in
+three labels of Figure 2 and two of Figure 3; `reproduce.py` replaces it by the product
+name "SpectraFit-Core" in the exported scripts before drawing (`LABEL_PATCHES`, each edit
+must match exactly once). The hashes of the scripts as released and as patched are in
+`results/provenance.json` under `label_patches`. Nothing else in the release's scripts is
+changed.
+
+Figure 4 is the one figure the release has no script for. `scripts/fig_eels.py` adds it
+using only the public API of the pinned wheel. It reads the Fe L2,3 spectrum of Fe2O3 from
+the release export (`reproducibility/spectra/eelsdb-fe2o3-l23/`, redistributed there under
+the Open Database License with attribution to the EELS Data Base, contributor Qiang Xu),
+and its SHA-256 is recorded in `results/provenance.json`.
 
 **Measured on terra with spectrafit-core 0.1.2, verified by SHA-256 on every run, not re-measured on every run**
 (`results/timing/`)
@@ -68,7 +83,9 @@ the scripts from the tag.
 | `param_agreement.json` | 94 cases, 0.74 percentage points |
 | `audit_bias.json` | serialisation bias, kernel parity |
 
-The measurement took 26 hours on terra (16 cores, 6 to 7 October 2026). A wall-clock ratio
+The measurement took 26 hours on terra (16 cores, 16 to 17 October 2026); it repeats a
+first measurement with the same release (6 to 7 October, `results/timing-2026-10-06/`),
+which agrees with it to the second significant figure on every headline number. A wall-clock ratio
 measured on another machine is a different measurement, not a reproduction of this one,
 so `reproduce.py` checks the stored files against `pins.toml` and recomputes every claim
 from them instead of timing again. `results/timing/README.md` says how they were measured
@@ -88,9 +105,15 @@ To measure again (about 26 h on 16 cores; the export of the tag goes to `<root>/
 `results/timing/README.md`):
 
 ```bash
-uv sync --locked --group benchmark --group audit
+bash bench/preflight.sh <root> <SpectraFit-Core checkout>   # export, environment, six backends, host
 tmux new -d -s timing "bash bench/run_timing.sh <root>"
 ```
+
+The full procedure on the host of record, including the update and reboot before the
+measurement, the smoke test (`run_timing.sh <root> --smoke`) and resuming a stopped chain
+(`--from-step K`), is in `bench/RUNBOOK.md`. Since release 1.2.0 the chain records the
+steal time of every step and every seed (`/proc/stat`), and `vmstat` and the busiest
+processes with their thread counts once a minute.
 
 **The 151-case archive of the release** (`results/archived/`) is still verified by SHA-256
 and copied on every run. It was measured before the first release (commits `990a4c7` and
@@ -110,6 +133,7 @@ The measured rung at `--reps 4` took 70 minutes on terra. The result is written 
 ```
 results/
   nist_table2.json, nist_table2_tol1e15.json, nist_head_to_head.json   regenerated
+  eels_fe2o3.json      the fit behind Figure 4, regenerated
   timing/              the timing of record, measured with 0.1.2 (ladder, seed sweep,
                        summary, agreement, bias, host snapshots, provenance)
   archived/            the 151-case timing files as shipped in the release (superseded)
@@ -118,7 +142,7 @@ results/
   drift-report.json    regenerated Table 1 against the release's archived copy
   provenance.json      repository commit, host (kernel, C library, CPU flags,
                        BLAS/LAPACK built and loaded), versions, script hashes
-figures/               three figures, PDF and PNG
+figures/               four figures, PDF and PNG
 ro-crate-metadata.json RO-Crate 1.1 description of this repository
 checksums.sha256       SHA-256 of every file above
 ```
@@ -141,7 +165,7 @@ machine (AMD EPYC, Ubuntu 22.04) that is independent of the machines on which
 spectrafit-core is developed and tested: it is not a CI runner and not a
 developer's laptop, and it runs no other benchmark during a measurement (see
 `results/timing/README.md` for what else was present). The timing of record was
-measured on terra on 6 and 7 October 2026, and the NIST tables shipped since the 0.1.1
+measured on terra on 16 and 17 October 2026, and the NIST tables shipped since the 0.1.1
 release were generated there too, so accuracy and speed come from one machine.
 
 - `host/` holds snapshots of terra before and after its package update (kernel,
@@ -150,8 +174,12 @@ release were generated there too, so accuracy and speed come from one machine.
   and `results/timing/host/` holds snapshots taken before and after the timing
   measurement.
 - The timing of record (`results/timing/`) was measured on terra with the published
-  0.1.2 wheel and the v0.1.2 harness, from 6 October 2026 07:24 UTC to 7 October
-  09:30 UTC, at the repetition depths, `--mc` and seeds of the archived run.
+  0.1.2 wheel and the v0.1.2 harness, from 16 October 2026 20:39 UTC to 17 October
+  22:54 UTC, at the repetition depths, `--mc` and seeds of the archived run, on kernel
+  5.15.0-198 with the host's automatic updates stopped. Its steal time was 0.015 %.
+- The first measurement with 0.1.2 (`results/timing-2026-10-06/`, 6 October 07:24 UTC
+  to 7 October 09:30 UTC, kernel 5.15.0-187) is kept next to it; its NIST tables and
+  those regenerated after the kernel update are numerically identical.
 - The JAX backend runs with the compile budget of 0.1.2 (64, its default). Without the
   budget the JAX backend runs out of memory mappings on terra (`vm.max_map_count`
   65530): a one-rung check with the 0.1.1 release aborted after 58 minutes (`LLVM
@@ -159,66 +187,75 @@ release were generated there too, so accuracy and speed come from one machine.
 - `results/other-hosts/` keeps runs on other machines for comparison; they are not
   the results of record. Each has its own `README.md`.
 
-## Timing: archive against measurement
+## Timing: archive against measurements
 
 The archived timing (151 cases, pre-release commit `990a4c7`, August 2026) next to
-the measurement of record (160 cases, release 0.1.2, October 2026), computed the same
+the two measurements with release 0.1.2 (160 cases, October 2026), computed the same
 way by `bench/compare.py`:
 
-| | 151 cases, `990a4c7`, Aug 2026 (archived) | 160 cases, 0.1.2, Oct 2026 (of record) |
-|---|---|---|
-| cases | 151 | 160 |
-| categories | 9 | 10 |
-| geometric-mean speed-up vs lmfit | 16.45 | 16.75 |
-| harmonic-mean speed-up vs lmfit | 13.78 | 13.75 |
-| largest \|Δr²\| | 1.28e-04 | 1.29e-04 |
-| spectrafit-core win rate (gate) | 88.1 % | 87.5 % |
-| regressions | 0 | 0 |
-| fastest backend on | 131 of 151 | 140 of 160 |
-| categories where it is not fastest | optfn | optfn |
-| headline without optfn | 15.14 | 15.71 |
-| factor vs jax | 4.94 | 5.30 |
-| factor vs scipy-ls-lm | 6.25 | 7.07 |
-| factor vs scipy-ls-trf | 7.92 | 8.96 |
-| factor vs scipy-ls-dogbox | 6.49 | 7.50 |
-| category complex | 23.99 (35) | 24.84 (35) |
-| category easy | 12.72 (20) | 14.37 (20) |
-| category edge | 14.34 (20) | 16.33 (20) |
-| category fixed | 10.03 (4) | 12.14 (4) |
-| category lineshapes | 8.85 (24) | 10.07 (27) |
-| category optfn | 28.32 (20) | 26.29 (20) |
-| category reality | 17.87 (16) | 19.58 (16) |
-| category robust | — | 5.64 (6) |
-| category scaling | 16.31 (8) | 17.42 (8) |
-| category tied | 14.12 (4) | 14.91 (4) |
-| depth 2 (--reps 4) | 15.97 | 16.33 |
-| depth 5 (--reps 10) | 15.78 | 16.31 |
-| depth 10 (--reps 20) | 16.16 | 16.46 |
-| depth 25 (--reps 50) | 16.36 | 16.50 |
-| depth 50 (--reps 100) | 16.45 | 16.75 |
-| seeds | 50 | 50 |
-| seed mean ± sd | 15.95 ± 0.38 | 16.30 ± 0.41 |
-| seed range | 15.08 to 16.67 | 15.54 to 17.55 |
-| agreement: cases on all six / with truth | 127 / 124 | 136 / 131 |
-| agreement: well-conditioned cases | 93 | 94 |
-| agreement: max cross-backend spread | 0.23 pp | 0.74 pp |
-| agreement: excluded stratum | 31 | 37 |
-| bias: wheel per evaluation | 74.9 µs | 139.2 µs |
-| bias: NumPy per evaluation | 2.97 µs | 6.72 µs |
-| bias: ratio | 25.3 | 20.7 |
-| parity: kernels / exact / largest | 35 / 23 / 4.59e-07 | 35 / 23 / 4.59e-07 |
+| | 151 cases, `990a4c7`, Aug 2026 (archived) | 160 cases, 0.1.2, 6–7 Oct 2026 (run 1) | 160 cases, 0.1.2, 16–17 Oct 2026 (of record) |
+|---|---|---|---|
+| cases | 151 | 160 | 160 |
+| categories | 9 | 10 | 10 |
+| geometric-mean speed-up vs lmfit | 16.45 | 16.75 | 16.71 |
+| harmonic-mean speed-up vs lmfit | 13.78 | 13.75 | 13.75 |
+| largest \|Δr²\| | 1.28e-04 | 1.29e-04 | 1.29e-04 |
+| spectrafit-core win rate (gate) | 88.1 % | 87.5 % | 87.5 % |
+| regressions | 0 | 0 | 0 |
+| fastest backend on | 131 of 151 | 140 of 160 | 140 of 160 |
+| categories where it is not fastest | optfn | optfn | optfn |
+| headline without optfn | 15.14 | 15.71 | 15.68 |
+| factor vs jax | 4.94 | 5.30 | 5.40 |
+| harmonic factor vs jax | 4.45 | 4.70 | 4.84 |
+| factor vs scipy-ls-lm | 6.25 | 7.07 | 7.08 |
+| harmonic factor vs scipy-ls-lm | 1.47 | 1.52 | 1.53 |
+| factor vs scipy-ls-trf | 7.92 | 8.96 | 9.00 |
+| harmonic factor vs scipy-ls-trf | 1.99 | 2.04 | 2.05 |
+| factor vs scipy-ls-dogbox | 6.49 | 7.50 | 7.56 |
+| harmonic factor vs scipy-ls-dogbox | 1.27 | 1.31 | 1.32 |
+| median solve spectrafit | 0.604 ms | 0.497 ms | 0.484 ms |
+| median solve lmfit | 9.213 ms | 7.371 ms | 7.038 ms |
+| category complex | 23.99 (35) | 24.84 (35) | 24.62 (35) |
+| category easy | 12.72 (20) | 14.37 (20) | 14.21 (20) |
+| category edge | 14.34 (20) | 16.33 (20) | 16.43 (20) |
+| category fixed | 10.03 (4) | 12.14 (4) | 12.46 (4) |
+| category lineshapes | 8.85 (24) | 10.07 (27) | 9.98 (27) |
+| category optfn | 28.32 (20) | 26.29 (20) | 26.10 (20) |
+| category reality | 17.87 (16) | 19.58 (16) | 19.57 (16) |
+| category robust | — | 5.64 (6) | 5.73 (6) |
+| category scaling | 16.31 (8) | 17.42 (8) | 17.25 (8) |
+| category tied | 14.12 (4) | 14.91 (4) | 15.98 (4) |
+| depth 2 (--reps 4) | 15.97 | 16.33 | 16.51 |
+| depth 5 (--reps 10) | 15.78 | 16.31 | 16.46 |
+| depth 10 (--reps 20) | 16.16 | 16.46 | 16.55 |
+| depth 25 (--reps 50) | 16.36 | 16.50 | 16.79 |
+| depth 50 (--reps 100) | 16.45 | 16.75 | 16.71 |
+| seeds | 50 | 50 | 50 |
+| seed mean ± sd | 15.95 ± 0.38 | 16.30 ± 0.41 | 16.19 ± 0.36 |
+| seed range | 15.08 to 16.67 | 15.54 to 17.55 | 15.57 to 17.18 |
+| agreement: cases on all six / with truth | 127 / 124 | 136 / 131 | 136 / 131 |
+| agreement: well-conditioned cases | 93 | 94 | 94 |
+| agreement: max cross-backend spread | 0.23 pp | 0.74 pp | 0.74 pp |
+| agreement: excluded stratum | 31 | 37 | 37 |
+| bias: wheel per evaluation | 74.9 µs | 139.2 µs | 138.3 µs |
+| bias: NumPy per evaluation | 2.97 µs | 6.72 µs | 6.81 µs |
+| bias: ratio | 25.3 | 20.7 | 20.3 |
+| parity: kernels / exact / largest | 35 / 23 / 4.59e-07 | 35 / 23 / 4.59e-07 | 35 / 23 / 4.59e-07 |
 
-The two columns are compared, not equated. The case sets differ, and so do the
-library build and the harness version: 0.1.2 adds three line-shape cases and the six
-`robust` cases. Two rows moved by more than the case set alone explains:
+The two 0.1.2 runs measure the same thing twice; their differences are the
+run-to-run variation of this host (the four `tied` cases, with a geometric mean of
+four values, move most). The archive is compared, not equated, with them. The case
+sets differ, and so do the library build and the harness version: 0.1.2 adds three
+line-shape cases and the six `robust` cases. Two rows moved by more than the case set
+alone explains:
 
 - **The serialisation bias** (`audit_bias.json`) is measured by the same script. The
   release's `measure_audit_bias.py` equals the one that wrote the archived file
   (spectrafit-core `0bf1bef`) apart from comments and its repository-depth fix. Both
-  terms roughly doubled: 74.9 → 139.2 µs through the wheel and 2.97 → 6.72 µs in
-  plain NumPy, so the ratio fell from 25 to 21. Two independent readings with 0.1.2
-  on terra agree (139.2 µs). The archived file names no host. The cause is not
-  established; the paper uses the 0.1.2 value.
+  terms roughly doubled: 74.9 → 138.3 µs through the wheel and 2.97 → 6.81 µs in
+  plain NumPy, so the ratio fell from 25 to 20. Three independent readings with 0.1.2
+  on terra agree (139.2, 139.2 and 138.3 µs). The archived file names no host. The
+  cause is not established; the paper uses the 0.1.2 value of record.
 - **The largest cross-backend spread** of the parameter agreement rose from 0.23 to
   0.74 percentage points on 94 well-conditioned cases (93 before).
 

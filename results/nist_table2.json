@@ -23,9 +23,9 @@
  },
  "host": {
   "node": "terra",
-  "platform": "Linux-5.15.0-187-generic-x86_64-with-glibc2.35",
+  "platform": "Linux-5.15.0-198-generic-x86_64-with-glibc2.35",
   "machine": "x86_64",
-  "kernel": "5.15.0-187-generic",
+  "kernel": "5.15.0-198-generic",
   "libc": "glibc 2.35",
   "cpu": "AMD EPYC Processor (with IBPB)",
   "blas_lapack": {

@@ -1,0 +1,81 @@
+{
+ "spectrum": {
+  "file": "DspecTi3wqG.msa",
+  "sha256": "28e88f85350c353f524c828740c533312dc897505410ac940cd544060df963d4",
+  "window_ev": [
+   700.0,
+   735.0
+  ],
+  "points": 701,
+  "source": "https://eelsdb.eu/spectra/iron-oxide-2/",
+  "licence": "ODbL",
+  "contributor": "Qiang Xu"
+ },
+ "software": {
+  "spectrafit-core": "0.1.2",
+  "numpy": "2.5.1"
+ },
+ "free": {
+  "success": true,
+  "message": "converged_ftol",
+  "r_squared": 0.9988758178609144,
+  "aic": 7341.715881960415,
+  "n_free": 34,
+  "step_l3": {
+   "value": 1703.5568696277567,
+   "stderr": 1007.8938081110662
+  },
+  "step_l2": {
+   "value": 851.7782920834578,
+   "stderr": 1032.3305501160833
+  },
+  "step_sigma": [
+   0.3823818731892403,
+   0.38238386931855506
+  ],
+  "branching_l3": {
+   "value": 0.8199697373833315,
+   "stderr": 0.012538952084427362
+  },
+  "start": "constrained_solution",
+  "rss": 22492836.379360866,
+  "starts": {
+   "default": {
+    "rss": 23803014.303361204,
+    "r_squared": 0.9988103357404586,
+    "step_l3": 1750.5898260914212,
+    "step_l3_sigma": 0.3000026511827159
+   },
+   "constrained_solution": {
+    "rss": 22492836.379360866,
+    "r_squared": 0.9988758178609144,
+    "step_l3": 1703.5568696277567,
+    "step_l3_sigma": 0.3823818731892403
+   }
+  }
+ },
+ "constrained": {
+  "success": true,
+  "message": "converged_ftol",
+  "r_squared": 0.9988758178532242,
+  "aic": 7333.7158867557755,
+  "n_free": 30,
+  "step_l3": {
+   "value": 1703.5569194955808,
+   "stderr": 36.21605427584602
+  },
+  "step_l2": {
+   "value": 851.7784597477904,
+   "stderr": null
+  },
+  "step_sigma": [
+   0.3823817615426004,
+   0.3823817615426004
+  ],
+  "branching_l3": {
+   "value": 0.8199697365205789,
+   "stderr": 0.0020163753538112324
+  },
+  "rss": 22492836.53322858
+ }
+}

@@ -1,6 +1,6 @@
 {
   "schema_version": "spectrafit-core/bench-provenance/2",
-  "run_uid": "13f9df8b1200945f",
+  "run_uid": "2d03f634e3050c22",
   "capture": "live",
   "params": {
     "reps_requested": 10,
@@ -12,33 +12,62 @@
     "headline_only": true
   },
   "timing": {
-    "started_utc": "2026-10-07T01:26:50Z",
-    "finished_utc": "2026-10-07T01:40:42Z",
-    "wall_seconds": 832.0
+    "started_utc": "2026-10-17T14:46:04Z",
+    "finished_utc": "2026-10-17T15:00:08Z",
+    "wall_seconds": 843.9
   },
   "exit_status": 0,
-  "local_run_dir": "2026-10-07_run_019",
+  "local_run_dir": "2026-10-17_run_019",
   "resources": {
-    "peak_rss_gb": 1.57,
-    "mmap_regions": 9242,
+    "peak_rss_gb": 1.56,
+    "mmap_regions": 9249,
     "jax_cache_clears": 1,
     "jax_compile_budget": 64,
     "load_average_start": [
-      1.28,
-      1.15,
-      1.18
+      2.54,
+      1.88,
+      1.55
     ],
     "load_average_end": [
-      4.0,
-      2.16,
-      1.54
-    ]
+      1.7,
+      1.42,
+      1.35
+    ],
+    "proc_stat_cpu_start": [
+      9099661,
+      392,
+      63405,
+      110744763,
+      105258,
+      0,
+      9502,
+      15361,
+      0,
+      0
+    ],
+    "proc_stat_cpu_end": [
+      9218312,
+      392,
+      64252,
+      111974063,
+      105578,
+      0,
+      9539,
+      15574,
+      0,
+      0
+    ],
+    "steal": {
+      "steal_ticks": 213,
+      "total_ticks": 1349368,
+      "steal_fraction": 0.00015785
+    }
   },
   "headline": {
-    "geomean_speedup_vs_baseline": 15.988825859142496,
-    "harmonic_mean_speedup_vs_baseline": 12.938288582675284,
+    "geomean_speedup_vs_baseline": 15.752138717663794,
+    "harmonic_mean_speedup_vs_baseline": 12.85365853543879,
     "max_abs_delta_r2": 1.9611709175748615e-05,
-    "spectrafit_win_rate": 0.875,
+    "spectrafit_win_rate": 0.88125,
     "n_cases": 160,
     "regressions": 0,
     "backends": [
@@ -61,22 +90,22 @@
     {
       "path": "audit.json",
       "bytes": 74824,
-      "sha256": "e8c0309ec0f0735c2f2c94f954aeb339e17b2a08e43f93268b28ac16f5859f69"
+      "sha256": "593b4bc04caaa5cddbf1098ae7e4b98805925fd597c11d25f6612af8d2f89011"
     },
     {
       "path": "manifest.json",
-      "bytes": 112682,
-      "sha256": "6da2edeb1dd84a3d5df3a935f5a9e59f8b1e016da28a5a17f4645075195323d3"
+      "bytes": 112692,
+      "sha256": "b04364ffb9310a610edde9d82af8824ce7df5c35c00979955892d48073d2683f"
     },
     {
       "path": "results.json",
-      "bytes": 960332,
-      "sha256": "152490c45beeb8fd9a1467aa63009460f53f535bd8ee9b2fac891b256a561688"
+      "bytes": 960368,
+      "sha256": "f6ed4d23dbdcaf54de7f7313b1f3a56113e06109fb4010f4d1d397192f939359"
     },
     {
       "path": "trust.json",
       "bytes": 30672,
-      "sha256": "08788a8622e9ba1f20048805e2bb792fc75bd325b6446a1a5af4d937172a2671"
+      "sha256": "cb59068d7261797e5ae17dbaf3b37b3adf61ef18dad1ef8d44dd5db653310628"
     }
   ],
   "environment": {
@@ -91,8 +120,8 @@
       "cores": 16,
       "ram_gb": 31.3,
       "vm_max_map_count": 65530,
-      "os": "Linux-5.15.0-187-generic-x86_64-with-glibc2.35",
-      "kernel": "5.15.0-187-generic",
+      "os": "Linux-5.15.0-198-generic-x86_64-with-glibc2.35",
+      "kernel": "5.15.0-198-generic",
       "thread_env": {
         "OMP_NUM_THREADS": null,
         "OPENBLAS_NUM_THREADS": null,
@@ -119,7 +148,7 @@
     },
     "versions": {
       "python": "3.13.13",
-      "rustc": "1.97.1 (8bab26f4f 2026-07-14)",
+      "rustc": "1.99.1 (58cf8f9c3 2026-10-13)",
       "packages": {
         "numpy": "2.5.1",
         "scipy": "1.18.0",
@@ -129,7 +158,7 @@
         "optimistix": "0.1.0",
         "spectrafit-core": "0.1.2"
       },
-      "uv_lock_sha256": "f4c9540f6a15f9a4e82a8e6abcd88dde47d367cb91a83620bfe081c594384a19",
+      "uv_lock_sha256": "19f3ea85a0e5d4be6beb383a055a3c112a9198a80f6421c6018a1fc732775f70",
       "blas": {
         "name": "scipy-openblas",
         "version": "0.3.33.112.0"

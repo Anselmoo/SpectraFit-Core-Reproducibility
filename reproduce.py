@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Regenerate every result and figure of the SoftwareX paper from the release.
+"""Regenerate every result and figure of the paper from the release.
 
 Why this exists
 ---------------
@@ -23,6 +23,10 @@ Regenerated on every run (seconds):
 * ``figures/figure1_architecture.*``     Figure 1
 * ``figures/figure2_nist.*``             Figure 2
 * ``figures/figure3_benchmark.*``        Figure 3, drawn from the measured timing
+* ``results/eels_fe2o3.json``            the constrained fit of a measured spectrum (Section 3.3)
+* ``figures/figure4_eels.*``             Figure 4, by ``scripts/fig_eels.py``: the one figure
+                                         the release has no script for, drawn with the wheel's
+                                         public API from the spectrum the release ships
 
 Measured on terra with the 0.1.2 wheel and the v0.1.2 harness (``bench/``), stored in
 ``results/timing/`` and verified here by the SHA-256 in ``pins.toml [timing_inputs]``:
@@ -89,11 +93,35 @@ FIGURE_MAP = {
     "fig_benchmark_profile": "figure3_benchmark",
 }
 REGENERATED_JSON = ["nist_head_to_head.json", "nist_table2.json", "nist_table2_tol1e15.json"]
+# Figure 4 has no script in the release; this repository adds one. It reads the measured
+# spectrum from the release export (redistributed there under the ODbL with attribution).
+OWN_SCRIPTS = {"fig_eels": HERE / "scripts" / "fig_eels.py"}
+EELS_SPECTRUM = Path("reproducibility") / "spectra" / "eelsdb-fe2o3-l23" / "DspecTi3wqG.msa"
+EELS_JSON = "eels_fe2o3.json"
+EELS_FIGURE = "figure4_eels"
 # What the scripts read: the harness, the figure scripts with their inputs, and the
 # crate manifests that fig_architecture.py counts.
 EXPORT_PATHS = ["reproducibility", "python/oracles", "crates", "Cargo.toml"]
 SOLVERS = ["spectrafit_core", "lmfit", "scipy_lm", "scipy_trf"]
 TIMING = RESULTS / "timing"
+# The product name in the figure labels. The release's figure scripts print the package
+# id ("spectrafit-core", "spectrafit"); the article writes "SpectraFit-Core". These are
+# the only edits made to the release's scripts: each (old, new) must match exactly once,
+# and the hashes before and after are recorded in results/provenance.json.
+LABEL_PATCHES: dict[str, list[tuple[str, str]]] = {
+    "reproducibility/figures/fig_nist_dual.py": [
+        ('"$\\\\bullet$ spectrafit-core   $\\\\circ$ lmfit"', '"$\\\\bullet$ SpectraFit-Core   $\\\\circ$ lmfit"'),
+        ('label="spectrafit-core fit"', 'label="SpectraFit-Core fit"'),
+        ('label="spectrafit-core, worst parameter"', 'label="SpectraFit-Core, worst parameter"'),
+    ],
+    "reproducibility/figures/fig_benchmark_profile.py": [
+        ('SUBJECT = "spectrafit"\n', 'SUBJECT = "spectrafit"\nDISPLAY = {"spectrafit": "SpectraFit-Core"}\n'),
+        # the longer name on two lines, so the rotated tick at the left edge stays inside the figure
+        ('[f"{b}  {int((ratios[b] == 1.0).sum())}',
+         '[(f"{DISPLAY[b]}\\n" if b in DISPLAY else f"{b}  ") + f"{int((ratios[b] == 1.0).sum())}'),
+        ('label=f"{backend}  (n={len(col)})"', 'label=f"{DISPLAY.get(backend, backend)}  (n={len(col)})"'),
+    ],
+}
 # The measured timing, put where the release's fig_benchmark_profile.py reads it.
 TIMING_OVERLAY = {
     "results/timing/bench_summary.json": "reproducibility/figures/bench_summary.json",
@@ -165,6 +193,7 @@ def ensure_source(source: Path | None) -> Path:
                          cwd=source, capture_output=True, check=True).stdout
     with tarfile.open(fileobj=io.BytesIO(tar)) as tf:
         tf.extractall(work, filter="data")
+    apply_label_patches(work)
     kept = CACHE / "archived-inputs"
     if kept.exists():
         shutil.rmtree(kept)
@@ -175,6 +204,23 @@ def ensure_source(source: Path | None) -> Path:
             raise SystemExit(f"archived input {rel} has sha256 {got}, pinned {digest}")
         shutil.copyfile(work / rel, kept / Path(rel).name)
     return work
+
+
+LABEL_PATCH_RECORD: dict[str, dict[str, str]] = {}
+
+
+def apply_label_patches(work: Path) -> None:
+    """Write the product name into the figure labels of the exported release scripts."""
+    for rel, edits in LABEL_PATCHES.items():
+        path = work / rel
+        before = sha256(path)
+        text = path.read_text(encoding="utf-8")
+        for old, new in edits:
+            if text.count(old) != 1:
+                raise SystemExit(f"label patch for {rel} expects exactly one {old!r}, found {text.count(old)}")
+            text = text.replace(old, new)
+        path.write_text(text, encoding="utf-8")
+        LABEL_PATCH_RECORD[rel] = {"release_sha256": before, "patched_sha256": sha256(path)}
 
 
 def verify_timing() -> None:
@@ -252,6 +298,12 @@ def regenerate(source: Path) -> dict[str, dict]:
     for stem in FIGURE_MAP:
         print(f"  drawing    {stem}.py")
         run([sys.executable, f"{stem}.py"], cwd=figs, env=env)
+    eels_out = CACHE / "eels"
+    if eels_out.exists():
+        shutil.rmtree(eels_out)
+    print("  fitting    scripts/fig_eels.py (Figure 4)")
+    run([sys.executable, str(OWN_SCRIPTS["fig_eels"]), "--spectrum", str(source / EELS_SPECTRUM),
+         "--out", str(eels_out)], cwd=HERE, env=env | {"PYTHONPATH": ""})
     return {n: {"archived": archived[n], "regenerated": json.loads((figs / n).read_text())}
             for n in REGENERATED_JSON}
 
@@ -265,6 +317,9 @@ def collect(source: Path, into_results: Path, into_figures: Path) -> None:
     for stem, name in FIGURE_MAP.items():
         for ext in ("pdf", "png"):
             shutil.copyfile(figs / f"{stem}.{ext}", into_figures / f"{name}.{ext}")
+    shutil.copyfile(CACHE / "eels" / EELS_JSON, into_results / EELS_JSON)
+    for ext in ("pdf", "png"):
+        shutil.copyfile(CACHE / "eels" / f"{EELS_FIGURE}.{ext}", into_figures / f"{EELS_FIGURE}.{ext}")
     archived = into_results / "archived"
     archived.mkdir(exist_ok=True)
     for rel in PINS["archived_inputs"]:  # as verified, before overlay_timing replaced them
@@ -322,6 +377,7 @@ def claims(results: Path, nist_dir: Path | None = None) -> list[dict]:
     sweep = json.loads((timing / "seed-sweep" / "sweep.json").read_text())
     agree = json.loads((timing / "param_agreement.json").read_text())
     bias = json.loads((timing / "audit_bias.json").read_text())
+    eels = json.loads((results / EELS_JSON).read_text())
 
     rows = t["datasets"]
     col = lambda c: {r["name"]: r["columns"][c] for r in rows}  # noqa: E731
@@ -352,6 +408,14 @@ def claims(results: Path, nist_dir: Path | None = None) -> list[dict]:
                 for c in cases if c["m"].get(s) and c["m"][s].get("med_ms")])
         for s in bench["solvers"][1:]
     }
+    hm_ratio = {}
+    for s in bench["solvers"][1:]:
+        r = [c["m"][s]["med_ms"] / c["m"]["spectrafit"]["med_ms"]
+             for c in cases if c["m"].get(s) and c["m"][s].get("med_ms")]
+        hm_ratio[s] = len(r) / sum(1 / x for x in r)
+    scipy_cfg = ("scipy-ls-lm", "scipy-ls-trf", "scipy-ls-dogbox")
+    medians = {s: st.median(c["m"][s]["med_ms"] for c in cases if c["m"].get(s) and c["m"][s].get("med_ms"))
+               for s in ("spectrafit", "lmfit")}
 
     def quickest(case: dict) -> str:
         timed = {s: m["med_ms"] for s, m in case["m"].items() if m and m.get("med_ms") is not None}
@@ -371,6 +435,10 @@ def claims(results: Path, nist_dir: Path | None = None) -> list[dict]:
     seeds = [r["headline"]["geomean_speedup_vs_baseline"] for r in sweep["rungs"]]
     dev = bias["parity"]["deviations"]
     nonzero = sorted(v for v in dev.values() if v > 0)
+    free, con = eels["free"], eels["constrained"]
+    starts = free["starts"]
+    step_gain = free["step_l3"]["stderr"] / con["step_l3"]["stderr"]
+    br_gain = free["branching_l3"]["stderr"] / con["branching_l3"]["stderr"]
 
     def c(cid: str, source: str, statement: str, observed: object, ok: bool) -> dict:
         return {"id": cid, "source": source, "statement": statement, "observed": observed, "ok": bool(ok)}
@@ -410,26 +478,34 @@ def claims(results: Path, nist_dir: Path | None = None) -> list[dict]:
           {"raised": raised, "lowered": lowered, "unchanged": len(sf) - raised - lowered},
           lowered == 0 and raised >= 11),
         c("bench-01", arc, "160 cases", len(cases), len(cases) == 160),
-        c("bench-02", arc, "16.8 times faster than lmfit in geometric mean, 13.7 in harmonic mean",
+        c("bench-02", arc, "16.7 times faster than lmfit in geometric mean, 13.7 in harmonic mean",
           {"geomean": _gm(speed), "harmonic": len(speed) / sum(1 / x for x in speed)},
-          round(_gm(speed), 1) == 16.8 and round(len(speed) / sum(1 / x for x in speed), 1) == 13.7),
-        c("bench-03", arc, "factors 7.1, 9.0 and 7.5 against the SciPy configurations and 5.3 against JAX",
+          round(_gm(speed), 1) == 16.7 and round(len(speed) / sum(1 / x for x in speed), 1) == 13.7),
+        c("bench-03", arc, "factors 7.1, 9.0 and 7.6 against the SciPy configurations and 5.4 against JAX",
           ratio, [round(ratio[s], 1) for s in
-                  ("scipy-ls-lm", "scipy-ls-trf", "scipy-ls-dogbox", "jax")] == [7.1, 9.0, 7.5, 5.3]),
+                  ("scipy-ls-lm", "scipy-ls-trf", "scipy-ls-dogbox", "jax")] == [7.1, 9.0, 7.6, 5.4]),
         c("bench-04", arc, "fastest backend on 140 of the 160 cases", fastest, fastest == 140),
-        c("bench-05", arc, "by category the speedup ranges from 5.6 to 26.3; tied-parameter cases 14.9",
+        c("bench-05", arc, "by category the speedup ranges from 5.7 to 26.1; tied-parameter cases 16.0",
           {k: round(v, 2) for k, v in cat.items()},
-          round(min(cat.values()), 1) == 5.6 and round(max(cat.values()), 1) == 26.3
-          and round(cat["tied"], 1) == 14.9),
-        c("bench-06", arc, "the headline moves between 16.3 and 16.8 across the five depths",
-          depth, len(depth) == 5 and round(min(depth), 1) == 16.3 and round(max(depth), 1) == 16.8),
-        c("bench-07", arc, "16.30 with a standard deviation of 0.41 across 50 seeds",
+          round(min(cat.values()), 1) == 5.7 and round(max(cat.values()), 1) == 26.1
+          and round(cat["tied"], 1) == 16.0),
+        c("bench-06", arc, "the headline moves between 16.5 and 16.8 across the five depths",
+          depth, len(depth) == 5 and round(min(depth), 1) == 16.5 and round(max(depth), 1) == 16.8),
+        c("bench-07", arc, "16.19 with a standard deviation of 0.36 across 50 seeds",
           {"n": len(seeds), "mean": st.mean(seeds), "sd": st.stdev(seeds)},
-          len(seeds) == 50 and round(st.mean(seeds), 2) == 16.30 and round(st.stdev(seeds), 2) == 0.41),
+          len(seeds) == 50 and round(st.mean(seeds), 2) == 16.19 and round(st.stdev(seeds), 2) == 0.36),
         c("bench-08", arc, "the 20 cases it loses are the optimisation functions",
           sorted(lost), lost == {"optfn"} and len(cases) - fastest == 20),
         c("bench-09", arc, "excluding the optimisation-function category lowers the headline to 15.7",
           no_optfn, round(no_optfn, 1) == 15.7),
+        c("bench-10", arc, "against the three SciPy configurations the harmonic means are 1.3 to 2.1",
+          {s: round(hm_ratio[s], 3) for s in scipy_cfg},
+          round(min(hm_ratio[s] for s in scipy_cfg), 1) == 1.3 and round(max(hm_ratio[s] for s in scipy_cfg), 1) == 2.1),
+        c("bench-11", arc, "against JAX the geometric and harmonic means are 5.4 and 4.8",
+          {"geomean": ratio["jax"], "harmonic": hm_ratio["jax"]},
+          round(ratio["jax"], 1) == 5.4 and round(hm_ratio["jax"], 1) == 4.8),
+        c("bench-12", arc, "the median solve takes 0.48 ms with spectrafit-core and 7.0 ms with lmfit",
+          medians, round(medians["spectrafit"], 2) == 0.48 and round(medians["lmfit"], 1) == 7.0),
         c("agree-02", arc, "CX-017: the six backends report the same coefficient of determination to three "
           "significant figures; parameter errors lie between 660 % and 1.3 million %",
           {"r2": cx_r2, "param_err_pct": cx_err},
@@ -440,15 +516,41 @@ def claims(results: Path, nist_dir: Path | None = None) -> list[dict]:
            "excluded": agree["excluded_stratum"]["n"]},
           agree["n_well_conditioned"] == 94 and agree["excluded_stratum"]["n"] == 37
           and round(agree["max_cross_backend_spread_pct_points"], 2) == 0.74),
-        c("bias-01", arc, "about 139 microseconds against 7 for plain array code, roughly a factor of 21",
-          bias["bias"], round(bias["bias"]["wheel_us"]) == 139 and round(bias["bias"]["numpy_us"]) == 7
-          and round(bias["bias"]["ratio"]) == 21),
+        c("bias-01", arc, "about 138 microseconds against 6.8 for plain array code, roughly a factor of 20",
+          bias["bias"], round(bias["bias"]["wheel_us"]) == 138 and round(bias["bias"]["numpy_us"], 1) == 6.8
+          and round(bias["bias"]["ratio"]) == 20),
         c("bias-02", arc, "35 registered kernels: 23 agree bit for bit, 12 do not; all but one of those "
           "to better than 4e-16, the exception at 5e-7",
           {"n": len(dev), "exact": bias["parity"]["n_exact"], "nonzero": len(nonzero),
            "largest_two": nonzero[-2:]},
           len(dev) == 35 and bias["parity"]["n_exact"] == 23 and len(nonzero) == 12
           and nonzero[-2] < 4e-16 and 4e-7 < nonzero[-1] < 5e-7),
+        c("eels-01", reg, "the Fe L2,3 edge of Fe2O3 is fitted between 700 and 735 eV",
+          eels["spectrum"]["window_ev"], eels["spectrum"]["window_ev"] == [700.0, 735.0]),
+        c("eels-02", reg, "fitted independently, the steps are undetermined, 1704 \u00b1 1008 counts at L3 "
+          "and 852 \u00b1 1032 at L2",
+          {"L3": free["step_l3"], "L2": free["step_l2"]},
+          [round(free["step_l3"]["value"]), round(free["step_l3"]["stderr"]),
+           round(free["step_l2"]["value"]), round(free["step_l2"]["stderr"])] == [1704, 1008, 852, 1032]),
+        c("eels-03", reg, "the independent fit is started from the default guesses and from the constrained "
+          "solution, and the lower residual is kept; from the default guesses alone it stops in a local "
+          "minimum with one step width at its bound", {"kept": free["start"], "starts": starts},
+          free["start"] == "constrained_solution"
+          and starts["default"]["rss"] > starts["constrained_solution"]["rss"]
+          and abs(starts["default"]["step_l3_sigma"] - 0.3) < 1e-3),
+        c("eels-04", reg, "the L3 step is then 1704 \u00b1 36 counts, at the same value and the same "
+          "coefficient of determination, 0.99888",
+          {"L3": con["step_l3"], "r2_free": free["r_squared"], "r2_constrained": con["r_squared"]},
+          round(con["step_l3"]["value"]) == 1704 and round(con["step_l3"]["stderr"]) == 36
+          and round(free["r_squared"], 5) == round(con["r_squared"], 5) == 0.99888),
+        c("eels-05", reg, "the L3 branching ratio stays at 0.820, and its standard error falls from 0.013 "
+          "to 0.002", {"free": free["branching_l3"], "constrained": con["branching_l3"]},
+          round(free["branching_l3"]["value"], 3) == round(con["branching_l3"]["value"], 3) == 0.820
+          and round(free["branching_l3"]["stderr"], 3) == 0.013
+          and round(con["branching_l3"]["stderr"], 3) == 0.002),
+        c("eels-06", reg, "the relationships make the step 28 times and the branching ratio six times more "
+          "precise (abstract: the edge-step amplitude 28 times)", {"step": step_gain, "branching": br_gain},
+          round(step_gain) == 28 and round(br_gain) == 6),
     ]
 
 
@@ -559,6 +661,10 @@ def provenance(source: Path, versions: dict[str, str], extra: dict) -> dict:
             "uv_lock_sha256": sha256(lock) if lock.exists() else None,
             **host_details(),
         },
+        "own_scripts_sha256": {p.relative_to(HERE).as_posix(): sha256(p) for p in OWN_SCRIPTS.values()},
+        "label_patches": {"edits": {k: [list(e) for e in v] for k, v in LABEL_PATCHES.items()},
+                          "scripts": LABEL_PATCH_RECORD},
+        "eels_spectrum_sha256": sha256(source / EELS_SPECTRUM),
         "upstream_scripts_sha256": {
             s: sha256(source / UPSTREAM_FIGS / s)
             for s in sorted({m for m, _ in MEASUREMENTS} | {f"{f}.py" for f in FIGURE_MAP}
@@ -636,10 +742,13 @@ def main() -> int:
         print(f"  FAILS    {c['id']}: {c['statement']}\n           observed: {json.dumps(c['observed'])[:200]}")
 
     if args.check:
-        changed = [n for n in REGENERATED_JSON
-                   if not (RESULTS / n).exists() or content_digest(RESULTS / n) != content_digest(results / n)]
+        stored = [n for n in [*REGENERATED_JSON, EELS_JSON] if (RESULTS / n).exists()]
+        new_files = [n for n in [*REGENERATED_JSON, EELS_JSON] if n not in stored]
+        changed = [n for n in stored if content_digest(RESULTS / n) != content_digest(results / n)]
         print("check      " + ("stored results are current" if not changed
                                else "differs from stored results: " + ", ".join(changed)))
+        if new_files:  # e.g. a result this repository started to produce after the last full run
+            print("           not stored yet (compared with nothing): " + ", ".join(new_files))
         return 1 if (changed or failed) else 0
 
     run([sys.executable, str(HERE / "build_crate.py")], cwd=HERE)

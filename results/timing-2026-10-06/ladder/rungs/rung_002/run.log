@@ -1,0 +1,82 @@
+benchmark complete → .spectrafit_reports/benchmark/2026-10-06_run_001
+  peak_rss_gb=2.55 mmap_regions=7850 jax_cache_clears=7 jax_compile_budget=64
+  160 cases · geomean speedup vs lmfit 16.33x · max |Δr²| 1.29e-04 · spectrafit win-rate 88%
+  serve it for the web UI: uv run poe serve  (then `cd web && npm run dev`)
+/home/cloud/timing-0.1.2-2026-10/src/python/oracles/models.py:264: RuntimeWarning: invalid value encountered in divide
+  return amplitude * wofz(z).real / wofz(z0).real
+nested_adequacy skipped for case EZ-001: only 1 peak component(s)
+nested_adequacy skipped for case EZ-002: only 1 peak component(s)
+nested_adequacy skipped for case EZ-003: only 1 peak component(s)
+nested_adequacy skipped for case EZ-004: only 1 peak component(s)
+nested_adequacy skipped for case EZ-005: only 1 peak component(s)
+nested_adequacy skipped for case EZ-006: only 1 peak component(s)
+nested_adequacy skipped for case EZ-007: only 1 peak component(s)
+nested_adequacy skipped for case EZ-008: only 1 peak component(s)
+nested_adequacy skipped for case EZ-009: only 1 peak component(s)
+nested_adequacy skipped for case EZ-010: only 1 peak component(s)
+nested_adequacy skipped for case EZ-011: only 1 peak component(s)
+nested_adequacy skipped for case EZ-012: only 1 peak component(s)
+nested_adequacy skipped for case EZ-013: only 1 peak component(s)
+nested_adequacy skipped for case EZ-014: only 1 peak component(s)
+nested_adequacy skipped for case EZ-015: only 1 peak component(s)
+nested_adequacy skipped for case EZ-016: only 1 peak component(s)
+nested_adequacy skipped for case EZ-017: only 1 peak component(s)
+nested_adequacy skipped for case EZ-018: only 1 peak component(s)
+nested_adequacy skipped for case EZ-019: only 1 peak component(s)
+nested_adequacy skipped for case EZ-020: only 1 peak component(s)
+nested fit failed for case CX-002 at order 2 — using null RSS
+nested fit failed for case CX-003 at order 3 — using null RSS
+/home/cloud/timing-0.1.2-2026-10/src/python/oracles/models.py:264: RuntimeWarning: invalid value encountered in divide
+  return amplitude * wofz(z).real / wofz(z0).real
+/home/cloud/timing-0.1.2-2026-10/src/python/oracles/models.py:264: RuntimeWarning: invalid value encountered in divide
+  return amplitude * wofz(z).real / wofz(z0).real
+/home/cloud/timing-0.1.2-2026-10/src/python/oracles/models.py:264: RuntimeWarning: invalid value encountered in divide
+  return amplitude * wofz(z).real / wofz(z0).real
+/home/cloud/timing-0.1.2-2026-10/src/python/oracles/models.py:361: RuntimeWarning: invalid value encountered in power
+  return amplitude / (1.0 + z * z * (2.0 ** (1.0 / m) - 1.0)) ** m
+nested fit failed for case RL-002 at order 2 — using null RSS
+nested fit failed for case RL-009 at order 2 — using null RSS
+nested fit failed for case RL-010 at order 3 — using null RSS
+nested_adequacy skipped for case RL-011: only 0 peak component(s)
+nested_adequacy skipped for case RL-012: only 0 peak component(s)
+nested_adequacy skipped for case RL-013: only 1 peak component(s)
+nested_adequacy skipped for case RL-015: only 1 peak component(s)
+nested fit failed for case OF-005 at order 1 — using null RSS
+nested fit failed for case OF-005 at order 3 — using null RSS
+nested fit failed for case OF-015 at order 1 — using null RSS
+nested_adequacy skipped for case ED-003: only 1 peak component(s)
+nested fit failed for case ED-012 at order 2 — using null RSS
+nested_adequacy skipped for case ED-013: only 1 peak component(s)
+nested_adequacy skipped for case LS-001: only 1 peak component(s)
+nested_adequacy skipped for case LS-002: only 1 peak component(s)
+nested_adequacy skipped for case LS-003: only 1 peak component(s)
+nested_adequacy skipped for case LS-004: only 1 peak component(s)
+nested_adequacy skipped for case LS-007: only 1 peak component(s)
+nested_adequacy skipped for case LS-011: only 1 peak component(s)
+nested_adequacy skipped for case LS-012: only 1 peak component(s)
+nested_adequacy skipped for case LS-013: only 1 peak component(s)
+nested_adequacy skipped for case LS-014: only 1 peak component(s)
+nested_adequacy skipped for case LS-015: only 1 peak component(s)
+nested_adequacy skipped for case LS-016: only 1 peak component(s)
+nested_adequacy skipped for case LS-017: only 1 peak component(s)
+nested_adequacy skipped for case LS-018: only 0 peak component(s)
+nested_adequacy skipped for case LS-019: only 0 peak component(s)
+nested_adequacy skipped for case LS-020: only 0 peak component(s)
+nested_adequacy skipped for case LS-021: only 0 peak component(s)
+nested_adequacy skipped for case LS-022: only 0 peak component(s)
+nested_adequacy skipped for case LS-023: only 0 peak component(s)
+nested_adequacy skipped for case LS-024: only 0 peak component(s)
+nested_adequacy skipped for case LS-025: only 0 peak component(s)
+nested_adequacy skipped for case LS-026: only 0 peak component(s)
+nested_adequacy skipped for case LS-027: only 0 peak component(s)
+nested_adequacy skipped for case FX-001: only 1 peak component(s)
+nested_adequacy skipped for case FX-002: only 1 peak component(s)
+nested_adequacy skipped for case FX-003: only 1 peak component(s)
+nested_adequacy skipped for case FX-004: only 1 peak component(s)
+nested fit failed for case TI-003 at order 1 — using null RSS
+nested_adequacy skipped for case RB-001: only 1 peak component(s)
+nested_adequacy skipped for case RB-002: only 1 peak component(s)
+nested_adequacy skipped for case RB-003: only 1 peak component(s)
+nested_adequacy skipped for case RB-004: only 1 peak component(s)
+nested_adequacy skipped for case RB-005: only 1 peak component(s)
+nested_adequacy skipped for case RB-006: only 1 peak component(s)

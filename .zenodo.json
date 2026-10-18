@@ -1,7 +1,7 @@
 {
   "title": "SpectraFit-Core-Reproducibility: every published result of spectrafit-core 0.1.2, regenerated from the release",
   "upload_type": "dataset",
-  "description": "<p>A pinned, thin consumer of the spectrafit-core release that regenerates the NIST StRD agreement tables, the figures and the timing comparison reported in the SoftwareX article on spectrafit-core, on a recorded host (terra, Linux x86-64), and checks every number stated in the text against the regenerated data. The compiled library is the published PyPI wheel; the harness and the figure scripts come from the release tag.</p><p>Version 1.1.0 adds the timing benchmark of record, measured on terra on 6 and 7 October 2026 with the spectrafit-core 0.1.2 wheel and the v0.1.2 harness: 160 cases on six backends at five repetition depths, a 50-seed catalogue sweep, cross-backend parameter agreement and the serialisation-bias audit, with full per-run payloads and provenance. The 151-case archive measured before the release is kept and labelled as superseded.</p>",
+  "description": "<p>A pinned, thin consumer of the spectrafit-core release that regenerates the NIST StRD agreement tables, the figures and the timing comparison reported in the article on spectrafit-core, on a recorded host (terra, Linux x86-64), and checks every number stated in the text against the regenerated data. The compiled library is the published PyPI wheel; the harness and the figure scripts come from the release tag.</p><p>Version 1.2.0 replaces the timing benchmark of record by a second, complete measurement on terra on 16 and 17 October 2026 with the same spectrafit-core 0.1.2 wheel, v0.1.2 harness, depths and seeds, on a frozen host after a kernel update, recording the steal time of every step and every seed and the host once a minute; the first measurement of 6 and 7 October is kept next to it and agrees with it. It adds the Fe L2,3 edge fit of Fe2O3 (Figure 4) with its script and result, the spelling SpectraFit-Core in the figures, a preflight and runbook for the measurement, and checks of three further numbers of the text. The 151-case archive measured before the release is kept and labelled as superseded.</p>",
   "creators": [
     {
       "name": "Hahn, Anselm W.",
@@ -38,5 +38,5 @@
       "scheme": "url"
     }
   ],
-  "version": "1.1.0"
+  "version": "1.2.0"
 }
