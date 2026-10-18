@@ -1,6 +1,6 @@
 # SpectraFit-Core-Reproducibility
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23210105.svg)](https://doi.org/10.5281/zenodo.23210105)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23451597.svg)](https://doi.org/10.5281/zenodo.23451597)
 
 Results and figures of the article on `spectrafit-core`, regenerated from
 the published release, with every number stated in the article checked against the
