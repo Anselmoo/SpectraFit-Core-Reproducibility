@@ -1,18 +1,18 @@
 {
- "generated_utc": "2026-10-07T09:57:16Z",
- "command": "reproduce.py --source /home/cloud/projects/SpectraFit-Core-Reproducibility/.cache/SpectraFit-Core-v0.1.2",
+ "generated_utc": "2026-10-18T10:53:42Z",
+ "command": "reproduce.py ",
  "software": {
   "repository": "https://github.com/Anselmoo/SpectraFit-Core.git",
   "tag": "v0.1.2",
   "commit": "1e304188a7376caf128fcb432a16554ed44ad32a",
   "source_date_epoch": 1791201843,
-  "doi": "10.5281/zenodo.23043544",
+  "doi": "10.5281/zenodo.23170069",
   "wheel": "spectrafit-core==0.1.2 from PyPI, hash-pinned in uv.lock"
  },
  "environment": {
   "python": "3.13.13",
   "implementation": "CPython",
-  "platform": "Linux-5.15.0-187-generic-x86_64-with-glibc2.35",
+  "platform": "Linux-5.15.0-198-generic-x86_64-with-glibc2.35",
   "machine": "x86_64",
   "cpu": "AMD EPYC Processor (with IBPB)",
   "cores": 16,
@@ -23,8 +23,8 @@
    "numpy": "2.5.1",
    "matplotlib": "3.11.2"
   },
-  "uv_lock_sha256": "19f3ea85a0e5d4be6beb383a055a3c112a9198a80f6421c6018a1fc732775f70",
-  "kernel": "5.15.0-187-generic",
+  "uv_lock_sha256": "4afb91b0ca8d36778b8f03e0730f288f11187979238b12412b901a426b08b65a",
+  "kernel": "5.15.0-198-generic",
   "libc": "glibc 2.35",
   "blas_lapack": {
    "numpy_build": {
@@ -149,34 +149,80 @@
    "xsaveopt"
   ]
  },
+ "own_scripts_sha256": {
+  "scripts/fig_eels.py": "105b9c1bbe464e828fa8c2e76be681ea270ffd589ce7b157e0b2c60a018a923c"
+ },
+ "label_patches": {
+  "edits": {
+   "reproducibility/figures/fig_nist_dual.py": [
+    [
+     "\"$\\\\bullet$ spectrafit-core   $\\\\circ$ lmfit\"",
+     "\"$\\\\bullet$ SpectraFit-Core   $\\\\circ$ lmfit\""
+    ],
+    [
+     "label=\"spectrafit-core fit\"",
+     "label=\"SpectraFit-Core fit\""
+    ],
+    [
+     "label=\"spectrafit-core, worst parameter\"",
+     "label=\"SpectraFit-Core, worst parameter\""
+    ]
+   ],
+   "reproducibility/figures/fig_benchmark_profile.py": [
+    [
+     "SUBJECT = \"spectrafit\"\n",
+     "SUBJECT = \"spectrafit\"\nDISPLAY = {\"spectrafit\": \"SpectraFit-Core\"}\n"
+    ],
+    [
+     "[f\"{b}  {int((ratios[b] == 1.0).sum())}",
+     "[(f\"{DISPLAY[b]}\\n\" if b in DISPLAY else f\"{b}  \") + f\"{int((ratios[b] == 1.0).sum())}"
+    ],
+    [
+     "label=f\"{backend}  (n={len(col)})\"",
+     "label=f\"{DISPLAY.get(backend, backend)}  (n={len(col)})\""
+    ]
+   ]
+  },
+  "scripts": {
+   "reproducibility/figures/fig_nist_dual.py": {
+    "release_sha256": "0f2bdea524ecc2dbe35447069585b730145bd73f964423996e9f5236af248755",
+    "patched_sha256": "267655d2013008d7ad9585ca9bc7e3321d6d15657650a0b0f4bcef27677b88db"
+   },
+   "reproducibility/figures/fig_benchmark_profile.py": {
+    "release_sha256": "ffa90f65ba33760416f6e9968004ff5381f28e05229d12a2952d7c69fa28c6d1",
+    "patched_sha256": "ad4e2f62f8ac6c0a48605bb629d08a45640da7fe76db850ee66a3c1c4f295b40"
+   }
+  }
+ },
+ "eels_spectrum_sha256": "28e88f85350c353f524c828740c533312dc897505410ac940cd544060df963d4",
  "upstream_scripts_sha256": {
   "extract_bench_summary.py": "d074f5e69232ca966f0f7060c1e468657c16da04ac2eb044166dbd034ac72928",
   "fig_architecture.py": "1e917769629bf1609242982d548fd15de5eb1a5571f851f558f39523da5f74bf",
-  "fig_benchmark_profile.py": "ffa90f65ba33760416f6e9968004ff5381f28e05229d12a2952d7c69fa28c6d1",
-  "fig_nist_dual.py": "0f2bdea524ecc2dbe35447069585b730145bd73f964423996e9f5236af248755",
+  "fig_benchmark_profile.py": "ad4e2f62f8ac6c0a48605bb629d08a45640da7fe76db850ee66a3c1c4f295b40",
+  "fig_nist_dual.py": "267655d2013008d7ad9585ca9bc7e3321d6d15657650a0b0f4bcef27677b88db",
   "nist_head_to_head.py": "3c04082670dfb29e5dd7bb19c97873ec2d86a2707dbc3c5d893df7a1246ec5e6",
   "nist_table2.py": "2dc40ec28a9c2ce1f2c46f39d0894c13757bcd7c795128c43ab9985d0faad909"
  },
  "timing": {
   "host": "terra",
-  "started_utc": "2026-10-06T07:24:05Z",
-  "finished_utc": "2026-10-07T09:30:36Z",
+  "started_utc": "2026-10-16T20:39:26Z",
+  "finished_utc": "2026-10-17T22:54:42Z",
   "library": "spectrafit-core 0.1.2, PyPI wheel, hash-pinned in uv.lock",
   "harness": "v0.1.2 (1e304188), git archive export; scripts/bench_ladder.py and oracles run unmodified",
   "ladder": "--reps 4,10,20,50,100 (effective 2,5,10,25,50), --mc 8, seed 20260603",
   "seed_sweep": "seeds 20260603..20260652, --reps 10 (effective 5), --mc 8, headline-only"
  },
  "timing_inputs_sha256": {
-  "results/timing/bench_summary.json": "31dc536855c2c74d86b10db684f986a287a92b76a50b4e1939a5c99332754c86",
+  "results/timing/bench_summary.json": "1b822e764754a2ade62f32715c66a6145a2df4edb530d189c8f2df84433d07c2",
   "results/timing/param_agreement.json": "4f1062a2d59118a850a10cee9db465a1bc377fdb09916809a050e1ed4f3fd3ff",
-  "results/timing/audit_bias.json": "d099142f9846a974b67d85f762ab721f223721c6164c41cf9a48ce1b7833bf88",
-  "results/timing/ladder/ladder.json": "02f728421649e947f97875bef6ce7b60fbb0acbd8b663da8ea974571f4c782d2",
-  "results/timing/seed-sweep/sweep.json": "ebd29dec61a59753bf220d902768746bd46457c5e43a0a17c16b15693025a202",
-  "results/timing/ladder/rungs/rung_002/manifest.json": "2e63ef15a93b03423a2a46529f401b369bb359687f9879e86fa530f10fb4488e",
-  "results/timing/ladder/rungs/rung_005/manifest.json": "030a37dabe89a17512278886798015a64522d0560e63db0e29cd0c1e837d36ad",
-  "results/timing/ladder/rungs/rung_010/manifest.json": "a48b08a2a7ab7f4fc065a3b21b51cdbcbe641e1d85ad4e21678f74b72c28dc20",
-  "results/timing/ladder/rungs/rung_025/manifest.json": "ea33a49794d1d894d4eb0c6fe5aa679e06500be1807e305a3076267fbebbcc40",
-  "results/timing/ladder/rungs/rung_050/manifest.json": "7bc10f2ec2257c5f6ff41bb4f132e323e1ae6a3cf01b7435cb98d70d0f192c56"
+  "results/timing/audit_bias.json": "919950ed05d59f3b02af0672b67049fae58264395e20185cdd8ac4cc89f8e060",
+  "results/timing/ladder/ladder.json": "749991ed9daabb5fd3ec83edbc30a23e6dea0c3f7ac69c1ae9c1a1ac0d41f778",
+  "results/timing/seed-sweep/sweep.json": "95db5e1d98f2ad8b66cbdde2e2146e8b735076d4df37f966fc04632225d8407e",
+  "results/timing/ladder/rungs/rung_002/manifest.json": "d8ba5aa451b1565521878bdca5c5ea32229e94a9dd85980b6dd929a95dfcbf90",
+  "results/timing/ladder/rungs/rung_005/manifest.json": "d9c01c87e522c9f8bd0fa51694599352aea95f0e8fe004e9d77f5810cebbb274",
+  "results/timing/ladder/rungs/rung_010/manifest.json": "27850d1aaa76913e16e586611225d70d8b8d7c4a9a42e005095f6b05c7818771",
+  "results/timing/ladder/rungs/rung_025/manifest.json": "c594560e8f76b875127774e593ae1a4bb0d7e673c3fd4b4980e38ec58d1307ff",
+  "results/timing/ladder/rungs/rung_050/manifest.json": "42f50c6e752e86e4efc746d7df80cc0f4a594854e65b1e6ca1bd399124fd15ea"
  },
  "archived_inputs_sha256": {
   "reproducibility/figures/bench_summary.json": "6fea7fdeb2d2eab7a00b4bd57450d442dab31cd4dc51788e715099fc548d9103",
@@ -186,22 +232,10 @@
   "reproducibility/figures/audit_bias.json": "f1ffe39376c8b40b4f943e87b3d62e85762f7da3a72e1d3ffdab38f649d9e1fd"
  },
  "repository": {
-  "commit": "7b8bdb60ac9c5288c03faad5e30ed8ac7f1c54fe",
-  "branch": "claude/spectrafit-core-timing-benchmark-0e1175",
-  "dirty": true,
-  "dirty_paths": [
-   "CITATION.cff",
-   "README.md",
-   "bench/",
-   "build_crate.py",
-   "pins.toml",
-   "pyproject.toml",
-   "reproduce.py",
-   "results/archived/README.md",
-   "results/timing/",
-   "uv.lock",
-   "zenodo.json"
-  ]
+  "commit": "1b7efca3cd03998752c7c7d47a01f528116aeb0d",
+  "branch": "results-2026-10",
+  "dirty": false,
+  "dirty_paths": []
  },
  "drift_vs_release_archive": {
   "n_cells": 108,
