@@ -193,48 +193,54 @@ The archived timing (151 cases, pre-release commit `990a4c7`, August 2026) next 
 the two measurements with release 0.1.2 (160 cases, October 2026), computed the same
 way by `bench/compare.py`:
 
-| | 151 cases, `990a4c7`, Aug 2026 (archived) | 160 cases, 0.1.2, Oct 2026 (of record) |
-|---|---|---|
-| cases | 151 | 160 |
-| categories | 9 | 10 |
-| geometric-mean speed-up vs lmfit | 16.45 | 16.75 |
-| harmonic-mean speed-up vs lmfit | 13.78 | 13.75 |
-| largest \|Δr²\| | 1.28e-04 | 1.29e-04 |
-| spectrafit-core win rate (gate) | 88.1 % | 87.5 % |
-| regressions | 0 | 0 |
-| fastest backend on | 131 of 151 | 140 of 160 |
-| categories where it is not fastest | optfn | optfn |
-| headline without optfn | 15.14 | 15.71 |
-| factor vs jax | 4.94 | 5.30 |
-| factor vs scipy-ls-lm | 6.25 | 7.07 |
-| factor vs scipy-ls-trf | 7.92 | 8.96 |
-| factor vs scipy-ls-dogbox | 6.49 | 7.50 |
-| category complex | 23.99 (35) | 24.84 (35) |
-| category easy | 12.72 (20) | 14.37 (20) |
-| category edge | 14.34 (20) | 16.33 (20) |
-| category fixed | 10.03 (4) | 12.14 (4) |
-| category lineshapes | 8.85 (24) | 10.07 (27) |
-| category optfn | 28.32 (20) | 26.29 (20) |
-| category reality | 17.87 (16) | 19.58 (16) |
-| category robust | — | 5.64 (6) |
-| category scaling | 16.31 (8) | 17.42 (8) |
-| category tied | 14.12 (4) | 14.91 (4) |
-| depth 2 (--reps 4) | 15.97 | 16.33 |
-| depth 5 (--reps 10) | 15.78 | 16.31 |
-| depth 10 (--reps 20) | 16.16 | 16.46 |
-| depth 25 (--reps 50) | 16.36 | 16.50 |
-| depth 50 (--reps 100) | 16.45 | 16.75 |
-| seeds | 50 | 50 |
-| seed mean ± sd | 15.95 ± 0.38 | 16.30 ± 0.41 |
-| seed range | 15.08 to 16.67 | 15.54 to 17.55 |
-| agreement: cases on all six / with truth | 127 / 124 | 136 / 131 |
-| agreement: well-conditioned cases | 93 | 94 |
-| agreement: max cross-backend spread | 0.23 pp | 0.74 pp |
-| agreement: excluded stratum | 31 | 37 |
-| bias: wheel per evaluation | 74.9 µs | 139.2 µs |
-| bias: NumPy per evaluation | 2.97 µs | 6.72 µs |
-| bias: ratio | 25.3 | 20.7 |
-| parity: kernels / exact / largest | 35 / 23 / 4.59e-07 | 35 / 23 / 4.59e-07 |
+| | 151 cases, `990a4c7`, Aug 2026 (archived) | 160 cases, 0.1.2, 6–7 Oct 2026 (run 1) | 160 cases, 0.1.2, 16–17 Oct 2026 (of record) |
+|---|---|---|---|
+| cases | 151 | 160 | 160 |
+| categories | 9 | 10 | 10 |
+| geometric-mean speed-up vs lmfit | 16.45 | 16.75 | 16.71 |
+| harmonic-mean speed-up vs lmfit | 13.78 | 13.75 | 13.75 |
+| largest \|Δr²\| | 1.28e-04 | 1.29e-04 | 1.29e-04 |
+| spectrafit-core win rate (gate) | 88.1 % | 87.5 % | 87.5 % |
+| regressions | 0 | 0 | 0 |
+| fastest backend on | 131 of 151 | 140 of 160 | 140 of 160 |
+| categories where it is not fastest | optfn | optfn | optfn |
+| headline without optfn | 15.14 | 15.71 | 15.68 |
+| factor vs jax | 4.94 | 5.30 | 5.40 |
+| harmonic factor vs jax | 4.45 | 4.70 | 4.84 |
+| factor vs scipy-ls-lm | 6.25 | 7.07 | 7.08 |
+| harmonic factor vs scipy-ls-lm | 1.47 | 1.52 | 1.53 |
+| factor vs scipy-ls-trf | 7.92 | 8.96 | 9.00 |
+| harmonic factor vs scipy-ls-trf | 1.99 | 2.04 | 2.05 |
+| factor vs scipy-ls-dogbox | 6.49 | 7.50 | 7.56 |
+| harmonic factor vs scipy-ls-dogbox | 1.27 | 1.31 | 1.32 |
+| median solve spectrafit | 0.604 ms | 0.497 ms | 0.484 ms |
+| median solve lmfit | 9.213 ms | 7.371 ms | 7.038 ms |
+| category complex | 23.99 (35) | 24.84 (35) | 24.62 (35) |
+| category easy | 12.72 (20) | 14.37 (20) | 14.21 (20) |
+| category edge | 14.34 (20) | 16.33 (20) | 16.43 (20) |
+| category fixed | 10.03 (4) | 12.14 (4) | 12.46 (4) |
+| category lineshapes | 8.85 (24) | 10.07 (27) | 9.98 (27) |
+| category optfn | 28.32 (20) | 26.29 (20) | 26.10 (20) |
+| category reality | 17.87 (16) | 19.58 (16) | 19.57 (16) |
+| category robust | — | 5.64 (6) | 5.73 (6) |
+| category scaling | 16.31 (8) | 17.42 (8) | 17.25 (8) |
+| category tied | 14.12 (4) | 14.91 (4) | 15.98 (4) |
+| depth 2 (--reps 4) | 15.97 | 16.33 | 16.51 |
+| depth 5 (--reps 10) | 15.78 | 16.31 | 16.46 |
+| depth 10 (--reps 20) | 16.16 | 16.46 | 16.55 |
+| depth 25 (--reps 50) | 16.36 | 16.50 | 16.79 |
+| depth 50 (--reps 100) | 16.45 | 16.75 | 16.71 |
+| seeds | 50 | 50 | 50 |
+| seed mean ± sd | 15.95 ± 0.38 | 16.30 ± 0.41 | 16.19 ± 0.36 |
+| seed range | 15.08 to 16.67 | 15.54 to 17.55 | 15.57 to 17.18 |
+| agreement: cases on all six / with truth | 127 / 124 | 136 / 131 | 136 / 131 |
+| agreement: well-conditioned cases | 93 | 94 | 94 |
+| agreement: max cross-backend spread | 0.23 pp | 0.74 pp | 0.74 pp |
+| agreement: excluded stratum | 31 | 37 | 37 |
+| bias: wheel per evaluation | 74.9 µs | 139.2 µs | 138.3 µs |
+| bias: NumPy per evaluation | 2.97 µs | 6.72 µs | 6.81 µs |
+| bias: ratio | 25.3 | 20.7 | 20.3 |
+| parity: kernels / exact / largest | 35 / 23 / 4.59e-07 | 35 / 23 / 4.59e-07 | 35 / 23 / 4.59e-07 |
 
 The two 0.1.2 runs measure the same thing twice; their differences are the
 run-to-run variation of this host (the four `tied` cases, with a geometric mean of

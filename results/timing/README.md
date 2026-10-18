@@ -1,50 +1,56 @@
-# Timing of record: spectrafit-core 0.1.2 on terra, 160 cases
+# Timing of record: spectrafit-core 0.1.2 on terra, 160 cases (run 2)
 
-The timing benchmark of the paper, measured on terra from 6 October 2026 07:24 UTC to
-7 October 2026 09:30 UTC (26 h). It used:
+The timing benchmark of the paper, measured on terra from 16 October 2026 20:39 UTC to
+17 October 2026 22:54 UTC (26 h 15 min). It repeats the first measurement with
+0.1.2 (`../timing-2026-10-06/`, run 1) with the same library, harness, comparators,
+depths, `--mc` and seeds, by the chain of this repository at commit `3ab6ca6`, which in
+addition records the steal time and the host once a minute.
 
 - **the compiled library:** the published PyPI wheel `spectrafit-core==0.1.2`,
   hash-pinned in `uv.lock`. No source build, no target-cpu flags.
-- **the harness:** v0.1.2 at commit `1e304188a7376caf128fcb432a16554ed44ad32a`.
-  - It was exported with `git archive`, as the paths `scripts/bench_ladder.py`,
-    `python/oracles`, `reproducibility`, `tests/parity`, `crates` and `Cargo.toml`.
-  - The export lies outside any git work tree, and its `python/` holds only `oracles`.
-    The wheel is therefore what gets imported; every step checked that.
+- **the harness:** v0.1.2 at commit `1e304188a7376caf128fcb432a16554ed44ad32a`,
+  exported with `git archive` outside any git work tree, as in run 1. The preflight
+  compared the export file by file with the export of run 1 (464 files, identical).
 - **the comparators at their locked versions:** lmfit 1.3.4, SciPy 1.18.0, NumPy 2.5.1,
   JAX and jaxlib 0.11.0, optimistix 0.1.0, Python 3.13.13.
-- **library defaults only:**
-  - all thread variables and `XLA_FLAGS`, `JAX_PLATFORMS` and
-    `SPECTRAFIT_BENCH_JAX_COMPILE_BUDGET` were unset;
-  - the JAX compile budget was 64, the 0.1.2 default;
-  - `vm.max_map_count` was 65530.
+- **library defaults only:** thread variables, `XLA_FLAGS`, `JAX_PLATFORMS` and
+  `SPECTRAFIT_BENCH_JAX_COMPILE_BUDGET` unset; JAX compile budget 64 (the 0.1.2
+  default); `vm.max_map_count` 65530.
 
-Nothing was tuned on a result. The depths, `--mc` and the seeds are those of the archived
-run, read from its records.
+Nothing was tuned on a result.
 
 ## How it was run
 
-`bench/run_timing.sh` ran in a detached tmux session. It held the host's benchmark lock
-(`~/.cache/terra-bench.lock`) and stopped at the first non-zero exit. Every step exited 0.
+`bench/preflight.sh` checked the repository, the export, the six backends and the host
+and wrote `preflight.txt` (0 FAIL). `bench/run_timing.sh` then ran in a detached tmux
+session, started with a delay of 300 s so that the session which started it could end
+first. Before the run the host was updated and rebooted (kernel 5.15.0-198), and the
+apt timers and unattended-upgrades were stopped and masked and the kernel and C library
+packages held until the run had finished (`bench/RUNBOOK.md`). Every step exited 0.
 
 | step | command | wall time |
 |---|---|---|
-| 0 | `bench/assemble.py capture`: host fields, catalogue fingerprint, backend support | seconds |
-| 1–5 | the release's `scripts/bench_ladder.py --ladder R --mc 8`, unmodified, once per R = 4, 10, 20, 50, 100 | 70, 90, 123, 225, 393 min |
-| 6 | `bench/seed_sweep.py`: seeds 20260603…20260652, `--reps 10`, `--mc 8`, headline-only | 11.1 h |
-| 7 | the release's `extract_bench_summary.py` on the reps-100 run (`2026-10-07_run_005`) | seconds |
+| 0 | backends check, `bench/assemble.py capture`, host snapshot before | seconds |
+| 1–5 | the release's `scripts/bench_ladder.py --ladder R --mc 8`, unmodified, once per R = 4, 10, 20, 50, 100 | 71, 91, 125, 226, 393 min |
+| 6 | `bench/seed_sweep.py`: seeds 20260603…20260652, `--reps 10`, `--mc 8`, headline-only | 11.2 h |
+| 7 | the release's `extract_bench_summary.py` on the reps-100 run | seconds |
 | 8 | the release's `measure_param_agreement.py` | seconds |
 | 9 | the release's `measure_audit_bias.py` | seconds |
 | 10 | host snapshot after | seconds |
 
-`provenance.json` records:
+**Steal time.** The aggregate `cpu` line of `/proc/stat` was read at the start and end
+of every step and every seed point; the steal fraction is the difference of its 8th
+field over the difference of all fields. It was 0.013 % to 0.017 % for each ladder
+rung and the seed sweep, and 0.015 % over the whole run. `vmstat` (once a minute,
+1 576 rows) shows no steal, no swap activity and a run queue of at most 16.
 
-- every step with its command, start, end, exit code and the load average before and
-  after;
-- the preflight readings;
-- the SHA-256 of every exported file and of the drivers in `bench/`.
-
-`host/before.txt` and `host/after.txt` are full host snapshots: kernel, glibc, CPU, the
-installed packages, the wheel's digest and the apt timers.
+`provenance.json` records every step with its command, start, end, exit code, load
+average and `/proc/stat` reading, the steal fraction per rung and per seed, the
+preflight readings, and the SHA-256 of every exported file and of the drivers in
+`bench/`. `host/before.txt` and `host/after.txt` are full host snapshots (kernel,
+glibc, CPU, clock source, swap, transparent huge pages, CPU frequency, pressure,
+services, sessions, held packages, installed packages, the wheel's digest).
+`host/vmstat.log.gz` and `host/threads.log.gz` are the per-minute records.
 
 ## Layout
 
@@ -61,56 +67,42 @@ seed-sweep/rungs/seed_<seed>/            one directory per catalogue seed
 bench_summary.json                       Figure 3 and the bench- claims
 param_agreement.json                     agree-01
 audit_bias.json                          bias-01, bias-02
+host/                                    snapshots before and after, per-minute vmstat and thread records
 ```
+
+## Run 2 against run 1
+
+The two runs agree to the second significant figure on every headline number
+(`bench/compare.py`, table in the top-level `README.md`): geometric mean 16.71 against
+16.75, harmonic mean 13.75 against 13.75, seed sweep 16.19 ± 0.36 against 16.30 ± 0.41.
+`param_agreement.json` is byte-identical. The differences between the runs:
+
+1. **Host:** kernel 5.15.0-198 instead of 187 (updated and rebooted before the run).
+   glibc, Python and the benchmark environment are unchanged. The NIST tables
+   regenerated after the update are numerically identical to the stored ones; only the
+   kernel string in their host record differs.
+2. **Host frozen:** no unattended upgrade ran during run 2 (in run 1 one ran during two
+   seed points, item 7 of `../timing-2026-10-06/README.md`).
+3. **Records added:** steal time per step and per seed, per-minute `vmstat` and thread
+   records, preflight and full host snapshots.
+
+**The lowest seed.** Seed 20260636 has the lowest harmonic mean of the sweep in both
+runs (10.42 in run 1, 10.41 in run 2; geometric mean 16.01 and 15.99). One case causes
+it: on this catalogue draw spectrafit-core needs 258 ms (run 1: 263 ms) for the complex
+case CX-008, against 74 ms for lmfit, a speedup of 0.29. Without CX-008 the seed's
+harmonic mean is 13.38 and 13.41. Steal and `vmstat` show nothing in the minutes of
+this seed; it is a property of the drawn data.
 
 ## Differences from the archived 151-case measurement
 
-The archived measurement is in `results/archived/` (ladder at `990a4c7`, sweep at
-`0fd4b5d`, 15 to 17 August 2026). The following differences could not be avoided:
+Items 1 to 3, 5, 6 and 8 of `../timing-2026-10-06/README.md` apply unchanged: 160
+instead of 151 cases, the 0.1.2 wheel, the v0.1.2 harness, the schema-2 records built
+by `bench/assemble.py`, the seed-sweep driver, and a lock file that differs from the
+committed one only in the version of this repository.
 
-1. **Catalogue: 160 cases instead of 151.** The `lineshapes` category has 27 cases
-   instead of 24, and the `robust` category (6 cases) is new. The catalogue fingerprints
-   therefore differ.
-2. **Library:** the 0.1.2 PyPI wheel instead of a 0.1.0 build of commit `990a4c7`.
-3. **Harness:** v0.1.2 instead of the unreleased commits.
-   - `Backend.solver_settings()` was removed in 0.1.2, so `config.solvers.<backend>`
-     carries only `version`. The archive's `library`, `algorithm`, `bounds`, `stopping`
-     and `runtime` are null here; they are listed in `provenance.json`
-     (`null_fields`) and are not copied from the archive.
-   - The `methodology` block is the archive's text. Each sentence was checked against the
-     v0.1.2 code.
-4. **Host:** kernel 5.15.0-187 instead of 186; glibc 2.35-0ubuntu3.15 instead of 3.14,
-   with the libm machine code unchanged (see `host/terra-after-update.txt` at the top of
-   this repository).
-5. **Ladder records:**
-   - The release's `bench_ladder.py` writes schema `bench-ladder/1` and was run once per
-     depth, so that a failure stops the chain. `bench/assemble.py` builds the schema-2
-     records from its output.
-   - `environment.git` names the export's commit, because the export has no `.git` and
-     the driver recorded an empty commit.
-   - The thread variables, CPU flags and cgroup fields come from step 0.
-   - The load averages come from the chain's own readings.
-   - `params.catalog_fingerprint_sha256` was added to the ladder records; the archive
-     has it on the sweep only.
-6. **Seed sweep:** the archive's driver (`scripts/bench_ladder.py --seeds 50
-   --headline-only` at `0fd4b5d`) calls `oracles.cli run --seed --headline-only`, and
-   0.1.2 has neither option.
-   - `bench/_seed_point.py` runs the release's `cli.run` itself, with `build_report`
-     bound to `seed=` and `analyzed_ids=[featured_case(build_catalog(seed)).id]`. That is
-     exactly what `--headline-only` did at `0fd4b5d`.
-   - The fingerprint function is copied from `0fd4b5d`.
-   - The sweep stops at the first failing seed instead of running the rest.
-7. **Unattended upgrades during the sweep.** On 7 October 00:26–00:30 UTC, the host's
-   unattended-upgrades installed `sg3-utils`, `sg3-utils-udev`, `libfreetype` and the
-   kernel package 5.15.0-198 (installed only; the running kernel stayed 5.15.0-187).
-   - glibc/libm, Python and the benchmark environment were not touched.
-   - Two seed points overlapped those minutes:
-     - 20260611: 00:16–00:30 UTC, 825 s, load 1.48 → 3.26;
-     - 20260612: 00:30–00:43 UTC, 785 s, started at load 3.26.
-   - Both are kept as measured. No ladder rung overlapped.
-8. **Lock file:** `provenance.json` records the SHA-256 of `uv.lock` as it was during the
-   measurement (`f4c9540f…`). The lock committed with this release differs from it in one
-   line only, the version of this repository itself (1.0.0 → 1.1.0); every package pin
-   and hash is the same.
-9. **Idle host:** the Claude Code session that started the chain and a VS Code server
-   ran on terra throughout, idle. They are listed in `provenance.json` (`preflight`).
+## Idle host
+
+A VS Code Remote-SSH server with GitHub Copilot ran on terra throughout, idle (at most
+2 % of one core of sixteen; listed in `host/before.txt`), as in run 1, whose snapshot
+lists only the busiest processes. An SSH login with an idle shell stayed open. No other
+login took place during the run.

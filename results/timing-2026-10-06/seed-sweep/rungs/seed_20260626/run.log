@@ -1,0 +1,8 @@
+seed=20260626 reps=10 mc=8 analyzed_ids=['RL-001']
+benchmark complete → .spectrafit_reports/benchmark/2026-10-07_run_029
+  peak_rss_gb=1.58 mmap_regions=9242 jax_cache_clears=1 jax_compile_budget=64
+  160 cases · geomean speedup vs lmfit 16.17x · max |Δr²| 5.99e-06 · spectrafit win-rate 87%
+  1 case(s) had backend regressions: CX-017 (see results.json `suite[*].regression`)
+  serve it for the web UI: uv run poe serve  (then `cd web && npm run dev`)
+/home/cloud/timing-0.1.2-2026-10/src/python/oracles/models.py:264: RuntimeWarning: invalid value encountered in divide
+  return amplitude * wofz(z).real / wofz(z0).real
