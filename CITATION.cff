@@ -20,8 +20,11 @@ repository-code: "https://github.com/Anselmoo/SpectraFit-Core-Reproducibility"
 license: MIT
 version: 1.2.0
 date-released: 2026-10-18
-doi: "10.5281/zenodo.23171640"
+doi: "10.5281/zenodo.23451597"
 identifiers:
+  - type: doi
+    value: "10.5281/zenodo.23451597"
+    description: "Version DOI of this repository's release 1.2.0."
   - type: doi
     value: "10.5281/zenodo.23171640"
     description: "Concept DOI of this repository: always resolves to the latest version."

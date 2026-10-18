@@ -3509,8 +3509,8 @@
   {
    "@id": "CITATION.cff",
    "@type": "File",
-   "contentSize": 1994,
-   "sha256": "cfae2f148b6a0ee423533c3169d2ba9405049051d4822729ac0336b76494b524",
+   "contentSize": 2112,
+   "sha256": "ab6f0656cd994ca03788fd27b40f04224d09d9de60b28244388f40e69c720dca",
    "encodingFormat": "application/x-yaml",
    "description": "How to cite this repository."
   },
@@ -3525,7 +3525,7 @@
    "@id": "README.md",
    "@type": "File",
    "contentSize": 17216,
-   "sha256": "7ef7ece7e5fb91d10b1ecc241f348706813ede2284218df6d8e5c688c6c004ba",
+   "sha256": "43a39d5962c684335ab23bf8ac7f00e2a9a6a3e8cdaeb17686fd36f81643fa47",
    "encodingFormat": "text/markdown",
    "description": "What this repository is, how to rerun it, and what is regenerated versus archived."
   },
