@@ -20,6 +20,10 @@ Two subcommands:
     ``audit.json`` gzipped without timestamps (``gzip -n`` equivalent), the three derived
     files, the host snapshots and a run-level ``provenance.json``. Then checks the result
     against the archived files of the release (same key paths) and against itself.
+    Refuses, before writing anything, a run root that is not a complete run of this
+    checkout's drivers (``guard()``: preflight, host and per-minute records, ten
+    successful steps and every seed with its /proc/stat reading, drivers unchanged since
+    the run's commit). ``--partial`` (smoke test) skips this check.
 
 Fields the release cannot supply are written as null and listed in ``NULL_FIELDS``;
 nothing is copied from the archived 151-case records.
@@ -32,6 +36,7 @@ import gzip
 import hashlib
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -380,7 +385,79 @@ def summary(rec: dict, with_seed: bool) -> dict:
                   "resources": rec["resources"], "headline": rec["headline"]}
 
 
+# Files of bench/ that decide what a run measured and recorded. A run root is only built
+# by a checkout whose copies of these files equal those of the commit the run started from.
+DRIVERS = ("bench/run_timing.sh", "bench/seed_sweep.py", "bench/preflight.sh", "bench/host_snapshot.sh")
+N_STEPS = 10  # bench/run_timing.sh, full chain
+
+
+def guard(root: Path) -> list[str]:
+    """Reasons why ``root`` is not a complete run of the current drivers (empty: it is).
+
+    A full build refuses a run root that lacks what bench/run_timing.sh at this
+    repository's drivers writes: a preflight without FAIL lines naming the commit, both
+    host snapshots, the per-minute vmstat and thread records, ten successful steps each
+    with its /proc/stat reading, and a /proc/stat reading for every seed. A run root of an
+    older chain (run 1 has none of these) or an incomplete run therefore cannot be
+    published as a run of this one.
+    """
+    why: list[str] = []
+    pf = root / "preflight.txt"
+    commit = None
+    if not pf.exists():
+        why.append("no preflight.txt (a run root of an older chain?)")
+    else:
+        text = pf.read_text(encoding="utf-8")
+        if any(line.startswith("FAIL") for line in text.splitlines()):
+            why.append("preflight.txt has FAIL lines")
+        m = re.search(r"^# repository \S+ @ ([0-9a-f]{40})", text, re.M)
+        if m:
+            commit = m.group(1)
+        else:
+            why.append("preflight.txt names no repository commit")
+    for name in ("capture.json", "host-before.txt", "host-after.txt", "vmstat.log", "threads.log"):
+        if not (root / name).exists():
+            why.append(f"no {name}")
+    stepfile = root / "steps.jsonl"
+    steps = [json.loads(x) for x in stepfile.read_text().splitlines() if x.strip()] if stepfile.exists() else []
+    last = {s["step"]: s for s in steps}  # a resumed chain appends; the last record of a step counts
+    for k in range(1, N_STEPS + 1):
+        s = last.get(k)
+        if s is None:
+            why.append(f"steps.jsonl: no record of step {k}")
+            continue
+        if s.get("rc") != 0:
+            why.append(f"steps.jsonl: step {k} rc={s.get('rc')}")
+        for f in ("proc_stat_cpu_start", "proc_stat_cpu_end"):
+            if not s.get(f):
+                why.append(f"steps.jsonl: step {k} lacks {f}")
+    seeds = sorted((root / "seed-sweep").glob("seed_*")) if (root / "seed-sweep").is_dir() else []
+    if not seeds:
+        why.append("no seed-sweep/seed_*")
+    for d in seeds:
+        res = load(d / "point.json").get("resources", {}) if (d / "point.json").exists() else {}
+        if not (res.get("proc_stat_cpu_start") and res.get("proc_stat_cpu_end")):
+            why.append(f"{d.name}: point.json lacks resources.proc_stat_cpu_start/_end")
+    if commit:
+        repo = Path(__file__).resolve().parents[1]
+        git = ["git", "-C", str(repo)]
+        if subprocess.run([*git, "cat-file", "-e", f"{commit}^{{commit}}"], capture_output=True).returncode:
+            why.append(f"run commit {commit[:12]} is not in this repository")
+        elif subprocess.run([*git, "diff", "--quiet", commit, "--", *DRIVERS]).returncode:
+            why.append(f"bench drivers differ from run commit {commit[:12]} (git diff {commit[:12]} -- bench/)")
+    return why
+
+
 def build(root: Path, out: Path, partial: bool) -> int:
+    if not partial:
+        why = guard(root)
+        if why:
+            print(f"REFUSED {root}: not a complete run of these drivers; nothing written")
+            for w in why[:20]:
+                print("  ", w)
+            if len(why) > 20:
+                print(f"   ... and {len(why) - 20} more")
+            return 1
     cap = load(root / "capture.json")
     steps = {s["step"]: s for s in map(json.loads, (root / "steps.jsonl").read_text().splitlines())} \
         if (root / "steps.jsonl").exists() else {}
