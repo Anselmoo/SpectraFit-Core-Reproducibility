@@ -1,6 +1,12 @@
 #!/bin/bash
 # usage: preflight.sh <run-root> <SpectraFit-Core checkout> [--allow-sessions]
 #
+# The release measured is SPECTRAFIT_VERSION (default 0.1.3); its commit is tag
+# v$SPECTRAFIT_VERSION of the checkout, or SPECTRAFIT_COMMIT when set (a dry test of a release
+# candidate). The resolved version, tag and commit are written to <run-root>/source.env, which
+# bench/run_timing.sh and bench/assemble.py read. TIMING_PYTHON replaces the archive's .venv
+# interpreter for a dry test only (check 1 then records the override instead of syncing).
+#
 # Prepares <run-root> for bench/run_timing.sh and refuses to let a timing run start on a
 # host or environment that would make it non-comparable. Writes <run-root>/preflight.txt
 # (run_timing.sh requires it) with one PASS / WARN / FAIL line per check and the raw
@@ -21,8 +27,10 @@ set -uo pipefail
 T=$(realpath -m "${1:?run root}"); CORE=$(realpath "${2:?SpectraFit-Core checkout}")
 ALLOW_SESSIONS=${3:-}
 W=$(cd "$(dirname "$0")/.." && pwd)
-PY=$W/.venv/bin/python
-COMMIT=1e304188a7376caf128fcb432a16554ed44ad32a
+PY=${TIMING_PYTHON:-$W/.venv/bin/python}
+VERSION=${SPECTRAFIT_VERSION:-0.1.3}
+TAG=v$VERSION
+COMMIT=${SPECTRAFIT_COMMIT:-$(git -C "$CORE" rev-parse -q --verify "refs/tags/$TAG^{commit}" 2>/dev/null)}
 EXPORT_PATHS="scripts/bench_ladder.py python/oracles reproducibility tests/parity crates Cargo.toml"
 EXPECTED_BACKENDS="jax lmfit scipy-ls-dogbox scipy-ls-lm scipy-ls-trf spectrafit"
 # The export of record: results/timing/ before the first new run, the archived copy after.
@@ -44,16 +52,27 @@ say "# preflight $(date -u +%FT%TZ) $(hostname) by $(id -un)"
 say "# repository $W @ $(git -C "$W" rev-parse HEAD 2>/dev/null) ($(git -C "$W" rev-parse --abbrev-ref HEAD 2>/dev/null))"
 
 # ---------------------------------------------------------------- 1 repository
-if [ -z "$(git -C "$W" status --porcelain 2>/dev/null)" ]; then pass "working tree clean"
-else fail "working tree not clean: commit or stash first"; git -C "$W" status --porcelain | raw; fi
+# run-archive.sh writes its run log and progress lines before it calls this script; they are
+# the only untracked files a run of record may have here.
+porcelain() { git -C "$W" status --porcelain -- . ':!results/run-log.tsv' ':!results/progress.txt' 2>/dev/null; }
+if [ -z "$(porcelain)" ]; then pass "working tree clean (run-archive.sh run log and progress excepted)"
+else fail "working tree not clean: commit or stash first"; porcelain | raw; fi
 if git -C "$W" diff --quiet HEAD -- uv.lock; then pass "uv.lock as committed ($(sha256sum "$W/uv.lock" | cut -c1-16))"
 else fail "uv.lock differs from HEAD"; fi
-if (cd "$W" && uv sync --locked --group benchmark --group audit) > "$T/uv-sync.log" 2>&1; then
+if [ -n "${TIMING_PYTHON:-}" ]; then
+  warn "interpreter override TIMING_PYTHON=$TIMING_PYTHON (dry test, not a run of record); no uv sync"
+elif (cd "$W" && uv sync --locked --group benchmark --group audit) > "$T/uv-sync.log" 2>&1; then
   pass "environment synced from the lock (benchmark, audit)"
 else fail "uv sync --locked failed (see $T/uv-sync.log)"; fi
+got_version=$("$PY" -c 'import spectrafit_core; print(spectrafit_core.__version__)' 2>/dev/null)
+if [ "$got_version" = "$VERSION" ] || [ -n "${SPECTRAFIT_COMMIT:-}" ]; then
+  pass "interpreter $PY: spectrafit-core $got_version (measuring $VERSION)"
+else fail "interpreter $PY has spectrafit-core $got_version, expected $VERSION"; fi
 
 # ---------------------------------------------------------------- 2 export
-if [ -e "$T/src" ]; then
+if [ -z "$COMMIT" ]; then
+  fail "$CORE has no tag $TAG and SPECTRAFIT_COMMIT is not set"
+elif [ -e "$T/src" ]; then
   fail "$T/src exists: use a fresh run root, an export is never reused"
 else
   if git -C "$CORE" cat-file -e "$COMMIT^{commit}" 2>/dev/null; then
@@ -64,7 +83,11 @@ else
     fail "$CORE does not contain the pinned commit $COMMIT"
   fi
 fi
-if [ -d "$T/src" ] && [ -f "$REFERENCE" ]; then
+printf 'VERSION=%s\nTAG=%s\nCOMMIT=%s\n' "$VERSION" "$TAG" "$COMMIT" > "$T/source.env"
+ref_commit=$([ -f "$REFERENCE" ] && "$PY" -c 'import json,sys; print(json.load(open(sys.argv[1]))["source"]["commit"])' "$REFERENCE" 2>/dev/null)
+if [ -d "$T/src" ] && [ -f "$REFERENCE" ] && [ "$ref_commit" != "$COMMIT" ]; then
+  pass "no export of record for $COMMIT yet (the stored timing measured ${ref_commit:-another commit}); first measurement of $VERSION"
+elif [ -d "$T/src" ] && [ -f "$REFERENCE" ]; then
   diffs=$("$PY" - "$T/src" "$REFERENCE" <<'EOF'
 import hashlib, json, sys
 from pathlib import Path

@@ -20,7 +20,7 @@ HERE = Path(__file__).resolve().parent
 PINS = tomllib.loads((HERE / "pins.toml").read_text())
 CRATE_NAME = "ro-crate-metadata.json"
 CHECKSUMS_NAME = "checksums.sha256"
-SKIP_DIRS = {".git", ".cache", ".venv", "__pycache__"}
+SKIP_DIRS = {".git", ".cache", ".venv", "__pycache__", ".pytest_cache", ".ruff_cache"}
 SKIP_FILES = {CRATE_NAME, CHECKSUMS_NAME, ".DS_Store"}
 
 AUTHOR_ID = "https://orcid.org/0000-0003-4543-4833"
@@ -102,7 +102,18 @@ DESCRIPTIONS = {
                                "free fit, steps, coefficients of determination, branching ratio). Regenerated.",
     "figures/figure4_eels.pdf": "Figure 4, vector. Drawn from the fits in results/eels_fe2o3.json.",
     "figures/figure4_eels.png": "Figure 4, raster.",
+    "scripts/mirror_gallery.py": "Mirrors the example gallery of spectrafit-core (docs/tutorials/gallery) 1:1 "
+                                 "from a commit into examples/ and writes examples-manifest.json.",
+    "examples-manifest.json": "Source commit, git tree id and per-file SHA-256 of examples/; verifies itself "
+                              "(files_sha256).",
+    "results/examples-smoke.json": "Smoke run of examples/ by `reproduce.py --examples`: exit code and wall "
+                                   "time of every example.",
+    "tests/test_examples.py": "Tests of the examples mirror: byte identity with the source tree, the "
+                              "manifest, the smoke run.",
 }
+EXAMPLE_ROLES = {"example": "runnable example", "snippet": "runnable snippet included into an explanation page",
+                 "helper": "helper module of the examples, not run on its own",
+                 "explanation": "page that explains the examples", "asset": "file of the gallery"}
 FORMATS = {".gz": "application/gzip", ".log": "text/plain", ".sh": "text/x-shellscript",
            ".json": "application/json", ".pdf": "application/pdf", ".png": "image/png",
            ".py": "text/x-python", ".toml": "application/toml", ".md": "text/markdown",
@@ -132,8 +143,17 @@ def files() -> list[str]:
 
 
 def pattern_description(rel: str) -> str | None:
-    """Descriptions for the per-rung and per-seed files, which are too many to list."""
+    """Descriptions for the per-rung and per-seed files and the mirrored examples, which are too many to list."""
     parts = rel.split("/")
+    if parts[0] == "examples":
+        manifest_path = HERE / "examples-manifest.json"
+        manifest = json.loads(manifest_path.read_text()) if manifest_path.exists() else {"files": []}
+        entry = next((f for f in manifest["files"] if f["path"] == rel), None)
+        if entry is None:
+            return None
+        src = manifest["source"]
+        return (f"Gallery of spectrafit-core, {EXAMPLE_ROLES.get(entry['role'], entry['role'])}; mirrored 1:1 "
+                f"from {src['path']} at commit {src['commit'][:12]}.")
     if len(parts) == 6 and parts[:2] == ["results", "timing"] and parts[3] == "rungs":
         point = parts[4].replace("rung_", "repetition depth ").replace("seed_", "catalogue seed ")
         what = {"manifest.json": "run manifest (headline, per-case points)",

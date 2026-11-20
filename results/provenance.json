@@ -1,30 +1,30 @@
 {
- "generated_utc": "2026-10-18T10:53:42Z",
- "command": "reproduce.py ",
+ "generated_utc": "2026-11-19T12:33:35Z",
+ "command": "reproduce.py --targets core --source /home/cloud/projects/spectrafit-core",
  "software": {
   "repository": "https://github.com/Anselmoo/SpectraFit-Core.git",
-  "tag": "v0.1.2",
-  "commit": "1e304188a7376caf128fcb432a16554ed44ad32a",
-  "source_date_epoch": 1791201843,
-  "doi": "10.5281/zenodo.23170069",
-  "wheel": "spectrafit-core==0.1.2 from PyPI, hash-pinned in uv.lock"
+  "tag": "v0.1.3",
+  "commit": "952c5c954eed2e0e36224ddf2f9859086d36fad7",
+  "source_date_epoch": 1794828519,
+  "doi": "10.5281/zenodo.24282350",
+  "wheel": "spectrafit-core==0.1.3 from PyPI, hash-pinned in uv.lock"
  },
  "environment": {
   "python": "3.13.13",
   "implementation": "CPython",
-  "platform": "Linux-5.15.0-198-generic-x86_64-with-glibc2.35",
+  "platform": "Linux-5.15.0-203-generic-x86_64-with-glibc2.35",
   "machine": "x86_64",
   "cpu": "AMD EPYC Processor (with IBPB)",
   "cores": 16,
   "packages": {
-   "spectrafit-core": "0.1.2",
+   "spectrafit-core": "0.1.3",
    "lmfit": "1.3.4",
    "scipy": "1.18.0",
    "numpy": "2.5.1",
    "matplotlib": "3.11.2"
   },
-  "uv_lock_sha256": "4afb91b0ca8d36778b8f03e0730f288f11187979238b12412b901a426b08b65a",
-  "kernel": "5.15.0-198-generic",
+  "uv_lock_sha256": "3b316c08df834b705a209268d19694a008c2528d25fe0c53df94d792a0c63d67",
+  "kernel": "5.15.0-203-generic",
   "libc": "glibc 2.35",
   "blas_lapack": {
    "numpy_build": {
@@ -63,7 +63,7 @@
     "scipy.libs/libscipy_openblas-5f890258.so"
    ]
   },
-  "ldd": "ldd (Ubuntu GLIBC 2.35-0ubuntu3.15) 2.35",
+  "ldd": "ldd (Ubuntu GLIBC 2.35-0ubuntu3.18) 2.35",
   "cpu_flags": [
    "3dnowprefetch",
    "abm",
@@ -150,7 +150,7 @@
   ]
  },
  "own_scripts_sha256": {
-  "scripts/fig_eels.py": "105b9c1bbe464e828fa8c2e76be681ea270ffd589ce7b157e0b2c60a018a923c"
+  "scripts/fig_eels.py": "76f46afe1a138dbd3ab09124eb0db338b083e4f98c6b79ac448b4549172a0d09"
  },
  "label_patches": {
   "edits": {
@@ -201,28 +201,28 @@
   "fig_benchmark_profile.py": "ad4e2f62f8ac6c0a48605bb629d08a45640da7fe76db850ee66a3c1c4f295b40",
   "fig_nist_dual.py": "267655d2013008d7ad9585ca9bc7e3321d6d15657650a0b0f4bcef27677b88db",
   "nist_head_to_head.py": "3c04082670dfb29e5dd7bb19c97873ec2d86a2707dbc3c5d893df7a1246ec5e6",
-  "nist_table2.py": "2dc40ec28a9c2ce1f2c46f39d0894c13757bcd7c795128c43ab9985d0faad909"
+  "nist_table2.py": "e6fe80473306525bffd404f5f32a034820a83d0944483de6d25d1bebb1b617ad"
  },
  "timing": {
   "host": "terra",
-  "started_utc": "2026-10-16T20:39:26Z",
-  "finished_utc": "2026-10-17T22:54:42Z",
-  "library": "spectrafit-core 0.1.2, PyPI wheel, hash-pinned in uv.lock",
-  "harness": "v0.1.2 (1e304188), git archive export; scripts/bench_ladder.py and oracles run unmodified",
+  "started_utc": "2026-11-16T17:17:18Z",
+  "finished_utc": "2026-11-17T20:02:14Z",
+  "library": "spectrafit-core 0.1.3, PyPI wheel, hash-pinned in uv.lock",
+  "harness": "v0.1.3 (952c5c95), git archive export",
   "ladder": "--reps 4,10,20,50,100 (effective 2,5,10,25,50), --mc 8, seed 20260603",
   "seed_sweep": "seeds 20260603..20260652, --reps 10 (effective 5), --mc 8, headline-only"
  },
  "timing_inputs_sha256": {
-  "results/timing/bench_summary.json": "1b822e764754a2ade62f32715c66a6145a2df4edb530d189c8f2df84433d07c2",
-  "results/timing/param_agreement.json": "4f1062a2d59118a850a10cee9db465a1bc377fdb09916809a050e1ed4f3fd3ff",
-  "results/timing/audit_bias.json": "919950ed05d59f3b02af0672b67049fae58264395e20185cdd8ac4cc89f8e060",
-  "results/timing/ladder/ladder.json": "749991ed9daabb5fd3ec83edbc30a23e6dea0c3f7ac69c1ae9c1a1ac0d41f778",
-  "results/timing/seed-sweep/sweep.json": "95db5e1d98f2ad8b66cbdde2e2146e8b735076d4df37f966fc04632225d8407e",
-  "results/timing/ladder/rungs/rung_002/manifest.json": "d8ba5aa451b1565521878bdca5c5ea32229e94a9dd85980b6dd929a95dfcbf90",
-  "results/timing/ladder/rungs/rung_005/manifest.json": "d9c01c87e522c9f8bd0fa51694599352aea95f0e8fe004e9d77f5810cebbb274",
-  "results/timing/ladder/rungs/rung_010/manifest.json": "27850d1aaa76913e16e586611225d70d8b8d7c4a9a42e005095f6b05c7818771",
-  "results/timing/ladder/rungs/rung_025/manifest.json": "c594560e8f76b875127774e593ae1a4bb0d7e673c3fd4b4980e38ec58d1307ff",
-  "results/timing/ladder/rungs/rung_050/manifest.json": "42f50c6e752e86e4efc746d7df80cc0f4a594854e65b1e6ca1bd399124fd15ea"
+  "results/timing/bench_summary.json": "7f08587d088ddb370784c3ee772d9d197259ac733f4fcac161b8c75627a6b25e",
+  "results/timing/param_agreement.json": "5eb34e81b257a4fae35d4b7627b0a16137110554928b5de8bfd67c4c4ee561fa",
+  "results/timing/audit_bias.json": "58b524237fb652bfeb057d90aa3e457bcd6fe22117d4c7383105b0735886c651",
+  "results/timing/ladder/ladder.json": "b0099d516c960100f6543261161005bcd6b7730b1b92d5f50f4fedd8db8a6ed5",
+  "results/timing/seed-sweep/sweep.json": "848f81bf6eb1d59598ce492132d2a7cdfa01ca39db15155b96cde6b7311d3d2e",
+  "results/timing/ladder/rungs/rung_002/manifest.json": "2d3108a11fc21548641b6ffcd7f45a018a76343914b07eeb78f31fc8efb25296",
+  "results/timing/ladder/rungs/rung_005/manifest.json": "98efe83d64755695d978a84224ec61e2d6e36b4c6c9d9bbb088ffc1289cbc059",
+  "results/timing/ladder/rungs/rung_010/manifest.json": "6235ffb1097e9cf78df7b7f654ef9fde8f1c33d7e283dba4e8ae435943ffffb7",
+  "results/timing/ladder/rungs/rung_025/manifest.json": "bf316eedc0802742cff23238f1b81e302b6eea85672d1d02b91dfc81e7fa0bd7",
+  "results/timing/ladder/rungs/rung_050/manifest.json": "13ed76efd89c586ee3bf65a353a1047d14ee033a8718c7ae168911a0076cb305"
  },
  "archived_inputs_sha256": {
   "reproducibility/figures/bench_summary.json": "6fea7fdeb2d2eab7a00b4bd57450d442dab31cd4dc51788e715099fc548d9103",
@@ -232,10 +232,12 @@
   "reproducibility/figures/audit_bias.json": "f1ffe39376c8b40b4f943e87b3d62e85762f7da3a72e1d3ffdab38f649d9e1fd"
  },
  "repository": {
-  "commit": "1b7efca3cd03998752c7c7d47a01f528116aeb0d",
-  "branch": "results-2026-10",
-  "dirty": false,
-  "dirty_paths": []
+  "commit": "38364f33d03f2bb0723a0abb72bec06eaa9f483d",
+  "branch": "release/1.3.0",
+  "dirty": true,
+  "dirty_paths": [
+   "esults/progress.txt"
+  ]
  },
  "drift_vs_release_archive": {
   "n_cells": 108,

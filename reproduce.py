@@ -41,6 +41,12 @@ The 151-case timing archive shipped in the release (measured before the release)
 still verified by SHA-256 and copied to ``results/archived/``; the paper no longer
 uses it.
 
+``--examples`` is a separate target (#71): it runs the example gallery mirrored into
+``examples/`` (``scripts/mirror_gallery.py``, source commit and SHA-256 per file in
+``examples-manifest.json``) as a smoke run with ``MPLBACKEND=Agg`` and a timeout per
+script, and records exit code and wall time of each in ``results/examples-smoke.json``.
+It needs no network and does not regenerate anything else.
+
 After regeneration the script checks every number the paper states against the
 data (``results/claims-report.json``) and exits non-zero if one no longer holds.
 
@@ -50,6 +56,31 @@ Usage
     uv run --locked reproduce.py --check          # compare with the stored results, write nothing
     uv run --locked reproduce.py --source DIR     # use an existing checkout of the tag
     uv run --locked --group benchmark reproduce.py --benchmark --reps 4
+    uv run --locked reproduce.py --examples       # smoke run of examples/ only
+    uv run --locked reproduce.py --targets all    # every target below, into results/
+
+Targets (``--targets``, comma-separated, default ``core``)
+----------------------------------------------------------
+``core``                the regeneration above (NIST tables, Figures 1 to 4, claims)
+``nist-both``           NIST StRD from both certified starts (``nist_table2.py --start both``)
+``usage``               the short usage scripts in ``usage/``, run unchanged, output compared
+``gallery``             every script of ``examples/`` with its fits recorded (``scripts/gallery_run.py``)
+``eels-far``            the bounded Fe L2,3 fit from 500 far starts, free and constrained model, per solver
+``bench-tolerance``     the benchmark at the libraries' default stopping tolerances and at one common tolerance
+``bench-ablation``      analytic against finite-difference Jacobian (backend ``spectrafit_fd``)
+``audit-stationarity``  stationarity of every benchmark endpoint at the common tolerance (solver audit)
+``overview``            ``results/overview/overview.html`` and ``overview.pdf`` from the outputs above
+
+Each target writes ``results/<target>/`` with a ``README.md`` and ``run.json`` (command, times,
+load, host, Python, wheel SHA-256, SHA-256 of every file).
+
+Dry run
+-------
+``--dry-run`` runs the targets against a release candidate before the release exists, in an
+environment built by ``scripts/dry_run_env.py``. It needs ``--source`` (a checkout holding the
+candidate's commit), ``--source-commit`` and ``--out`` (a folder outside this repository);
+``SPECTRAFIT_RC_VERSION`` and ``SPECTRAFIT_RC_SHA256`` name the candidate. Nothing in this
+repository is written: results, figures, checksums and the cache all go below ``--out``.
 """
 
 from __future__ import annotations
@@ -68,12 +99,18 @@ import io
 import subprocess
 import sys
 import tarfile
+import time
 import tomllib
 from datetime import UTC, datetime
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE / "scripts"))
+import run_record  # noqa: E402
 PINS = tomllib.loads((HERE / "pins.toml").read_text())
+# The release the stored timing measured, from pins.toml [timing] library
+# ("spectrafit-core <version>, ..."); labels the claims computed from results/timing/.
+TIMING_VERSION = re.fullmatch(r"spectrafit-core (\S+), .+", PINS["timing"]["library"]).group(1)
 CACHE = HERE / ".cache"
 RESULTS = HERE / "results"
 FIGURES = HERE / "figures"
@@ -127,6 +164,19 @@ TIMING_OVERLAY = {
     "results/timing/bench_summary.json": "reproducibility/figures/bench_summary.json",
     "results/timing/ladder/ladder.json": "reproducibility/ladder/ladder.json",
 }
+# The example gallery (#71): mirrored 1:1 by scripts/mirror_gallery.py, run by --examples.
+EXAMPLES = HERE / "examples"
+EXAMPLES_MANIFEST = HERE / "examples-manifest.json"
+EXAMPLES_SMOKE = "examples-smoke.json"
+EXAMPLES_TIMEOUT_S = 600.0
+# Mirrored files the smoke run does not execute, with the reason. The mirror stays 1:1;
+# a script that needs network, data outside the gallery or a GUI is listed here instead.
+EXAMPLES_SKIP: dict[str, str] = {
+    "examples/misspecified_model.py":
+        "reads reproducibility/spectra/eelsdb-fe2o3-l23/DspecTi3wqG.msa from the root of a "
+        "spectrafit-core checkout (Path(__file__).parents[3]), outside the gallery folder",
+}
+STDERR_TAIL_LINES = 20
 
 
 def sha256(path: Path) -> str:
@@ -436,14 +486,36 @@ def claims(results: Path, nist_dir: Path | None = None) -> list[dict]:
     dev = bias["parity"]["deviations"]
     nonzero = sorted(v for v in dev.values() if v > 0)
     free, con = eels["free"], eels["constrained"]
-    starts = free["starts"]
-    step_gain = free["step_l3"]["stderr"] / con["step_l3"]["stderr"]
-    br_gain = free["branching_l3"]["stderr"] / con["branching_l3"]["stderr"]
+    ms, kappa = eels.get("multistart", {}), eels.get("condition_number", {})
+    ms_starts = ms.get("starts", [])
+    ms_counts = {k: sum(1 for r in ms_starts if r.get("outcome") == k)
+                 for k in ("better_minimum", "flat_valley", "neither")}
+    profs = eels.get("profiles", {})
+    iv_free = profs.get("free", {}).get("intervals", {})
+    iv_con = profs.get("constrained", {}).get("intervals", {})
+    f95, c95, c68 = iv_free.get("95", {}), iv_con.get("95", {}), iv_con.get("68", {})
+    free_grid = eels.get("profile_protocol", {}).get("grids", {}).get("free", {})
+    free_width = (free_grid.get("to", 0) - free_grid.get("from", 0) if f95.get("open_lower") or f95.get("open_upper")
+                  else f95.get("width"))
+    con_width = c95.get("width_bisected")
+    con_half68 = c68.get("width_bisected", float("nan")) / 2
+    # The free fit from the default start against the lowest RSS the free profile and the
+    # seeded starts reach (eels-04, eels-05). Its success flag and termination reason are
+    # recorded as stored; the EELS result stores no stationarity measure for it.
+    gmin = profs.get("free", {}).get("global_minimum", {})
+    ms_best = min((r["rss"] for r in ms_starts), default=float("nan"))
+    free_default = {"L3": free["step_l3"]["value"], "rss": free["rss"], "r2": free["r_squared"],
+                    "success": free.get("success"), "termination": free.get("message"),
+                    "stationarity": free.get("stationarity"),
+                    "best_of_seeded_starts_rss": ms_best,
+                    "profile_minimum": {"L3": gmin.get("a"), "rss": gmin.get("rss"),
+                                        "at_bound": gmin.get("at_bound")}}
+    below_default = bool(gmin) and gmin["rss"] < min(free["rss"], ms_best)
 
     def c(cid: str, source: str, statement: str, observed: object, ok: bool) -> dict:
         return {"id": cid, "source": source, "statement": statement, "observed": observed, "ok": bool(ok)}
 
-    reg, arc = "regenerated", "measured-0.1.2"
+    reg, arc = "regenerated", f"measured-{TIMING_VERSION}"
     return [
         c("nist-01", reg, "22 of the 27 NIST problems are implemented", len(rows), len(rows) == 22),
         c("nist-02", reg, "spectrafit-core recovers every certified value to more than six "
@@ -478,34 +550,34 @@ def claims(results: Path, nist_dir: Path | None = None) -> list[dict]:
           {"raised": raised, "lowered": lowered, "unchanged": len(sf) - raised - lowered},
           lowered == 0 and raised >= 11),
         c("bench-01", arc, "160 cases", len(cases), len(cases) == 160),
-        c("bench-02", arc, "16.7 times faster than lmfit in geometric mean, 13.7 in harmonic mean",
+        c("bench-02", arc, "14.4 times faster than lmfit in geometric mean, 11.6 in harmonic mean",
           {"geomean": _gm(speed), "harmonic": len(speed) / sum(1 / x for x in speed)},
-          round(_gm(speed), 1) == 16.7 and round(len(speed) / sum(1 / x for x in speed), 1) == 13.7),
-        c("bench-03", arc, "factors 7.1, 9.0 and 7.6 against the SciPy configurations and 5.4 against JAX",
+          round(_gm(speed), 1) == 14.4 and round(len(speed) / sum(1 / x for x in speed), 1) == 11.6),
+        c("bench-03", arc, "factors 6.1, 7.7 and 6.5 against the SciPy configurations and 4.7 against JAX",
           ratio, [round(ratio[s], 1) for s in
-                  ("scipy-ls-lm", "scipy-ls-trf", "scipy-ls-dogbox", "jax")] == [7.1, 9.0, 7.6, 5.4]),
+                  ("scipy-ls-lm", "scipy-ls-trf", "scipy-ls-dogbox", "jax")] == [6.1, 7.7, 6.5, 4.7]),
         c("bench-04", arc, "fastest backend on 140 of the 160 cases", fastest, fastest == 140),
-        c("bench-05", arc, "by category the speedup ranges from 5.7 to 26.1; tied-parameter cases 16.0",
+        c("bench-05", arc, "by category the speedup ranges from 4.9 to 26.4; tied-parameter cases 14.0",
           {k: round(v, 2) for k, v in cat.items()},
-          round(min(cat.values()), 1) == 5.7 and round(max(cat.values()), 1) == 26.1
-          and round(cat["tied"], 1) == 16.0),
-        c("bench-06", arc, "the headline moves between 16.5 and 16.8 across the five depths",
-          depth, len(depth) == 5 and round(min(depth), 1) == 16.5 and round(max(depth), 1) == 16.8),
-        c("bench-07", arc, "16.19 with a standard deviation of 0.36 across 50 seeds",
+          round(min(cat.values()), 1) == 4.9 and round(max(cat.values()), 1) == 26.4
+          and round(cat["tied"], 1) == 14.0),
+        c("bench-06", arc, "the headline moves between 14.1 and 14.5 across the five depths",
+          depth, len(depth) == 5 and round(min(depth), 1) == 14.1 and round(max(depth), 1) == 14.5),
+        c("bench-07", arc, "14.16 with a standard deviation of 0.31 across 50 seeds",
           {"n": len(seeds), "mean": st.mean(seeds), "sd": st.stdev(seeds)},
-          len(seeds) == 50 and round(st.mean(seeds), 2) == 16.19 and round(st.stdev(seeds), 2) == 0.36),
+          len(seeds) == 50 and round(st.mean(seeds), 2) == 14.16 and round(st.stdev(seeds), 2) == 0.31),
         c("bench-08", arc, "the 20 cases it loses are the optimisation functions",
           sorted(lost), lost == {"optfn"} and len(cases) - fastest == 20),
-        c("bench-09", arc, "excluding the optimisation-function category lowers the headline to 15.7",
-          no_optfn, round(no_optfn, 1) == 15.7),
-        c("bench-10", arc, "against the three SciPy configurations the harmonic means are 1.3 to 2.1",
+        c("bench-09", arc, "excluding the optimisation-function category lowers the headline to 13.2",
+          no_optfn, round(no_optfn, 1) == 13.2),
+        c("bench-10", arc, "against the three SciPy configurations the harmonic means are 1.3 to 2.0",
           {s: round(hm_ratio[s], 3) for s in scipy_cfg},
-          round(min(hm_ratio[s] for s in scipy_cfg), 1) == 1.3 and round(max(hm_ratio[s] for s in scipy_cfg), 1) == 2.1),
-        c("bench-11", arc, "against JAX the geometric and harmonic means are 5.4 and 4.8",
+          round(min(hm_ratio[s] for s in scipy_cfg), 1) == 1.3 and round(max(hm_ratio[s] for s in scipy_cfg), 1) == 2.0),
+        c("bench-11", arc, "against JAX the geometric and harmonic means are 4.7 and 4.1",
           {"geomean": ratio["jax"], "harmonic": hm_ratio["jax"]},
-          round(ratio["jax"], 1) == 5.4 and round(hm_ratio["jax"], 1) == 4.8),
-        c("bench-12", arc, "the median solve takes 0.48 ms with spectrafit-core and 7.0 ms with lmfit",
-          medians, round(medians["spectrafit"], 2) == 0.48 and round(medians["lmfit"], 1) == 7.0),
+          round(ratio["jax"], 1) == 4.7 and round(hm_ratio["jax"], 1) == 4.1),
+        c("bench-12", arc, "the median solve takes 0.54 ms with spectrafit-core and 7.1 ms with lmfit",
+          medians, round(medians["spectrafit"], 2) == 0.54 and round(medians["lmfit"], 1) == 7.1),
         c("agree-02", arc, "CX-017: the six backends report the same coefficient of determination to three "
           "significant figures; parameter errors lie between 660 % and 1.3 million %",
           {"r2": cx_r2, "param_err_pct": cx_err},
@@ -516,41 +588,69 @@ def claims(results: Path, nist_dir: Path | None = None) -> list[dict]:
            "excluded": agree["excluded_stratum"]["n"]},
           agree["n_well_conditioned"] == 94 and agree["excluded_stratum"]["n"] == 37
           and round(agree["max_cross_backend_spread_pct_points"], 2) == 0.74),
-        c("bias-01", arc, "about 138 microseconds against 6.8 for plain array code, roughly a factor of 20",
-          bias["bias"], round(bias["bias"]["wheel_us"]) == 138 and round(bias["bias"]["numpy_us"], 1) == 6.8
-          and round(bias["bias"]["ratio"]) == 20),
-        c("bias-02", arc, "35 registered kernels: 23 agree bit for bit, 12 do not; all but one of those "
-          "to better than 4e-16, the exception at 5e-7",
+        c("bias-01", arc, "about 139 microseconds against 6.5 for plain array code, roughly a factor of 21",
+          bias["bias"], round(bias["bias"]["wheel_us"]) == 139 and round(bias["bias"]["numpy_us"], 1) == 6.5
+          and round(bias["bias"]["ratio"]) == 21),
+        c("bias-02", arc, "35 registered kernels: 24 agree bit for bit, 11 do not; all of those "
+          "to better than 4e-16",
           {"n": len(dev), "exact": bias["parity"]["n_exact"], "nonzero": len(nonzero),
            "largest_two": nonzero[-2:]},
-          len(dev) == 35 and bias["parity"]["n_exact"] == 23 and len(nonzero) == 12
-          and nonzero[-2] < 4e-16 and 4e-7 < nonzero[-1] < 5e-7),
+          len(dev) == 35 and bias["parity"]["n_exact"] == 24 and len(nonzero) == 11
+          and nonzero[-1] < 4e-16),
         c("eels-01", reg, "the Fe L2,3 edge of Fe2O3 is fitted between 700 and 735 eV",
           eels["spectrum"]["window_ev"], eels["spectrum"]["window_ev"] == [700.0, 735.0]),
-        c("eels-02", reg, "fitted independently, the steps are undetermined, 1704 \u00b1 1008 counts at L3 "
-          "and 852 \u00b1 1032 at L2",
-          {"L3": free["step_l3"], "L2": free["step_l2"]},
-          [round(free["step_l3"]["value"]), round(free["step_l3"]["stderr"]),
-           round(free["step_l2"]["value"]), round(free["step_l2"]["stderr"])] == [1704, 1008, 852, 1032]),
-        c("eels-03", reg, "the independent fit is started from the default guesses and from the constrained "
-          "solution, and the lower residual is kept; from the default guesses alone it stops in a local "
-          "minimum with one step width at its bound", {"kept": free["start"], "starts": starts},
-          free["start"] == "constrained_solution"
-          and starts["default"]["rss"] > starts["constrained_solution"]["rss"]
-          and abs(starts["default"]["step_l3_sigma"] - 0.3) < 1e-3),
-        c("eels-04", reg, "the L3 step is then 1704 \u00b1 36 counts, at the same value and the same "
-          "coefficient of determination, 0.99888",
-          {"L3": con["step_l3"], "r2_free": free["r_squared"], "r2_constrained": con["r_squared"]},
-          round(con["step_l3"]["value"]) == 1704 and round(con["step_l3"]["stderr"]) == 36
-          and round(free["r_squared"], 5) == round(con["r_squared"], 5) == 0.99888),
-        c("eels-05", reg, "the L3 branching ratio stays at 0.820, and its standard error falls from 0.013 "
-          "to 0.002", {"free": free["branching_l3"], "constrained": con["branching_l3"]},
-          round(free["branching_l3"]["value"], 3) == round(con["branching_l3"]["value"], 3) == 0.820
-          and round(free["branching_l3"]["stderr"], 3) == 0.013
-          and round(con["branching_l3"]["stderr"], 3) == 0.002),
-        c("eels-06", reg, "the relationships make the step 28 times and the branching ratio six times more "
-          "precise (abstract: the edge-step amplitude 28 times)", {"step": step_gain, "branching": br_gain},
-          round(step_gain) == 28 and round(br_gain) == 6),
+        c("eels-04", reg, "the L3 step is 1701 \u00b1 34 counts with the relationships (R^2 0.99888); without "
+          "them the fit from the default start ends at RSS 21.93e6 (R^2 0.99890), while the profile reaches "
+          "RSS 20.74e6 at L3 = 1000",
+          {"L3": con["step_l3"], "r2_constrained": con["r_squared"], "free_default_start": free_default},
+          round(con["step_l3"]["value"]) == 1701 and round(con["step_l3"]["stderr"]) == 34
+          and round(con["r_squared"], 5) == 0.99888 and round(free["r_squared"], 5) == 0.99890
+          and round(free["rss"] / 1e6, 2) == 21.93 and below_default
+          and gmin["a"] == 1000 and round(gmin["rss"] / 1e6, 2) == 20.74),
+        c("eels-05", reg, "the L3 branching ratio is 0.820 \u00b1 0.002 with the relationships; without them "
+          "no value is stated, because the default-start fit does not reach the lowest RSS found (see eels-04)",
+          {"constrained": con["branching_l3"], "default_start_reaches_lowest_rss_found": not below_default},
+          round(con["branching_l3"]["value"], 3) == 0.820 and round(con["branching_l3"]["stderr"], 3) == 0.002
+          and below_default),
+        c("eels-06", reg, "the 95 % profile interval of the L3 step is 600 counts wide without the relationships "
+          "and 74.45 with them, a ratio of 8.06; both intervals are boundary_affected",
+          {"free_width": f95.get("width"), "constrained_width": con_width,
+           "ratio": None if not (con_width and f95.get("width")) else f95["width"] / con_width,
+           "boundary_affected": {"free": f95.get("boundary_affected"), "constrained": c95.get("boundary_affected")}},
+          f95.get("closed", False) and c95.get("closed", False) and con_width is not None
+          and round(f95["width"]) == 600 and round(con_width, 2) == 74.45
+          and round(f95["width"] / con_width, 2) == 8.06
+          and f95.get("boundary_affected") is True and c95.get("boundary_affected") is True),
+        c("eels-07", reg, "the independent fit is also run from 50 seeded starts; the seed, the sampling rule "
+          "and, per start, the residual, the L3 step, the success flag and the distance of every parameter "
+          "to its bounds are recorded",
+          {"n": len(ms_starts), "seed": ms.get("seed"), "counts": ms_counts, "outcome": ms.get("outcome")},
+          len(ms_starts) == 50 and isinstance(ms.get("seed"), int) and bool(ms.get("sampling"))
+          and all({"rss", "step_l3", "success", "bounds", "outcome"} <= r.keys() for r in ms_starts)
+          and sum(ms_counts.values()) == 50
+          and ms.get("outcome") in {"better_minimum", "flat_valley", "confirmation"}
+          and (ms.get("outcome") == "better_minimum") == (ms_counts["better_minimum"] > 0)),
+        c("eels-08", reg, "the condition number of J^T J is recorded for both fits, with the condition number "
+          "of J as its square root", kappa,
+          all(isinstance(kappa.get(k, {}).get("jtj"), float) and kappa[k]["jtj"] > 0
+              and abs(kappa[k]["j"] ** 2 / kappa[k]["jtj"] - 1) < 1e-9 for k in ("free", "constrained"))),
+        c("eels-09a", reg, "fitted independently, the 95 % profile interval of the L3 step is recorded on its grid "
+          "(threshold of 1.2.0 dropped; README, Deviations in 1.3.0)", f95,
+          bool(f95) and {"lower", "upper", "closed", "width"} <= f95.keys()),
+        c("eels-09b", reg, "with the four relationships the 95 % profile interval of the L3 step is closed on its "
+          "grid; its width and its ratio to the interval without them (the free grid if that interval is open) "
+          "are recorded (threshold of 1.2.0 dropped; README, Deviations in 1.3.0)",
+          {"constrained": c95, "free_width_used": free_width,
+           "ratio": None if not (con_width and free_width) else free_width / con_width},
+          bool(c95) and c95.get("closed", False) and con_width is not None and free_width is not None),
+        c("eels-09c", reg, "the 68 % half-width of the constrained profile and the reported standard error of the "
+          "L3 step are recorded (threshold of 1.2.0 dropped; README, Deviations in 1.3.0)",
+          {"half_width": con_half68, "stderr": con["step_l3"]["stderr"]},
+          math.isfinite(con_half68) and math.isfinite(con["step_l3"]["stderr"])),
+        c("eels-10", reg, "the bound status of the reported fits is recorded",
+          eels.get("at_bound"),
+          isinstance(eels.get("at_bound"), dict)
+          and {"free", "constrained", "free_default_start"} <= set(eels["at_bound"])),
     ]
 
 
@@ -573,6 +673,91 @@ def benchmark(source: Path, reps: int) -> dict:
             "geomean_speedup_vs_baseline": m.get("geomean_speedup_vs_baseline"),
             "harmonic_mean_speedup_vs_baseline": m.get("harmonic_mean_speedup_vs_baseline"),
             "max_abs_delta_r2": m.get("max_abs_delta_r2"), "n_cases": m.get("n_cases")}
+
+
+# --------------------------------------------------------------------------- examples
+
+
+def verify_examples() -> dict:
+    """The mirrored files must be the ones ``examples-manifest.json`` records."""
+    manifest = json.loads(EXAMPLES_MANIFEST.read_text())
+    listed = {f["path"] for f in manifest["files"]}
+    present = {p.relative_to(HERE).as_posix() for p in EXAMPLES.rglob("*")
+               if p.is_file() and "__pycache__" not in p.parts}
+    if listed != present:
+        raise SystemExit(f"examples/ differs from the manifest: missing {sorted(listed - present)}, "
+                         f"not listed {sorted(present - listed)}")
+    for f in manifest["files"]:
+        got = sha256(HERE / f["path"])
+        if got != f["sha256"]:
+            raise SystemExit(f"{f['path']} has sha256 {got}, the manifest records {f['sha256']}")
+    return manifest
+
+
+def run_examples(versions: dict[str, str], timeout_s: float) -> dict:
+    """Run every example of the mirror once, as a reader would, and record the outcome.
+
+    The scripts run from a copy in ``.cache/examples-run/`` so the figures they write
+    (``_static/``) never enter the mirror. Each runs as ``python <script>`` with the copy
+    as working directory, so the sibling import ``from _plotting import ...`` resolves.
+    """
+    manifest = verify_examples()
+    work = CACHE / "examples-run"
+    if work.exists():
+        shutil.rmtree(work)
+    CACHE.mkdir(exist_ok=True)
+    shutil.copytree(EXAMPLES, work)
+    env = os.environ | {
+        "MPLBACKEND": "Agg",
+        "PYTHONPATH": "",  # the installed wheel only
+        "SOURCE_DATE_EPOCH": str(PINS["source"]["source_date_epoch"]),
+    }
+    env.pop("SPECTRAFIT_GALLERY_THEME", None)  # light pass, as the gallery pages show it
+    static = work / "_static"
+    scripts = []
+    for f in manifest["files"]:
+        if f["role"] not in manifest["run_roles"]:
+            continue
+        rel = f["path"].removeprefix("examples/")
+        entry: dict = {"path": f["path"], "role": f["role"], "sha256": f["sha256"]}
+        if f["path"] in EXAMPLES_SKIP:
+            print(f"  skipped    {f['path']}")
+            scripts.append(entry | {"status": "skipped", "skip_reason": EXAMPLES_SKIP[f["path"]],
+                                    "exit_code": None, "timed_out": False, "wall_s": None})
+            continue
+        before = set(static.glob("*.png")) if static.exists() else set()
+        start = time.perf_counter()
+        try:
+            proc = subprocess.run([sys.executable, rel], cwd=work, env=env, capture_output=True,
+                                  text=True, timeout=timeout_s, check=False)
+            code, timed_out, stderr = proc.returncode, False, proc.stderr
+        except subprocess.TimeoutExpired as exc:
+            err = exc.stderr or b""
+            code, timed_out = None, True
+            stderr = err.decode(errors="replace") if isinstance(err, bytes) else err
+        wall = time.perf_counter() - start
+        after = set(static.glob("*.png")) if static.exists() else set()
+        entry |= {"status": "ok" if code == 0 else "failed", "exit_code": code, "timed_out": timed_out,
+                  "wall_s": round(wall, 3), "figures": sorted(p.name for p in after - before)}
+        if code != 0:
+            entry["stderr_tail"] = stderr.splitlines()[-STDERR_TAIL_LINES:]
+        print(f"  {entry['status']:<10s} {f['path']}  exit {code}  {wall:.1f} s")
+        scripts.append(entry)
+    count = {s: sum(e["status"] == s for e in scripts) for s in ("ok", "failed", "skipped")}
+    return {
+        "schema": "examples-smoke/1",
+        "generated_utc": datetime.now(UTC).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "command": "reproduce.py " + " ".join(sys.argv[1:]),
+        "source": manifest["source"],
+        "manifest_files_sha256": manifest["files_sha256"],
+        "environment": {"python": platform.python_version(), "platform": platform.platform(),
+                        "cpu": cpu_model(), "packages": versions,
+                        "env": {k: env.get(k) for k in ("MPLBACKEND", "OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS",
+                                                         "MKL_NUM_THREADS", "RAYON_NUM_THREADS")}},
+        "timeout_s": timeout_s,
+        "counts": count,
+        "scripts": scripts,
+    }
 
 
 # --------------------------------------------------------------------------- provenance
@@ -677,44 +862,202 @@ def provenance(source: Path, versions: dict[str, str], extra: dict) -> dict:
     }
 
 
-def write_checksums() -> None:
-    """One manifest over everything in this folder that a reader may want to verify."""
-    skip_dirs = {".git", ".cache", ".venv", "__pycache__"}
+def write_checksums(root: Path = HERE) -> None:
+    """One manifest over everything in ``root`` that a reader may want to verify."""
+    skip_dirs = {".git", ".cache", ".venv", "__pycache__", ".pytest_cache", ".ruff_cache", "cache"}
     lines = []
-    for path in sorted(HERE.rglob("*")):
-        rel = path.relative_to(HERE)
+    for path in sorted(root.rglob("*")):
+        rel = path.relative_to(root)
         if not path.is_file() or skip_dirs & set(rel.parts) or rel.name in {"checksums.sha256", ".DS_Store"}:
             continue
         lines.append(f"{sha256(path)}  {rel.as_posix()}")
-    (HERE / "checksums.sha256").write_text("\n".join(lines) + "\n")
+    (root / "checksums.sha256").write_text("\n".join(lines) + "\n")
 
 
-def main() -> int:
-    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--source", type=Path, help="existing checkout of the pinned tag (default: clone into .cache/)")
-    ap.add_argument("--check", action="store_true",
-                    help="regenerate into .cache/ and compare with the stored results; write nothing")
-    ap.add_argument("--benchmark", action="store_true", help="also re-measure one timing rung on this host")
-    ap.add_argument("--reps", type=int, default=4, help="--reps for --benchmark (default 4, the shallowest measured rung)")
-    args = ap.parse_args()
+# --------------------------------------------------------------------------- targets
 
-    repository = repository_state()  # before anything below writes into the tree
-    versions = check_environment()
-    verify_timing()
-    source = ensure_source(args.source)
-    print(f"source     {PINS['source']['tag']} @ {PINS['source']['commit'][:12]}")
-    print(f"library    spectrafit-core {versions['spectrafit-core']} (wheel), "
-          f"{platform.machine()} {platform.system()}, Python {platform.python_version()}")
-    pairs = regenerate(source)
+TARGETS = ("core", "nist-both", "usage", "gallery", "eels-far", "bench-tolerance", "bench-ablation",
+           "audit-stationarity", "overview")
+# The benchmark runs of the solver audit and the Jacobian ablation, at the harness defaults.
+BENCH_REPS, BENCH_MC = 5, 20
+ABLATION_BACKENDS = "spectrafit,spectrafit_fd,lmfit,jax,scipy-ls-lm,scipy-ls-trf,scipy-ls-dogbox"
+AUDIT_BACKENDS = "spectrafit,scipy-ls-trf,lmfit"
+DRY_RUN: dict | None = None
 
-    results = CACHE / "check" / "results" if args.check else RESULTS
-    figures = CACHE / "check" / "figures" if args.check else FIGURES
-    collect(source, results, figures)
 
+def resolve_targets(spec: str) -> list[str]:
+    names = list(TARGETS) if spec == "all" else [t.strip() for t in spec.split(",") if t.strip()]
+    unknown = [t for t in names if t not in TARGETS]
+    if unknown:
+        raise SystemExit(f"unknown targets {unknown}; choose from {', '.join(TARGETS)} or all")
+    return [t for t in TARGETS if t in names]
+
+
+def setup_dry_run(args: argparse.Namespace) -> dict:
+    """Point every output below ``--out`` and name the candidate instead of the pinned release."""
+    global CACHE, RESULTS, FIGURES
+    missing = [f for f, v in (("--source", args.source), ("--source-commit", args.source_commit),
+                              ("--out", args.out)) if not v]
+    if missing:
+        raise SystemExit(f"--dry-run needs {', '.join(missing)}")
+    version = os.environ.get("SPECTRAFIT_RC_VERSION")
+    digest = os.environ.get("SPECTRAFIT_RC_SHA256")
+    if not version or not digest:
+        raise SystemExit("--dry-run needs SPECTRAFIT_RC_VERSION and SPECTRAFIT_RC_SHA256 in the environment")
+    out = args.out.resolve()
+    if out.is_relative_to(HERE):
+        raise SystemExit(f"--out {out} lies inside this repository; a dry run writes nothing here")
+    CACHE = (args.cache or out / "cache").resolve()
+    if CACHE.is_relative_to(HERE):
+        raise SystemExit(f"--cache {CACHE} lies inside this repository")
+    RESULTS, FIGURES = out / "results", out / "figures"
+    commit = run(["git", "rev-parse", f"{args.source_commit}^{{commit}}"], cwd=args.source).strip()
+    epoch = int(run(["git", "log", "-1", "--format=%ct", commit], cwd=args.source).strip())
+    PINS["source"] = PINS["source"] | {"tag": f"dry-run {version}", "commit": commit,
+                                       "source_date_epoch": epoch}
+    PINS["packages"]["spectrafit-core"] = version
+    PINS["software"]["wheel"] = (f"spectrafit-core=={version}, release candidate, wheel sha256 {digest}, "
+                                 "installed by scripts/dry_run_env.py")
+    return {"out": str(out), "cache": str(CACHE), "candidate": version, "wheel_sha256": digest,
+            "source_commit": commit, "core_extension": run_record.core_extension()}
+
+
+def target_env(source: Path) -> dict[str, str]:
+    return os.environ | {
+        "PYTHONPATH": str(CACHE / "harness"),
+        "MPLBACKEND": "Agg",
+        "SOURCE_DATE_EPOCH": str(PINS["source"]["source_date_epoch"]),
+    }
+
+
+def latest_run_dir(root: Path) -> Path:
+    manifests = sorted(root.rglob("manifest.json"), key=lambda p: p.stat().st_mtime)
+    if not manifests:
+        raise SystemExit(f"no manifest.json below {root}")
+    return manifests[-1].parent
+
+
+def t_nist_both(source: Path, ctx: dict) -> None:
+    out = RESULTS / "nist-both"
+    with run_record.Run(out, "nist-both", "nist_table2.py --start both",
+                        "NIST StRD, 22 datasets, from Start 1 and Start 2, four implementations.") as r:
+        run([sys.executable, "nist_table2.py", "--start", "both", "--out", str(out / "nist_table2_both.json")],
+            cwd=source / UPSTREAM_FIGS, env=ctx["env"])
+        r.notes.append(f"upstream script sha256 {sha256(source / UPSTREAM_FIGS / 'nist_table2.py')}")
+
+
+def t_usage(source: Path, ctx: dict) -> None:
+    out = RESULTS / "usage"
+    with run_record.Run(out, "usage", "scripts/usage_smoke.py",
+                        "The usage scripts of usage/, each run unchanged; documented output compared.") as r:
+        run([sys.executable, str(HERE / "scripts" / "usage_smoke.py"), "--out", str(out),
+             "--spectrum", str(source / EELS_SPECTRUM)], cwd=HERE, env=ctx["env"] | {"PYTHONPATH": ""})
+        r.notes.append("record: usage.json")
+
+
+def t_gallery(source: Path, ctx: dict) -> None:
+    out = RESULTS / "gallery"
+    with run_record.Run(out, "gallery", "scripts/gallery_run.py",
+                        "Every script of examples/, run with the installed wheel; every fit recorded.") as r:
+        drift = ["--source", str(ctx["gallery_source"]), "--ref", ctx["gallery_ref"]] if ctx["gallery_ref"] else []
+        run([sys.executable, str(HERE / "scripts" / "gallery_run.py"), "--out", str(out),
+             "--work", str(CACHE / "gallery-run"), "--spectrum-dir", str(source / EELS_SPECTRUM.parent), *drift],
+            cwd=HERE, env=ctx["env"] | {"PYTHONPATH": ""})
+        r.notes.append("record: gallery.json; figures: figures/; drift check against "
+                       + (f"{ctx['gallery_ref']} of {ctx['gallery_source']}" if drift else "the manifest only"))
+
+
+def t_eels_far(source: Path, ctx: dict) -> None:
+    out = RESULTS / "eels-far"
+    with run_record.Run(out, "eels-far", f"scripts/eels_far_starts.py --workers {ctx['workers']}",
+                        "Bounded Fe L2,3 fit from 500 far starts, free and constrained model.") as r:
+        run([sys.executable, str(HERE / "scripts" / "eels_far_starts.py"), "--spectrum",
+             str(source / EELS_SPECTRUM), "--out", str(out), "--workers", str(ctx["workers"])],
+            cwd=HERE, env=ctx["env"] | {"PYTHONPATH": ""})
+        r.notes.append("records: eels_far.json (per fit), summary.json (per model and arm)")
+
+
+def t_bench_tolerance(source: Path, ctx: dict) -> None:
+    out = RESULTS / "bench-tolerance"
+    script = str(HERE / "bench" / "common_tolerance.py")
+    with run_record.Run(out, "bench-tolerance", f"bench/common_tolerance.py run --mode default|common "
+                        f"--reps {BENCH_REPS}; analyse",
+                        "160 cases x 6 backends at the default and at the common stopping tolerance.") as r:
+        for mode in ("default", "common"):
+            run([sys.executable, script, "run", "--mode", mode, "--reps", str(BENCH_REPS), "--out", str(out)],
+                cwd=CACHE, env=ctx["env"])
+        run([sys.executable, script, "analyse", "--out", str(out)], cwd=CACHE, env=ctx["env"])
+        r.notes.append("records: default.json, common.json, summary.json, report.md")
+
+
+def t_bench_ablation(source: Path, ctx: dict) -> None:
+    out = RESULTS / "bench-ablation"
+    work = CACHE / "bench-ablation"
+    if work.exists():
+        shutil.rmtree(work)
+    work.mkdir(parents=True)
+    cmd = ["-m", "oracles.cli", "run", "--backends", ABLATION_BACKENDS, "--reps", str(BENCH_REPS),
+           "--mc", str(BENCH_MC)]
+    with run_record.Run(out, "bench-ablation", "python " + " ".join(cmd),
+                        "Analytic (spectrafit) against finite-difference (spectrafit_fd) Jacobian, "
+                        "with every comparator, 160 cases.") as r:
+        run([sys.executable, *cmd], cwd=work, env=ctx["env"])
+        run_dir = latest_run_dir(work / ".spectrafit_reports")
+        run([sys.executable, str(HERE / "bench" / "ablation_summary.py"), str(run_dir), str(out)],
+            cwd=CACHE, env=ctx["env"])
+        shutil.copyfile(run_dir / "manifest.json", out / "manifest.json")
+        r.notes.append(f"harness run directory (not copied, {run_dir.name}): results.json sha256 "
+                       f"{sha256(run_dir / 'results.json')}")
+
+
+def t_audit_stationarity(source: Path, ctx: dict) -> None:
+    out = RESULTS / "audit-stationarity"
+    work = CACHE / "audit-stationarity"
+    if work.exists():
+        shutil.rmtree(work)
+    work.mkdir(parents=True)
+    capture = work / "capture.jsonl"
+    cli = ["run", "--tolerance-mode", "common", "--backends", AUDIT_BACKENDS, "--reps", str(BENCH_REPS),
+           "--mc", str(BENCH_MC)]
+    with run_record.Run(out, "audit-stationarity", "audit/capture_run.py -- " + " ".join(cli)
+                        + "; audit/stationarity.py",
+                        "Stationarity (Gauss-Newton measure) of every endpoint of spectrafit, scipy trf and "
+                        "lmfit at the common tolerance, 156 cases.") as r:
+        run([sys.executable, str(HERE / "audit" / "capture_run.py"), "--capture", str(capture), "--", *cli],
+            cwd=work, env=ctx["env"])
+        run_dir = latest_run_dir(work / ".spectrafit_reports")
+        run([sys.executable, str(HERE / "audit" / "stationarity.py"), "--capture", str(capture),
+             "--results", str(run_dir / "results.json"), "--out", str(out)], cwd=work, env=ctx["env"])
+        r.notes.append(f"capture.jsonl sha256 {sha256(capture)}; results.json sha256 "
+                       f"{sha256(run_dir / 'results.json')} (not copied)")
+
+
+def t_overview(source: Path, ctx: dict) -> None:
+    out = RESULTS / "overview"
+    with run_record.Run(out, "overview", "scripts/overview.py",
+                        "One generated report over every target: overview.html and overview.pdf.") as r:
+        run([sys.executable, str(HERE / "scripts" / "overview.py"), "--results", str(RESULTS),
+             "--out", str(out)], cwd=HERE, env=ctx["env"] | {"PYTHONPATH": ""})
+        r.notes.append("generated from the files of the other targets; every figure has its data file")
+
+
+TARGET_FUNCS = {"nist-both": t_nist_both, "usage": t_usage, "gallery": t_gallery, "eels-far": t_eels_far,
+                "bench-tolerance": t_bench_tolerance, "bench-ablation": t_bench_ablation,
+                "audit-stationarity": t_audit_stationarity, "overview": t_overview}
+
+
+def core(args: argparse.Namespace, source: Path, versions: dict, repository: dict) -> int:
+    """The regeneration of 1.2.0: NIST tables, Figures 1 to 4, drift and claims."""
+    with run_record.Run(CACHE / "core-run", "core", "reproduce.py core",
+                        "NIST tables, Figures 1 to 4, EELS fit, drift and claims.") as r:
+        pairs = regenerate(source)
+        results = CACHE / "check" / "results" if args.check else RESULTS
+        figures = CACHE / "check" / "figures" if args.check else FIGURES
+        collect(source, results, figures)
+        r.notes.append(f"results in {results}, figures in {figures}")
     drift = table_drift(pairs["nist_table2.json"])
     report = claims(results)
     failed = [c for c in report if not c["ok"]]
-    # The same NIST statements, checked on the files the release shipped.
     shipped = {c["id"]: c["ok"] for c in claims(results, results / "release-archive")
                if c["id"].startswith("nist")}
     for c in report:
@@ -722,13 +1065,14 @@ def main() -> int:
             c["holds_on_release_archive"] = shipped[c["id"]]
     extra: dict = {"repository": repository,
                    "drift_vs_release_archive": {k: v for k, v in drift.items() if k != "moved_cells"}}
+    if DRY_RUN:
+        extra["dry_run"] = DRY_RUN
     if args.benchmark:
         extra["benchmark_on_this_host"] = benchmark(source, args.reps)
-
     (results / "drift-report.json").write_text(json.dumps(drift, indent=1) + "\n")
     (results / "claims-report.json").write_text(json.dumps(report, indent=1) + "\n")
-    (results / "provenance.json").write_text(
-        json.dumps(provenance(source, versions, extra), indent=1) + "\n")
+    (results / "provenance.json").write_text(json.dumps(provenance(source, versions, extra), indent=1) + "\n")
+    shutil.copyfile(CACHE / "core-run" / "run.json", results / "core-run.json")
 
     print(f"\nTable 1    {drift['n_cells_moved_by_0.05_or_more']} of {drift['n_cells']} cells differ from the "
           "release archive by 0.05 significant figures or more")
@@ -740,21 +1084,95 @@ def main() -> int:
           + (", ".join(both) if both else "none"))
     for c in failed:
         print(f"  FAILS    {c['id']}: {c['statement']}\n           observed: {json.dumps(c['observed'])[:200]}")
-
     if args.check:
         stored = [n for n in [*REGENERATED_JSON, EELS_JSON] if (RESULTS / n).exists()]
         new_files = [n for n in [*REGENERATED_JSON, EELS_JSON] if n not in stored]
         changed = [n for n in stored if content_digest(RESULTS / n) != content_digest(results / n)]
         print("check      " + ("stored results are current" if not changed
                                else "differs from stored results: " + ", ".join(changed)))
-        if new_files:  # e.g. a result this repository started to produce after the last full run
+        if new_files:
             print("           not stored yet (compared with nothing): " + ", ".join(new_files))
         return 1 if (changed or failed) else 0
+    return 1 if failed else 0
 
+
+def main() -> int:
+    global DRY_RUN
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("--source", type=Path, help="existing checkout of the pinned tag (default: clone into .cache/)")
+    ap.add_argument("--check", action="store_true",
+                    help="regenerate into .cache/ and compare with the stored results; write nothing")
+    ap.add_argument("--benchmark", action="store_true", help="also re-measure one timing rung on this host")
+    ap.add_argument("--reps", type=int, default=4, help="--reps for --benchmark (default 4, the shallowest measured rung)")
+    ap.add_argument("--examples", action="store_true",
+                    help="only run the mirrored example gallery (examples/) as a smoke run; with --check the "
+                         "record goes to .cache/check/results/ and nothing in the repository is written")
+    ap.add_argument("--examples-timeout", type=float, default=EXAMPLES_TIMEOUT_S,
+                    help=f"timeout per example in seconds (default {EXAMPLES_TIMEOUT_S:.0f})")
+    ap.add_argument("--targets", default="core", help=f"comma-separated, from {', '.join(TARGETS)}; or all")
+    ap.add_argument("--workers", type=int, default=14, help="worker processes of the eels-far target (default 14)")
+    ap.add_argument("--dry-run", action="store_true",
+                    help="run against a release candidate (see Dry run above); writes only below --out")
+    ap.add_argument("--out", type=Path, help="dry run: output folder outside this repository")
+    ap.add_argument("--cache", type=Path, help="dry run: cache folder (default <out>/cache)")
+    ap.add_argument("--source-commit", help="dry run: the candidate's commit in --source")
+    ap.add_argument("--gallery-ref", help="gallery target: ref of --source whose docs/tutorials/gallery the "
+                                          "mirror must equal (drift check), e.g. develop")
+    args = ap.parse_args()
+    targets = resolve_targets(args.targets)
+
+    repository = repository_state()  # before anything below writes into the tree
+    if args.dry_run:
+        if args.check or args.examples or args.benchmark:
+            raise SystemExit("--dry-run runs targets only; --check, --examples and --benchmark do not apply")
+        DRY_RUN = setup_dry_run(args)
+    versions = check_environment()
+    verify_timing()
+    if args.examples:
+        return examples_main(args, repository, versions)
+    source = ensure_source(args.source)
+    print(f"source     {PINS['source']['tag']} @ {PINS['source']['commit'][:12]}")
+    print(f"library    spectrafit-core {versions['spectrafit-core']} (wheel), "
+          f"{platform.machine()} {platform.system()}, Python {platform.python_version()}")
+    print(f"targets    {', '.join(targets)}")
+    status = 0
+    if "core" in targets:
+        status |= core(args, source, versions, repository)
+        if args.check:
+            return status
+    ctx = {"env": target_env(source), "workers": args.workers, "gallery_ref": args.gallery_ref,
+           "gallery_source": args.source}
+    if any(t in targets for t in TARGET_FUNCS) and not (CACHE / "harness").exists():
+        harness_path(source)
+    for t in targets:
+        if t in TARGET_FUNCS:
+            print(f"  target     {t}")
+            TARGET_FUNCS[t](source, ctx)
+    if DRY_RUN:
+        write_checksums(Path(DRY_RUN["out"]))
+        print(f"wrote      {DRY_RUN['out']} (dry run; nothing in {HERE} was written)")
+        return status
     run([sys.executable, str(HERE / "build_crate.py")], cwd=HERE)
     write_checksums()
     print("wrote      results/, figures/, ro-crate-metadata.json, checksums.sha256")
-    return 1 if failed else 0
+    return status
+
+
+def examples_main(args: argparse.Namespace, repository: dict, versions: dict[str, str]) -> int:
+    print(f"examples   {EXAMPLES_MANIFEST.name}, spectrafit-core {versions['spectrafit-core']} (wheel), "
+          f"timeout {args.examples_timeout:.0f} s per script")
+    record = run_examples(versions, args.examples_timeout) | {"repository": repository}
+    results = CACHE / "check" / "results" if args.check else RESULTS
+    results.mkdir(parents=True, exist_ok=True)
+    (results / EXAMPLES_SMOKE).write_text(json.dumps(record, indent=1) + "\n")
+    c = record["counts"]
+    print(f"\nexamples   {c['ok']} ok, {c['failed']} failed, {c['skipped']} skipped; "
+          f"record in {(results / EXAMPLES_SMOKE).relative_to(HERE)}")
+    if not args.check:
+        run([sys.executable, str(HERE / "build_crate.py")], cwd=HERE)
+        write_checksums()
+        print("wrote      results/examples-smoke.json, ro-crate-metadata.json, checksums.sha256")
+    return 1 if c["failed"] else 0
 
 
 if __name__ == "__main__":

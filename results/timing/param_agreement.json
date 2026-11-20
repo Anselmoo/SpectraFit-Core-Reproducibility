@@ -1,9 +1,9 @@
 {
   "excluded_stratum": {
     "n": 37,
-    "median_worst_to_best_ratio": 1.0003316523337207,
+    "median_worst_to_best_ratio": 1.000196929927913,
     "max_worst_to_best_ratio": 1948.6617936901155,
-    "median_param_err_pct": 27.4981946452649
+    "median_param_err_pct": 27.498281741095397
   },
   "n_all_six": 136,
   "n_with_truth": 131,
@@ -12,7 +12,7 @@
   "per_backend": {
     "spectrafit": {
       "median_pct": 1.4797397440375097,
-      "worst_pct": 9.785932381254321
+      "worst_pct": 9.785828448205493
     },
     "lmfit": {
       "median_pct": 1.4797181173469562,
@@ -36,5 +36,5 @@
     }
   },
   "max_cross_backend_spread_pct_points": 0.7437870830589344,
-  "median_spectrafit_vs_lmfit_relative_gap": 1.3858709381849372e-05
+  "median_spectrafit_vs_lmfit_relative_gap": 1.3461850092913213e-05
 }

@@ -1,0 +1,59 @@
+{
+ "schema": "harness-run/1",
+ "target": "audit-stationarity",
+ "command": "audit/capture_run.py -- run --tolerance-mode common --backends spectrafit,scipy-ls-trf,lmfit --reps 5 --mc 20; audit/stationarity.py",
+ "start_utc": "2026-11-17T21:54:24Z",
+ "end_utc": "2026-11-17T22:26:55Z",
+ "wall_s": 1950.6,
+ "load_start": [
+  2.17,
+  1.6,
+  1.3
+ ],
+ "load_end": [
+  1.0,
+  1.0,
+  1.01
+ ],
+ "status": "ok",
+ "environment": {
+  "archive": {
+   "commit": "1c9fe699d489c89edde2d3e793c2fe04db5d8762",
+   "dirty": true
+  },
+  "host": "terra",
+  "platform": "Linux-5.15.0-203-generic-x86_64-with-glibc2.35",
+  "machine": "x86_64",
+  "cores": 16,
+  "python": "3.13.13",
+  "spectrafit_core": {
+   "version": "0.1.3",
+   "wheel_sha256": "0d909b5faf1b5f47cbfb81b074b6ee0f44a523c6daf8303c8f2d4e1c878f6e43",
+   "wheel_sha256_from": "uv.lock",
+   "core_extension": {
+    "file": "_core.cpython-313-x86_64-linux-gnu.so",
+    "sha256": "2e672905bbbf9e592a68df47f4342e811f028063cc4dc144e787cd83ff021ebd"
+   }
+  },
+  "packages": {
+   "numpy": "2.5.1",
+   "scipy": "1.18.0",
+   "lmfit": "1.3.4",
+   "matplotlib": "3.11.2"
+  },
+  "threads": {
+   "OMP_NUM_THREADS": "1",
+   "OPENBLAS_NUM_THREADS": "1",
+   "MKL_NUM_THREADS": "1",
+   "RAYON_NUM_THREADS": "1"
+  },
+  "thread_setting": "caps-1"
+ },
+ "notes": [
+  "capture.jsonl sha256 5afb3c65b28fd5101a92050de16824d5eb2673b1572ec0906273348e3d55328b; results.json sha256 02fabc27bbb454651df3e0b282270c5acd2115a7d130161640b4a17cd847de27 (not copied)"
+ ],
+ "files_sha256": {
+  "table.json": "e62ab9973e223909b93ccbe36fc7e68fbf9bb0c90ff4b6e3df7d25aeca09f01c",
+  "table.md": "ccead87788cbef5da986b584c500fc974f858824cdb16785ee953980881dc912"
+ }
+}

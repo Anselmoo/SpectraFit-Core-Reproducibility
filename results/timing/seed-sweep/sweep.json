@@ -1,10 +1,10 @@
 {
   "schema_version": "spectrafit-core/bench-seed-sweep/1",
-  "generated_utc": "2026-10-18T10:22:43Z",
+  "generated_utc": "2026-11-19T06:57:59Z",
   "environment": {
     "git": {
-      "commit": "1e304188a7376caf128fcb432a16554ed44ad32a",
-      "branch": "tag v0.1.2 (git archive export)",
+      "commit": "952c5c954eed2e0e36224ddf2f9859086d36fad7",
+      "branch": "tag v0.1.3 (git archive export)",
       "dirty": false
     },
     "host": {
@@ -13,8 +13,8 @@
       "cores": 16,
       "ram_gb": 31.3,
       "vm_max_map_count": 65530,
-      "os": "Linux-5.15.0-198-generic-x86_64-with-glibc2.35",
-      "kernel": "5.15.0-198-generic",
+      "os": "Linux-5.15.0-203-generic-x86_64-with-glibc2.35",
+      "kernel": "5.15.0-203-generic",
       "thread_env": {
         "OMP_NUM_THREADS": null,
         "OPENBLAS_NUM_THREADS": null,
@@ -41,7 +41,7 @@
     },
     "versions": {
       "python": "3.13.13",
-      "rustc": "1.99.1 (58cf8f9c3 2026-10-13)",
+      "rustc": "1.100.0 (0ef1bc386 2026-11-09)",
       "packages": {
         "numpy": "2.5.1",
         "scipy": "1.18.0",
@@ -49,9 +49,9 @@
         "jax": "0.11.0",
         "jaxlib": "0.11.0",
         "optimistix": "0.1.0",
-        "spectrafit-core": "0.1.2"
+        "spectrafit-core": "0.1.3"
       },
-      "uv_lock_sha256": "19f3ea85a0e5d4be6beb383a055a3c112a9198a80f6421c6018a1fc732775f70",
+      "uv_lock_sha256": "3b316c08df834b705a209268d19694a008c2528d25fe0c53df94d792a0c63d67",
       "blas": {
         "name": "scipy-openblas",
         "version": "0.3.33.112.0"
@@ -106,7 +106,7 @@
         "library": null,
         "algorithm": null,
         "bounds": null,
-        "version": "0.1.2",
+        "version": "0.1.3",
         "stopping": null,
         "runtime": null
       },
@@ -167,66 +167,66 @@
   },
   "rungs": [
     {
-      "run_uid": "d96f5d7fead89132",
+      "run_uid": "1bfb6705504a6ed1",
       "reps_requested": 10,
       "reps_effective": 5,
       "seed": 20260603,
       "exit_status": 0,
-      "started_utc": "2026-10-17T11:45:04Z",
-      "finished_utc": "2026-10-17T11:59:55Z",
-      "wall_seconds": 890.5,
+      "started_utc": "2026-11-17T08:43:35Z",
+      "finished_utc": "2026-11-17T08:58:48Z",
+      "wall_seconds": 913.0,
       "resources": {
         "peak_rss_gb": 1.57,
-        "mmap_regions": 9248,
+        "mmap_regions": 9247,
         "jax_cache_clears": 1,
         "jax_compile_budget": 64,
         "load_average_start": [
+          1.52,
           2.81,
-          3.17,
-          2.7
+          2.66
         ],
         "load_average_end": [
-          1.36,
-          1.39,
-          1.77
+          2.24,
+          1.97,
+          1.99
         ],
         "proc_stat_cpu_start": [
-          7553074,
-          392,
-          51620,
-          94945313,
-          101247,
+          15845624,
+          93911,
+          285276,
+          264952167,
+          930231,
           0,
-          8440,
-          12574,
+          12215,
+          38731,
           0,
           0
         ],
         "proc_stat_cpu_end": [
-          7676254,
-          392,
-          52519,
-          96244666,
-          101608,
+          15971773,
+          93911,
+          286184,
+          266284381,
+          930617,
           0,
-          8518,
-          12792,
+          12296,
+          38997,
           0,
           0
         ],
         "steal": {
-          "steal_ticks": 218,
-          "total_ticks": 1424089,
-          "steal_fraction": 0.00015308
+          "steal_ticks": 266,
+          "total_ticks": 1460004,
+          "steal_fraction": 0.00018219
         }
       },
       "headline": {
-        "geomean_speedup_vs_baseline": 16.13702395919654,
-        "harmonic_mean_speedup_vs_baseline": 13.238934980274705,
+        "geomean_speedup_vs_baseline": 13.891138392792579,
+        "harmonic_mean_speedup_vs_baseline": 11.197741071991064,
         "max_abs_delta_r2": 0.0001294643325077116,
         "spectrafit_win_rate": 0.875,
         "n_cases": 160,
-        "regressions": 0,
+        "regressions": 6,
         "backends": [
           "spectrafit",
           "lmfit",
@@ -244,66 +244,66 @@
       }
     },
     {
-      "run_uid": "dffa023f0e7d529b",
+      "run_uid": "32f9d28d4d480d3f",
       "reps_requested": 10,
       "reps_effective": 5,
       "seed": 20260604,
       "exit_status": 0,
-      "started_utc": "2026-10-17T11:59:55Z",
-      "finished_utc": "2026-10-17T12:12:18Z",
-      "wall_seconds": 743.3,
+      "started_utc": "2026-11-17T08:58:49Z",
+      "finished_utc": "2026-11-17T09:11:20Z",
+      "wall_seconds": 751.2,
       "resources": {
         "peak_rss_gb": 1.55,
-        "mmap_regions": 9250,
+        "mmap_regions": 9252,
         "jax_cache_clears": 1,
         "jax_compile_budget": 64,
         "load_average_start": [
-          1.36,
-          1.39,
-          1.77
+          2.24,
+          1.97,
+          1.99
         ],
         "load_average_end": [
-          1.82,
-          1.54,
-          1.54
+          3.55,
+          2.19,
+          1.86
         ],
         "proc_stat_cpu_start": [
-          7676579,
-          392,
-          52523,
-          96245115,
-          101608,
+          15972089,
+          93911,
+          286188,
+          266284776,
+          930617,
           0,
-          8518,
-          12792,
+          12296,
+          38997,
           0,
           0
         ],
         "proc_stat_cpu_end": [
-          7784652,
-          392,
-          53441,
-          97324148,
-          101891,
+          16081371,
+          93912,
+          287086,
+          267375311,
+          930865,
           0,
-          8567,
-          12988,
+          12371,
+          39230,
           0,
           0
         ],
         "steal": {
-          "steal_ticks": 196,
-          "total_ticks": 1188552,
-          "steal_fraction": 0.00016491
+          "steal_ticks": 233,
+          "total_ticks": 1201272,
+          "steal_fraction": 0.00019396
         }
       },
       "headline": {
-        "geomean_speedup_vs_baseline": 16.336678356750816,
-        "harmonic_mean_speedup_vs_baseline": 13.275814148502487,
-        "max_abs_delta_r2": 5.19350420780107e-07,
-        "spectrafit_win_rate": 0.8875,
+        "geomean_speedup_vs_baseline": 13.969608602679545,
+        "harmonic_mean_speedup_vs_baseline": 11.311547819709471,
+        "max_abs_delta_r2": 2.7723535278578737e-07,
+        "spectrafit_win_rate": 0.875,
         "n_cases": 160,
-        "regressions": 0,
+        "regressions": 6,
         "backends": [
           "spectrafit",
           "lmfit",
@@ -321,66 +321,66 @@
       }
     },
     {
-      "run_uid": "56e112f16778bda1",
+      "run_uid": "1991f50926478355",
       "reps_requested": 10,
       "reps_effective": 5,
       "seed": 20260605,
       "exit_status": 0,
-      "started_utc": "2026-10-17T12:12:19Z",
-      "finished_utc": "2026-10-17T12:32:13Z",
-      "wall_seconds": 1193.9,
+      "started_utc": "2026-11-17T09:11:20Z",
+      "finished_utc": "2026-11-17T09:31:51Z",
+      "wall_seconds": 1230.8,
       "resources": {
         "peak_rss_gb": 1.57,
-        "mmap_regions": 9250,
+        "mmap_regions": 9243,
         "jax_cache_clears": 1,
         "jax_compile_budget": 64,
         "load_average_start": [
-          1.82,
-          1.54,
-          1.54
+          3.55,
+          2.19,
+          1.86
         ],
         "load_average_end": [
-          2.24,
-          1.59,
-          1.37
+          4.69,
+          2.53,
+          1.78
         ],
         "proc_stat_cpu_start": [
-          7784967,
-          392,
-          53447,
-          97324530,
-          101891,
+          16081687,
+          93912,
+          287093,
+          267375726,
+          930865,
           0,
-          8567,
-          12988,
+          12371,
+          39231,
           0,
           0
         ],
         "proc_stat_cpu_end": [
-          7941383,
-          392,
-          54412,
-          99075589,
-          102334,
+          16243005,
+          93914,
+          288179,
+          269180877,
+          931174,
           0,
-          8643,
-          13260,
+          12450,
+          39572,
           0,
           0
         ],
         "steal": {
-          "steal_ticks": 272,
-          "total_ticks": 1909231,
-          "steal_fraction": 0.00014247
+          "steal_ticks": 341,
+          "total_ticks": 1968286,
+          "steal_fraction": 0.00017325
         }
       },
       "headline": {
-        "geomean_speedup_vs_baseline": 17.180184084727543,
-        "harmonic_mean_speedup_vs_baseline": 13.685973352349437,
-        "max_abs_delta_r2": 1.9534186742609094e-06,
+        "geomean_speedup_vs_baseline": 15.087409445305157,
+        "harmonic_mean_speedup_vs_baseline": 12.028016155672574,
+        "max_abs_delta_r2": 1.8226362863416057e-07,
         "spectrafit_win_rate": 0.88125,
         "n_cases": 160,
-        "regressions": 0,
+        "regressions": 5,
         "backends": [
           "spectrafit",
           "lmfit",
@@ -398,66 +398,66 @@
       }
     },
     {
-      "run_uid": "5751fdce08bfb8da",
+      "run_uid": "afcef4bf03fb3be9",
       "reps_requested": 10,
       "reps_effective": 5,
       "seed": 20260606,
       "exit_status": 0,
-      "started_utc": "2026-10-17T12:32:13Z",
-      "finished_utc": "2026-10-17T12:46:10Z",
-      "wall_seconds": 837.1,
+      "started_utc": "2026-11-17T09:31:52Z",
+      "finished_utc": "2026-11-17T09:46:10Z",
+      "wall_seconds": 858.7,
       "resources": {
-        "peak_rss_gb": 1.56,
-        "mmap_regions": 9245,
+        "peak_rss_gb": 1.57,
+        "mmap_regions": 9249,
         "jax_cache_clears": 1,
         "jax_compile_budget": 64,
         "load_average_start": [
-          2.24,
-          1.59,
-          1.37
+          4.69,
+          2.53,
+          1.78
         ],
         "load_average_end": [
-          2.43,
-          1.59,
-          1.34
+          3.34,
+          1.93,
+          1.62
         ],
         "proc_stat_cpu_start": [
-          7941705,
-          392,
-          54417,
-          99075974,
-          102334,
+          16243328,
+          93914,
+          288183,
+          269181285,
+          931174,
           0,
-          8643,
-          13260,
+          12450,
+          39573,
           0,
           0
         ],
         "proc_stat_cpu_end": [
-          8057801,
-          392,
-          55307,
-          100296954,
-          102669,
+          16362435,
+          93915,
+          289161,
+          270433868,
+          931299,
           0,
-          8697,
-          13471,
+          12527,
+          39830,
           0,
           0
         ],
         "steal": {
-          "steal_ticks": 211,
-          "total_ticks": 1338566,
-          "steal_fraction": 0.00015763
+          "steal_ticks": 257,
+          "total_ticks": 1373128,
+          "steal_fraction": 0.00018716
         }
       },
       "headline": {
-        "geomean_speedup_vs_baseline": 16.541471745713338,
-        "harmonic_mean_speedup_vs_baseline": 13.324178013344868,
-        "max_abs_delta_r2": 2.9819779896467224e-05,
+        "geomean_speedup_vs_baseline": 14.347542597958514,
+        "harmonic_mean_speedup_vs_baseline": 11.608435290902356,
+        "max_abs_delta_r2": 3.9273195484579304e-07,
         "spectrafit_win_rate": 0.88125,
         "n_cases": 160,
-        "regressions": 0,
+        "regressions": 8,
         "backends": [
           "spectrafit",
           "lmfit",
@@ -475,66 +475,66 @@
       }
     },
     {
-      "run_uid": "a71afdc2a9d4cc42",
+      "run_uid": "054be305b2c2e1fd",
       "reps_requested": 10,
       "reps_effective": 5,
       "seed": 20260607,
       "exit_status": 0,
-      "started_utc": "2026-10-17T12:46:11Z",
-      "finished_utc": "2026-10-17T12:57:37Z",
-      "wall_seconds": 686.2,
+      "started_utc": "2026-11-17T09:46:11Z",
+      "finished_utc": "2026-11-17T09:57:37Z",
+      "wall_seconds": 686.1,
       "resources": {
-        "peak_rss_gb": 1.57,
-        "mmap_regions": 9249,
+        "peak_rss_gb": 1.56,
+        "mmap_regions": 9248,
         "jax_cache_clears": 1,
         "jax_compile_budget": 64,
         "load_average_start": [
-          2.43,
-          1.59,
-          1.34
+          3.34,
+          1.93,
+          1.62
         ],
         "load_average_end": [
-          2.35,
-          1.66,
-          1.37
+          2.85,
+          1.9,
+          1.59
         ],
         "proc_stat_cpu_start": [
-          8058117,
-          392,
-          55312,
-          100297337,
-          102669,
+          16362752,
+          93915,
+          289166,
+          270434286,
+          931299,
           0,
-          8697,
-          13471,
+          12527,
+          39830,
           0,
           0
         ],
         "proc_stat_cpu_end": [
-          8163326,
-          392,
-          56174,
-          101287919,
-          102934,
+          16468575,
+          93915,
+          290046,
+          271424188,
+          931472,
           0,
-          8756,
-          13668,
+          12579,
+          40056,
           0,
           0
         ],
         "steal": {
-          "steal_ticks": 197,
-          "total_ticks": 1097174,
-          "steal_fraction": 0.00017955
+          "steal_ticks": 226,
+          "total_ticks": 1097056,
+          "steal_fraction": 0.00020601
         }
       },
       "headline": {
-        "geomean_speedup_vs_baseline": 16.01543962106826,
-        "harmonic_mean_speedup_vs_baseline": 13.087934801300774,
-        "max_abs_delta_r2": 6.840852899148153e-06,
+        "geomean_speedup_vs_baseline": 14.202332077244726,
+        "harmonic_mean_speedup_vs_baseline": 11.345731695881602,
+        "max_abs_delta_r2": 7.454232600623278e-06,
         "spectrafit_win_rate": 0.88125,
         "n_cases": 160,
-        "regressions": 0,
+        "regressions": 5,
         "backends": [
           "spectrafit",
           "lmfit",
@@ -552,66 +552,66 @@
       }
     },
     {
-      "run_uid": "5d21555e6dced0a1",
+      "run_uid": "828c4f61bb10cff2",
       "reps_requested": 10,
       "reps_effective": 5,
       "seed": 20260608,
       "exit_status": 0,
-      "started_utc": "2026-10-17T12:57:37Z",
-      "finished_utc": "2026-10-17T13:11:00Z",
-      "wall_seconds": 802.5,
+      "started_utc": "2026-11-17T09:57:37Z",
+      "finished_utc": "2026-11-17T10:11:09Z",
+      "wall_seconds": 811.8,
       "resources": {
-        "peak_rss_gb": 1.55,
-        "mmap_regions": 9248,
+        "peak_rss_gb": 1.56,
+        "mmap_regions": 9246,
         "jax_cache_clears": 1,
         "jax_compile_budget": 64,
         "load_average_start": [
-          2.35,
-          1.66,
-          1.37
+          2.85,
+          1.9,
+          1.59
         ],
         "load_average_end": [
-          2.85,
-          2.06,
-          1.58
+          3.66,
+          2.26,
+          1.71
         ],
         "proc_stat_cpu_start": [
-          8163645,
-          392,
-          56181,
-          101288345,
-          102934,
+          16468892,
+          93915,
+          290051,
+          271424585,
+          931472,
           0,
-          8756,
-          13669,
+          12580,
+          40057,
           0,
           0
         ],
         "proc_stat_cpu_end": [
-          8280222,
-          392,
-          57012,
-          102453785,
-          103181,
+          16587535,
+          93916,
+          290985,
+          272602455,
+          931774,
           0,
-          8814,
-          13871,
+          12638,
+          40296,
           0,
           0
         ],
         "steal": {
-          "steal_ticks": 202,
-          "total_ticks": 1283355,
-          "steal_fraction": 0.0001574
+          "steal_ticks": 239,
+          "total_ticks": 1298047,
+          "steal_fraction": 0.00018412
         }
       },
       "headline": {
-        "geomean_speedup_vs_baseline": 16.064700927001567,
-        "harmonic_mean_speedup_vs_baseline": 13.007737203551912,
-        "max_abs_delta_r2": 4.1712170489871525e-06,
-        "spectrafit_win_rate": 0.875,
+        "geomean_speedup_vs_baseline": 14.399201127422055,
+        "harmonic_mean_speedup_vs_baseline": 11.305024718989571,
+        "max_abs_delta_r2": 3.798589954684406e-05,
+        "spectrafit_win_rate": 0.88125,
         "n_cases": 160,
-        "regressions": 0,
+        "regressions": 5,
         "backends": [
           "spectrafit",
           "lmfit",
@@ -628,66 +628,66 @@
       }
     },
     {
-      "run_uid": "3858ad5e6e163cc4",
+      "run_uid": "7861ac33bee59856",
       "reps_requested": 10,
       "reps_effective": 5,
       "seed": 20260609,
       "exit_status": 0,
-      "started_utc": "2026-10-17T13:11:00Z",
-      "finished_utc": "2026-10-17T13:21:32Z",
-      "wall_seconds": 631.5,
+      "started_utc": "2026-11-17T10:11:10Z",
+      "finished_utc": "2026-11-17T10:21:45Z",
+      "wall_seconds": 635.7,
       "resources": {
         "peak_rss_gb": 1.55,
-        "mmap_regions": 9248,
+        "mmap_regions": 9249,
         "jax_cache_clears": 1,
         "jax_compile_budget": 64,
         "load_average_start": [
-          2.85,
-          2.06,
-          1.58
+          3.66,
+          2.26,
+          1.71
         ],
         "load_average_end": [
-          2.49,
-          1.97,
-          1.64
+          1.26,
+          1.53,
+          1.54
         ],
         "proc_stat_cpu_start": [
-          8280538,
-          392,
-          57016,
-          102454171,
-          103181,
+          16587860,
+          93916,
+          290991,
+          272602853,
+          931774,
           0,
-          8815,
-          13871,
+          12638,
+          40297,
           0,
           0
         ],
         "proc_stat_cpu_end": [
-          8377144,
-          392,
-          57826,
-          103366202,
-          103369,
+          16684931,
+          93916,
+          291819,
+          273521077,
+          931876,
           0,
-          8952,
-          14052,
+          12693,
+          40503,
           0,
           0
         ],
         "steal": {
-          "steal_ticks": 181,
-          "total_ticks": 1009953,
-          "steal_fraction": 0.00017922
+          "steal_ticks": 206,
+          "total_ticks": 1016486,
+          "steal_fraction": 0.00020266
         }
       },
       "headline": {
-        "geomean_speedup_vs_baseline": 15.567900474975264,
-        "harmonic_mean_speedup_vs_baseline": 10.799629726854231,
-        "max_abs_delta_r2": 3.0740167485943104e-06,
+        "geomean_speedup_vs_baseline": 13.601321295258105,
+        "harmonic_mean_speedup_vs_baseline": 11.029202805071073,
+        "max_abs_delta_r2": 2.643183231176849e-07,
         "spectrafit_win_rate": 0.88125,
         "n_cases": 160,
-        "regressions": 0,
+        "regressions": 3,
         "backends": [
           "spectrafit",
           "lmfit",
@@ -706,66 +706,66 @@
       }
     },
     {
-      "run_uid": "e2b85c8c3938c12c",
+      "run_uid": "04ec4c40aebdb9d7",
       "reps_requested": 10,
       "reps_effective": 5,
       "seed": 20260610,
       "exit_status": 0,
-      "started_utc": "2026-10-17T13:21:32Z",
-      "finished_utc": "2026-10-17T13:35:18Z",
-      "wall_seconds": 825.2,
+      "started_utc": "2026-11-17T10:21:46Z",
+      "finished_utc": "2026-11-17T10:35:48Z",
+      "wall_seconds": 842.6,
       "resources": {
-        "peak_rss_gb": 1.57,
-        "mmap_regions": 9248,
+        "peak_rss_gb": 1.56,
+        "mmap_regions": 9251,
         "jax_cache_clears": 1,
         "jax_compile_budget": 64,
         "load_average_start": [
-          2.49,
-          1.97,
-          1.64
+          1.26,
+          1.53,
+          1.54
         ],
         "load_average_end": [
-          1.7,
-          1.58,
-          1.5
+          2.11,
+          1.48,
+          1.4
         ],
         "proc_stat_cpu_start": [
-          8377459,
-          392,
-          57834,
-          103366609,
-          103369,
+          16685248,
+          93916,
+          291825,
+          273521506,
+          931876,
           0,
-          8952,
-          14052,
+          12693,
+          40503,
           0,
           0
         ],
         "proc_stat_cpu_end": [
-          8496190,
-          392,
-          58841,
-          104565893,
-          103665,
+          16805921,
+          93916,
+          292851,
+          274746745,
+          932026,
           0,
-          9069,
-          14277,
+          12776,
+          40763,
           0,
           0
         ],
         "steal": {
-          "steal_ticks": 225,
-          "total_ticks": 1319660,
-          "steal_fraction": 0.0001705
+          "steal_ticks": 260,
+          "total_ticks": 1347431,
+          "steal_fraction": 0.00019296
         }
       },
       "headline": {
-        "geomean_speedup_vs_baseline": 16.71346214927614,
-        "harmonic_mean_speedup_vs_baseline": 13.116753622888252,
-        "max_abs_delta_r2": 0.0003605953899026293,
+        "geomean_speedup_vs_baseline": 14.52927186296849,
+        "harmonic_mean_speedup_vs_baseline": 11.257635128147312,
+        "max_abs_delta_r2": 5.131804518554439e-06,
         "spectrafit_win_rate": 0.875,
         "n_cases": 160,
-        "regressions": 0,
+        "regressions": 7,
         "backends": [
           "spectrafit",
           "lmfit",
@@ -782,66 +782,66 @@
       }
     },
     {
-      "run_uid": "629bc61c643528ed",
+      "run_uid": "6780a4a4a5e0b9ad",
       "reps_requested": 10,
       "reps_effective": 5,
       "seed": 20260611,
       "exit_status": 0,
-      "started_utc": "2026-10-17T13:35:18Z",
-      "finished_utc": "2026-10-17T13:49:08Z",
-      "wall_seconds": 829.9,
+      "started_utc": "2026-11-17T10:35:49Z",
+      "finished_utc": "2026-11-17T10:49:48Z",
+      "wall_seconds": 839.5,
       "resources": {
-        "peak_rss_gb": 1.55,
-        "mmap_regions": 9247,
+        "peak_rss_gb": 1.56,
+        "mmap_regions": 9249,
         "jax_cache_clears": 1,
         "jax_compile_budget": 64,
         "load_average_start": [
-          1.7,
-          1.58,
-          1.5
+          2.11,
+          1.48,
+          1.4
         ],
         "load_average_end": [
-          1.5,
           1.3,
-          1.3
+          1.35,
+          1.32
         ],
         "proc_stat_cpu_start": [
-          8496505,
-          392,
-          58848,
-          104566248,
-          103665,
+          16806241,
+          93916,
+          292856,
+          274747188,
+          932026,
           0,
-          9069,
-          14277,
+          12776,
+          40763,
           0,
           0
         ],
         "proc_stat_cpu_end": [
-          8614692,
-          392,
-          59672,
-          105773721,
-          103966,
+          16925911,
+          93916,
+          293741,
+          275968616,
+          932226,
           0,
-          9174,
-          14489,
+          12845,
+          41018,
           0,
           0
         ],
         "steal": {
-          "steal_ticks": 212,
-          "total_ticks": 1327102,
-          "steal_fraction": 0.00015975
+          "steal_ticks": 255,
+          "total_ticks": 1342507,
+          "steal_fraction": 0.00018994
         }
       },
       "headline": {
-        "geomean_speedup_vs_baseline": 16.09287067145501,
-        "harmonic_mean_speedup_vs_baseline": 13.194070873808062,
+        "geomean_speedup_vs_baseline": 14.055926125462971,
+        "harmonic_mean_speedup_vs_baseline": 11.46853940552138,
         "max_abs_delta_r2": 5.330992427499126e-07,
         "spectrafit_win_rate": 0.8875,
         "n_cases": 160,
-        "regressions": 0,
+        "regressions": 6,
         "backends": [
           "spectrafit",
           "lmfit",
@@ -859,66 +859,66 @@
       }
     },
     {
-      "run_uid": "6355ce1a818569eb",
+      "run_uid": "dbbb1122fe50761f",
       "reps_requested": 10,
       "reps_effective": 5,
       "seed": 20260612,
       "exit_status": 0,
-      "started_utc": "2026-10-17T13:49:08Z",
-      "finished_utc": "2026-10-17T14:02:29Z",
-      "wall_seconds": 801.1,
+      "started_utc": "2026-11-17T10:49:49Z",
+      "finished_utc": "2026-11-17T11:03:09Z",
+      "wall_seconds": 800.5,
       "resources": {
-        "peak_rss_gb": 1.56,
+        "peak_rss_gb": 1.55,
         "mmap_regions": 9247,
         "jax_cache_clears": 1,
         "jax_compile_budget": 64,
         "load_average_start": [
-          1.5,
           1.3,
-          1.3
+          1.35,
+          1.32
         ],
         "load_average_end": [
-          2.38,
-          1.98,
-          1.55
+          2.39,
+          1.67,
+          1.37
         ],
         "proc_stat_cpu_start": [
-          8615012,
-          392,
-          59676,
-          105774166,
-          103966,
+          16926230,
+          93916,
+          293745,
+          275968999,
+          932226,
           0,
-          9174,
-          14490,
+          12845,
+          41018,
           0,
           0
         ],
         "proc_stat_cpu_end": [
-          8729119,
-          392,
-          60539,
-          106939574,
-          104320,
+          17040641,
+          93916,
+          294737,
+          277133146,
+          932470,
           0,
-          9247,
-          14695,
+          12919,
+          41264,
           0,
           0
         ],
         "steal": {
-          "steal_ticks": 205,
-          "total_ticks": 1281010,
-          "steal_fraction": 0.00016003
+          "steal_ticks": 246,
+          "total_ticks": 1280114,
+          "steal_fraction": 0.00019217
         }
       },
       "headline": {
-        "geomean_speedup_vs_baseline": 16.60891866320926,
-        "harmonic_mean_speedup_vs_baseline": 13.453731044990663,
-        "max_abs_delta_r2": 3.6976963504464777e-06,
+        "geomean_speedup_vs_baseline": 14.573480110149028,
+        "harmonic_mean_speedup_vs_baseline": 11.703320412517648,
+        "max_abs_delta_r2": 1.6718401563142749e-07,
         "spectrafit_win_rate": 0.88125,
         "n_cases": 160,
-        "regressions": 0,
+        "regressions": 6,
         "backends": [
           "spectrafit",
           "lmfit",
@@ -936,2224 +936,66 @@
       }
     },
     {
-      "run_uid": "ad0a25f920070cb0",
+      "run_uid": "9adddfa22d548aa5",
       "reps_requested": 10,
       "reps_effective": 5,
       "seed": 20260613,
       "exit_status": 0,
-      "started_utc": "2026-10-17T14:02:30Z",
-      "finished_utc": "2026-10-17T14:16:30Z",
-      "wall_seconds": 840.0,
-      "resources": {
-        "peak_rss_gb": 1.56,
-        "mmap_regions": 9246,
-        "jax_cache_clears": 1,
-        "jax_compile_budget": 64,
-        "load_average_start": [
-          2.38,
-          1.98,
-          1.55
-        ],
-        "load_average_end": [
-          3.22,
-          1.93,
-          1.52
-        ],
-        "proc_stat_cpu_start": [
-          8729440,
-          392,
-          60543,
-          106939987,
-          104320,
-          0,
-          9247,
-          14696,
-          0,
-          0
-        ],
-        "proc_stat_cpu_end": [
-          8848497,
-          392,
-          61469,
-          108162649,
-          104572,
-          0,
-          9335,
-          14910,
-          0,
-          0
-        ],
-        "steal": {
-          "steal_ticks": 214,
-          "total_ticks": 1343199,
-          "steal_fraction": 0.00015932
-        }
-      },
-      "headline": {
-        "geomean_speedup_vs_baseline": 16.28728475361858,
-        "harmonic_mean_speedup_vs_baseline": 13.428553369356006,
-        "max_abs_delta_r2": 3.087669842816165e-05,
-        "spectrafit_win_rate": 0.88125,
-        "n_cases": 160,
-        "regressions": 0,
-        "backends": [
-          "spectrafit",
-          "lmfit",
-          "jax",
-          "scipy-ls-lm",
-          "scipy-ls-trf",
-          "scipy-ls-dogbox"
-        ],
-        "saturated_categories": [
-          "reality",
-          "scaling",
-          "tied"
-        ],
-        "baseline_solver_id": "lmfit"
-      }
-    },
-    {
-      "run_uid": "00c7af21875a1602",
-      "reps_requested": 10,
-      "reps_effective": 5,
-      "seed": 20260614,
-      "exit_status": 0,
-      "started_utc": "2026-10-17T14:16:30Z",
-      "finished_utc": "2026-10-17T14:32:14Z",
-      "wall_seconds": 943.8,
-      "resources": {
-        "peak_rss_gb": 1.55,
-        "mmap_regions": 9248,
-        "jax_cache_clears": 1,
-        "jax_compile_budget": 64,
-        "load_average_start": [
-          3.22,
-          1.93,
-          1.52
-        ],
-        "load_average_end": [
-          2.3,
-          1.92,
-          1.55
-        ],
-        "proc_stat_cpu_start": [
-          8848814,
-          392,
-          61475,
-          108163047,
-          104575,
-          0,
-          9335,
-          14911,
-          0,
-          0
-        ],
-        "proc_stat_cpu_end": [
-          8981498,
-          392,
-          62421,
-          109538064,
-          104886,
-          0,
-          9456,
-          15148,
-          0,
-          0
-        ],
-        "steal": {
-          "steal_ticks": 237,
-          "total_ticks": 1509316,
-          "steal_fraction": 0.00015702
-        }
-      },
-      "headline": {
-        "geomean_speedup_vs_baseline": 16.286124636333177,
-        "harmonic_mean_speedup_vs_baseline": 12.983122555647466,
-        "max_abs_delta_r2": 2.145869289593705e-06,
-        "spectrafit_win_rate": 0.8875,
-        "n_cases": 160,
-        "regressions": 0,
-        "backends": [
-          "spectrafit",
-          "lmfit",
-          "jax",
-          "scipy-ls-lm",
-          "scipy-ls-trf",
-          "scipy-ls-dogbox"
-        ],
-        "saturated_categories": [
-          "reality",
-          "scaling",
-          "tied"
-        ],
-        "baseline_solver_id": "lmfit"
-      }
-    },
-    {
-      "run_uid": "37add3340c859588",
-      "reps_requested": 10,
-      "reps_effective": 5,
-      "seed": 20260615,
-      "exit_status": 0,
-      "started_utc": "2026-10-17T14:32:15Z",
-      "finished_utc": "2026-10-17T14:46:03Z",
-      "wall_seconds": 828.6,
-      "resources": {
-        "peak_rss_gb": 1.55,
-        "mmap_regions": 9242,
-        "jax_cache_clears": 1,
-        "jax_compile_budget": 64,
-        "load_average_start": [
-          2.3,
-          1.92,
-          1.55
-        ],
-        "load_average_end": [
-          2.54,
-          1.88,
-          1.55
-        ],
-        "proc_stat_cpu_start": [
-          8981822,
-          392,
-          62425,
-          109538488,
-          104886,
-          0,
-          9456,
-          15148,
-          0,
-          0
-        ],
-        "proc_stat_cpu_end": [
-          9099345,
-          392,
-          63397,
-          110744370,
-          105258,
-          0,
-          9502,
-          15361,
-          0,
-          0
-        ],
-        "steal": {
-          "steal_ticks": 213,
-          "total_ticks": 1325008,
-          "steal_fraction": 0.00016075
-        }
-      },
-      "headline": {
-        "geomean_speedup_vs_baseline": 15.969905809176396,
-        "harmonic_mean_speedup_vs_baseline": 11.510928977951902,
-        "max_abs_delta_r2": 4.299198500867796e-06,
-        "spectrafit_win_rate": 0.88125,
-        "n_cases": 160,
-        "regressions": 1,
-        "backends": [
-          "spectrafit",
-          "lmfit",
-          "jax",
-          "scipy-ls-lm",
-          "scipy-ls-trf",
-          "scipy-ls-dogbox"
-        ],
-        "saturated_categories": [
-          "reality",
-          "scaling",
-          "tied"
-        ],
-        "baseline_solver_id": "lmfit"
-      }
-    },
-    {
-      "run_uid": "2d03f634e3050c22",
-      "reps_requested": 10,
-      "reps_effective": 5,
-      "seed": 20260616,
-      "exit_status": 0,
-      "started_utc": "2026-10-17T14:46:04Z",
-      "finished_utc": "2026-10-17T15:00:08Z",
-      "wall_seconds": 843.9,
-      "resources": {
-        "peak_rss_gb": 1.56,
-        "mmap_regions": 9249,
-        "jax_cache_clears": 1,
-        "jax_compile_budget": 64,
-        "load_average_start": [
-          2.54,
-          1.88,
-          1.55
-        ],
-        "load_average_end": [
-          1.7,
-          1.42,
-          1.35
-        ],
-        "proc_stat_cpu_start": [
-          9099661,
-          392,
-          63405,
-          110744763,
-          105258,
-          0,
-          9502,
-          15361,
-          0,
-          0
-        ],
-        "proc_stat_cpu_end": [
-          9218312,
-          392,
-          64252,
-          111974063,
-          105578,
-          0,
-          9539,
-          15574,
-          0,
-          0
-        ],
-        "steal": {
-          "steal_ticks": 213,
-          "total_ticks": 1349368,
-          "steal_fraction": 0.00015785
-        }
-      },
-      "headline": {
-        "geomean_speedup_vs_baseline": 15.752138717663794,
-        "harmonic_mean_speedup_vs_baseline": 12.85365853543879,
-        "max_abs_delta_r2": 1.9611709175748615e-05,
-        "spectrafit_win_rate": 0.88125,
-        "n_cases": 160,
-        "regressions": 0,
-        "backends": [
-          "spectrafit",
-          "lmfit",
-          "jax",
-          "scipy-ls-lm",
-          "scipy-ls-trf",
-          "scipy-ls-dogbox"
-        ],
-        "saturated_categories": [
-          "fixed",
-          "reality",
-          "scaling",
-          "tied"
-        ],
-        "baseline_solver_id": "lmfit"
-      }
-    },
-    {
-      "run_uid": "0884e19db3435a06",
-      "reps_requested": 10,
-      "reps_effective": 5,
-      "seed": 20260617,
-      "exit_status": 0,
-      "started_utc": "2026-10-17T15:00:08Z",
-      "finished_utc": "2026-10-17T15:13:02Z",
-      "wall_seconds": 774.3,
-      "resources": {
-        "peak_rss_gb": 1.56,
-        "mmap_regions": 9243,
-        "jax_cache_clears": 1,
-        "jax_compile_budget": 64,
-        "load_average_start": [
-          1.7,
-          1.42,
-          1.35
-        ],
-        "load_average_end": [
-          2.84,
-          1.79,
-          1.44
-        ],
-        "proc_stat_cpu_start": [
-          9218630,
-          392,
-          64263,
-          111974475,
-          105578,
-          0,
-          9539,
-          15575,
-          0,
-          0
-        ],
-        "proc_stat_cpu_end": [
-          9331426,
-          392,
-          65628,
-          113096653,
-          106886,
-          0,
-          9628,
-          15806,
-          0,
-          0
-        ],
-        "steal": {
-          "steal_ticks": 231,
-          "total_ticks": 1237967,
-          "steal_fraction": 0.0001866
-        }
-      },
-      "headline": {
-        "geomean_speedup_vs_baseline": 16.82349011379914,
-        "harmonic_mean_speedup_vs_baseline": 13.76639066445638,
-        "max_abs_delta_r2": 3.622805149650077e-06,
-        "spectrafit_win_rate": 0.8875,
-        "n_cases": 160,
-        "regressions": 0,
-        "backends": [
-          "spectrafit",
-          "lmfit",
-          "jax",
-          "scipy-ls-lm",
-          "scipy-ls-trf",
-          "scipy-ls-dogbox"
-        ],
-        "saturated_categories": [
-          "reality",
-          "scaling",
-          "tied"
-        ],
-        "baseline_solver_id": "lmfit"
-      }
-    },
-    {
-      "run_uid": "00f8f03e70323580",
-      "reps_requested": 10,
-      "reps_effective": 5,
-      "seed": 20260618,
-      "exit_status": 0,
-      "started_utc": "2026-10-17T15:13:03Z",
-      "finished_utc": "2026-10-17T15:31:05Z",
-      "wall_seconds": 1082.6,
-      "resources": {
-        "peak_rss_gb": 1.57,
-        "mmap_regions": 9249,
-        "jax_cache_clears": 1,
-        "jax_compile_budget": 64,
-        "load_average_start": [
-          2.84,
-          1.79,
-          1.44
-        ],
-        "load_average_end": [
-          2.6,
-          1.77,
-          1.41
-        ],
-        "proc_stat_cpu_start": [
-          9331743,
-          392,
-          65636,
-          113097078,
-          106886,
-          0,
-          9628,
-          15807,
-          0,
-          0
-        ],
-        "proc_stat_cpu_end": [
-          9474019,
-          392,
-          66763,
-          114683816,
-          107702,
-          0,
-          9729,
-          16067,
-          0,
-          0
-        ],
-        "steal": {
-          "steal_ticks": 260,
-          "total_ticks": 1731318,
-          "steal_fraction": 0.00015017
-        }
-      },
-      "headline": {
-        "geomean_speedup_vs_baseline": 16.194360456777584,
-        "harmonic_mean_speedup_vs_baseline": 12.727521959405445,
-        "max_abs_delta_r2": 2.1031300465601532e-06,
-        "spectrafit_win_rate": 0.88125,
-        "n_cases": 160,
-        "regressions": 1,
-        "backends": [
-          "spectrafit",
-          "lmfit",
-          "jax",
-          "scipy-ls-lm",
-          "scipy-ls-trf",
-          "scipy-ls-dogbox"
-        ],
-        "saturated_categories": [
-          "reality",
-          "scaling",
-          "tied"
-        ],
-        "baseline_solver_id": "lmfit"
-      }
-    },
-    {
-      "run_uid": "24f94b986fdacb11",
-      "reps_requested": 10,
-      "reps_effective": 5,
-      "seed": 20260619,
-      "exit_status": 0,
-      "started_utc": "2026-10-17T15:31:06Z",
-      "finished_utc": "2026-10-17T15:40:33Z",
-      "wall_seconds": 567.5,
-      "resources": {
-        "peak_rss_gb": 1.56,
-        "mmap_regions": 9250,
-        "jax_cache_clears": 1,
-        "jax_compile_budget": 64,
-        "load_average_start": [
-          2.6,
-          1.77,
-          1.41
-        ],
-        "load_average_end": [
-          3.14,
-          2.1,
-          1.58
-        ],
-        "proc_stat_cpu_start": [
-          9474342,
-          392,
-          66768,
-          114684255,
-          107702,
-          0,
-          9729,
-          16068,
-          0,
-          0
-        ],
-        "proc_stat_cpu_end": [
-          9567391,
-          392,
-          67587,
-          115497127,
-          107912,
-          0,
-          9856,
-          16245,
-          0,
-          0
-        ],
-        "steal": {
-          "steal_ticks": 177,
-          "total_ticks": 907254,
-          "steal_fraction": 0.00019509
-        }
-      },
-      "headline": {
-        "geomean_speedup_vs_baseline": 16.008086778086458,
-        "harmonic_mean_speedup_vs_baseline": 13.164505572590128,
-        "max_abs_delta_r2": 3.3435878810106345e-07,
-        "spectrafit_win_rate": 0.875,
-        "n_cases": 160,
-        "regressions": 1,
-        "backends": [
-          "spectrafit",
-          "lmfit",
-          "jax",
-          "scipy-ls-lm",
-          "scipy-ls-trf",
-          "scipy-ls-dogbox"
-        ],
-        "saturated_categories": [
-          "reality",
-          "scaling",
-          "tied"
-        ],
-        "baseline_solver_id": "lmfit"
-      }
-    },
-    {
-      "run_uid": "e4b3e2d70747ed60",
-      "reps_requested": 10,
-      "reps_effective": 5,
-      "seed": 20260620,
-      "exit_status": 0,
-      "started_utc": "2026-10-17T15:40:34Z",
-      "finished_utc": "2026-10-17T15:54:33Z",
-      "wall_seconds": 838.8,
-      "resources": {
-        "peak_rss_gb": 1.57,
-        "mmap_regions": 9244,
-        "jax_cache_clears": 1,
-        "jax_compile_budget": 64,
-        "load_average_start": [
-          3.14,
-          2.1,
-          1.58
-        ],
-        "load_average_end": [
-          2.69,
-          1.77,
-          1.49
-        ],
-        "proc_stat_cpu_start": [
-          9567716,
-          392,
-          67598,
-          115497552,
-          107912,
-          0,
-          9856,
-          16247,
-          0,
-          0
-        ],
-        "proc_stat_cpu_end": [
-          9687151,
-          392,
-          68499,
-          116717915,
-          108221,
-          0,
-          10006,
-          16461,
-          0,
-          0
-        ],
-        "steal": {
-          "steal_ticks": 214,
-          "total_ticks": 1341372,
-          "steal_fraction": 0.00015954
-        }
-      },
-      "headline": {
-        "geomean_speedup_vs_baseline": 16.368982417330148,
-        "harmonic_mean_speedup_vs_baseline": 13.289530853080725,
-        "max_abs_delta_r2": 2.870400177767962e-06,
-        "spectrafit_win_rate": 0.88125,
-        "n_cases": 160,
-        "regressions": 0,
-        "backends": [
-          "spectrafit",
-          "lmfit",
-          "jax",
-          "scipy-ls-lm",
-          "scipy-ls-trf",
-          "scipy-ls-dogbox"
-        ],
-        "saturated_categories": [
-          "reality",
-          "scaling",
-          "tied"
-        ],
-        "baseline_solver_id": "lmfit"
-      }
-    },
-    {
-      "run_uid": "9a11a028983e64da",
-      "reps_requested": 10,
-      "reps_effective": 5,
-      "seed": 20260621,
-      "exit_status": 0,
-      "started_utc": "2026-10-17T15:54:33Z",
-      "finished_utc": "2026-10-17T16:08:08Z",
-      "wall_seconds": 815.3,
-      "resources": {
-        "peak_rss_gb": 1.55,
-        "mmap_regions": 9247,
-        "jax_cache_clears": 1,
-        "jax_compile_budget": 64,
-        "load_average_start": [
-          2.69,
-          1.77,
-          1.49
-        ],
-        "load_average_end": [
-          2.32,
-          1.54,
-          1.36
-        ],
-        "proc_stat_cpu_start": [
-          9687467,
-          392,
-          68506,
-          116718321,
-          108221,
-          0,
-          10006,
-          16461,
-          0,
-          0
-        ],
-        "proc_stat_cpu_end": [
-          9807822,
-          392,
-          69362,
-          117900321,
-          108544,
-          0,
-          10081,
-          16677,
-          0,
-          0
-        ],
-        "steal": {
-          "steal_ticks": 216,
-          "total_ticks": 1303825,
-          "steal_fraction": 0.00016567
-        }
-      },
-      "headline": {
-        "geomean_speedup_vs_baseline": 15.841198562787923,
-        "harmonic_mean_speedup_vs_baseline": 13.28893593918124,
-        "max_abs_delta_r2": 2.0438363896868594e-06,
-        "spectrafit_win_rate": 0.875,
-        "n_cases": 160,
-        "regressions": 0,
-        "backends": [
-          "spectrafit",
-          "lmfit",
-          "jax",
-          "scipy-ls-lm",
-          "scipy-ls-trf",
-          "scipy-ls-dogbox"
-        ],
-        "saturated_categories": [
-          "reality",
-          "scaling",
-          "tied"
-        ],
-        "baseline_solver_id": "lmfit"
-      }
-    },
-    {
-      "run_uid": "c3bb30ad852a86dd",
-      "reps_requested": 10,
-      "reps_effective": 5,
-      "seed": 20260622,
-      "exit_status": 0,
-      "started_utc": "2026-10-17T16:08:09Z",
-      "finished_utc": "2026-10-17T16:24:14Z",
-      "wall_seconds": 965.4,
-      "resources": {
-        "peak_rss_gb": 1.56,
-        "mmap_regions": 9250,
-        "jax_cache_clears": 1,
-        "jax_compile_budget": 64,
-        "load_average_start": [
-          2.32,
-          1.54,
-          1.36
-        ],
-        "load_average_end": [
-          1.67,
-          1.52,
-          1.33
-        ],
-        "proc_stat_cpu_start": [
-          9808145,
-          392,
-          69366,
-          117900779,
-          108544,
-          0,
-          10081,
-          16678,
-          0,
-          0
-        ],
-        "proc_stat_cpu_end": [
-          9939434,
-          392,
-          70303,
-          119311801,
-          108978,
-          0,
-          10245,
-          16915,
-          0,
-          0
-        ],
-        "steal": {
-          "steal_ticks": 237,
-          "total_ticks": 1544083,
-          "steal_fraction": 0.00015349
-        }
-      },
-      "headline": {
-        "geomean_speedup_vs_baseline": 16.61995849869627,
-        "harmonic_mean_speedup_vs_baseline": 13.32259139872764,
-        "max_abs_delta_r2": 5.373992659096771e-06,
-        "spectrafit_win_rate": 0.8875,
-        "n_cases": 160,
-        "regressions": 0,
-        "backends": [
-          "spectrafit",
-          "lmfit",
-          "jax",
-          "scipy-ls-lm",
-          "scipy-ls-trf",
-          "scipy-ls-dogbox"
-        ],
-        "saturated_categories": [
-          "reality",
-          "scaling",
-          "tied"
-        ],
-        "baseline_solver_id": "lmfit"
-      }
-    },
-    {
-      "run_uid": "5ae6b6e550533821",
-      "reps_requested": 10,
-      "reps_effective": 5,
-      "seed": 20260623,
-      "exit_status": 0,
-      "started_utc": "2026-10-17T16:24:15Z",
-      "finished_utc": "2026-10-17T16:36:28Z",
-      "wall_seconds": 733.2,
-      "resources": {
-        "peak_rss_gb": 1.56,
-        "mmap_regions": 9248,
-        "jax_cache_clears": 1,
-        "jax_compile_budget": 64,
-        "load_average_start": [
-          1.67,
-          1.52,
-          1.33
-        ],
-        "load_average_end": [
-          2.25,
-          1.72,
-          1.42
-        ],
-        "proc_stat_cpu_start": [
-          9939749,
-          392,
-          70309,
-          119312190,
-          108980,
-          0,
-          10245,
-          16916,
-          0,
-          0
-        ],
-        "proc_stat_cpu_end": [
-          10050433,
-          392,
-          71159,
-          120372580,
-          109270,
-          0,
-          10379,
-          17119,
-          0,
-          0
-        ],
-        "steal": {
-          "steal_ticks": 203,
-          "total_ticks": 1172551,
-          "steal_fraction": 0.00017313
-        }
-      },
-      "headline": {
-        "geomean_speedup_vs_baseline": 16.16783882958245,
-        "harmonic_mean_speedup_vs_baseline": 13.513323322794083,
-        "max_abs_delta_r2": 3.6244606870239338e-06,
-        "spectrafit_win_rate": 0.88125,
-        "n_cases": 160,
-        "regressions": 0,
-        "backends": [
-          "spectrafit",
-          "lmfit",
-          "jax",
-          "scipy-ls-lm",
-          "scipy-ls-trf",
-          "scipy-ls-dogbox"
-        ],
-        "saturated_categories": [
-          "reality",
-          "scaling",
-          "tied"
-        ],
-        "baseline_solver_id": "lmfit"
-      }
-    },
-    {
-      "run_uid": "50ab142648eddd20",
-      "reps_requested": 10,
-      "reps_effective": 5,
-      "seed": 20260624,
-      "exit_status": 0,
-      "started_utc": "2026-10-17T16:36:28Z",
-      "finished_utc": "2026-10-17T16:50:26Z",
-      "wall_seconds": 837.7,
-      "resources": {
-        "peak_rss_gb": 1.56,
-        "mmap_regions": 9247,
-        "jax_cache_clears": 1,
-        "jax_compile_budget": 64,
-        "load_average_start": [
-          2.25,
-          1.72,
-          1.42
-        ],
-        "load_average_end": [
-          3.77,
-          1.96,
-          1.48
-        ],
-        "proc_stat_cpu_start": [
-          10050754,
-          392,
-          71162,
-          120373015,
-          109270,
-          0,
-          10379,
-          17119,
-          0,
-          0
-        ],
-        "proc_stat_cpu_end": [
-          10173480,
-          392,
-          72074,
-          121588488,
-          109609,
-          0,
-          10459,
-          17339,
-          0,
-          0
-        ],
-        "steal": {
-          "steal_ticks": 220,
-          "total_ticks": 1339750,
-          "steal_fraction": 0.00016421
-        }
-      },
-      "headline": {
-        "geomean_speedup_vs_baseline": 15.753802740489732,
-        "harmonic_mean_speedup_vs_baseline": 13.13125069872949,
-        "max_abs_delta_r2": 2.797266302589918e-06,
-        "spectrafit_win_rate": 0.88125,
-        "n_cases": 160,
-        "regressions": 0,
-        "backends": [
-          "spectrafit",
-          "lmfit",
-          "jax",
-          "scipy-ls-lm",
-          "scipy-ls-trf",
-          "scipy-ls-dogbox"
-        ],
-        "saturated_categories": [
-          "reality",
-          "scaling",
-          "tied"
-        ],
-        "baseline_solver_id": "lmfit"
-      }
-    },
-    {
-      "run_uid": "35c0d05096126f4d",
-      "reps_requested": 10,
-      "reps_effective": 5,
-      "seed": 20260625,
-      "exit_status": 0,
-      "started_utc": "2026-10-17T16:50:27Z",
-      "finished_utc": "2026-10-17T17:02:35Z",
-      "wall_seconds": 728.4,
+      "started_utc": "2026-11-17T11:03:10Z",
+      "finished_utc": "2026-11-17T11:17:17Z",
+      "wall_seconds": 847.4,
       "resources": {
         "peak_rss_gb": 1.57,
         "mmap_regions": 9246,
         "jax_cache_clears": 1,
         "jax_compile_budget": 64,
         "load_average_start": [
-          3.77,
-          1.96,
-          1.48
-        ],
-        "load_average_end": [
-          2.2,
-          1.43,
-          1.33
-        ],
-        "proc_stat_cpu_start": [
-          10173795,
-          392,
-          72083,
-          121588902,
-          109609,
-          0,
-          10459,
-          17339,
-          0,
-          0
-        ],
-        "proc_stat_cpu_end": [
-          10280096,
-          392,
-          72981,
-          122645943,
-          109937,
-          0,
-          10534,
-          17536,
-          0,
-          0
-        ],
-        "steal": {
-          "steal_ticks": 197,
-          "total_ticks": 1164840,
-          "steal_fraction": 0.00016912
-        }
-      },
-      "headline": {
-        "geomean_speedup_vs_baseline": 16.107055910433704,
-        "harmonic_mean_speedup_vs_baseline": 13.207662589081433,
-        "max_abs_delta_r2": 5.868043492007757e-06,
-        "spectrafit_win_rate": 0.8875,
-        "n_cases": 160,
-        "regressions": 0,
-        "backends": [
-          "spectrafit",
-          "lmfit",
-          "jax",
-          "scipy-ls-lm",
-          "scipy-ls-trf",
-          "scipy-ls-dogbox"
-        ],
-        "saturated_categories": [
-          "reality",
-          "scaling",
-          "tied"
-        ],
-        "baseline_solver_id": "lmfit"
-      }
-    },
-    {
-      "run_uid": "2c73381f2c13b96f",
-      "reps_requested": 10,
-      "reps_effective": 5,
-      "seed": 20260626,
-      "exit_status": 0,
-      "started_utc": "2026-10-17T17:02:36Z",
-      "finished_utc": "2026-10-17T17:15:48Z",
-      "wall_seconds": 792.9,
-      "resources": {
-        "peak_rss_gb": 1.55,
-        "mmap_regions": 9244,
-        "jax_cache_clears": 1,
-        "jax_compile_budget": 64,
-        "load_average_start": [
-          2.2,
-          1.43,
-          1.33
-        ],
-        "load_average_end": [
-          2.58,
-          1.77,
-          1.44
-        ],
-        "proc_stat_cpu_start": [
-          10280415,
-          392,
-          72990,
-          122646351,
-          109937,
-          0,
-          10534,
-          17537,
-          0,
-          0
-        ],
-        "proc_stat_cpu_end": [
-          10411968,
-          392,
-          73853,
-          123781381,
-          110164,
-          0,
-          10649,
-          17760,
-          0,
-          0
-        ],
-        "steal": {
-          "steal_ticks": 223,
-          "total_ticks": 1268011,
-          "steal_fraction": 0.00017587
-        }
-      },
-      "headline": {
-        "geomean_speedup_vs_baseline": 16.333816424443548,
-        "harmonic_mean_speedup_vs_baseline": 13.336556004523612,
-        "max_abs_delta_r2": 5.9914860969234596e-06,
-        "spectrafit_win_rate": 0.86875,
-        "n_cases": 160,
-        "regressions": 1,
-        "backends": [
-          "spectrafit",
-          "lmfit",
-          "jax",
-          "scipy-ls-lm",
-          "scipy-ls-trf",
-          "scipy-ls-dogbox"
-        ],
-        "saturated_categories": [
-          "reality",
-          "scaling",
-          "tied"
-        ],
-        "baseline_solver_id": "lmfit"
-      }
-    },
-    {
-      "run_uid": "d5b67e0726237169",
-      "reps_requested": 10,
-      "reps_effective": 5,
-      "seed": 20260627,
-      "exit_status": 0,
-      "started_utc": "2026-10-17T17:15:49Z",
-      "finished_utc": "2026-10-17T17:32:44Z",
-      "wall_seconds": 1014.8,
-      "resources": {
-        "peak_rss_gb": 1.55,
-        "mmap_regions": 9250,
-        "jax_cache_clears": 1,
-        "jax_compile_budget": 64,
-        "load_average_start": [
-          2.58,
-          1.77,
-          1.44
-        ],
-        "load_average_end": [
-          2.08,
+          2.39,
           1.67,
-          1.41
-        ],
-        "proc_stat_cpu_start": [
-          10412281,
-          392,
-          73860,
-          123781769,
-          110164,
-          0,
-          10649,
-          17760,
-          0,
-          0
-        ],
-        "proc_stat_cpu_end": [
-          10547415,
-          392,
-          74833,
-          125267782,
-          110580,
-          0,
-          10755,
-          18005,
-          0,
-          0
-        ],
-        "steal": {
-          "steal_ticks": 245,
-          "total_ticks": 1622887,
-          "steal_fraction": 0.00015097
-        }
-      },
-      "headline": {
-        "geomean_speedup_vs_baseline": 16.651967705857345,
-        "harmonic_mean_speedup_vs_baseline": 13.425459743750478,
-        "max_abs_delta_r2": 3.091224927476155e-06,
-        "spectrafit_win_rate": 0.8875,
-        "n_cases": 160,
-        "regressions": 1,
-        "backends": [
-          "spectrafit",
-          "lmfit",
-          "jax",
-          "scipy-ls-lm",
-          "scipy-ls-trf",
-          "scipy-ls-dogbox"
-        ],
-        "saturated_categories": [
-          "reality",
-          "scaling",
-          "tied"
-        ],
-        "baseline_solver_id": "lmfit"
-      }
-    },
-    {
-      "run_uid": "1e8988030fd1ae08",
-      "reps_requested": 10,
-      "reps_effective": 5,
-      "seed": 20260628,
-      "exit_status": 0,
-      "started_utc": "2026-10-17T17:32:44Z",
-      "finished_utc": "2026-10-17T17:43:52Z",
-      "wall_seconds": 667.4,
-      "resources": {
-        "peak_rss_gb": 1.55,
-        "mmap_regions": 9251,
-        "jax_cache_clears": 1,
-        "jax_compile_budget": 64,
-        "load_average_start": [
-          2.08,
-          1.67,
-          1.41
+          1.37
         ],
         "load_average_end": [
-          2.57,
-          1.82,
-          1.51
-        ],
-        "proc_stat_cpu_start": [
-          10547732,
-          392,
-          74837,
-          125268161,
-          110580,
-          0,
-          10755,
-          18005,
-          0,
-          0
-        ],
-        "proc_stat_cpu_end": [
-          10658987,
-          392,
-          75697,
-          126222675,
-          110846,
-          0,
-          10833,
-          18205,
-          0,
-          0
-        ],
-        "steal": {
-          "steal_ticks": 200,
-          "total_ticks": 1067173,
-          "steal_fraction": 0.00018741
-        }
-      },
-      "headline": {
-        "geomean_speedup_vs_baseline": 16.134701692694282,
-        "harmonic_mean_speedup_vs_baseline": 13.27643092292775,
-        "max_abs_delta_r2": 1.0907714010910396e-06,
-        "spectrafit_win_rate": 0.8875,
-        "n_cases": 160,
-        "regressions": 0,
-        "backends": [
-          "spectrafit",
-          "lmfit",
-          "jax",
-          "scipy-ls-lm",
-          "scipy-ls-trf",
-          "scipy-ls-dogbox"
-        ],
-        "saturated_categories": [
-          "reality",
-          "scaling",
-          "tied"
-        ],
-        "baseline_solver_id": "lmfit"
-      }
-    },
-    {
-      "run_uid": "6cfbb88849293834",
-      "reps_requested": 10,
-      "reps_effective": 5,
-      "seed": 20260629,
-      "exit_status": 0,
-      "started_utc": "2026-10-17T17:43:52Z",
-      "finished_utc": "2026-10-17T18:03:10Z",
-      "wall_seconds": 1157.6,
-      "resources": {
-        "peak_rss_gb": 1.55,
-        "mmap_regions": 9248,
-        "jax_cache_clears": 1,
-        "jax_compile_budget": 64,
-        "load_average_start": [
-          2.57,
-          1.82,
-          1.51
-        ],
-        "load_average_end": [
-          2.31,
-          1.77,
-          1.44
-        ],
-        "proc_stat_cpu_start": [
-          10659308,
-          392,
-          75703,
-          126223149,
-          110846,
-          0,
-          10833,
-          18205,
-          0,
-          0
-        ],
-        "proc_stat_cpu_end": [
-          10811111,
-          393,
-          76677,
-          127920895,
-          111248,
-          0,
-          10931,
-          18465,
-          0,
-          0
-        ],
-        "steal": {
-          "steal_ticks": 260,
-          "total_ticks": 1851284,
-          "steal_fraction": 0.00014044
-        }
-      },
-      "headline": {
-        "geomean_speedup_vs_baseline": 15.973926895590061,
-        "harmonic_mean_speedup_vs_baseline": 13.025401321373804,
-        "max_abs_delta_r2": 0.0001329186930895121,
-        "spectrafit_win_rate": 0.88125,
-        "n_cases": 160,
-        "regressions": 0,
-        "backends": [
-          "spectrafit",
-          "lmfit",
-          "jax",
-          "scipy-ls-lm",
-          "scipy-ls-trf",
-          "scipy-ls-dogbox"
-        ],
-        "saturated_categories": [
-          "reality",
-          "scaling",
-          "tied"
-        ],
-        "baseline_solver_id": "lmfit"
-      }
-    },
-    {
-      "run_uid": "24a42aa9aaa5e6f9",
-      "reps_requested": 10,
-      "reps_effective": 5,
-      "seed": 20260630,
-      "exit_status": 0,
-      "started_utc": "2026-10-17T18:03:10Z",
-      "finished_utc": "2026-10-17T18:16:33Z",
-      "wall_seconds": 803.0,
-      "resources": {
-        "peak_rss_gb": 1.55,
-        "mmap_regions": 9249,
-        "jax_cache_clears": 1,
-        "jax_compile_budget": 64,
-        "load_average_start": [
-          2.31,
-          1.77,
-          1.44
-        ],
-        "load_average_end": [
-          3.73,
-          2.36,
-          1.7
-        ],
-        "proc_stat_cpu_start": [
-          10811430,
-          393,
-          76683,
-          127921341,
-          111248,
-          0,
-          10932,
-          18466,
-          0,
-          0
-        ],
-        "proc_stat_cpu_end": [
-          10925544,
-          393,
-          77526,
-          129089836,
-          111616,
-          0,
-          11031,
-          18685,
-          0,
-          0
-        ],
-        "steal": {
-          "steal_ticks": 219,
-          "total_ticks": 1284138,
-          "steal_fraction": 0.00017054
-        }
-      },
-      "headline": {
-        "geomean_speedup_vs_baseline": 15.739393329976552,
-        "harmonic_mean_speedup_vs_baseline": 13.094554865384142,
-        "max_abs_delta_r2": 2.0268690993363592e-05,
-        "spectrafit_win_rate": 0.8875,
-        "n_cases": 160,
-        "regressions": 0,
-        "backends": [
-          "spectrafit",
-          "lmfit",
-          "jax",
-          "scipy-ls-lm",
-          "scipy-ls-trf",
-          "scipy-ls-dogbox"
-        ],
-        "saturated_categories": [
-          "reality",
-          "scaling",
-          "tied"
-        ],
-        "baseline_solver_id": "lmfit"
-      }
-    },
-    {
-      "run_uid": "f143abffc661ed69",
-      "reps_requested": 10,
-      "reps_effective": 5,
-      "seed": 20260631,
-      "exit_status": 0,
-      "started_utc": "2026-10-17T18:16:34Z",
-      "finished_utc": "2026-10-17T18:32:52Z",
-      "wall_seconds": 978.4,
-      "resources": {
-        "peak_rss_gb": 1.56,
-        "mmap_regions": 9250,
-        "jax_cache_clears": 1,
-        "jax_compile_budget": 64,
-        "load_average_start": [
-          3.73,
-          2.36,
-          1.7
-        ],
-        "load_average_end": [
-          1.29,
-          1.35,
+          2.01,
+          1.57,
           1.36
         ],
         "proc_stat_cpu_start": [
-          10925864,
-          393,
-          77534,
-          129090273,
-          111616,
+          17040964,
+          93916,
+          294740,
+          277133563,
+          932470,
           0,
-          11031,
-          18686,
-          0,
-          0
-        ],
-        "proc_stat_cpu_end": [
-          11058114,
-          393,
-          78477,
-          130520883,
-          111970,
-          0,
-          11108,
-          18930,
-          0,
-          0
-        ],
-        "steal": {
-          "steal_ticks": 244,
-          "total_ticks": 1564478,
-          "steal_fraction": 0.00015596
-        }
-      },
-      "headline": {
-        "geomean_speedup_vs_baseline": 16.04269593941937,
-        "harmonic_mean_speedup_vs_baseline": 13.267322727542183,
-        "max_abs_delta_r2": 7.42788784369175e-07,
-        "spectrafit_win_rate": 0.8875,
-        "n_cases": 160,
-        "regressions": 0,
-        "backends": [
-          "spectrafit",
-          "lmfit",
-          "jax",
-          "scipy-ls-lm",
-          "scipy-ls-trf",
-          "scipy-ls-dogbox"
-        ],
-        "saturated_categories": [
-          "fixed",
-          "reality",
-          "scaling",
-          "tied"
-        ],
-        "baseline_solver_id": "lmfit"
-      }
-    },
-    {
-      "run_uid": "a121e1c0bb2b4fca",
-      "reps_requested": 10,
-      "reps_effective": 5,
-      "seed": 20260632,
-      "exit_status": 0,
-      "started_utc": "2026-10-17T18:32:53Z",
-      "finished_utc": "2026-10-17T18:47:47Z",
-      "wall_seconds": 894.2,
-      "resources": {
-        "peak_rss_gb": 1.55,
-        "mmap_regions": 9250,
-        "jax_cache_clears": 1,
-        "jax_compile_budget": 64,
-        "load_average_start": [
-          1.29,
-          1.35,
-          1.36
-        ],
-        "load_average_end": [
-          3.48,
-          2.0,
-          1.52
-        ],
-        "proc_stat_cpu_start": [
-          11058432,
-          393,
-          78484,
-          130521350,
-          111970,
-          0,
-          11109,
-          18931,
+          12919,
+          41264,
           0,
           0
         ],
         "proc_stat_cpu_end": [
-          11182934,
-          393,
-          79364,
-          131825187,
-          112284,
+          17161678,
+          93916,
+          295760,
+          278366499,
+          932684,
           0,
-          11284,
-          19160,
-          0,
-          0
-        ],
-        "steal": {
-          "steal_ticks": 229,
-          "total_ticks": 1429937,
-          "steal_fraction": 0.00016015
-        }
-      },
-      "headline": {
-        "geomean_speedup_vs_baseline": 16.274175847132312,
-        "harmonic_mean_speedup_vs_baseline": 12.899893650679823,
-        "max_abs_delta_r2": 1.4023558465248165e-05,
-        "spectrafit_win_rate": 0.88125,
-        "n_cases": 160,
-        "regressions": 0,
-        "backends": [
-          "spectrafit",
-          "lmfit",
-          "jax",
-          "scipy-ls-lm",
-          "scipy-ls-trf",
-          "scipy-ls-dogbox"
-        ],
-        "saturated_categories": [
-          "reality",
-          "scaling",
-          "tied"
-        ],
-        "baseline_solver_id": "lmfit"
-      }
-    },
-    {
-      "run_uid": "7f029926bd3972d9",
-      "reps_requested": 10,
-      "reps_effective": 5,
-      "seed": 20260633,
-      "exit_status": 0,
-      "started_utc": "2026-10-17T18:47:47Z",
-      "finished_utc": "2026-10-17T19:00:13Z",
-      "wall_seconds": 746.0,
-      "resources": {
-        "peak_rss_gb": 1.56,
-        "mmap_regions": 9247,
-        "jax_cache_clears": 1,
-        "jax_compile_budget": 64,
-        "load_average_start": [
-          3.48,
-          2.0,
-          1.52
-        ],
-        "load_average_end": [
-          2.53,
-          1.89,
-          1.55
-        ],
-        "proc_stat_cpu_start": [
-          11183253,
-          393,
-          79371,
-          131825611,
-          112284,
-          0,
-          11284,
-          19161,
-          0,
-          0
-        ],
-        "proc_stat_cpu_end": [
-          11291122,
-          393,
-          80228,
-          132909244,
-          112490,
-          0,
-          11352,
-          19364,
-          0,
-          0
-        ],
-        "steal": {
-          "steal_ticks": 203,
-          "total_ticks": 1192836,
-          "steal_fraction": 0.00017018
-        }
-      },
-      "headline": {
-        "geomean_speedup_vs_baseline": 16.593635819841253,
-        "harmonic_mean_speedup_vs_baseline": 13.42265780807239,
-        "max_abs_delta_r2": 1.1603790887382281e-05,
-        "spectrafit_win_rate": 0.8875,
-        "n_cases": 160,
-        "regressions": 1,
-        "backends": [
-          "spectrafit",
-          "lmfit",
-          "jax",
-          "scipy-ls-lm",
-          "scipy-ls-trf",
-          "scipy-ls-dogbox"
-        ],
-        "saturated_categories": [
-          "reality",
-          "scaling",
-          "tied"
-        ],
-        "baseline_solver_id": "lmfit"
-      }
-    },
-    {
-      "run_uid": "bebbe58d5cf0b432",
-      "reps_requested": 10,
-      "reps_effective": 5,
-      "seed": 20260634,
-      "exit_status": 0,
-      "started_utc": "2026-10-17T19:00:14Z",
-      "finished_utc": "2026-10-17T19:09:41Z",
-      "wall_seconds": 567.5,
-      "resources": {
-        "peak_rss_gb": 1.56,
-        "mmap_regions": 9247,
-        "jax_cache_clears": 1,
-        "jax_compile_budget": 64,
-        "load_average_start": [
-          2.53,
-          1.89,
-          1.55
-        ],
-        "load_average_end": [
-          2.23,
-          1.84,
-          1.59
-        ],
-        "proc_stat_cpu_start": [
-          11291441,
-          393,
-          80234,
-          132909671,
-          112490,
-          0,
-          11352,
-          19364,
-          0,
-          0
-        ],
-        "proc_stat_cpu_end": [
-          11381463,
-          393,
-          81072,
-          133725734,
-          112682,
-          0,
-          11418,
-          19538,
-          0,
-          0
-        ],
-        "steal": {
-          "steal_ticks": 174,
-          "total_ticks": 907355,
-          "steal_fraction": 0.00019177
-        }
-      },
-      "headline": {
-        "geomean_speedup_vs_baseline": 16.123368092257074,
-        "harmonic_mean_speedup_vs_baseline": 12.953419244531428,
-        "max_abs_delta_r2": 2.023159456743251e-06,
-        "spectrafit_win_rate": 0.88125,
-        "n_cases": 160,
-        "regressions": 0,
-        "backends": [
-          "spectrafit",
-          "lmfit",
-          "jax",
-          "scipy-ls-lm",
-          "scipy-ls-trf",
-          "scipy-ls-dogbox"
-        ],
-        "saturated_categories": [
-          "reality",
-          "scaling",
-          "tied"
-        ],
-        "baseline_solver_id": "lmfit"
-      }
-    },
-    {
-      "run_uid": "7ac862bd932aeb9b",
-      "reps_requested": 10,
-      "reps_effective": 5,
-      "seed": 20260635,
-      "exit_status": 0,
-      "started_utc": "2026-10-17T19:09:42Z",
-      "finished_utc": "2026-10-17T19:24:08Z",
-      "wall_seconds": 866.5,
-      "resources": {
-        "peak_rss_gb": 1.56,
-        "mmap_regions": 9251,
-        "jax_cache_clears": 1,
-        "jax_compile_budget": 64,
-        "load_average_start": [
-          2.23,
-          1.84,
-          1.59
-        ],
-        "load_average_end": [
-          2.95,
-          1.89,
-          1.57
-        ],
-        "proc_stat_cpu_start": [
-          11381787,
-          393,
-          81078,
-          133726172,
-          112682,
-          0,
-          11418,
-          19539,
-          0,
-          0
-        ],
-        "proc_stat_cpu_end": [
-          11504750,
-          393,
-          81947,
-          134987437,
-          113031,
-          0,
-          11477,
-          19754,
-          0,
-          0
-        ],
-        "steal": {
-          "steal_ticks": 215,
-          "total_ticks": 1385720,
-          "steal_fraction": 0.00015515
-        }
-      },
-      "headline": {
-        "geomean_speedup_vs_baseline": 15.844158401366753,
-        "harmonic_mean_speedup_vs_baseline": 12.787960530905345,
-        "max_abs_delta_r2": 9.217480271939138e-06,
-        "spectrafit_win_rate": 0.875,
-        "n_cases": 160,
-        "regressions": 0,
-        "backends": [
-          "spectrafit",
-          "lmfit",
-          "jax",
-          "scipy-ls-lm",
-          "scipy-ls-trf",
-          "scipy-ls-dogbox"
-        ],
-        "saturated_categories": [
-          "fixed",
-          "reality",
-          "scaling",
-          "tied"
-        ],
-        "baseline_solver_id": "lmfit"
-      }
-    },
-    {
-      "run_uid": "4a85a4a350efdf51",
-      "reps_requested": 10,
-      "reps_effective": 5,
-      "seed": 20260636,
-      "exit_status": 0,
-      "started_utc": "2026-10-17T19:24:09Z",
-      "finished_utc": "2026-10-17T19:38:42Z",
-      "wall_seconds": 873.1,
-      "resources": {
-        "peak_rss_gb": 1.55,
-        "mmap_regions": 9253,
-        "jax_cache_clears": 1,
-        "jax_compile_budget": 64,
-        "load_average_start": [
-          2.95,
-          1.89,
-          1.57
-        ],
-        "load_average_end": [
-          2.68,
-          1.71,
-          1.46
-        ],
-        "proc_stat_cpu_start": [
-          11505066,
-          393,
-          81953,
-          134987848,
-          113031,
-          0,
-          11477,
-          19755,
-          0,
-          0
-        ],
-        "proc_stat_cpu_end": [
-          11626260,
-          393,
-          82894,
-          136261271,
-          113378,
-          0,
-          11637,
-          19982,
-          0,
-          0
-        ],
-        "steal": {
-          "steal_ticks": 227,
-          "total_ticks": 1396292,
-          "steal_fraction": 0.00016257
-        }
-      },
-      "headline": {
-        "geomean_speedup_vs_baseline": 15.99246053719424,
-        "harmonic_mean_speedup_vs_baseline": 10.412606281666154,
-        "max_abs_delta_r2": 1.6657691652266493e-05,
-        "spectrafit_win_rate": 0.875,
-        "n_cases": 160,
-        "regressions": 0,
-        "backends": [
-          "spectrafit",
-          "lmfit",
-          "jax",
-          "scipy-ls-lm",
-          "scipy-ls-trf",
-          "scipy-ls-dogbox"
-        ],
-        "saturated_categories": [
-          "reality",
-          "scaling",
-          "tied"
-        ],
-        "baseline_solver_id": "lmfit"
-      }
-    },
-    {
-      "run_uid": "67c5c255488d25f1",
-      "reps_requested": 10,
-      "reps_effective": 5,
-      "seed": 20260637,
-      "exit_status": 0,
-      "started_utc": "2026-10-17T19:38:42Z",
-      "finished_utc": "2026-10-17T19:50:13Z",
-      "wall_seconds": 690.5,
-      "resources": {
-        "peak_rss_gb": 1.57,
-        "mmap_regions": 9243,
-        "jax_cache_clears": 1,
-        "jax_compile_budget": 64,
-        "load_average_start": [
-          2.68,
-          1.71,
-          1.46
-        ],
-        "load_average_end": [
-          1.75,
-          1.57,
-          1.44
-        ],
-        "proc_stat_cpu_start": [
-          11626573,
-          393,
-          82900,
-          136261644,
-          113378,
-          0,
-          11637,
-          19983,
-          0,
-          0
-        ],
-        "proc_stat_cpu_end": [
-          11730997,
-          393,
-          83737,
-          137260038,
-          113593,
-          0,
-          11708,
-          20179,
-          0,
-          0
-        ],
-        "steal": {
-          "steal_ticks": 196,
-          "total_ticks": 1104137,
-          "steal_fraction": 0.00017751
-        }
-      },
-      "headline": {
-        "geomean_speedup_vs_baseline": 15.806289703775603,
-        "harmonic_mean_speedup_vs_baseline": 12.565249590510863,
-        "max_abs_delta_r2": 4.869870961154987e-06,
-        "spectrafit_win_rate": 0.875,
-        "n_cases": 160,
-        "regressions": 0,
-        "backends": [
-          "spectrafit",
-          "lmfit",
-          "jax",
-          "scipy-ls-lm",
-          "scipy-ls-trf",
-          "scipy-ls-dogbox"
-        ],
-        "saturated_categories": [
-          "reality",
-          "scaling",
-          "tied"
-        ],
-        "baseline_solver_id": "lmfit"
-      }
-    },
-    {
-      "run_uid": "3406e07d5b6b7a72",
-      "reps_requested": 10,
-      "reps_effective": 5,
-      "seed": 20260638,
-      "exit_status": 0,
-      "started_utc": "2026-10-17T19:50:13Z",
-      "finished_utc": "2026-10-17T20:03:37Z",
-      "wall_seconds": 804.0,
-      "resources": {
-        "peak_rss_gb": 1.56,
-        "mmap_regions": 9252,
-        "jax_cache_clears": 1,
-        "jax_compile_budget": 64,
-        "load_average_start": [
-          1.75,
-          1.57,
-          1.44
-        ],
-        "load_average_end": [
-          2.47,
-          1.88,
-          1.5
-        ],
-        "proc_stat_cpu_start": [
-          11731316,
-          393,
-          83740,
-          137260437,
-          113593,
-          0,
-          11708,
-          20180,
-          0,
-          0
-        ],
-        "proc_stat_cpu_end": [
-          11848795,
-          393,
-          84653,
-          138426948,
-          113937,
-          0,
-          11878,
-          20402,
-          0,
-          0
-        ],
-        "steal": {
-          "steal_ticks": 222,
-          "total_ticks": 1285639,
-          "steal_fraction": 0.00017268
-        }
-      },
-      "headline": {
-        "geomean_speedup_vs_baseline": 16.08785713386297,
-        "harmonic_mean_speedup_vs_baseline": 13.10221711346844,
-        "max_abs_delta_r2": 5.216890923587236e-06,
-        "spectrafit_win_rate": 0.88125,
-        "n_cases": 160,
-        "regressions": 0,
-        "backends": [
-          "spectrafit",
-          "lmfit",
-          "jax",
-          "scipy-ls-lm",
-          "scipy-ls-trf",
-          "scipy-ls-dogbox"
-        ],
-        "saturated_categories": [
-          "reality",
-          "scaling",
-          "tied"
-        ],
-        "baseline_solver_id": "lmfit"
-      }
-    },
-    {
-      "run_uid": "b36e0d1eadd54b68",
-      "reps_requested": 10,
-      "reps_effective": 5,
-      "seed": 20260639,
-      "exit_status": 0,
-      "started_utc": "2026-10-17T20:03:38Z",
-      "finished_utc": "2026-10-17T20:11:51Z",
-      "wall_seconds": 493.2,
-      "resources": {
-        "peak_rss_gb": 1.56,
-        "mmap_regions": 9245,
-        "jax_cache_clears": 1,
-        "jax_compile_budget": 64,
-        "load_average_start": [
-          2.47,
-          1.88,
-          1.5
-        ],
-        "load_average_end": [
-          1.94,
-          1.77,
-          1.55
-        ],
-        "proc_stat_cpu_start": [
-          11849119,
-          393,
-          84658,
-          138427407,
-          113937,
-          0,
-          11879,
-          20403,
-          0,
-          0
-        ],
-        "proc_stat_cpu_end": [
-          11932597,
-          393,
-          85489,
-          139131135,
-          114205,
-          0,
-          11988,
-          20569,
-          0,
-          0
-        ],
-        "steal": {
-          "steal_ticks": 166,
-          "total_ticks": 788580,
-          "steal_fraction": 0.0002105
-        }
-      },
-      "headline": {
-        "geomean_speedup_vs_baseline": 16.44269121078656,
-        "harmonic_mean_speedup_vs_baseline": 13.517882304405209,
-        "max_abs_delta_r2": 5.800922576737477e-07,
-        "spectrafit_win_rate": 0.8875,
-        "n_cases": 160,
-        "regressions": 0,
-        "backends": [
-          "spectrafit",
-          "lmfit",
-          "jax",
-          "scipy-ls-lm",
-          "scipy-ls-trf",
-          "scipy-ls-dogbox"
-        ],
-        "saturated_categories": [
-          "scaling",
-          "tied"
-        ],
-        "baseline_solver_id": "lmfit"
-      }
-    },
-    {
-      "run_uid": "8b6cc11b0fa1e7aa",
-      "reps_requested": 10,
-      "reps_effective": 5,
-      "seed": 20260640,
-      "exit_status": 0,
-      "started_utc": "2026-10-17T20:11:51Z",
-      "finished_utc": "2026-10-17T20:20:40Z",
-      "wall_seconds": 528.9,
-      "resources": {
-        "peak_rss_gb": 1.56,
-        "mmap_regions": 9252,
-        "jax_cache_clears": 1,
-        "jax_compile_budget": 64,
-        "load_average_start": [
-          1.94,
-          1.77,
-          1.55
-        ],
-        "load_average_end": [
-          2.67,
-          1.92,
-          1.6
-        ],
-        "proc_stat_cpu_start": [
-          11932918,
-          393,
-          85494,
-          139131525,
-          114205,
-          0,
-          11988,
-          20570,
-          0,
-          0
-        ],
-        "proc_stat_cpu_end": [
-          12020986,
-          393,
-          86292,
-          139887780,
-          114456,
-          0,
-          12056,
-          20741,
-          0,
-          0
-        ],
-        "steal": {
-          "steal_ticks": 171,
-          "total_ticks": 845611,
-          "steal_fraction": 0.00020222
-        }
-      },
-      "headline": {
-        "geomean_speedup_vs_baseline": 16.421021122235594,
-        "harmonic_mean_speedup_vs_baseline": 13.755636522190452,
-        "max_abs_delta_r2": 5.5760705428564705e-06,
-        "spectrafit_win_rate": 0.8875,
-        "n_cases": 160,
-        "regressions": 0,
-        "backends": [
-          "spectrafit",
-          "lmfit",
-          "jax",
-          "scipy-ls-lm",
-          "scipy-ls-trf",
-          "scipy-ls-dogbox"
-        ],
-        "saturated_categories": [
-          "reality",
-          "scaling",
-          "tied"
-        ],
-        "baseline_solver_id": "lmfit"
-      }
-    },
-    {
-      "run_uid": "26c3b02e888fdb2d",
-      "reps_requested": 10,
-      "reps_effective": 5,
-      "seed": 20260641,
-      "exit_status": 0,
-      "started_utc": "2026-10-17T20:20:41Z",
-      "finished_utc": "2026-10-17T20:37:29Z",
-      "wall_seconds": 1008.3,
-      "resources": {
-        "peak_rss_gb": 1.56,
-        "mmap_regions": 9245,
-        "jax_cache_clears": 1,
-        "jax_compile_budget": 64,
-        "load_average_start": [
-          2.53,
-          1.9,
-          1.6
-        ],
-        "load_average_end": [
-          3.4,
-          2.18,
-          1.69
-        ],
-        "proc_stat_cpu_start": [
-          12021303,
-          393,
-          86298,
-          139888185,
-          114456,
-          0,
-          12056,
-          20742,
-          0,
-          0
-        ],
-        "proc_stat_cpu_end": [
-          12157406,
-          393,
-          87271,
-          141362694,
-          114907,
-          0,
-          12113,
-          20993,
+          13002,
+          41515,
           0,
           0
         ],
         "steal": {
           "steal_ticks": 251,
-          "total_ticks": 1612344,
-          "steal_fraction": 0.00015567
+          "total_ticks": 1355218,
+          "steal_fraction": 0.00018521
         }
       },
       "headline": {
-        "geomean_speedup_vs_baseline": 15.62466796336093,
-        "harmonic_mean_speedup_vs_baseline": 12.348632261816356,
-        "max_abs_delta_r2": 6.720582482866444e-05,
-        "spectrafit_win_rate": 0.875,
+        "geomean_speedup_vs_baseline": 14.19010781466771,
+        "harmonic_mean_speedup_vs_baseline": 11.551139351848189,
+        "max_abs_delta_r2": 3.7227403959505523e-07,
+        "spectrafit_win_rate": 0.86875,
         "n_cases": 160,
-        "regressions": 0,
+        "regressions": 9,
         "backends": [
           "spectrafit",
           "lmfit",
@@ -3171,607 +1013,66 @@
       }
     },
     {
-      "run_uid": "418111867dbbb584",
+      "run_uid": "30232a847ffe7dbf",
       "reps_requested": 10,
       "reps_effective": 5,
-      "seed": 20260642,
+      "seed": 20260614,
       "exit_status": 0,
-      "started_utc": "2026-10-17T20:37:29Z",
-      "finished_utc": "2026-10-17T20:48:58Z",
-      "wall_seconds": 688.8,
-      "resources": {
-        "peak_rss_gb": 1.55,
-        "mmap_regions": 9252,
-        "jax_cache_clears": 1,
-        "jax_compile_budget": 64,
-        "load_average_start": [
-          3.4,
-          2.18,
-          1.69
-        ],
-        "load_average_end": [
-          3.32,
-          2.09,
-          1.68
-        ],
-        "proc_stat_cpu_start": [
-          12157729,
-          393,
-          87279,
-          141363174,
-          114907,
-          0,
-          12113,
-          20993,
-          0,
-          0
-        ],
-        "proc_stat_cpu_end": [
-          12259652,
-          393,
-          88089,
-          142361382,
-          115153,
-          0,
-          12166,
-          21180,
-          0,
-          0
-        ],
-        "steal": {
-          "steal_ticks": 187,
-          "total_ticks": 1101427,
-          "steal_fraction": 0.00016978
-        }
-      },
-      "headline": {
-        "geomean_speedup_vs_baseline": 15.815887253305366,
-        "harmonic_mean_speedup_vs_baseline": 12.85966116645042,
-        "max_abs_delta_r2": 1.8608395980779235e-06,
-        "spectrafit_win_rate": 0.8875,
-        "n_cases": 160,
-        "regressions": 0,
-        "backends": [
-          "spectrafit",
-          "lmfit",
-          "jax",
-          "scipy-ls-lm",
-          "scipy-ls-trf",
-          "scipy-ls-dogbox"
-        ],
-        "saturated_categories": [
-          "fixed",
-          "reality",
-          "scaling",
-          "tied"
-        ],
-        "baseline_solver_id": "lmfit"
-      }
-    },
-    {
-      "run_uid": "555ab77899c08cfc",
-      "reps_requested": 10,
-      "reps_effective": 5,
-      "seed": 20260643,
-      "exit_status": 0,
-      "started_utc": "2026-10-17T20:48:59Z",
-      "finished_utc": "2026-10-17T21:03:00Z",
-      "wall_seconds": 841.4,
-      "resources": {
-        "peak_rss_gb": 1.57,
-        "mmap_regions": 9249,
-        "jax_cache_clears": 1,
-        "jax_compile_budget": 64,
-        "load_average_start": [
-          3.32,
-          2.09,
-          1.68
-        ],
-        "load_average_end": [
-          1.59,
-          1.46,
-          1.48
-        ],
-        "proc_stat_cpu_start": [
-          12259969,
-          393,
-          88093,
-          142361798,
-          115153,
-          0,
-          12166,
-          21181,
-          0,
-          0
-        ],
-        "proc_stat_cpu_end": [
-          12382081,
-          393,
-          89030,
-          143583633,
-          115488,
-          0,
-          12240,
-          21403,
-          0,
-          0
-        ],
-        "steal": {
-          "steal_ticks": 222,
-          "total_ticks": 1345515,
-          "steal_fraction": 0.00016499
-        }
-      },
-      "headline": {
-        "geomean_speedup_vs_baseline": 16.79514785528216,
-        "harmonic_mean_speedup_vs_baseline": 13.729499827965993,
-        "max_abs_delta_r2": 6.970843965281581e-06,
-        "spectrafit_win_rate": 0.88125,
-        "n_cases": 160,
-        "regressions": 0,
-        "backends": [
-          "spectrafit",
-          "lmfit",
-          "jax",
-          "scipy-ls-lm",
-          "scipy-ls-trf",
-          "scipy-ls-dogbox"
-        ],
-        "saturated_categories": [
-          "fixed",
-          "reality",
-          "scaling",
-          "tied"
-        ],
-        "baseline_solver_id": "lmfit"
-      }
-    },
-    {
-      "run_uid": "1705dfe3a22e414c",
-      "reps_requested": 10,
-      "reps_effective": 5,
-      "seed": 20260644,
-      "exit_status": 0,
-      "started_utc": "2026-10-17T21:03:01Z",
-      "finished_utc": "2026-10-17T21:12:18Z",
-      "wall_seconds": 557.6,
-      "resources": {
-        "peak_rss_gb": 1.55,
-        "mmap_regions": 9252,
-        "jax_cache_clears": 1,
-        "jax_compile_budget": 64,
-        "load_average_start": [
-          1.59,
-          1.46,
-          1.48
-        ],
-        "load_average_end": [
-          2.14,
-          1.77,
-          1.54
-        ],
-        "proc_stat_cpu_start": [
-          12382398,
-          393,
-          89037,
-          143584027,
-          115488,
-          0,
-          12240,
-          21404,
-          0,
-          0
-        ],
-        "proc_stat_cpu_end": [
-          12482029,
-          393,
-          89852,
-          144374642,
-          115741,
-          0,
-          12301,
-          21587,
-          0,
-          0
-        ],
-        "steal": {
-          "steal_ticks": 183,
-          "total_ticks": 891558,
-          "steal_fraction": 0.00020526
-        }
-      },
-      "headline": {
-        "geomean_speedup_vs_baseline": 15.717295907477823,
-        "harmonic_mean_speedup_vs_baseline": 13.27466618370414,
-        "max_abs_delta_r2": 2.0453545866438994e-05,
-        "spectrafit_win_rate": 0.8875,
-        "n_cases": 160,
-        "regressions": 0,
-        "backends": [
-          "spectrafit",
-          "lmfit",
-          "jax",
-          "scipy-ls-lm",
-          "scipy-ls-trf",
-          "scipy-ls-dogbox"
-        ],
-        "saturated_categories": [
-          "reality",
-          "scaling",
-          "tied"
-        ],
-        "baseline_solver_id": "lmfit"
-      }
-    },
-    {
-      "run_uid": "c8dbcc9523c376c8",
-      "reps_requested": 10,
-      "reps_effective": 5,
-      "seed": 20260645,
-      "exit_status": 0,
-      "started_utc": "2026-10-17T21:12:19Z",
-      "finished_utc": "2026-10-17T21:29:01Z",
-      "wall_seconds": 1002.8,
-      "resources": {
-        "peak_rss_gb": 1.55,
-        "mmap_regions": 9252,
-        "jax_cache_clears": 1,
-        "jax_compile_budget": 64,
-        "load_average_start": [
-          2.14,
-          1.77,
-          1.54
-        ],
-        "load_average_end": [
-          1.94,
-          1.72,
-          1.46
-        ],
-        "proc_stat_cpu_start": [
-          12482347,
-          393,
-          89858,
-          144375068,
-          115741,
-          0,
-          12301,
-          21587,
-          0,
-          0
-        ],
-        "proc_stat_cpu_end": [
-          12617151,
-          393,
-          90832,
-          145842084,
-          116218,
-          0,
-          12359,
-          21829,
-          0,
-          0
-        ],
-        "steal": {
-          "steal_ticks": 242,
-          "total_ticks": 1603571,
-          "steal_fraction": 0.00015091
-        }
-      },
-      "headline": {
-        "geomean_speedup_vs_baseline": 16.484100390725178,
-        "harmonic_mean_speedup_vs_baseline": 13.392604407485797,
-        "max_abs_delta_r2": 8.408695428063773e-06,
-        "spectrafit_win_rate": 0.88125,
-        "n_cases": 160,
-        "regressions": 0,
-        "backends": [
-          "spectrafit",
-          "lmfit",
-          "jax",
-          "scipy-ls-lm",
-          "scipy-ls-trf",
-          "scipy-ls-dogbox"
-        ],
-        "saturated_categories": [
-          "reality",
-          "scaling",
-          "tied"
-        ],
-        "baseline_solver_id": "lmfit"
-      }
-    },
-    {
-      "run_uid": "ec81a82c9ddfeecd",
-      "reps_requested": 10,
-      "reps_effective": 5,
-      "seed": 20260646,
-      "exit_status": 0,
-      "started_utc": "2026-10-17T21:29:02Z",
-      "finished_utc": "2026-10-17T21:37:35Z",
-      "wall_seconds": 512.9,
-      "resources": {
-        "peak_rss_gb": 1.56,
-        "mmap_regions": 9251,
-        "jax_cache_clears": 1,
-        "jax_compile_budget": 64,
-        "load_average_start": [
-          1.94,
-          1.72,
-          1.46
-        ],
-        "load_average_end": [
-          2.33,
-          1.87,
-          1.56
-        ],
-        "proc_stat_cpu_start": [
-          12617475,
-          393,
-          90842,
-          145842501,
-          116218,
-          0,
-          12359,
-          21829,
-          0,
-          0
-        ],
-        "proc_stat_cpu_end": [
-          12703954,
-          393,
-          91663,
-          146574803,
-          116404,
-          0,
-          12393,
-          21993,
-          0,
-          0
-        ],
-        "steal": {
-          "steal_ticks": 164,
-          "total_ticks": 819986,
-          "steal_fraction": 0.0002
-        }
-      },
-      "headline": {
-        "geomean_speedup_vs_baseline": 16.71595612106108,
-        "harmonic_mean_speedup_vs_baseline": 13.571499800150086,
-        "max_abs_delta_r2": 4.0390018151925666e-05,
-        "spectrafit_win_rate": 0.8875,
-        "n_cases": 160,
-        "regressions": 0,
-        "backends": [
-          "spectrafit",
-          "lmfit",
-          "jax",
-          "scipy-ls-lm",
-          "scipy-ls-trf",
-          "scipy-ls-dogbox"
-        ],
-        "saturated_categories": [
-          "reality",
-          "scaling",
-          "tied"
-        ],
-        "baseline_solver_id": "lmfit"
-      }
-    },
-    {
-      "run_uid": "76c085ee618aa0d2",
-      "reps_requested": 10,
-      "reps_effective": 5,
-      "seed": 20260647,
-      "exit_status": 0,
-      "started_utc": "2026-10-17T21:37:35Z",
-      "finished_utc": "2026-10-17T21:52:59Z",
-      "wall_seconds": 924.1,
-      "resources": {
-        "peak_rss_gb": 1.55,
-        "mmap_regions": 9248,
-        "jax_cache_clears": 1,
-        "jax_compile_budget": 64,
-        "load_average_start": [
-          2.33,
-          1.87,
-          1.56
-        ],
-        "load_average_end": [
-          1.8,
-          1.57,
-          1.41
-        ],
-        "proc_stat_cpu_start": [
-          12704270,
-          393,
-          91674,
-          146575200,
-          116405,
-          0,
-          12393,
-          21993,
-          0,
-          0
-        ],
-        "proc_stat_cpu_end": [
-          12833105,
-          393,
-          92590,
-          147922666,
-          116754,
-          0,
-          12460,
-          22220,
-          0,
-          0
-        ],
-        "steal": {
-          "steal_ticks": 227,
-          "total_ticks": 1477860,
-          "steal_fraction": 0.0001536
-        }
-      },
-      "headline": {
-        "geomean_speedup_vs_baseline": 15.777966542067016,
-        "harmonic_mean_speedup_vs_baseline": 13.011365244627155,
-        "max_abs_delta_r2": 5.176808804407962e-06,
-        "spectrafit_win_rate": 0.8875,
-        "n_cases": 160,
-        "regressions": 0,
-        "backends": [
-          "spectrafit",
-          "lmfit",
-          "jax",
-          "scipy-ls-lm",
-          "scipy-ls-trf",
-          "scipy-ls-dogbox"
-        ],
-        "saturated_categories": [
-          "reality",
-          "scaling",
-          "tied"
-        ],
-        "baseline_solver_id": "lmfit"
-      }
-    },
-    {
-      "run_uid": "8f5252ec8f69dfca",
-      "reps_requested": 10,
-      "reps_effective": 5,
-      "seed": 20260648,
-      "exit_status": 0,
-      "started_utc": "2026-10-17T21:53:00Z",
-      "finished_utc": "2026-10-17T22:05:01Z",
-      "wall_seconds": 720.7,
-      "resources": {
-        "peak_rss_gb": 1.55,
-        "mmap_regions": 9251,
-        "jax_cache_clears": 1,
-        "jax_compile_budget": 64,
-        "load_average_start": [
-          3.18,
-          1.86,
-          1.51
-        ],
-        "load_average_end": [
-          2.97,
-          2.29,
-          1.72
-        ],
-        "proc_stat_cpu_start": [
-          12833425,
-          393,
-          92597,
-          147923067,
-          116755,
-          0,
-          12461,
-          22220,
-          0,
-          0
-        ],
-        "proc_stat_cpu_end": [
-          12955804,
-          399,
-          93490,
-          148951512,
-          117213,
-          0,
-          12622,
-          22448,
-          0,
-          0
-        ],
-        "steal": {
-          "steal_ticks": 228,
-          "total_ticks": 1152570,
-          "steal_fraction": 0.00019782
-        }
-      },
-      "headline": {
-        "geomean_speedup_vs_baseline": 16.132651905010107,
-        "harmonic_mean_speedup_vs_baseline": 13.463224274577419,
-        "max_abs_delta_r2": 1.7966332530594542e-06,
-        "spectrafit_win_rate": 0.88125,
-        "n_cases": 160,
-        "regressions": 0,
-        "backends": [
-          "spectrafit",
-          "lmfit",
-          "jax",
-          "scipy-ls-lm",
-          "scipy-ls-trf",
-          "scipy-ls-dogbox"
-        ],
-        "saturated_categories": [
-          "reality",
-          "scaling",
-          "tied"
-        ],
-        "baseline_solver_id": "lmfit"
-      }
-    },
-    {
-      "run_uid": "74aace523819301a",
-      "reps_requested": 10,
-      "reps_effective": 5,
-      "seed": 20260649,
-      "exit_status": 0,
-      "started_utc": "2026-10-17T22:05:01Z",
-      "finished_utc": "2026-10-17T22:18:01Z",
-      "wall_seconds": 779.6,
+      "started_utc": "2026-11-17T11:17:18Z",
+      "finished_utc": "2026-11-17T11:33:11Z",
+      "wall_seconds": 953.7,
       "resources": {
         "peak_rss_gb": 1.56,
         "mmap_regions": 9246,
         "jax_cache_clears": 1,
         "jax_compile_budget": 64,
         "load_average_start": [
-          2.97,
-          2.29,
-          1.72
+          2.01,
+          1.57,
+          1.36
         ],
         "load_average_end": [
-          3.41,
-          2.23,
-          1.78
+          2.21,
+          1.63,
+          1.42
         ],
         "proc_stat_cpu_start": [
-          12956123,
-          399,
-          93498,
-          148951939,
-          117213,
+          17161996,
+          93916,
+          295765,
+          278366916,
+          932684,
           0,
-          12622,
-          22448,
+          13002,
+          41516,
           0,
           0
         ],
         "proc_stat_cpu_end": [
-          13068731,
-          399,
-          94348,
-          150084442,
-          117625,
+          17296422,
+          93916,
+          296738,
+          279756042,
+          932981,
           0,
-          12692,
-          22662,
+          13090,
+          41782,
           0,
           0
         ],
         "steal": {
-          "steal_ticks": 214,
-          "total_ticks": 1246657,
-          "steal_fraction": 0.00017166
+          "steal_ticks": 266,
+          "total_ticks": 1525176,
+          "steal_fraction": 0.00017441
         }
       },
       "headline": {
-        "geomean_speedup_vs_baseline": 16.186395671744485,
-        "harmonic_mean_speedup_vs_baseline": 13.565341266726087,
-        "max_abs_delta_r2": 1.3058374031205133e-05,
-        "spectrafit_win_rate": 0.875,
+        "geomean_speedup_vs_baseline": 14.423727391181341,
+        "harmonic_mean_speedup_vs_baseline": 11.351737013210968,
+        "max_abs_delta_r2": 8.939602225588317e-06,
+        "spectrafit_win_rate": 0.8875,
         "n_cases": 160,
-        "regressions": 0,
+        "regressions": 6,
         "backends": [
           "spectrafit",
           "lmfit",
@@ -3789,220 +1090,2919 @@
       }
     },
     {
-      "run_uid": "ce3bf73bed089f9a",
+      "run_uid": "c7c8360f0fe7204d",
       "reps_requested": 10,
       "reps_effective": 5,
-      "seed": 20260650,
+      "seed": 20260615,
       "exit_status": 0,
-      "started_utc": "2026-10-17T22:18:01Z",
-      "finished_utc": "2026-10-17T22:31:44Z",
-      "wall_seconds": 822.7,
+      "started_utc": "2026-11-17T11:33:12Z",
+      "finished_utc": "2026-11-17T11:47:10Z",
+      "wall_seconds": 838.4,
+      "resources": {
+        "peak_rss_gb": 1.56,
+        "mmap_regions": 9254,
+        "jax_cache_clears": 1,
+        "jax_compile_budget": 64,
+        "load_average_start": [
+          2.21,
+          1.63,
+          1.42
+        ],
+        "load_average_end": [
+          1.96,
+          1.56,
+          1.36
+        ],
+        "proc_stat_cpu_start": [
+          17296745,
+          93916,
+          296741,
+          279756428,
+          932981,
+          0,
+          13090,
+          41783,
+          0,
+          0
+        ],
+        "proc_stat_cpu_end": [
+          17415402,
+          93916,
+          297703,
+          280977014,
+          933139,
+          0,
+          13168,
+          42039,
+          0,
+          0
+        ],
+        "steal": {
+          "steal_ticks": 256,
+          "total_ticks": 1340697,
+          "steal_fraction": 0.00019095
+        }
+      },
+      "headline": {
+        "geomean_speedup_vs_baseline": 13.956718710397341,
+        "harmonic_mean_speedup_vs_baseline": 11.294999113183428,
+        "max_abs_delta_r2": 5.6926253821920625e-08,
+        "spectrafit_win_rate": 0.88125,
+        "n_cases": 160,
+        "regressions": 6,
+        "backends": [
+          "spectrafit",
+          "lmfit",
+          "jax",
+          "scipy-ls-lm",
+          "scipy-ls-trf",
+          "scipy-ls-dogbox"
+        ],
+        "saturated_categories": [
+          "reality",
+          "scaling",
+          "tied"
+        ],
+        "baseline_solver_id": "lmfit"
+      }
+    },
+    {
+      "run_uid": "9622090493b48e73",
+      "reps_requested": 10,
+      "reps_effective": 5,
+      "seed": 20260616,
+      "exit_status": 0,
+      "started_utc": "2026-11-17T11:47:11Z",
+      "finished_utc": "2026-11-17T12:01:19Z",
+      "wall_seconds": 848.5,
+      "resources": {
+        "peak_rss_gb": 1.56,
+        "mmap_regions": 9256,
+        "jax_cache_clears": 1,
+        "jax_compile_budget": 64,
+        "load_average_start": [
+          1.96,
+          1.56,
+          1.36
+        ],
+        "load_average_end": [
+          3.11,
+          2.16,
+          1.58
+        ],
+        "proc_stat_cpu_start": [
+          17415726,
+          93916,
+          297711,
+          280977457,
+          933139,
+          0,
+          13168,
+          42040,
+          0,
+          0
+        ],
+        "proc_stat_cpu_end": [
+          17535477,
+          93917,
+          298658,
+          282212665,
+          933646,
+          0,
+          13225,
+          42296,
+          0,
+          0
+        ],
+        "steal": {
+          "steal_ticks": 256,
+          "total_ticks": 1356727,
+          "steal_fraction": 0.00018869
+        }
+      },
+      "headline": {
+        "geomean_speedup_vs_baseline": 14.135900624658703,
+        "harmonic_mean_speedup_vs_baseline": 11.289960578526335,
+        "max_abs_delta_r2": 6.495630038960698e-06,
+        "spectrafit_win_rate": 0.875,
+        "n_cases": 160,
+        "regressions": 7,
+        "backends": [
+          "spectrafit",
+          "lmfit",
+          "jax",
+          "scipy-ls-lm",
+          "scipy-ls-trf",
+          "scipy-ls-dogbox"
+        ],
+        "saturated_categories": [
+          "fixed",
+          "reality",
+          "scaling",
+          "tied"
+        ],
+        "baseline_solver_id": "lmfit"
+      }
+    },
+    {
+      "run_uid": "87223a84bf087dfb",
+      "reps_requested": 10,
+      "reps_effective": 5,
+      "seed": 20260617,
+      "exit_status": 0,
+      "started_utc": "2026-11-17T12:01:20Z",
+      "finished_utc": "2026-11-17T12:14:25Z",
+      "wall_seconds": 785.4,
+      "resources": {
+        "peak_rss_gb": 1.55,
+        "mmap_regions": 9247,
+        "jax_cache_clears": 1,
+        "jax_compile_budget": 64,
+        "load_average_start": [
+          3.11,
+          2.16,
+          1.58
+        ],
+        "load_average_end": [
+          1.27,
+          1.3,
+          1.36
+        ],
+        "proc_stat_cpu_start": [
+          17535796,
+          93917,
+          298664,
+          282213085,
+          933649,
+          0,
+          13226,
+          42296,
+          0,
+          0
+        ],
+        "proc_stat_cpu_end": [
+          17649397,
+          93917,
+          299923,
+          283352061,
+          935254,
+          0,
+          13301,
+          42559,
+          0,
+          0
+        ],
+        "steal": {
+          "steal_ticks": 263,
+          "total_ticks": 1255779,
+          "steal_fraction": 0.00020943
+        }
+      },
+      "headline": {
+        "geomean_speedup_vs_baseline": 14.646596676871495,
+        "harmonic_mean_speedup_vs_baseline": 11.853342389974644,
+        "max_abs_delta_r2": 4.137972231532672e-08,
+        "spectrafit_win_rate": 0.875,
+        "n_cases": 160,
+        "regressions": 4,
+        "backends": [
+          "spectrafit",
+          "lmfit",
+          "jax",
+          "scipy-ls-lm",
+          "scipy-ls-trf",
+          "scipy-ls-dogbox"
+        ],
+        "saturated_categories": [
+          "reality",
+          "scaling",
+          "tied"
+        ],
+        "baseline_solver_id": "lmfit"
+      }
+    },
+    {
+      "run_uid": "4ed5da1419e867fb",
+      "reps_requested": 10,
+      "reps_effective": 5,
+      "seed": 20260618,
+      "exit_status": 0,
+      "started_utc": "2026-11-17T12:14:26Z",
+      "finished_utc": "2026-11-17T12:32:45Z",
+      "wall_seconds": 1099.5,
+      "resources": {
+        "peak_rss_gb": 1.57,
+        "mmap_regions": 9253,
+        "jax_cache_clears": 1,
+        "jax_compile_budget": 64,
+        "load_average_start": [
+          1.27,
+          1.3,
+          1.36
+        ],
+        "load_average_end": [
+          2.1,
+          1.5,
+          1.29
+        ],
+        "proc_stat_cpu_start": [
+          17649712,
+          93917,
+          299929,
+          283352440,
+          935254,
+          0,
+          13301,
+          42560,
+          0,
+          0
+        ],
+        "proc_stat_cpu_end": [
+          17794954,
+          93917,
+          300956,
+          284963608,
+          935810,
+          0,
+          13355,
+          42872,
+          0,
+          0
+        ],
+        "steal": {
+          "steal_ticks": 312,
+          "total_ticks": 1758359,
+          "steal_fraction": 0.00017744
+        }
+      },
+      "headline": {
+        "geomean_speedup_vs_baseline": 14.132673066155217,
+        "harmonic_mean_speedup_vs_baseline": 11.096203455345181,
+        "max_abs_delta_r2": 2.10313422988051e-06,
+        "spectrafit_win_rate": 0.875,
+        "n_cases": 160,
+        "regressions": 6,
+        "backends": [
+          "spectrafit",
+          "lmfit",
+          "jax",
+          "scipy-ls-lm",
+          "scipy-ls-trf",
+          "scipy-ls-dogbox"
+        ],
+        "saturated_categories": [
+          "reality",
+          "scaling",
+          "tied"
+        ],
+        "baseline_solver_id": "lmfit"
+      }
+    },
+    {
+      "run_uid": "ad18f734e1c3843d",
+      "reps_requested": 10,
+      "reps_effective": 5,
+      "seed": 20260619,
+      "exit_status": 0,
+      "started_utc": "2026-11-17T12:32:46Z",
+      "finished_utc": "2026-11-17T12:42:18Z",
+      "wall_seconds": 572.7,
+      "resources": {
+        "peak_rss_gb": 1.57,
+        "mmap_regions": 9252,
+        "jax_cache_clears": 1,
+        "jax_compile_budget": 64,
+        "load_average_start": [
+          2.1,
+          1.5,
+          1.29
+        ],
+        "load_average_end": [
+          2.91,
+          2.3,
+          1.67
+        ],
+        "proc_stat_cpu_start": [
+          17795274,
+          93917,
+          300962,
+          284963994,
+          935810,
+          0,
+          13355,
+          42872,
+          0,
+          0
+        ],
+        "proc_stat_cpu_end": [
+          17889610,
+          93917,
+          301802,
+          285784054,
+          935911,
+          0,
+          13419,
+          43086,
+          0,
+          0
+        ],
+        "steal": {
+          "steal_ticks": 214,
+          "total_ticks": 915615,
+          "steal_fraction": 0.00023372
+        }
+      },
+      "headline": {
+        "geomean_speedup_vs_baseline": 13.97005027791212,
+        "harmonic_mean_speedup_vs_baseline": 11.440170954199106,
+        "max_abs_delta_r2": 2.858750802747778e-08,
+        "spectrafit_win_rate": 0.875,
+        "n_cases": 160,
+        "regressions": 6,
+        "backends": [
+          "spectrafit",
+          "lmfit",
+          "jax",
+          "scipy-ls-lm",
+          "scipy-ls-trf",
+          "scipy-ls-dogbox"
+        ],
+        "saturated_categories": [
+          "reality",
+          "scaling",
+          "tied"
+        ],
+        "baseline_solver_id": "lmfit"
+      }
+    },
+    {
+      "run_uid": "1919a426aa380384",
+      "reps_requested": 10,
+      "reps_effective": 5,
+      "seed": 20260620,
+      "exit_status": 0,
+      "started_utc": "2026-11-17T12:42:19Z",
+      "finished_utc": "2026-11-17T12:56:16Z",
+      "wall_seconds": 837.8,
+      "resources": {
+        "peak_rss_gb": 1.55,
+        "mmap_regions": 9243,
+        "jax_cache_clears": 1,
+        "jax_compile_budget": 64,
+        "load_average_start": [
+          2.91,
+          2.3,
+          1.67
+        ],
+        "load_average_end": [
+          2.93,
+          2.06,
+          1.67
+        ],
+        "proc_stat_cpu_start": [
+          17889928,
+          93917,
+          301812,
+          285784475,
+          935911,
+          0,
+          13419,
+          43086,
+          0,
+          0
+        ],
+        "proc_stat_cpu_end": [
+          18010024,
+          93917,
+          302712,
+          287002662,
+          936110,
+          0,
+          13456,
+          43335,
+          0,
+          0
+        ],
+        "steal": {
+          "steal_ticks": 249,
+          "total_ticks": 1339668,
+          "steal_fraction": 0.00018587
+        }
+      },
+      "headline": {
+        "geomean_speedup_vs_baseline": 14.123219077129944,
+        "harmonic_mean_speedup_vs_baseline": 11.289416519382058,
+        "max_abs_delta_r2": 2.870400177767962e-06,
+        "spectrafit_win_rate": 0.88125,
+        "n_cases": 160,
+        "regressions": 4,
+        "backends": [
+          "spectrafit",
+          "lmfit",
+          "jax",
+          "scipy-ls-lm",
+          "scipy-ls-trf",
+          "scipy-ls-dogbox"
+        ],
+        "saturated_categories": [
+          "reality",
+          "scaling",
+          "tied"
+        ],
+        "baseline_solver_id": "lmfit"
+      }
+    },
+    {
+      "run_uid": "bc42a48533ab5b8d",
+      "reps_requested": 10,
+      "reps_effective": 5,
+      "seed": 20260621,
+      "exit_status": 0,
+      "started_utc": "2026-11-17T12:56:17Z",
+      "finished_utc": "2026-11-17T13:10:02Z",
+      "wall_seconds": 824.6,
+      "resources": {
+        "peak_rss_gb": 1.56,
+        "mmap_regions": 9245,
+        "jax_cache_clears": 1,
+        "jax_compile_budget": 64,
+        "load_average_start": [
+          2.93,
+          2.06,
+          1.67
+        ],
+        "load_average_end": [
+          2.63,
+          2.24,
+          1.76
+        ],
+        "proc_stat_cpu_start": [
+          18010347,
+          93917,
+          302720,
+          287003095,
+          936110,
+          0,
+          13456,
+          43336,
+          0,
+          0
+        ],
+        "proc_stat_cpu_end": [
+          18131942,
+          93917,
+          303654,
+          288198631,
+          936310,
+          0,
+          13517,
+          43590,
+          0,
+          0
+        ],
+        "steal": {
+          "steal_ticks": 254,
+          "total_ticks": 1318580,
+          "steal_fraction": 0.00019263
+        }
+      },
+      "headline": {
+        "geomean_speedup_vs_baseline": 14.054655907548257,
+        "harmonic_mean_speedup_vs_baseline": 11.485672786898501,
+        "max_abs_delta_r2": 4.341083326142581e-08,
+        "spectrafit_win_rate": 0.875,
+        "n_cases": 160,
+        "regressions": 4,
+        "backends": [
+          "spectrafit",
+          "lmfit",
+          "jax",
+          "scipy-ls-lm",
+          "scipy-ls-trf",
+          "scipy-ls-dogbox"
+        ],
+        "saturated_categories": [
+          "reality",
+          "scaling",
+          "tied"
+        ],
+        "baseline_solver_id": "lmfit"
+      }
+    },
+    {
+      "run_uid": "2e7cef51240503ae",
+      "reps_requested": 10,
+      "reps_effective": 5,
+      "seed": 20260622,
+      "exit_status": 0,
+      "started_utc": "2026-11-17T13:10:02Z",
+      "finished_utc": "2026-11-17T13:26:16Z",
+      "wall_seconds": 974.5,
+      "resources": {
+        "peak_rss_gb": 1.55,
+        "mmap_regions": 9247,
+        "jax_cache_clears": 1,
+        "jax_compile_budget": 64,
+        "load_average_start": [
+          2.63,
+          2.24,
+          1.76
+        ],
+        "load_average_end": [
+          2.6,
+          1.86,
+          1.56
+        ],
+        "proc_stat_cpu_start": [
+          18132266,
+          93917,
+          303664,
+          288199016,
+          936312,
+          0,
+          13517,
+          43591,
+          0,
+          0
+        ],
+        "proc_stat_cpu_end": [
+          18265544,
+          93919,
+          304589,
+          289622616,
+          936528,
+          0,
+          13583,
+          43879,
+          0,
+          0
+        ],
+        "steal": {
+          "steal_ticks": 288,
+          "total_ticks": 1558375,
+          "steal_fraction": 0.00018481
+        }
+      },
+      "headline": {
+        "geomean_speedup_vs_baseline": 14.37399818704301,
+        "harmonic_mean_speedup_vs_baseline": 11.497211520913748,
+        "max_abs_delta_r2": 5.373992659096771e-06,
+        "spectrafit_win_rate": 0.8875,
+        "n_cases": 160,
+        "regressions": 6,
+        "backends": [
+          "spectrafit",
+          "lmfit",
+          "jax",
+          "scipy-ls-lm",
+          "scipy-ls-trf",
+          "scipy-ls-dogbox"
+        ],
+        "saturated_categories": [
+          "reality",
+          "scaling",
+          "tied"
+        ],
+        "baseline_solver_id": "lmfit"
+      }
+    },
+    {
+      "run_uid": "c9655b1afe394c27",
+      "reps_requested": 10,
+      "reps_effective": 5,
+      "seed": 20260623,
+      "exit_status": 0,
+      "started_utc": "2026-11-17T13:26:17Z",
+      "finished_utc": "2026-11-17T13:38:40Z",
+      "wall_seconds": 743.4,
+      "resources": {
+        "peak_rss_gb": 1.56,
+        "mmap_regions": 9245,
+        "jax_cache_clears": 1,
+        "jax_compile_budget": 64,
+        "load_average_start": [
+          2.6,
+          1.86,
+          1.56
+        ],
+        "load_average_end": [
+          3.17,
+          1.92,
+          1.57
+        ],
+        "proc_stat_cpu_start": [
+          18265858,
+          93919,
+          304595,
+          289622992,
+          936528,
+          0,
+          13583,
+          43879,
+          0,
+          0
+        ],
+        "proc_stat_cpu_end": [
+          18377849,
+          93920,
+          305441,
+          290698355,
+          936720,
+          0,
+          13634,
+          44126,
+          0,
+          0
+        ],
+        "steal": {
+          "steal_ticks": 247,
+          "total_ticks": 1188691,
+          "steal_fraction": 0.00020779
+        }
+      },
+      "headline": {
+        "geomean_speedup_vs_baseline": 14.009956577708065,
+        "harmonic_mean_speedup_vs_baseline": 11.41866645910893,
+        "max_abs_delta_r2": 2.721694694063359e-07,
+        "spectrafit_win_rate": 0.86875,
+        "n_cases": 160,
+        "regressions": 3,
+        "backends": [
+          "spectrafit",
+          "lmfit",
+          "jax",
+          "scipy-ls-lm",
+          "scipy-ls-trf",
+          "scipy-ls-dogbox"
+        ],
+        "saturated_categories": [
+          "reality",
+          "scaling",
+          "tied"
+        ],
+        "baseline_solver_id": "lmfit"
+      }
+    },
+    {
+      "run_uid": "85f803c769416652",
+      "reps_requested": 10,
+      "reps_effective": 5,
+      "seed": 20260624,
+      "exit_status": 0,
+      "started_utc": "2026-11-17T13:38:41Z",
+      "finished_utc": "2026-11-17T13:52:56Z",
+      "wall_seconds": 855.4,
+      "resources": {
+        "peak_rss_gb": 1.57,
+        "mmap_regions": 9253,
+        "jax_cache_clears": 1,
+        "jax_compile_budget": 64,
+        "load_average_start": [
+          3.17,
+          1.92,
+          1.57
+        ],
+        "load_average_end": [
+          3.43,
+          2.15,
+          1.65
+        ],
+        "proc_stat_cpu_start": [
+          18378164,
+          93920,
+          305449,
+          290698752,
+          936720,
+          0,
+          13635,
+          44127,
+          0,
+          0
+        ],
+        "proc_stat_cpu_end": [
+          18503032,
+          93920,
+          306357,
+          291940038,
+          937083,
+          0,
+          13700,
+          44388,
+          0,
+          0
+        ],
+        "steal": {
+          "steal_ticks": 261,
+          "total_ticks": 1367751,
+          "steal_fraction": 0.00019082
+        }
+      },
+      "headline": {
+        "geomean_speedup_vs_baseline": 13.886805387396594,
+        "harmonic_mean_speedup_vs_baseline": 11.370502943710482,
+        "max_abs_delta_r2": 5.72688212407968e-08,
+        "spectrafit_win_rate": 0.88125,
+        "n_cases": 160,
+        "regressions": 3,
+        "backends": [
+          "spectrafit",
+          "lmfit",
+          "jax",
+          "scipy-ls-lm",
+          "scipy-ls-trf",
+          "scipy-ls-dogbox"
+        ],
+        "saturated_categories": [
+          "reality",
+          "scaling",
+          "tied"
+        ],
+        "baseline_solver_id": "lmfit"
+      }
+    },
+    {
+      "run_uid": "db8dd19e14a38182",
+      "reps_requested": 10,
+      "reps_effective": 5,
+      "seed": 20260625,
+      "exit_status": 0,
+      "started_utc": "2026-11-17T13:52:57Z",
+      "finished_utc": "2026-11-17T14:05:18Z",
+      "wall_seconds": 740.9,
       "resources": {
         "peak_rss_gb": 1.57,
         "mmap_regions": 9251,
         "jax_cache_clears": 1,
         "jax_compile_budget": 64,
         "load_average_start": [
-          4.42,
-          2.46,
-          1.85
-        ],
-        "load_average_end": [
-          2.42,
-          1.87,
-          1.67
-        ],
-        "proc_stat_cpu_start": [
-          13069048,
-          399,
-          94356,
-          150084886,
-          117625,
-          0,
-          12692,
-          22663,
-          0,
-          0
-        ],
-        "proc_stat_cpu_end": [
-          13185494,
-          399,
-          95258,
-          151282522,
-          117934,
-          0,
-          12760,
-          22879,
-          0,
-          0
-        ],
-        "steal": {
-          "steal_ticks": 216,
-          "total_ticks": 1315577,
-          "steal_fraction": 0.00016419
-        }
-      },
-      "headline": {
-        "geomean_speedup_vs_baseline": 16.435002138708718,
-        "harmonic_mean_speedup_vs_baseline": 13.052027380727193,
-        "max_abs_delta_r2": 1.9848456103921386e-05,
-        "spectrafit_win_rate": 0.88125,
-        "n_cases": 160,
-        "regressions": 0,
-        "backends": [
-          "spectrafit",
-          "lmfit",
-          "jax",
-          "scipy-ls-lm",
-          "scipy-ls-trf",
-          "scipy-ls-dogbox"
-        ],
-        "saturated_categories": [
-          "reality",
-          "scaling",
-          "tied"
-        ],
-        "baseline_solver_id": "lmfit"
-      }
-    },
-    {
-      "run_uid": "d61022de2e9baac2",
-      "reps_requested": 10,
-      "reps_effective": 5,
-      "seed": 20260651,
-      "exit_status": 0,
-      "started_utc": "2026-10-17T22:31:44Z",
-      "finished_utc": "2026-10-17T22:41:45Z",
-      "wall_seconds": 601.0,
-      "resources": {
-        "peak_rss_gb": 1.56,
-        "mmap_regions": 9247,
-        "jax_cache_clears": 1,
-        "jax_compile_budget": 64,
-        "load_average_start": [
-          2.42,
-          1.87,
-          1.67
-        ],
-        "load_average_end": [
-          3.51,
-          2.38,
-          1.85
-        ],
-        "proc_stat_cpu_start": [
-          13185807,
-          399,
-          95268,
-          151282906,
-          117934,
-          0,
-          12760,
-          22880,
-          0,
-          0
-        ],
-        "proc_stat_cpu_end": [
-          13285513,
-          399,
-          96098,
-          152143024,
-          118190,
-          0,
-          12833,
-          23061,
-          0,
-          0
-        ],
-        "steal": {
-          "steal_ticks": 181,
-          "total_ticks": 961164,
-          "steal_fraction": 0.00018831
-        }
-      },
-      "headline": {
-        "geomean_speedup_vs_baseline": 15.622884282229995,
-        "harmonic_mean_speedup_vs_baseline": 12.79862237712042,
-        "max_abs_delta_r2": 3.1547328271375186e-05,
-        "spectrafit_win_rate": 0.88125,
-        "n_cases": 160,
-        "regressions": 0,
-        "backends": [
-          "spectrafit",
-          "lmfit",
-          "jax",
-          "scipy-ls-lm",
-          "scipy-ls-trf",
-          "scipy-ls-dogbox"
-        ],
-        "saturated_categories": [
-          "reality",
-          "scaling",
-          "tied"
-        ],
-        "baseline_solver_id": "lmfit"
-      }
-    },
-    {
-      "run_uid": "e8d64cdcff3dbe06",
-      "reps_requested": 10,
-      "reps_effective": 5,
-      "seed": 20260652,
-      "exit_status": 0,
-      "started_utc": "2026-10-17T22:41:46Z",
-      "finished_utc": "2026-10-17T22:54:38Z",
-      "wall_seconds": 772.5,
-      "resources": {
-        "peak_rss_gb": 1.55,
-        "mmap_regions": 9249,
-        "jax_cache_clears": 1,
-        "jax_compile_budget": 64,
-        "load_average_start": [
-          3.51,
-          2.38,
-          1.85
-        ],
-        "load_average_end": [
-          1.77,
-          1.75,
+          3.43,
+          2.15,
           1.65
         ],
+        "load_average_end": [
+          1.6,
+          1.63,
+          1.54
+        ],
         "proc_stat_cpu_start": [
-          13285829,
-          399,
-          96103,
-          152143418,
-          118190,
+          18503355,
+          93920,
+          306361,
+          291940431,
+          937083,
           0,
-          12833,
-          23062,
+          13700,
+          44389,
           0,
           0
         ],
         "proc_stat_cpu_end": [
-          13397517,
-          399,
-          96951,
-          153265628,
-          118552,
+          18611164,
+          93920,
+          307293,
+          293015794,
+          937320,
           0,
-          12899,
-          23261,
+          13763,
+          44620,
+          0,
+          0
+        ],
+        "steal": {
+          "steal_ticks": 231,
+          "total_ticks": 1184635,
+          "steal_fraction": 0.000195
+        }
+      },
+      "headline": {
+        "geomean_speedup_vs_baseline": 14.376548139116531,
+        "harmonic_mean_speedup_vs_baseline": 11.526294108202734,
+        "max_abs_delta_r2": 1.4239536338944703e-07,
+        "spectrafit_win_rate": 0.88125,
+        "n_cases": 160,
+        "regressions": 5,
+        "backends": [
+          "spectrafit",
+          "lmfit",
+          "jax",
+          "scipy-ls-lm",
+          "scipy-ls-trf",
+          "scipy-ls-dogbox"
+        ],
+        "saturated_categories": [
+          "reality",
+          "scaling",
+          "tied"
+        ],
+        "baseline_solver_id": "lmfit"
+      }
+    },
+    {
+      "run_uid": "07a50fb45fc931ee",
+      "reps_requested": 10,
+      "reps_effective": 5,
+      "seed": 20260626,
+      "exit_status": 0,
+      "started_utc": "2026-11-17T14:05:18Z",
+      "finished_utc": "2026-11-17T14:18:48Z",
+      "wall_seconds": 810.2,
+      "resources": {
+        "peak_rss_gb": 1.56,
+        "mmap_regions": 9253,
+        "jax_cache_clears": 1,
+        "jax_compile_budget": 64,
+        "load_average_start": [
+          1.6,
+          1.63,
+          1.54
+        ],
+        "load_average_end": [
+          3.21,
+          2.12,
+          1.67
+        ],
+        "proc_stat_cpu_start": [
+          18611482,
+          93920,
+          307298,
+          293016177,
+          937320,
+          0,
+          13763,
+          44621,
+          0,
+          0
+        ],
+        "proc_stat_cpu_end": [
+          18745698,
+          93921,
+          308242,
+          294176099,
+          937482,
+          0,
+          13821,
+          44881,
+          0,
+          0
+        ],
+        "steal": {
+          "steal_ticks": 260,
+          "total_ticks": 1295563,
+          "steal_fraction": 0.00020068
+        }
+      },
+      "headline": {
+        "geomean_speedup_vs_baseline": 14.2737962409467,
+        "harmonic_mean_speedup_vs_baseline": 11.620014883598888,
+        "max_abs_delta_r2": 1.6185975464377833e-06,
+        "spectrafit_win_rate": 0.86875,
+        "n_cases": 160,
+        "regressions": 9,
+        "backends": [
+          "spectrafit",
+          "lmfit",
+          "jax",
+          "scipy-ls-lm",
+          "scipy-ls-trf",
+          "scipy-ls-dogbox"
+        ],
+        "saturated_categories": [
+          "reality",
+          "scaling",
+          "tied"
+        ],
+        "baseline_solver_id": "lmfit"
+      }
+    },
+    {
+      "run_uid": "d7767938f3df99f7",
+      "reps_requested": 10,
+      "reps_effective": 5,
+      "seed": 20260627,
+      "exit_status": 0,
+      "started_utc": "2026-11-17T14:18:49Z",
+      "finished_utc": "2026-11-17T14:35:47Z",
+      "wall_seconds": 1018.8,
+      "resources": {
+        "peak_rss_gb": 1.55,
+        "mmap_regions": 9251,
+        "jax_cache_clears": 1,
+        "jax_compile_budget": 64,
+        "load_average_start": [
+          3.21,
+          2.12,
+          1.67
+        ],
+        "load_average_end": [
+          3.84,
+          2.21,
+          1.69
+        ],
+        "proc_stat_cpu_start": [
+          18746015,
+          93921,
+          308246,
+          294176496,
+          937482,
+          0,
+          13821,
+          44881,
+          0,
+          0
+        ],
+        "proc_stat_cpu_end": [
+          18882309,
+          93922,
+          309186,
+          295667967,
+          937694,
+          0,
+          13860,
+          45153,
+          0,
+          0
+        ],
+        "steal": {
+          "steal_ticks": 272,
+          "total_ticks": 1629229,
+          "steal_fraction": 0.00016695
+        }
+      },
+      "headline": {
+        "geomean_speedup_vs_baseline": 14.318863840692707,
+        "harmonic_mean_speedup_vs_baseline": 11.391898190787371,
+        "max_abs_delta_r2": 2.39342617869287e-06,
+        "spectrafit_win_rate": 0.8875,
+        "n_cases": 160,
+        "regressions": 6,
+        "backends": [
+          "spectrafit",
+          "lmfit",
+          "jax",
+          "scipy-ls-lm",
+          "scipy-ls-trf",
+          "scipy-ls-dogbox"
+        ],
+        "saturated_categories": [
+          "reality",
+          "scaling",
+          "tied"
+        ],
+        "baseline_solver_id": "lmfit"
+      }
+    },
+    {
+      "run_uid": "63b441b4bdaf6dec",
+      "reps_requested": 10,
+      "reps_effective": 5,
+      "seed": 20260628,
+      "exit_status": 0,
+      "started_utc": "2026-11-17T14:35:48Z",
+      "finished_utc": "2026-11-17T14:47:06Z",
+      "wall_seconds": 677.9,
+      "resources": {
+        "peak_rss_gb": 1.55,
+        "mmap_regions": 9244,
+        "jax_cache_clears": 1,
+        "jax_compile_budget": 64,
+        "load_average_start": [
+          3.61,
+          2.19,
+          1.68
+        ],
+        "load_average_end": [
+          3.17,
+          2.13,
+          1.72
+        ],
+        "proc_stat_cpu_start": [
+          18882631,
+          93922,
+          309190,
+          295668382,
+          937694,
+          0,
+          13860,
+          45154,
+          0,
+          0
+        ],
+        "proc_stat_cpu_end": [
+          18995515,
+          93922,
+          310092,
+          296638086,
+          937846,
+          0,
+          13898,
+          45396,
+          0,
+          0
+        ],
+        "steal": {
+          "steal_ticks": 242,
+          "total_ticks": 1083922,
+          "steal_fraction": 0.00022326
+        }
+      },
+      "headline": {
+        "geomean_speedup_vs_baseline": 14.04087262803949,
+        "harmonic_mean_speedup_vs_baseline": 11.468280471853891,
+        "max_abs_delta_r2": 2.9824442915327154e-10,
+        "spectrafit_win_rate": 0.875,
+        "n_cases": 160,
+        "regressions": 3,
+        "backends": [
+          "spectrafit",
+          "lmfit",
+          "jax",
+          "scipy-ls-lm",
+          "scipy-ls-trf",
+          "scipy-ls-dogbox"
+        ],
+        "saturated_categories": [
+          "reality",
+          "scaling",
+          "tied"
+        ],
+        "baseline_solver_id": "lmfit"
+      }
+    },
+    {
+      "run_uid": "c0f6a6d281b32e51",
+      "reps_requested": 10,
+      "reps_effective": 5,
+      "seed": 20260629,
+      "exit_status": 0,
+      "started_utc": "2026-11-17T14:47:06Z",
+      "finished_utc": "2026-11-17T15:06:36Z",
+      "wall_seconds": 1169.9,
+      "resources": {
+        "peak_rss_gb": 1.56,
+        "mmap_regions": 9245,
+        "jax_cache_clears": 1,
+        "jax_compile_budget": 64,
+        "load_average_start": [
+          3.17,
+          2.13,
+          1.72
+        ],
+        "load_average_end": [
+          2.07,
+          1.77,
+          1.5
+        ],
+        "proc_stat_cpu_start": [
+          18995832,
+          93922,
+          310096,
+          296638481,
+          937846,
+          0,
+          13898,
+          45397,
+          0,
+          0
+        ],
+        "proc_stat_cpu_end": [
+          19149184,
+          93922,
+          311106,
+          298354197,
+          938116,
+          0,
+          13933,
+          45706,
+          0,
+          0
+        ],
+        "steal": {
+          "steal_ticks": 309,
+          "total_ticks": 1870692,
+          "steal_fraction": 0.00016518
+        }
+      },
+      "headline": {
+        "geomean_speedup_vs_baseline": 13.647429099247514,
+        "harmonic_mean_speedup_vs_baseline": 11.029603774092026,
+        "max_abs_delta_r2": 0.0001329186930895121,
+        "spectrafit_win_rate": 0.86875,
+        "n_cases": 160,
+        "regressions": 3,
+        "backends": [
+          "spectrafit",
+          "lmfit",
+          "jax",
+          "scipy-ls-lm",
+          "scipy-ls-trf",
+          "scipy-ls-dogbox"
+        ],
+        "saturated_categories": [
+          "reality",
+          "scaling",
+          "tied"
+        ],
+        "baseline_solver_id": "lmfit"
+      }
+    },
+    {
+      "run_uid": "5eafefdb382c4bcb",
+      "reps_requested": 10,
+      "reps_effective": 5,
+      "seed": 20260630,
+      "exit_status": 0,
+      "started_utc": "2026-11-17T15:06:37Z",
+      "finished_utc": "2026-11-17T15:20:05Z",
+      "wall_seconds": 808.1,
+      "resources": {
+        "peak_rss_gb": 1.55,
+        "mmap_regions": 9250,
+        "jax_cache_clears": 1,
+        "jax_compile_budget": 64,
+        "load_average_start": [
+          2.07,
+          1.77,
+          1.5
+        ],
+        "load_average_end": [
+          2.43,
+          1.7,
+          1.46
+        ],
+        "proc_stat_cpu_start": [
+          19149501,
+          93922,
+          311112,
+          298354592,
+          938116,
+          0,
+          13933,
+          45707,
+          0,
+          0
+        ],
+        "proc_stat_cpu_end": [
+          19264820,
+          93922,
+          312016,
+          299529959,
+          938400,
+          0,
+          13981,
+          45953,
+          0,
+          0
+        ],
+        "steal": {
+          "steal_ticks": 246,
+          "total_ticks": 1292168,
+          "steal_fraction": 0.00019038
+        }
+      },
+      "headline": {
+        "geomean_speedup_vs_baseline": 13.892040976105092,
+        "harmonic_mean_speedup_vs_baseline": 11.506639590371309,
+        "max_abs_delta_r2": 1.9794138690576446e-05,
+        "spectrafit_win_rate": 0.8875,
+        "n_cases": 160,
+        "regressions": 6,
+        "backends": [
+          "spectrafit",
+          "lmfit",
+          "jax",
+          "scipy-ls-lm",
+          "scipy-ls-trf",
+          "scipy-ls-dogbox"
+        ],
+        "saturated_categories": [
+          "reality",
+          "scaling",
+          "tied"
+        ],
+        "baseline_solver_id": "lmfit"
+      }
+    },
+    {
+      "run_uid": "f31df069c44e8dc0",
+      "reps_requested": 10,
+      "reps_effective": 5,
+      "seed": 20260631,
+      "exit_status": 0,
+      "started_utc": "2026-11-17T15:20:05Z",
+      "finished_utc": "2026-11-17T15:36:38Z",
+      "wall_seconds": 992.6,
+      "resources": {
+        "peak_rss_gb": 1.55,
+        "mmap_regions": 9251,
+        "jax_cache_clears": 1,
+        "jax_compile_budget": 64,
+        "load_average_start": [
+          2.43,
+          1.7,
+          1.46
+        ],
+        "load_average_end": [
+          3.83,
+          2.15,
+          1.58
+        ],
+        "proc_stat_cpu_start": [
+          19265138,
+          93922,
+          312021,
+          299530383,
+          938400,
+          0,
+          13981,
+          45953,
+          0,
+          0
+        ],
+        "proc_stat_cpu_end": [
+          19399171,
+          93922,
+          312968,
+          300982067,
+          938659,
+          0,
+          14044,
+          46237,
+          0,
+          0
+        ],
+        "steal": {
+          "steal_ticks": 284,
+          "total_ticks": 1587270,
+          "steal_fraction": 0.00017892
+        }
+      },
+      "headline": {
+        "geomean_speedup_vs_baseline": 13.835795681434293,
+        "harmonic_mean_speedup_vs_baseline": 11.209423978247196,
+        "max_abs_delta_r2": 1.9201339840346776e-07,
+        "spectrafit_win_rate": 0.8875,
+        "n_cases": 160,
+        "regressions": 6,
+        "backends": [
+          "spectrafit",
+          "lmfit",
+          "jax",
+          "scipy-ls-lm",
+          "scipy-ls-trf",
+          "scipy-ls-dogbox"
+        ],
+        "saturated_categories": [
+          "fixed",
+          "reality",
+          "scaling",
+          "tied"
+        ],
+        "baseline_solver_id": "lmfit"
+      }
+    },
+    {
+      "run_uid": "368fba859be7de1d",
+      "reps_requested": 10,
+      "reps_effective": 5,
+      "seed": 20260632,
+      "exit_status": 0,
+      "started_utc": "2026-11-17T15:36:38Z",
+      "finished_utc": "2026-11-17T15:51:40Z",
+      "wall_seconds": 902.0,
+      "resources": {
+        "peak_rss_gb": 1.55,
+        "mmap_regions": 9251,
+        "jax_cache_clears": 1,
+        "jax_compile_budget": 64,
+        "load_average_start": [
+          3.83,
+          2.15,
+          1.58
+        ],
+        "load_average_end": [
+          1.7,
+          1.46,
+          1.39
+        ],
+        "proc_stat_cpu_start": [
+          19399491,
+          93922,
+          312972,
+          300982498,
+          938659,
+          0,
+          14044,
+          46238,
+          0,
+          0
+        ],
+        "proc_stat_cpu_end": [
+          19524947,
+          93923,
+          313906,
+          302297861,
+          938956,
+          0,
+          14110,
+          46497,
+          0,
+          0
+        ],
+        "steal": {
+          "steal_ticks": 259,
+          "total_ticks": 1442376,
+          "steal_fraction": 0.00017956
+        }
+      },
+      "headline": {
+        "geomean_speedup_vs_baseline": 14.046569502827746,
+        "harmonic_mean_speedup_vs_baseline": 11.092866381611781,
+        "max_abs_delta_r2": 1.4023558465248165e-05,
+        "spectrafit_win_rate": 0.8875,
+        "n_cases": 160,
+        "regressions": 6,
+        "backends": [
+          "spectrafit",
+          "lmfit",
+          "jax",
+          "scipy-ls-lm",
+          "scipy-ls-trf",
+          "scipy-ls-dogbox"
+        ],
+        "saturated_categories": [
+          "reality",
+          "scaling",
+          "tied"
+        ],
+        "baseline_solver_id": "lmfit"
+      }
+    },
+    {
+      "run_uid": "f1d4cd63a3d03cb6",
+      "reps_requested": 10,
+      "reps_effective": 5,
+      "seed": 20260633,
+      "exit_status": 0,
+      "started_utc": "2026-11-17T15:51:41Z",
+      "finished_utc": "2026-11-17T16:04:11Z",
+      "wall_seconds": 750.0,
+      "resources": {
+        "peak_rss_gb": 1.56,
+        "mmap_regions": 9244,
+        "jax_cache_clears": 1,
+        "jax_compile_budget": 64,
+        "load_average_start": [
+          1.7,
+          1.46,
+          1.39
+        ],
+        "load_average_end": [
+          2.84,
+          1.87,
+          1.49
+        ],
+        "proc_stat_cpu_start": [
+          19525268,
+          93923,
+          313910,
+          302298260,
+          938956,
+          0,
+          14110,
+          46498,
+          0,
+          0
+        ],
+        "proc_stat_cpu_end": [
+          19634219,
+          93924,
+          314783,
+          303387101,
+          939103,
+          0,
+          14155,
+          46731,
+          0,
+          0
+        ],
+        "steal": {
+          "steal_ticks": 233,
+          "total_ticks": 1199091,
+          "steal_fraction": 0.00019431
+        }
+      },
+      "headline": {
+        "geomean_speedup_vs_baseline": 14.358978339576371,
+        "harmonic_mean_speedup_vs_baseline": 11.20261983961191,
+        "max_abs_delta_r2": 0.00027490170186961205,
+        "spectrafit_win_rate": 0.8875,
+        "n_cases": 160,
+        "regressions": 5,
+        "backends": [
+          "spectrafit",
+          "lmfit",
+          "jax",
+          "scipy-ls-lm",
+          "scipy-ls-trf",
+          "scipy-ls-dogbox"
+        ],
+        "saturated_categories": [
+          "reality",
+          "scaling",
+          "tied"
+        ],
+        "baseline_solver_id": "lmfit"
+      }
+    },
+    {
+      "run_uid": "bb0f799285b690f3",
+      "reps_requested": 10,
+      "reps_effective": 5,
+      "seed": 20260634,
+      "exit_status": 0,
+      "started_utc": "2026-11-17T16:04:11Z",
+      "finished_utc": "2026-11-17T16:13:51Z",
+      "wall_seconds": 579.7,
+      "resources": {
+        "peak_rss_gb": 1.56,
+        "mmap_regions": 9241,
+        "jax_cache_clears": 1,
+        "jax_compile_budget": 64,
+        "load_average_start": [
+          2.84,
+          1.87,
+          1.49
+        ],
+        "load_average_end": [
+          1.63,
+          1.51,
+          1.42
+        ],
+        "proc_stat_cpu_start": [
+          19634535,
+          93924,
+          314788,
+          303387499,
+          939103,
+          0,
+          14155,
+          46731,
+          0,
+          0
+        ],
+        "proc_stat_cpu_end": [
+          19726791,
+          93924,
+          315687,
+          304220850,
+          939222,
+          0,
+          14202,
+          46935,
+          0,
+          0
+        ],
+        "steal": {
+          "steal_ticks": 204,
+          "total_ticks": 926876,
+          "steal_fraction": 0.00022009
+        }
+      },
+      "headline": {
+        "geomean_speedup_vs_baseline": 14.172271618615458,
+        "harmonic_mean_speedup_vs_baseline": 11.409004647560678,
+        "max_abs_delta_r2": 2.023159456743251e-06,
+        "spectrafit_win_rate": 0.875,
+        "n_cases": 160,
+        "regressions": 7,
+        "backends": [
+          "spectrafit",
+          "lmfit",
+          "jax",
+          "scipy-ls-lm",
+          "scipy-ls-trf",
+          "scipy-ls-dogbox"
+        ],
+        "saturated_categories": [
+          "reality",
+          "scaling",
+          "tied"
+        ],
+        "baseline_solver_id": "lmfit"
+      }
+    },
+    {
+      "run_uid": "dd252e96adf4e05f",
+      "reps_requested": 10,
+      "reps_effective": 5,
+      "seed": 20260635,
+      "exit_status": 0,
+      "started_utc": "2026-11-17T16:13:51Z",
+      "finished_utc": "2026-11-17T16:28:28Z",
+      "wall_seconds": 876.8,
+      "resources": {
+        "peak_rss_gb": 1.56,
+        "mmap_regions": 9246,
+        "jax_cache_clears": 1,
+        "jax_compile_budget": 64,
+        "load_average_start": [
+          1.63,
+          1.51,
+          1.42
+        ],
+        "load_average_end": [
+          2.69,
+          1.82,
+          1.44
+        ],
+        "proc_stat_cpu_start": [
+          19727111,
+          93924,
+          315694,
+          304221236,
+          939222,
+          0,
+          14202,
+          46935,
+          0,
+          0
+        ],
+        "proc_stat_cpu_end": [
+          19852012,
+          93924,
+          316659,
+          305496871,
+          939429,
+          0,
+          14243,
+          47191,
+          0,
+          0
+        ],
+        "steal": {
+          "steal_ticks": 256,
+          "total_ticks": 1402005,
+          "steal_fraction": 0.0001826
+        }
+      },
+      "headline": {
+        "geomean_speedup_vs_baseline": 13.788420954790901,
+        "harmonic_mean_speedup_vs_baseline": 11.008309780375475,
+        "max_abs_delta_r2": 7.40963050915866e-08,
+        "spectrafit_win_rate": 0.875,
+        "n_cases": 160,
+        "regressions": 4,
+        "backends": [
+          "spectrafit",
+          "lmfit",
+          "jax",
+          "scipy-ls-lm",
+          "scipy-ls-trf",
+          "scipy-ls-dogbox"
+        ],
+        "saturated_categories": [
+          "fixed",
+          "reality",
+          "scaling",
+          "tied"
+        ],
+        "baseline_solver_id": "lmfit"
+      }
+    },
+    {
+      "run_uid": "cf9c550f6536753b",
+      "reps_requested": 10,
+      "reps_effective": 5,
+      "seed": 20260636,
+      "exit_status": 0,
+      "started_utc": "2026-11-17T16:28:29Z",
+      "finished_utc": "2026-11-17T16:43:17Z",
+      "wall_seconds": 888.7,
+      "resources": {
+        "peak_rss_gb": 1.57,
+        "mmap_regions": 9246,
+        "jax_cache_clears": 1,
+        "jax_compile_budget": 64,
+        "load_average_start": [
+          2.69,
+          1.82,
+          1.44
+        ],
+        "load_average_end": [
+          1.27,
+          1.29,
+          1.26
+        ],
+        "proc_stat_cpu_start": [
+          19852331,
+          93924,
+          316665,
+          305497326,
+          939429,
+          0,
+          14243,
+          47192,
+          0,
+          0
+        ],
+        "proc_stat_cpu_end": [
+          19976083,
+          93925,
+          317639,
+          306793081,
+          939589,
+          0,
+          14291,
+          47451,
+          0,
+          0
+        ],
+        "steal": {
+          "steal_ticks": 259,
+          "total_ticks": 1420949,
+          "steal_fraction": 0.00018227
+        }
+      },
+      "headline": {
+        "geomean_speedup_vs_baseline": 14.209816440372318,
+        "harmonic_mean_speedup_vs_baseline": 11.436843500100423,
+        "max_abs_delta_r2": 1.6657691652266493e-05,
+        "spectrafit_win_rate": 0.88125,
+        "n_cases": 160,
+        "regressions": 5,
+        "backends": [
+          "spectrafit",
+          "lmfit",
+          "jax",
+          "scipy-ls-lm",
+          "scipy-ls-trf",
+          "scipy-ls-dogbox"
+        ],
+        "saturated_categories": [
+          "reality",
+          "scaling",
+          "tied"
+        ],
+        "baseline_solver_id": "lmfit"
+      }
+    },
+    {
+      "run_uid": "8906c441f2a55d76",
+      "reps_requested": 10,
+      "reps_effective": 5,
+      "seed": 20260637,
+      "exit_status": 0,
+      "started_utc": "2026-11-17T16:43:18Z",
+      "finished_utc": "2026-11-17T16:54:53Z",
+      "wall_seconds": 695.3,
+      "resources": {
+        "peak_rss_gb": 1.55,
+        "mmap_regions": 9243,
+        "jax_cache_clears": 1,
+        "jax_compile_budget": 64,
+        "load_average_start": [
+          1.27,
+          1.29,
+          1.26
+        ],
+        "load_average_end": [
+          3.3,
+          1.97,
+          1.52
+        ],
+        "proc_stat_cpu_start": [
+          19976404,
+          93925,
+          317644,
+          306793546,
+          939589,
+          0,
+          14291,
+          47452,
+          0,
+          0
+        ],
+        "proc_stat_cpu_end": [
+          20081628,
+          93925,
+          318581,
+          307798768,
+          939721,
+          0,
+          14348,
+          47682,
+          0,
+          0
+        ],
+        "steal": {
+          "steal_ticks": 230,
+          "total_ticks": 1111802,
+          "steal_fraction": 0.00020687
+        }
+      },
+      "headline": {
+        "geomean_speedup_vs_baseline": 14.124310348623311,
+        "harmonic_mean_speedup_vs_baseline": 11.62919690898289,
+        "max_abs_delta_r2": 2.3081605704522445e-07,
+        "spectrafit_win_rate": 0.88125,
+        "n_cases": 160,
+        "regressions": 7,
+        "backends": [
+          "spectrafit",
+          "lmfit",
+          "jax",
+          "scipy-ls-lm",
+          "scipy-ls-trf",
+          "scipy-ls-dogbox"
+        ],
+        "saturated_categories": [
+          "reality",
+          "scaling",
+          "tied"
+        ],
+        "baseline_solver_id": "lmfit"
+      }
+    },
+    {
+      "run_uid": "3d7db557f71ce3c6",
+      "reps_requested": 10,
+      "reps_effective": 5,
+      "seed": 20260638,
+      "exit_status": 0,
+      "started_utc": "2026-11-17T16:54:53Z",
+      "finished_utc": "2026-11-17T17:08:26Z",
+      "wall_seconds": 813.0,
+      "resources": {
+        "peak_rss_gb": 1.55,
+        "mmap_regions": 9248,
+        "jax_cache_clears": 1,
+        "jax_compile_budget": 64,
+        "load_average_start": [
+          3.3,
+          1.97,
+          1.52
+        ],
+        "load_average_end": [
+          3.81,
+          2.48,
+          1.78
+        ],
+        "proc_stat_cpu_start": [
+          20081951,
+          93925,
+          318585,
+          307799201,
+          939721,
+          0,
+          14348,
+          47682,
+          0,
+          0
+        ],
+        "proc_stat_cpu_end": [
+          20201132,
+          93925,
+          319518,
+          308978593,
+          939879,
+          0,
+          14387,
+          47938,
+          0,
+          0
+        ],
+        "steal": {
+          "steal_ticks": 256,
+          "total_ticks": 1299959,
+          "steal_fraction": 0.00019693
+        }
+      },
+      "headline": {
+        "geomean_speedup_vs_baseline": 14.200548462540985,
+        "harmonic_mean_speedup_vs_baseline": 11.559613752740583,
+        "max_abs_delta_r2": 1.7902557936100294e-07,
+        "spectrafit_win_rate": 0.88125,
+        "n_cases": 160,
+        "regressions": 6,
+        "backends": [
+          "spectrafit",
+          "lmfit",
+          "jax",
+          "scipy-ls-lm",
+          "scipy-ls-trf",
+          "scipy-ls-dogbox"
+        ],
+        "saturated_categories": [
+          "reality",
+          "scaling",
+          "tied"
+        ],
+        "baseline_solver_id": "lmfit"
+      }
+    },
+    {
+      "run_uid": "2d5b51f21428c19a",
+      "reps_requested": 10,
+      "reps_effective": 5,
+      "seed": 20260639,
+      "exit_status": 0,
+      "started_utc": "2026-11-17T17:08:27Z",
+      "finished_utc": "2026-11-17T17:16:46Z",
+      "wall_seconds": 499.4,
+      "resources": {
+        "peak_rss_gb": 1.57,
+        "mmap_regions": 9245,
+        "jax_cache_clears": 1,
+        "jax_compile_budget": 64,
+        "load_average_start": [
+          3.81,
+          2.48,
+          1.78
+        ],
+        "load_average_end": [
+          1.99,
+          2.0,
+          1.75
+        ],
+        "proc_stat_cpu_start": [
+          20201454,
+          93925,
+          319523,
+          308979022,
+          939879,
+          0,
+          14387,
+          47939,
+          0,
+          0
+        ],
+        "proc_stat_cpu_end": [
+          20285726,
+          93925,
+          320279,
+          309692097,
+          939997,
+          0,
+          14434,
+          48123,
+          0,
+          0
+        ],
+        "steal": {
+          "steal_ticks": 184,
+          "total_ticks": 798452,
+          "steal_fraction": 0.00023045
+        }
+      },
+      "headline": {
+        "geomean_speedup_vs_baseline": 14.457050048825398,
+        "harmonic_mean_speedup_vs_baseline": 11.738553231099422,
+        "max_abs_delta_r2": 5.825096102141103e-07,
+        "spectrafit_win_rate": 0.88125,
+        "n_cases": 160,
+        "regressions": 2,
+        "backends": [
+          "spectrafit",
+          "lmfit",
+          "jax",
+          "scipy-ls-lm",
+          "scipy-ls-trf",
+          "scipy-ls-dogbox"
+        ],
+        "saturated_categories": [
+          "scaling",
+          "tied"
+        ],
+        "baseline_solver_id": "lmfit"
+      }
+    },
+    {
+      "run_uid": "42a4ef526dda9586",
+      "reps_requested": 10,
+      "reps_effective": 5,
+      "seed": 20260640,
+      "exit_status": 0,
+      "started_utc": "2026-11-17T17:16:47Z",
+      "finished_utc": "2026-11-17T17:25:43Z",
+      "wall_seconds": 536.3,
+      "resources": {
+        "peak_rss_gb": 1.56,
+        "mmap_regions": 9243,
+        "jax_cache_clears": 1,
+        "jax_compile_budget": 64,
+        "load_average_start": [
+          1.99,
+          2.0,
+          1.75
+        ],
+        "load_average_end": [
+          3.37,
+          2.29,
+          1.84
+        ],
+        "proc_stat_cpu_start": [
+          20286044,
+          93925,
+          320284,
+          309692487,
+          939997,
+          0,
+          14434,
+          48124,
+          0,
+          0
+        ],
+        "proc_stat_cpu_end": [
+          20375238,
+          93925,
+          321095,
+          310459743,
+          940124,
+          0,
+          14476,
+          48323,
           0,
           0
         ],
         "steal": {
           "steal_ticks": 199,
-          "total_ticks": 1235373,
-          "steal_fraction": 0.00016108
+          "total_ticks": 857629,
+          "steal_fraction": 0.00023204
         }
       },
       "headline": {
-        "geomean_speedup_vs_baseline": 16.348778207356148,
-        "harmonic_mean_speedup_vs_baseline": 13.220126849493031,
-        "max_abs_delta_r2": 7.870489107386636e-05,
+        "geomean_speedup_vs_baseline": 13.95547448546469,
+        "harmonic_mean_speedup_vs_baseline": 11.255738823600007,
+        "max_abs_delta_r2": 5.5760705428564705e-06,
+        "spectrafit_win_rate": 0.8875,
+        "n_cases": 160,
+        "regressions": 5,
+        "backends": [
+          "spectrafit",
+          "lmfit",
+          "jax",
+          "scipy-ls-lm",
+          "scipy-ls-trf",
+          "scipy-ls-dogbox"
+        ],
+        "saturated_categories": [
+          "reality",
+          "scaling",
+          "tied"
+        ],
+        "baseline_solver_id": "lmfit"
+      }
+    },
+    {
+      "run_uid": "b7c710733f540dc3",
+      "reps_requested": 10,
+      "reps_effective": 5,
+      "seed": 20260641,
+      "exit_status": 0,
+      "started_utc": "2026-11-17T17:25:44Z",
+      "finished_utc": "2026-11-17T17:42:52Z",
+      "wall_seconds": 1028.5,
+      "resources": {
+        "peak_rss_gb": 1.57,
+        "mmap_regions": 9249,
+        "jax_cache_clears": 1,
+        "jax_compile_budget": 64,
+        "load_average_start": [
+          3.37,
+          2.29,
+          1.84
+        ],
+        "load_average_end": [
+          3.7,
+          2.29,
+          1.76
+        ],
+        "proc_stat_cpu_start": [
+          20375556,
+          93925,
+          321100,
+          310460126,
+          940124,
+          0,
+          14476,
+          48324,
+          0,
+          0
+        ],
+        "proc_stat_cpu_end": [
+          20515156,
+          93925,
+          322099,
+          311963828,
+          940282,
+          0,
+          14540,
+          48612,
+          0,
+          0
+        ],
+        "steal": {
+          "steal_ticks": 288,
+          "total_ticks": 1644811,
+          "steal_fraction": 0.0001751
+        }
+      },
+      "headline": {
+        "geomean_speedup_vs_baseline": 14.619969166997146,
+        "harmonic_mean_speedup_vs_baseline": 11.552176472580742,
+        "max_abs_delta_r2": 3.775127285221558e-07,
+        "spectrafit_win_rate": 0.88125,
+        "n_cases": 160,
+        "regressions": 8,
+        "backends": [
+          "spectrafit",
+          "lmfit",
+          "jax",
+          "scipy-ls-lm",
+          "scipy-ls-trf",
+          "scipy-ls-dogbox"
+        ],
+        "saturated_categories": [
+          "reality",
+          "scaling",
+          "tied"
+        ],
+        "baseline_solver_id": "lmfit"
+      }
+    },
+    {
+      "run_uid": "74478bdaf5b2d792",
+      "reps_requested": 10,
+      "reps_effective": 5,
+      "seed": 20260642,
+      "exit_status": 0,
+      "started_utc": "2026-11-17T17:42:53Z",
+      "finished_utc": "2026-11-17T17:54:45Z",
+      "wall_seconds": 712.7,
+      "resources": {
+        "peak_rss_gb": 1.57,
+        "mmap_regions": 9242,
+        "jax_cache_clears": 1,
+        "jax_compile_budget": 64,
+        "load_average_start": [
+          3.7,
+          2.29,
+          1.76
+        ],
+        "load_average_end": [
+          4.7,
+          2.39,
+          1.81
+        ],
+        "proc_stat_cpu_start": [
+          20515473,
+          93925,
+          322103,
+          311964207,
+          940282,
+          0,
+          14540,
+          48613,
+          0,
+          0
+        ],
+        "proc_stat_cpu_end": [
+          20620721,
+          93925,
+          323037,
+          312997281,
+          940445,
+          0,
+          14593,
+          48843,
+          0,
+          0
+        ],
+        "steal": {
+          "steal_ticks": 230,
+          "total_ticks": 1139702,
+          "steal_fraction": 0.00020181
+        }
+      },
+      "headline": {
+        "geomean_speedup_vs_baseline": 14.009916244411615,
+        "harmonic_mean_speedup_vs_baseline": 11.31988043271033,
+        "max_abs_delta_r2": 9.241766414258556e-06,
+        "spectrafit_win_rate": 0.88125,
+        "n_cases": 160,
+        "regressions": 4,
+        "backends": [
+          "spectrafit",
+          "lmfit",
+          "jax",
+          "scipy-ls-lm",
+          "scipy-ls-trf",
+          "scipy-ls-dogbox"
+        ],
+        "saturated_categories": [
+          "fixed",
+          "reality",
+          "scaling",
+          "tied"
+        ],
+        "baseline_solver_id": "lmfit"
+      }
+    },
+    {
+      "run_uid": "3e42dbe3f8b527e7",
+      "reps_requested": 10,
+      "reps_effective": 5,
+      "seed": 20260643,
+      "exit_status": 0,
+      "started_utc": "2026-11-17T17:54:46Z",
+      "finished_utc": "2026-11-17T18:09:01Z",
+      "wall_seconds": 855.4,
+      "resources": {
+        "peak_rss_gb": 1.57,
+        "mmap_regions": 9249,
+        "jax_cache_clears": 1,
+        "jax_compile_budget": 64,
+        "load_average_start": [
+          4.7,
+          2.39,
+          1.81
+        ],
+        "load_average_end": [
+          4.28,
+          2.29,
+          1.78
+        ],
+        "proc_stat_cpu_start": [
+          20621035,
+          93925,
+          323043,
+          312997660,
+          940446,
+          0,
+          14593,
+          48844,
+          0,
+          0
+        ],
+        "proc_stat_cpu_end": [
+          20745799,
+          93925,
+          324041,
+          314239263,
+          940545,
+          0,
+          14650,
+          49114,
+          0,
+          0
+        ],
+        "steal": {
+          "steal_ticks": 270,
+          "total_ticks": 1367791,
+          "steal_fraction": 0.0001974
+        }
+      },
+      "headline": {
+        "geomean_speedup_vs_baseline": 14.792659764848423,
+        "harmonic_mean_speedup_vs_baseline": 12.04516551984184,
+        "max_abs_delta_r2": 8.690916301290486e-06,
+        "spectrafit_win_rate": 0.88125,
+        "n_cases": 160,
+        "regressions": 4,
+        "backends": [
+          "spectrafit",
+          "lmfit",
+          "jax",
+          "scipy-ls-lm",
+          "scipy-ls-trf",
+          "scipy-ls-dogbox"
+        ],
+        "saturated_categories": [
+          "fixed",
+          "reality",
+          "scaling",
+          "tied"
+        ],
+        "baseline_solver_id": "lmfit"
+      }
+    },
+    {
+      "run_uid": "1b96889c38d6f60d",
+      "reps_requested": 10,
+      "reps_effective": 5,
+      "seed": 20260644,
+      "exit_status": 0,
+      "started_utc": "2026-11-17T18:09:02Z",
+      "finished_utc": "2026-11-17T18:18:31Z",
+      "wall_seconds": 569.2,
+      "resources": {
+        "peak_rss_gb": 1.55,
+        "mmap_regions": 9246,
+        "jax_cache_clears": 1,
+        "jax_compile_budget": 64,
+        "load_average_start": [
+          4.28,
+          2.29,
+          1.78
+        ],
+        "load_average_end": [
+          2.38,
+          2.13,
+          1.83
+        ],
+        "proc_stat_cpu_start": [
+          20746120,
+          93925,
+          324048,
+          314239665,
+          940545,
+          0,
+          14650,
+          49114,
+          0,
+          0
+        ],
+        "proc_stat_cpu_end": [
+          20847404,
+          93926,
+          324880,
+          315047059,
+          940809,
+          0,
+          14732,
+          49339,
+          0,
+          0
+        ],
+        "steal": {
+          "steal_ticks": 225,
+          "total_ticks": 910082,
+          "steal_fraction": 0.00024723
+        }
+      },
+      "headline": {
+        "geomean_speedup_vs_baseline": 13.65826270666821,
+        "harmonic_mean_speedup_vs_baseline": 11.200388507997543,
+        "max_abs_delta_r2": 3.5313146301452214e-05,
+        "spectrafit_win_rate": 0.8875,
+        "n_cases": 160,
+        "regressions": 3,
+        "backends": [
+          "spectrafit",
+          "lmfit",
+          "jax",
+          "scipy-ls-lm",
+          "scipy-ls-trf",
+          "scipy-ls-dogbox"
+        ],
+        "saturated_categories": [
+          "reality",
+          "scaling",
+          "tied"
+        ],
+        "baseline_solver_id": "lmfit"
+      }
+    },
+    {
+      "run_uid": "5ccd4efae2a2f7ad",
+      "reps_requested": 10,
+      "reps_effective": 5,
+      "seed": 20260645,
+      "exit_status": 0,
+      "started_utc": "2026-11-17T18:18:31Z",
+      "finished_utc": "2026-11-17T18:35:29Z",
+      "wall_seconds": 1018.0,
+      "resources": {
+        "peak_rss_gb": 1.56,
+        "mmap_regions": 9249,
+        "jax_cache_clears": 1,
+        "jax_compile_budget": 64,
+        "load_average_start": [
+          2.38,
+          2.13,
+          1.83
+        ],
+        "load_average_end": [
+          2.21,
+          1.87,
+          1.67
+        ],
+        "proc_stat_cpu_start": [
+          20847727,
+          93926,
+          324887,
+          315047473,
+          940809,
+          0,
+          14732,
+          49339,
+          0,
+          0
+        ],
+        "proc_stat_cpu_end": [
+          20984980,
+          93926,
+          325855,
+          316536715,
+          940964,
+          0,
+          14811,
+          49620,
+          0,
+          0
+        ],
+        "steal": {
+          "steal_ticks": 281,
+          "total_ticks": 1627978,
+          "steal_fraction": 0.00017261
+        }
+      },
+      "headline": {
+        "geomean_speedup_vs_baseline": 14.096517935335388,
+        "harmonic_mean_speedup_vs_baseline": 11.317461967793548,
+        "max_abs_delta_r2": 1.7676699726187906e-07,
         "spectrafit_win_rate": 0.875,
         "n_cases": 160,
-        "regressions": 0,
+        "regressions": 5,
+        "backends": [
+          "spectrafit",
+          "lmfit",
+          "jax",
+          "scipy-ls-lm",
+          "scipy-ls-trf",
+          "scipy-ls-dogbox"
+        ],
+        "saturated_categories": [
+          "reality",
+          "scaling",
+          "tied"
+        ],
+        "baseline_solver_id": "lmfit"
+      }
+    },
+    {
+      "run_uid": "18203a613d0a09af",
+      "reps_requested": 10,
+      "reps_effective": 5,
+      "seed": 20260646,
+      "exit_status": 0,
+      "started_utc": "2026-11-17T18:35:30Z",
+      "finished_utc": "2026-11-17T18:44:06Z",
+      "wall_seconds": 516.1,
+      "resources": {
+        "peak_rss_gb": 1.56,
+        "mmap_regions": 9246,
+        "jax_cache_clears": 1,
+        "jax_compile_budget": 64,
+        "load_average_start": [
+          2.21,
+          1.87,
+          1.67
+        ],
+        "load_average_end": [
+          3.07,
+          2.26,
+          1.82
+        ],
+        "proc_stat_cpu_start": [
+          20985296,
+          93926,
+          325859,
+          316537076,
+          940964,
+          0,
+          14811,
+          49620,
+          0,
+          0
+        ],
+        "proc_stat_cpu_end": [
+          21071989,
+          93927,
+          326687,
+          317274265,
+          941052,
+          0,
+          14873,
+          49813,
+          0,
+          0
+        ],
+        "steal": {
+          "steal_ticks": 193,
+          "total_ticks": 825054,
+          "steal_fraction": 0.00023392
+        }
+      },
+      "headline": {
+        "geomean_speedup_vs_baseline": 14.632559708782518,
+        "harmonic_mean_speedup_vs_baseline": 11.863351967013312,
+        "max_abs_delta_r2": 4.0390018151925666e-05,
+        "spectrafit_win_rate": 0.86875,
+        "n_cases": 160,
+        "regressions": 4,
+        "backends": [
+          "spectrafit",
+          "lmfit",
+          "jax",
+          "scipy-ls-lm",
+          "scipy-ls-trf",
+          "scipy-ls-dogbox"
+        ],
+        "saturated_categories": [
+          "reality",
+          "scaling",
+          "tied"
+        ],
+        "baseline_solver_id": "lmfit"
+      }
+    },
+    {
+      "run_uid": "a0ef4f29d914912b",
+      "reps_requested": 10,
+      "reps_effective": 5,
+      "seed": 20260647,
+      "exit_status": 0,
+      "started_utc": "2026-11-17T18:44:06Z",
+      "finished_utc": "2026-11-17T18:59:55Z",
+      "wall_seconds": 948.4,
+      "resources": {
+        "peak_rss_gb": 1.57,
+        "mmap_regions": 9253,
+        "jax_cache_clears": 1,
+        "jax_compile_budget": 64,
+        "load_average_start": [
+          3.07,
+          2.26,
+          1.82
+        ],
+        "load_average_end": [
+          2.31,
+          1.77,
+          1.57
+        ],
+        "proc_stat_cpu_start": [
+          21072305,
+          93927,
+          326692,
+          317274661,
+          941052,
+          0,
+          14873,
+          49813,
+          0,
+          0
+        ],
+        "proc_stat_cpu_end": [
+          21204802,
+          93927,
+          327669,
+          318657341,
+          941232,
+          0,
+          14933,
+          50085,
+          0,
+          0
+        ],
+        "steal": {
+          "steal_ticks": 272,
+          "total_ticks": 1516666,
+          "steal_fraction": 0.00017934
+        }
+      },
+      "headline": {
+        "geomean_speedup_vs_baseline": 13.670865164123471,
+        "harmonic_mean_speedup_vs_baseline": 11.143032033405682,
+        "max_abs_delta_r2": 9.075448836881606e-09,
+        "spectrafit_win_rate": 0.8875,
+        "n_cases": 160,
+        "regressions": 4,
+        "backends": [
+          "spectrafit",
+          "lmfit",
+          "jax",
+          "scipy-ls-lm",
+          "scipy-ls-trf",
+          "scipy-ls-dogbox"
+        ],
+        "saturated_categories": [
+          "reality",
+          "scaling",
+          "tied"
+        ],
+        "baseline_solver_id": "lmfit"
+      }
+    },
+    {
+      "run_uid": "26cd40ac1c3ac6f2",
+      "reps_requested": 10,
+      "reps_effective": 5,
+      "seed": 20260648,
+      "exit_status": 0,
+      "started_utc": "2026-11-17T18:59:55Z",
+      "finished_utc": "2026-11-17T19:12:16Z",
+      "wall_seconds": 741.0,
+      "resources": {
+        "peak_rss_gb": 1.56,
+        "mmap_regions": 9251,
+        "jax_cache_clears": 1,
+        "jax_compile_budget": 64,
+        "load_average_start": [
+          2.31,
+          1.77,
+          1.57
+        ],
+        "load_average_end": [
+          3.71,
+          2.51,
+          1.91
+        ],
+        "proc_stat_cpu_start": [
+          21205117,
+          93927,
+          327680,
+          318657724,
+          941232,
+          0,
+          14933,
+          50086,
+          0,
+          0
+        ],
+        "proc_stat_cpu_end": [
+          21330189,
+          93927,
+          328580,
+          319716191,
+          941415,
+          0,
+          14977,
+          50342,
+          0,
+          0
+        ],
+        "steal": {
+          "steal_ticks": 256,
+          "total_ticks": 1184922,
+          "steal_fraction": 0.00021605
+        }
+      },
+      "headline": {
+        "geomean_speedup_vs_baseline": 13.944355283922436,
+        "harmonic_mean_speedup_vs_baseline": 11.476639521328346,
+        "max_abs_delta_r2": 1.7966332530594542e-06,
+        "spectrafit_win_rate": 0.88125,
+        "n_cases": 160,
+        "regressions": 5,
+        "backends": [
+          "spectrafit",
+          "lmfit",
+          "jax",
+          "scipy-ls-lm",
+          "scipy-ls-trf",
+          "scipy-ls-dogbox"
+        ],
+        "saturated_categories": [
+          "reality",
+          "scaling",
+          "tied"
+        ],
+        "baseline_solver_id": "lmfit"
+      }
+    },
+    {
+      "run_uid": "beb7e5d03089ebda",
+      "reps_requested": 10,
+      "reps_effective": 5,
+      "seed": 20260649,
+      "exit_status": 0,
+      "started_utc": "2026-11-17T19:12:17Z",
+      "finished_utc": "2026-11-17T19:25:17Z",
+      "wall_seconds": 780.7,
+      "resources": {
+        "peak_rss_gb": 1.57,
+        "mmap_regions": 9244,
+        "jax_cache_clears": 1,
+        "jax_compile_budget": 64,
+        "load_average_start": [
+          3.71,
+          2.51,
+          1.91
+        ],
+        "load_average_end": [
+          1.75,
+          1.71,
+          1.67
+        ],
+        "proc_stat_cpu_start": [
+          21330509,
+          93927,
+          328584,
+          319716632,
+          941415,
+          0,
+          14977,
+          50342,
+          0,
+          0
+        ],
+        "proc_stat_cpu_end": [
+          21444275,
+          93927,
+          329498,
+          320849909,
+          941560,
+          0,
+          15059,
+          50579,
+          0,
+          0
+        ],
+        "steal": {
+          "steal_ticks": 237,
+          "total_ticks": 1248421,
+          "steal_fraction": 0.00018984
+        }
+      },
+      "headline": {
+        "geomean_speedup_vs_baseline": 14.257811065660583,
+        "harmonic_mean_speedup_vs_baseline": 11.785112988436458,
+        "max_abs_delta_r2": 1.5651299700714105e-08,
+        "spectrafit_win_rate": 0.88125,
+        "n_cases": 160,
+        "regressions": 7,
+        "backends": [
+          "spectrafit",
+          "lmfit",
+          "jax",
+          "scipy-ls-lm",
+          "scipy-ls-trf",
+          "scipy-ls-dogbox"
+        ],
+        "saturated_categories": [
+          "reality",
+          "scaling",
+          "tied"
+        ],
+        "baseline_solver_id": "lmfit"
+      }
+    },
+    {
+      "run_uid": "c7510395e57be764",
+      "reps_requested": 10,
+      "reps_effective": 5,
+      "seed": 20260650,
+      "exit_status": 0,
+      "started_utc": "2026-11-17T19:25:18Z",
+      "finished_utc": "2026-11-17T19:39:07Z",
+      "wall_seconds": 829.3,
+      "resources": {
+        "peak_rss_gb": 1.57,
+        "mmap_regions": 9246,
+        "jax_cache_clears": 1,
+        "jax_compile_budget": 64,
+        "load_average_start": [
+          1.75,
+          1.71,
+          1.67
+        ],
+        "load_average_end": [
+          2.17,
+          1.87,
+          1.62
+        ],
+        "proc_stat_cpu_start": [
+          21444602,
+          93927,
+          329507,
+          320850349,
+          941560,
+          0,
+          15059,
+          50580,
+          0,
+          0
+        ],
+        "proc_stat_cpu_end": [
+          21562564,
+          93928,
+          330437,
+          322057059,
+          941702,
+          0,
+          15103,
+          50825,
+          0,
+          0
+        ],
+        "steal": {
+          "steal_ticks": 245,
+          "total_ticks": 1326034,
+          "steal_fraction": 0.00018476
+        }
+      },
+      "headline": {
+        "geomean_speedup_vs_baseline": 14.163433414505462,
+        "harmonic_mean_speedup_vs_baseline": 11.099203352935794,
+        "max_abs_delta_r2": 1.9848456103921386e-05,
+        "spectrafit_win_rate": 0.88125,
+        "n_cases": 160,
+        "regressions": 7,
+        "backends": [
+          "spectrafit",
+          "lmfit",
+          "jax",
+          "scipy-ls-lm",
+          "scipy-ls-trf",
+          "scipy-ls-dogbox"
+        ],
+        "saturated_categories": [
+          "reality",
+          "scaling",
+          "tied"
+        ],
+        "baseline_solver_id": "lmfit"
+      }
+    },
+    {
+      "run_uid": "d602230110e1b1cf",
+      "reps_requested": 10,
+      "reps_effective": 5,
+      "seed": 20260651,
+      "exit_status": 0,
+      "started_utc": "2026-11-17T19:39:07Z",
+      "finished_utc": "2026-11-17T19:49:15Z",
+      "wall_seconds": 607.4,
+      "resources": {
+        "peak_rss_gb": 1.57,
+        "mmap_regions": 9243,
+        "jax_cache_clears": 1,
+        "jax_compile_budget": 64,
+        "load_average_start": [
+          2.07,
+          1.86,
+          1.61
+        ],
+        "load_average_end": [
+          2.68,
+          1.98,
+          1.67
+        ],
+        "proc_stat_cpu_start": [
+          21562882,
+          93928,
+          330441,
+          322057437,
+          941702,
+          0,
+          15103,
+          50825,
+          0,
+          0
+        ],
+        "proc_stat_cpu_end": [
+          21664680,
+          93928,
+          331248,
+          322925642,
+          941792,
+          0,
+          15164,
+          51046,
+          0,
+          0
+        ],
+        "steal": {
+          "steal_ticks": 221,
+          "total_ticks": 971182,
+          "steal_fraction": 0.00022756
+        }
+      },
+      "headline": {
+        "geomean_speedup_vs_baseline": 13.802861787921369,
+        "harmonic_mean_speedup_vs_baseline": 11.057658724147743,
+        "max_abs_delta_r2": 9.997310603582221e-06,
+        "spectrafit_win_rate": 0.88125,
+        "n_cases": 160,
+        "regressions": 4,
+        "backends": [
+          "spectrafit",
+          "lmfit",
+          "jax",
+          "scipy-ls-lm",
+          "scipy-ls-trf",
+          "scipy-ls-dogbox"
+        ],
+        "saturated_categories": [
+          "reality",
+          "scaling",
+          "tied"
+        ],
+        "baseline_solver_id": "lmfit"
+      }
+    },
+    {
+      "run_uid": "acb91d638d4b4abd",
+      "reps_requested": 10,
+      "reps_effective": 5,
+      "seed": 20260652,
+      "exit_status": 0,
+      "started_utc": "2026-11-17T19:49:15Z",
+      "finished_utc": "2026-11-17T20:02:11Z",
+      "wall_seconds": 775.6,
+      "resources": {
+        "peak_rss_gb": 1.56,
+        "mmap_regions": 9251,
+        "jax_cache_clears": 1,
+        "jax_compile_budget": 64,
+        "load_average_start": [
+          2.68,
+          1.98,
+          1.67
+        ],
+        "load_average_end": [
+          1.69,
+          1.43,
+          1.43
+        ],
+        "proc_stat_cpu_start": [
+          21665002,
+          93928,
+          331254,
+          322926041,
+          941792,
+          0,
+          15164,
+          51047,
+          0,
+          0
+        ],
+        "proc_stat_cpu_end": [
+          21777892,
+          93928,
+          332177,
+          324051864,
+          941897,
+          0,
+          15222,
+          51278,
+          0,
+          0
+        ],
+        "steal": {
+          "steal_ticks": 231,
+          "total_ticks": 1240030,
+          "steal_fraction": 0.00018629
+        }
+      },
+      "headline": {
+        "geomean_speedup_vs_baseline": 14.157798478524334,
+        "harmonic_mean_speedup_vs_baseline": 11.397256624916364,
+        "max_abs_delta_r2": 1.7942891483713197e-07,
+        "spectrafit_win_rate": 0.86875,
+        "n_cases": 160,
+        "regressions": 5,
         "backends": [
           "spectrafit",
           "lmfit",

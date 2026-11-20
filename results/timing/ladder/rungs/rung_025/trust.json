@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0",
-  "run_id": "2026-10-17_run_004",
+  "run_id": "2026-11-17_run_004",
   "block": {
     "rung": 2,
     "wires": [
@@ -26,18 +26,18 @@
         "status": "pass",
         "evidence": "mean 1σ coverage over MC ensemble = 0.67 (target ≈0.68)",
         "details": {
-          "mean_coverage": 0.6696140596299495
+          "mean_coverage": 0.669664083170439
         }
       },
       {
         "wire_id": "W2c",
         "name": "jacobian_kappa",
         "status": "pass",
-        "evidence": "κ(J) finite for 158 spectrafit (subject) entries; 301/924 oracle-backend entries absent (lmfit/jax do not expose κ — disclosed per-backend limitation, not a gap)",
+        "evidence": "κ(J) finite for 155 spectrafit (subject) entries; 301/924 oracle-backend entries absent (lmfit/jax do not expose κ — disclosed per-backend limitation, not a gap)",
         "details": {
-          "n_subject_finite": 158,
+          "n_subject_finite": 155,
           "n_absent_oracles": 301,
-          "n_absent": 303
+          "n_absent": 306
         }
       },
       {
@@ -97,32 +97,32 @@
         "wire_id": "W9",
         "name": "nested_adequacy",
         "status": "pass",
-        "evidence": "BIC selected order 2 == true order 2 (BIC recovered); AIC selected 3 (over-selected); LRT p=1.78e-251",
+        "evidence": "BIC selected order 2 == true order 2 (BIC recovered); AIC selected 3 (over-selected); LRT p=4.7e-251",
         "details": {
           "true_order": 2,
           "selected_order_bic": 2,
           "selected_order_aic": 3,
           "recovered_true_order_bic": true,
           "recovered_true_order_aic": false,
-          "lrt_p": 1.781477810452338e-251
+          "lrt_p": 4.703418008973198e-251
         }
       },
       {
         "wire_id": "W10",
         "name": "sigma_calibration",
         "status": "pass",
-        "evidence": "σ-calibration PASS (equivalence): coverage=0.672 (nominal=0.6827); CI=[0.6577, 0.6853] within ±0.03 band [0.6527, 0.7127]; strict binomial p=0.0692 (> α); KS p=3.73e-12 (secondary diagnostic)",
+        "evidence": "σ-calibration PASS (equivalence): coverage=0.671 (nominal=0.6827); CI=[0.6572, 0.6848] within ±0.03 band [0.6527, 0.7127]; strict binomial p=0.0587 (> α); KS p=4.99e-10 (secondary diagnostic)",
         "details": {
-          "n": 5908,
-          "coverage": 0.6716316858496953,
+          "n": 5884,
+          "coverage": 0.6711420802175391,
           "nominal": 0.6827,
           "equivalence_margin": 0.03,
           "band_lo": 0.6527,
           "band_hi": 0.7127,
-          "coverage_ci_lo": 0.657748019414321,
-          "coverage_ci_hi": 0.6852996587524804,
-          "binomial_p": 0.06921363683021131,
-          "ks_p": 3.726088936587645e-12,
+          "coverage_ci_lo": 0.6572248387694081,
+          "coverage_ci_hi": 0.6848433634633542,
+          "binomial_p": 0.05865475922122118,
+          "ks_p": 4.988461151080853e-10,
           "alpha": 0.025
         }
       },
@@ -130,11 +130,11 @@
         "wire_id": "W11",
         "name": "speed_inference",
         "status": "pass",
-        "evidence": "speed inference PASS: geomean speedup=20.20× CI=[17.44, 23.52] excludes 1.0; sign p=6.84e-49, Wilcoxon p=2.62e-28 (secondary diagnostics)",
+        "evidence": "speed inference PASS: geomean speedup=17.77× CI=[15.25, 20.90] excludes 1.0; sign p=6.84e-49, Wilcoxon p=2.62e-28 (secondary diagnostics)",
         "details": {
-          "geomean_speedup": 20.20206585398739,
-          "ci_lo": 17.443630324045788,
-          "ci_hi": 23.52431218155965,
+          "geomean_speedup": 17.774746088352984,
+          "ci_lo": 15.246061387492912,
+          "ci_hi": 20.898983752679616,
           "excludes_one": true,
           "sign_p": 6.842277657836021e-49,
           "wilcoxon_p": 2.619767310188155e-28,

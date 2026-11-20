@@ -1,8 +1,12 @@
 # Timing measurement on the host of record
 
-Procedure for one timing measurement of spectrafit-core 0.1.2 on terra (KVM guest,
-16 vCPU, Ubuntu 22.04), as release 1.2.0 of this repository records it. The chain runs
-about 26 hours and needs the host to itself.
+Procedure for one timing measurement of a spectrafit-core release on terra (KVM guest,
+16 vCPU, Ubuntu 22.04). The release is `SPECTRAFIT_VERSION` (default `0.1.3`, archive
+release 1.3.0; release 1.2.0 measured `0.1.2`); `bench/preflight.sh` resolves it to the tag
+`v$SPECTRAFIT_VERSION` of the SpectraFit-Core checkout and writes version, tag and commit to
+`<run root>/source.env`, which the chain and `bench/assemble.py` read. The chain runs about
+26 to 48 hours with library-default threading and needs the host to itself. In a full archive
+run, `run-archive.sh` starts it as its first target (`timing`).
 
 The procedure has two parts because the reboot ends every session on the host,
 including an agent session that runs this list. Part 1 ends with the reboot; part 2
@@ -14,27 +18,17 @@ Paths used below:
 |---|---|
 | this repository on terra | `~/projects/SpectraFit-Core-Reproducibility` |
 | SpectraFit-Core checkout (only read) | `~/projects/SpectraFit-Core` |
-| run root (fresh for every run) | `~/timing-0.1.2-<YYYY-MM-DD>` |
+| run root (fresh for every run) | `~/timing-<version>-<YYYY-MM-DD>` |
 | smoke root | `~/timing-smoke-<YYYY-MM-DD>` |
 
 ## 0. Get the commit to terra
 
-On the workstation, push the branch straight to terra, without a public remote:
-
-```bash
-# once, on terra
-git init --bare ~/repos/SpectraFit-Core-Reproducibility.git
-# once, on the workstation
-git remote add terra ssh://terra/~/repos/SpectraFit-Core-Reproducibility.git
-# every time
-git push terra run-2026-10
-```
-
-On terra:
+Release 1.3.0 is prepared on the GitLab branch `release/1.3.0` (release 1.2.0 came through a
+bare repository on terra, branch `run-2026-10`). On terra:
 
 ```bash
 cd ~/projects/SpectraFit-Core-Reproducibility
-git fetch ~/repos/SpectraFit-Core-Reproducibility.git run-2026-10
+git fetch origin release/1.3.0
 git checkout --detach FETCH_HEAD
 git rev-parse HEAD            # write this commit down; the run records it
 git status --porcelain        # must print nothing
@@ -96,7 +90,7 @@ git status --porcelain        # must print nothing
    checks the repository, the export, the six backends and the host:
 
    ```bash
-   T=~/timing-0.1.2-$(date -u +%F)
+   V=${SPECTRAFIT_VERSION:-0.1.3}; T=~/timing-$V-$(date -u +%F)
    bash bench/preflight.sh "$T" ~/projects/SpectraFit-Core --allow-sessions
    ```
 
@@ -114,7 +108,7 @@ git status --porcelain        # must print nothing
 9. Progress, from a short login only:
 
    ```bash
-   cat ~/timing-0.1.2-*/STATUS; tail -3 ~/timing-0.1.2-*/chain.log
+   cat ~/timing-$V-*/STATUS; tail -3 ~/timing-$V-*/chain.log
    ```
 
    A chain that stopped at step K resumes with
@@ -130,17 +124,18 @@ git status --porcelain        # must print nothing
 
 ## After the run
 
-11. Keep the timing of record of release 1.1.0 next to the new one, then assemble:
+11. Keep the previous timing of record next to the new one, then assemble (release 1.3.0:
+    the 0.1.2 timing of 16 to 17 October 2026 becomes `results/timing-0.1.2-2026-10-16`):
 
     ```bash
-    git switch -c results-2026-10
-    git mv results/timing results/timing-2026-10-06
+    git mv results/timing results/timing-0.1.2-2026-10-16
     uv run --locked python bench/assemble.py build "$T" results/timing
     ```
 
     `assemble.py` must report `0 problem(s)`.
 
-12. Update `pins.toml` (`[timing]`, `[timing_inputs]` with the SHA-256 of the new files),
-    update the expected values of the bench, agree and bias claims in `reproduce.py` to
-    the new numbers, then run `uv run --locked reproduce.py` on terra. Every claim must
-    hold. Commit, push to terra and to GitHub, tag `v1.2.0`, and archive on Zenodo.
+12. Update `pins.toml` (`[timing]`, `[timing_inputs]` with the SHA-256 of the new files) and
+    run `uv run --locked reproduce.py` on terra. The bench, agree and bias claims are then
+    computed from the new timing; a claim whose expected value or text no longer fits is
+    reported to the author of the article, never changed by the harness. Release 1.2.0 was
+    then pushed to GitHub, tagged `v1.2.0` and archived on Zenodo.

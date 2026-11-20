@@ -1,13 +1,13 @@
 {
   "bias": {
-    "numpy_us": 6.808639504015446,
-    "wheel_us": 138.33630000590347,
-    "ratio": 20.317759506039145,
+    "numpy_us": 6.5234930079896,
+    "wheel_us": 139.43418001872487,
+    "ratio": 21.37415949522041,
     "n_points": 97
   },
   "parity": {
     "n_kernels": 35,
-    "n_exact": 23,
+    "n_exact": 24,
     "exact": [
       "arctan_step",
       "asym_ir",
@@ -31,10 +31,11 @@
       "saturating_exponential",
       "split_pearson7",
       "students_t",
-      "tauc"
+      "tauc",
+      "true_voigt"
     ],
-    "worst_key": "true_voigt",
-    "worst_dev": 4.58906797240477e-07,
+    "worst_key": "exp_gaussian",
+    "worst_dev": 3.367538917781003e-16,
     "deviations": {
       "arctan_step": 0.0,
       "asym_ir": 0.0,
@@ -69,7 +70,7 @@
       "students_t": 0.0,
       "tanh_step": 1.7764374858759926e-16,
       "tauc": 0.0,
-      "true_voigt": 4.58906797240477e-07,
+      "true_voigt": 0.0,
       "voigt": 1.7763568394002506e-16
     }
   }

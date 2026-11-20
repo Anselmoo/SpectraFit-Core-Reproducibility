@@ -1,0 +1,60 @@
+{
+ "schema": "harness-run/1",
+ "target": "bench-ablation",
+ "command": "python -m oracles.cli run --backends spectrafit,spectrafit_fd,lmfit,jax,scipy-ls-lm,scipy-ls-trf,scipy-ls-dogbox --reps 5 --mc 20",
+ "start_utc": "2026-11-17T20:32:39Z",
+ "end_utc": "2026-11-17T21:53:56Z",
+ "wall_s": 4876.5,
+ "load_start": [
+  1.64,
+  1.18,
+  1.16
+ ],
+ "load_end": [
+  1.51,
+  1.41,
+  1.23
+ ],
+ "status": "ok",
+ "environment": {
+  "archive": {
+   "commit": "1c9fe699d489c89edde2d3e793c2fe04db5d8762",
+   "dirty": true
+  },
+  "host": "terra",
+  "platform": "Linux-5.15.0-203-generic-x86_64-with-glibc2.35",
+  "machine": "x86_64",
+  "cores": 16,
+  "python": "3.13.13",
+  "spectrafit_core": {
+   "version": "0.1.3",
+   "wheel_sha256": "0d909b5faf1b5f47cbfb81b074b6ee0f44a523c6daf8303c8f2d4e1c878f6e43",
+   "wheel_sha256_from": "uv.lock",
+   "core_extension": {
+    "file": "_core.cpython-313-x86_64-linux-gnu.so",
+    "sha256": "2e672905bbbf9e592a68df47f4342e811f028063cc4dc144e787cd83ff021ebd"
+   }
+  },
+  "packages": {
+   "numpy": "2.5.1",
+   "scipy": "1.18.0",
+   "lmfit": "1.3.4",
+   "matplotlib": "3.11.2"
+  },
+  "threads": {
+   "OMP_NUM_THREADS": "1",
+   "OPENBLAS_NUM_THREADS": "1",
+   "MKL_NUM_THREADS": "1",
+   "RAYON_NUM_THREADS": "1"
+  },
+  "thread_setting": "caps-1"
+ },
+ "notes": [
+  "harness run directory (not copied, 2026-11-17_run_001): results.json sha256 206bd054480f4b313a0e14c28d3d85f1298c3016a749f2a0732fc34452b7156b"
+ ],
+ "files_sha256": {
+  "manifest.json": "5f007649cea3aaf689d4738c380bdf9df00da5225fd5a93df0e525e5b461d6f5",
+  "per_case.json": "29ff0c25f22a2aec13b7339aa9c45ca790b781f5928ff448a0b8ccf8aa048b9d",
+  "summary.json": "5e6e740d90b6c8a5935bc9807d386df8872e759cfcd573e0bc4e5cc202b42fdb"
+ }
+}

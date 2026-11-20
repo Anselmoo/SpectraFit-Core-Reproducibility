@@ -9,7 +9,7 @@
  "start_point_label": "Start 2",
  "versions": {
   "spectrafit_core": {
-   "version": "0.1.2",
+   "version": "0.1.3",
    "wheel_tags": [
     "cp313-cp313-manylinux_2_28_x86_64"
    ],
@@ -23,9 +23,9 @@
  },
  "host": {
   "node": "terra",
-  "platform": "Linux-5.15.0-198-generic-x86_64-with-glibc2.35",
+  "platform": "Linux-5.15.0-203-generic-x86_64-with-glibc2.35",
   "machine": "x86_64",
-  "kernel": "5.15.0-198-generic",
+  "kernel": "5.15.0-203-generic",
   "libc": "glibc 2.35",
   "cpu": "AMD EPYC Processor (with IBPB)",
   "blas_lapack": {
@@ -55,7 +55,7 @@
     "scipy.libs/libscipy_openblas-5f890258.so"
    ]
   },
-  "libc_build": "ldd (Ubuntu GLIBC 2.35-0ubuntu3.15) 2.35",
+  "libc_build": "ldd (Ubuntu GLIBC 2.35-0ubuntu3.18) 2.35",
   "simd": [
    "avx",
    "avx2",

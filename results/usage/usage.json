@@ -1,0 +1,92 @@
+{
+ "schema": "usage-smoke/1",
+ "spectrafit_core": "0.1.3",
+ "expected_source": "docs/getting-started/quickstart.md of spectrafit-core at tag v0.1.3 (952c5c95): the Python block is usage/quick_start.py byte for byte; the values below are its 'Expected output' block",
+ "checks": [
+  {
+   "script": "usage/quick_start.py",
+   "exit_code": 0,
+   "wall_s": 0.201,
+   "stdout": "{'peak1.sigma': ParameterResult(value=1.2024163241228947, min=-inf, max=inf, vary=True, expr=None, scale=None, name='peak1.sigma', stderr=0.004211511681961483), 'peak1.center': ParameterResult(value=0.49756589193680784, min=-inf, max=inf, vary=True, expr=None, scale=None, name='peak1.center', stderr=0.004211469158787863), 'peak1.amplitude': ParameterResult(value=2.997594452290324, min=-inf, max=inf, vary=True, expr=None, scale=None, name='peak1.amplitude', stderr=0.00909249987508253)}\n0.9979075074894731\n",
+   "stderr_tail": [],
+   "rel_tol": 1e-12,
+   "compared": {
+    "peak1.sigma": {
+     "expected": 1.2024163241228947,
+     "observed": 1.2024163241228947,
+     "ok": true,
+     "rel_diff": 0.0
+    },
+    "peak1.sigma.stderr": {
+     "expected": 0.004211511681961483,
+     "observed": 0.004211511681961483,
+     "ok": true,
+     "rel_diff": 0.0
+    },
+    "peak1.amplitude": {
+     "expected": 2.997594452290324,
+     "observed": 2.997594452290324,
+     "ok": true,
+     "rel_diff": 0.0
+    },
+    "peak1.amplitude.stderr": {
+     "expected": 0.00909249987508253,
+     "observed": 0.00909249987508253,
+     "ok": true,
+     "rel_diff": 0.0
+    },
+    "peak1.center": {
+     "expected": 0.49756589193680784,
+     "observed": 0.49756589193680784,
+     "ok": true,
+     "rel_diff": 0.0
+    },
+    "peak1.center.stderr": {
+     "expected": 0.004211469158787863,
+     "observed": 0.004211469158787863,
+     "ok": true,
+     "rel_diff": 0.0
+    },
+    "r_squared": {
+     "expected": 0.9979075074894731,
+     "observed": 0.9979075074894731,
+     "ok": true,
+     "rel_diff": 0.0
+    }
+   },
+   "ok": true
+  },
+  {
+   "script": "scripts/fig_eels.py graph('constrained')",
+   "wall_s": 0.668,
+   "n_relationships": 4,
+   "success": true,
+   "message": "converged_ftol",
+   "r_squared": 0.9988815628267707,
+   "step_l3_amplitude": 1700.656645387946,
+   "relationships": {
+    "step_l2.amplitude = step_l3.amplitude / 2": {
+     "target": 850.328322693973,
+     "expression": 850.328322693973,
+     "ok": true
+    },
+    "step_l2.sigma = step_l3.sigma": {
+     "target": 0.3612110346695948,
+     "expression": 0.3612110346695948,
+     "ok": true
+    },
+    "step_l3.center = l3_c.center": {
+     "target": 710.7378329134845,
+     "expression": 710.7378329134845,
+     "ok": true
+    },
+    "step_l2.center = l2_b.center": {
+     "target": 723.8830277886801,
+     "expression": 723.8830277886801,
+     "ok": true
+    }
+   },
+   "ok": true
+  }
+ ]
+}
