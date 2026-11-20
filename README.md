@@ -144,6 +144,7 @@ above. The others extend the archive for spectrafit-core 0.1.3:
 | `bench-tolerance` | 160 cases x 6 backends at the libraries' default and at one common stopping tolerance (`bench/common_tolerance.py`) | `results/bench-tolerance/` |
 | `bench-ablation` | analytic against finite-difference Jacobian (backend `spectrafit_fd`) with every comparator (`bench/ablation_summary.py`) | `results/bench-ablation/` |
 | `audit-stationarity` | stationarity of every benchmark endpoint of SpectraFit-Core, SciPy trf and lmfit at the common tolerance (`audit/`) | `results/audit-stationarity/` |
+| `interop-fe-l23` | from 1.3.1: the Fe L2,3 constrained model as one graph JSON file, fitted by SpectraFit-Core and by lmfit through the release's translator, `reproducibility/interop/fe_l23_lmfit.py` of the release; each run is compared value by value with the reference run of 20 Nov 2026 | `results/interop-fe-l23/` |
 | `overview` | `results/overview/overview.html` and `overview.pdf`, generated from the outputs above | `results/overview/` |
 
 Every target folder holds a `README.md` and a `run.json`: command, start and end time, load,

@@ -5279,8 +5279,8 @@
   {
    "@id": "README.md",
    "@type": "File",
-   "contentSize": 31063,
-   "sha256": "be94d8fd772b3c31ed789621043890becbe997bf852ff21176ece17a35340af3",
+   "contentSize": 31385,
+   "sha256": "d0bbe2ac80c0bb12b9806dfea30ea4c171b494c118b8f89f61b5b51ae7684202",
    "encodingFormat": "text/markdown",
    "description": "What this repository is, how to rerun it, and what is regenerated versus archived."
   },
@@ -5778,8 +5778,8 @@
   {
    "@id": "reproduce.py",
    "@type": "File",
-   "contentSize": 65470,
-   "sha256": "1970281a2d56c999b6cd459fd502bd13e91d025f933a14b15f24597714bfbf9f",
+   "contentSize": 72059,
+   "sha256": "b75295880bc433fd8f53f53041420f161b7f7f27270e7c49dd03d0a51be5c7dd",
    "encodingFormat": "text/x-python",
    "description": "Entry point. Regenerates results/ and figures/ from the pinned release and checks every number the paper states."
   },
@@ -14852,8 +14852,8 @@
   {
    "@id": "run-archive.sh",
    "@type": "File",
-   "contentSize": 6902,
-   "sha256": "57b0029dac7f1d84f8691cb09d127d047c2c3d0418a9de0c93d2d7704d2fb9e9",
+   "contentSize": 6962,
+   "sha256": "4df1a542afd3da6fa314c0774524bc69826122fce36fa7e78953d6bfc71d35b4",
    "encodingFormat": "text/x-shellscript"
   },
   {

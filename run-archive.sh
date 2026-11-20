@@ -9,7 +9,8 @@
 #   bench-tolerance     thread caps 1 (timed)
 #   bench-ablation      thread caps 1 (timed)
 #   gallery             library-default threading (its timings are not counted)
-#   nist-both, usage, audit-stationarity, eels-far     thread caps 1 (untimed)
+#   nist-both, usage, audit-stationarity, eels-far, interop-fe-l23
+#                       thread caps 1 (untimed)
 #   gate                stops the run until results/timing/ holds the new timing and pins.toml
 #                       records its SHA-256 (bench/RUNBOOK.md steps 11 and 12); run again after
 #   core, overview      thread caps 1 (untimed; core computes the claims from results/timing/)
@@ -31,7 +32,8 @@
 # code 0 and whose outputs still give the recorded SHA-256 is skipped.
 set -u
 cd "$(dirname "$0")" || exit 2
-TARGETS=(timing bench-tolerance bench-ablation gallery nist-both usage audit-stationarity eels-far gate core overview)
+TARGETS=(timing bench-tolerance bench-ablation gallery nist-both usage audit-stationarity eels-far interop-fe-l23
+         gate core overview)
 PYTHON=${PYTHON:-"uv run --locked --group benchmark --group audit python"}
 RESULTS_DIR=${RESULTS_DIR:-results}
 export SPECTRAFIT_VERSION=${SPECTRAFIT_VERSION:-0.1.3}
