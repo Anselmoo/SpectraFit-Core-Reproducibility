@@ -433,15 +433,55 @@ setting of the fit was changed for 1.3.0.
 `results/bench-ablation/manifest.json` and the five ladder rungs of the timing of record
 (`results/timing/ladder/rungs/rung_*/manifest.json`) report `gate_state` "fail" with six
 regressions: CX-009, CX-010, CX-014, CX-015, CX-017 and CX-020. These runs, like seed
-20260603 of the seed sweep, use the default case catalogue (seed 20260603). The six cases are the
-known failures of spectrafit-core 0.1.3, listed with their failure class, tracking issue and
-removal condition in `python/oracles/known_failures.py` at tag `v0.1.3` (commit `952c5c95`).
-A case counts as a regression when a supported backend reports `success=False` on it.
+20260603 of the seed sweep, use the default case catalogue (seed 20260603). A case counts as a
+regression when a supported backend reports `success=False` on it.
 
-The seed sweep draws a different catalogue for each seed. Its runs report the regressions
-below; they are listed as recorded and are not known failures. In 0.1.2 the same 55 runs (five
-ladder rungs, fifty seeds) had at most one regression per run; in 0.1.3 the seed-sweep runs have
-2 to 9. No claim of `results/claims-report.json` depends on these counts.
+The six cases are the known failures of spectrafit-core 0.1.3, listed in
+`python/oracles/known_failures.py` at tag `v0.1.3` (commit `952c5c95`) with a failure class
+and a removal condition each:
+
+| cases | failure class | removal condition |
+|---|---|---|
+| CX-009, CX-014, CX-015, CX-017, CX-020 | `non_stationary_stop`: the solver stops at a point whose Gauss-Newton predicted decrease exceeds 1e-6 of the RSS and reports `success=False` for it | the default-path end point is stationary (Gauss-Newton predicted decrease at most 1e-6 of the RSS, active bounds by the 1e-4 rule) and the fit reports `success=True` |
+| CX-010 | `stationary_refused_by_gate`: the end point is stationary by that measure, but the success gate reports `success=False` | the success gate holds components at an active bound by the 1e-4 rule, so the stationary end point reports `success=True` |
+
+As its release notes describe (`CHANGELOG.md` at tag `v0.1.3`), the LM-family solvers of
+spectrafit-core 0.1.3 report `success=True` only when the solver stops on a convergence test or
+on `no_improvement_possible` at an end point that it verifies as stationary; VarPro results are
+not gated.
+In the 0.1.2 timing of record (`results/timing-0.1.2-2026-10-16/bench_summary.json`) the six
+cases report `success=True`; in the 0.1.3 timing of record (`results/timing/bench_summary.json`)
+they report `success=False`.
+
+**A known limitation of 0.1.3 (CX-010).** The success gate holds a component at a bound only
+when it lies within 1e-12 (relative) of that bound; the stationarity measure holds it by the
+1e-4 rule (for a two-sided bound, within 1e-4 times the bound range). An end point with a component between
+the two distances can therefore be stationary by the measure and still report `success=False`.
+CX-010 is listed with this class.
+
+**The six cases in the timing claims.** The timing claims of `results/claims-report.json`
+that are computed from `results/timing/bench_summary.json` (bench-01 to bench-05 and bench-08 to
+bench-12) use the cases of the default catalogue with the six included; none of them leaves the
+six out. bench-06 and bench-07 read the headlines of the repetition ladder and of the seed sweep
+instead. Recomputed from the stored summaries with the definitions of `reproduce.py`
+(geometric mean over cases of the lmfit median time divided by the SpectraFit-Core median
+time; fastest backend by median time):
+
+| timing of record | cases | factor against lmfit, geometric mean | SpectraFit-Core fastest |
+|---|---|---|---|
+| 0.1.3, `results/timing/` | all 160 | 14.39 | 140 of 160 |
+| 0.1.3, `results/timing/` | without the six | 13.73 | 134 of 154 |
+| 0.1.2, `results/timing-0.1.2-2026-10-16/` | all 160 | 16.71 | 140 of 160 |
+| 0.1.2, `results/timing-0.1.2-2026-10-16/` | without the six | 15.78 | 134 of 154 |
+
+The seed sweep draws a different catalogue for each seed. The known-failure list refers to the
+cases of the default catalogue (seed 20260603); the regressions of the seed-sweep runs below are
+listed as recorded, are not classified against that list, and are not broken down by failure
+class. In
+0.1.2 the same 55 runs (five ladder rungs, fifty seeds) had at most one regression per run; in
+0.1.3 the seed-sweep runs have 2 to 9. These per-seed counts enter no claim of
+`results/claims-report.json`; the timing claims computed from
+`results/timing/bench_summary.json` include the six cases of the default catalogue, as described above.
 
 | seed | regressions | cases |
 |---|---|---|
