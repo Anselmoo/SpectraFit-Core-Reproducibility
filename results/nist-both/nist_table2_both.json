@@ -1,0 +1,5286 @@
+{
+ "generator": "nist_table2.py",
+ "tolerance": {
+  "ftol": 1e-12,
+  "xtol": 1e-12,
+  "gtol": 1e-12
+ },
+ "starts": [
+  "START1",
+  "START2"
+ ],
+ "implementations": [
+  "spectrafit_core",
+  "lmfit",
+  "scipy_lm",
+  "scipy_trf"
+ ],
+ "versions": {
+  "spectrafit_core": {
+   "version": "0.1.3",
+   "wheel_tags": [
+    "cp313-cp313-manylinux_2_28_x86_64"
+   ],
+   "installed_from": "index",
+   "archive_hash": null
+  },
+  "python": "3.13.13",
+  "lmfit": "1.3.4",
+  "scipy": "1.18.0",
+  "numpy": "2.5.1"
+ },
+ "host": {
+  "node": "terra",
+  "platform": "Linux-5.15.0-203-generic-x86_64-with-glibc2.35",
+  "machine": "x86_64",
+  "kernel": "5.15.0-203-generic",
+  "libc": "glibc 2.35",
+  "cpu": "AMD EPYC Processor (with IBPB)",
+  "blas_lapack": {
+   "numpy": {
+    "blas": {
+     "name": "scipy-openblas",
+     "version": "0.3.33.112.0"
+    },
+    "lapack": {
+     "name": "scipy-openblas",
+     "version": "0.3.33.112.0"
+    }
+   },
+   "scipy": {
+    "blas": {
+     "name": "scipy-openblas",
+     "version": "0.3.31.dev"
+    },
+    "lapack": {
+     "name": "scipy-openblas",
+     "version": "0.3.31.dev"
+    }
+   },
+   "loaded": [
+    "/usr/lib/x86_64-linux-gnu/libm.so.6",
+    "numpy.libs/libscipy_openblas64_-017048f4.so",
+    "scipy.libs/libscipy_openblas-5f890258.so"
+   ]
+  },
+  "libc_build": "ldd (Ubuntu GLIBC 2.35-0ubuntu3.18) 2.35",
+  "simd": [
+   "avx",
+   "avx2",
+   "fma",
+   "sse4_1",
+   "sse4_2"
+  ]
+ },
+ "measure": "log-relative error (significant figures of agreement, capped at 15) against NIST's certified values: per parameter, per standard error, and of the residual sum of squares (NIST's model at the fitted parameters); the least accurate parameter and standard error are named",
+ "cells": [
+  {
+   "dataset": "Gauss1",
+   "difficulty": "Lower",
+   "start": "START1",
+   "implementation": "spectrafit_core",
+   "success": true,
+   "termination": "converged_ftol",
+   "error": null,
+   "param_lre": {
+    "b1": 9.352772273571812,
+    "b2": 8.668842856528935,
+    "b3": 9.465525212123376,
+    "b4": 10.68389807137993,
+    "b5": 9.166224482139869,
+    "b6": 9.3374859686573,
+    "b7": 10.359816457298196,
+    "b8": 8.920316844187989
+   },
+   "param_lre_min": 8.668842856528935,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 9.174144019915769,
+    "b2": 8.456338014403977,
+    "b3": 9.6962139922023,
+    "b4": 9.943072062457613,
+    "b5": 9.185723761468282,
+    "b6": 9.305239767834307,
+    "b7": 9.801566726407822,
+    "b8": 9.413860414604352
+   },
+   "stderr_lre_min": 8.456338014403977,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 1315.8222432033776,
+   "rss_lre": 11.590584385363163
+  },
+  {
+   "dataset": "Gauss1",
+   "difficulty": "Lower",
+   "start": "START1",
+   "implementation": "lmfit",
+   "success": true,
+   "termination": "ier=1: Fit succeeded. | lmdif: Both actual and predicted relative reductions in the sum of squares\n  are at most 0.000000",
+   "error": null,
+   "param_lre": {
+    "b1": 7.786264365282131,
+    "b2": 7.119868839291743,
+    "b3": 7.985163304956005,
+    "b4": 8.614093462424247,
+    "b5": 7.549863954355369,
+    "b6": 7.662699265887869,
+    "b7": 9.608658555806386,
+    "b8": 7.506008979878389
+   },
+   "param_lre_min": 7.119868839291743,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 5.679765573878181,
+    "b2": 4.931994419188536,
+    "b3": 6.544289379602942,
+    "b4": 7.5882244954790465,
+    "b5": 5.294154463247425,
+    "b6": 5.45744680264182,
+    "b7": 7.124628596406264,
+    "b8": 5.346755496308821
+   },
+   "stderr_lre_min": 4.931994419188536,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 1315.8222432036625,
+   "rss_lre": 11.555415420567451
+  },
+  {
+   "dataset": "Gauss1",
+   "difficulty": "Lower",
+   "start": "START1",
+   "implementation": "scipy_lm",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 8.600101323301914,
+    "b2": 8.062607018978655,
+    "b3": 8.818412727536582,
+    "b4": 9.457020460330583,
+    "b5": 8.79209738724799,
+    "b6": 8.687532062404152,
+    "b7": 11.24744323218522,
+    "b8": 8.406531015185355
+   },
+   "param_lre_min": 8.062607018978655,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 6.865413727030896,
+    "b2": 5.90475751766259,
+    "b3": 7.026238470048116,
+    "b4": 8.379815872550235,
+    "b5": 7.049925869046903,
+    "b6": 7.652476125814236,
+    "b7": 8.245943137312182,
+    "b8": 7.587826562945052
+   },
+   "stderr_lre_min": 5.90475751766259,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 1315.8222432033808,
+   "rss_lre": 11.590175280047845
+  },
+  {
+   "dataset": "Gauss1",
+   "difficulty": "Lower",
+   "start": "START1",
+   "implementation": "scipy_trf",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 8.606965649150206,
+    "b2": 8.063807018112167,
+    "b3": 8.822200388802358,
+    "b4": 9.461413484744526,
+    "b5": 8.777952015992977,
+    "b6": 8.665763812311452,
+    "b7": 11.300295109249921,
+    "b8": 8.420147494074246
+   },
+   "param_lre_min": 8.063807018112167,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 6.8611553480131295,
+    "b2": 5.905380506450487,
+    "b3": 7.038644149821123,
+    "b4": 8.26715766409816,
+    "b5": 7.030421350098782,
+    "b6": 7.620663752388413,
+    "b7": 8.232544077298735,
+    "b8": 7.544854777956119
+   },
+   "stderr_lre_min": 5.905380506450487,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 1315.822243203381,
+   "rss_lre": 11.590146072980891
+  },
+  {
+   "dataset": "Gauss2",
+   "difficulty": "Lower",
+   "start": "START1",
+   "implementation": "spectrafit_core",
+   "success": true,
+   "termination": "converged_ftol",
+   "error": null,
+   "param_lre": {
+    "b1": 11.147955330367928,
+    "b2": 10.839963053487745,
+    "b3": 10.431424801313407,
+    "b4": 10.3507606600723,
+    "b5": 10.178687475612104,
+    "b6": 10.802614390351186,
+    "b7": 11.37827569205283,
+    "b8": 9.913298234708272
+   },
+   "param_lre_min": 9.913298234708272,
+   "param_lre_min_name": "b8",
+   "stderr_lre": {
+    "b1": 10.885094130671897,
+    "b2": 14.487832746173567,
+    "b3": 10.779232393088936,
+    "b4": 10.206188987001351,
+    "b5": 10.996969924385592,
+    "b6": 10.393602366064577,
+    "b7": 9.874269609726278,
+    "b8": 9.820504291908394
+   },
+   "stderr_lre_min": 9.820504291908394,
+   "stderr_lre_min_name": "b8",
+   "stderr_missing_reason": null,
+   "rss": 1247.5282092309992,
+   "rss_lre": 10.604699644630372
+  },
+  {
+   "dataset": "Gauss2",
+   "difficulty": "Lower",
+   "start": "START1",
+   "implementation": "lmfit",
+   "success": true,
+   "termination": "ier=3: Fit succeeded. | lmdif: Both actual and predicted relative reductions in the sum of squares\n  are at most 0.000000 and the relative error between two consecutive iterates is at \n  most 0.000000",
+   "error": null,
+   "param_lre": {
+    "b1": 8.152278332900329,
+    "b2": 8.6829699642944,
+    "b3": 7.800000196450085,
+    "b4": 7.93557547282441,
+    "b5": 6.993704987791806,
+    "b6": 8.203995539154493,
+    "b7": 7.972156038349849,
+    "b8": 6.844794909720822
+   },
+   "param_lre_min": 6.844794909720822,
+   "param_lre_min_name": "b8",
+   "stderr_lre": {
+    "b1": 5.466299485214466,
+    "b2": 4.940003645071555,
+    "b3": 5.11262216455772,
+    "b4": 5.419830089326111,
+    "b5": 4.985833736249467,
+    "b6": 5.383831406918108,
+    "b7": 5.515905702460507,
+    "b8": 4.5039989783815395
+   },
+   "stderr_lre_min": 4.5039989783815395,
+   "stderr_lre_min_name": "b8",
+   "stderr_missing_reason": null,
+   "rss": 1247.5282092317666,
+   "rss_lre": 10.594079591408732
+  },
+  {
+   "dataset": "Gauss2",
+   "difficulty": "Lower",
+   "start": "START1",
+   "implementation": "scipy_lm",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 9.687722910759417,
+    "b2": 9.166937637782835,
+    "b3": 9.673038209718477,
+    "b4": 10.09570776208737,
+    "b5": 9.360764480004523,
+    "b6": 9.524152517281639,
+    "b7": 10.401320425041046,
+    "b8": 9.263173327766538
+   },
+   "param_lre_min": 9.166937637782835,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 6.383948090738232,
+    "b2": 5.886149509144887,
+    "b3": 7.275218968893202,
+    "b4": 8.610595035339971,
+    "b5": 7.386568077284425,
+    "b6": 7.800576499689547,
+    "b7": 7.868341903461631,
+    "b8": 7.966696826254889
+   },
+   "stderr_lre_min": 5.886149509144887,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 1247.5282092309992,
+   "rss_lre": 10.604699644630372
+  },
+  {
+   "dataset": "Gauss2",
+   "difficulty": "Lower",
+   "start": "START1",
+   "implementation": "scipy_trf",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 9.753437862652238,
+    "b2": 9.311811130709504,
+    "b3": 9.829454381171258,
+    "b4": 10.847777450712062,
+    "b5": 10.113780599818115,
+    "b6": 9.969673399227535,
+    "b7": 10.637748601080691,
+    "b8": 9.57249973285677
+   },
+   "param_lre_min": 9.311811130709504,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 6.383478293737004,
+    "b2": 5.8860258405321435,
+    "b3": 7.2678193528184565,
+    "b4": 8.217462028650859,
+    "b5": 7.271950093880089,
+    "b6": 7.7684496783518515,
+    "b7": 7.7431111186416,
+    "b8": 7.830272158642221
+   },
+   "stderr_lre_min": 5.8860258405321435,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 1247.528209230999,
+   "rss_lre": 10.604702830113844
+  },
+  {
+   "dataset": "Gauss3",
+   "difficulty": "Average",
+   "start": "START1",
+   "implementation": "spectrafit_core",
+   "success": true,
+   "termination": "converged_ftol",
+   "error": null,
+   "param_lre": {
+    "b1": 11.666488384038072,
+    "b2": 10.434655982418102,
+    "b3": 10.497393697383066,
+    "b4": 10.40405294730696,
+    "b5": 9.951778681324125,
+    "b6": 10.053313166093982,
+    "b7": 10.322726035462491,
+    "b8": 10.385559655708771
+   },
+   "param_lre_min": 9.951778681324125,
+   "param_lre_min_name": "b5",
+   "stderr_lre": {
+    "b1": 10.690228859167913,
+    "b2": 10.043066106571757,
+    "b3": 9.734508841136378,
+    "b4": 10.407114905436934,
+    "b5": 10.039105223173278,
+    "b6": 9.717608471594566,
+    "b7": 10.310663210925572,
+    "b8": 10.182522866681296
+   },
+   "stderr_lre_min": 9.717608471594566,
+   "stderr_lre_min_name": "b6",
+   "stderr_missing_reason": null,
+   "rss": 1244.4846360131571,
+   "rss_lre": 10.975825894508048
+  },
+  {
+   "dataset": "Gauss3",
+   "difficulty": "Average",
+   "start": "START1",
+   "implementation": "lmfit",
+   "success": true,
+   "termination": "ier=1: Fit succeeded. | lmdif: Both actual and predicted relative reductions in the sum of squares\n  are at most 0.000000",
+   "error": null,
+   "param_lre": {
+    "b1": 8.74449333316368,
+    "b2": 7.739215336574565,
+    "b3": 7.544490009956395,
+    "b4": 7.614991259753403,
+    "b5": 6.823212860986336,
+    "b6": 6.87506647534143,
+    "b7": 7.661349510209782,
+    "b8": 6.968785547497642
+   },
+   "param_lre_min": 6.823212860986336,
+   "param_lre_min_name": "b5",
+   "stderr_lre": {
+    "b1": 5.473264699026189,
+    "b2": 4.934772403729852,
+    "b3": 4.2223854874608095,
+    "b4": 5.158036960987836,
+    "b5": 4.355957823230013,
+    "b6": 4.131115468129161,
+    "b7": 5.075301340715701,
+    "b8": 4.225900042528152
+   },
+   "stderr_lre_min": 4.131115468129161,
+   "stderr_lre_min_name": "b6",
+   "stderr_missing_reason": null,
+   "rss": 1244.4846360136285,
+   "rss_lre": 10.960539864145055
+  },
+  {
+   "dataset": "Gauss3",
+   "difficulty": "Average",
+   "start": "START1",
+   "implementation": "scipy_lm",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 9.72353340956354,
+    "b2": 9.063869244225037,
+    "b3": 9.003859968834618,
+    "b4": 9.313383026601205,
+    "b5": 8.852581713376258,
+    "b6": 8.718440790567653,
+    "b7": 9.423815009632714,
+    "b8": 8.513238264168606
+   },
+   "param_lre_min": 8.513238264168606,
+   "param_lre_min_name": "b8",
+   "stderr_lre": {
+    "b1": 6.39831042627241,
+    "b2": 5.889151902609077,
+    "b3": 6.913225413745719,
+    "b4": 7.601234430035432,
+    "b5": 7.495301497599234,
+    "b6": 6.8829152625801715,
+    "b7": 7.978664221503408,
+    "b8": 7.262928828808185
+   },
+   "stderr_lre_min": 5.889151902609077,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 1244.4846360131571,
+   "rss_lre": 10.975825894508048
+  },
+  {
+   "dataset": "Gauss3",
+   "difficulty": "Average",
+   "start": "START1",
+   "implementation": "scipy_trf",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 9.284879114058166,
+    "b2": 8.846710453194838,
+    "b3": 9.290087900445101,
+    "b4": 10.208304668243384,
+    "b5": 9.384401334070946,
+    "b6": 10.234618405417077,
+    "b7": 9.964580052357807,
+    "b8": 10.545414494061095
+   },
+   "param_lre_min": 8.846710453194838,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 6.39842693118348,
+    "b2": 5.889580257842301,
+    "b3": 6.862814010719353,
+    "b4": 7.948028691862743,
+    "b5": 7.685493761328205,
+    "b6": 6.933508796418737,
+    "b7": 8.529247474143562,
+    "b8": 7.198642018309443
+   },
+   "stderr_lre_min": 5.889580257842301,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 1244.4846360131564,
+   "rss_lre": 10.97584841061803
+  },
+  {
+   "dataset": "Lanczos1",
+   "difficulty": "Average",
+   "start": "START1",
+   "implementation": "spectrafit_core",
+   "success": true,
+   "termination": "converged_gtol",
+   "error": null,
+   "param_lre": {
+    "b1": 9.087901087646545,
+    "b2": 9.371499413328529,
+    "b3": 9.64028187587753,
+    "b4": 9.76483489915177,
+    "b5": 9.827658126147789,
+    "b6": 10.471307228084521
+   },
+   "param_lre_min": 9.087901087646545,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 1.2463759889777752,
+    "b2": 1.246375995465025,
+    "b3": 1.2463759835292199,
+    "b4": 1.246375988748436,
+    "b5": 1.2463759851685672,
+    "b6": 1.2463759847280476
+   },
+   "stderr_lre_min": 1.2463759835292199,
+   "stderr_lre_min_name": "b3",
+   "stderr_missing_reason": null,
+   "rss": 1.5976539816602163e-25,
+   "rss_lre": 0.933203912850412
+  },
+  {
+   "dataset": "Lanczos1",
+   "difficulty": "Average",
+   "start": "START1",
+   "implementation": "lmfit",
+   "success": true,
+   "termination": "ier=2: Fit succeeded. | lmdif: The relative error between two consecutive iterates is at most 0.000000",
+   "error": null,
+   "param_lre": {
+    "b1": 11.354088108319486,
+    "b2": 10.558020819693896,
+    "b3": 11.290159071902515,
+    "b4": 10.938799846003258,
+    "b5": 10.610085981625557,
+    "b6": 11.637831276925272
+   },
+   "param_lre_min": 10.558020819693896,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 3.06446465139091,
+    "b2": 3.0715542227125745,
+    "b3": 3.0679718332770607,
+    "b4": 3.072135038065163,
+    "b5": 3.066970394271808,
+    "b6": 3.056418262845311
+   },
+   "stderr_lre_min": 3.056418262845311,
+   "stderr_lre_min_name": "b6",
+   "stderr_missing_reason": null,
+   "rss": 1.4283752820890938e-25,
+   "rss_lre": 2.773289449071726
+  },
+  {
+   "dataset": "Lanczos1",
+   "difficulty": "Average",
+   "start": "START1",
+   "implementation": "scipy_lm",
+   "success": true,
+   "termination": "status=3: `xtol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 11.312478039331879,
+    "b2": 10.554687714877316,
+    "b3": 11.278292040211468,
+    "b4": 10.935285118554695,
+    "b5": 10.611959289268713,
+    "b6": 11.634127748355425
+   },
+   "param_lre_min": 10.554687714877316,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 2.9694728631450134,
+    "b2": 2.9698404614647806,
+    "b3": 2.96724202356294,
+    "b4": 2.968431317445403,
+    "b5": 2.9677747616148045,
+    "b6": 2.9673882948177295
+   },
+   "stderr_lre_min": 2.96724202356294,
+   "stderr_lre_min_name": "b3",
+   "stderr_missing_reason": null,
+   "rss": 1.4277669371531127e-25,
+   "rss_lre": 2.67559170969835
+  },
+  {
+   "dataset": "Lanczos1",
+   "difficulty": "Average",
+   "start": "START1",
+   "implementation": "scipy_trf",
+   "success": true,
+   "termination": "status=1: `gtol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 12.048683281773108,
+    "b2": 10.668758019839972,
+    "b3": 11.082529344966082,
+    "b4": 10.905304540508938,
+    "b5": 10.637875457074067,
+    "b6": 11.5840988862552
+   },
+   "param_lre_min": 10.637875457074067,
+   "param_lre_min_name": "b5",
+   "stderr_lre": {
+    "b1": 0.7518230521602036,
+    "b2": 0.7518214700591739,
+    "b3": 0.7518371715503716,
+    "b4": 0.7518288016365199,
+    "b5": 0.7518333488680831,
+    "b6": 0.7518375181582657
+   },
+   "stderr_lre_min": 0.7518214700591739,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 1.9824072083013698e-25,
+   "rss_lre": 0.4139345689984065
+  },
+  {
+   "dataset": "BoxBOD",
+   "difficulty": "Higher",
+   "start": "START1",
+   "implementation": "spectrafit_core",
+   "success": true,
+   "termination": "converged_ftol",
+   "error": null,
+   "param_lre": {
+    "b1": 0.7139778322227537,
+    "b2": -2.3197274873550686
+   },
+   "param_lre_min": -2.3197274873550686,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 0.10285594601782325,
+    "b2": -50.33857706684983
+   },
+   "stderr_lre_min": -50.33857706684983,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 9771.5,
+   "rss_lre": -0.86722857163346
+  },
+  {
+   "dataset": "BoxBOD",
+   "difficulty": "Higher",
+   "start": "START1",
+   "implementation": "lmfit",
+   "success": true,
+   "termination": "ier=1: Fit succeeded. Could not estimate error-bars. | lmdif: Both actual and predicted relative reductions in the sum of squares\n  are at most 0.000000",
+   "error": null,
+   "param_lre": {
+    "b1": 0.7139778322812558,
+    "b2": -2.3048022208023418
+   },
+   "param_lre_min": -2.3048022208023418,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": null,
+    "b2": null
+   },
+   "stderr_lre_min": null,
+   "stderr_lre_min_name": null,
+   "stderr_missing_reason": "no standard error for b1, b2",
+   "rss": 9771.5,
+   "rss_lre": -0.86722857163346
+  },
+  {
+   "dataset": "BoxBOD",
+   "difficulty": "Higher",
+   "start": "START1",
+   "implementation": "scipy_lm",
+   "success": true,
+   "termination": "status=1: `gtol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 0.7139778322847344,
+    "b2": -2.3047998248129136
+   },
+   "param_lre_min": -2.3047998248129136,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 0.19843351072736903,
+    "b2": null
+   },
+   "stderr_lre_min": 0.19843351072736903,
+   "stderr_lre_min_name": "b1",
+   "stderr_missing_reason": "no standard error for b2",
+   "rss": 9771.5,
+   "rss_lre": -0.86722857163346
+  },
+  {
+   "dataset": "BoxBOD",
+   "difficulty": "Higher",
+   "start": "START1",
+   "implementation": "scipy_trf",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 8.167422415378043,
+    "b2": 7.513648085035507
+   },
+   "param_lre_min": 7.513648085035507,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 8.250286534046637,
+    "b2": 7.451496802411277
+   },
+   "stderr_lre_min": 7.451496802411277,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 1168.0088765555593,
+   "rss_lre": 10.419665842422331
+  },
+  {
+   "dataset": "Misra1a",
+   "difficulty": "Lower",
+   "start": "START1",
+   "implementation": "spectrafit_core",
+   "success": true,
+   "termination": "no_improvement_possible",
+   "error": null,
+   "param_lre": {
+    "b1": 9.463690295324682,
+    "b2": 9.382696931543924
+   },
+   "param_lre_min": 9.382696931543924,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 9.09701887661314,
+    "b2": 10.538830757104055
+   },
+   "stderr_lre_min": 9.09701887661314,
+   "stderr_lre_min_name": "b1",
+   "stderr_missing_reason": null,
+   "rss": 0.12455138894439796,
+   "rss_lre": 10.452096499925933
+  },
+  {
+   "dataset": "Misra1a",
+   "difficulty": "Lower",
+   "start": "START1",
+   "implementation": "lmfit",
+   "success": true,
+   "termination": "ier=1: Fit succeeded. | lmdif: Both actual and predicted relative reductions in the sum of squares\n  are at most 0.000000",
+   "error": null,
+   "param_lre": {
+    "b1": 7.912098025611886,
+    "b2": 7.84529654383906
+   },
+   "param_lre_min": 7.84529654383906,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 5.014186223783739,
+    "b2": 5.087276343635463
+   },
+   "stderr_lre_min": 5.014186223783739,
+   "stderr_lre_min_name": "b1",
+   "stderr_missing_reason": null,
+   "rss": 0.12455138894440962,
+   "rss_lre": 10.450946873270079
+  },
+  {
+   "dataset": "Misra1a",
+   "difficulty": "Lower",
+   "start": "START1",
+   "implementation": "scipy_lm",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 7.471055511686266,
+    "b2": 7.4040220520273765
+   },
+   "param_lre_min": 7.4040220520273765,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 4.581519004323832,
+    "b2": 4.654660142974432
+   },
+   "stderr_lre_min": 4.581519004323832,
+   "stderr_lre_min_name": "b1",
+   "stderr_missing_reason": null,
+   "rss": 0.12455138894448803,
+   "rss_lre": 10.443292345289548
+  },
+  {
+   "dataset": "Misra1a",
+   "difficulty": "Lower",
+   "start": "START1",
+   "implementation": "scipy_trf",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 7.514472134599784,
+    "b2": 7.4473443726431405
+   },
+   "param_lre_min": 7.4473443726431405,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 4.581355534033385,
+    "b2": 4.654337767201699
+   },
+   "stderr_lre_min": 4.581355534033385,
+   "stderr_lre_min_name": "b1",
+   "stderr_missing_reason": null,
+   "rss": 0.12455138894447103,
+   "rss_lre": 10.444940538988035
+  },
+  {
+   "dataset": "Misra1b",
+   "difficulty": "Lower",
+   "start": "START1",
+   "implementation": "spectrafit_core",
+   "success": true,
+   "termination": "no_improvement_possible",
+   "error": null,
+   "param_lre": {
+    "b1": 10.043657674594,
+    "b2": 9.984315731426365
+   },
+   "param_lre_min": 9.984315731426365,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 9.814725913034385,
+    "b2": 10.811317326364152
+   },
+   "stderr_lre_min": 9.814725913034385,
+   "stderr_lre_min_name": "b1",
+   "stderr_missing_reason": null,
+   "rss": 0.07546468153336806,
+   "rss_lre": 11.311817230089579
+  },
+  {
+   "dataset": "Misra1b",
+   "difficulty": "Lower",
+   "start": "START1",
+   "implementation": "lmfit",
+   "success": true,
+   "termination": "ier=1: Fit succeeded. | lmdif: Both actual and predicted relative reductions in the sum of squares\n  are at most 0.000000",
+   "error": null,
+   "param_lre": {
+    "b1": 7.934677612713286,
+    "b2": 7.868151250027715
+   },
+   "param_lre_min": 7.868151250027715,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 5.0406610854529035,
+    "b2": 5.115063377106459
+   },
+   "stderr_lre_min": 5.0406610854529035,
+   "stderr_lre_min_name": "b1",
+   "stderr_missing_reason": null,
+   "rss": 0.07546468153338609,
+   "rss_lre": 11.29105076456246
+  },
+  {
+   "dataset": "Misra1b",
+   "difficulty": "Lower",
+   "start": "START1",
+   "implementation": "scipy_lm",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 7.338942490486251,
+    "b2": 7.272469265358684
+   },
+   "param_lre_min": 7.272469265358684,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 4.459198973708329,
+    "b2": 4.53366383170201
+   },
+   "stderr_lre_min": 4.459198973708329,
+   "stderr_lre_min_name": "b1",
+   "stderr_missing_reason": null,
+   "rss": 0.07546468153358359,
+   "rss_lre": 11.111636845069008
+  },
+  {
+   "dataset": "Misra1b",
+   "difficulty": "Lower",
+   "start": "START1",
+   "implementation": "scipy_trf",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 7.333625831493064,
+    "b2": 7.267163335337211
+   },
+   "param_lre_min": 7.267163335337211,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 4.4591048690943005,
+    "b2": 4.533587113437327
+   },
+   "stderr_lre_min": 4.4591048690943005,
+   "stderr_lre_min_name": "b1",
+   "stderr_missing_reason": null,
+   "rss": 0.07546468153354641,
+   "rss_lre": 11.140224993975604
+  },
+  {
+   "dataset": "MGH17",
+   "difficulty": "Average",
+   "start": "START1",
+   "implementation": "spectrafit_core",
+   "success": true,
+   "termination": "converged_ftol",
+   "error": null,
+   "param_lre": {
+    "b1": 10.583095618478302,
+    "b2": 9.068238195990055,
+    "b3": 8.944653256401256,
+    "b4": 9.58838510604107,
+    "b5": 9.492481582865128
+   },
+   "param_lre_min": 8.944653256401256,
+   "param_lre_min_name": "b3",
+   "stderr_lre": {
+    "b1": 10.42335007624198,
+    "b2": 8.494894567324932,
+    "b3": 8.501931900312243,
+    "b4": 8.863371726248763,
+    "b5": 9.188744539898975
+   },
+   "stderr_lre_min": 8.494894567324932,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 5.4648946974826004e-05,
+   "rss_lre": 11.497047226380491
+  },
+  {
+   "dataset": "MGH17",
+   "difficulty": "Average",
+   "start": "START1",
+   "implementation": "lmfit",
+   "success": null,
+   "termination": null,
+   "error": "ValueError: NaN values detected in your input data or the output of your objective/model function - fitting algorithms cannot handle this! Please read https://lmfit.github.io/lmfit-py/faq.html#i-get-errors-from-nan-in-my-fit-what-can-i-do for more information.",
+   "param_lre": {},
+   "param_lre_min": null,
+   "param_lre_min_name": null,
+   "stderr_lre": {},
+   "stderr_lre_min": null,
+   "stderr_lre_min_name": null,
+   "stderr_missing_reason": null,
+   "rss": null,
+   "rss_lre": null
+  },
+  {
+   "dataset": "MGH17",
+   "difficulty": "Average",
+   "start": "START1",
+   "implementation": "scipy_lm",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 8.69683379804942,
+    "b2": 7.361999721591929,
+    "b3": 7.237831175146884,
+    "b4": 7.8741152502689005,
+    "b5": 7.816501164830454
+   },
+   "param_lre_min": 7.237831175146884,
+   "param_lre_min_name": "b3",
+   "stderr_lre": {
+    "b1": 5.961240537564244,
+    "b2": 5.988205418437908,
+    "b3": 5.999261595551341,
+    "b4": 5.536528395368576,
+    "b5": 6.916069140861514
+   },
+   "stderr_lre_min": 5.536528395368576,
+   "stderr_lre_min_name": "b4",
+   "stderr_missing_reason": null,
+   "rss": 5.4648946974832543e-05,
+   "rss_lre": 11.513683612183499
+  },
+  {
+   "dataset": "MGH17",
+   "difficulty": "Average",
+   "start": "START1",
+   "implementation": "scipy_trf",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 8.35521492311942,
+    "b2": 6.9967483905444645,
+    "b3": 6.872830810158924,
+    "b4": 7.512794662743232,
+    "b5": 7.447293902666421
+   },
+   "param_lre_min": 6.872830810158924,
+   "param_lre_min_name": "b3",
+   "stderr_lre": {
+    "b1": 5.798059531326972,
+    "b2": 6.01719880469427,
+    "b3": 6.0291768837174295,
+    "b4": 5.597645466811911,
+    "b5": 6.2410549006641824
+   },
+   "stderr_lre_min": 5.597645466811911,
+   "stderr_lre_min_name": "b4",
+   "stderr_missing_reason": null,
+   "rss": 5.4648946974829264e-05,
+   "rss_lre": 11.505259907799058
+  },
+  {
+   "dataset": "Bennett5",
+   "difficulty": "Higher",
+   "start": "START1",
+   "implementation": "spectrafit_core",
+   "success": true,
+   "termination": "converged_ftol",
+   "error": null,
+   "param_lre": {
+    "b1": 7.8955188255151025,
+    "b2": 8.542469586358166,
+    "b3": 8.629735883218832
+   },
+   "param_lre_min": 7.8955188255151025,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 7.466200104386417,
+    "b2": 7.67845407752325,
+    "b3": 7.7874592180801026
+   },
+   "stderr_lre_min": 7.466200104386417,
+   "stderr_lre_min_name": "b1",
+   "stderr_missing_reason": null,
+   "rss": 0.0005240474407262395,
+   "rss_lre": 11.144118632373356
+  },
+  {
+   "dataset": "Bennett5",
+   "difficulty": "Higher",
+   "start": "START1",
+   "implementation": "lmfit",
+   "success": true,
+   "termination": "ier=1: Fit succeeded. | lmdif: Both actual and predicted relative reductions in the sum of squares\n  are at most 0.000000",
+   "error": null,
+   "param_lre": {
+    "b1": 6.912698646976577,
+    "b2": 7.558326580484571,
+    "b3": 7.646357144193765
+   },
+   "param_lre_min": 6.912698646976577,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 5.041434126943108,
+    "b2": 4.629954282538913,
+    "b3": 4.569440451292187
+   },
+   "stderr_lre_min": 4.569440451292187,
+   "stderr_lre_min_name": "b3",
+   "stderr_missing_reason": null,
+   "rss": 0.0005240474407264074,
+   "rss_lre": 11.16396024965953
+  },
+  {
+   "dataset": "Bennett5",
+   "difficulty": "Higher",
+   "start": "START1",
+   "implementation": "scipy_lm",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 5.831842000374881,
+    "b2": 6.477531741383137,
+    "b3": 6.565366392551648
+   },
+   "param_lre_min": 5.831842000374881,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 4.954498949322025,
+    "b2": 5.019661555491405,
+    "b3": 5.043064215821078
+   },
+   "stderr_lre_min": 4.954498949322025,
+   "stderr_lre_min_name": "b1",
+   "stderr_missing_reason": null,
+   "rss": 0.0005240474407268274,
+   "rss_lre": 11.217941483901551
+  },
+  {
+   "dataset": "Bennett5",
+   "difficulty": "Higher",
+   "start": "START1",
+   "implementation": "scipy_trf",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 5.436068466316675,
+    "b2": 6.081547980815608,
+    "b3": 6.169648023419409
+   },
+   "param_lre_min": 5.436068466316675,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 5.527990745399832,
+    "b2": 6.019205533948349,
+    "b3": 5.668459699879857
+   },
+   "stderr_lre_min": 5.527990745399832,
+   "stderr_lre_min_name": "b1",
+   "stderr_missing_reason": null,
+   "rss": 0.0005240474407295666,
+   "rss_lre": 12.082417541426809
+  },
+  {
+   "dataset": "MGH09",
+   "difficulty": "Higher",
+   "start": "START1",
+   "implementation": "spectrafit_core",
+   "success": true,
+   "termination": "converged_ftol",
+   "error": null,
+   "param_lre": {
+    "b1": 7.665858537055087,
+    "b2": 6.272691855745585,
+    "b3": 6.761167479286095,
+    "b4": 6.457579019204814
+   },
+   "param_lre_min": 6.272691855745585,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 6.87907323055983,
+    "b2": 6.380141851277514,
+    "b3": 6.517737478328864,
+    "b4": 6.458667984925442
+   },
+   "stderr_lre_min": 6.380141851277514,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 0.0003075056038492583,
+   "rss_lre": 11.617623170985853
+  },
+  {
+   "dataset": "MGH09",
+   "difficulty": "Higher",
+   "start": "START1",
+   "implementation": "lmfit",
+   "success": false,
+   "termination": "ier=-1: Tolerance seems to be too small. Could not estimate error-bars. | lmdif: Fit aborted.",
+   "error": null,
+   "param_lre": {
+    "b1": -1.5396921556100144e-05,
+    "b2": -6.268639151989826,
+    "b3": -1.7746727046740878,
+    "b4": -1.5554180400128856
+   },
+   "param_lre_min": -6.268639151989826,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": null,
+    "b2": null,
+    "b3": null,
+    "b4": null
+   },
+   "stderr_lre_min": null,
+   "stderr_lre_min_name": null,
+   "stderr_missing_reason": "no standard error for b1, b2, b3, b4",
+   "rss": 0.0009446342190938327,
+   "rss_lre": -0.3163740763310756
+  },
+  {
+   "dataset": "MGH09",
+   "difficulty": "Higher",
+   "start": "START1",
+   "implementation": "scipy_lm",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 7.3955444972055195,
+    "b2": 6.045175968750256,
+    "b3": 6.594965014226342,
+    "b4": 6.2299858535088095
+   },
+   "param_lre_min": 6.045175968750256,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 6.619585697273858,
+    "b2": 6.198250996559474,
+    "b3": 6.353913987461447,
+    "b4": 6.214819775413799
+   },
+   "stderr_lre_min": 6.198250996559474,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 0.00030750560384929426,
+   "rss_lre": 11.639195130074219
+  },
+  {
+   "dataset": "MGH09",
+   "difficulty": "Higher",
+   "start": "START1",
+   "implementation": "scipy_trf",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 7.237489945825187,
+    "b2": 5.8791635335302,
+    "b3": 6.404854638657918,
+    "b4": 6.065917772542447
+   },
+   "param_lre_min": 5.8791635335302,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 6.407232615359499,
+    "b2": 5.994219255969916,
+    "b3": 6.188225227298632,
+    "b4": 6.028674099285028
+   },
+   "stderr_lre_min": 5.994219255969916,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 0.000307505603849359,
+   "rss_lre": 11.680971607664535
+  },
+  {
+   "dataset": "Lanczos2",
+   "difficulty": "Average",
+   "start": "START1",
+   "implementation": "spectrafit_core",
+   "success": true,
+   "termination": "converged_gtol",
+   "error": null,
+   "param_lre": {
+    "b1": 8.232689684395938,
+    "b2": 8.551576006840644,
+    "b3": 8.785026189970738,
+    "b4": 8.934065854702565,
+    "b5": 8.887211861684872,
+    "b6": 9.641157166047636
+   },
+   "param_lre_min": 8.232689684395938,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 8.36873577910995,
+    "b2": 8.822701953405533,
+    "b3": 8.043604325522013,
+    "b4": 8.35110474703091,
+    "b5": 8.110593536718639,
+    "b6": 8.109175550642536
+   },
+   "stderr_lre_min": 8.043604325522013,
+   "stderr_lre_min_name": "b3",
+   "stderr_missing_reason": null,
+   "rss": 2.2299428126060115e-11,
+   "rss_lre": 10.32294035048478
+  },
+  {
+   "dataset": "Lanczos2",
+   "difficulty": "Average",
+   "start": "START1",
+   "implementation": "lmfit",
+   "success": true,
+   "termination": "ier=2: Fit succeeded. | lmdif: The relative error between two consecutive iterates is at most 0.000000",
+   "error": null,
+   "param_lre": {
+    "b1": 7.451296235717109,
+    "b2": 7.766707940734458,
+    "b3": 7.99123573956001,
+    "b4": 8.146917650740875,
+    "b5": 8.102844333971005,
+    "b6": 8.844373280098685
+   },
+   "param_lre_min": 7.451296235717109,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 4.723568587978493,
+    "b2": 5.308853238917609,
+    "b3": 4.922600918429168,
+    "b4": 5.429386072253282,
+    "b5": 4.856603296501681,
+    "b6": 4.4546972661159945
+   },
+   "stderr_lre_min": 4.4546972661159945,
+   "stderr_lre_min_name": "b6",
+   "stderr_missing_reason": null,
+   "rss": 2.2299428121989355e-11,
+   "rss_lre": 9.869634408699852
+  },
+  {
+   "dataset": "Lanczos2",
+   "difficulty": "Average",
+   "start": "START1",
+   "implementation": "scipy_lm",
+   "success": true,
+   "termination": "status=3: `xtol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 7.082393213231226,
+    "b2": 7.404361035359045,
+    "b3": 7.576078732234728,
+    "b4": 7.757444548738231,
+    "b5": 7.700808417905739,
+    "b6": 8.432047387697422
+   },
+   "param_lre_min": 7.082393213231226,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 4.53068131178001,
+    "b2": 4.53798646612377,
+    "b3": 4.503246652991258,
+    "b4": 4.512910860189552,
+    "b5": 4.506115905133261,
+    "b6": 4.506028839171691
+   },
+   "stderr_lre_min": 4.503246652991258,
+   "stderr_lre_min_name": "b3",
+   "stderr_missing_reason": null,
+   "rss": 2.22994281222097e-11,
+   "rss_lre": 9.902642838013396
+  },
+  {
+   "dataset": "Lanczos2",
+   "difficulty": "Average",
+   "start": "START1",
+   "implementation": "scipy_trf",
+   "success": true,
+   "termination": "status=1: `gtol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 6.505904013359445,
+    "b2": 6.820675001026799,
+    "b3": 7.043983948716119,
+    "b4": 7.200633534079189,
+    "b5": 7.157134978108325,
+    "b6": 7.896625184503597
+   },
+   "param_lre_min": 6.505904013359445,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 4.611369634040129,
+    "b2": 4.6263892113728895,
+    "b3": 4.547431312915185,
+    "b4": 4.5808194927931165,
+    "b5": 4.559486860441946,
+    "b6": 4.546378647341232
+   },
+   "stderr_lre_min": 4.546378647341232,
+   "stderr_lre_min_name": "b6",
+   "stderr_missing_reason": null,
+   "rss": 2.2299428124897477e-11,
+   "rss_lre": 11.337476959322732
+  },
+  {
+   "dataset": "Lanczos3",
+   "difficulty": "Lower",
+   "start": "START1",
+   "implementation": "spectrafit_core",
+   "success": true,
+   "termination": "converged_gtol",
+   "error": null,
+   "param_lre": {
+    "b1": 7.342706617880502,
+    "b2": 7.6335263949692855,
+    "b3": 7.954879397829969,
+    "b4": 8.077862982094702,
+    "b5": 8.076787180574023,
+    "b6": 8.805630089827522
+   },
+   "param_lre_min": 7.342706617880502,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 7.704870017972586,
+    "b2": 7.59236407764978,
+    "b3": 7.324100844838335,
+    "b4": 7.749898469516711,
+    "b5": 7.403599318436084,
+    "b6": 7.415679103923076
+   },
+   "stderr_lre_min": 7.324100844838335,
+   "stderr_lre_min_name": "b3",
+   "stderr_missing_reason": null,
+   "rss": 1.6117193593560578e-08,
+   "rss_lre": 10.564408117867888
+  },
+  {
+   "dataset": "Lanczos3",
+   "difficulty": "Lower",
+   "start": "START1",
+   "implementation": "lmfit",
+   "success": true,
+   "termination": "ier=1: Fit succeeded. | lmdif: Both actual and predicted relative reductions in the sum of squares\n  are at most 0.000000",
+   "error": null,
+   "param_lre": {
+    "b1": 5.879851426391489,
+    "b2": 6.1716754865382155,
+    "b3": 6.483837978229799,
+    "b4": 6.611535886255156,
+    "b5": 6.6067358412660155,
+    "b6": 7.335412008391902
+   },
+   "param_lre_min": 5.879851426391489,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 4.728744919611244,
+    "b2": 5.188044821745271,
+    "b3": 4.969237806565405,
+    "b4": 5.400112020080339,
+    "b5": 4.883556334391092,
+    "b6": 4.474039714390635
+   },
+   "stderr_lre_min": 4.474039714390635,
+   "stderr_lre_min_name": "b6",
+   "stderr_missing_reason": null,
+   "rss": 1.611719359361073e-08,
+   "rss_lre": 10.617040844239451
+  },
+  {
+   "dataset": "Lanczos3",
+   "difficulty": "Lower",
+   "start": "START1",
+   "implementation": "scipy_lm",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 5.701966746534227,
+    "b2": 5.996206292332395,
+    "b3": 6.289028314141757,
+    "b4": 6.426486510885336,
+    "b5": 6.4167997411375985,
+    "b6": 7.142109236204801
+   },
+   "param_lre_min": 5.701966746534227,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 4.920216298323333,
+    "b2": 4.864857292688778,
+    "b3": 4.902413579649084,
+    "b4": 4.8866764857895,
+    "b5": 4.901690059608345,
+    "b6": 4.889964156574173
+   },
+   "stderr_lre_min": 4.864857292688778,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 1.6117193593655475e-08,
+   "rss_lre": 10.670069899034791
+  },
+  {
+   "dataset": "Lanczos3",
+   "difficulty": "Lower",
+   "start": "START1",
+   "implementation": "scipy_trf",
+   "success": true,
+   "termination": "status=1: `gtol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 5.178674776018015,
+    "b2": 5.468186100239559,
+    "b3": 5.799502947064183,
+    "b4": 5.917291274864947,
+    "b5": 5.917357128351043,
+    "b6": 6.64961546011126
+   },
+   "param_lre_min": 5.178674776018015,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 4.273417606825512,
+    "b2": 4.3452669270992255,
+    "b3": 4.173497905793745,
+    "b4": 4.2392592597455145,
+    "b5": 4.195767474761213,
+    "b6": 4.183729037004824
+   },
+   "stderr_lre_min": 4.173497905793745,
+   "stderr_lre_min_name": "b3",
+   "stderr_missing_reason": null,
+   "rss": 1.6117193594540013e-08,
+   "rss_lre": 10.474884980504173
+  },
+  {
+   "dataset": "Eckerle4",
+   "difficulty": "Higher",
+   "start": "START1",
+   "implementation": "spectrafit_core",
+   "success": true,
+   "termination": "converged_ftol",
+   "error": null,
+   "param_lre": {
+    "b1": 8.872440393703375,
+    "b2": 8.559321337761073,
+    "b3": 10.541834809285598
+   },
+   "param_lre_min": 8.559321337761073,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": null,
+    "b2": 8.557993803683525,
+    "b3": 8.557950994282875
+   },
+   "stderr_lre_min": 8.557950994282875,
+   "stderr_lre_min_name": "b3",
+   "stderr_missing_reason": "NIST b1 = amplitude * sigma, a product of two fitted parameters; a single fitted standard error does not propagate through it.",
+   "rss": 0.0014635887487274737,
+   "rss_lre": 10.726502178483392
+  },
+  {
+   "dataset": "Eckerle4",
+   "difficulty": "Higher",
+   "start": "START1",
+   "implementation": "lmfit",
+   "success": true,
+   "termination": "ier=1: Fit succeeded. | lmdif: Both actual and predicted relative reductions in the sum of squares\n  are at most 0.000000",
+   "error": null,
+   "param_lre": {
+    "b1": 7.42332668412164,
+    "b2": 7.119579148173308,
+    "b3": 9.604157087388899
+   },
+   "param_lre_min": 7.119579148173308,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 5.5950706121873885,
+    "b2": 4.990665157605497,
+    "b3": 6.419012243197122
+   },
+   "stderr_lre_min": 4.990665157605497,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 0.0014635887487297779,
+   "rss_lre": 10.691526023154589
+  },
+  {
+   "dataset": "Eckerle4",
+   "difficulty": "Higher",
+   "start": "START1",
+   "implementation": "scipy_lm",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 10.071364922053199,
+    "b2": 10.257494906660384,
+    "b3": 11.138329877778363
+   },
+   "param_lre_min": 10.071364922053199,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 8.409311740952173,
+    "b2": 7.976473457275848,
+    "b3": 10.995883464511591
+   },
+   "stderr_lre_min": 7.976473457275848,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 0.0014635887487274718,
+   "rss_lre": 10.726533029226621
+  },
+  {
+   "dataset": "Eckerle4",
+   "difficulty": "Higher",
+   "start": "START1",
+   "implementation": "scipy_trf",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 9.530728619345997,
+    "b2": 9.221010026775042,
+    "b3": 10.928055198413016
+   },
+   "param_lre_min": 9.221010026775042,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 7.931882455543785,
+    "b2": 7.795231007879458,
+    "b3": 9.233146970855023
+   },
+   "stderr_lre_min": 7.795231007879458,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 0.0014635887487274737,
+   "rss_lre": 10.726502178483392
+  },
+  {
+   "dataset": "Roszman1",
+   "difficulty": "Average",
+   "start": "START1",
+   "implementation": "spectrafit_core",
+   "success": true,
+   "termination": "converged_ftol",
+   "error": null,
+   "param_lre": {
+    "b1": 8.912745424037011,
+    "b2": 8.216789915269237,
+    "b3": 9.076564584680375,
+    "b4": 8.529608793019742
+   },
+   "param_lre_min": 8.216789915269237,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 9.613116245798604,
+    "b2": 9.540792011293853,
+    "b3": 9.50651344545389,
+    "b4": 8.715920252363489
+   },
+   "stderr_lre_min": 8.715920252363489,
+   "stderr_lre_min_name": "b4",
+   "stderr_missing_reason": null,
+   "rss": 0.0004948484733096875,
+   "rss_lre": 12.19966798508509
+  },
+  {
+   "dataset": "Roszman1",
+   "difficulty": "Average",
+   "start": "START1",
+   "implementation": "lmfit",
+   "success": true,
+   "termination": "ier=1: Fit succeeded. | lmdif: Both actual and predicted relative reductions in the sum of squares\n  are at most 0.000000",
+   "error": null,
+   "param_lre": {
+    "b1": 6.77145913467055,
+    "b2": 6.073971450658174,
+    "b3": 6.936900894950008,
+    "b4": 6.381486233275385
+   },
+   "param_lre_min": 6.073971450658174,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 5.2194315130518545,
+    "b2": 5.380961947176477,
+    "b3": 5.036222376819818,
+    "b4": 5.088083323981625
+   },
+   "stderr_lre_min": 5.036222376819818,
+   "stderr_lre_min_name": "b3",
+   "stderr_missing_reason": null,
+   "rss": 0.0004948484733097679,
+   "rss_lre": 12.328745294268623
+  },
+  {
+   "dataset": "Roszman1",
+   "difficulty": "Average",
+   "start": "START1",
+   "implementation": "scipy_lm",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 7.6160596323092165,
+    "b2": 6.875806886313286,
+    "b3": 7.883181622013853,
+    "b4": 7.139794466692782
+   },
+   "param_lre_min": 6.875806886313286,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 7.112721539331474,
+    "b2": 7.16286366172971,
+    "b3": 7.249849654159443,
+    "b4": 6.983179369089706
+   },
+   "stderr_lre_min": 6.983179369089706,
+   "stderr_lre_min_name": "b4",
+   "stderr_missing_reason": null,
+   "rss": 0.0004948484733096921,
+   "rss_lre": 12.206043621516024
+  },
+  {
+   "dataset": "Roszman1",
+   "difficulty": "Average",
+   "start": "START1",
+   "implementation": "scipy_trf",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 7.70623790849714,
+    "b2": 6.945546873819072,
+    "b3": 8.036689640025564,
+    "b4": 7.191537197682503
+   },
+   "param_lre_min": 6.945546873819072,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 7.524234816501615,
+    "b2": 8.431484305213356,
+    "b3": 6.966497554766005,
+    "b4": 7.018114317806249
+   },
+   "stderr_lre_min": 6.966497554766005,
+   "stderr_lre_min_name": "b3",
+   "stderr_missing_reason": null,
+   "rss": 0.0004948484733096919,
+   "rss_lre": 12.20573788797161
+  },
+  {
+   "dataset": "DanWood",
+   "difficulty": "Lower",
+   "start": "START1",
+   "implementation": "spectrafit_core",
+   "success": true,
+   "termination": "converged_ftol",
+   "error": null,
+   "param_lre": {
+    "b1": 10.523859963502748,
+    "b2": 10.838013894368679
+   },
+   "param_lre_min": 10.523859963502748,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 10.660393299168684,
+    "b2": null
+   },
+   "stderr_lre_min": 10.660393299168684,
+   "stderr_lre_min_name": "b1",
+   "stderr_missing_reason": "NIST b2 = -1/shape, a reciprocal of a fitted parameter; a fitted standard error does not propagate through it by a constant factor.",
+   "rss": 0.0043173084082910596,
+   "rss_lre": 11.683838403688945
+  },
+  {
+   "dataset": "DanWood",
+   "difficulty": "Lower",
+   "start": "START1",
+   "implementation": "lmfit",
+   "success": true,
+   "termination": "ier=1: Fit succeeded. | lmdif: Both actual and predicted relative reductions in the sum of squares\n  are at most 0.000000",
+   "error": null,
+   "param_lre": {
+    "b1": 7.237047425193595,
+    "b2": 7.48198287022802
+   },
+   "param_lre_min": 7.237047425193595,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 5.149184167828249,
+    "b2": 4.789473796161586
+   },
+   "stderr_lre_min": 4.789473796161586,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 0.004317308408297643,
+   "rss_lre": 12.262763361171336
+  },
+  {
+   "dataset": "DanWood",
+   "difficulty": "Lower",
+   "start": "START1",
+   "implementation": "scipy_lm",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 9.932954936156095,
+    "b2": 10.243651268704026
+   },
+   "param_lre_min": 9.932954936156095,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 8.053438280203165,
+    "b2": 7.678631355477636
+   },
+   "stderr_lre_min": 7.678631355477636,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 0.004317308408291112,
+   "rss_lre": 11.68637369683118
+  },
+  {
+   "dataset": "DanWood",
+   "difficulty": "Lower",
+   "start": "START1",
+   "implementation": "scipy_trf",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 9.147386805813568,
+    "b2": 9.40566519448153
+   },
+   "param_lre_min": 9.147386805813568,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 7.6650872535712615,
+    "b2": 7.449892036271823
+   },
+   "stderr_lre_min": 7.449892036271823,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 0.004317308408291043,
+   "rss_lre": 11.683038636546895
+  },
+  {
+   "dataset": "Kirby2",
+   "difficulty": "Average",
+   "start": "START1",
+   "implementation": "spectrafit_core",
+   "success": true,
+   "termination": "converged_ftol",
+   "error": null,
+   "param_lre": {
+    "b1": 8.264892486640363,
+    "b2": 8.413688447117332,
+    "b3": 8.660931565397625,
+    "b4": 8.360657519020256,
+    "b5": 8.930624096535336
+   },
+   "param_lre_min": 8.264892486640363,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 9.068402064103756,
+    "b2": 8.803079698350142,
+    "b3": 8.702890019676952,
+    "b4": 8.604641563308226,
+    "b5": 8.803636646202142
+   },
+   "stderr_lre_min": 8.604641563308226,
+   "stderr_lre_min_name": "b4",
+   "stderr_missing_reason": null,
+   "rss": 3.9050739623908814,
+   "rss_lre": 11.631706635572574
+  },
+  {
+   "dataset": "Kirby2",
+   "difficulty": "Average",
+   "start": "START1",
+   "implementation": "lmfit",
+   "success": true,
+   "termination": "ier=1: Fit succeeded. | lmdif: Both actual and predicted relative reductions in the sum of squares\n  are at most 0.000000",
+   "error": null,
+   "param_lre": {
+    "b1": 6.768294486636595,
+    "b2": 6.9509678007154925,
+    "b3": 7.221722281601476,
+    "b4": 6.993895427376961,
+    "b5": 7.447118455583875
+   },
+   "param_lre_min": 6.768294486636595,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 6.940586005778245,
+    "b2": 6.743134794628882,
+    "b3": 6.7693189205775575,
+    "b4": 6.296376270403896,
+    "b5": 4.906430293816115
+   },
+   "stderr_lre_min": 4.906430293816115,
+   "stderr_lre_min_name": "b5",
+   "stderr_missing_reason": null,
+   "rss": 3.9050739623912882,
+   "rss_lre": 11.651526450642589
+  },
+  {
+   "dataset": "Kirby2",
+   "difficulty": "Average",
+   "start": "START1",
+   "implementation": "scipy_lm",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 5.118849668982156,
+    "b2": 5.327912313782135,
+    "b3": 5.627440547451613,
+    "b4": 5.495795292557944,
+    "b5": 5.812318741497936
+   },
+   "param_lre_min": 5.118849668982156,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 5.402265355209623,
+    "b2": 4.734097338645085,
+    "b3": 4.309038735518442,
+    "b4": 3.4861666150143145,
+    "b5": 3.070352745856074
+   },
+   "stderr_lre_min": 3.070352745856074,
+   "stderr_lre_min_name": "b5",
+   "stderr_missing_reason": null,
+   "rss": 3.9050739632316818,
+   "rss_lre": 9.671672048079277
+  },
+  {
+   "dataset": "Kirby2",
+   "difficulty": "Average",
+   "start": "START1",
+   "implementation": "scipy_trf",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 5.113461642808679,
+    "b2": 5.321762911960845,
+    "b3": 5.6076478128708,
+    "b4": 5.427203000528417,
+    "b5": 5.810377306308231
+   },
+   "param_lre_min": 5.113461642808679,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 5.415744613483795,
+    "b2": 4.736783927252379,
+    "b3": 4.309549196327088,
+    "b4": 3.4860064044712,
+    "b5": 3.0702790745097044
+   },
+   "stderr_lre_min": 3.0702790745097044,
+   "stderr_lre_min_name": "b5",
+   "stderr_missing_reason": null,
+   "rss": 3.9050739632056644,
+   "rss_lre": 9.685475077050295
+  },
+  {
+   "dataset": "Hahn1",
+   "difficulty": "Average",
+   "start": "START1",
+   "implementation": "spectrafit_core",
+   "success": true,
+   "termination": "converged_ftol",
+   "error": null,
+   "param_lre": {
+    "b1": 8.568619064414824,
+    "b2": 8.746979535733049,
+    "b3": 8.98636776419223,
+    "b4": 8.402025941774616,
+    "b5": 9.800582898378842,
+    "b6": 9.109074558471816,
+    "b7": 8.661241192281782
+   },
+   "param_lre_min": 8.402025941774616,
+   "param_lre_min_name": "b4",
+   "stderr_lre": {
+    "b1": 9.374925953877229,
+    "b2": 9.28707067558095,
+    "b3": 9.18975381792646,
+    "b4": 9.467385074916741,
+    "b5": 9.590806610301096,
+    "b6": 9.180069015116626,
+    "b7": 9.42384535202612
+   },
+   "stderr_lre_min": 9.180069015116626,
+   "stderr_lre_min_name": "b6",
+   "stderr_missing_reason": null,
+   "rss": 1.5324382853606235,
+   "rss_lre": 10.59014585982236
+  },
+  {
+   "dataset": "Hahn1",
+   "difficulty": "Average",
+   "start": "START1",
+   "implementation": "lmfit",
+   "success": true,
+   "termination": "ier=1: Fit succeeded. | lmdif: Both actual and predicted relative reductions in the sum of squares\n  are at most 0.000000",
+   "error": null,
+   "param_lre": {
+    "b1": 7.222337206346382,
+    "b2": 7.621006836313295,
+    "b3": 8.828276742022569,
+    "b4": 6.816467173831084,
+    "b5": 7.290315375283777,
+    "b6": 8.022356932233569,
+    "b7": 7.16387068300554
+   },
+   "param_lre_min": 6.816467173831084,
+   "param_lre_min_name": "b4",
+   "stderr_lre": {
+    "b1": 5.330463114919781,
+    "b2": 5.210406608136931,
+    "b3": 5.1182310102735356,
+    "b4": 4.565232180955312,
+    "b5": 6.017937014223093,
+    "b6": 4.704090939176566,
+    "b7": 4.533519750224465
+   },
+   "stderr_lre_min": 4.533519750224465,
+   "stderr_lre_min_name": "b7",
+   "stderr_missing_reason": null,
+   "rss": 1.5324382853606435,
+   "rss_lre": 10.590366325069951
+  },
+  {
+   "dataset": "Hahn1",
+   "difficulty": "Average",
+   "start": "START1",
+   "implementation": "scipy_lm",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 2.3677012114391607,
+    "b2": 2.529548564151197,
+    "b3": 2.7482237811056804,
+    "b4": 2.164579012583993,
+    "b5": 3.2997552966382067,
+    "b6": 2.8759861297880285,
+    "b7": 2.424194781714764
+   },
+   "param_lre_min": 2.164579012583993,
+   "param_lre_min_name": "b4",
+   "stderr_lre": {
+    "b1": 1.75305088728382,
+    "b2": 1.583694294743393,
+    "b3": 1.369198700421642,
+    "b4": 0.4432832388392012,
+    "b5": 1.8868218754433048,
+    "b6": 1.5147909069683847,
+    "b7": 0.3781232583715262
+   },
+   "stderr_lre_min": 0.3781232583715262,
+   "stderr_lre_min_name": "b7",
+   "stderr_missing_reason": null,
+   "rss": 1.532446542578485,
+   "rss_lre": 5.26855132127503
+  },
+  {
+   "dataset": "Hahn1",
+   "difficulty": "Average",
+   "start": "START1",
+   "implementation": "scipy_trf",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 2.367730727788742,
+    "b2": 2.529571145885495,
+    "b3": 2.7482409328600794,
+    "b4": 2.1645904358359647,
+    "b5": 3.299714706573302,
+    "b6": 2.876005141226208,
+    "b7": 2.424207382651868
+   },
+   "param_lre_min": 2.1645904358359647,
+   "param_lre_min_name": "b4",
+   "stderr_lre": {
+    "b1": 1.753043301049485,
+    "b2": 1.5836891008060447,
+    "b3": 1.3691961584943964,
+    "b4": 0.4432832943227567,
+    "b5": 1.8868239965519251,
+    "b6": 1.5147867845028775,
+    "b7": 0.37812329372067327
+   },
+   "stderr_lre_min": 0.37812329372067327,
+   "stderr_lre_min_name": "b7",
+   "stderr_missing_reason": null,
+   "rss": 1.5324465420995033,
+   "rss_lre": 5.268576514524998
+  },
+  {
+   "dataset": "Thurber",
+   "difficulty": "Higher",
+   "start": "START1",
+   "implementation": "spectrafit_core",
+   "success": true,
+   "termination": "converged_ftol",
+   "error": null,
+   "param_lre": {
+    "b1": 9.582887706626021,
+    "b2": 7.455250649672513,
+    "b3": 7.209068989247173,
+    "b4": 7.0286833012246035,
+    "b5": 7.4539016995409755,
+    "b6": 7.4167327212580165,
+    "b7": 6.645192630243245
+   },
+   "param_lre_min": 6.645192630243245,
+   "param_lre_min_name": "b7",
+   "stderr_lre": {
+    "b1": 8.027335098056026,
+    "b2": 6.014170574255012,
+    "b3": 6.015434732814069,
+    "b4": 6.004308853015036,
+    "b5": 6.081084437026373,
+    "b6": 6.079905214394263,
+    "b7": 6.001948843176955
+   },
+   "stderr_lre_min": 6.001948843176955,
+   "stderr_lre_min_name": "b7",
+   "stderr_missing_reason": null,
+   "rss": 5642.708239668016,
+   "rss_lre": 11.246552100470423
+  },
+  {
+   "dataset": "Thurber",
+   "difficulty": "Higher",
+   "start": "START1",
+   "implementation": "lmfit",
+   "success": true,
+   "termination": "ier=1: Fit succeeded. | lmdif: Both actual and predicted relative reductions in the sum of squares\n  are at most 0.000000",
+   "error": null,
+   "param_lre": {
+    "b1": 8.505324156196448,
+    "b2": 5.627413261141836,
+    "b3": 5.350781746936783,
+    "b4": 5.177643452539939,
+    "b5": 5.52162343054386,
+    "b6": 5.4334042067126465,
+    "b7": 5.080324837744431
+   },
+   "param_lre_min": 5.080324837744431,
+   "param_lre_min_name": "b7",
+   "stderr_lre": {
+    "b1": 5.7791652194615075,
+    "b2": 4.27222883076037,
+    "b3": 4.296000502621314,
+    "b4": 4.267835938527182,
+    "b5": 4.252765729176407,
+    "b6": 3.9995281247400514,
+    "b7": 4.976262307897472
+   },
+   "stderr_lre_min": 3.9995281247400514,
+   "stderr_lre_min_name": "b6",
+   "stderr_missing_reason": null,
+   "rss": 5642.70824174289,
+   "rss_lre": 9.441242672586649
+  },
+  {
+   "dataset": "Thurber",
+   "difficulty": "Higher",
+   "start": "START1",
+   "implementation": "scipy_lm",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 9.199264785818132,
+    "b2": 8.04666098585148,
+    "b3": 7.741809550027867,
+    "b4": 7.561738699961954,
+    "b5": 7.9155942600069435,
+    "b6": 7.733390288710805,
+    "b7": 7.724956962661889
+   },
+   "param_lre_min": 7.561738699961954,
+   "param_lre_min_name": "b4",
+   "stderr_lre": {
+    "b1": 7.695873320867264,
+    "b2": 6.406509465617782,
+    "b3": 6.313828701728621,
+    "b4": 6.187946231667033,
+    "b5": 6.3463435760964435,
+    "b6": 6.200098096908829,
+    "b7": 6.926141950440784
+   },
+   "stderr_lre_min": 6.187946231667033,
+   "stderr_lre_min_name": "b4",
+   "stderr_missing_reason": null,
+   "rss": 5642.708239667138,
+   "rss_lre": 11.234783400842769
+  },
+  {
+   "dataset": "Thurber",
+   "difficulty": "Higher",
+   "start": "START1",
+   "implementation": "scipy_trf",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 9.639863107023036,
+    "b2": 7.691070790398524,
+    "b3": 7.41648188693485,
+    "b4": 7.24632748196911,
+    "b5": 7.579309792807282,
+    "b6": 7.514862048685365,
+    "b7": 7.15490552827041
+   },
+   "param_lre_min": 7.15490552827041,
+   "param_lre_min_name": "b7",
+   "stderr_lre": {
+    "b1": 8.248797182529703,
+    "b2": 7.6004407830032905,
+    "b3": 7.0781590016346225,
+    "b4": 6.63186857546394,
+    "b5": 7.184294779075742,
+    "b6": 6.563682236429502,
+    "b7": 7.15499023829199
+   },
+   "stderr_lre_min": 6.563682236429502,
+   "stderr_lre_min_name": "b6",
+   "stderr_missing_reason": null,
+   "rss": 5642.708239667129,
+   "rss_lre": 11.234675240334784
+  },
+  {
+   "dataset": "Rat42",
+   "difficulty": "Higher",
+   "start": "START1",
+   "implementation": "spectrafit_core",
+   "success": true,
+   "termination": "converged_ftol",
+   "error": null,
+   "param_lre": {
+    "b1": 8.48183573761072,
+    "b2": 8.607324962563347,
+    "b3": 8.165645303209327
+   },
+   "param_lre_min": 8.165645303209327,
+   "param_lre_min_name": "b3",
+   "stderr_lre": {
+    "b1": 7.786476907913733,
+    "b2": 8.100055289296913,
+    "b3": 8.225694991568371
+   },
+   "stderr_lre_min": 7.786476907913733,
+   "stderr_lre_min_name": "b1",
+   "stderr_missing_reason": null,
+   "rss": 8.056522933811342,
+   "rss_lre": 11.851456533636746
+  },
+  {
+   "dataset": "Rat42",
+   "difficulty": "Higher",
+   "start": "START1",
+   "implementation": "lmfit",
+   "success": true,
+   "termination": "ier=1: Fit succeeded. | lmdif: Both actual and predicted relative reductions in the sum of squares\n  are at most 0.000000",
+   "error": null,
+   "param_lre": {
+    "b1": 6.747441147123562,
+    "b2": 6.491322747255726,
+    "b3": 6.289314003455664
+   },
+   "param_lre_min": 6.289314003455664,
+   "param_lre_min_name": "b3",
+   "stderr_lre": {
+    "b1": 4.817230510890678,
+    "b2": 4.589427188647502,
+    "b3": 4.8990534311844876
+   },
+   "stderr_lre_min": 4.589427188647502,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 8.056522933958664,
+   "rss_lre": 10.70566872083678
+  },
+  {
+   "dataset": "Rat42",
+   "difficulty": "Higher",
+   "start": "START1",
+   "implementation": "scipy_lm",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 8.241410854521284,
+    "b2": 8.096363358013948,
+    "b3": 7.8338394632260275
+   },
+   "param_lre_min": 7.8338394632260275,
+   "param_lre_min_name": "b3",
+   "stderr_lre": {
+    "b1": 6.461907072504345,
+    "b2": 6.586395580544734,
+    "b3": 7.013868168277925
+   },
+   "stderr_lre_min": 6.461907072504345,
+   "stderr_lre_min_name": "b1",
+   "stderr_missing_reason": null,
+   "rss": 8.056522933811406,
+   "rss_lre": 11.849014765319685
+  },
+  {
+   "dataset": "Rat42",
+   "difficulty": "Higher",
+   "start": "START1",
+   "implementation": "scipy_trf",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 8.110177067067415,
+    "b2": 8.051675528712499,
+    "b3": 7.735360596310741
+   },
+   "param_lre_min": 7.735360596310741,
+   "param_lre_min_name": "b3",
+   "stderr_lre": {
+    "b1": 6.488246873489906,
+    "b2": 6.586297842522033,
+    "b3": 6.9872819921899705
+   },
+   "stderr_lre_min": 6.488246873489906,
+   "stderr_lre_min_name": "b1",
+   "stderr_missing_reason": null,
+   "rss": 8.056522933811475,
+   "rss_lre": 11.846384917241096
+  },
+  {
+   "dataset": "Rat43",
+   "difficulty": "Higher",
+   "start": "START1",
+   "implementation": "spectrafit_core",
+   "success": true,
+   "termination": "converged_ftol",
+   "error": null,
+   "param_lre": {
+    "b1": 8.219453312570145,
+    "b2": 6.8574331792088445,
+    "b3": 7.021292443080217,
+    "b4": 6.763796165464077
+   },
+   "param_lre_min": 6.763796165464077,
+   "param_lre_min_name": "b4",
+   "stderr_lre": {
+    "b1": 7.234618936441605,
+    "b2": 7.078493295163941,
+    "b3": 6.8833516342770285,
+    "b4": 6.984149602807602
+   },
+   "stderr_lre_min": 6.8833516342770285,
+   "stderr_lre_min_name": "b3",
+   "stderr_missing_reason": null,
+   "rss": 8786.404907963271,
+   "rss_lre": 11.37880170651709
+  },
+  {
+   "dataset": "Rat43",
+   "difficulty": "Higher",
+   "start": "START1",
+   "implementation": "lmfit",
+   "success": true,
+   "termination": "ier=1: Fit succeeded. | lmdif: Both actual and predicted relative reductions in the sum of squares\n  are at most 0.000000",
+   "error": null,
+   "param_lre": {
+    "b1": 6.3228989611713295,
+    "b2": 4.785395776531139,
+    "b3": 4.986138494082833,
+    "b4": 4.652269534092649
+   },
+   "param_lre_min": 4.652269534092649,
+   "param_lre_min_name": "b4",
+   "stderr_lre": {
+    "b1": 5.032713313532432,
+    "b2": 3.7399083573753233,
+    "b3": 3.631650254110741,
+    "b4": 3.9406275881757233
+   },
+   "stderr_lre_min": 3.631650254110741,
+   "stderr_lre_min_name": "b3",
+   "stderr_missing_reason": null,
+   "rss": 8786.40490933436,
+   "rss_lre": 9.818538297860774
+  },
+  {
+   "dataset": "Rat43",
+   "difficulty": "Higher",
+   "start": "START1",
+   "implementation": "scipy_lm",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 7.929161067371823,
+    "b2": 6.546291342011793,
+    "b3": 6.721171857384017,
+    "b4": 6.432652855289395
+   },
+   "param_lre_min": 6.432652855289395,
+   "param_lre_min_name": "b4",
+   "stderr_lre": {
+    "b1": 6.892601089908488,
+    "b2": 6.730759170426325,
+    "b3": 6.728890316019886,
+    "b4": 9.49134955762076
+   },
+   "stderr_lre_min": 6.728890316019886,
+   "stderr_lre_min_name": "b3",
+   "stderr_missing_reason": null,
+   "rss": 8786.404907963619,
+   "rss_lre": 11.382929334235902
+  },
+  {
+   "dataset": "Rat43",
+   "difficulty": "Higher",
+   "start": "START1",
+   "implementation": "scipy_trf",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 8.111693685458185,
+    "b2": 6.5519715961028355,
+    "b3": 6.759970253843282,
+    "b4": 6.407900045042931
+   },
+   "param_lre_min": 6.407900045042931,
+   "param_lre_min_name": "b4",
+   "stderr_lre": {
+    "b1": 7.937357257194364,
+    "b2": 6.324414791776422,
+    "b3": 6.196744601572865,
+    "b4": 6.3679334626795825
+   },
+   "stderr_lre_min": 6.196744601572865,
+   "stderr_lre_min_name": "b3",
+   "stderr_missing_reason": null,
+   "rss": 8786.404907963557,
+   "rss_lre": 11.382191697312411
+  },
+  {
+   "dataset": "Chwirut1",
+   "difficulty": "Lower",
+   "start": "START1",
+   "implementation": "spectrafit_core",
+   "success": true,
+   "termination": "converged_ftol",
+   "error": null,
+   "param_lre": {
+    "b1": 8.42549158526115,
+    "b2": 9.023825879031051,
+    "b3": 8.726819546185446
+   },
+   "param_lre_min": 8.42549158526115,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 8.77398879211521,
+    "b2": 9.380930723641011,
+    "b3": 10.126216716920023
+   },
+   "stderr_lre_min": 8.77398879211521,
+   "stderr_lre_min_name": "b1",
+   "stderr_missing_reason": null,
+   "rss": 2384.4771393093506,
+   "rss_lre": 11.406557630487654
+  },
+  {
+   "dataset": "Chwirut1",
+   "difficulty": "Lower",
+   "start": "START1",
+   "implementation": "lmfit",
+   "success": true,
+   "termination": "ier=1: Fit succeeded. | lmdif: Both actual and predicted relative reductions in the sum of squares\n  are at most 0.000000",
+   "error": null,
+   "param_lre": {
+    "b1": 6.219183730624627,
+    "b2": 6.619062504338087,
+    "b3": 6.427426350018196
+   },
+   "param_lre_min": 6.219183730624627,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 5.22794544124117,
+    "b2": 4.907840919196907,
+    "b3": 4.904134626612509
+   },
+   "stderr_lre_min": 4.904134626612509,
+   "stderr_lre_min_name": "b3",
+   "stderr_missing_reason": null,
+   "rss": 2384.477139309654,
+   "rss_lre": 11.39269344825766
+  },
+  {
+   "dataset": "Chwirut1",
+   "difficulty": "Lower",
+   "start": "START1",
+   "implementation": "scipy_lm",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 8.53191089759512,
+    "b2": 8.30662682360371,
+    "b3": 8.415812729926667
+   },
+   "param_lre_min": 8.30662682360371,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 7.095071258403575,
+    "b2": 5.642734135776792,
+    "b3": 5.814859005087101
+   },
+   "stderr_lre_min": 5.642734135776792,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 2384.477139309351,
+   "rss_lre": 11.406536509783363
+  },
+  {
+   "dataset": "Chwirut1",
+   "difficulty": "Lower",
+   "start": "START1",
+   "implementation": "scipy_trf",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 7.896870522924854,
+    "b2": 8.070429860045586,
+    "b3": 8.019125223993964
+   },
+   "param_lre_min": 7.896870522924854,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 7.1342240139166035,
+    "b2": 5.642600966124211,
+    "b3": 5.815485945778123
+   },
+   "stderr_lre_min": 5.642600966124211,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 2384.4771393093506,
+   "rss_lre": 11.406557630487654
+  },
+  {
+   "dataset": "Chwirut2",
+   "difficulty": "Lower",
+   "start": "START1",
+   "implementation": "spectrafit_core",
+   "success": true,
+   "termination": "converged_ftol",
+   "error": null,
+   "param_lre": {
+    "b1": 8.42068403056702,
+    "b2": 8.769712763715436,
+    "b3": 8.727158293928811
+   },
+   "param_lre_min": 8.42068403056702,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 8.841686570795089,
+    "b2": 9.306334246679523,
+    "b3": 10.082047356538045
+   },
+   "stderr_lre_min": 8.841686570795089,
+   "stderr_lre_min_name": "b1",
+   "stderr_missing_reason": null,
+   "rss": 513.0480294068656,
+   "rss_lre": 11.21399531914894
+  },
+  {
+   "dataset": "Chwirut2",
+   "difficulty": "Lower",
+   "start": "START1",
+   "implementation": "lmfit",
+   "success": true,
+   "termination": "ier=1: Fit succeeded. | lmdif: Both actual and predicted relative reductions in the sum of squares\n  are at most 0.000000",
+   "error": null,
+   "param_lre": {
+    "b1": 6.59632296639714,
+    "b2": 6.92570511775857,
+    "b3": 6.8862448761919675
+   },
+   "param_lre_min": 6.59632296639714,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 5.309457577548662,
+    "b2": 4.948352350677789,
+    "b3": 4.901834975240111
+   },
+   "stderr_lre_min": 4.901834975240111,
+   "stderr_lre_min_name": "b3",
+   "stderr_missing_reason": null,
+   "rss": 513.0480294068774,
+   "rss_lre": 11.21563660988899
+  },
+  {
+   "dataset": "Chwirut2",
+   "difficulty": "Lower",
+   "start": "START1",
+   "implementation": "scipy_lm",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 7.431600261796249,
+    "b2": 7.754490530783225,
+    "b3": 7.7209431046099475
+   },
+   "param_lre_min": 7.431600261796249,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 6.760597396744063,
+    "b2": 5.6424701340645,
+    "b3": 5.808143613924457
+   },
+   "stderr_lre_min": 5.6424701340645,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 513.0480294068658,
+   "rss_lre": 11.214026824007998
+  },
+  {
+   "dataset": "Chwirut2",
+   "difficulty": "Lower",
+   "start": "START1",
+   "implementation": "scipy_trf",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 8.483521029359192,
+    "b2": 8.635347960347953,
+    "b3": 8.683699575853181
+   },
+   "param_lre_min": 8.483521029359192,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 6.708940774806312,
+    "b2": 5.640778509536571,
+    "b3": 5.805702290572821
+   },
+   "stderr_lre_min": 5.640778509536571,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 513.0480294068658,
+   "rss_lre": 11.214026824007998
+  },
+  {
+   "dataset": "Gauss1",
+   "difficulty": "Lower",
+   "start": "START2",
+   "implementation": "spectrafit_core",
+   "success": true,
+   "termination": "converged_ftol",
+   "error": null,
+   "param_lre": {
+    "b1": 11.241264027085258,
+    "b2": 10.806846784736251,
+    "b3": 11.032274126873533,
+    "b4": 11.321359621803662,
+    "b5": 10.579901979312375,
+    "b6": 10.96443490916517,
+    "b7": 10.830738506441232,
+    "b8": 11.037203779939777
+   },
+   "param_lre_min": 10.579901979312375,
+   "param_lre_min_name": "b5",
+   "stderr_lre": {
+    "b1": 11.131321783657622,
+    "b2": 10.5317156131576,
+    "b3": 12.935326611551222,
+    "b4": 11.769110984475322,
+    "b5": 11.77027488913561,
+    "b6": 11.150719547509516,
+    "b7": 11.731032912850274,
+    "b8": 11.468945870099498
+   },
+   "stderr_lre_min": 10.5317156131576,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 1315.8222432033774,
+   "rss_lre": 11.590613621923268
+  },
+  {
+   "dataset": "Gauss1",
+   "difficulty": "Lower",
+   "start": "START2",
+   "implementation": "lmfit",
+   "success": true,
+   "termination": "ier=1: Fit succeeded. | lmdif: Both actual and predicted relative reductions in the sum of squares\n  are at most 0.000000",
+   "error": null,
+   "param_lre": {
+    "b1": 7.786436487436224,
+    "b2": 7.121863025049225,
+    "b3": 7.987734169452065,
+    "b4": 8.600887933932771,
+    "b5": 7.5529137675709945,
+    "b6": 7.665175996152184,
+    "b7": 9.643436485513497,
+    "b8": 7.5079015470812935
+   },
+   "param_lre_min": 7.121863025049225,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 5.679724905210134,
+    "b2": 4.9319723795083865,
+    "b3": 6.544263344912798,
+    "b4": 7.586744116042109,
+    "b5": 5.294140392631431,
+    "b6": 5.457437419410847,
+    "b7": 7.124941969913236,
+    "b8": 5.3467586637380276
+   },
+   "stderr_lre_min": 4.9319723795083865,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 1315.8222432036603,
+   "rss_lre": 11.555685118447263
+  },
+  {
+   "dataset": "Gauss1",
+   "difficulty": "Lower",
+   "start": "START2",
+   "implementation": "scipy_lm",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 8.604983407358363,
+    "b2": 8.070374253582791,
+    "b3": 8.776737196489275,
+    "b4": 9.373601545850303,
+    "b5": 8.844390313750036,
+    "b6": 8.647164683895127,
+    "b7": 10.647610702479046,
+    "b8": 8.435445743397077
+   },
+   "param_lre_min": 8.070374253582791,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 6.8591421362884715,
+    "b2": 5.904990236806827,
+    "b3": 7.0303517445567385,
+    "b4": 8.310226202434809,
+    "b5": 7.074051702355397,
+    "b6": 7.664262551010152,
+    "b7": 8.229191608688971,
+    "b8": 7.536997300916063
+   },
+   "stderr_lre_min": 5.904990236806827,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 1315.8222432033808,
+   "rss_lre": 11.590175280047845
+  },
+  {
+   "dataset": "Gauss1",
+   "difficulty": "Lower",
+   "start": "START2",
+   "implementation": "scipy_trf",
+   "success": true,
+   "termination": "status=3: `xtol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 8.59961532211503,
+    "b2": 8.053399443277044,
+    "b3": 8.787469056208524,
+    "b4": 9.346113754453844,
+    "b5": 8.746792775969501,
+    "b6": 8.65290218302888,
+    "b7": 10.66296917128231,
+    "b8": 8.396901785212748
+   },
+   "param_lre_min": 8.053399443277044,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 6.864452846948402,
+    "b2": 5.905190344654918,
+    "b3": 7.0273233630386045,
+    "b4": 8.26916055488374,
+    "b5": 7.025456612967521,
+    "b6": 7.660795619554006,
+    "b7": 8.239852038774742,
+    "b8": 7.537939529591815
+   },
+   "stderr_lre_min": 5.905190344654918,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 1315.8222432033813,
+   "rss_lre": 11.590116867878033
+  },
+  {
+   "dataset": "Gauss2",
+   "difficulty": "Lower",
+   "start": "START2",
+   "implementation": "spectrafit_core",
+   "success": true,
+   "termination": "converged_ftol",
+   "error": null,
+   "param_lre": {
+    "b1": 11.887696304348355,
+    "b2": 11.01597136927977,
+    "b3": 10.198184321976377,
+    "b4": 10.593517858310008,
+    "b5": 9.916579403214724,
+    "b6": 10.841164890675937,
+    "b7": 10.612874893115777,
+    "b8": 10.0656763921061
+   },
+   "param_lre_min": 9.916579403214724,
+   "param_lre_min_name": "b5",
+   "stderr_lre": {
+    "b1": 10.749017938507578,
+    "b2": 10.32195621459093,
+    "b3": 10.719491265343263,
+    "b4": 10.320951294372124,
+    "b5": 9.963812210648419,
+    "b6": 10.332390923493215,
+    "b7": 10.013143391977191,
+    "b8": 9.909576746146518
+   },
+   "stderr_lre_min": 9.909576746146518,
+   "stderr_lre_min_name": "b8",
+   "stderr_missing_reason": null,
+   "rss": 1247.5282092309985,
+   "rss_lre": 10.604709201150884
+  },
+  {
+   "dataset": "Gauss2",
+   "difficulty": "Lower",
+   "start": "START2",
+   "implementation": "lmfit",
+   "success": true,
+   "termination": "ier=3: Fit succeeded. | lmdif: Both actual and predicted relative reductions in the sum of squares\n  are at most 0.000000 and the relative error between two consecutive iterates is at \n  most 0.000000",
+   "error": null,
+   "param_lre": {
+    "b1": 8.152308983224335,
+    "b2": 8.683260481962106,
+    "b3": 7.800001507470898,
+    "b4": 7.935575865557839,
+    "b5": 6.993702702709769,
+    "b6": 8.20400395243228,
+    "b7": 7.972153319193125,
+    "b8": 6.84479792717967
+   },
+   "param_lre_min": 6.84479792717967,
+   "param_lre_min_name": "b8",
+   "stderr_lre": {
+    "b1": 5.466299552466385,
+    "b2": 4.940003756952975,
+    "b3": 5.1126225533549565,
+    "b4": 5.419829969242597,
+    "b5": 4.98583386112865,
+    "b6": 5.383830990242978,
+    "b7": 5.515905494102076,
+    "b8": 4.503999085683365
+   },
+   "stderr_lre_min": 4.503999085683365,
+   "stderr_lre_min_name": "b8",
+   "stderr_missing_reason": null,
+   "rss": 1247.5282092317655,
+   "rss_lre": 10.594095134288441
+  },
+  {
+   "dataset": "Gauss2",
+   "difficulty": "Lower",
+   "start": "START2",
+   "implementation": "scipy_lm",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 9.57095823964763,
+    "b2": 9.155266559397726,
+    "b3": 9.572459000046715,
+    "b4": 10.3323325409336,
+    "b5": 9.29313577644933,
+    "b6": 9.836891411761297,
+    "b7": 10.14766041486005,
+    "b8": 8.970132686818477
+   },
+   "param_lre_min": 8.970132686818477,
+   "param_lre_min_name": "b8",
+   "stderr_lre": {
+    "b1": 6.383466080311926,
+    "b2": 5.886083495794597,
+    "b3": 7.30179106154629,
+    "b4": 8.14448122572063,
+    "b5": 7.313571578714547,
+    "b6": 7.743080949822736,
+    "b7": 7.779956899177276,
+    "b8": 7.709590555553794
+   },
+   "stderr_lre_min": 5.886083495794597,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 1247.5282092309992,
+   "rss_lre": 10.604699644630372
+  },
+  {
+   "dataset": "Gauss2",
+   "difficulty": "Lower",
+   "start": "START2",
+   "implementation": "scipy_trf",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 9.721502065069503,
+    "b2": 9.167264530204529,
+    "b3": 9.72053435255685,
+    "b4": 11.036940034003635,
+    "b5": 10.614829623714291,
+    "b6": 9.843792232606383,
+    "b7": 10.788515585253046,
+    "b8": 9.371512705991682
+   },
+   "param_lre_min": 9.167264530204529,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 6.383341697515464,
+    "b2": 5.885842237545472,
+    "b3": 7.28075187497371,
+    "b4": 8.052343589562408,
+    "b5": 7.307762101521254,
+    "b6": 7.672258502665908,
+    "b7": 7.74627592577742,
+    "b8": 7.828631432357902
+   },
+   "stderr_lre_min": 5.885842237545472,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 1247.5282092309985,
+   "rss_lre": 10.604709201150884
+  },
+  {
+   "dataset": "Gauss3",
+   "difficulty": "Average",
+   "start": "START2",
+   "implementation": "spectrafit_core",
+   "success": true,
+   "termination": "converged_ftol",
+   "error": null,
+   "param_lre": {
+    "b1": 11.073834171227118,
+    "b2": 9.5331772168075,
+    "b3": 9.7242384499104,
+    "b4": 9.702580298881852,
+    "b5": 8.874016200308361,
+    "b6": 8.973647786053883,
+    "b7": 9.6992119589538,
+    "b8": 9.136461392005664
+   },
+   "param_lre_min": 8.874016200308361,
+   "param_lre_min_name": "b5",
+   "stderr_lre": {
+    "b1": 9.793350789088866,
+    "b2": 9.190006193935782,
+    "b3": 8.657971964048187,
+    "b4": 9.527261731021746,
+    "b5": 8.981640156176825,
+    "b6": 8.638075248955467,
+    "b7": 9.088924496272766,
+    "b8": 9.038213083124218
+   },
+   "stderr_lre_min": 8.638075248955467,
+   "stderr_lre_min_name": "b6",
+   "stderr_missing_reason": null,
+   "rss": 1244.484636013157,
+   "rss_lre": 10.975833399748335
+  },
+  {
+   "dataset": "Gauss3",
+   "difficulty": "Average",
+   "start": "START2",
+   "implementation": "lmfit",
+   "success": true,
+   "termination": "ier=3: Fit succeeded. | lmdif: Both actual and predicted relative reductions in the sum of squares\n  are at most 0.000000 and the relative error between two consecutive iterates is at \n  most 0.000000",
+   "error": null,
+   "param_lre": {
+    "b1": 8.757575993284737,
+    "b2": 7.729451389502089,
+    "b3": 7.549921199825863,
+    "b4": 7.616575602513031,
+    "b5": 6.821825444693999,
+    "b6": 6.874930719775993,
+    "b7": 7.662608760557204,
+    "b8": 6.9713334385696495
+   },
+   "param_lre_min": 6.821825444693999,
+   "param_lre_min_name": "b5",
+   "stderr_lre": {
+    "b1": 5.473228103254261,
+    "b2": 4.934740208720325,
+    "b3": 4.222369006852447,
+    "b4": 5.158212482591521,
+    "b5": 4.355976271697661,
+    "b6": 4.131130510991776,
+    "b7": 5.075422950705025,
+    "b8": 4.225889854944378
+   },
+   "stderr_lre_min": 4.131130510991776,
+   "stderr_lre_min_name": "b6",
+   "stderr_missing_reason": null,
+   "rss": 1244.4846360136312,
+   "rss_lre": 10.960452925554677
+  },
+  {
+   "dataset": "Gauss3",
+   "difficulty": "Average",
+   "start": "START2",
+   "implementation": "scipy_lm",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 9.49592503987754,
+    "b2": 9.027516870968846,
+    "b3": 9.70217307218972,
+    "b4": 11.331810546018428,
+    "b5": 11.257389210600762,
+    "b6": 9.710189791137019,
+    "b7": 10.495800810666896,
+    "b8": 9.368567042261045
+   },
+   "param_lre_min": 9.027516870968846,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 6.39856279975759,
+    "b2": 5.889071966366627,
+    "b3": 6.870845659676654,
+    "b4": 7.685771003433855,
+    "b5": 7.59024845946755,
+    "b6": 6.89643292580652,
+    "b7": 8.849279343323682,
+    "b8": 7.248628333219973
+   },
+   "stderr_lre_min": 5.889071966366627,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 1244.484636013157,
+   "rss_lre": 10.975833399748335
+  },
+  {
+   "dataset": "Gauss3",
+   "difficulty": "Average",
+   "start": "START2",
+   "implementation": "scipy_trf",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 9.542417670675082,
+    "b2": 8.99731958802656,
+    "b3": 9.621192110088483,
+    "b4": 10.755737099727783,
+    "b5": 9.554267093019645,
+    "b6": 10.043589284531294,
+    "b7": 10.195382131497809,
+    "b8": 9.566057540224508
+   },
+   "param_lre_min": 8.99731958802656,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 6.398533919212787,
+    "b2": 5.889141401620138,
+    "b3": 6.863020170881013,
+    "b4": 7.795071787895552,
+    "b5": 7.633975451987623,
+    "b6": 6.916382308395837,
+    "b7": 8.535602631802378,
+    "b8": 7.207978976848598
+   },
+   "stderr_lre_min": 5.889141401620138,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 1244.4846360131576,
+   "rss_lre": 10.975810884416564
+  },
+  {
+   "dataset": "Lanczos1",
+   "difficulty": "Average",
+   "start": "START2",
+   "implementation": "spectrafit_core",
+   "success": true,
+   "termination": "converged_gtol",
+   "error": null,
+   "param_lre": {
+    "b1": 8.747301725058655,
+    "b2": 9.046453828459152,
+    "b3": 9.29544105933999,
+    "b4": 9.435654374446047,
+    "b5": 9.441978990761442,
+    "b6": 10.138398334055166
+   },
+   "param_lre_min": 8.747301725058655,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 0.5992550891555832,
+    "b2": 0.5992550929572149,
+    "b3": 0.5992550861904169,
+    "b4": 0.5992550890919048,
+    "b5": 0.5992550870065645,
+    "b6": 0.5992550869532347
+   },
+   "stderr_lre_min": 0.5992550861904169,
+   "stderr_lre_min_name": "b3",
+   "stderr_missing_reason": null,
+   "rss": 2.2414022497327013e-25,
+   "rss_lre": 0.24676002459434884
+  },
+  {
+   "dataset": "Lanczos1",
+   "difficulty": "Average",
+   "start": "START2",
+   "implementation": "lmfit",
+   "success": true,
+   "termination": "ier=2: Fit succeeded. | lmdif: The relative error between two consecutive iterates is at most 0.000000",
+   "error": null,
+   "param_lre": {
+    "b1": 11.347168575926721,
+    "b2": 10.557491370620053,
+    "b3": 11.28751188978603,
+    "b4": 10.938158178432907,
+    "b5": 10.610467066802087,
+    "b6": 11.636927507589801
+   },
+   "param_lre_min": 10.557491370620053,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 3.227625564434924,
+    "b2": 3.2379887115665458,
+    "b3": 3.232743819888291,
+    "b4": 3.2388436735110533,
+    "b5": 3.2312811692137844,
+    "b6": 3.2159564316886238
+   },
+   "stderr_lre_min": 3.2159564316886238,
+   "stderr_lre_min_name": "b6",
+   "stderr_missing_reason": null,
+   "rss": 1.429147031106759e-25,
+   "rss_lre": 2.9407996622685086
+  },
+  {
+   "dataset": "Lanczos1",
+   "difficulty": "Average",
+   "start": "START2",
+   "implementation": "scipy_lm",
+   "success": true,
+   "termination": "status=3: `xtol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 11.340954666427322,
+    "b2": 10.556969519986616,
+    "b3": 11.286958351065959,
+    "b4": 10.937795915691915,
+    "b5": 10.610600904498135,
+    "b6": 11.636793775646664
+   },
+   "param_lre_min": 10.556969519986616,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 3.0886583078305687,
+    "b2": 3.089119055741793,
+    "b3": 3.0850334620617885,
+    "b4": 3.087112934614187,
+    "b5": 3.085964376601339,
+    "b6": 3.084986501597485
+   },
+   "stderr_lre_min": 3.084986501597485,
+   "stderr_lre_min_name": "b6",
+   "stderr_missing_reason": null,
+   "rss": 1.428490595218584e-25,
+   "rss_lre": 2.794569576333547
+  },
+  {
+   "dataset": "Lanczos1",
+   "difficulty": "Average",
+   "start": "START2",
+   "implementation": "scipy_trf",
+   "success": true,
+   "termination": "status=1: `gtol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 11.568970341772609,
+    "b2": 10.617098562019004,
+    "b3": 11.473550495719481,
+    "b4": 10.992094158622054,
+    "b5": 10.58580833098804,
+    "b6": 11.685525361505148
+   },
+   "param_lre_min": 10.58580833098804,
+   "param_lre_min_name": "b5",
+   "stderr_lre": {
+    "b1": 2.371540291347874,
+    "b2": 2.3715173948952737,
+    "b3": 2.37165247280821,
+    "b4": 2.371592323453964,
+    "b5": 2.3716256694640556,
+    "b6": 2.371652541655444
+   },
+   "stderr_lre_min": 2.3715173948952737,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 1.44298704535438e-25,
+   "rss_lre": 2.0692053585089507
+  },
+  {
+   "dataset": "BoxBOD",
+   "difficulty": "Higher",
+   "start": "START2",
+   "implementation": "spectrafit_core",
+   "success": true,
+   "termination": "converged_ftol",
+   "error": null,
+   "param_lre": {
+    "b1": 7.807473452467194,
+    "b2": 7.151356320830165
+   },
+   "param_lre_min": 7.151356320830165,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 7.364052403435256,
+    "b2": 7.102359129994139
+   },
+   "stderr_lre_min": 7.102359129994139,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 1168.0088765555838,
+   "rss_lre": 10.419905884824196
+  },
+  {
+   "dataset": "BoxBOD",
+   "difficulty": "Higher",
+   "start": "START2",
+   "implementation": "lmfit",
+   "success": true,
+   "termination": "ier=1: Fit succeeded. | lmdif: Both actual and predicted relative reductions in the sum of squares\n  are at most 0.000000",
+   "error": null,
+   "param_lre": {
+    "b1": 8.368226011358312,
+    "b2": 6.876739208461067
+   },
+   "param_lre_min": 6.876739208461067,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 5.50272455175482,
+    "b2": 5.454223434367639
+   },
+   "stderr_lre_min": 5.454223434367639,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 1168.0088765557803,
+   "rss_lre": 10.421831015379468
+  },
+  {
+   "dataset": "BoxBOD",
+   "difficulty": "Higher",
+   "start": "START2",
+   "implementation": "scipy_lm",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 7.8562767446343775,
+    "b2": 7.193605976789144
+   },
+   "param_lre_min": 7.193605976789144,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 7.526558860487927,
+    "b2": 7.212245217262945
+   },
+   "stderr_lre_min": 7.212245217262945,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 1168.0088765555793,
+   "rss_lre": 10.419861422516561
+  },
+  {
+   "dataset": "BoxBOD",
+   "difficulty": "Higher",
+   "start": "START2",
+   "implementation": "scipy_trf",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 8.002763933377913,
+    "b2": 7.348783640442766
+   },
+   "param_lre_min": 7.348783640442766,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 7.467787235161791,
+    "b2": 7.228193498672341
+   },
+   "stderr_lre_min": 7.228193498672341,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 1168.008876555565,
+   "rss_lre": 10.419721395992937
+  },
+  {
+   "dataset": "Misra1a",
+   "difficulty": "Lower",
+   "start": "START2",
+   "implementation": "spectrafit_core",
+   "success": true,
+   "termination": "converged_ftol",
+   "error": null,
+   "param_lre": {
+    "b1": 10.659046511103313,
+    "b2": 10.41374959027353
+   },
+   "param_lre_min": 10.41374959027353,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 10.126771195227988,
+    "b2": 12.68867525686444
+   },
+   "stderr_lre_min": 10.126771195227988,
+   "stderr_lre_min_name": "b1",
+   "stderr_missing_reason": null,
+   "rss": 0.12455138894439804,
+   "rss_lre": 10.45208827750666
+  },
+  {
+   "dataset": "Misra1a",
+   "difficulty": "Lower",
+   "start": "START2",
+   "implementation": "lmfit",
+   "success": true,
+   "termination": "ier=1: Fit succeeded. | lmdif: Both actual and predicted relative reductions in the sum of squares\n  are at most 0.000000",
+   "error": null,
+   "param_lre": {
+    "b1": 8.092017565405852,
+    "b2": 8.02958645683699
+   },
+   "param_lre_min": 8.02958645683699,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 5.016230419310591,
+    "b2": 5.087166705039919
+   },
+   "stderr_lre_min": 5.016230419310591,
+   "stderr_lre_min_name": "b1",
+   "stderr_missing_reason": null,
+   "rss": 0.12455138894440311,
+   "rss_lre": 10.451588372893074
+  },
+  {
+   "dataset": "Misra1a",
+   "difficulty": "Lower",
+   "start": "START2",
+   "implementation": "scipy_lm",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 7.923398894583477,
+    "b2": 7.852280129994423
+   },
+   "param_lre_min": 7.852280129994423,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 4.582267123890669,
+    "b2": 4.654547453594632
+   },
+   "stderr_lre_min": 4.582267123890669,
+   "stderr_lre_min_name": "b1",
+   "stderr_missing_reason": null,
+   "rss": 0.12455138894442039,
+   "rss_lre": 10.449887534671518
+  },
+  {
+   "dataset": "Misra1a",
+   "difficulty": "Lower",
+   "start": "START2",
+   "implementation": "scipy_trf",
+   "success": true,
+   "termination": "status=3: `xtol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 7.900422388595144,
+    "b2": 7.829558474654931
+   },
+   "param_lre_min": 7.829558474654931,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 4.582557872274816,
+    "b2": 4.654892576008124
+   },
+   "stderr_lre_min": 4.582557872274816,
+   "stderr_lre_min_name": "b1",
+   "stderr_missing_reason": null,
+   "rss": 0.12455138894441432,
+   "rss_lre": 10.450483777320937
+  },
+  {
+   "dataset": "Misra1b",
+   "difficulty": "Lower",
+   "start": "START2",
+   "implementation": "spectrafit_core",
+   "success": true,
+   "termination": "no_improvement_possible",
+   "error": null,
+   "param_lre": {
+    "b1": 8.09938823975326,
+    "b2": 8.033172016202009
+   },
+   "param_lre_min": 8.033172016202009,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 7.774855518252271,
+    "b2": 8.775403922588191
+   },
+   "stderr_lre_min": 7.774855518252271,
+   "stderr_lre_min_name": "b1",
+   "stderr_missing_reason": null,
+   "rss": 0.07546468153339349,
+   "rss_lre": 11.282809165786869
+  },
+  {
+   "dataset": "Misra1b",
+   "difficulty": "Lower",
+   "start": "START2",
+   "implementation": "lmfit",
+   "success": true,
+   "termination": "ier=1: Fit succeeded. | lmdif: Both actual and predicted relative reductions in the sum of squares\n  are at most 0.000000",
+   "error": null,
+   "param_lre": {
+    "b1": 7.940352708719405,
+    "b2": 7.873830455671339
+   },
+   "param_lre_min": 7.873830455671339,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 5.040608785981033,
+    "b2": 5.114981012818836
+   },
+   "stderr_lre_min": 5.040608785981033,
+   "stderr_lre_min_name": "b1",
+   "stderr_missing_reason": null,
+   "rss": 0.075464681533399,
+   "rss_lre": 11.27677054615278
+  },
+  {
+   "dataset": "Misra1b",
+   "difficulty": "Lower",
+   "start": "START2",
+   "implementation": "scipy_lm",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 7.35097426014855,
+    "b2": 7.284478322520026
+   },
+   "param_lre_min": 7.284478322520026,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 4.459164501774204,
+    "b2": 4.53361147461919
+   },
+   "stderr_lre_min": 4.459164501774204,
+   "stderr_lre_min_name": "b1",
+   "stderr_missing_reason": null,
+   "rss": 0.0754646815335715,
+   "rss_lre": 11.120726612409044
+  },
+  {
+   "dataset": "Misra1b",
+   "difficulty": "Lower",
+   "start": "START2",
+   "implementation": "scipy_trf",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 7.343892465150162,
+    "b2": 7.277407742928184
+   },
+   "param_lre_min": 7.277407742928184,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 4.4589239429789105,
+    "b2": 4.533366697808325
+   },
+   "stderr_lre_min": 4.4589239429789105,
+   "stderr_lre_min_name": "b1",
+   "stderr_missing_reason": null,
+   "rss": 0.0754646815335167,
+   "rss_lre": 11.164507134868092
+  },
+  {
+   "dataset": "MGH17",
+   "difficulty": "Average",
+   "start": "START2",
+   "implementation": "spectrafit_core",
+   "success": true,
+   "termination": "converged_ftol",
+   "error": null,
+   "param_lre": {
+    "b1": 9.993403521069622,
+    "b2": 8.637991945327594,
+    "b3": 8.514742943993848,
+    "b4": 9.163773131476393,
+    "b5": 9.086294630791613
+   },
+   "param_lre_min": 8.514742943993848,
+   "param_lre_min_name": "b3",
+   "stderr_lre": {
+    "b1": 10.376729552478656,
+    "b2": 8.06736324983426,
+    "b3": 8.068650964427535,
+    "b4": 8.439031755318776,
+    "b5": 8.766408200444168
+   },
+   "stderr_lre_min": 8.06736324983426,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 5.464894697482879e-05,
+   "rss_lre": 11.504055015672984
+  },
+  {
+   "dataset": "MGH17",
+   "difficulty": "Average",
+   "start": "START2",
+   "implementation": "lmfit",
+   "success": true,
+   "termination": "ier=1: Fit succeeded. | lmdif: Both actual and predicted relative reductions in the sum of squares\n  are at most 0.000000",
+   "error": null,
+   "param_lre": {
+    "b1": 7.243298672666089,
+    "b2": 5.886175111045229,
+    "b3": 5.762313985155152,
+    "b4": 6.402581706712877,
+    "b5": 6.335963324323969
+   },
+   "param_lre_min": 5.762313985155152,
+   "param_lre_min_name": "b3",
+   "stderr_lre": {
+    "b1": 4.8186060205583745,
+    "b2": 4.921203556191739,
+    "b3": 4.919088898101546,
+    "b4": 4.97125412647835,
+    "b5": 4.684089144260191
+   },
+   "stderr_lre_min": 4.684089144260191,
+   "stderr_lre_min_name": "b5",
+   "stderr_missing_reason": null,
+   "rss": 5.4648946975073094e-05,
+   "rss_lre": 11.873690828744216
+  },
+  {
+   "dataset": "MGH17",
+   "difficulty": "Average",
+   "start": "START2",
+   "implementation": "scipy_lm",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 8.82315211387645,
+    "b2": 7.491580695423108,
+    "b3": 7.367093091429086,
+    "b4": 8.000401128435353,
+    "b5": 7.950415541571587
+   },
+   "param_lre_min": 7.367093091429086,
+   "param_lre_min_name": "b3",
+   "stderr_lre": {
+    "b1": 5.820357254883749,
+    "b2": 6.314363697111044,
+    "b3": 6.322478204226659,
+    "b4": 5.639950885028589,
+    "b5": 6.008295930586493
+   },
+   "stderr_lre_min": 5.639950885028589,
+   "stderr_lre_min_name": "b4",
+   "stderr_missing_reason": null,
+   "rss": 5.4648946974830816e-05,
+   "rss_lre": 11.509225146211605
+  },
+  {
+   "dataset": "MGH17",
+   "difficulty": "Average",
+   "start": "START2",
+   "implementation": "scipy_trf",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 7.750176651837896,
+    "b2": 6.395772974763454,
+    "b3": 6.271853405378621,
+    "b4": 6.911448707853697,
+    "b5": 6.846568321943551
+   },
+   "param_lre_min": 6.271853405378621,
+   "param_lre_min_name": "b3",
+   "stderr_lre": {
+    "b1": 6.0029267013107726,
+    "b2": 7.164927916949199,
+    "b3": 7.291615631610665,
+    "b4": 5.578197176564339,
+    "b5": 7.199916544067836
+   },
+   "stderr_lre_min": 5.578197176564339,
+   "stderr_lre_min_name": "b4",
+   "stderr_missing_reason": null,
+   "rss": 5.4648946974850494e-05,
+   "rss_lre": 11.56292694248866
+  },
+  {
+   "dataset": "Bennett5",
+   "difficulty": "Higher",
+   "start": "START2",
+   "implementation": "spectrafit_core",
+   "success": true,
+   "termination": "converged_ftol",
+   "error": null,
+   "param_lre": {
+    "b1": 8.249107901707966,
+    "b2": 8.891407535624625,
+    "b3": 8.981228510552485
+   },
+   "param_lre_min": 8.249107901707966,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 7.050456999731152,
+    "b2": 7.079788774440141,
+    "b3": 7.09101951998827
+   },
+   "stderr_lre_min": 7.050456999731152,
+   "stderr_lre_min_name": "b1",
+   "stderr_missing_reason": null,
+   "rss": 0.0005240474407262884,
+   "rss_lre": 11.14980268487748
+  },
+  {
+   "dataset": "Bennett5",
+   "difficulty": "Higher",
+   "start": "START2",
+   "implementation": "lmfit",
+   "success": true,
+   "termination": "ier=1: Fit succeeded. | lmdif: Both actual and predicted relative reductions in the sum of squares\n  are at most 0.000000",
+   "error": null,
+   "param_lre": {
+    "b1": 7.178129665060589,
+    "b2": 7.823861054157582,
+    "b3": 7.911852012449206
+   },
+   "param_lre_min": 7.178129665060589,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 5.036414005449651,
+    "b2": 4.630839762877795,
+    "b3": 4.569004323113123
+   },
+   "stderr_lre_min": 4.569004323113123,
+   "stderr_lre_min_name": "b3",
+   "stderr_missing_reason": null,
+   "rss": 0.0005240474407262866,
+   "rss_lre": 11.149587075434713
+  },
+  {
+   "dataset": "Bennett5",
+   "difficulty": "Higher",
+   "start": "START2",
+   "implementation": "scipy_lm",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 5.226351928844308,
+    "b2": 5.871834120081137,
+    "b3": 5.959931359601115
+   },
+   "param_lre_min": 5.226351928844308,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 4.7706018582657785,
+    "b2": 4.973090567366028,
+    "b3": 5.06183573123144
+   },
+   "stderr_lre_min": 4.7706018582657785,
+   "stderr_lre_min_name": "b1",
+   "stderr_missing_reason": null,
+   "rss": 0.0005240474407352656,
+   "rss_lre": 10.99792799568861
+  },
+  {
+   "dataset": "Bennett5",
+   "difficulty": "Higher",
+   "start": "START2",
+   "implementation": "scipy_trf",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 5.078089697346388,
+    "b2": 5.723574574421118,
+    "b3": 5.811677238397947
+   },
+   "param_lre_min": 5.078089697346388,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 4.8610145353517495,
+    "b2": 5.284915756130491,
+    "b3": 5.700327202791941
+   },
+   "stderr_lre_min": 4.8610145353517495,
+   "stderr_lre_min_name": "b1",
+   "stderr_missing_reason": null,
+   "rss": 0.0005240474407437689,
+   "rss_lre": 10.580473708797488
+  },
+  {
+   "dataset": "MGH09",
+   "difficulty": "Higher",
+   "start": "START2",
+   "implementation": "spectrafit_core",
+   "success": true,
+   "termination": "converged_ftol",
+   "error": null,
+   "param_lre": {
+    "b1": 7.855433082488254,
+    "b2": 6.498360675661228,
+    "b3": 7.0601145007924435,
+    "b4": 6.678883886622636
+   },
+   "param_lre_min": 6.498360675661228,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 7.110535378081548,
+    "b2": 6.61262138889639,
+    "b3": 6.755937909954805,
+    "b4": 6.69181060157896
+   },
+   "stderr_lre_min": 6.61262138889639,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 0.00030750560384924444,
+   "rss_lre": 11.609572296890505
+  },
+  {
+   "dataset": "MGH09",
+   "difficulty": "Higher",
+   "start": "START2",
+   "implementation": "lmfit",
+   "success": true,
+   "termination": "ier=1: Fit succeeded. | lmdif: Both actual and predicted relative reductions in the sum of squares\n  are at most 0.000000",
+   "error": null,
+   "param_lre": {
+    "b1": 6.976635042984575,
+    "b2": 5.709511422896236,
+    "b3": 6.620465789585302,
+    "b4": 5.882718194036299
+   },
+   "param_lre_min": 5.709511422896236,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 5.901016526619381,
+    "b2": 5.186909093592135,
+    "b3": 5.119829450464321,
+    "b4": 5.557507692409523
+   },
+   "stderr_lre_min": 5.119829450464321,
+   "stderr_lre_min_name": "b3",
+   "stderr_missing_reason": null,
+   "rss": 0.000307505603849531,
+   "rss_lre": 11.81665624630733
+  },
+  {
+   "dataset": "MGH09",
+   "difficulty": "Higher",
+   "start": "START2",
+   "implementation": "scipy_lm",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 7.416503290869338,
+    "b2": 6.07078411004626,
+    "b3": 6.629203231454825,
+    "b4": 6.255796497298914
+   },
+   "param_lre_min": 6.07078411004626,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 6.695097761613929,
+    "b2": 6.143900591405439,
+    "b3": 6.269701704972458,
+    "b4": 6.296617037571187
+   },
+   "stderr_lre_min": 6.143900591405439,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 0.00030750560384928857,
+   "rss_lre": 11.635706535360374
+  },
+  {
+   "dataset": "MGH09",
+   "difficulty": "Higher",
+   "start": "START2",
+   "implementation": "scipy_trf",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 7.197890657702201,
+    "b2": 5.843349222676769,
+    "b3": 6.3772512034115945,
+    "b4": 6.0297416144130676
+   },
+   "param_lre_min": 5.843349222676769,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 6.453277629478547,
+    "b2": 5.9889630886214755,
+    "b3": 6.133473203241034,
+    "b4": 6.03081451294249
+   },
+   "stderr_lre_min": 5.9889630886214755,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 0.0003075056038493796,
+   "rss_lre": 11.695156960063823
+  },
+  {
+   "dataset": "Lanczos2",
+   "difficulty": "Average",
+   "start": "START2",
+   "implementation": "spectrafit_core",
+   "success": true,
+   "termination": "converged_gtol",
+   "error": null,
+   "param_lre": {
+    "b1": 7.978175647850465,
+    "b2": 8.29545622704192,
+    "b3": 8.52227657179609,
+    "b4": 8.675780662711482,
+    "b5": 8.629972157524511,
+    "b6": 9.376939209867142
+   },
+   "param_lre_min": 7.978175647850465,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 8.542707450354422,
+    "b2": 8.129678524649298,
+    "b3": 7.951774872933294,
+    "b4": 8.526696070703405,
+    "b5": 8.051439880359913,
+    "b6": 8.05169109439581
+   },
+   "stderr_lre_min": 7.951774872933294,
+   "stderr_lre_min_name": "b3",
+   "stderr_missing_reason": null,
+   "rss": 2.2299428123784932e-11,
+   "rss_lre": 10.263693525468442
+  },
+  {
+   "dataset": "Lanczos2",
+   "difficulty": "Average",
+   "start": "START2",
+   "implementation": "lmfit",
+   "success": true,
+   "termination": "ier=2: Fit succeeded. | lmdif: The relative error between two consecutive iterates is at most 0.000000",
+   "error": null,
+   "param_lre": {
+    "b1": 7.455273989296741,
+    "b2": 7.770663203513943,
+    "b3": 7.9954518402462895,
+    "b4": 8.15099698206897,
+    "b5": 8.106982792995659,
+    "b6": 8.848582666424717
+   },
+   "param_lre_min": 7.455273989296741,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 4.725188664412163,
+    "b2": 5.315172648451424,
+    "b3": 4.924709444273642,
+    "b4": 5.4372529489153685,
+    "b5": 4.85854613396623,
+    "b6": 4.455390951496896
+   },
+   "stderr_lre_min": 4.455390951496896,
+   "stderr_lre_min_name": "b6",
+   "stderr_missing_reason": null,
+   "rss": 2.2299428122531966e-11,
+   "rss_lre": 9.955942886770995
+  },
+  {
+   "dataset": "Lanczos2",
+   "difficulty": "Average",
+   "start": "START2",
+   "implementation": "scipy_lm",
+   "success": true,
+   "termination": "status=3: `xtol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 6.857881112822158,
+    "b2": 7.178393653044287,
+    "b3": 7.359423101756224,
+    "b4": 7.536476421608741,
+    "b5": 7.482290513143393,
+    "b6": 8.21477757301587
+   },
+   "param_lre_min": 6.857881112822158,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 5.243064893451445,
+    "b2": 5.242835292986386,
+    "b3": 5.4309485517807525,
+    "b4": 5.299898333818801,
+    "b5": 5.365735019944731,
+    "b6": 5.47611126099749
+   },
+   "stderr_lre_min": 5.242835292986386,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 2.229942812302213e-11,
+   "rss_lre": 10.052096064948625
+  },
+  {
+   "dataset": "Lanczos2",
+   "difficulty": "Average",
+   "start": "START2",
+   "implementation": "scipy_trf",
+   "success": true,
+   "termination": "status=1: `gtol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 6.194326286648515,
+    "b2": 6.5084017812712665,
+    "b3": 6.736998148076889,
+    "b4": 6.891008536003181,
+    "b5": 6.848932868913681,
+    "b6": 7.589289247630172
+   },
+   "param_lre_min": 6.194326286648515,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 4.654039618658862,
+    "b2": 4.65073708311657,
+    "b3": 4.6156736567805075,
+    "b4": 4.629641555429153,
+    "b5": 4.621012752800769,
+    "b6": 4.610029302642545
+   },
+   "stderr_lre_min": 4.610029302642545,
+   "stderr_lre_min_name": "b6",
+   "stderr_missing_reason": null,
+   "rss": 2.2299428133730373e-11,
+   "rss_lre": 9.407260857983458
+  },
+  {
+   "dataset": "Lanczos3",
+   "difficulty": "Lower",
+   "start": "START2",
+   "implementation": "spectrafit_core",
+   "success": true,
+   "termination": "converged_ftol",
+   "error": null,
+   "param_lre": {
+    "b1": 7.828069044720556,
+    "b2": 8.119357458015573,
+    "b3": 8.438938610266263,
+    "b4": 8.562888622815649,
+    "b5": 8.564274827296405,
+    "b6": 9.289504451978303
+   },
+   "param_lre_min": 7.828069044720556,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 8.366722070877975,
+    "b2": 7.978849249745547,
+    "b3": 7.872658288304991,
+    "b4": 8.437943499625776,
+    "b5": 7.967904006150707,
+    "b6": 7.981219155881413
+   },
+   "stderr_lre_min": 7.872658288304991,
+   "stderr_lre_min_name": "b3",
+   "stderr_missing_reason": null,
+   "rss": 1.611719359356328e-08,
+   "rss_lre": 10.567088055462573
+  },
+  {
+   "dataset": "Lanczos3",
+   "difficulty": "Lower",
+   "start": "START2",
+   "implementation": "lmfit",
+   "success": true,
+   "termination": "ier=1: Fit succeeded. | lmdif: Both actual and predicted relative reductions in the sum of squares\n  are at most 0.000000",
+   "error": null,
+   "param_lre": {
+    "b1": 5.9185024891864915,
+    "b2": 6.210422037040587,
+    "b3": 6.521711596047933,
+    "b4": 6.649853217724521,
+    "b5": 6.644841774957503,
+    "b6": 7.373370904853037
+   },
+   "param_lre_min": 5.9185024891864915,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 4.728180347876554,
+    "b2": 5.193810422304735,
+    "b3": 4.966239267621357,
+    "b4": 5.398816949394773,
+    "b5": 4.881581403729601,
+    "b6": 4.473364076266414
+   },
+   "stderr_lre_min": 4.473364076266414,
+   "stderr_lre_min_name": "b6",
+   "stderr_missing_reason": null,
+   "rss": 1.6117193593595716e-08,
+   "rss_lre": 10.600604082416787
+  },
+  {
+   "dataset": "Lanczos3",
+   "difficulty": "Lower",
+   "start": "START2",
+   "implementation": "scipy_lm",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 5.367717623816371,
+    "b2": 5.6568350497946005,
+    "b3": 5.9917740151652215,
+    "b4": 6.107619806329599,
+    "b5": 6.1086267496432445,
+    "b6": 6.84165567664919
+   },
+   "param_lre_min": 5.367717623816371,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 4.779579697287808,
+    "b2": 4.68037897377241,
+    "b3": 4.909607791986277,
+    "b4": 4.784002185754546,
+    "b5": 4.861590756182898,
+    "b6": 4.8876364878561125
+   },
+   "stderr_lre_min": 4.68037897377241,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 1.6117193593975928e-08,
+   "rss_lre": 11.825796086667047
+  },
+  {
+   "dataset": "Lanczos3",
+   "difficulty": "Lower",
+   "start": "START2",
+   "implementation": "scipy_trf",
+   "success": true,
+   "termination": "status=1: `gtol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 5.919592554486416,
+    "b2": 6.21628919286711,
+    "b3": 6.490990810688697,
+    "b4": 6.637281959953883,
+    "b5": 6.623186745408073,
+    "b6": 7.345555066031023
+   },
+   "param_lre_min": 5.919592554486416,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 4.200309244625728,
+    "b2": 4.220705565793694,
+    "b3": 4.12670907787339,
+    "b4": 4.16624422375356,
+    "b5": 4.142265498969102,
+    "b6": 4.129710315741028
+   },
+   "stderr_lre_min": 4.12670907787339,
+   "stderr_lre_min_name": "b3",
+   "stderr_missing_reason": null,
+   "rss": 1.6117193593608174e-08,
+   "rss_lre": 10.6141966928245
+  },
+  {
+   "dataset": "Eckerle4",
+   "difficulty": "Higher",
+   "start": "START2",
+   "implementation": "spectrafit_core",
+   "success": true,
+   "termination": "converged_ftol",
+   "error": null,
+   "param_lre": {
+    "b1": 10.022649545245695,
+    "b2": 9.591021304918963,
+    "b3": 10.983615906161123
+   },
+   "param_lre_min": 9.591021304918963,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": null,
+    "b2": 9.588682057087324,
+    "b3": 9.584406231406872
+   },
+   "stderr_lre_min": 9.584406231406872,
+   "stderr_lre_min_name": "b3",
+   "stderr_missing_reason": "NIST b1 = amplitude * sigma, a product of two fitted parameters; a single fitted standard error does not propagate through it.",
+   "rss": 0.0014635887487274707,
+   "rss_lre": 10.726550169475418
+  },
+  {
+   "dataset": "Eckerle4",
+   "difficulty": "Higher",
+   "start": "START2",
+   "implementation": "lmfit",
+   "success": true,
+   "termination": "ier=2: Fit succeeded. | lmdif: The relative error between two consecutive iterates is at most 0.000000",
+   "error": null,
+   "param_lre": {
+    "b1": 7.17210848701122,
+    "b2": 6.870868118179422,
+    "b3": 9.861468972619138
+   },
+   "param_lre_min": 6.870868118179422,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 5.590077184768887,
+    "b2": 4.988183399405329,
+    "b3": 6.356972379141685
+   },
+   "stderr_lre_min": 4.988183399405329,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 0.001463588748733649,
+   "rss_lre": 10.638448643170513
+  },
+  {
+   "dataset": "Eckerle4",
+   "difficulty": "Higher",
+   "start": "START2",
+   "implementation": "scipy_lm",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 9.636607045976204,
+    "b2": 9.304380532388462,
+    "b3": 10.984010946801353
+   },
+   "param_lre_min": 9.304380532388462,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 8.53599765708472,
+    "b2": 7.818515059237874,
+    "b3": 9.323934640917242
+   },
+   "stderr_lre_min": 7.818515059237874,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 0.0014635887487274726,
+   "rss_lre": 10.726519317514626
+  },
+  {
+   "dataset": "Eckerle4",
+   "difficulty": "Higher",
+   "start": "START2",
+   "implementation": "scipy_trf",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 9.854262739236606,
+    "b2": 9.386725970728614,
+    "b3": 10.984443269505809
+   },
+   "param_lre_min": 9.386725970728614,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 8.663987556459363,
+    "b2": 7.797373718949374,
+    "b3": 9.375860352881112
+   },
+   "stderr_lre_min": 7.797373718949374,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 0.0014635887487274746,
+   "rss_lre": 10.726488467745378
+  },
+  {
+   "dataset": "Roszman1",
+   "difficulty": "Average",
+   "start": "START2",
+   "implementation": "spectrafit_core",
+   "success": true,
+   "termination": "converged_ftol",
+   "error": null,
+   "param_lre": {
+    "b1": 8.859217632005038,
+    "b2": 8.16218544316742,
+    "b3": 9.024673977634068,
+    "b4": 8.474107538576632
+   },
+   "param_lre_min": 8.16218544316742,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 9.56907512407483,
+    "b2": 9.495637529172534,
+    "b3": 9.440502827637584,
+    "b4": 8.665181069080594
+   },
+   "stderr_lre_min": 8.665181069080594,
+   "stderr_lre_min_name": "b4",
+   "stderr_missing_reason": null,
+   "rss": 0.0004948484733096875,
+   "rss_lre": 12.19966798508509
+  },
+  {
+   "dataset": "Roszman1",
+   "difficulty": "Average",
+   "start": "START2",
+   "implementation": "lmfit",
+   "success": true,
+   "termination": "ier=1: Fit succeeded. | lmdif: Both actual and predicted relative reductions in the sum of squares\n  are at most 0.000000",
+   "error": null,
+   "param_lre": {
+    "b1": 6.77196061241372,
+    "b2": 6.074365005217208,
+    "b3": 6.937543060343401,
+    "b4": 6.38188303608713
+   },
+   "param_lre_min": 6.074365005217208,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 5.219473573096712,
+    "b2": 5.381015531825997,
+    "b3": 5.036234114100867,
+    "b4": 5.0881468082642884
+   },
+   "stderr_lre_min": 5.036234114100867,
+   "stderr_lre_min_name": "b3",
+   "stderr_missing_reason": null,
+   "rss": 0.0004948484733097682,
+   "rss_lre": 12.329354260690302
+  },
+  {
+   "dataset": "Roszman1",
+   "difficulty": "Average",
+   "start": "START2",
+   "implementation": "scipy_lm",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 8.02308943434355,
+    "b2": 7.345854614114207,
+    "b3": 8.150451088788053,
+    "b4": 7.677740704200311
+   },
+   "param_lre_min": 7.345854614114207,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 6.9762896717202905,
+    "b2": 7.0317929914679524,
+    "b3": 7.3220522921261875,
+    "b4": 6.7735428499616495
+   },
+   "stderr_lre_min": 6.7735428499616495,
+   "stderr_lre_min_name": "b4",
+   "stderr_missing_reason": null,
+   "rss": 0.00049484847330969,
+   "rss_lre": 12.203147806205072
+  },
+  {
+   "dataset": "Roszman1",
+   "difficulty": "Average",
+   "start": "START2",
+   "implementation": "scipy_trf",
+   "success": true,
+   "termination": "status=3: `xtol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 7.27927461716606,
+    "b2": 6.539272349939269,
+    "b3": 7.545749648532776,
+    "b4": 6.803560555387092
+   },
+   "param_lre_min": 6.539272349939269,
+   "param_lre_min_name": "b2",
+   "stderr_lre": {
+    "b1": 7.303301636188097,
+    "b2": 10.145504338623304,
+    "b3": 6.736215768238375,
+    "b4": 6.86382487405192
+   },
+   "stderr_lre_min": 6.736215768238375,
+   "stderr_lre_min_name": "b3",
+   "stderr_missing_reason": null,
+   "rss": 0.000494848473309695,
+   "rss_lre": 12.21019222939786
+  },
+  {
+   "dataset": "DanWood",
+   "difficulty": "Lower",
+   "start": "START2",
+   "implementation": "spectrafit_core",
+   "success": true,
+   "termination": "converged_ftol",
+   "error": null,
+   "param_lre": {
+    "b1": 10.594205710258413,
+    "b2": 10.920736856497648
+   },
+   "param_lre_min": 10.594205710258413,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 10.73890388984104,
+    "b2": null
+   },
+   "stderr_lre_min": 10.73890388984104,
+   "stderr_lre_min_name": "b1",
+   "stderr_missing_reason": "NIST b2 = -1/shape, a reciprocal of a fitted parameter; a fitted standard error does not propagate through it by a constant factor.",
+   "rss": 0.0043173084082910726,
+   "rss_lre": 11.684470840791976
+  },
+  {
+   "dataset": "DanWood",
+   "difficulty": "Lower",
+   "start": "START2",
+   "implementation": "lmfit",
+   "success": true,
+   "termination": "ier=1: Fit succeeded. | lmdif: Both actual and predicted relative reductions in the sum of squares\n  are at most 0.000000",
+   "error": null,
+   "param_lre": {
+    "b1": 7.17628701588522,
+    "b2": 7.421310374384647
+   },
+   "param_lre_min": 7.17628701588522,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 5.149616122204539,
+    "b2": 4.789437381838763
+   },
+   "stderr_lre_min": 4.789437381838763,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 0.004317308408299785,
+   "rss_lre": 13.302561132741594
+  },
+  {
+   "dataset": "DanWood",
+   "difficulty": "Lower",
+   "start": "START2",
+   "implementation": "scipy_lm",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 8.815194935319834,
+    "b2": 9.058458166540474
+   },
+   "param_lre_min": 8.815194935319834,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 8.283870354307343,
+    "b2": 7.737734189302441
+   },
+   "stderr_lre_min": 7.737734189302441,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 0.004317308408291097,
+   "rss_lre": 11.685653859861201
+  },
+  {
+   "dataset": "DanWood",
+   "difficulty": "Lower",
+   "start": "START2",
+   "implementation": "scipy_trf",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 9.240683476979633,
+    "b2": 9.487178359318836
+   },
+   "param_lre_min": 9.240683476979633,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 7.513727924687763,
+    "b2": 7.322499004552066
+   },
+   "stderr_lre_min": 7.322499004552066,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 0.00431730840829099,
+   "rss_lre": 11.680480872610547
+  },
+  {
+   "dataset": "Kirby2",
+   "difficulty": "Average",
+   "start": "START2",
+   "implementation": "spectrafit_core",
+   "success": true,
+   "termination": "no_improvement_possible",
+   "error": null,
+   "param_lre": {
+    "b1": 7.3922417464053405,
+    "b2": 7.542201027250477,
+    "b3": 7.784899380335288,
+    "b4": 7.48452714059639,
+    "b5": 8.050962762981497
+   },
+   "param_lre_min": 7.3922417464053405,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 8.192151982720482,
+    "b2": 7.926999746041993,
+    "b3": 7.8266402550502425,
+    "b4": 7.728827601511219,
+    "b5": 7.931626448943394
+   },
+   "stderr_lre_min": 7.728827601511219,
+   "stderr_lre_min_name": "b4",
+   "stderr_missing_reason": null,
+   "rss": 3.905073962390869,
+   "rss_lre": 11.631114809642991
+  },
+  {
+   "dataset": "Kirby2",
+   "difficulty": "Average",
+   "start": "START2",
+   "implementation": "lmfit",
+   "success": true,
+   "termination": "ier=1: Fit succeeded. | lmdif: Both actual and predicted relative reductions in the sum of squares\n  are at most 0.000000",
+   "error": null,
+   "param_lre": {
+    "b1": 6.708223779489927,
+    "b2": 6.886718796499342,
+    "b3": 7.1535432291297285,
+    "b4": 6.914699649148195,
+    "b5": 7.3843987375063485
+   },
+   "param_lre_min": 6.708223779489927,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 6.9571507655974045,
+    "b2": 6.7622159777772985,
+    "b3": 6.795011571231193,
+    "b4": 6.286095665019759,
+    "b5": 4.906698168945131
+   },
+   "stderr_lre_min": 4.906698168945131,
+   "stderr_lre_min_name": "b5",
+   "stderr_missing_reason": null,
+   "rss": 3.9050739623914494,
+   "rss_lre": 11.659638075245867
+  },
+  {
+   "dataset": "Kirby2",
+   "difficulty": "Average",
+   "start": "START2",
+   "implementation": "scipy_lm",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 4.951611937826081,
+    "b2": 5.144594289184732,
+    "b3": 5.425706622852184,
+    "b4": 5.227790363802075,
+    "b5": 5.637940942389154
+   },
+   "param_lre_min": 4.951611937826081,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 5.3555557882109595,
+    "b2": 4.713957272563099,
+    "b3": 4.299132023226739,
+    "b4": 3.4841708652698617,
+    "b5": 3.0707690333794275
+   },
+   "stderr_lre_min": 3.0707690333794275,
+   "stderr_lre_min_name": "b5",
+   "stderr_missing_reason": null,
+   "rss": 3.9050739641599175,
+   "rss_lre": 9.346136942966758
+  },
+  {
+   "dataset": "Kirby2",
+   "difficulty": "Average",
+   "start": "START2",
+   "implementation": "scipy_trf",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 4.954698979671715,
+    "b2": 5.146794547194821,
+    "b3": 5.424851193382349,
+    "b4": 5.218381912664903,
+    "b5": 5.64002451051672
+   },
+   "param_lre_min": 4.954698979671715,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 5.342122212011452,
+    "b2": 4.709849957305888,
+    "b3": 4.2974237385046195,
+    "b4": 3.483991492963781,
+    "b5": 3.070893456951268
+   },
+   "stderr_lre_min": 3.070893456951268,
+   "stderr_lre_min_name": "b5",
+   "stderr_missing_reason": null,
+   "rss": 3.9050739641383085,
+   "rss_lre": 9.351502383045894
+  },
+  {
+   "dataset": "Hahn1",
+   "difficulty": "Average",
+   "start": "START2",
+   "implementation": "spectrafit_core",
+   "success": true,
+   "termination": "converged_ftol",
+   "error": null,
+   "param_lre": {
+    "b1": 8.759057400088897,
+    "b2": 8.936981486789781,
+    "b3": 9.17915475618522,
+    "b4": 8.594866579143195,
+    "b5": 10.00432479836666,
+    "b6": 9.300908451825569,
+    "b7": 8.855133090439168
+   },
+   "param_lre_min": 8.594866579143195,
+   "param_lre_min_name": "b4",
+   "stderr_lre": {
+    "b1": 9.593753374766358,
+    "b2": 9.516693263699642,
+    "b3": 9.393071966333661,
+    "b4": 9.683706858701989,
+    "b5": 9.777802832505122,
+    "b6": 9.375903627176962,
+    "b7": 9.646308637353242
+   },
+   "stderr_lre_min": 9.375903627176962,
+   "stderr_lre_min_name": "b6",
+   "stderr_missing_reason": null,
+   "rss": 1.532438285360616,
+   "rss_lre": 10.590062602068446
+  },
+  {
+   "dataset": "Hahn1",
+   "difficulty": "Average",
+   "start": "START2",
+   "implementation": "lmfit",
+   "success": true,
+   "termination": "ier=1: Fit succeeded. | lmdif: Both actual and predicted relative reductions in the sum of squares\n  are at most 0.000000",
+   "error": null,
+   "param_lre": {
+    "b1": 6.647581720958902,
+    "b2": 6.873334864653246,
+    "b3": 7.180475074104494,
+    "b4": 7.002993590124534,
+    "b5": 7.407118824506127,
+    "b6": 7.239007998184798,
+    "b7": 7.153432232261555
+   },
+   "param_lre_min": 6.647581720958902,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 5.322135240835181,
+    "b2": 5.202647721961392,
+    "b3": 5.111413804287302,
+    "b4": 4.565337015872097,
+    "b5": 6.009891922635018,
+    "b6": 4.701433368224664,
+    "b7": 4.533296309874597
+   },
+   "stderr_lre_min": 4.533296309874597,
+   "stderr_lre_min_name": "b7",
+   "stderr_missing_reason": null,
+   "rss": 1.5324382853606382,
+   "rss_lre": 10.590307523393403
+  },
+  {
+   "dataset": "Hahn1",
+   "difficulty": "Average",
+   "start": "START2",
+   "implementation": "scipy_lm",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 2.3694943448326145,
+    "b2": 2.531403143737433,
+    "b3": 2.7501591508053935,
+    "b4": 2.1668083554614466,
+    "b5": 3.3028507924738673,
+    "b6": 2.877844989423119,
+    "b7": 2.426375057073888
+   },
+   "param_lre_min": 2.1668083554614466,
+   "param_lre_min_name": "b4",
+   "stderr_lre": {
+    "b1": 1.7529695541386086,
+    "b2": 1.5836263545764095,
+    "b3": 1.3691535552539775,
+    "b4": 0.4432848928009847,
+    "b5": 1.8868877419545442,
+    "b6": 1.5147240996102345,
+    "b7": 0.37812420884019693
+   },
+   "stderr_lre_min": 0.37812420884019693,
+   "stderr_lre_min_name": "b7",
+   "stderr_missing_reason": null,
+   "rss": 1.5324464601331504,
+   "rss_lre": 5.272909408771585
+  },
+  {
+   "dataset": "Hahn1",
+   "difficulty": "Average",
+   "start": "START2",
+   "implementation": "scipy_trf",
+   "success": true,
+   "termination": "status=3: `xtol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 2.3681209298699457,
+    "b2": 2.5300233616176393,
+    "b3": 2.7488243656882902,
+    "b4": 2.166350733448111,
+    "b5": 3.2994242010100687,
+    "b6": 2.8765401184109027,
+    "b7": 2.4259903717040436
+   },
+   "param_lre_min": 2.166350733448111,
+   "param_lre_min_name": "b4",
+   "stderr_lre": {
+    "b1": 1.7530716376558633,
+    "b2": 1.5837167342581182,
+    "b3": 1.369220093337226,
+    "b4": 0.44329214716795257,
+    "b5": 1.886751404053781,
+    "b6": 1.5148072151181218,
+    "b7": 0.3781296277596676
+   },
+   "stderr_lre_min": 0.3781296277596676,
+   "stderr_lre_min_name": "b7",
+   "stderr_missing_reason": null,
+   "rss": 1.5324464761153218,
+   "rss_lre": 5.27206116180168
+  },
+  {
+   "dataset": "Thurber",
+   "difficulty": "Higher",
+   "start": "START2",
+   "implementation": "spectrafit_core",
+   "success": true,
+   "termination": "converged_ftol",
+   "error": null,
+   "param_lre": {
+    "b1": 9.299970808941602,
+    "b2": 7.290583103948941,
+    "b3": 7.042190598314477,
+    "b4": 6.862525425924182,
+    "b5": 7.281198162650413,
+    "b6": 7.24641998183896,
+    "b7": 6.495870166390748
+   },
+   "param_lre_min": 6.495870166390748,
+   "param_lre_min_name": "b7",
+   "stderr_lre": {
+    "b1": 7.881162749487958,
+    "b2": 5.860471013484277,
+    "b3": 5.861722880307606,
+    "b4": 5.850671021912632,
+    "b5": 5.9271342793088495,
+    "b6": 5.925840261291999,
+    "b7": 5.848817662355736
+   },
+   "stderr_lre_min": 5.848817662355736,
+   "stderr_lre_min_name": "b7",
+   "stderr_missing_reason": null,
+   "rss": 5642.708239669145,
+   "rss_lre": 11.262154764151282
+  },
+  {
+   "dataset": "Thurber",
+   "difficulty": "Higher",
+   "start": "START2",
+   "implementation": "lmfit",
+   "success": true,
+   "termination": "ier=1: Fit succeeded. | lmdif: Both actual and predicted relative reductions in the sum of squares\n  are at most 0.000000",
+   "error": null,
+   "param_lre": {
+    "b1": 8.37328002973299,
+    "b2": 5.508854797723687,
+    "b3": 5.233285638682258,
+    "b4": 5.05888607268328,
+    "b5": 5.4122809318003045,
+    "b6": 5.3261164794779825,
+    "b7": 4.938871763851521
+   },
+   "param_lre_min": 4.938871763851521,
+   "param_lre_min_name": "b7",
+   "stderr_lre": {
+    "b1": 5.798076777367405,
+    "b2": 4.16723466826714,
+    "b3": 4.185165459867845,
+    "b4": 4.160484228333792,
+    "b5": 4.164459665611453,
+    "b6": 3.9467907357532144,
+    "b7": 5.385976263712386
+   },
+   "stderr_lre_min": 3.9467907357532144,
+   "stderr_lre_min_name": "b6",
+   "stderr_missing_reason": null,
+   "rss": 5642.7082431307435,
+   "rss_lre": 9.21609938877469
+  },
+  {
+   "dataset": "Thurber",
+   "difficulty": "Higher",
+   "start": "START2",
+   "implementation": "scipy_lm",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 9.103233172100477,
+    "b2": 7.843065624169748,
+    "b3": 7.609436580752436,
+    "b4": 7.431520264884603,
+    "b5": 7.859027393877727,
+    "b6": 7.946763230267065,
+    "b7": 6.994563302074774
+   },
+   "param_lre_min": 6.994563302074774,
+   "param_lre_min_name": "b7",
+   "stderr_lre": {
+    "b1": 8.550201914078706,
+    "b2": 6.2530087380638655,
+    "b3": 6.307744959250615,
+    "b4": 6.444525165203106,
+    "b5": 6.37165055031197,
+    "b6": 6.6461897643979295,
+    "b7": 6.127176576193622
+   },
+   "stderr_lre_min": 6.127176576193622,
+   "stderr_lre_min_name": "b7",
+   "stderr_missing_reason": null,
+   "rss": 5642.708239667386,
+   "rss_lre": 11.238077136674171
+  },
+  {
+   "dataset": "Thurber",
+   "difficulty": "Higher",
+   "start": "START2",
+   "implementation": "scipy_trf",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 10.094415108183146,
+    "b2": 7.751649509168321,
+    "b3": 7.477253617801464,
+    "b4": 7.303346964101217,
+    "b5": 7.654128698462182,
+    "b6": 7.5765835939246395,
+    "b7": 7.162779240440536
+   },
+   "param_lre_min": 7.162779240440536,
+   "param_lre_min_name": "b7",
+   "stderr_lre": {
+    "b1": 7.901128266190185,
+    "b2": 7.406903281459361,
+    "b3": 7.511742890162542,
+    "b4": 6.733215119068357,
+    "b5": 7.540928439510831,
+    "b6": 6.621882229274625,
+    "b7": 6.849292983389203
+   },
+   "stderr_lre_min": 6.621882229274625,
+   "stderr_lre_min_name": "b6",
+   "stderr_missing_reason": null,
+   "rss": 5642.708239667147,
+   "rss_lre": 11.23490361078649
+  },
+  {
+   "dataset": "Rat42",
+   "difficulty": "Higher",
+   "start": "START2",
+   "implementation": "spectrafit_core",
+   "success": true,
+   "termination": "converged_ftol",
+   "error": null,
+   "param_lre": {
+    "b1": 8.832473593519998,
+    "b2": 8.961960781961734,
+    "b3": 8.519399409506825
+   },
+   "param_lre_min": 8.519399409506825,
+   "param_lre_min_name": "b3",
+   "stderr_lre": {
+    "b1": 8.13777687926379,
+    "b2": 8.453447274299219,
+    "b3": 8.580459468537773
+   },
+   "stderr_lre_min": 8.13777687926379,
+   "stderr_lre_min_name": "b1",
+   "stderr_missing_reason": null,
+   "rss": 8.056522933811307,
+   "rss_lre": 11.852819027246506
+  },
+  {
+   "dataset": "Rat42",
+   "difficulty": "Higher",
+   "start": "START2",
+   "implementation": "lmfit",
+   "success": true,
+   "termination": "ier=1: Fit succeeded. | lmdif: Both actual and predicted relative reductions in the sum of squares\n  are at most 0.000000",
+   "error": null,
+   "param_lre": {
+    "b1": 6.590138094659533,
+    "b2": 6.419470603939836,
+    "b3": 6.170804486849255
+   },
+   "param_lre_min": 6.170804486849255,
+   "param_lre_min_name": "b3",
+   "stderr_lre": {
+    "b1": 4.828399739247408,
+    "b2": 4.592600735442929,
+    "b3": 4.903912380986612
+   },
+   "stderr_lre_min": 4.592600735442929,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 8.056522934056337,
+   "rss_lre": 10.497336056084546
+  },
+  {
+   "dataset": "Rat42",
+   "difficulty": "Higher",
+   "start": "START2",
+   "implementation": "scipy_lm",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 8.517996511121394,
+    "b2": 8.221457431382623,
+    "b3": 8.036847445716377
+   },
+   "param_lre_min": 8.036847445716377,
+   "param_lre_min_name": "b3",
+   "stderr_lre": {
+    "b1": 6.459968717225669,
+    "b2": 6.571852947612713,
+    "b3": 6.9711265642200315
+   },
+   "stderr_lre_min": 6.459968717225669,
+   "stderr_lre_min_name": "b1",
+   "stderr_missing_reason": null,
+   "rss": 8.056522933811346,
+   "rss_lre": 11.851320519078195
+  },
+  {
+   "dataset": "Rat42",
+   "difficulty": "Higher",
+   "start": "START2",
+   "implementation": "scipy_trf",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 8.440014294262536,
+    "b2": 8.159644880687631,
+    "b3": 7.970346249080564
+   },
+   "param_lre_min": 7.970346249080564,
+   "param_lre_min_name": "b3",
+   "stderr_lre": {
+    "b1": 6.450898882404977,
+    "b2": 6.566914818297405,
+    "b3": 6.961412142541287
+   },
+   "stderr_lre_min": 6.450898882404977,
+   "stderr_lre_min_name": "b1",
+   "stderr_missing_reason": null,
+   "rss": 8.056522933811362,
+   "rss_lre": 11.850708980161983
+  },
+  {
+   "dataset": "Rat43",
+   "difficulty": "Higher",
+   "start": "START2",
+   "implementation": "spectrafit_core",
+   "success": true,
+   "termination": "converged_ftol",
+   "error": null,
+   "param_lre": {
+    "b1": 8.310129108637387,
+    "b2": 7.342408800794821,
+    "b3": 8.110530271835112,
+    "b4": 7.0052170022389575
+   },
+   "param_lre_min": 7.0052170022389575,
+   "param_lre_min_name": "b4",
+   "stderr_lre": {
+    "b1": 7.763270920350688,
+    "b2": 7.674607488047159,
+    "b3": 7.566628325410076,
+    "b4": 7.2724954013712715
+   },
+   "stderr_lre_min": 7.2724954013712715,
+   "stderr_lre_min_name": "b4",
+   "stderr_missing_reason": null,
+   "rss": 8786.404907963397,
+   "rss_lre": 11.380288316886011
+  },
+  {
+   "dataset": "Rat43",
+   "difficulty": "Higher",
+   "start": "START2",
+   "implementation": "lmfit",
+   "success": true,
+   "termination": "ier=1: Fit succeeded. | lmdif: Both actual and predicted relative reductions in the sum of squares\n  are at most 0.000000",
+   "error": null,
+   "param_lre": {
+    "b1": 6.314595399211868,
+    "b2": 4.76572949993447,
+    "b3": 4.96893476057514,
+    "b4": 4.629654280802089
+   },
+   "param_lre_min": 4.629654280802089,
+   "param_lre_min_name": "b4",
+   "stderr_lre": {
+    "b1": 5.037711111634601,
+    "b2": 3.738914360167079,
+    "b3": 3.630472831850263,
+    "b4": 3.9378497330693003
+   },
+   "stderr_lre_min": 3.630472831850263,
+   "stderr_lre_min_name": "b3",
+   "stderr_missing_reason": null,
+   "rss": 8786.404909463292,
+   "rss_lre": 9.778480368470092
+  },
+  {
+   "dataset": "Rat43",
+   "difficulty": "Higher",
+   "start": "START2",
+   "implementation": "scipy_lm",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 7.793896431757329,
+    "b2": 6.376454073159713,
+    "b3": 6.557258156147137,
+    "b4": 6.259112297265117
+   },
+   "param_lre_min": 6.259112297265117,
+   "param_lre_min_name": "b4",
+   "stderr_lre": {
+    "b1": 6.582449648874058,
+    "b2": 6.779295752021729,
+    "b3": 6.986008113487967,
+    "b4": 7.414279078380914
+   },
+   "stderr_lre_min": 6.582449648874058,
+   "stderr_lre_min_name": "b1",
+   "stderr_missing_reason": null,
+   "rss": 8786.40490796414,
+   "rss_lre": 11.389206291862685
+  },
+  {
+   "dataset": "Rat43",
+   "difficulty": "Higher",
+   "start": "START2",
+   "implementation": "scipy_trf",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 8.833259098255862,
+    "b2": 7.33627965378598,
+    "b3": 7.735474709713742,
+    "b4": 7.070749821711893
+   },
+   "param_lre_min": 7.070749821711893,
+   "param_lre_min_name": "b4",
+   "stderr_lre": {
+    "b1": 7.062419865168075,
+    "b2": 6.5267856872194585,
+    "b3": 6.417176766413533,
+    "b4": 6.666321082672122
+   },
+   "stderr_lre_min": 6.417176766413533,
+   "stderr_lre_min_name": "b3",
+   "stderr_missing_reason": null,
+   "rss": 8786.40490796323,
+   "rss_lre": 11.378307298411436
+  },
+  {
+   "dataset": "Chwirut1",
+   "difficulty": "Lower",
+   "start": "START2",
+   "implementation": "spectrafit_core",
+   "success": true,
+   "termination": "converged_ftol",
+   "error": null,
+   "param_lre": {
+    "b1": 7.347593166906291,
+    "b2": 8.174173865124004,
+    "b3": 7.719508395935763
+   },
+   "param_lre_min": 7.347593166906291,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 7.702293005051829,
+    "b2": 8.389487680910337,
+    "b3": 8.74482307863595
+   },
+   "stderr_lre_min": 7.702293005051829,
+   "stderr_lre_min_name": "b1",
+   "stderr_missing_reason": null,
+   "rss": 2384.477139309354,
+   "rss_lre": 11.406409807123152
+  },
+  {
+   "dataset": "Chwirut1",
+   "difficulty": "Lower",
+   "start": "START2",
+   "implementation": "lmfit",
+   "success": true,
+   "termination": "ier=1: Fit succeeded. | lmdif: Both actual and predicted relative reductions in the sum of squares\n  are at most 0.000000",
+   "error": null,
+   "param_lre": {
+    "b1": 6.187836814515567,
+    "b2": 6.578514860682035,
+    "b3": 6.391929549874329
+   },
+   "param_lre_min": 6.187836814515567,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 5.275034620286536,
+    "b2": 4.900795462806363,
+    "b3": 4.903578482165574
+   },
+   "stderr_lre_min": 4.900795462806363,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 2384.477139309701,
+   "rss_lre": 11.390571051941235
+  },
+  {
+   "dataset": "Chwirut1",
+   "difficulty": "Lower",
+   "start": "START2",
+   "implementation": "scipy_lm",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 7.415850495413521,
+    "b2": 8.282423783694675,
+    "b3": 7.819973963505243
+   },
+   "param_lre_min": 7.415850495413521,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 7.2513650157891805,
+    "b2": 5.642969586665262,
+    "b3": 5.817768805160477
+   },
+   "stderr_lre_min": 5.642969586665262,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 2384.477139309353,
+   "rss_lre": 11.406452037236168
+  },
+  {
+   "dataset": "Chwirut1",
+   "difficulty": "Lower",
+   "start": "START2",
+   "implementation": "scipy_trf",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 7.476229467602103,
+    "b2": 8.483827428668882,
+    "b3": 7.91638975408887
+   },
+   "param_lre_min": 7.476229467602103,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 7.2807063670742656,
+    "b2": 5.645779437690849,
+    "b3": 5.820288621462289
+   },
+   "stderr_lre_min": 5.645779437690849,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 2384.4771393093524,
+   "rss_lre": 11.406473153832671
+  },
+  {
+   "dataset": "Chwirut2",
+   "difficulty": "Lower",
+   "start": "START2",
+   "implementation": "spectrafit_core",
+   "success": true,
+   "termination": "converged_ftol",
+   "error": null,
+   "param_lre": {
+    "b1": 7.181438461914964,
+    "b2": 7.530767491783367,
+    "b3": 7.483756845001734
+   },
+   "param_lre_min": 7.181438461914964,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 7.598718086705598,
+    "b2": 8.071558335485648,
+    "b3": 8.798699047390757
+   },
+   "stderr_lre_min": 7.598718086705598,
+   "stderr_lre_min_name": "b1",
+   "stderr_missing_reason": null,
+   "rss": 513.0480294068664,
+   "rss_lre": 11.214105596155912
+  },
+  {
+   "dataset": "Chwirut2",
+   "difficulty": "Lower",
+   "start": "START2",
+   "implementation": "lmfit",
+   "success": true,
+   "termination": "ier=1: Fit succeeded. | lmdif: Both actual and predicted relative reductions in the sum of squares\n  are at most 0.000000",
+   "error": null,
+   "param_lre": {
+    "b1": 6.646565167397906,
+    "b2": 6.9734691798433355,
+    "b3": 6.934962156057267
+   },
+   "param_lre_min": 6.646565167397906,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 5.330697467412524,
+    "b2": 4.9453379525094,
+    "b3": 4.901327734062543
+   },
+   "stderr_lre_min": 4.901327734062543,
+   "stderr_lre_min_name": "b3",
+   "stderr_missing_reason": null,
+   "rss": 513.0480294068748,
+   "rss_lre": 11.215273097555094
+  },
+  {
+   "dataset": "Chwirut2",
+   "difficulty": "Lower",
+   "start": "START2",
+   "implementation": "scipy_lm",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 7.230457491829308,
+    "b2": 7.565594181132111,
+    "b3": 7.525916624125355
+   },
+   "param_lre_min": 7.230457491829308,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 6.769298216202328,
+    "b2": 5.64024944541296,
+    "b3": 5.806677253491008
+   },
+   "stderr_lre_min": 5.64024944541296,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 513.0480294068662,
+   "rss_lre": 11.214089840583275
+  },
+  {
+   "dataset": "Chwirut2",
+   "difficulty": "Lower",
+   "start": "START2",
+   "implementation": "scipy_trf",
+   "success": true,
+   "termination": "status=2: `ftol` termination condition is satisfied.",
+   "error": null,
+   "param_lre": {
+    "b1": 7.204106385503445,
+    "b2": 7.539074077556282,
+    "b3": 7.49941784966555
+   },
+   "param_lre_min": 7.204106385503445,
+   "param_lre_min_name": "b1",
+   "stderr_lre": {
+    "b1": 6.7547096845709875,
+    "b2": 5.638883031046554,
+    "b3": 5.80437205443093
+   },
+   "stderr_lre_min": 5.638883031046554,
+   "stderr_lre_min_name": "b2",
+   "stderr_missing_reason": null,
+   "rss": 513.0480294068665,
+   "rss_lre": 11.21412135230016
+  }
+ ],
+ "summary": [
+  {
+   "start": "START1",
+   "implementation": "spectrafit_core",
+   "worst_param_lre": -2.3197274873550686,
+   "dataset": "BoxBOD",
+   "parameter": "b2",
+   "not_converged": [],
+   "no_result": []
+  },
+  {
+   "start": "START1",
+   "implementation": "lmfit",
+   "worst_param_lre": -6.268639151989826,
+   "dataset": "MGH09",
+   "parameter": "b2",
+   "not_converged": [
+    {
+     "dataset": "MGH09",
+     "termination": "ier=-1: Tolerance seems to be too small. Could not estimate error-bars. | lmdif: Fit aborted."
+    }
+   ],
+   "no_result": [
+    {
+     "dataset": "MGH17",
+     "error": "ValueError: NaN values detected in your input data or the output of your objective/model function - fitting algorithms cannot handle this! Please read https://lmfit.github.io/lmfit-py/faq.html#i-get-errors-from-nan-in-my-fit-what-can-i-do for more information."
+    }
+   ]
+  },
+  {
+   "start": "START1",
+   "implementation": "scipy_lm",
+   "worst_param_lre": -2.3047998248129136,
+   "dataset": "BoxBOD",
+   "parameter": "b2",
+   "not_converged": [],
+   "no_result": []
+  },
+  {
+   "start": "START1",
+   "implementation": "scipy_trf",
+   "worst_param_lre": 2.1645904358359647,
+   "dataset": "Hahn1",
+   "parameter": "b4",
+   "not_converged": [],
+   "no_result": []
+  },
+  {
+   "start": "START2",
+   "implementation": "spectrafit_core",
+   "worst_param_lre": 6.495870166390748,
+   "dataset": "Thurber",
+   "parameter": "b7",
+   "not_converged": [],
+   "no_result": []
+  },
+  {
+   "start": "START2",
+   "implementation": "lmfit",
+   "worst_param_lre": 4.629654280802089,
+   "dataset": "Rat43",
+   "parameter": "b4",
+   "not_converged": [],
+   "no_result": []
+  },
+  {
+   "start": "START2",
+   "implementation": "scipy_lm",
+   "worst_param_lre": 2.1668083554614466,
+   "dataset": "Hahn1",
+   "parameter": "b4",
+   "not_converged": [],
+   "no_result": []
+  },
+  {
+   "start": "START2",
+   "implementation": "scipy_trf",
+   "worst_param_lre": 2.166350733448111,
+   "dataset": "Hahn1",
+   "parameter": "b4",
+   "not_converged": [],
+   "no_result": []
+  }
+ ]
+}

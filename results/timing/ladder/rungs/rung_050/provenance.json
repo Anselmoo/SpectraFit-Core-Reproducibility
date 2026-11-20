@@ -1,6 +1,6 @@
 {
   "schema_version": "spectrafit-core/bench-provenance/2",
-  "run_uid": "f786844f1c17d521",
+  "run_uid": "e7d2a915f964f6a6",
   "capture": "live",
   "params": {
     "reps_requested": 100,
@@ -12,40 +12,40 @@
     "headline_only": false
   },
   "timing": {
-    "started_utc": "2026-10-17T05:12:17Z",
-    "finished_utc": "2026-10-17T11:45:04Z",
-    "wall_seconds": 23567.0
+    "started_utc": "2026-11-17T02:04:30Z",
+    "finished_utc": "2026-11-17T08:43:35Z",
+    "wall_seconds": 23945.0
   },
   "exit_status": 0,
-  "local_run_dir": "2026-10-17_run_005",
+  "local_run_dir": "2026-11-17_run_005",
   "resources": {
-    "peak_rss_gb": 2.65,
-    "mmap_regions": 7844,
+    "peak_rss_gb": 2.63,
+    "mmap_regions": 7848,
     "jax_cache_clears": 7,
     "jax_compile_budget": 64,
     "load_average_start": [
-      1.6,
-      2.68,
-      2.37
+      1.25,
+      2.19,
+      2.0
     ],
     "load_average_end": [
+      1.52,
       2.81,
-      3.16,
-      2.7
+      2.66
     ],
     "steal": {
-      "steal_ticks": 4803,
-      "total_ticks": 37696193,
-      "steal_fraction": 0.00012741
+      "steal_ticks": 5394,
+      "total_ticks": 38298377,
+      "steal_fraction": 0.00014084
     }
   },
   "headline": {
-    "geomean_speedup_vs_baseline": 16.710457416316157,
-    "harmonic_mean_speedup_vs_baseline": 13.746674540081578,
+    "geomean_speedup_vs_baseline": 14.38821100727137,
+    "harmonic_mean_speedup_vs_baseline": 11.593363419013297,
     "max_abs_delta_r2": 0.0001294643325077116,
     "spectrafit_win_rate": 0.875,
     "n_cases": 160,
-    "regressions": 0,
+    "regressions": 6,
     "backends": [
       "spectrafit",
       "lmfit",
@@ -64,29 +64,29 @@
   "artifacts": [
     {
       "path": "audit.json",
-      "bytes": 10540773,
-      "sha256": "a224610b98c9e6d229096d6403bdf965e8b991c1ef606eb50f53d1a2c4e25d71"
+      "bytes": 10540097,
+      "sha256": "f15a1c5d3570d6861313d0accde940c0f5065f31acdb286e722265451ef87e31"
     },
     {
       "path": "manifest.json",
-      "bytes": 114898,
-      "sha256": "42f50c6e752e86e4efc746d7df80cc0f4a594854e65b1e6ca1bd399124fd15ea"
+      "bytes": 114973,
+      "sha256": "13ed76efd89c586ee3bf65a353a1047d14ee033a8718c7ae168911a0076cb305"
     },
     {
       "path": "results.json",
-      "bytes": 68412785,
-      "sha256": "427cbb52d1d97b6eaf0707840bf609379dee4eccda6436a0ddb4ce46b6724cd0"
+      "bytes": 68353003,
+      "sha256": "b8bbbfcfe491d84f9cc19c68e40b8234fe9babf8295aead57ac1f509dfb087ff"
     },
     {
       "path": "trust.json",
-      "bytes": 31020,
-      "sha256": "887043dc9f578a4e23bef3e7098afa709b8b911bf7c3e5471414eda0a4a0519d"
+      "bytes": 31017,
+      "sha256": "c7d48632d116ba3691feb179a72128eb3e60d0f53dca24b01ce7752a887b9f75"
     }
   ],
   "environment": {
     "git": {
-      "commit": "1e304188a7376caf128fcb432a16554ed44ad32a",
-      "branch": "tag v0.1.2 (git archive export)",
+      "commit": "952c5c954eed2e0e36224ddf2f9859086d36fad7",
+      "branch": "tag v0.1.3 (git archive export)",
       "dirty": false
     },
     "host": {
@@ -95,8 +95,8 @@
       "cores": 16,
       "ram_gb": 31.3,
       "vm_max_map_count": 65530,
-      "os": "Linux-5.15.0-198-generic-x86_64-with-glibc2.35",
-      "kernel": "5.15.0-198-generic",
+      "os": "Linux-5.15.0-203-generic-x86_64-with-glibc2.35",
+      "kernel": "5.15.0-203-generic",
       "thread_env": {
         "OMP_NUM_THREADS": null,
         "OPENBLAS_NUM_THREADS": null,
@@ -123,7 +123,7 @@
     },
     "versions": {
       "python": "3.13.13",
-      "rustc": "1.99.1 (58cf8f9c3 2026-10-13)",
+      "rustc": "1.100.0 (0ef1bc386 2026-11-09)",
       "packages": {
         "numpy": "2.5.1",
         "scipy": "1.18.0",
@@ -131,9 +131,9 @@
         "jax": "0.11.0",
         "jaxlib": "0.11.0",
         "optimistix": "0.1.0",
-        "spectrafit-core": "0.1.2"
+        "spectrafit-core": "0.1.3"
       },
-      "uv_lock_sha256": "19f3ea85a0e5d4be6beb383a055a3c112a9198a80f6421c6018a1fc732775f70",
+      "uv_lock_sha256": "3b316c08df834b705a209268d19694a008c2528d25fe0c53df94d792a0c63d67",
       "blas": {
         "name": "scipy-openblas",
         "version": "0.3.33.112.0"
@@ -188,7 +188,7 @@
         "library": null,
         "algorithm": null,
         "bounds": null,
-        "version": "0.1.2",
+        "version": "0.1.3",
         "stopping": null,
         "runtime": null
       },

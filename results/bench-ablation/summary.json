@@ -1,0 +1,76 @@
+{
+ "run": "2026-11-17_run_001",
+ "n_cases": 160,
+ "git_commit": "1c9fe69",
+ "median_med_ms": {
+  "jax": 2.1554502527578734,
+  "lmfit": 8.210476255044341,
+  "scipy-ls-dogbox": 5.395852997025941,
+  "scipy-ls-lm": 5.538841258385219,
+  "scipy-ls-trf": 6.89752275502542,
+  "spectrafit": 0.6093004994909279,
+  "spectrafit_fd": 0.87612250354141
+ },
+ "pairs": {
+  "spectrafit_vs_jax": {
+   "like_for_like_cases": 122,
+   "geomean_speedup": 4.347598045025165,
+   "median_speedup": 4.0664966834372755
+  },
+  "spectrafit_vs_lmfit": {
+   "like_for_like_cases": 136,
+   "geomean_speedup": 13.49456320924331,
+   "median_speedup": 12.916137699406061
+  },
+  "spectrafit_vs_scipy-ls-dogbox": {
+   "like_for_like_cases": 131,
+   "geomean_speedup": 7.115483643656933,
+   "median_speedup": 9.000781629234586
+  },
+  "spectrafit_vs_scipy-ls-lm": {
+   "like_for_like_cases": 128,
+   "geomean_speedup": 8.00409124950976,
+   "median_speedup": 9.080172198367961
+  },
+  "spectrafit_vs_scipy-ls-trf": {
+   "like_for_like_cases": 131,
+   "geomean_speedup": 9.099243121488414,
+   "median_speedup": 10.946990786460248
+  },
+  "spectrafit_vs_spectrafit_fd": {
+   "like_for_like_cases": 159,
+   "geomean_speedup": 1.4107685244333332,
+   "median_speedup": 1.1913188883235102
+  },
+  "spectrafit_fd_vs_jax": {
+   "like_for_like_cases": 122,
+   "geomean_speedup": 2.9285856746279246,
+   "median_speedup": 3.319144898477404
+  },
+  "spectrafit_fd_vs_lmfit": {
+   "like_for_like_cases": 136,
+   "geomean_speedup": 9.302952404585072,
+   "median_speedup": 10.790654540718911
+  },
+  "spectrafit_fd_vs_scipy-ls-dogbox": {
+   "like_for_like_cases": 131,
+   "geomean_speedup": 4.883951934266741,
+   "median_speedup": 7.097333119464649
+  },
+  "spectrafit_fd_vs_scipy-ls-lm": {
+   "like_for_like_cases": 128,
+   "geomean_speedup": 5.420394025995016,
+   "median_speedup": 7.1934974539187895
+  },
+  "spectrafit_fd_vs_scipy-ls-trf": {
+   "like_for_like_cases": 131,
+   "geomean_speedup": 6.212258472997502,
+   "median_speedup": 8.640492457212387
+  },
+  "spectrafit_fd_vs_spectrafit": {
+   "like_for_like_cases": 159,
+   "geomean_speedup": 0.7088335064759631,
+   "median_speedup": 0.8394058130038174
+  }
+ }
+}

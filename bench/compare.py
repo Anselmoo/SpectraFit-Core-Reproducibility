@@ -3,8 +3,9 @@
 
 Columns: the 151-case archive shipped in the release (``results/archived/``, pre-release
 commit 990a4c7 / 0fd4b5d, 15 to 17 August 2026); the first 160-case measurement with
-spectrafit-core 0.1.2 (``results/timing-2026-10-06/``, 6 to 7 October 2026), if present;
-and the measurement of record (``results/timing/``, 16 to 17 October 2026). Same
+spectrafit-core 0.1.2 (``results/timing-2026-10-06/``, 6 to 7 October 2026) and the second
+(``results/timing-0.1.2-2026-10-16/``, 16 to 17 October 2026), each if present; and the
+measurement of record (``results/timing/``, spectrafit-core 0.1.3, 16 to 17 November 2026). Same
 computations as the claims in ``reproduce.py``. Standard library only.
 
     python bench/compare.py > table.md
@@ -90,7 +91,10 @@ def main() -> None:
     if (ROOT / "timing-2026-10-06").is_dir():
         cols.append(("160 cases, 0.1.2, 6–7 Oct 2026 (run 1)",
                      load(ROOT / "timing-2026-10-06", "ladder/ladder.json", "seed-sweep/sweep.json")))
-    cols.append(("160 cases, 0.1.2, 16–17 Oct 2026 (of record)",
+    if (ROOT / "timing-0.1.2-2026-10-16").is_dir():
+        cols.append(("160 cases, 0.1.2, 16–17 Oct 2026 (run 2)",
+                     load(ROOT / "timing-0.1.2-2026-10-16", "ladder/ladder.json", "seed-sweep/sweep.json")))
+    cols.append(("160 cases, 0.1.3, 16–17 Nov 2026 (of record)",
                  load(ROOT / "timing", "ladder/ladder.json", "seed-sweep/sweep.json")))
     print("| | " + " | ".join(label for label, _ in cols) + " |")
     print("|---" * (len(cols) + 1) + "|")

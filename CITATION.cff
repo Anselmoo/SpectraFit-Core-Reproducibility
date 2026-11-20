@@ -7,7 +7,7 @@ abstract: >-
   the article on spectrafit-core, on a recorded host, and checks every
   number stated in the text against the regenerated data. The timing benchmark
   (160 cases, six backends, five repetition depths, 50 catalogue seeds) was
-  measured on that host with the published 0.1.2 wheel and release harness.
+  measured on that host with the published 0.1.3 wheel and release harness.
 type: software
 authors:
   - given-names: "Anselm W."
@@ -18,13 +18,10 @@ authors:
     affiliation: "Max Planck Institute for Chemical Energy Conversion"
 repository-code: "https://github.com/Anselmoo/SpectraFit-Core-Reproducibility"
 license: MIT
-version: 1.2.0
-date-released: 2026-10-18
-doi: "10.5281/zenodo.23451597"
+version: 1.3.0
+date-released: 2026-11-20
+doi: "10.5281/zenodo.23171640"
 identifiers:
-  - type: doi
-    value: "10.5281/zenodo.23451597"
-    description: "Version DOI of this repository's release 1.2.0."
   - type: doi
     value: "10.5281/zenodo.23171640"
     description: "Concept DOI of this repository: always resolves to the latest version."
@@ -41,8 +38,8 @@ references:
       - given-names: "Anselm W."
         family-names: Hahn
         orcid: "https://orcid.org/0000-0003-4543-4833"
-    doi: "10.5281/zenodo.23170069"
-    version: "0.1.2"
+    doi: "10.5281/zenodo.24282350"
+    version: "0.1.3"
     identifiers:
       - type: doi
         value: "10.5281/zenodo.23043544"

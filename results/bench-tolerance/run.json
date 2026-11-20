@@ -1,0 +1,61 @@
+{
+ "schema": "harness-run/1",
+ "target": "bench-tolerance",
+ "command": "bench/common_tolerance.py run --mode default|common --reps 5; analyse",
+ "start_utc": "2026-11-17T20:02:16Z",
+ "end_utc": "2026-11-17T20:32:38Z",
+ "wall_s": 1821.6,
+ "load_start": [
+  1.64,
+  1.42,
+  1.42
+ ],
+ "load_end": [
+  1.64,
+  1.18,
+  1.16
+ ],
+ "status": "ok",
+ "environment": {
+  "archive": {
+   "commit": "1c9fe699d489c89edde2d3e793c2fe04db5d8762",
+   "dirty": true
+  },
+  "host": "terra",
+  "platform": "Linux-5.15.0-203-generic-x86_64-with-glibc2.35",
+  "machine": "x86_64",
+  "cores": 16,
+  "python": "3.13.13",
+  "spectrafit_core": {
+   "version": "0.1.3",
+   "wheel_sha256": "0d909b5faf1b5f47cbfb81b074b6ee0f44a523c6daf8303c8f2d4e1c878f6e43",
+   "wheel_sha256_from": "uv.lock",
+   "core_extension": {
+    "file": "_core.cpython-313-x86_64-linux-gnu.so",
+    "sha256": "2e672905bbbf9e592a68df47f4342e811f028063cc4dc144e787cd83ff021ebd"
+   }
+  },
+  "packages": {
+   "numpy": "2.5.1",
+   "scipy": "1.18.0",
+   "lmfit": "1.3.4",
+   "matplotlib": "3.11.2"
+  },
+  "threads": {
+   "OMP_NUM_THREADS": "1",
+   "OPENBLAS_NUM_THREADS": "1",
+   "MKL_NUM_THREADS": "1",
+   "RAYON_NUM_THREADS": "1"
+  },
+  "thread_setting": "caps-1"
+ },
+ "notes": [
+  "records: default.json, common.json, summary.json, report.md"
+ ],
+ "files_sha256": {
+  "common.json": "a61afc44bf6f577a64565e0a0ac234670c4c430875b5b346ca28990b903fa34e",
+  "default.json": "80188c9f966ac8f810300fb04a179fa9c60bd17b25115a97434d7aa2787e3094",
+  "report.md": "7b28eea8f7ce379466187fff3c75a01c119a5de16be79079883a5e8c1098a4e5",
+  "summary.json": "132a32c5d10ebad7a26f9d08694e3cd7cce39bd2b64cfce68854ab9a6a563680"
+ }
+}

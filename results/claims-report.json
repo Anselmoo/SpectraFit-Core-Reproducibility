@@ -127,86 +127,86 @@
  },
  {
   "id": "bench-01",
-  "source": "measured-0.1.2",
+  "source": "measured-0.1.3",
   "statement": "160 cases",
   "observed": 160,
   "ok": true
  },
  {
   "id": "bench-02",
-  "source": "measured-0.1.2",
-  "statement": "16.7 times faster than lmfit in geometric mean, 13.7 in harmonic mean",
+  "source": "measured-0.1.3",
+  "statement": "14.4 times faster than lmfit in geometric mean, 11.6 in harmonic mean",
   "observed": {
-   "geomean": 16.710457416316157,
-   "harmonic": 13.746674540081578
+   "geomean": 14.38821100727137,
+   "harmonic": 11.593363419013297
   },
   "ok": true
  },
  {
   "id": "bench-03",
-  "source": "measured-0.1.2",
-  "statement": "factors 7.1, 9.0 and 7.6 against the SciPy configurations and 5.4 against JAX",
+  "source": "measured-0.1.3",
+  "statement": "factors 6.1, 7.7 and 6.5 against the SciPy configurations and 4.7 against JAX",
   "observed": {
-   "lmfit": 16.710457416316157,
-   "jax": 5.397389160462339,
-   "scipy-ls-lm": 7.078885807224069,
-   "scipy-ls-trf": 9.00014895722313,
-   "scipy-ls-dogbox": 7.560050592161854
+   "lmfit": 14.38821100727137,
+   "jax": 4.664655652569182,
+   "scipy-ls-lm": 6.050509780624095,
+   "scipy-ls-trf": 7.685122139803165,
+   "scipy-ls-dogbox": 6.4681282889607745
   },
   "ok": true
  },
  {
   "id": "bench-04",
-  "source": "measured-0.1.2",
+  "source": "measured-0.1.3",
   "statement": "fastest backend on 140 of the 160 cases",
   "observed": 140,
   "ok": true
  },
  {
   "id": "bench-05",
-  "source": "measured-0.1.2",
-  "statement": "by category the speedup ranges from 5.7 to 26.1; tied-parameter cases 16.0",
+  "source": "measured-0.1.3",
+  "statement": "by category the speedup ranges from 4.9 to 26.4; tied-parameter cases 14.0",
   "observed": {
-   "easy": 14.21,
-   "complex": 24.62,
-   "reality": 19.57,
-   "optfn": 26.1,
-   "scaling": 17.25,
-   "edge": 16.43,
-   "lineshapes": 9.98,
-   "fixed": 12.46,
-   "tied": 15.98,
-   "robust": 5.73
+   "easy": 13.08,
+   "complex": 19.06,
+   "reality": 17.17,
+   "optfn": 26.43,
+   "scaling": 14.73,
+   "edge": 15.32,
+   "lineshapes": 7.79,
+   "fixed": 10.5,
+   "tied": 14.02,
+   "robust": 4.91
   },
   "ok": true
  },
  {
   "id": "bench-06",
-  "source": "measured-0.1.2",
-  "statement": "the headline moves between 16.5 and 16.8 across the five depths",
+  "source": "measured-0.1.3",
+  "statement": "the headline moves between 14.1 and 14.5 across the five depths",
   "observed": [
-   16.509148632700537,
-   16.456285684405657,
-   16.55196611146939,
-   16.79229652781895,
-   16.710457416316157
+   14.211720280418715,
+   14.122638845817315,
+   14.294628581066013,
+   14.49374222959209,
+   14.38821100727137
   ],
   "ok": true
  },
  {
   "id": "bench-07",
-  "source": "measured-0.1.2",
-  "statement": "16.19 with a standard deviation of 0.36 across 50 seeds",
+  "source": "measured-0.1.3",
+  "statement": "14.16 with a standard deviation of 0.31 across 50 seeds",
   "observed": {
    "n": 50,
-   "mean": 16.191155459458233,
-   "sd": 0.3602346685611422
+   "mean": 14.161348777296629,
+   "sd": 0.3075824416862214
   },
   "ok": true
  },
  {
   "id": "bench-08",
-  "source": "measured-0.1.2",
+  "source": "measured-0.1.3",
   "statement": "the 20 cases it loses are the optimisation functions",
   "observed": [
    "optfn"
@@ -215,45 +215,45 @@
  },
  {
   "id": "bench-09",
-  "source": "measured-0.1.2",
-  "statement": "excluding the optimisation-function category lowers the headline to 15.7",
-  "observed": 15.679315906637436,
+  "source": "measured-0.1.3",
+  "statement": "excluding the optimisation-function category lowers the headline to 13.2",
+  "observed": 13.190767907770294,
   "ok": true
  },
  {
   "id": "bench-10",
-  "source": "measured-0.1.2",
-  "statement": "against the three SciPy configurations the harmonic means are 1.3 to 2.1",
+  "source": "measured-0.1.3",
+  "statement": "against the three SciPy configurations the harmonic means are 1.3 to 2.0",
   "observed": {
-   "scipy-ls-lm": 1.526,
-   "scipy-ls-trf": 2.051,
-   "scipy-ls-dogbox": 1.32
+   "scipy-ls-lm": 1.491,
+   "scipy-ls-trf": 2.01,
+   "scipy-ls-dogbox": 1.297
   },
   "ok": true
  },
  {
   "id": "bench-11",
-  "source": "measured-0.1.2",
-  "statement": "against JAX the geometric and harmonic means are 5.4 and 4.8",
+  "source": "measured-0.1.3",
+  "statement": "against JAX the geometric and harmonic means are 4.7 and 4.1",
   "observed": {
-   "geomean": 5.397389160462339,
-   "harmonic": 4.8418047530814725
+   "geomean": 4.664655652569182,
+   "harmonic": 4.125481025876367
   },
   "ok": true
  },
  {
   "id": "bench-12",
-  "source": "measured-0.1.2",
-  "statement": "the median solve takes 0.48 ms with spectrafit-core and 7.0 ms with lmfit",
+  "source": "measured-0.1.3",
+  "statement": "the median solve takes 0.54 ms with spectrafit-core and 7.1 ms with lmfit",
   "observed": {
-   "spectrafit": 0.4843717488256516,
-   "lmfit": 7.037619501716108
+   "spectrafit": 0.5447820003610104,
+   "lmfit": 7.080482995661441
   },
   "ok": true
  },
  {
   "id": "agree-02",
-  "source": "measured-0.1.2",
+  "source": "measured-0.1.3",
   "statement": "CX-017: the six backends report the same coefficient of determination to three significant figures; parameter errors lie between 660 % and 1.3 million %",
   "observed": {
    "r2": {
@@ -277,7 +277,7 @@
  },
  {
   "id": "agree-01",
-  "source": "measured-0.1.2",
+  "source": "measured-0.1.3",
   "statement": "on 94 cases the six backends agree to within 0.74 percentage points; 37 remain",
   "observed": {
    "n": 94,
@@ -288,27 +288,27 @@
  },
  {
   "id": "bias-01",
-  "source": "measured-0.1.2",
-  "statement": "about 138 microseconds against 6.8 for plain array code, roughly a factor of 20",
+  "source": "measured-0.1.3",
+  "statement": "about 139 microseconds against 6.5 for plain array code, roughly a factor of 21",
   "observed": {
-   "numpy_us": 6.808639504015446,
-   "wheel_us": 138.33630000590347,
-   "ratio": 20.317759506039145,
+   "numpy_us": 6.5234930079896,
+   "wheel_us": 139.43418001872487,
+   "ratio": 21.37415949522041,
    "n_points": 97
   },
   "ok": true
  },
  {
   "id": "bias-02",
-  "source": "measured-0.1.2",
-  "statement": "35 registered kernels: 23 agree bit for bit, 12 do not; all but one of those to better than 4e-16, the exception at 5e-7",
+  "source": "measured-0.1.3",
+  "statement": "35 registered kernels: 24 agree bit for bit, 11 do not; all of those to better than 4e-16",
   "observed": {
    "n": 35,
-   "exact": 23,
-   "nonzero": 12,
+   "exact": 24,
+   "nonzero": 11,
    "largest_two": [
-    3.367538917781003e-16,
-    4.58906797240477e-07
+    2.8422780457586024e-16,
+    3.367538917781003e-16
    ]
   },
   "ok": true
@@ -324,81 +324,323 @@
   "ok": true
  },
  {
-  "id": "eels-02",
+  "id": "eels-04",
   "source": "regenerated",
-  "statement": "fitted independently, the steps are undetermined, 1704 \u00b1 1008 counts at L3 and 852 \u00b1 1032 at L2",
+  "statement": "the L3 step is 1701 \u00b1 34 counts with the relationships (R^2 0.99888); without them the fit from the default start ends at RSS 21.93e6 (R^2 0.99890), while the profile reaches RSS 20.74e6 at L3 = 1000",
   "observed": {
    "L3": {
-    "value": 1703.5568696277567,
-    "stderr": 1007.8938081110662
+    "value": 1700.656645387946,
+    "stderr": 33.90189570760345
    },
-   "L2": {
-    "value": 851.7782920834578,
-    "stderr": 1032.3305501160833
-   }
-  },
-  "ok": true
- },
- {
-  "id": "eels-03",
-  "source": "regenerated",
-  "statement": "the independent fit is started from the default guesses and from the constrained solution, and the lower residual is kept; from the default guesses alone it stops in a local minimum with one step width at its bound",
-  "observed": {
-   "kept": "constrained_solution",
-   "starts": {
-    "default": {
-     "rss": 23803014.303361204,
-     "r_squared": 0.9988103357404586,
-     "step_l3": 1750.5898260914212,
-     "step_l3_sigma": 0.3000026511827159
-    },
-    "constrained_solution": {
-     "rss": 22492836.379360866,
-     "r_squared": 0.9988758178609144,
-     "step_l3": 1703.5568696277567,
-     "step_l3_sigma": 0.3823818731892403
+   "r2_constrained": 0.9988815628267707,
+   "free_default_start": {
+    "L3": 636.9738750952548,
+    "rss": 21934809.13492637,
+    "r2": 0.9989037078188875,
+    "success": true,
+    "termination": "converged_ftol",
+    "stationarity": null,
+    "best_of_seeded_starts_rss": 22018942.649217032,
+    "profile_minimum": {
+     "L3": 1000.0,
+     "rss": 20737478.912927352,
+     "at_bound": {
+      "step_l3.sigma": "lower",
+      "step_l2.sigma": "lower",
+      "l3_e.center": "lower",
+      "l2_c.center": "lower"
+     }
     }
    }
   },
   "ok": true
  },
  {
-  "id": "eels-04",
-  "source": "regenerated",
-  "statement": "the L3 step is then 1704 \u00b1 36 counts, at the same value and the same coefficient of determination, 0.99888",
-  "observed": {
-   "L3": {
-    "value": 1703.5569194955808,
-    "stderr": 36.21605427584602
-   },
-   "r2_free": 0.9988758178609144,
-   "r2_constrained": 0.9988758178532242
-  },
-  "ok": true
- },
- {
   "id": "eels-05",
   "source": "regenerated",
-  "statement": "the L3 branching ratio stays at 0.820, and its standard error falls from 0.013 to 0.002",
+  "statement": "the L3 branching ratio is 0.820 \u00b1 0.002 with the relationships; without them no value is stated, because the default-start fit does not reach the lowest RSS found (see eels-04)",
   "observed": {
-   "free": {
-    "value": 0.8199697373833315,
-    "stderr": 0.012538952084427362
-   },
    "constrained": {
-    "value": 0.8199697365205789,
-    "stderr": 0.0020163753538112324
-   }
+    "value": 0.8195161805206322,
+    "stderr": 0.0017830895139768436
+   },
+   "default_start_reaches_lowest_rss_found": false
   },
   "ok": true
  },
  {
   "id": "eels-06",
   "source": "regenerated",
-  "statement": "the relationships make the step 28 times and the branching ratio six times more precise (abstract: the edge-step amplitude 28 times)",
+  "statement": "the 95 % profile interval of the L3 step is 600 counts wide without the relationships and 74.45 with them, a ratio of 8.06; both intervals are boundary_affected",
   "observed": {
-   "step": 27.83002809843015,
-   "branching": 6.218560478200144
+   "free_width": 600.0,
+   "constrained_width": 74.453125,
+   "ratio": 8.058761804826862,
+   "boundary_affected": {
+    "free": true,
+    "constrained": true
+   }
+  },
+  "ok": true
+ },
+ {
+  "id": "eels-07",
+  "source": "regenerated",
+  "statement": "the independent fit is also run from 50 seeded starts; the seed, the sampling rule and, per start, the residual, the L3 step, the success flag and the distance of every parameter to its bounds are recorded",
+  "observed": {
+   "n": 50,
+   "seed": 20261109,
+   "counts": {
+    "better_minimum": 0,
+    "flat_valley": 0,
+    "neither": 50
+   },
+   "outcome": "confirmation"
+  },
+  "ok": true
+ },
+ {
+  "id": "eels-08",
+  "source": "regenerated",
+  "statement": "the condition number of J^T J is recorded for both fits, with the condition number of J as its square root",
+  "observed": {
+   "free": {
+    "jtj": 6548967857101.33,
+    "j": 2559095.1246683523,
+    "note": "jtj is FitResult.condition_number, the condition number of J^T J"
+   },
+   "constrained": {
+    "jtj": 5274140930336.05,
+    "j": 2296549.788342515,
+    "note": "jtj is FitResult.condition_number, the condition number of J^T J"
+   }
+  },
+  "ok": true
+ },
+ {
+  "id": "eels-09a",
+  "source": "regenerated",
+  "statement": "fitted independently, the 95 % profile interval of the L3 step is recorded on its grid (threshold of 1.2.0 dropped; README, Deviations in 1.3.0)",
+  "observed": {
+   "lower": 725.0,
+   "upper": 1325.0,
+   "i": [
+    29,
+    53
+   ],
+   "contiguous": true,
+   "open_lower": false,
+   "open_upper": false,
+   "closed": true,
+   "width": 600.0,
+   "boundary_affected": true,
+   "at_bound_inside": [
+    "l2_c.center",
+    "l3_e.center",
+    "step_l2.sigma",
+    "step_l3.sigma"
+   ],
+   "q": 3.8554381460849236,
+   "level": 0.95
+  },
+  "ok": true
+ },
+ {
+  "id": "eels-09b",
+  "source": "regenerated",
+  "statement": "with the four relationships the 95 % profile interval of the L3 step is closed on its grid; its width and its ratio to the interval without them (the free grid if that interval is open) are recorded (threshold of 1.2.0 dropped; README, Deviations in 1.3.0)",
+  "observed": {
+   "constrained": {
+    "lower": 1669.0,
+    "upper": 1739.0,
+    "i": [
+     53,
+     67
+    ],
+    "contiguous": true,
+    "open_lower": false,
+    "open_upper": false,
+    "closed": true,
+    "width": 70.0,
+    "boundary_affected": true,
+    "at_bound_inside": [
+     "l2_c.center",
+     "step_l2.sigma",
+     "step_l3.sigma"
+    ],
+    "q": 3.8553545885456515,
+    "level": 0.95,
+    "bisected": {
+     "lower": {
+      "inside": 1666.65625,
+      "outside": 1666.578125,
+      "end": 1666.6171875,
+      "steps": [
+       {
+        "a": 1666.5,
+        "rss": 22507433.822954096,
+        "inside": false,
+        "robust": 6,
+        "at_bound": {
+         "step_l3.sigma": "lower",
+         "step_l2.sigma": "lower",
+         "l2_c.center": "lower"
+        }
+       },
+       {
+        "a": 1667.75,
+        "rss": 22497285.573177535,
+        "inside": true,
+        "robust": 6,
+        "at_bound": {
+         "step_l3.sigma": "lower",
+         "step_l2.sigma": "lower",
+         "l2_c.center": "lower"
+        }
+       },
+       {
+        "a": 1667.125,
+        "rss": 22502300.48586832,
+        "inside": true,
+        "robust": 4,
+        "at_bound": {
+         "step_l3.sigma": "lower",
+         "step_l2.sigma": "lower",
+         "l2_c.center": "lower"
+        }
+       },
+       {
+        "a": 1666.8125,
+        "rss": 22504852.327949394,
+        "inside": true,
+        "robust": 3,
+        "at_bound": {
+         "step_l3.sigma": "lower",
+         "step_l2.sigma": "lower",
+         "l2_c.center": "lower"
+        }
+       },
+       {
+        "a": 1666.65625,
+        "rss": 22506139.359087326,
+        "inside": true,
+        "robust": 4,
+        "at_bound": {
+         "step_l3.sigma": "lower",
+         "step_l2.sigma": "lower",
+         "l2_c.center": "lower"
+        }
+       },
+       {
+        "a": 1666.578125,
+        "rss": 22506785.654150963,
+        "inside": false,
+        "robust": 3,
+        "at_bound": {
+         "step_l3.sigma": "lower",
+         "step_l2.sigma": "lower",
+         "l2_c.center": "lower"
+        }
+       }
+      ]
+     },
+     "upper": {
+      "inside": 1741.03125,
+      "outside": 1741.109375,
+      "end": 1741.0703125,
+      "steps": [
+       {
+        "a": 1741.5,
+        "rss": 22509255.929408316,
+        "inside": false,
+        "robust": 3,
+        "at_bound": {
+         "l2_c.center": "lower"
+        }
+       },
+       {
+        "a": 1740.25,
+        "rss": 22502420.126413662,
+        "inside": true,
+        "robust": 3,
+        "at_bound": {
+         "l2_c.center": "lower"
+        }
+       },
+       {
+        "a": 1740.875,
+        "rss": 22505825.174329497,
+        "inside": true,
+        "robust": 3,
+        "at_bound": {
+         "l2_c.center": "lower"
+        }
+       },
+       {
+        "a": 1741.1875,
+        "rss": 22507537.35247676,
+        "inside": false,
+        "robust": 3,
+        "at_bound": {
+         "l2_c.center": "lower"
+        }
+       },
+       {
+        "a": 1741.03125,
+        "rss": 22506680.435342554,
+        "inside": true,
+        "robust": 3,
+        "at_bound": {
+         "l2_c.center": "lower"
+        }
+       },
+       {
+        "a": 1741.109375,
+        "rss": 22507108.68277909,
+        "inside": false,
+        "robust": 5,
+        "at_bound": {
+         "l2_c.center": "lower"
+        }
+       }
+      ]
+     }
+    },
+    "lower_bisected": 1666.6171875,
+    "upper_bisected": 1741.0703125,
+    "width_bisected": 74.453125
+   },
+   "free_width_used": 600.0,
+   "ratio": 8.058761804826862
+  },
+  "ok": true
+ },
+ {
+  "id": "eels-09c",
+  "source": "regenerated",
+  "statement": "the 68 % half-width of the constrained profile and the reported standard error of the L3 step are recorded (threshold of 1.2.0 dropped; README, Deviations in 1.3.0)",
+  "observed": {
+   "half_width": 18.671875,
+   "stderr": 33.90189570760345
+  },
+  "ok": true
+ },
+ {
+  "id": "eels-10",
+  "source": "regenerated",
+  "statement": "the bound status of the reported fits is recorded",
+  "observed": {
+   "free": {
+    "step_l3.sigma": "lower",
+    "l3_e.center": "lower"
+   },
+   "constrained": {
+    "l2_c.center": "lower"
+   },
+   "free_default_start": {
+    "step_l3.sigma": "lower",
+    "l3_e.center": "lower"
+   }
   },
   "ok": true
  }

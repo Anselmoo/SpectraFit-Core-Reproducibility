@@ -1,0 +1,6382 @@
+[
+ {
+  "id": "EZ-001",
+  "category": "easy",
+  "m": {
+   "jax": {
+    "med_ms": 0.7695054955547675,
+    "red_chi2": 0.00010593290367500202,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 2.034986508078873,
+    "red_chi2": 0.00010593290367510118,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 1.6989279974950477,
+    "red_chi2": 0.00010593290367500259,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 3.0230999982450157,
+    "red_chi2": 0.00010593290367500226,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 1.8811504996847361,
+    "red_chi2": 0.00010593290367500244,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.19005200010724366,
+    "red_chi2": 0.00010593290367500222,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.1808159868232906,
+    "red_chi2": 0.0001059329036750026,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "EZ-002",
+  "category": "easy",
+  "m": {
+   "jax": {
+    "med_ms": 0.8055715006776154,
+    "red_chi2": 0.00611242369701843,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 2.1995230054017156,
+    "red_chi2": 0.006112423697019656,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 1.6170379822142422,
+    "red_chi2": 0.006112423697018436,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 1.3036409945925698,
+    "red_chi2": 0.00611242369701843,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 1.8623509822646156,
+    "red_chi2": 0.006112423697018433,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.2219025045633316,
+    "red_chi2": 0.006112423697018435,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.18920649017672986,
+    "red_chi2": 0.006112423697018435,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "EZ-003",
+  "category": "easy",
+  "m": {
+   "jax": {
+    "med_ms": 0.6615950114792213,
+    "red_chi2": 0.0003641087693074938,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 2.124392005498521,
+    "red_chi2": 0.00036410876930862893,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 1.593938490259461,
+    "red_chi2": 0.00036410876930749507,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 1.2554059940157458,
+    "red_chi2": 0.0003641087693074942,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 1.8180560000473633,
+    "red_chi2": 0.00036410876930749957,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.17515549552626908,
+    "red_chi2": 0.0003641087693074928,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.18095150880981237,
+    "red_chi2": 0.0003641087693074952,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "EZ-004",
+  "category": "easy",
+  "m": {
+   "jax": {
+    "med_ms": 0.8283715142169967,
+    "red_chi2": 0.000489982254193087,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 2.055361997918226,
+    "red_chi2": 0.0004899822541977632,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 1.5920784935588017,
+    "red_chi2": 0.0004899822541930874,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 1.1910544999409467,
+    "red_chi2": 0.0004899822541930874,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 1.8186200031777844,
+    "red_chi2": 0.0004899822541930877,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.16775600670371205,
+    "red_chi2": 0.0004899822541930867,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.17409049905836582,
+    "red_chi2": 0.0004899822541930871,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "EZ-005",
+  "category": "easy",
+  "m": {
+   "jax": {
+    "med_ms": 0.6368344911606982,
+    "red_chi2": 0.001431138582469589,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 1.8150849937228486,
+    "red_chi2": 0.0014311385824737313,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 1.6415689897257835,
+    "red_chi2": 0.001431138582469593,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 1.3088105042697862,
+    "red_chi2": 0.0014311385824695934,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 1.8276055052410811,
+    "red_chi2": 0.0014311385824699056,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.17945648869499564,
+    "red_chi2": 0.001431138582469592,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.18142550834454596,
+    "red_chi2": 0.0014311385824695923,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "EZ-006",
+  "category": "easy",
+  "m": {
+   "jax": {
+    "med_ms": 0.878517486853525,
+    "red_chi2": 8.216571431046783e-05,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 1.9154005130985752,
+    "red_chi2": 8.216571431048436e-05,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 1.6283225122606382,
+    "red_chi2": 8.216571431046748e-05,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 1.6964645183179528,
+    "red_chi2": 8.216571431046725e-05,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 1.8083899922203273,
+    "red_chi2": 8.216571431046754e-05,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.16483099898323417,
+    "red_chi2": 8.216571431046748e-05,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.16168600996024907,
+    "red_chi2": 8.216571431046733e-05,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "EZ-007",
+  "category": "easy",
+  "m": {
+   "jax": {
+    "med_ms": 0.7325164915528148,
+    "red_chi2": 0.0058750833919518205,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 1.9605065026553348,
+    "red_chi2": 0.005875083391952102,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 1.63046749366913,
+    "red_chi2": 0.005875083391951824,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 1.2472505040932447,
+    "red_chi2": 0.005875083391951825,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 1.8061755108647048,
+    "red_chi2": 0.005875083391951827,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.1872469874797389,
+    "red_chi2": 0.005875083391951826,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.16204600979108363,
+    "red_chi2": 0.005875083391951822,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "EZ-008",
+  "category": "easy",
+  "m": {
+   "jax": {
+    "med_ms": 0.8340564963873476,
+    "red_chi2": 0.0004036550215072697,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 1.9562954839784652,
+    "red_chi2": 0.000403655021507305,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 1.6292730142595246,
+    "red_chi2": 0.00040365502150726965,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 1.1626344930846244,
+    "red_chi2": 0.00040365502150726954,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 2.0622419979190454,
+    "red_chi2": 0.00040365502150726954,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.17354149895254523,
+    "red_chi2": 0.0004036550215072695,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.1633915089769289,
+    "red_chi2": 0.0004036550215072689,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "EZ-009",
+  "category": "easy",
+  "m": {
+   "jax": {
+    "med_ms": 0.6922504981048405,
+    "red_chi2": 0.0003630921528344693,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 1.9605660054367036,
+    "red_chi2": 0.0003630921528345252,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 1.6682234854670241,
+    "red_chi2": 0.0003630921528344696,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 1.2056799896527082,
+    "red_chi2": 0.00036309215283446896,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 1.8744150002021343,
+    "red_chi2": 0.0003630921528344694,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.17122650751844049,
+    "red_chi2": 0.00036309215283446923,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.16180149395950139,
+    "red_chi2": 0.0003630921528344698,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "EZ-010",
+  "category": "easy",
+  "m": {
+   "jax": {
+    "med_ms": 0.6476310081779957,
+    "red_chi2": 0.001734507597791559,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 2.157991999411024,
+    "red_chi2": 0.0017345075977926857,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 1.6756340046413243,
+    "red_chi2": 0.0017345075977916904,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 1.1964049917878583,
+    "red_chi2": 0.0017345075977916902,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 1.843079982791096,
+    "red_chi2": 0.0017345075977916557,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.17183698946610093,
+    "red_chi2": 0.0017345075977916774,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.1732165110297501,
+    "red_chi2": 0.0017345075977916792,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "EZ-011",
+  "category": "easy",
+  "m": {
+   "jax": {
+    "med_ms": 1.0881944908760488,
+    "red_chi2": 0.00010990180255039385,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 2.832112993928604,
+    "red_chi2": 0.00010990180255041186,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 2.0864014950348064,
+    "red_chi2": 0.0001099018025503935,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 2.433660498354584,
+    "red_chi2": 0.00010990180255039421,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 2.6819514896487817,
+    "red_chi2": 0.00010990180255039396,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.23234151012729853,
+    "red_chi2": 0.00010990180255039351,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.21819699031766504,
+    "red_chi2": 0.00010990180255039322,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "EZ-012",
+  "category": "easy",
+  "m": {
+   "jax": {
+    "med_ms": 1.080164496670477,
+    "red_chi2": 0.007145195992470031,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 4.090383503353223,
+    "red_chi2": 0.0071451959924897996,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 2.8970034909434617,
+    "red_chi2": 0.007145195992474482,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 2.69151249085553,
+    "red_chi2": 0.007145195992474477,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 3.770171504584141,
+    "red_chi2": 0.007145195992507138,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.20031598978675902,
+    "red_chi2": 0.0071451959924749816,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.21708699932787567,
+    "red_chi2": 0.0071451959924749685,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "EZ-013",
+  "category": "easy",
+  "m": {
+   "jax": {
+    "med_ms": 1.0730685025919229,
+    "red_chi2": 0.0004307892593315519,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 2.8579280042322353,
+    "red_chi2": 0.00043078925933156187,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 2.1952679962851107,
+    "red_chi2": 0.00043078925933155325,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 1.8404699949314818,
+    "red_chi2": 0.0004307892593315535,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 2.6062509859912097,
+    "red_chi2": 0.00043078925933155433,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.2143815072486177,
+    "red_chi2": 0.0004307892593315549,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.24821700935717672,
+    "red_chi2": 0.00043078925933155314,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "EZ-014",
+  "category": "easy",
+  "m": {
+   "jax": {
+    "med_ms": 1.036523506627418,
+    "red_chi2": 0.0004146092927970983,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 2.7785530110122636,
+    "red_chi2": 0.0004146092927978441,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 2.2274229995673522,
+    "red_chi2": 0.0004146092927971127,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 2.374654504819773,
+    "red_chi2": 0.0004146092927971124,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 2.3908449948066846,
+    "red_chi2": 0.00041460929279710847,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.2187369973398745,
+    "red_chi2": 0.0004146092927971089,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.22174199693836272,
+    "red_chi2": 0.0004146092927971094,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "EZ-015",
+  "category": "easy",
+  "m": {
+   "jax": {
+    "med_ms": 1.313990491325967,
+    "red_chi2": 0.0014697596980361458,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 2.649181493325159,
+    "red_chi2": 0.0014697596980373254,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 2.0589159976225346,
+    "red_chi2": 0.0014697596980365098,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 3.3178270095959306,
+    "red_chi2": 0.0014697596980365166,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 2.300259511684999,
+    "red_chi2": 0.0014697596980368687,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.20039650553371757,
+    "red_chi2": 0.0014697596980364938,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.2647319925017655,
+    "red_chi2": 0.0014697596980364886,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "EZ-016",
+  "category": "easy",
+  "m": {
+   "jax": {
+    "med_ms": 1.1113189975731075,
+    "red_chi2": 0.0001111197355003579,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 2.6605420134728774,
+    "red_chi2": 0.00011111973550044307,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 2.197148496634327,
+    "red_chi2": 0.0001111197355003578,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 1.8311250023543835,
+    "red_chi2": 0.00011111973550035801,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 2.394380499026738,
+    "red_chi2": 0.00011111973550035767,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.19708801119122654,
+    "red_chi2": 0.00011111973550035739,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.22297150280792266,
+    "red_chi2": 0.0001111197355003578,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "EZ-017",
+  "category": "easy",
+  "m": {
+   "jax": {
+    "med_ms": 1.0308189957868308,
+    "red_chi2": 0.0068281976218046835,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 2.82495298597496,
+    "red_chi2": 0.00682819762184138,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 2.2755389945814386,
+    "red_chi2": 0.006828197621824455,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 1.7591999931028113,
+    "red_chi2": 0.006828197621824566,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 3.3784730039769784,
+    "red_chi2": 0.006828197621815961,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.2561765140853822,
+    "red_chi2": 0.006828197621820788,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.24263199884444475,
+    "red_chi2": 0.006828197621820613,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "EZ-018",
+  "category": "easy",
+  "m": {
+   "jax": {
+    "med_ms": 1.08620899845846,
+    "red_chi2": 0.0004475660401376953,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 2.790137004922144,
+    "red_chi2": 0.00044756604013778,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 2.268659503897652,
+    "red_chi2": 0.00044756604013769475,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 2.521704984246753,
+    "red_chi2": 0.00044756604013769497,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 2.879848994780332,
+    "red_chi2": 0.000447566040137697,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.2155474794562906,
+    "red_chi2": 0.00044756604013770766,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.2085015003103763,
+    "red_chi2": 0.00044756604013770695,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "EZ-019",
+  "category": "easy",
+  "m": {
+   "jax": {
+    "med_ms": 1.7195839900523424,
+    "red_chi2": 0.00034623278106631636,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 2.737978007644415,
+    "red_chi2": 0.00034623278106669426,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 2.0666420023189858,
+    "red_chi2": 0.00034623278106631604,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 2.6346259837737307,
+    "red_chi2": 0.0003462327810663171,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 2.7166614891029894,
+    "red_chi2": 0.00034623278106631696,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.21393199858721346,
+    "red_chi2": 0.0003462327810663164,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.23199649876914918,
+    "red_chi2": 0.00034623278106631647,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "EZ-020",
+  "category": "easy",
+  "m": {
+   "jax": {
+    "med_ms": 1.1405194964027032,
+    "red_chi2": 0.0014099704979510766,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 2.688188003958203,
+    "red_chi2": 0.0014099704979526808,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 2.1085974876768887,
+    "red_chi2": 0.0014099704979548687,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 1.7078289820346981,
+    "red_chi2": 0.0014099704979548577,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 2.2901440097484738,
+    "red_chi2": 0.0014099704979533365,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.203192001208663,
+    "red_chi2": 0.0014099704979544734,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.22923650976736099,
+    "red_chi2": 0.0014099704979544682,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "CX-001",
+  "category": "complex",
+  "m": {
+   "jax": {
+    "med_ms": 2.410400004009716,
+    "red_chi2": 0.002375664441377936,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 6.355407007504255,
+    "red_chi2": 0.0023756644413786216,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 5.127871976583265,
+    "red_chi2": 0.0023756644413784347,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 4.621597516234033,
+    "red_chi2": 0.002375664441378466,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 5.330908505129628,
+    "red_chi2": 0.0023756644413837013,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.3910684899892658,
+    "red_chi2": 0.002375664441378224,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.5989649944240227,
+    "red_chi2": 0.002375664441378265,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "CX-002",
+  "category": "complex",
+  "m": {
+   "jax": {
+    "med_ms": 3.4698445087997243,
+    "red_chi2": 0.0025523341604359764,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 11.875002994202077,
+    "red_chi2": 0.002552334160436775,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 8.459244490950368,
+    "red_chi2": 0.0025523341604368308,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 8.426464497460984,
+    "red_chi2": 0.002552334160436788,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 8.936088503105566,
+    "red_chi2": 0.0025523341604370164,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.5455639911815524,
+    "red_chi2": 0.0025523341605085898,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.9116324945352972,
+    "red_chi2": 0.0025523341605079904,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "CX-003",
+  "category": "complex",
+  "m": {
+   "jax": {
+    "med_ms": 2.658111014170572,
+    "red_chi2": 0.0024528240816212503,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 17.634153991821222,
+    "red_chi2": 0.002452824081625732,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 12.949901487445459,
+    "red_chi2": 0.002452824081621312,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 12.948971998412162,
+    "red_chi2": 0.0024528240816213114,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 13.380285003222525,
+    "red_chi2": 0.002452824081625621,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.7456510065821931,
+    "red_chi2": 0.0024528240816212923,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 1.663287985138595,
+    "red_chi2": 0.002452824081621293,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "CX-004",
+  "category": "complex",
+  "m": {
+   "jax": {
+    "med_ms": 6.344382505631074,
+    "red_chi2": 0.0026365916948998753,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 26.018293996457942,
+    "red_chi2": 0.0026365916949085836,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 18.027312500635162,
+    "red_chi2": 0.0026365916949025437,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 17.858201506896876,
+    "red_chi2": 0.002636591694902337,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 21.42942500358913,
+    "red_chi2": 0.0026365916949007617,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.9516374848317355,
+    "red_chi2": 0.002636591694902461,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 2.2759840067010373,
+    "red_chi2": 0.0026365916949023208,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "CX-005",
+  "category": "complex",
+  "m": {
+   "jax": {
+    "med_ms": 8.361008498468436,
+    "red_chi2": 0.002829694132567597,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 41.36833501979709,
+    "red_chi2": 0.002829694132875598,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 28.473439000663348,
+    "red_chi2": 0.002829694132575157,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 29.11849951487966,
+    "red_chi2": 0.0028296941325753025,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 31.54702550091315,
+    "red_chi2": 0.002829694132707856,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 1.1439790105214342,
+    "red_chi2": 0.002829694132589335,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 3.339482515002601,
+    "red_chi2": 0.0028296941325901483,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "CX-006",
+  "category": "complex",
+  "m": {
+   "jax": {
+    "med_ms": 4.676488999393769,
+    "red_chi2": 0.002933014387267755,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 8.567964498070069,
+    "red_chi2": 0.0029330143872783668,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 7.088738493621349,
+    "red_chi2": 0.0029330143872741236,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 6.530414000735618,
+    "red_chi2": 0.0029330143872746237,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 7.6345869892975315,
+    "red_chi2": 0.002933014387275343,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 1.6847384977154434,
+    "red_chi2": 0.0029330143872918716,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 3.4523185022408143,
+    "red_chi2": 0.002933014387291731,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "CX-007",
+  "category": "complex",
+  "m": {
+   "jax": {
+    "med_ms": 7.0724774996051565,
+    "red_chi2": 0.0023529509069241407,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 19.39461899746675,
+    "red_chi2": 0.0023529509070684125,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 11.231693017180078,
+    "red_chi2": 0.002352950907001235,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 14.011555496836081,
+    "red_chi2": 0.0023529509070013325,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 19.766358003835194,
+    "red_chi2": 0.0023529509069250476,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 2.7686325047397986,
+    "red_chi2": 0.002352950906926584,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 8.246532990597188,
+    "red_chi2": 0.002352950906926576,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "CX-008",
+  "category": "complex",
+  "m": {
+   "jax": {
+    "med_ms": 7.775939491693862,
+    "red_chi2": 0.0022441222231491384,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 25.39357299974654,
+    "red_chi2": 0.002244122223235406,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 21.074513002531603,
+    "red_chi2": 0.0022441222231975554,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 21.549930490436964,
+    "red_chi2": 0.0022441222231935416,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 32.23698450892698,
+    "red_chi2": 0.0022441222231621167,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 4.597827501129359,
+    "red_chi2": 0.002244122223156628,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 17.458112983149476,
+    "red_chi2": 0.0022441222231558288,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "CX-009",
+  "category": "complex",
+  "m": {
+   "jax": {
+    "med_ms": 103.75582749838941,
+    "red_chi2": 0.0023721971512464155,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 672.0090805029031,
+    "red_chi2": 0.002372195251432542,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 178.34268999285996,
+    "red_chi2": 0.002372795851015818,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 301.1827500013169,
+    "red_chi2": 0.002372201422661103,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 329.9687299877405,
+    "red_chi2": 0.002372195229175653,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 32.612204013275914,
+    "red_chi2": 0.0023722012297017385,
+    "success": false
+   },
+   "spectrafit_fd": {
+    "med_ms": 174.78864602162503,
+    "red_chi2": 0.002372201196688543,
+    "success": false
+   }
+  }
+ },
+ {
+  "id": "CX-010",
+  "category": "complex",
+  "m": {
+   "jax": {
+    "med_ms": 127.73336049576756,
+    "red_chi2": 0.002875327079897911,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 683.5240854998119,
+    "red_chi2": 0.0028737884564545204,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 114.70231699058786,
+    "red_chi2": 0.0028737884148445584,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 5121.6727400169475,
+    "red_chi2": 0.002874767033617143,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 341.1275620019296,
+    "red_chi2": 0.002873788457464452,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 29.810944994096644,
+    "red_chi2": 0.0028737886064975006,
+    "success": false
+   },
+   "spectrafit_fd": {
+    "med_ms": 171.70894048467744,
+    "red_chi2": 0.0028737886132271474,
+    "success": false
+   }
+  }
+ },
+ {
+  "id": "CX-011",
+  "category": "complex",
+  "m": {
+   "jax": {
+    "med_ms": 1.9424259953666478,
+    "red_chi2": 0.0020421056224511473,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 10.227509003016166,
+    "red_chi2": 0.0020421056225248787,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 9.392002000822686,
+    "red_chi2": 0.002042105622451202,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 9.08963949768804,
+    "red_chi2": 0.0020421056224511854,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 9.850697009824216,
+    "red_chi2": 0.0020421056224511516,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.5640290037263185,
+    "red_chi2": 0.0020421056224511785,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.9334479982499033,
+    "red_chi2": 0.0020421056224511854,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "CX-012",
+  "category": "complex",
+  "m": {
+   "jax": {
+    "med_ms": 2.0133165089646354,
+    "red_chi2": 0.0025250063085480476,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 15.04876850231085,
+    "red_chi2": 0.002525006308562314,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 13.6758525040932,
+    "red_chi2": 0.0025250063085480562,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 13.531395990867168,
+    "red_chi2": 0.0025250063085480545,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 14.176386001054198,
+    "red_chi2": 0.002525006308548066,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.8362110093003139,
+    "red_chi2": 0.0025250063085480523,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 2.2138439817354083,
+    "red_chi2": 0.0025250063085480554,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "CX-013",
+  "category": "complex",
+  "m": {
+   "jax": {
+    "med_ms": 5.432749996543862,
+    "red_chi2": 0.0024082362367334386,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 47.082971010240726,
+    "red_chi2": 0.0024082362368768834,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 29.750329500529915,
+    "red_chi2": 0.0024082362367399785,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 25.45616400311701,
+    "red_chi2": 0.002408236236757951,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 35.35191100672819,
+    "red_chi2": 0.0024082362367615785,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 1.1391605075914413,
+    "red_chi2": 0.0024082362367515747,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 3.6987049970775843,
+    "red_chi2": 0.0024082362367513046,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "CX-014",
+  "category": "complex",
+  "m": {
+   "jax": {
+    "med_ms": 59.947537491098046,
+    "red_chi2": 0.002669525378376517,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 468.827770993812,
+    "red_chi2": 0.0026695256297530234,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 139.30313401215244,
+    "red_chi2": 0.0026695253523380475,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 177.050024503842,
+    "red_chi2": 0.0026695253520239966,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 205.84907548618503,
+    "red_chi2": 0.0026695253857571912,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 5.033127003116533,
+    "red_chi2": 0.0026695253776037476,
+    "success": false
+   },
+   "spectrafit_fd": {
+    "med_ms": 25.162606514641084,
+    "red_chi2": 0.0026695253776944376,
+    "success": false
+   }
+  }
+ },
+ {
+  "id": "CX-015",
+  "category": "complex",
+  "m": {
+   "jax": {
+    "med_ms": 66.92576050409116,
+    "red_chi2": 0.0025748975082597668,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 294.3002734973561,
+    "red_chi2": 0.002574897824578001,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 48.197571508353576,
+    "red_chi2": 0.0025748975044507963,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 55.938889490789734,
+    "red_chi2": 0.002574897492552431,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 160.83016099582892,
+    "red_chi2": 0.0025748974913857507,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 3.248062013881281,
+    "red_chi2": 0.002574897503368759,
+    "success": false
+   },
+   "spectrafit_fd": {
+    "med_ms": 14.82313200540375,
+    "red_chi2": 0.002574897503370158,
+    "success": false
+   }
+  }
+ },
+ {
+  "id": "CX-016",
+  "category": "complex",
+  "m": {
+   "jax": {
+    "med_ms": 24.029092019191012,
+    "red_chi2": 0.002314294034758557,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 38.36391000368167,
+    "red_chi2": 0.0023142940366982015,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 30.09823799948208,
+    "red_chi2": 0.002314294035206248,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 32.55826799431816,
+    "red_chi2": 0.00231429403674815,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 61.131282011047006,
+    "red_chi2": 0.002314294035178316,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 1.0328734933864325,
+    "red_chi2": 0.0023142940347679265,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 2.0878425129922107,
+    "red_chi2": 0.002314294034768393,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "CX-017",
+  "category": "complex",
+  "m": {
+   "jax": {
+    "med_ms": 81.8582624924602,
+    "red_chi2": 0.0028048463222343743,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 3171.1160790000577,
+    "red_chi2": 0.002802962326803387,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 3609.229124500416,
+    "red_chi2": 0.0028212008746051377,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 3282.741469985922,
+    "red_chi2": 0.0028029657125594218,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 3344.044341996778,
+    "red_chi2": 0.0028029689496799513,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 53.929978486848995,
+    "red_chi2": 0.0028029569532897255,
+    "success": false
+   },
+   "spectrafit_fd": {
+    "med_ms": 200.36782600800507,
+    "red_chi2": 0.0028029569793730697,
+    "success": false
+   }
+  }
+ },
+ {
+  "id": "CX-018",
+  "category": "complex",
+  "m": {
+   "jax": {
+    "med_ms": 40.300151507835835,
+    "red_chi2": 0.002723943995956014,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 214.55217199400067,
+    "red_chi2": 0.00272394399822483,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 63.816543988650665,
+    "red_chi2": 0.002723943996983485,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 186.46729049214628,
+    "red_chi2": 0.0027239440004193493,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 273.37333498871885,
+    "red_chi2": 0.0027239440013245016,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 2.855568003724329,
+    "red_chi2": 0.0027239439960098618,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 11.055859999032691,
+    "red_chi2": 0.0027239439960108323,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "CX-019",
+  "category": "complex",
+  "m": {
+   "jax": {
+    "med_ms": 70.93200350936968,
+    "red_chi2": 0.0022063998433853923,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 368.74472348426934,
+    "red_chi2": 0.002206399860066246,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 259.36964400170837,
+    "red_chi2": 0.002206399876118248,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 339.51091299240943,
+    "red_chi2": 0.002206399852180708,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 432.4245254974812,
+    "red_chi2": 0.0022063998871066953,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 4.877390500041656,
+    "red_chi2": 0.0022063998578098895,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 25.244432006729767,
+    "red_chi2": 0.0022063998578669445,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "CX-020",
+  "category": "complex",
+  "m": {
+   "jax": {
+    "med_ms": 136.93398400209844,
+    "red_chi2": 0.0020896868675304254,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 3692.973754994455,
+    "red_chi2": 0.0020896180897316,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 25293.6379485036,
+    "red_chi2": 0.00220583818406162,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 28925.252510001883,
+    "red_chi2": 0.002072378108448519,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 24061.563476003357,
+    "red_chi2": 0.002076636312234779,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 73.12832000025082,
+    "red_chi2": 0.0020544290190907966,
+    "success": false
+   },
+   "spectrafit_fd": {
+    "med_ms": 489.6821974834893,
+    "red_chi2": 0.002054544500861021,
+    "success": false
+   }
+  }
+ },
+ {
+  "id": "CX-021",
+  "category": "complex",
+  "m": {
+   "jax": {
+    "med_ms": 3.206541994586587,
+    "red_chi2": 0.0022719633047771737,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 6.539894995512441,
+    "red_chi2": 0.0022719633047790823,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 4.6501189935952425,
+    "red_chi2": 0.0022719633047780055,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 4.194369001197629,
+    "red_chi2": 0.002271963304778003,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 9.690170991234481,
+    "red_chi2": 0.0022719633047771715,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.7778669969411567,
+    "red_chi2": 0.002271963304777176,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 3.002984987688251,
+    "red_chi2": 0.0022719633047771698,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "CX-022",
+  "category": "complex",
+  "m": {
+   "jax": {
+    "med_ms": 3.878967007040046,
+    "red_chi2": 0.002691586696736754,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 12.866992998169735,
+    "red_chi2": 0.002691586696781265,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 8.558906003599986,
+    "red_chi2": 0.0026915866967544342,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 8.53170148911886,
+    "red_chi2": 0.0026915866967548493,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 10.590504491119646,
+    "red_chi2": 0.002691586696740535,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.992888497421518,
+    "red_chi2": 0.002691586696743867,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 2.948409994132817,
+    "red_chi2": 0.002691586696743868,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "CX-023",
+  "category": "complex",
+  "m": {
+   "jax": {
+    "med_ms": 7.160364504670724,
+    "red_chi2": 0.0018315409459660804,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 18.192527495557442,
+    "red_chi2": 0.001831540946164946,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 12.87966250674799,
+    "red_chi2": 0.0018315409459819215,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 12.748647495754994,
+    "red_chi2": 0.0018315409459823296,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 15.498677996220067,
+    "red_chi2": 0.0018315409459668155,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 1.4386225084308535,
+    "red_chi2": 0.0018315409459663202,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 5.964439507806674,
+    "red_chi2": 0.0018315409459663788,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "CX-024",
+  "category": "complex",
+  "m": {
+   "jax": {
+    "med_ms": 8.51689648698084,
+    "red_chi2": 0.0026026849597250335,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 24.82979699561838,
+    "red_chi2": 0.002602684959813887,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 18.994263009517454,
+    "red_chi2": 0.0026026849597386415,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 18.632350489497185,
+    "red_chi2": 0.002602684959739738,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 33.12991649727337,
+    "red_chi2": 0.0026026849597846347,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 2.30545450176578,
+    "red_chi2": 0.0026026849600593216,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 8.508226994308643,
+    "red_chi2": 0.0026026849600583666,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "CX-025",
+  "category": "complex",
+  "m": {
+   "jax": {
+    "med_ms": 9.721496506244875,
+    "red_chi2": 0.0026751869320058267,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 34.765119999065064,
+    "red_chi2": 0.0026751869320573566,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 25.49632750742603,
+    "red_chi2": 0.0026751869320506914,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 25.72555499500595,
+    "red_chi2": 0.002675186932050062,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 34.72300499561243,
+    "red_chi2": 0.002675186932007646,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 2.142768003977835,
+    "red_chi2": 0.0026751869320144474,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 12.139426486101002,
+    "red_chi2": 0.002675186932014266,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "CX-026",
+  "category": "complex",
+  "m": {
+   "jax": {
+    "med_ms": 2.734187481109984,
+    "red_chi2": 0.002262864821074959,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 5.2682539972011,
+    "red_chi2": 0.0022628648211233384,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 3.702855494339019,
+    "red_chi2": 0.002262864821074992,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 3.493844997137785,
+    "red_chi2": 0.002262864821074972,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 4.058924503624439,
+    "red_chi2": 0.0022628648210749757,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.3591779968701303,
+    "red_chi2": 0.002262864821074987,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.37553349102381617,
+    "red_chi2": 0.0022628648210749874,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "CX-027",
+  "category": "complex",
+  "m": {
+   "jax": {
+    "med_ms": 1.839325501350686,
+    "red_chi2": 0.0021278854772180823,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 12.148721987614408,
+    "red_chi2": 0.002127885477260364,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 5.723722497350536,
+    "red_chi2": 0.0021278854772180844,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 6.477348491898738,
+    "red_chi2": 0.0021278854772180697,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 6.249401500099339,
+    "red_chi2": 0.0021278854772181907,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.48493400390725583,
+    "red_chi2": 0.002127885477218169,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.5488540045917034,
+    "red_chi2": 0.0021278854772181794,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "CX-028",
+  "category": "complex",
+  "m": {
+   "jax": {
+    "med_ms": 2.830124503816478,
+    "red_chi2": 0.0026977237045065767,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 13.551633994211443,
+    "red_chi2": 0.0026977237045592924,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 8.604736009147018,
+    "red_chi2": 0.002697723704511609,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 8.309378492413089,
+    "red_chi2": 0.0026977237045102873,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 15.003910491941497,
+    "red_chi2": 0.0026977237045069003,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.6487860082415864,
+    "red_chi2": 0.0026977237045336484,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.8517875103279948,
+    "red_chi2": 0.002697723704533142,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "CX-029",
+  "category": "complex",
+  "m": {
+   "jax": {
+    "med_ms": 6.270008001592942,
+    "red_chi2": 0.0027552414554073332,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 22.247515502385795,
+    "red_chi2": 0.002755241455535361,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 13.77412500733044,
+    "red_chi2": 0.0027552414554133623,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 14.103497509495355,
+    "red_chi2": 0.0027552414554169098,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 15.401959011796862,
+    "red_chi2": 0.002755241455410261,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.8680114988237619,
+    "red_chi2": 0.0027552414554203775,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 1.034078493830748,
+    "red_chi2": 0.002755241455420752,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "CX-030",
+  "category": "complex",
+  "m": {
+   "jax": {
+    "med_ms": 3.950617494410835,
+    "red_chi2": 0.00248211885176598,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 26.84160448552575,
+    "red_chi2": 0.002482118851796474,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 18.38647401018534,
+    "red_chi2": 0.002482118851766026,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 16.0066380049102,
+    "red_chi2": 0.0024821188517660134,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 20.27932950295508,
+    "red_chi2": 0.0024821188517660502,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.992183995549567,
+    "red_chi2": 0.0024821188517660225,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 1.3231865159468725,
+    "red_chi2": 0.0024821188517660537,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "CX-031",
+  "category": "complex",
+  "m": {
+   "jax": {
+    "med_ms": 3.0497959960484877,
+    "red_chi2": 0.002649386289453762,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 7.681168484850787,
+    "red_chi2": 0.002649386289503629,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 4.339831008110195,
+    "red_chi2": 0.0026493862894543256,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 3.9925434830365703,
+    "red_chi2": 0.0026493862894543287,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 4.620293490006588,
+    "red_chi2": 0.0026493862894633427,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 1.6085134993772954,
+    "red_chi2": 0.002649386289454311,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.9854189993347973,
+    "red_chi2": 0.002649386289454305,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "CX-032",
+  "category": "complex",
+  "m": {
+   "jax": {
+    "med_ms": 5.156733488547616,
+    "red_chi2": 0.002244065118344089,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 10.251120504108258,
+    "red_chi2": 0.0022440651183444835,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 7.42259701655712,
+    "red_chi2": 0.002244065118344107,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 7.192369987023994,
+    "red_chi2": 0.0022440651183441318,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 7.558398006949574,
+    "red_chi2": 0.0022440651183441296,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 1.8194455042248592,
+    "red_chi2": 0.0022440651183441096,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 1.5552385011687875,
+    "red_chi2": 0.002244065118344114,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "CX-033",
+  "category": "complex",
+  "m": {
+   "jax": {
+    "med_ms": 7.244089996675029,
+    "red_chi2": 0.0028091269531134613,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 19.01876350166276,
+    "red_chi2": 0.0028091269531324704,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 13.69199350301642,
+    "red_chi2": 0.002809126953356403,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 16.42372149217408,
+    "red_chi2": 0.002809126953341176,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 15.97625800059177,
+    "red_chi2": 0.002809126953357906,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 3.1311564962379634,
+    "red_chi2": 0.002809126953298203,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 2.709828011575155,
+    "red_chi2": 0.0028091269532969894,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "CX-034",
+  "category": "complex",
+  "m": {
+   "jax": {
+    "med_ms": 11.07820650213398,
+    "red_chi2": 0.0028027892897293256,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 21.308337003574707,
+    "red_chi2": 0.0028027892897312277,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 14.958319981815293,
+    "red_chi2": 0.0028027892897319415,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 15.226337010972202,
+    "red_chi2": 0.0028027892897316475,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 16.144430002896115,
+    "red_chi2": 0.002802789289732177,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 3.125196002656594,
+    "red_chi2": 0.002802789289731204,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 3.7509460089495406,
+    "red_chi2": 0.0028027892897313955,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "CX-035",
+  "category": "complex",
+  "m": {
+   "jax": {
+    "med_ms": 16.525072511285543,
+    "red_chi2": 0.0026515900875582563,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 30.807341492618434,
+    "red_chi2": 0.002651590087805786,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 22.54064798762556,
+    "red_chi2": 0.0026515900875673866,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 23.069412491167895,
+    "red_chi2": 0.0026515900875654728,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 27.294208004605025,
+    "red_chi2": 0.002651590087562232,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 4.046224014018662,
+    "red_chi2": 0.002651590087595752,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 6.073660493711941,
+    "red_chi2": 0.002651590087592492,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "RL-001",
+  "category": "reality",
+  "m": {
+   "jax": {
+    "med_ms": 1.58662348985672,
+    "red_chi2": 0.001122385893643559,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 6.11946098797489,
+    "red_chi2": 0.0011223858936477069,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 3.9318925119005144,
+    "red_chi2": 0.0011223858936435982,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 4.13214901345782,
+    "red_chi2": 0.0011223858936435975,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 4.195600500679575,
+    "red_chi2": 0.0011223858936443105,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.436839007306844,
+    "red_chi2": 0.0011223858936435702,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.5555294919759035,
+    "red_chi2": 0.0011223858936435685,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "RL-002",
+  "category": "reality",
+  "m": {
+   "jax": {
+    "med_ms": 2.719912998145446,
+    "red_chi2": 0.00490562345301534,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 14.080622015171684,
+    "red_chi2": 0.0049056234530164165,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 9.826822017203085,
+    "red_chi2": 0.00490562345301546,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 9.74581549235154,
+    "red_chi2": 0.004905623453015526,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 11.757973014027812,
+    "red_chi2": 0.004905623453016032,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.6231600127648562,
+    "red_chi2": 0.004905623453017743,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 1.12593499943614,
+    "red_chi2": 0.004905623453017816,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "RL-003",
+  "category": "reality",
+  "m": {
+   "jax": {
+    "med_ms": 2.0585019810823724,
+    "red_chi2": 0.0007538166156457874,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 6.340772510156967,
+    "red_chi2": 0.0007538166156478152,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 4.196139998384751,
+    "red_chi2": 0.0007538166156460692,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 4.734295012895018,
+    "red_chi2": 0.0007538166156460717,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 5.393854997237213,
+    "red_chi2": 0.0007538166156467598,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.44853900908492506,
+    "red_chi2": 0.0007538166156462637,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.4082584928255528,
+    "red_chi2": 0.0007538166156462567,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "RL-004",
+  "category": "reality",
+  "m": {
+   "jax": {
+    "med_ms": 1.819745491957292,
+    "red_chi2": 0.004105376772815412,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 9.776001519639976,
+    "red_chi2": 0.0041053767728181055,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 5.51803050620947,
+    "red_chi2": 0.0041053767728199105,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 5.5982520134421065,
+    "red_chi2": 0.004105376772819924,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 7.486811999115162,
+    "red_chi2": 0.0041053767728465446,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.5123439914314076,
+    "red_chi2": 0.004105376772820364,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.5977844994049519,
+    "red_chi2": 0.004105376772820401,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "RL-005",
+  "category": "reality",
+  "m": {
+   "jax": {
+    "med_ms": 1.4492770133074373,
+    "red_chi2": 0.0007943590770512084,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 5.259248486254364,
+    "red_chi2": 0.0007943590770513052,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 3.394333994947374,
+    "red_chi2": 0.0007943590770512223,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 3.9523640007246286,
+    "red_chi2": 0.0007943590770512184,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 3.84382699849084,
+    "red_chi2": 0.0007943590770512071,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.33093299134634435,
+    "red_chi2": 0.0007943590770512627,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.40877349965739995,
+    "red_chi2": 0.0007943590770512583,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "RL-006",
+  "category": "reality",
+  "m": {
+   "jax": {
+    "med_ms": 2.5671615003375337,
+    "red_chi2": 0.0035712444391938483,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 9.297717493609525,
+    "red_chi2": 0.0035712444391985754,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 6.30130800709594,
+    "red_chi2": 0.0035712444392072737,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 6.123910992755555,
+    "red_chi2": 0.003571244439207587,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 7.830820497474633,
+    "red_chi2": 0.0035712444392318327,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.5352599982870743,
+    "red_chi2": 0.003571244439358378,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.7786415080772713,
+    "red_chi2": 0.003571244439358018,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "RL-007",
+  "category": "reality",
+  "m": {
+   "jax": {
+    "med_ms": 3.9827829896239564,
+    "red_chi2": 0.0009681854396552963,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 59.239254012936726,
+    "red_chi2": 0.0009681854396614033,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 15.83768698037602,
+    "red_chi2": 0.0009681854396557026,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 36.15647749393247,
+    "red_chi2": 0.0009681854396733071,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 8.23471300827805,
+    "red_chi2": 0.000968185439657909,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.5995454994263127,
+    "red_chi2": 0.0009681854396553012,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 1.1747649987228215,
+    "red_chi2": 0.0009681854396553475,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "RL-008",
+  "category": "reality",
+  "m": {
+   "jax": {
+    "med_ms": 4.339395993156359,
+    "red_chi2": 0.002972199908195721,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 8.576121515943669,
+    "red_chi2": 0.002972199908221415,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 5.4439459927380085,
+    "red_chi2": 0.0029721999082168897,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 6.006355004501529,
+    "red_chi2": 0.00297219990821699,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 6.910487500135787,
+    "red_chi2": 0.002972199908199953,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.5795995093649253,
+    "red_chi2": 0.002972199908196033,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.9092230029636994,
+    "red_chi2": 0.002972199908196006,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "RL-009",
+  "category": "reality",
+  "m": {
+   "jax": {
+    "med_ms": 3.9358470094157383,
+    "red_chi2": 0.0008891920994647899,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 14.397834995179437,
+    "red_chi2": 0.0008891920994648374,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 10.413676995085552,
+    "red_chi2": 0.0008891920994647982,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 9.948478487785906,
+    "red_chi2": 0.0008891920994647997,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 12.28792300389614,
+    "red_chi2": 0.0008891920994648105,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.6920704909134656,
+    "red_chi2": 0.0008891920994647935,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 1.2388109898893163,
+    "red_chi2": 0.0008891920994648047,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "RL-010",
+  "category": "reality",
+  "m": {
+   "jax": {
+    "med_ms": 9.020500496262684,
+    "red_chi2": 0.0037550321854931557,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 28.17517599032726,
+    "red_chi2": 0.003755032188197107,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 22.543622500961646,
+    "red_chi2": 0.0037550321857408387,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 22.304431506199762,
+    "red_chi2": 0.0037550321857331803,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 22.793915501097217,
+    "red_chi2": 0.0037550321859353103,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.9127575031016022,
+    "red_chi2": 0.0037550321856612123,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 2.064701999188401,
+    "red_chi2": 0.0037550321856567983,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "RL-011",
+  "category": "reality",
+  "m": {
+   "jax": {
+    "med_ms": 1.0197889932896942,
+    "red_chi2": 0.0008315237316320993,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 2.5249855098081753,
+    "red_chi2": 0.0008315237316320982,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 1.8770065071294084,
+    "red_chi2": 0.0008315237316321003,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 2.474465494742617,
+    "red_chi2": 0.0008315237316320989,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 1.8180299957748502,
+    "red_chi2": 0.0008315237316320994,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.266262490185909,
+    "red_chi2": 0.0008315237316320982,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.31569749990012497,
+    "red_chi2": 0.0008315237316320992,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "RL-012",
+  "category": "reality",
+  "m": {
+   "jax": {
+    "med_ms": 1.2099654995836318,
+    "red_chi2": 0.0037233045529713464,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 2.511319995392114,
+    "red_chi2": 0.0037233045529714254,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 1.8949405057355762,
+    "red_chi2": 0.003723304552971364,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 2.2781640000175685,
+    "red_chi2": 0.0037233045529713573,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 1.7013990000123158,
+    "red_chi2": 0.0037233045529713525,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.24561701866332442,
+    "red_chi2": 0.0037233045529713542,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.300492494716309,
+    "red_chi2": 0.0037233045529713534,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "RL-013",
+  "category": "reality",
+  "m": {
+   "jax": {
+    "med_ms": 1.0005574877141044,
+    "red_chi2": 0.0009342842344447326,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 4.132259491598234,
+    "red_chi2": 0.0009342842344447502,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 2.4735260085435584,
+    "red_chi2": 0.0009342842344447086,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 2.1064324828330427,
+    "red_chi2": 0.0009342842344447125,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 2.6612019864842296,
+    "red_chi2": 0.0009342842344447195,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.28689300233963877,
+    "red_chi2": 0.0009342842344447337,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.2948375040432438,
+    "red_chi2": 0.0009342842344447394,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "RL-014",
+  "category": "reality",
+  "m": {
+   "jax": {
+    "med_ms": 1.4092375058680773,
+    "red_chi2": 0.003934661802981339,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 6.90377751016058,
+    "red_chi2": 0.003934661803000802,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 4.713618996902369,
+    "red_chi2": 0.003934661802981411,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 5.202078493312001,
+    "red_chi2": 0.00393466180298136,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 5.102057490148582,
+    "red_chi2": 0.003934661802981405,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.39094348903745413,
+    "red_chi2": 0.00393466180298134,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.421183998696506,
+    "red_chi2": 0.003934661802981369,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "RL-015",
+  "category": "reality",
+  "m": {
+   "jax": {
+    "med_ms": 0.8799629868008196,
+    "red_chi2": 0.0009973071088176617,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 3.1648014846723527,
+    "red_chi2": 0.0009973071088186132,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 2.2761844884371385,
+    "red_chi2": 0.0009973071088176606,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 2.709527005208656,
+    "red_chi2": 0.0009973071088176598,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 2.4621060001663864,
+    "red_chi2": 0.0009973071088176604,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.4153285117354244,
+    "red_chi2": 0.0009973071088176624,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.3200029896106571,
+    "red_chi2": 0.0009973071088176621,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "RL-016",
+  "category": "reality",
+  "m": {
+   "jax": {
+    "med_ms": 1.462971995351836,
+    "red_chi2": 0.0038538026961497046,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 5.2577785099856555,
+    "red_chi2": 0.0038538026961893986,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 3.651120001450181,
+    "red_chi2": 0.0038538026961567155,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 4.580553504638374,
+    "red_chi2": 0.003853802696156717,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 3.898202514392324,
+    "red_chi2": 0.003853802696151963,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.7148205040721223,
+    "red_chi2": 0.0038538026961549656,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.656135511235334,
+    "red_chi2": 0.0038538026961550047,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "OF-001",
+  "category": "optfn",
+  "m": {
+   "lmfit": {
+    "med_ms": 420.31283551477827,
+    "red_chi2": 0.08262179247724122,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 6.319892985629849,
+    "red_chi2": 0.08262179247644987,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 7.931646498036571,
+    "red_chi2": 0.08262179247645403,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 6.213963002664968,
+    "red_chi2": 0.08262179247649003,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 34.55819850205444,
+    "red_chi2": 0.12430816616673492,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 34.168625017628074,
+    "red_chi2": 0.12430816616673868,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "OF-002",
+  "category": "optfn",
+  "m": {
+   "lmfit": {
+    "med_ms": 846.4714389992878,
+    "red_chi2": 0.3989092314546797,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 9.806721500353888,
+    "red_chi2": 0.7079126053612661,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 6.732390014803968,
+    "red_chi2": 0.7079126040810663,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 10.171570495003834,
+    "red_chi2": 0.7079126072958789,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 35.01481701096054,
+    "red_chi2": 0.37933815034437923,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 31.65909850213211,
+    "red_chi2": 0.3793381503443903,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "OF-003",
+  "category": "optfn",
+  "m": {
+   "lmfit": {
+    "med_ms": 1286.1576559953392,
+    "red_chi2": 0.02931909064744068,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 4.090358997927979,
+    "red_chi2": 0.09560167800180125,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 7.379141505225562,
+    "red_chi2": 0.09560167801462933,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 7.998261498869397,
+    "red_chi2": 0.09560167800622217,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 33.605389995500445,
+    "red_chi2": 0.09560167801351332,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 33.88061698933598,
+    "red_chi2": 0.09560167801352756,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "OF-004",
+  "category": "optfn",
+  "m": {
+   "lmfit": {
+    "med_ms": 1394.4008614926133,
+    "red_chi2": 0.029253771225334787,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 4.2727069958345965,
+    "red_chi2": 0.09846287025279385,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 7.976450491696596,
+    "red_chi2": 0.09846287027610344,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 9.01583000086248,
+    "red_chi2": 0.09846287025613654,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 36.74795701226685,
+    "red_chi2": 0.09846287025392102,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 36.45043850701768,
+    "red_chi2": 0.09846287025391634,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "OF-005",
+  "category": "optfn",
+  "m": {
+   "lmfit": {
+    "med_ms": 384.5209050050471,
+    "red_chi2": 1.3835226389194855,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 23.250788988661952,
+    "red_chi2": 1.5155888116419365,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 249.19174249225762,
+    "red_chi2": 1.468999773557899,
+    "success": false
+   },
+   "scipy-ls-trf": {
+    "med_ms": 25.627033508499153,
+    "red_chi2": 1.5155888223396008,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 32.19094350060914,
+    "red_chi2": 1.3835226408759904,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 32.73753299436066,
+    "red_chi2": 1.3835226408766599,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "OF-006",
+  "category": "optfn",
+  "m": {
+   "lmfit": {
+    "med_ms": 783.7973139976384,
+    "red_chi2": 0.9662824373523196,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 2.9927595023764297,
+    "red_chi2": 1.0654981163986499,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 2.6410170103190467,
+    "red_chi2": 1.065498116398652,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 4.55802799842786,
+    "red_chi2": 1.065498116398642,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 35.93050950439647,
+    "red_chi2": 1.065498116400412,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 35.69607749523129,
+    "red_chi2": 1.0654981164004018,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "OF-007",
+  "category": "optfn",
+  "m": {
+   "lmfit": {
+    "med_ms": 1148.7558820081176,
+    "red_chi2": 0.008191823546926026,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 6.9218779826769605,
+    "red_chi2": 0.023144574996798322,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 10.131468996405602,
+    "red_chi2": 0.004619599114982171,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 12.141926505137235,
+    "red_chi2": 0.004653320239466717,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 32.463880997966044,
+    "red_chi2": 0.0231445749967984,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 32.184292998863384,
+    "red_chi2": 0.02314457499679841,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "OF-008",
+  "category": "optfn",
+  "m": {
+   "lmfit": {
+    "med_ms": 471.94331949867774,
+    "red_chi2": 0.6101148101293699,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 21.173896500840783,
+    "red_chi2": 0.5849488227323737,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 19.25945001130458,
+    "red_chi2": 0.5849504838734624,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 24.599420008598827,
+    "red_chi2": 0.5849487890366232,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 36.5712490020087,
+    "red_chi2": 0.6101148013887585,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 36.61960948375054,
+    "red_chi2": 0.6101148013880461,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "OF-009",
+  "category": "optfn",
+  "m": {
+   "lmfit": {
+    "med_ms": 718.4155590075534,
+    "red_chi2": 0.36845975723072316,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 19.61639399814885,
+    "red_chi2": 0.37322555530517754,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 7.640803014510311,
+    "red_chi2": 0.3732255530362106,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 15.944927494274452,
+    "red_chi2": 0.3684597627753045,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 37.62875399843324,
+    "red_chi2": 0.4208459360776644,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 37.40968648344278,
+    "red_chi2": 0.42084593607766957,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "OF-010",
+  "category": "optfn",
+  "m": {
+   "lmfit": {
+    "med_ms": 1002.115461989888,
+    "red_chi2": 0.014053021683644194,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 32.67129800224211,
+    "red_chi2": 0.014053021757132673,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 13.734154505073093,
+    "red_chi2": 0.06280883289447847,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 13.012663490371779,
+    "red_chi2": 0.014053021711442936,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 33.874407497933134,
+    "red_chi2": 0.07280528911992595,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 33.918167508090846,
+    "red_chi2": 0.07280528911991749,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "OF-011",
+  "category": "optfn",
+  "m": {
+   "lmfit": {
+    "med_ms": 687.8641030052677,
+    "red_chi2": 0.7612807086023875,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 5.154637517989613,
+    "red_chi2": 0.8216916415801349,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 9.656021007685922,
+    "red_chi2": 0.8216914062913309,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 8.214588000555523,
+    "red_chi2": 0.8216916418795095,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 35.265823506051674,
+    "red_chi2": 0.8177503639396072,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 35.27404449414462,
+    "red_chi2": 0.8177503639396079,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "OF-012",
+  "category": "optfn",
+  "m": {
+   "lmfit": {
+    "med_ms": 1033.6794195172843,
+    "red_chi2": 0.041024071363136926,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 5.498305501532741,
+    "red_chi2": 0.23344115108588495,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 14.687407499877736,
+    "red_chi2": 0.2325464926552535,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 14.202303500496782,
+    "red_chi2": 0.04102407138045811,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 32.35539900197182,
+    "red_chi2": 0.04102407138526453,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 32.721906987717375,
+    "red_chi2": 0.041024071385312826,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "OF-013",
+  "category": "optfn",
+  "m": {
+   "lmfit": {
+    "med_ms": 852.744490999612,
+    "red_chi2": 2.11122303448611,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 35.16251848486718,
+    "red_chi2": 2.217737699820759,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 11.568011992494576,
+    "red_chi2": 2.217737814849598,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 19.289450996438973,
+    "red_chi2": 2.2177377283459023,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 35.84822801349219,
+    "red_chi2": 2.1246874304879495,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 34.976366005139425,
+    "red_chi2": 2.1246874304895247,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "OF-014",
+  "category": "optfn",
+  "m": {
+   "lmfit": {
+    "med_ms": 1121.7979115026537,
+    "red_chi2": 0.0015589923927206491,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 6.549069003085606,
+    "red_chi2": 0.022865154578129793,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 8.125687498250045,
+    "red_chi2": 0.0015589923927643039,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 11.927619998459704,
+    "red_chi2": 0.001558992396791309,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 32.75197801121976,
+    "red_chi2": 0.022865154577213543,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 33.41668848588597,
+    "red_chi2": 0.022865154577217734,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "OF-015",
+  "category": "optfn",
+  "m": {
+   "lmfit": {
+    "med_ms": 810.0812140037306,
+    "red_chi2": 0.6710243526892317,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 8.298474000184797,
+    "red_chi2": 0.8413614626612796,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 8.457364994683303,
+    "red_chi2": 0.8380698114448903,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 36.06127049715724,
+    "red_chi2": 0.7760639863553771,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 36.856652004644275,
+    "red_chi2": 0.6710243529322123,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 36.636505494243465,
+    "red_chi2": 0.6710243529323596,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "OF-016",
+  "category": "optfn",
+  "m": {
+   "lmfit": {
+    "med_ms": 1488.1520615163026,
+    "red_chi2": 0.02994642224240498,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 3.6905710003338754,
+    "red_chi2": 0.10062226595837305,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 6.9978979881852865,
+    "red_chi2": 0.10062226603069056,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 8.254848507931456,
+    "red_chi2": 0.1006222659478161,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 34.39365698432084,
+    "red_chi2": 0.10062226595516345,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 34.9721965030767,
+    "red_chi2": 0.10062226595517551,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "OF-017",
+  "category": "optfn",
+  "m": {
+   "lmfit": {
+    "med_ms": 1039.0577095095068,
+    "red_chi2": 0.13088770636427374,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 6.067360503948294,
+    "red_chi2": 0.6403038414494383,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 6.421527490601875,
+    "red_chi2": 0.5969014507340779,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 15.778587010572664,
+    "red_chi2": 0.130887706487542,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 31.55740250076633,
+    "red_chi2": 0.13088770649372083,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 32.11649200238753,
+    "red_chi2": 0.13088770649375212,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "OF-018",
+  "category": "optfn",
+  "m": {
+   "lmfit": {
+    "med_ms": 1523.583880494698,
+    "red_chi2": 0.02994642224240498,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 3.7025700003141537,
+    "red_chi2": 0.10062226595837305,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 7.356551490374841,
+    "red_chi2": 0.10062226603069056,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 8.278058987343684,
+    "red_chi2": 0.1006222659478161,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 33.97220850456506,
+    "red_chi2": 0.10062226595516345,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 33.994623488979414,
+    "red_chi2": 0.10062226595517551,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "OF-019",
+  "category": "optfn",
+  "m": {
+   "lmfit": {
+    "med_ms": 1049.1850380058168,
+    "red_chi2": 0.013908552124899796,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 10.524033001274802,
+    "red_chi2": 0.07197655249436125,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 10.68795399623923,
+    "red_chi2": 0.01390855214162727,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 13.381535987718962,
+    "red_chi2": 0.013908552160473396,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 33.698800500133075,
+    "red_chi2": 0.07197655248940023,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 33.02554499532562,
+    "red_chi2": 0.07197655248940334,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "OF-020",
+  "category": "optfn",
+  "m": {
+   "lmfit": {
+    "med_ms": 1157.2362870065263,
+    "red_chi2": 0.10100537927830233,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 5.7149925123667344,
+    "red_chi2": 0.3611752937063024,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 4.795345506863669,
+    "red_chi2": 0.34440308045312884,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 9.707800491014495,
+    "red_chi2": 0.3611752774413635,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 32.13967249030247,
+    "red_chi2": 0.3611752936537503,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 32.303679501637816,
+    "red_chi2": 0.36117529365376266,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "SC-001",
+  "category": "scaling",
+  "m": {
+   "jax": {
+    "med_ms": 4.151279499637894,
+    "red_chi2": 0.000403970155758787,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 13.697522997972555,
+    "red_chi2": 0.0004039701557604481,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 9.385618002852425,
+    "red_chi2": 0.00040397015575878637,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 9.248962509445846,
+    "red_chi2": 0.0004039701557587868,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 9.730711492011324,
+    "red_chi2": 0.0004039701557587868,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 1.0969335125992075,
+    "red_chi2": 0.00040397015575878724,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 2.4630904954392463,
+    "red_chi2": 0.00040397015575878675,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "SC-002",
+  "category": "scaling",
+  "m": {
+   "jax": {
+    "med_ms": 3.8333114935085177,
+    "red_chi2": 0.003514360677407838,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 13.389771498623304,
+    "red_chi2": 0.0035143606774203097,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 13.040114004979841,
+    "red_chi2": 0.003514360677409084,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 9.637020499212667,
+    "red_chi2": 0.003514360677409074,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 11.986534984316677,
+    "red_chi2": 0.0035143606774078826,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 1.1644644982879981,
+    "red_chi2": 0.003514360677409253,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 2.4251900031231344,
+    "red_chi2": 0.0035143606774092635,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "SC-003",
+  "category": "scaling",
+  "m": {
+   "jax": {
+    "med_ms": 21.057686011772603,
+    "red_chi2": 0.0004324954742930298,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 76.25965499028098,
+    "red_chi2": 0.0004324954742934837,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 48.559283502982,
+    "red_chi2": 0.00043249547429302984,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 32.40029947482981,
+    "red_chi2": 0.0004324954742930583,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 50.76885849121027,
+    "red_chi2": 0.0004324954742930623,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 2.9900700028520077,
+    "red_chi2": 0.00043249547431149646,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 12.085205496987328,
+    "red_chi2": 0.0004324954743110346,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "SC-004",
+  "category": "scaling",
+  "m": {
+   "jax": {
+    "med_ms": 5.375299995648675,
+    "red_chi2": 0.0036176166461856277,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 29.734247509622946,
+    "red_chi2": 0.003617616646202516,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 19.047855006647296,
+    "red_chi2": 0.003617616646189788,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 19.597083010012284,
+    "red_chi2": 0.0036176166461897815,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 19.960431498475373,
+    "red_chi2": 0.00361761664623699,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 2.1314874902600423,
+    "red_chi2": 0.0036176166461905726,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 5.595896509476006,
+    "red_chi2": 0.0036176166461905713,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "SC-005",
+  "category": "scaling",
+  "m": {
+   "jax": {
+    "med_ms": 20.41906501108315,
+    "red_chi2": 0.00042047803838930216,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 84.23203100392129,
+    "red_chi2": 0.0004204780383907556,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 61.675223492784426,
+    "red_chi2": 0.00042047803838930384,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 57.63186499825679,
+    "red_chi2": 0.00042047803838930384,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 110.02699201344512,
+    "red_chi2": 0.0004204780383893035,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 3.4362089936621487,
+    "red_chi2": 0.000420478038392344,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 16.85047549835872,
+    "red_chi2": 0.0004204780383920665,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "SC-006",
+  "category": "scaling",
+  "m": {
+   "jax": {
+    "med_ms": 54.68985499464907,
+    "red_chi2": 0.0034801593154822376,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 86.63232150138356,
+    "red_chi2": 0.003480159315531732,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 49.71706350625027,
+    "red_chi2": 0.0034801593157010443,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 52.79275050270371,
+    "red_chi2": 0.003480159315694345,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 106.13909849780612,
+    "red_chi2": 0.003480159315482352,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 3.500844002701342,
+    "red_chi2": 0.003480159315482577,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 16.681324006640352,
+    "red_chi2": 0.0034801593154824657,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "SC-007",
+  "category": "scaling",
+  "m": {
+   "jax": {
+    "med_ms": 85.20019899879117,
+    "red_chi2": 0.00038871584559737433,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 125.10610648314469,
+    "red_chi2": 0.0003887158455991202,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 89.07936149626039,
+    "red_chi2": 0.0003887158455974095,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 90.52232799876947,
+    "red_chi2": 0.0003887158455973856,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 181.46093550603837,
+    "red_chi2": 0.00038871584559853285,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 20.34073948743753,
+    "red_chi2": 0.0003887158455973786,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 70.61147250351496,
+    "red_chi2": 0.0003887158455973798,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "SC-008",
+  "category": "scaling",
+  "m": {
+   "jax": {
+    "med_ms": 27.043284993851557,
+    "red_chi2": 0.0036671362936751086,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 99.03016452153679,
+    "red_chi2": 0.0036671362937251667,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 69.50784899527207,
+    "red_chi2": 0.0036671362936931185,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 72.58585399540607,
+    "red_chi2": 0.0036671362936930595,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 102.91221149964258,
+    "red_chi2": 0.0036671362936760727,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 16.20804049889557,
+    "red_chi2": 0.003667136293675425,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 46.15253349766135,
+    "red_chi2": 0.0036671362936753827,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "ED-001",
+  "category": "edge",
+  "m": {
+   "jax": {
+    "med_ms": 6.3062619883567095,
+    "red_chi2": 0.0010809594140696083,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 17.0366519887466,
+    "red_chi2": 0.0010809594146125852,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 12.469869005144574,
+    "red_chi2": 0.001086078311259879,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 22.947886507608928,
+    "red_chi2": 0.0010809594147381334,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 39.98448350466788,
+    "red_chi2": 0.0010809594159461166,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 1.1856005003210157,
+    "red_chi2": 0.001080959414082062,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 2.3009089927654713,
+    "red_chi2": 0.0010809594140829834,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "ED-002",
+  "category": "edge",
+  "m": {
+   "jax": {
+    "med_ms": 2.0764324872288853,
+    "red_chi2": 0.0024003122859138823,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 5.4891749896341935,
+    "red_chi2": 0.002400312285916337,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 5.220869003096595,
+    "red_chi2": 0.002400312285914273,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 4.745279991766438,
+    "red_chi2": 0.0024003122859142813,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 6.884558009915054,
+    "red_chi2": 0.002400312285913884,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.38227900222409517,
+    "red_chi2": 0.002400312285914238,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.4409435059642419,
+    "red_chi2": 0.002400312285914233,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "ED-003",
+  "category": "edge",
+  "m": {
+   "jax": {
+    "med_ms": 1.3351059897104278,
+    "red_chi2": 0.12634298845530775,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 3.5285939957248047,
+    "red_chi2": 0.1263429884565976,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 2.346540000871755,
+    "red_chi2": 0.1263429884577294,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 1.979171996936202,
+    "red_chi2": 0.12634298845773,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 2.5617614883231,
+    "red_chi2": 0.12634298845563585,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.3814135125139728,
+    "red_chi2": 0.1263429884575282,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.47505951079074293,
+    "red_chi2": 0.12634298845752823,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "ED-004",
+  "category": "edge",
+  "m": {
+   "jax": {
+    "med_ms": 1.8022194999502972,
+    "red_chi2": 0.002051629237629911,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 8.033002508454956,
+    "red_chi2": 0.002051629237635411,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 5.931723993853666,
+    "red_chi2": 0.0020516292376299137,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 5.474209989188239,
+    "red_chi2": 0.002051629237629914,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 6.150050990981981,
+    "red_chi2": 0.002051629237630096,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.5001839890610427,
+    "red_chi2": 0.002051629237629912,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.7429859833791852,
+    "red_chi2": 0.002051629237629912,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "ED-005",
+  "category": "edge",
+  "m": {
+   "jax": {
+    "med_ms": 1.0882939968723804,
+    "red_chi2": 0.00036284792559140074,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 3.7968809920130298,
+    "red_chi2": 0.0003628479255915909,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 2.5806509947869927,
+    "red_chi2": 0.0003628479255915612,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 2.7660479972837493,
+    "red_chi2": 0.0003628479255915658,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 3.455104000749998,
+    "red_chi2": 0.0003628479255914314,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.3295674978289753,
+    "red_chi2": 0.0003628479255915507,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.3998735046479851,
+    "red_chi2": 0.00036284792559154706,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "ED-006",
+  "category": "edge",
+  "m": {
+   "jax": {
+    "med_ms": 1.546578001580201,
+    "red_chi2": 0.0009762948345757323,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 4.410761990584433,
+    "red_chi2": 0.0009762948345783438,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 3.4267885057488456,
+    "red_chi2": 0.0009762948345758212,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 2.8971544961677864,
+    "red_chi2": 0.0009762948345758128,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 3.660695510916412,
+    "red_chi2": 0.0009762948345901549,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.323117506923154,
+    "red_chi2": 0.0009762948345758362,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.3520580066833645,
+    "red_chi2": 0.0009762948345758337,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "ED-007",
+  "category": "edge",
+  "m": {
+   "jax": {
+    "med_ms": 3.724421505467035,
+    "red_chi2": 0.0016950373920940395,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 12.726550994557329,
+    "red_chi2": 0.0016950373920972374,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 8.684686996275559,
+    "red_chi2": 0.0016950373922429772,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 9.298907505581155,
+    "red_chi2": 0.0016950373922422482,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 11.457166008767672,
+    "red_chi2": 0.0016950373921838671,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.6189499981701374,
+    "red_chi2": 0.00169503739221526,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 1.1856245109811425,
+    "red_chi2": 0.0016950373922151123,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "ED-008",
+  "category": "edge",
+  "m": {
+   "jax": {
+    "med_ms": 2.1615125006064773,
+    "red_chi2": 0.07491134225043136,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 6.533798499731347,
+    "red_chi2": 0.07491134225153238,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 5.291309003951028,
+    "red_chi2": 0.07491134225046824,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 4.839760498725809,
+    "red_chi2": 0.07491134225046772,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 5.64481750188861,
+    "red_chi2": 0.07491134225046397,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.4610445030266419,
+    "red_chi2": 0.0749113422504675,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.6759704992873594,
+    "red_chi2": 0.07491134225046746,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "ED-009",
+  "category": "edge",
+  "m": {
+   "jax": {
+    "med_ms": 1.4919075038051233,
+    "red_chi2": 0.002177000645558296,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 118.8870335026877,
+    "red_chi2": 0.0021770006455670275,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 4.978502503945492,
+    "red_chi2": 0.0021770006455583604,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 5.479430503328331,
+    "red_chi2": 0.002177000645558364,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 6.6072049958165735,
+    "red_chi2": 0.0021770006455583053,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.48232899280264974,
+    "red_chi2": 0.002177000645558331,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.7014610164333135,
+    "red_chi2": 0.0021770006455583287,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "ED-010",
+  "category": "edge",
+  "m": {
+   "jax": {
+    "med_ms": 5.288543499773368,
+    "red_chi2": 0.00033448646677370996,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 8.58559699554462,
+    "red_chi2": 0.0003344864684094828,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 9.404918499058113,
+    "red_chi2": 0.00033448646760330893,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 7.752074496238492,
+    "red_chi2": 0.0003344864676022348,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 9.97004850069061,
+    "red_chi2": 0.0003344864676270326,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.49618449702393264,
+    "red_chi2": 0.00033448646759319734,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.5559150013141334,
+    "red_chi2": 0.0003344864675905921,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "ED-011",
+  "category": "edge",
+  "m": {
+   "jax": {
+    "med_ms": 3.8613715005340055,
+    "red_chi2": 0.0005477224256130527,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 6.93180799135007,
+    "red_chi2": 0.0005477224256130848,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 5.347760001313873,
+    "red_chi2": 0.00054772242561306,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 5.2613989828387275,
+    "red_chi2": 0.0005477224256130539,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 7.2829909913707525,
+    "red_chi2": 0.0005477224256131049,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.4843594942940399,
+    "red_chi2": 0.0005477224256137015,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.8117314864648506,
+    "red_chi2": 0.0005477224256136532,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "ED-012",
+  "category": "edge",
+  "m": {
+   "jax": {
+    "med_ms": 3.5152185009792447,
+    "red_chi2": 0.0015638137073234364,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 11.749282493838109,
+    "red_chi2": 0.0015638137073244764,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 9.429068508325145,
+    "red_chi2": 0.0015638137073234653,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 8.528176011168398,
+    "red_chi2": 0.0015638137073234666,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 9.057020011823624,
+    "red_chi2": 0.0015638137073256256,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.6031200173310935,
+    "red_chi2": 0.0015638137073234557,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 1.188934504170902,
+    "red_chi2": 0.001563813707323455,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "ED-013",
+  "category": "edge",
+  "m": {
+   "jax": {
+    "med_ms": 0.8466214931104332,
+    "red_chi2": 0.15674691281897646,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 2.4405109870713204,
+    "red_chi2": 0.15674691281898556,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 1.7799495108192787,
+    "red_chi2": 0.15674691281910544,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 1.3670165062649176,
+    "red_chi2": 0.15674691281910558,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 2.007866496569477,
+    "red_chi2": 0.15674691281952635,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.28905751241836697,
+    "red_chi2": 0.15674691281909345,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.259502514381893,
+    "red_chi2": 0.1567469128190931,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "ED-014",
+  "category": "edge",
+  "m": {
+   "jax": {
+    "med_ms": 3.359897993505001,
+    "red_chi2": 0.0018470695280080583,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 7.164774491684511,
+    "red_chi2": 0.0018470695280090293,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 6.210862004081719,
+    "red_chi2": 0.0018470695280080626,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 6.547444994794205,
+    "red_chi2": 0.0018470695280080587,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 6.6269550152355805,
+    "red_chi2": 0.0018470695280080602,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.6132309936219826,
+    "red_chi2": 0.0018470695280082235,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.6891854864079505,
+    "red_chi2": 0.001847069528008216,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "ED-015",
+  "category": "edge",
+  "m": {
+   "jax": {
+    "med_ms": 2.776403503958136,
+    "red_chi2": 0.0002013147981246439,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 8.951745010563172,
+    "red_chi2": 0.00020131479812466897,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 5.262414502794854,
+    "red_chi2": 0.00020131479812464753,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 5.290494009386748,
+    "red_chi2": 0.00020131479812464587,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 6.4651084976503626,
+    "red_chi2": 0.00020131479812524354,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.4299435095163062,
+    "red_chi2": 0.00020131479812464782,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.6974760035518557,
+    "red_chi2": 0.00020131479812464576,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "ED-016",
+  "category": "edge",
+  "m": {
+   "jax": {
+    "med_ms": 9.509649011306465,
+    "red_chi2": 0.001208309784519458,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 8.680113009177148,
+    "red_chi2": 0.0012083097859060211,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 7.175279490184039,
+    "red_chi2": 0.0012083097859552285,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 7.115403990610503,
+    "red_chi2": 0.0012083097846840934,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 10.107254493050277,
+    "red_chi2": 0.001208309785062444,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.6575459992745891,
+    "red_chi2": 0.001208309784519789,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.8781774959061295,
+    "red_chi2": 0.001208309784519559,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "ED-017",
+  "category": "edge",
+  "m": {
+   "jax": {
+    "med_ms": 1.0183385020354763,
+    "red_chi2": 0.001565076578307005,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 6.565654490259476,
+    "red_chi2": 0.0015650765783101353,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 4.699864002759568,
+    "red_chi2": 0.0015650765783070052,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 5.099037502077408,
+    "red_chi2": 0.0015650765783070055,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 5.082726987893693,
+    "red_chi2": 0.0015650765783070091,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.8021669927984476,
+    "red_chi2": 0.0015650765783070061,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 1.0463835060363635,
+    "red_chi2": 0.0015650765783070102,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "ED-018",
+  "category": "edge",
+  "m": {
+   "jax": {
+    "med_ms": 1.282340512261726,
+    "red_chi2": 0.16281531650166048,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 3.7285560101736337,
+    "red_chi2": 0.1628153165060786,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 3.0482799920719117,
+    "red_chi2": 0.16281531650167816,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 2.70029749663081,
+    "red_chi2": 0.16281531650167802,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 2.94550450053066,
+    "red_chi2": 0.16281531650393807,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.3407429903745651,
+    "red_chi2": 0.16281531650167944,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.3250275185564533,
+    "red_chi2": 0.16281531650167969,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "ED-019",
+  "category": "edge",
+  "m": {
+   "jax": {
+    "med_ms": 1.7583999870112166,
+    "red_chi2": 0.0024183319829133004,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 8.387950001633726,
+    "red_chi2": 0.0024183319829165374,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 4.789240498212166,
+    "red_chi2": 0.002418331982916946,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 4.677418997744098,
+    "red_chi2": 0.0024183319829169524,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 6.083366009988822,
+    "red_chi2": 0.0024183319829141404,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.5376400076784194,
+    "red_chi2": 0.0024183319829179477,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.6770709878765047,
+    "red_chi2": 0.002418331982917891,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "ED-020",
+  "category": "edge",
+  "m": {
+   "jax": {
+    "med_ms": 2.6342770142946392,
+    "red_chi2": 0.0007690837660766859,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 18.723340501310304,
+    "red_chi2": 0.0007690837688281773,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 173.4137929888675,
+    "red_chi2": 0.00076908376611125,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 11.268268994172104,
+    "red_chi2": 0.0007690837661370939,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 7.390272003249265,
+    "red_chi2": 0.0007690837662027929,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.4747429920826107,
+    "red_chi2": 0.0007690837661228852,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.7295115065062419,
+    "red_chi2": 0.0007690837661228022,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "LS-001",
+  "category": "lineshapes",
+  "m": {
+   "jax": {
+    "med_ms": 1.8497449927963316,
+    "red_chi2": 0.001454905901194855,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 3.5493945033522323,
+    "red_chi2": 0.0014549059011948458,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 2.83382399356924,
+    "red_chi2": 0.001454905901194851,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 2.5396660057595,
+    "red_chi2": 0.0014549059011948488,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 3.417603496927768,
+    "red_chi2": 0.0014549059011948467,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.8879829838406295,
+    "red_chi2": 0.0014549059011948464,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 1.209220485179685,
+    "red_chi2": 0.001454905901194842,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "LS-002",
+  "category": "lineshapes",
+  "m": {
+   "jax": {
+    "med_ms": 1.2852969957748428,
+    "red_chi2": 0.0016879780693474147,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 4.181980504654348,
+    "red_chi2": 0.0016879780693484846,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 2.861703993403353,
+    "red_chi2": 0.001687978069347574,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 2.5128705019596964,
+    "red_chi2": 0.0016879780693475847,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 3.1457864970434457,
+    "red_chi2": 0.0016879780693474268,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.35337348526809365,
+    "red_chi2": 0.0016879780693474218,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.46858399582561105,
+    "red_chi2": 0.0016879780693474233,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "LS-003",
+  "category": "lineshapes",
+  "m": {
+   "jax": {
+    "med_ms": 2.363659004913643,
+    "red_chi2": 0.0017758424297851163,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 4.237579996697605,
+    "red_chi2": 0.0017758424297859491,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 3.871422493830323,
+    "red_chi2": 0.00177584242978516,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 3.660440008388832,
+    "red_chi2": 0.0017758424297851612,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 4.155764487222768,
+    "red_chi2": 0.0017758424297867738,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.306731992168352,
+    "red_chi2": 0.0017758424297851674,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.38926349952816963,
+    "red_chi2": 0.0017758424297851677,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "LS-004",
+  "category": "lineshapes",
+  "m": {
+   "jax": {
+    "med_ms": 1.649013502174057,
+    "red_chi2": 0.0012140601124867956,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 3.1847765058046207,
+    "red_chi2": 0.001214060112486841,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 2.216527995187789,
+    "red_chi2": 0.0012140601124867954,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 2.580836502602324,
+    "red_chi2": 0.0012140601124867969,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 2.484386001015082,
+    "red_chi2": 0.0012140601124867969,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.6581310008186847,
+    "red_chi2": 0.0012140601124867951,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.5975795065751299,
+    "red_chi2": 0.0012140601124867973,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "LS-005",
+  "category": "lineshapes",
+  "m": {
+   "jax": {
+    "med_ms": 2.376545511651784,
+    "red_chi2": 0.0015491273030234273,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 7.441496505634859,
+    "red_chi2": 0.0015491273030297798,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 5.932680491241626,
+    "red_chi2": 0.0015491273030246965,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 5.298829491948709,
+    "red_chi2": 0.001549127303024666,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 5.854303002706729,
+    "red_chi2": 0.0015491273030282197,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.6856410036562011,
+    "red_chi2": 0.0015491273030277212,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 1.6264479927485809,
+    "red_chi2": 0.0015491273030277253,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "LS-006",
+  "category": "lineshapes",
+  "m": {
+   "jax": {
+    "med_ms": 3.61975550185889,
+    "red_chi2": 0.0016043784226221385,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 12.097156009986065,
+    "red_chi2": 0.0016043784226308848,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 9.042781006428413,
+    "red_chi2": 0.0016043784226252703,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 8.277043496491387,
+    "red_chi2": 0.001604378422625782,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 11.08071199269034,
+    "red_chi2": 0.0016043784226247098,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 2.105102495988831,
+    "red_chi2": 0.0016043784226225238,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 6.214056513272226,
+    "red_chi2": 0.0016043784226226977,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "LS-007",
+  "category": "lineshapes",
+  "m": {
+   "jax": {
+    "med_ms": 2.3970400070538744,
+    "red_chi2": 0.001772280154534662,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 7.909416002803482,
+    "red_chi2": 0.0017722801548452584,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 5.1388174906605855,
+    "red_chi2": 0.0017722801548655316,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 4.84390500059817,
+    "red_chi2": 0.0017722801548622914,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 8.958874503150582,
+    "red_chi2": 0.0017722801549760216,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 1.5337329969042912,
+    "red_chi2": 0.0017722801548669652,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 2.975134993903339,
+    "red_chi2": 0.0017722801548674546,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "LS-008",
+  "category": "lineshapes",
+  "m": {
+   "jax": {
+    "med_ms": 3.7659454974345863,
+    "red_chi2": 0.0016347807667224043,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 9.654470486566424,
+    "red_chi2": 0.0016347807667471343,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 7.542238003225066,
+    "red_chi2": 0.0016347807667315762,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 7.496177990105934,
+    "red_chi2": 0.0016347807667315866,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 9.388277001562528,
+    "red_chi2": 0.0016347807667232354,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 1.9963315135100856,
+    "red_chi2": 0.001634780766722766,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 4.916510995826684,
+    "red_chi2": 0.0016347807667227902,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "LS-009",
+  "category": "lineshapes",
+  "m": {
+   "jax": {
+    "med_ms": 5.960639493423514,
+    "red_chi2": 0.0015424764277204186,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 19.331241011968814,
+    "red_chi2": 0.0015424764277222915,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 15.835077501833439,
+    "red_chi2": 0.0015424764277204906,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 16.21924999926705,
+    "red_chi2": 0.0015424764277204162,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 27.846451484947465,
+    "red_chi2": 0.0015424764277204254,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 3.689646502607502,
+    "red_chi2": 0.0015424764277205485,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 12.140341495978646,
+    "red_chi2": 0.001542476427720938,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "LS-010",
+  "category": "lineshapes",
+  "m": {
+   "jax": {
+    "med_ms": 3.085990494582802,
+    "red_chi2": 0.0016228957022775582,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 10.070333504700102,
+    "red_chi2": 0.0016228957022926642,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 9.68254148028791,
+    "red_chi2": 0.0016228957022775714,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 8.073527496890165,
+    "red_chi2": 0.0016228957022775745,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 10.493698006030172,
+    "red_chi2": 0.0016228957022775582,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.49987449892796576,
+    "red_chi2": 0.0016228957022775745,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.9431234939256683,
+    "red_chi2": 0.0016228957022775732,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "LS-011",
+  "category": "lineshapes",
+  "m": {
+   "jax": {
+    "med_ms": 1.522382503026165,
+    "red_chi2": 0.0016445089055716889,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 2.7693984884535894,
+    "red_chi2": 0.0016445089055733065,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 2.2273895010584965,
+    "red_chi2": 0.0016445089055716906,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 2.7661029889713973,
+    "red_chi2": 0.0016445089055716902,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 2.4451505014440045,
+    "red_chi2": 0.001644508905571726,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.6032649980625138,
+    "red_chi2": 0.001644508905571692,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.360912992618978,
+    "red_chi2": 0.001644508905571692,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "LS-012",
+  "category": "lineshapes",
+  "m": {
+   "jax": {
+    "med_ms": 1.2318499939283356,
+    "red_chi2": 0.0016739157473462827,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 2.7489885105751455,
+    "red_chi2": 0.0016739157473794526,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 2.9874690080760047,
+    "red_chi2": 0.0016739157473465772,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 3.253866991144605,
+    "red_chi2": 0.0016739157473465796,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 3.215161996195093,
+    "red_chi2": 0.0016739157473465104,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.6053700053598732,
+    "red_chi2": 0.0016739157473468305,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.43266800639685243,
+    "red_chi2": 0.0016739157473468149,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "LS-013",
+  "category": "lineshapes",
+  "m": {
+   "jax": {
+    "med_ms": 1.653808998526074,
+    "red_chi2": 0.0016497207910379918,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 2.717918498092331,
+    "red_chi2": 0.0016497207910380685,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 2.2652089974144474,
+    "red_chi2": 0.0016497207910379933,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 2.1041680010966957,
+    "red_chi2": 0.0016497207910379933,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 2.4952559906523675,
+    "red_chi2": 0.0016497207910379926,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.531039506313391,
+    "red_chi2": 0.0016497207910379946,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.37919350143056363,
+    "red_chi2": 0.001649720791037993,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "LS-014",
+  "category": "lineshapes",
+  "m": {
+   "jax": {
+    "med_ms": 2.740032010478899,
+    "red_chi2": 0.0014728321554986713,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 4.269251003279351,
+    "red_chi2": 0.0014728321554993392,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 3.091910999501124,
+    "red_chi2": 0.0014728321554987286,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 3.5849595005856827,
+    "red_chi2": 0.0014728321554987405,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 3.203517000656575,
+    "red_chi2": 0.0014728321554990386,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.8974369993666187,
+    "red_chi2": 0.001472832155498733,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.5787344998680055,
+    "red_chi2": 0.0014728321554987383,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "LS-015",
+  "category": "lineshapes",
+  "m": {
+   "jax": {
+    "med_ms": 1.132659483118914,
+    "red_chi2": 0.0015624319012860655,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 5.495035511557944,
+    "red_chi2": 0.0015624319012891251,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 2.9367045062826946,
+    "red_chi2": 0.00156243190128609,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 3.6013705102959648,
+    "red_chi2": 0.0015624319012860891,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 3.327612503198907,
+    "red_chi2": 0.0015624319012860714,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.34402849269099534,
+    "red_chi2": 0.001562431901286082,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.2822325041051954,
+    "red_chi2": 0.00156243190128609,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "LS-016",
+  "category": "lineshapes",
+  "m": {
+   "jax": {
+    "med_ms": 1.3861015031579882,
+    "red_chi2": 0.0016062516893581998,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 4.929546004859731,
+    "red_chi2": 0.0016062516893602732,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 3.683941002236679,
+    "red_chi2": 0.001606251689358207,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 4.1677349945530295,
+    "red_chi2": 0.001606251689358461,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 5.03278749238234,
+    "red_chi2": 0.0016062516893638307,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.5610594962490723,
+    "red_chi2": 0.001606251689358282,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.4694084927905351,
+    "red_chi2": 0.0016062516893582848,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "LS-017",
+  "category": "lineshapes",
+  "m": {
+   "jax": {
+    "med_ms": 0.9874884854070842,
+    "red_chi2": 0.0014905062933856922,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 2.1451074862852693,
+    "red_chi2": 0.001490506293386458,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 1.782184510375373,
+    "red_chi2": 0.0014905062933857351,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 1.9515509920893237,
+    "red_chi2": 0.0014905062933857351,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 1.996512000914663,
+    "red_chi2": 0.0014905062933857553,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.2752874861471355,
+    "red_chi2": 0.001490506293385755,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.19625149434432387,
+    "red_chi2": 0.0014905062933857557,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "LS-018",
+  "category": "lineshapes",
+  "m": {
+   "jax": {
+    "med_ms": 0.8122020080918446,
+    "red_chi2": 0.001583295577232676,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 2.3270645033335313,
+    "red_chi2": 0.0015832955772336961,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 1.8380600085947663,
+    "red_chi2": 0.0015832955772326876,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 2.1392075141193345,
+    "red_chi2": 0.0015832955772326876,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 2.5154359900625423,
+    "red_chi2": 0.0015832955772326857,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.4316984850447625,
+    "red_chi2": 0.0015832955772326924,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.33228800748474896,
+    "red_chi2": 0.0015832955772326894,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "LS-019",
+  "category": "lineshapes",
+  "m": {
+   "jax": {
+    "med_ms": 0.7278364937519655,
+    "red_chi2": 0.0016656491171616727,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 1.8804704886861145,
+    "red_chi2": 0.0016656491171616729,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 0.9508080111118034,
+    "red_chi2": 0.001665649117161673,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 1.0752390080597252,
+    "red_chi2": 0.001665649117161673,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 1.4016515051480383,
+    "red_chi2": 0.001665649117161673,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.21579698659479618,
+    "red_chi2": 0.0016656491171616746,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.1951059966813773,
+    "red_chi2": 0.0016656491171616727,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "LS-020",
+  "category": "lineshapes",
+  "m": {
+   "jax": {
+    "med_ms": 1.6937585023697466,
+    "red_chi2": 0.0016062617915329337,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 2.292679506354034,
+    "red_chi2": 0.0016062617915332132,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 2.052567506325431,
+    "red_chi2": 0.0016062617915329341,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 1.8929099896922708,
+    "red_chi2": 0.0016062617915329322,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 2.285438997205347,
+    "red_chi2": 0.0016062617915331614,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.5064035067334771,
+    "red_chi2": 0.001606261791532963,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.3909679944626987,
+    "red_chi2": 0.001606261791532961,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "LS-021",
+  "category": "lineshapes",
+  "m": {
+   "jax": {
+    "med_ms": 0.7204864959931001,
+    "red_chi2": 0.0017273078373525347,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 1.7554939986439422,
+    "red_chi2": 0.001727307837352671,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 1.5380479890154675,
+    "red_chi2": 0.0017273078373525365,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 1.078179499018006,
+    "red_chi2": 0.001727307837352536,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 1.6774789983173832,
+    "red_chi2": 0.0017273078373525373,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.21246200776658952,
+    "red_chi2": 0.0017273078373525345,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.21677151380572468,
+    "red_chi2": 0.0017273078373525345,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "LS-022",
+  "category": "lineshapes",
+  "m": {
+   "jax": {
+    "med_ms": 1.0343235189793631,
+    "red_chi2": 0.0017710926462081627,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 1.8594899884192273,
+    "red_chi2": 0.0017710926462081711,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 1.5609430120093748,
+    "red_chi2": 0.0017710926462081635,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 1.4911224861862138,
+    "red_chi2": 0.0017710926462081661,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 2.4538754805689678,
+    "red_chi2": 0.0017710926462081633,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.17853148165158927,
+    "red_chi2": 0.0017710926462081605,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.17529650358483195,
+    "red_chi2": 0.0017710926462081635,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "LS-023",
+  "category": "lineshapes",
+  "m": {
+   "jax": {
+    "med_ms": 4.378136509330943,
+    "red_chi2": 0.001543227748180148,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 2.1940430015092716,
+    "red_chi2": 0.001543227748183868,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 3.4845990012399852,
+    "red_chi2": 0.001543227748196328,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 1.5613124996889383,
+    "red_chi2": 0.0015432277481863947,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 5.721898007323034,
+    "red_chi2": 0.0015432277481825093,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.48356849583797157,
+    "red_chi2": 0.0015432277481890464,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.7464470108971,
+    "red_chi2": 0.0015432277481890176,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "LS-024",
+  "category": "lineshapes",
+  "m": {
+   "jax": {
+    "med_ms": 0.84563200653065,
+    "red_chi2": 0.001466775728663001,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 2.432959998259321,
+    "red_chi2": 0.0014667757286869086,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 1.8960009911097586,
+    "red_chi2": 0.0014667757286857654,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 1.5330714959418401,
+    "red_chi2": 0.0014667757286856097,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 2.217983012087643,
+    "red_chi2": 0.001466775728685925,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.21985200874041766,
+    "red_chi2": 0.0014667757286634649,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.22591149900108576,
+    "red_chi2": 0.0014667757286634785,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "LS-025",
+  "category": "lineshapes",
+  "m": {
+   "jax": {
+    "med_ms": 1.90578649926465,
+    "red_chi2": 0.0014769684470611066,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 8.586330994148739,
+    "red_chi2": 0.0014769684514392574,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 8.809583014226519,
+    "red_chi2": 0.0014769684514095121,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 8.208753002691083,
+    "red_chi2": 0.001476968451411165,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 8.31238400132861,
+    "red_chi2": 0.0014769684514126394,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.4161189863225445,
+    "red_chi2": 0.00147696845315486,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.5230945098446682,
+    "red_chi2": 0.0014769684531563347,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "LS-026",
+  "category": "lineshapes",
+  "m": {
+   "jax": {
+    "med_ms": 2.100757512380369,
+    "red_chi2": 0.0014317653804782184,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 2.9993699863553047,
+    "red_chi2": 0.001431765380478454,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 2.11490249785129,
+    "red_chi2": 0.0014317653804782678,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 2.443620003759861,
+    "red_chi2": 0.001431765380478329,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 2.5112110015470535,
+    "red_chi2": 0.0014317653804787312,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.33474799420218915,
+    "red_chi2": 0.00143176538047859,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.46469399239867926,
+    "red_chi2": 0.0014317653804785662,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "LS-027",
+  "category": "lineshapes",
+  "m": {
+   "jax": {
+    "med_ms": 1.7769949918147177,
+    "red_chi2": 0.0014512422677348494,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 2.4257594923255965,
+    "red_chi2": 0.001451242267755695,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 2.473300992278382,
+    "red_chi2": 0.001451242268015514,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 2.647356508532539,
+    "red_chi2": 0.0014512422677594769,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 2.5214055058313534,
+    "red_chi2": 0.0014512422677408628,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.26627248735167086,
+    "red_chi2": 0.0014512422679848539,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.3658130008261651,
+    "red_chi2": 0.0014512422679848107,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "FX-001",
+  "category": "fixed",
+  "m": {
+   "jax": {
+    "med_ms": 0.798372013377957,
+    "red_chi2": 0.00047800725869564175,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 2.100837489706464,
+    "red_chi2": 0.00047826909411268783,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 1.5446169854840264,
+    "red_chi2": 0.0004813153940747752,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 1.5249224961735308,
+    "red_chi2": 0.0004813153940747752,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 2.159957482945174,
+    "red_chi2": 0.0004813153940747877,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.1953264873009175,
+    "red_chi2": 0.000478269094112277,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.1912820152938366,
+    "red_chi2": 0.0004782690941122763,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "FX-002",
+  "category": "fixed",
+  "m": {
+   "jax": {
+    "med_ms": 0.7820265163900331,
+    "red_chi2": 0.0004493270225855731,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 2.1947274944977835,
+    "red_chi2": 0.0004464923068012975,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 1.353790983557701,
+    "red_chi2": 0.00044933620684461814,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 1.2774750066455454,
+    "red_chi2": 0.00044933620684461814,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 2.143718025763519,
+    "red_chi2": 0.00044933620684461814,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.17578100960236043,
+    "red_chi2": 0.00044649230680129796,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.1712915109237656,
+    "red_chi2": 0.0004464923068012975,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "FX-003",
+  "category": "fixed",
+  "m": {
+   "jax": {
+    "med_ms": 1.229824498295784,
+    "red_chi2": 0.0005219913307399346,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 3.698076499858871,
+    "red_chi2": 0.0005188660133838039,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 2.114342511049472,
+    "red_chi2": 0.0005221920775723151,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 2.4466260074405,
+    "red_chi2": 0.0005221920775723155,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 2.7805870049633086,
+    "red_chi2": 0.0005221920775720884,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.28606250998564065,
+    "red_chi2": 0.0005188660133839142,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.5758244951721281,
+    "red_chi2": 0.0005188660133839147,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "FX-004",
+  "category": "fixed",
+  "m": {
+   "jax": {
+    "med_ms": 0.8708069944987074,
+    "red_chi2": 0.006756434448957754,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 1.976876999833621,
+    "red_chi2": 0.006796155199644024,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 1.6286034951917827,
+    "red_chi2": 0.006839442812337107,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 1.1901155085070059,
+    "red_chi2": 0.006839442812337107,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 1.7936095100594684,
+    "red_chi2": 0.006839442812362674,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.20703648624476045,
+    "red_chi2": 0.006796155199600846,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.19996651099063456,
+    "red_chi2": 0.006796155199600859,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "TI-001",
+  "category": "tied",
+  "m": {
+   "lmfit": {
+    "med_ms": 4.702178499428555,
+    "red_chi2": 0.0007293103401103133,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.36606199864763767,
+    "red_chi2": 0.0007293103401067809,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.3537629818310961,
+    "red_chi2": 0.0007293103401067809,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "TI-002",
+  "category": "tied",
+  "m": {
+   "lmfit": {
+    "med_ms": 4.692663991590962,
+    "red_chi2": 0.0009498700072869044,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.3052119864150882,
+    "red_chi2": 0.0009498700072860042,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.29265751072671264,
+    "red_chi2": 0.0009498700072860042,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "TI-003",
+  "category": "tied",
+  "m": {
+   "lmfit": {
+    "med_ms": 6.892191988299601,
+    "red_chi2": 0.0009095357627638493,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.5188095092307776,
+    "red_chi2": 0.0009095357627652187,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.5571289802901447,
+    "red_chi2": 0.0009095357627652187,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "TI-004",
+  "category": "tied",
+  "m": {
+   "lmfit": {
+    "med_ms": 5.320994489011355,
+    "red_chi2": 0.0010122606165151543,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.3622430085670203,
+    "red_chi2": 0.0010122606165149203,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.3544174978742376,
+    "red_chi2": 0.0010122606165149203,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "RB-001",
+  "category": "robust",
+  "m": {
+   "jax": {
+    "med_ms": 1.8110145028913394,
+    "red_chi2": 12.712313561009035,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 4.060293504153378,
+    "red_chi2": 12.71231358861731,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 4.9818465049611405,
+    "red_chi2": 12.712313630157182,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 5.019266493036412,
+    "red_chi2": 12.712313585605703,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 4.411596499267034,
+    "red_chi2": 12.712313590498479,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.7259959966177121,
+    "red_chi2": 13.192735136983028,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.8740675111766905,
+    "red_chi2": 13.192735136958195,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "RB-002",
+  "category": "robust",
+  "m": {
+   "jax": {
+    "med_ms": 2.6714570121839643,
+    "red_chi2": 8.60791299702528,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 5.148367999936454,
+    "red_chi2": 8.60791303840939,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 8.245943492511287,
+    "red_chi2": 8.607913059820971,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 5.8703789982246235,
+    "red_chi2": 8.607913023409393,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 6.49193799472414,
+    "red_chi2": 8.60791309208659,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.8894019993022084,
+    "red_chi2": 9.123137471272669,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 1.2592155107995495,
+    "red_chi2": 9.123137471278248,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "RB-003",
+  "category": "robust",
+  "m": {
+   "jax": {
+    "med_ms": 1.1944104917347431,
+    "red_chi2": 12.549418953401743,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 3.878921997966245,
+    "red_chi2": 12.549418953738785,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 5.285624516545795,
+    "red_chi2": 12.549418992754624,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 3.8160014955792576,
+    "red_chi2": 12.549418961621543,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 3.703736496390775,
+    "red_chi2": 12.549418964812604,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.8067220041994005,
+    "red_chi2": 12.942616238541444,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.9092815016629174,
+    "red_chi2": 12.94261623849271,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "RB-004",
+  "category": "robust",
+  "m": {
+   "jax": {
+    "med_ms": 5.150777491508052,
+    "red_chi2": 47.69758346021771,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 3.81055248726625,
+    "red_chi2": 47.6975835803796,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 7.002293496043421,
+    "red_chi2": 47.69758368412423,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 5.211093011894263,
+    "red_chi2": 47.6975834613051,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 6.413434006390162,
+    "red_chi2": 47.69758388205083,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.8132774964906275,
+    "red_chi2": 48.69423250771869,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.9868580091279,
+    "red_chi2": 48.69423250746044,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "RB-005",
+  "category": "robust",
+  "m": {
+   "jax": {
+    "med_ms": 2.1493880049092695,
+    "red_chi2": 65.61508424425223,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 4.898155995761044,
+    "red_chi2": 65.61508437759898,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 5.989811004837975,
+    "red_chi2": 65.61508456510904,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 6.156881005153991,
+    "red_chi2": 65.61508437759169,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 7.171184493927285,
+    "red_chi2": 65.61508451659199,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.5683450144715607,
+    "red_chi2": 67.11281190487126,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.7104410033207387,
+    "red_chi2": 67.11281190485572,
+    "success": true
+   }
+  }
+ },
+ {
+  "id": "RB-006",
+  "category": "robust",
+  "m": {
+   "jax": {
+    "med_ms": 3.73844601563178,
+    "red_chi2": 38.62089584726059,
+    "success": true
+   },
+   "lmfit": {
+    "med_ms": 3.1859769951552153,
+    "red_chi2": 38.620895851089024,
+    "success": true
+   },
+   "scipy-ls-dogbox": {
+    "med_ms": 17.507466007373296,
+    "red_chi2": 38.62089698693864,
+    "success": true
+   },
+   "scipy-ls-lm": {
+    "med_ms": 3.6236205050954595,
+    "red_chi2": 38.62089586902937,
+    "success": true
+   },
+   "scipy-ls-trf": {
+    "med_ms": 5.491264993906952,
+    "red_chi2": 38.62089589298331,
+    "success": true
+   },
+   "spectrafit": {
+    "med_ms": 0.7241364946821705,
+    "red_chi2": 38.83102074545732,
+    "success": true
+   },
+   "spectrafit_fd": {
+    "med_ms": 0.8883670088835061,
+    "red_chi2": 38.83102074546665,
+    "success": true
+   }
+  }
+ }
+]

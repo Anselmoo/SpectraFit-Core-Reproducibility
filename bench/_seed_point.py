@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """One point of the seed sweep: the release's own ``oracles.cli run``, at another seed.
 
-spectrafit-core 0.1.2 ships no ``--seed`` and no ``--headline-only`` option. The
+spectrafit-core 0.1.2 and 0.1.3 ship no ``--seed`` and no ``--headline-only`` option. The
 archived sweep (commit 0fd4b5d) used both, and they did exactly this in ``cli.run``::
 
     analyzed_ids = [featured_case(build_catalog(seed)).id] if headline_only else None
@@ -23,6 +23,7 @@ from __future__ import annotations
 
 import argparse
 import functools
+import inspect
 from pathlib import Path
 
 import spectrafit_core
@@ -46,7 +47,11 @@ def main() -> None:
     cli.build_report = functools.partial(cli.build_report, seed=args.seed, analyzed_ids=analyzed_ids)
     print(f"seed={args.seed} reps={args.reps} mc={args.mc} analyzed_ids={analyzed_ids}", flush=True)
     # Every option passed explicitly: called as a function, typer's defaults are Option objects.
-    cli.run(reps=args.reps, mc=args.mc, category="benchmark", backends=None, baseline=None)
+    # 0.1.3 added tolerance_mode; "default" keeps each library's own stopping rules, as before.
+    options = {"reps": args.reps, "mc": args.mc, "category": "benchmark", "backends": None, "baseline": None}
+    if "tolerance_mode" in inspect.signature(cli.run).parameters:
+        options["tolerance_mode"] = "default"
+    cli.run(**options)
 
 
 if __name__ == "__main__":

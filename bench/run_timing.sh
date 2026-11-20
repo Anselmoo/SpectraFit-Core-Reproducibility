@@ -1,7 +1,10 @@
 #!/bin/bash
 # usage: run_timing.sh <run-root> [--dry-run | --smoke | --from-step K]
 #
-# The full timing measurement of spectrafit-core 0.1.2 on terra, as one detached chain:
+# The full timing measurement of one spectrafit-core release on terra, as one detached chain.
+# The release (version, tag, commit) is the one bench/preflight.sh resolved into
+# <run-root>/source.env; TIMING_PYTHON replaces the archive's .venv interpreter for a dry test.
+# Steps:
 #   1-5  repetition ladder, --reps 4 10 20 50 100, --mc 8: the release's own
 #        scripts/bench_ladder.py, unmodified, one invocation per depth
 #   6    seed sweep, seeds 20260603..20260652, --reps 10, --mc 8, headline-only
@@ -37,9 +40,16 @@ case "$MODE" in
   *) echo "unknown option $MODE"; exit 2 ;;
 esac
 W=$(cd "$(dirname "$0")/.." && pwd)
-PY=$W/.venv/bin/python
+PY=${TIMING_PYTHON:-$W/.venv/bin/python}
 SRC=$T/src
-COMMIT=1e304188a7376caf128fcb432a16554ed44ad32a
+if [ -f "$T/source.env" ]; then
+  COMMIT=$(sed -n 's/^COMMIT=//p' "$T/source.env"); VERSION=$(sed -n 's/^VERSION=//p' "$T/source.env")
+elif [ "$MODE" = --dry-run ]; then
+  COMMIT="<commit from bench/preflight.sh>"; VERSION="<version>"
+else
+  echo "no $T/source.env: run bench/preflight.sh first"; exit 2
+fi
+[ -n "$COMMIT" ] && [ -n "$VERSION" ] || { echo "$T/source.env names no commit or version"; exit 2; }
 N=10
 LOCK=$HOME/.cache/terra-bench.lock
 
@@ -101,7 +111,7 @@ VMSTAT_PID=$!
 THREADS_PID=$!
 trap 'kill $VMSTAT_PID $THREADS_PID 2>/dev/null' EXIT
 
-log "chain start pid=$$ src=$SRC commit=$COMMIT py=$PY mode=${MODE:-full} from_step=$FROM"
+log "chain start pid=$$ version=$VERSION src=$SRC commit=$COMMIT py=$PY mode=${MODE:-full} from_step=$FROM"
 if [ "$FROM" -le 1 ]; then
   echo "STEP 0/$N capture RUNNING since $(date -Is)" > "$T/STATUS"
   if ! (cd "$SRC" && PYTHONPATH=$SRC/python "$PY" "$W/bench/assemble.py" capture "$T") >> "$T/logs/step00.log" 2>&1; then

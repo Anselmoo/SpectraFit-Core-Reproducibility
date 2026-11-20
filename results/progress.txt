@@ -1,0 +1,30 @@
+2026-11-16T17:15:12Z timing started
+2026-11-17T20:02:14Z timing finished: exit 0, 96422 s, 336 files
+2026-11-17T20:02:16Z bench-tolerance started
+2026-11-17T20:32:39Z bench-tolerance finished: exit 0, 1823 s, 6 files
+2026-11-17T20:32:39Z bench-ablation started
+2026-11-17T21:53:57Z bench-ablation finished: exit 0, 4878 s, 5 files
+2026-11-17T21:53:57Z gallery started
+2026-11-17T21:54:16Z gallery finished: exit 0, 19 s, 35 files
+2026-11-17T21:54:16Z nist-both started
+2026-11-17T21:54:21Z nist-both finished: exit 0, 5 s, 3 files
+2026-11-17T21:54:21Z usage started
+2026-11-17T21:54:24Z usage finished: exit 0, 3 s, 3 files
+2026-11-17T21:54:24Z audit-stationarity started
+2026-11-17T22:26:56Z audit-stationarity finished: exit 0, 1952 s, 4 files
+2026-11-17T22:26:56Z eels-far started
+2026-11-17T23:21:52Z eels-far finished: exit 0, 3296 s, 4 files
+2026-11-17T23:21:52Z gate: stop until the new timing is assembled into results/timing/ and pinned (bench/RUNBOOK.md steps 11-12); then run again
+2026-11-19T12:12:42Z timing skipped: outputs match the recorded sha256
+2026-11-19T12:12:42Z bench-tolerance skipped: outputs match the recorded sha256
+2026-11-19T12:12:42Z bench-ablation skipped: outputs match the recorded sha256
+2026-11-19T12:12:42Z gallery skipped: outputs match the recorded sha256
+2026-11-19T12:12:42Z nist-both skipped: outputs match the recorded sha256
+2026-11-19T12:12:42Z usage skipped: outputs match the recorded sha256
+2026-11-19T12:12:42Z audit-stationarity skipped: outputs match the recorded sha256
+2026-11-19T12:12:42Z eels-far skipped: outputs match the recorded sha256
+2026-11-19T12:12:42Z gate open: results/timing/ is spectrafit-core 0.1.3 and pinned
+2026-11-19T12:12:42Z core started
+2026-11-19T12:33:37Z core finished: exit 0, 1255 s, 14 files
+2026-11-19T12:33:37Z overview started
+2026-11-19T12:34:39Z overview finished: exit 0, 62 s, 115 files

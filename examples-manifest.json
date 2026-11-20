@@ -1,0 +1,268 @@
+{
+ "schema": "examples-manifest/1",
+ "description": "Example gallery of spectrafit-core, mirrored 1:1 from the folder below; run as a smoke test by `reproduce.py --examples` (#71).",
+ "source": {
+  "repository": "https://github.com/Anselmoo/SpectraFit-Core.git",
+  "ref": "v0.1.3",
+  "commit": "952c5c954eed2e0e36224ddf2f9859086d36fad7",
+  "committed": "2026-11-16T11:28:39+00:00",
+  "path": "docs/tutorials/gallery",
+  "tree": "9f99621fdc8b4c895f3cbddc5de4ab84a3700760"
+ },
+ "library": {
+  "spectrafit-core": "0.1.3",
+  "note": "the examples run against the library pinned in pins.toml and uv.lock; the mirrored ref is the release tag of spectrafit-core 0.1.3"
+ },
+ "run_roles": [
+  "example",
+  "snippet"
+ ],
+ "files": [
+  {
+   "path": "examples/3d_fitting.md",
+   "sha256": "ae09c0081119779787dfe3e25710416acb76e0edd3e98462947d14659056bd31",
+   "git_blob": "2f912a7841a7abc8d1cba3ab9fff9e42b8f42a03",
+   "mode": "100644",
+   "role": "explanation"
+  },
+  {
+   "path": "examples/3d_fitting.py",
+   "sha256": "1d900ac243b5815edea4e8f962b5f069a04053888b1450306aa3663dc5638ac7",
+   "git_blob": "8cccb8a276022ecbd0a1e789d6c4dc705089b015",
+   "mode": "100644",
+   "role": "example"
+  },
+  {
+   "path": "examples/_plotting.py",
+   "sha256": "6271046a5b17f9330e97c715e93cf0879b4e127c80f320c0a03de374e392dfc0",
+   "git_blob": "1743e0dbf6edb859e2199fc0f46a66afa5e5a6b7",
+   "mode": "100644",
+   "role": "helper"
+  },
+  {
+   "path": "examples/_render.py",
+   "sha256": "c823d19a7a246c978cd210c9598438f9f9664b94e8e2cc7bf6a7bc5891387352",
+   "git_blob": "07ed43011f456d8414938008d907cdf49adef416",
+   "mode": "100644",
+   "role": "helper"
+  },
+  {
+   "path": "examples/_snippets/stacked_slices.py",
+   "sha256": "43f18407b4f77b0af6b6b0d7dc35553cac23acd26d13aa436ef222b94e50de23",
+   "git_blob": "2d2394489498a785c38429c5593803560373b741",
+   "mode": "100644",
+   "role": "snippet"
+  },
+  {
+   "path": "examples/bounded_fitting.md",
+   "sha256": "6d62d4b76cd976f02621b06a56b56eeb37dd9879f0509be5d39f28408ebaf3eb",
+   "git_blob": "c40e28e4116461bedc5caef37b4544c5b185dfe7",
+   "mode": "100644",
+   "role": "explanation"
+  },
+  {
+   "path": "examples/bounded_fitting.py",
+   "sha256": "cdacbf440878f7651f3301c7c29ee19d540c86833d1364dd230c16d959ac9d71",
+   "git_blob": "ea5da80f655f67d2f3c5cd01e7f20bbaf720f497",
+   "mode": "100644",
+   "role": "example"
+  },
+  {
+   "path": "examples/confidence_intervals.md",
+   "sha256": "4538586211634828af1369d0df928a33254ed2f688218622f978dd6018238ce9",
+   "git_blob": "ebfffa0f8dc91a10fded263a9ad3f40818fa6e68",
+   "mode": "100644",
+   "role": "explanation"
+  },
+  {
+   "path": "examples/confidence_intervals.py",
+   "sha256": "e2b8076de16bd389aebd9a11d8d67abcc49103a7dbcc02f90a1d0eff07dc960a",
+   "git_blob": "ed7f8e507a62ae003986cd9c6ac17ba11b4bb8ee",
+   "mode": "100644",
+   "role": "example"
+  },
+  {
+   "path": "examples/failed_fit.md",
+   "sha256": "39a0297a544048737e744fc2b1b456f0e11f4dbf66e0d4610706e55a218efca3",
+   "git_blob": "d2110213b49aa5338c5c4003902f8a3988ad1ddd",
+   "mode": "100644",
+   "role": "explanation"
+  },
+  {
+   "path": "examples/failed_fit.py",
+   "sha256": "ee284739623b775efbd87ec95d6320de7363e0b8cf5fdebe274953c902eb9172",
+   "git_blob": "a9147be44075ceb12353be98201d8477c2997781",
+   "mode": "100644",
+   "role": "example"
+  },
+  {
+   "path": "examples/fitting.md",
+   "sha256": "babdc804798403d45c636b961ade52a6edfb9f32a5ef7d1c35eaf3bbfa027adc",
+   "git_blob": "f690c3482426584a6e849333ee535ef0eb0e06ca",
+   "mode": "100644",
+   "role": "explanation"
+  },
+  {
+   "path": "examples/fitting.py",
+   "sha256": "2431eb6d391ad31cca6e4156e3b2b9b1a08f96f41098485bc9956903945f18af",
+   "git_blob": "0770f1a76486ec10f770b5f54d9b7849d971b820",
+   "mode": "100644",
+   "role": "example"
+  },
+  {
+   "path": "examples/fixed_params.md",
+   "sha256": "a46c1e5f858625d9f93d0402bf42c8673c6a42600dc54de93c6eda047ea7a7d1",
+   "git_blob": "c17eac659cc8944ca4de285544960b3b49611e89",
+   "mode": "100644",
+   "role": "explanation"
+  },
+  {
+   "path": "examples/fixed_params.py",
+   "sha256": "e156fe6885d46e842dfdf7e4a9f3711c02fbe02bd32807960bd18c09aabcfb84",
+   "git_blob": "7f17c4e7cc775964a729fd9d65454032551699fe",
+   "mode": "100644",
+   "role": "example"
+  },
+  {
+   "path": "examples/global_optimizer.md",
+   "sha256": "05a332f53f25ee6210916031865433ad6d66c1c87e6143d5c0c866e37dc20cd5",
+   "git_blob": "fc05408cffdc1b3f640b722ad4c05b7cab30ac6a",
+   "mode": "100644",
+   "role": "explanation"
+  },
+  {
+   "path": "examples/global_optimizer.py",
+   "sha256": "0706f2a4327dc3abc1c2d30fbf492476be5eac515a42a8c9a63c521b9a7ba532",
+   "git_blob": "2ecdf3ef084f736c283c9474dc9ed3125401c8d6",
+   "mode": "100644",
+   "role": "example"
+  },
+  {
+   "path": "examples/index.md",
+   "sha256": "cd42aa19b307781365fd8a59edd4f2a43bff4a9bfef1a2b93e350d35f6f07d94",
+   "git_blob": "4ef61203ecbb85dcc387d8afa5d53878bd01630a",
+   "mode": "100644",
+   "role": "explanation"
+  },
+  {
+   "path": "examples/misspecified_model.md",
+   "sha256": "5a58fff02b551b41a355ab9aa4db5725ff45ce9bfb03954cf9d5ad4e7f754a1c",
+   "git_blob": "650c014f9c8c3b6c8e3a5e7f7d9e1ed1e5d00eb3",
+   "mode": "100644",
+   "role": "explanation"
+  },
+  {
+   "path": "examples/misspecified_model.py",
+   "sha256": "4c0e8c18e26c83b4a8514db3bcfbd41f1ec128db05bca8cf67a39f4a86b67c0e",
+   "git_blob": "4427966f2b68b74bb1e5d1c6cfd30c8b343bfbc2",
+   "mode": "100644",
+   "role": "example"
+  },
+  {
+   "path": "examples/multi_dataset.md",
+   "sha256": "c4502200643e6f3892c7cb03dbf23e0e918f96d138623c378082a199b9542d49",
+   "git_blob": "c0d75f96f65108ff8dcad7bc9ec4d203dfc2adcb",
+   "mode": "100644",
+   "role": "explanation"
+  },
+  {
+   "path": "examples/multi_dataset_1d.py",
+   "sha256": "27809ea71c8273be2ab880813e259f9bd0159c32dd8c7c66271b8df672bd23c4",
+   "git_blob": "3f7d3dd0bc6ea90c8df49d4d4808cfa95591e887",
+   "mode": "100644",
+   "role": "example"
+  },
+  {
+   "path": "examples/multi_dataset_2d.py",
+   "sha256": "533c8e961372db7ce5dd506873028edc54f8969f3f732ab8c93810f912dcdf70",
+   "git_blob": "8973a8f44567be286d877dcd2b91b596a8ae5ebc",
+   "mode": "100644",
+   "role": "example"
+  },
+  {
+   "path": "examples/robust_fitting.md",
+   "sha256": "0fe78f01e956edd6274f3d37a2ae570f6cb839fa3fdb36ba4d852a0f6d70815e",
+   "git_blob": "8d214887d249a26d2d02876e320a78929814921b",
+   "mode": "100644",
+   "role": "explanation"
+  },
+  {
+   "path": "examples/robust_fitting.py",
+   "sha256": "6e188623893cc06cc9e2cfd35a34e86cb63f72ed4ec518503fe81333ce74abaa",
+   "git_blob": "49dca8d0d3f3d09399cdc4d585058cbafbee77de",
+   "mode": "100644",
+   "role": "example"
+  },
+  {
+   "path": "examples/shared_params.md",
+   "sha256": "b83b72c16afd61bfd580c9566c6af6ae8e7fbe64d3c6d1d5eb4d7fbaf2d0915b",
+   "git_blob": "8c440602194dc5c670a29eeb8cf730187439ce70",
+   "mode": "100644",
+   "role": "explanation"
+  },
+  {
+   "path": "examples/shared_params.py",
+   "sha256": "379ed0a404726a68693bad249486c4b0043bd23724908d36f3945d2a43ef0510",
+   "git_blob": "f8cee8840ab4d913b7b11b256d01789c0541cf40",
+   "mode": "100644",
+   "role": "example"
+  },
+  {
+   "path": "examples/spectrafit_vs_lmfit_complex.md",
+   "sha256": "8ed2e679f6b77d4e484525c46c6eeb3a98f206e83c8ad3bbf69851c0f0583479",
+   "git_blob": "243678e0774eed7efc76ba2e925ba7c4e0d2eaff",
+   "mode": "100644",
+   "role": "explanation"
+  },
+  {
+   "path": "examples/spectrafit_vs_lmfit_complex.py",
+   "sha256": "3570544d4d4eee2402f3c438e9035e12e052c2b0d91e03165ac2ab4e31dd7695",
+   "git_blob": "32dacf505658a35aca65a76c1e75a24327b1828c",
+   "mode": "100644",
+   "role": "example"
+  },
+  {
+   "path": "examples/spectrafit_vs_lmfit_moderate.md",
+   "sha256": "8fba43182a8fc88454c00d872f2ca1a2afcc0870f8958118825548f284701135",
+   "git_blob": "74eaf19c9effce1fba8ab3bc38b6dbfab765cfcd",
+   "mode": "100644",
+   "role": "explanation"
+  },
+  {
+   "path": "examples/spectrafit_vs_lmfit_moderate.py",
+   "sha256": "8a1020430131ffde98e24e8fd7ba0c31f60cd00894c1497d11efd8452ec1e9e9",
+   "git_blob": "e791c83a603fadd5706f6839b57b102e762ad0bd",
+   "mode": "100644",
+   "role": "example"
+  },
+  {
+   "path": "examples/varpro_vs_lm.md",
+   "sha256": "6f1f8696a3a15c1bfd7055464094d1778bae17e3ad1376e0b18a98413a43283c",
+   "git_blob": "07a7a727f1a7b9e03fce55050670fb439ba7a208",
+   "mode": "100644",
+   "role": "explanation"
+  },
+  {
+   "path": "examples/varpro_vs_lm.py",
+   "sha256": "ff0ac46342545190451fd09881091bfefa551506c8d3bb6e1314f6e57f65fab6",
+   "git_blob": "dc51ed13848c24ea1333777274a277ba04a2cb69",
+   "mode": "100644",
+   "role": "example"
+  },
+  {
+   "path": "examples/weighted_fitting.md",
+   "sha256": "afc43dc2398fd932339d41b3737c1d36cb8f280fd2e6053cd9c8e2a290935a7d",
+   "git_blob": "ce9731eaaddce42b7b21e617e9891de580b23c7f",
+   "mode": "100644",
+   "role": "explanation"
+  },
+  {
+   "path": "examples/weighted_fitting.py",
+   "sha256": "8506f6d2c1c6d0afead587a798414798781f5c415783b6f16be4b35a9116b543",
+   "git_blob": "3f5abfa0076991816a6f141aeb7bc7ec90344962",
+   "mode": "100644",
+   "role": "example"
+  }
+ ],
+ "files_sha256": "7eb9531e86c72667d8882edb601e7eb6a2c526b5b05cd4217d2b0d3b6f3c58b7"
+}

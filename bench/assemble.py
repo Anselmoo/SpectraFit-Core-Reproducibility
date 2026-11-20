@@ -43,8 +43,22 @@ import sys
 from datetime import UTC, datetime
 from pathlib import Path
 
-COMMIT = "1e304188a7376caf128fcb432a16554ed44ad32a"
-TAG = "v0.1.2"
+# The release measured: written by bench/preflight.sh into <run-root>/source.env
+# (VERSION, TAG, COMMIT) and read by release() for every subcommand.
+RELEASE: dict[str, str] = {}
+
+
+def release(root: Path) -> dict[str, str]:
+    """Version, tag and commit of the measured release from ``<root>/source.env``."""
+    env = root / "source.env"
+    if not env.is_file():
+        raise SystemExit(f"{env} is missing: the run root was not prepared by bench/preflight.sh")
+    got = dict(line.split("=", 1) for line in env.read_text().splitlines() if "=" in line)
+    missing = {"VERSION", "TAG", "COMMIT"} - set(got)
+    if missing:
+        raise SystemExit(f"{env} lacks {', '.join(sorted(missing))}")
+    RELEASE.update(got)
+    return got
 W = Path(__file__).resolve().parent.parent
 SCHEMA_RUNG = "spectrafit-core/bench-provenance/2"
 SCHEMA_LADDER = "spectrafit-core/bench-ladder/2"
@@ -55,8 +69,8 @@ THREAD_ENV_KEYS = ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS",
                    "XLA_FLAGS", "JAX_PLATFORMS", "SPECTRAFIT_BENCH_JAX_COMPILE_BUDGET")
 GZIP_PAYLOADS = ("results.json", "audit.json")
 KEEP_RAW = ("manifest.json", "trust.json")
-# Present in the archived records, not obtainable from spectrafit-core 0.1.2:
-# Backend.solver_settings() was removed in 0.1.2, so the per-backend solver description
+# Present in the archived records, not obtainable from spectrafit-core 0.1.2 or 0.1.3:
+# Backend.solver_settings() was removed in 0.1.2 (still absent in 0.1.3), so the per-backend solver description
 # the archive carries under config.solvers has no source in the release.
 NULL_FIELDS = {
     "config.solvers.<backend>.library": "Backend.solver_settings() removed in 0.1.2",
@@ -69,7 +83,8 @@ SOLVER_PACKAGE = {"spectrafit": "spectrafit-core", "lmfit": "lmfit", "jax": "opt
                   "scipy-ls-lm": "scipy", "scipy-ls-trf": "scipy", "scipy-ls-dogbox": "scipy"}
 
 # Verbatim from 0fd4b5d scripts/bench_ladder.py methodology(); every sentence checked
-# against the v0.1.2 harness (engine.py suite/analyzed reps, _base.py warm-up and timing
+# against the v0.1.2 harness and unchanged in the v0.1.3 harness at the default tolerance mode
+# (engine.py suite/analyzed reps, _base.py warm-up and timing
 # loop, _engine_profile.py default_rng(1000 + k), _lmfit.py DE seed 0, _jax.py budget).
 METHODOLOGY = {
     "timing": {
@@ -316,7 +331,7 @@ def environment(raw_env: dict, cap: dict) -> dict:
     return {
         # The export has no .git, so bench_ladder.py recorded an empty commit. The commit
         # is the one the export was made from with `git archive` (pins.toml).
-        "git": {"commit": COMMIT, "branch": f"tag {TAG} (git archive export)", "dirty": False},
+        "git": {"commit": RELEASE["COMMIT"], "branch": f"tag {RELEASE['TAG']} (git archive export)", "dirty": False},
         "host": host,
         "versions": {
             "python": versions["python"],
@@ -562,8 +577,8 @@ def build(root: Path, out: Path, partial: bool) -> int:
 
     # ---- run-level provenance
     dump(out / "provenance.json", {
-        "what": "timing benchmark of spectrafit-core 0.1.2 (PyPI wheel) with the v0.1.2 harness, on terra",
-        "source": {"repository": "https://github.com/Anselmoo/SpectraFit-Core.git", "tag": TAG, "commit": COMMIT,
+        "what": f"timing benchmark of spectrafit-core {RELEASE['VERSION']} (PyPI wheel) with the {RELEASE['TAG']} harness, on terra",
+        "source": {"repository": "https://github.com/Anselmoo/SpectraFit-Core.git", "tag": RELEASE["TAG"], "commit": RELEASE["COMMIT"],
                    "export": "git archive of the commit: scripts/bench_ladder.py python/oracles reproducibility "
                              "tests/parity crates Cargo.toml; python/ holds only oracles, so the wheel is imported",
                    "export_files_sha256": cap["export_files_sha256"]},
@@ -637,7 +652,9 @@ def main() -> int:
     b.add_argument("--partial", action="store_true", help="smoke test: allow missing rungs and files")
     args = ap.parse_args()
     if args.cmd == "capture":
+        release(args.root.resolve())
         return capture(args.root.resolve())
+    release(args.root.resolve())
     return build(args.root.resolve(), args.out.resolve(), args.partial)
 
 

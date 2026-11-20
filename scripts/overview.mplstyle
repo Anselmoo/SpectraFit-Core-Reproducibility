@@ -1,0 +1,70 @@
+# Figure style of the overview report: final print size, one sans face, 0.5 pt axes, Okabe-Ito series.
+font.family        : sans-serif
+font.sans-serif    : Arial, Helvetica, Arimo, Liberation Sans, Nimbus Sans, DejaVu Sans
+font.serif         : Times New Roman, Times, Tinos, Liberation Serif, Nimbus Roman, TeX Gyre Termes
+font.monospace     : Courier New, Courier, Cousine, Liberation Mono, Nimbus Mono PS, TeX Gyre Cursor
+font.size          : 7
+axes.labelsize     : 7
+axes.titlesize     : 7
+xtick.labelsize    : 6
+ytick.labelsize    : 6
+legend.fontsize    : 6
+mathtext.default   : regular
+axes.unicode_minus : True
+axes.formatter.use_locale : False
+axes.formatter.useoffset  : False
+
+axes.linewidth     : 0.5
+axes.edgecolor     : 111111
+axes.labelcolor    : 111111
+axes.spines.top    : False
+axes.spines.right  : False
+axes.grid          : False
+axes.grid.which    : major
+grid.color         : d9d9d9
+grid.linewidth     : 0.5
+grid.linestyle     : -
+axes.axisbelow     : True
+axes.labelpad      : 2
+axes.prop_cycle    : cycler(color=["0072b2", "d55e00", "008060", "a8558a", "b07800", "2f8ac4"])
+text.color         : 111111
+
+xtick.direction    : in
+ytick.direction    : in
+xtick.major.size   : 2
+ytick.major.size   : 2
+xtick.minor.size   : 1
+ytick.minor.size   : 1
+xtick.major.width  : 0.5
+ytick.major.width  : 0.5
+xtick.minor.width  : 0.5
+ytick.minor.width  : 0.5
+xtick.minor.visible: True
+ytick.minor.visible: True
+xtick.top          : False
+ytick.right        : False
+xtick.major.pad    : 2
+ytick.major.pad    : 2
+xtick.color        : 111111
+ytick.color        : 111111
+
+lines.linewidth    : 1
+lines.markersize   : 3
+lines.markeredgewidth : 0.5
+errorbar.capsize   : 0
+patch.linewidth    : 0.5
+hatch.linewidth    : 0.5
+legend.frameon     : False
+legend.handlelength: 1.5
+image.cmap         : viridis
+
+figure.facecolor   : white
+figure.dpi         : 150
+savefig.dpi        : 600
+savefig.format     : pdf
+savefig.bbox       : standard
+savefig.pad_inches : 0
+savefig.facecolor  : white
+pdf.fonttype       : 42
+ps.fonttype        : 42
+svg.fonttype       : none

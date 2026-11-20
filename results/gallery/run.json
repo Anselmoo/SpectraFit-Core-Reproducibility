@@ -1,0 +1,90 @@
+{
+ "schema": "harness-run/1",
+ "target": "gallery",
+ "command": "scripts/gallery_run.py",
+ "start_utc": "2026-11-17T21:53:58Z",
+ "end_utc": "2026-11-17T21:54:15Z",
+ "wall_s": 17.2,
+ "load_start": [
+  1.51,
+  1.41,
+  1.23
+ ],
+ "load_end": [
+  2.38,
+  1.62,
+  1.31
+ ],
+ "status": "ok",
+ "environment": {
+  "archive": {
+   "commit": "1c9fe699d489c89edde2d3e793c2fe04db5d8762",
+   "dirty": true
+  },
+  "host": "terra",
+  "platform": "Linux-5.15.0-203-generic-x86_64-with-glibc2.35",
+  "machine": "x86_64",
+  "cores": 16,
+  "python": "3.13.13",
+  "spectrafit_core": {
+   "version": "0.1.3",
+   "wheel_sha256": "0d909b5faf1b5f47cbfb81b074b6ee0f44a523c6daf8303c8f2d4e1c878f6e43",
+   "wheel_sha256_from": "uv.lock",
+   "core_extension": {
+    "file": "_core.cpython-313-x86_64-linux-gnu.so",
+    "sha256": "2e672905bbbf9e592a68df47f4342e811f028063cc4dc144e787cd83ff021ebd"
+   }
+  },
+  "packages": {
+   "numpy": "2.5.1",
+   "scipy": "1.18.0",
+   "lmfit": "1.3.4",
+   "matplotlib": "3.11.2"
+  },
+  "threads": {
+   "OMP_NUM_THREADS": null,
+   "OPENBLAS_NUM_THREADS": null,
+   "MKL_NUM_THREADS": null,
+   "RAYON_NUM_THREADS": null
+  },
+  "thread_setting": "library-defaults"
+ },
+ "notes": [
+  "record: gallery.json; figures: figures/; drift check against the manifest only"
+ ],
+ "files_sha256": {
+  "figures/3d_fitting-thumb-light.png": "5aae67c6f025afb2fede57ac4d333dee634557d5755be2634f9ac6e2b8f99379",
+  "figures/3d_fitting.png": "76500aeca16b52322ff58d5df924b38979c65a3a1c94b0615dae97e69cddec7a",
+  "figures/bounded_fitting-thumb-light.png": "1c7a6132164783fc296e128333c760cbfca96b7ad8448fa4f231446c88b2108a",
+  "figures/bounded_fitting.png": "abe9e9eaa8a2eadb7df1adcada78ac4c595ff4608ea6766591b63dce4508fac0",
+  "figures/confidence_intervals-thumb-light.png": "55e9671a90317ec05e934bb6a214c719e9c3b12b17b7ab1553892e2a7b413dc8",
+  "figures/confidence_intervals.png": "b98dea808b36e7dca27ace803ed0895d99fd188df9a97dd8662b3b3cb44668f9",
+  "figures/failed_fit-thumb-light.png": "c3bf64eccbddf78214265bbc9453b79c1ea3f64ca2276345cf4dfea9cd6a492c",
+  "figures/failed_fit.png": "15c99ce08b2a87a67d66a7d63921f66a6e7896c156aee12fa728a933a7e34782",
+  "figures/fitting-thumb-light.png": "c5cca05bc198897836c1c020bc6d0cae222a166d5a8a72b91246c7b5edcfb582",
+  "figures/fitting.png": "83db9a237f3aee0d07b2f2fa887464724fb6d141d5e1430c4a8bcebb10ebe05b",
+  "figures/fixed_params-thumb-light.png": "d297062e2384d6a13cf3f27d96c79554915654fdccc748735d6a79479a4ff3f1",
+  "figures/fixed_params.png": "27f31354c58b5d89e43f22e586ef1adba6a30a0a9f78b17b9919e63fe065001d",
+  "figures/global_optimizer-thumb-light.png": "34e0ba72beb2b1272c8f11891d9c6173739d6385f7ade160fff0ef6ed4cbef4a",
+  "figures/global_optimizer.png": "8b8e3b5938748330478df88d4ae3ef448c579329b3c5f9c3414f536d79696a66",
+  "figures/misspecified_model-thumb-light.png": "095a346e05161d8f966c80c590db7adac1f7abb10406034efbac70fe1970aaaa",
+  "figures/misspecified_model.png": "43a0ab62cc663b9f6b91d492b6cee0253b42e990d343084bc64db5cbf89e2b99",
+  "figures/multi_dataset_1d-thumb-light.png": "e466c18dd3deaf699da0da18ebffa4cec3481753ccabe80a4df772fa9dc66c74",
+  "figures/multi_dataset_1d.png": "bb53b3888ebeeef3efcdc6ab9d15b67a237482c23cd52bdcc414870e182d4b08",
+  "figures/multi_dataset_2d-thumb-light.png": "be932256763edc3bb2352ce6d0a04c3763c5544dba6ccfcc0136b7ef817fc4f5",
+  "figures/multi_dataset_2d.png": "e3ca0063ce85ef4443818e4aa6a8146fb58179167bb492bb2b9d9d2c5ea46fad",
+  "figures/robust_fitting-thumb-light.png": "ea90beaf5348c1e53cb14b1fe8d6423f06a20f1bac0b026e4f0a0b9ba82bdf90",
+  "figures/robust_fitting.png": "1eaa44c592c2a89bccfa1b83645a58f94711252839994c25b0756615d3e4280d",
+  "figures/shared_params-thumb-light.png": "7d285330867ec61f0de783bae2337a423fda031ae1d4228254721b0f86d845c1",
+  "figures/shared_params.png": "c71e4eeefab27a0efd93e5cb14d22056020c6458b876c8411ffd5e8ecc25bc0c",
+  "figures/spectrafit_vs_lmfit_complex-thumb-light.png": "5b1b32b36378218d24424b0678a802c9c0a0d42ee0ab96e82287bd0e582c8442",
+  "figures/spectrafit_vs_lmfit_complex.png": "e8cea31dc5721202b913f5e19bde9f92a967c73814d259113802e2e95f4cbbff",
+  "figures/spectrafit_vs_lmfit_moderate-thumb-light.png": "27697168041fa5e2f64cce2557ec35b3adacc2010a5c56bd1eba4a64f348c3a0",
+  "figures/spectrafit_vs_lmfit_moderate.png": "5bb3ac4f91166dabb686320dba1ae187151af935a4d01d89e5d3b0f0f8164772",
+  "figures/varpro_vs_lm-thumb-light.png": "803f8d7ebe25ab4597a509c6e1110874bdc4194238546fc136e78460a4b580b1",
+  "figures/varpro_vs_lm.png": "46b619376e690c9b3898ea4ec67b1f00621d49d7a53e0f30ac94841a8628d9a8",
+  "figures/weighted_fitting-thumb-light.png": "9e3db18c137ffedc679baea618a0db20e58fe2a69bb1a583ccaadfb11074d52e",
+  "figures/weighted_fitting.png": "dab23a166b579d90d5c2305890429c415f8d1dd680ffeae44ac682502cb8e45e",
+  "gallery.json": "a270ff83548c34debf7152caa33faa14b67d6e49ea44d8f4024007f7c32b0430"
+ }
+}
