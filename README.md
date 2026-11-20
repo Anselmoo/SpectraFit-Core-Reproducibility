@@ -15,7 +15,7 @@ copy of the benchmark suite:
 | comparators | lmfit 1.3.4, SciPy 1.18.0, NumPy 2.5.1 | `pins.toml`, `uv.lock` |
 | NIST fixtures, harness, figure scripts | GitHub `Anselmoo/SpectraFit-Core` at tag `v0.1.3` | commit hash in `pins.toml` |
 | timing data | measured on terra with that wheel and the tag's harness, `results/timing/` | SHA-256 in `pins.toml [timing_inputs]` |
-| example gallery, `examples/` | `docs/tutorials/gallery/` of spectrafit-core, copied 1:1 from one commit | commit, git tree id and SHA-256 per file in `examples-manifest.json` |
+| example gallery, `examples/` | the Python files of `docs/tutorials/gallery/` of spectrafit-core, copied byte for byte from one commit | commit, SHA-256 and git blob id per file in `examples-manifest.json` |
 
 ## Run it
 
@@ -193,16 +193,21 @@ Every `run.json` records the thread setting (`library-defaults` or `caps-1`).
 
 ## Examples
 
-`examples/` is the example gallery of spectrafit-core (`docs/tutorials/gallery/`: the
-scripts, the Markdown page that explains each, and the helper modules they import),
+`examples/` holds the Python files of the example gallery of spectrafit-core
+(`docs/tutorials/gallery/`: the examples, the snippet and the helper modules they import),
 copied byte for byte from one commit by `scripts/mirror_gallery.py`. Nothing in it is
-edited. `examples-manifest.json` records the source commit, the git tree id of the
-gallery folder at that commit, and the SHA-256, git blob id and role of every file.
+edited. The Markdown pages of the gallery are pages of the documentation site and are not
+mirrored; the mirror step generates `examples/README.md` instead: one entry per example, in
+the order of the gallery index page, with the title and description of its page, a link to
+the script and the figure of the `gallery` target. `examples-manifest.json` records the
+source commit, the git tree id of the gallery folder at that commit, the SHA-256, git blob id
+and role of every mirrored file, the source files left out with the reason, and the SHA-256
+of the generated README.
 
 ```bash
 uv run --locked reproduce.py --examples           # smoke run, writes results/examples-smoke.json
 uv run --locked reproduce.py --examples --check   # the same, record in .cache/ only
-uv run --locked --group audit pytest tests/       # byte identity, manifest, smoke run
+uv run --locked --group audit pytest tests/       # per-file identity, manifest, README, smoke run
 uv run --locked scripts/mirror_gallery.py --source ~/path/to/spectrafit-core --commit <rev>
 ```
 
@@ -216,13 +221,16 @@ spectrum from the root of a spectrafit-core checkout, outside the gallery folder
 
 The gallery is mirrored from tag `v0.1.3` of spectrafit-core (commit `952c5c95`, git tree
 `9f99621f`) and runs against the pinned wheel 0.1.3. The `gallery` target runs every script,
-including `misspecified_model.py` with `--source`, and records the fits in
+including `misspecified_model.py` with the measured spectrum copied from the release export
+(`--spectrum-dir`), and records the fits in
 `results/gallery/gallery.json`.
 
-`tests/test_examples.py` recomputes the git tree id from the mirrored bytes and compares
-it with the recorded one, so identity with the source folder is checked without the
-source. With `SPECTRAFIT_CORE_SOURCE` pointing to a checkout that holds the recorded
-commit, every file is also compared with that commit object.
+`tests/test_examples.py` recomputes the SHA-256 and git blob id of every mirrored file
+and compares them with the manifest, so identity with the source files is checked without
+the source, and checks that every figure linked in `examples/README.md` exists. With
+`SPECTRAFIT_CORE_SOURCE` pointing to a checkout that holds the recorded commit, every file
+is also compared with that commit object, and the README is generated again from it and
+compared.
 
 ## What a run writes
 

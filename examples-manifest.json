@@ -1,6 +1,6 @@
 {
- "schema": "examples-manifest/1",
- "description": "Example gallery of spectrafit-core, mirrored 1:1 from the folder below; run as a smoke test by `reproduce.py --examples` (#71).",
+ "schema": "examples-manifest/2",
+ "description": "Python files of the example gallery of spectrafit-core, mirrored byte for byte from the folder below; run as a smoke test by `reproduce.py --examples`.",
  "source": {
   "repository": "https://github.com/Anselmoo/SpectraFit-Core.git",
   "ref": "v0.1.3",
@@ -18,13 +18,6 @@
   "snippet"
  ],
  "files": [
-  {
-   "path": "examples/3d_fitting.md",
-   "sha256": "ae09c0081119779787dfe3e25710416acb76e0edd3e98462947d14659056bd31",
-   "git_blob": "2f912a7841a7abc8d1cba3ab9fff9e42b8f42a03",
-   "mode": "100644",
-   "role": "explanation"
-  },
   {
    "path": "examples/3d_fitting.py",
    "sha256": "1d900ac243b5815edea4e8f962b5f069a04053888b1450306aa3663dc5638ac7",
@@ -54,25 +47,11 @@
    "role": "snippet"
   },
   {
-   "path": "examples/bounded_fitting.md",
-   "sha256": "6d62d4b76cd976f02621b06a56b56eeb37dd9879f0509be5d39f28408ebaf3eb",
-   "git_blob": "c40e28e4116461bedc5caef37b4544c5b185dfe7",
-   "mode": "100644",
-   "role": "explanation"
-  },
-  {
    "path": "examples/bounded_fitting.py",
    "sha256": "cdacbf440878f7651f3301c7c29ee19d540c86833d1364dd230c16d959ac9d71",
    "git_blob": "ea5da80f655f67d2f3c5cd01e7f20bbaf720f497",
    "mode": "100644",
    "role": "example"
-  },
-  {
-   "path": "examples/confidence_intervals.md",
-   "sha256": "4538586211634828af1369d0df928a33254ed2f688218622f978dd6018238ce9",
-   "git_blob": "ebfffa0f8dc91a10fded263a9ad3f40818fa6e68",
-   "mode": "100644",
-   "role": "explanation"
   },
   {
    "path": "examples/confidence_intervals.py",
@@ -82,25 +61,11 @@
    "role": "example"
   },
   {
-   "path": "examples/failed_fit.md",
-   "sha256": "39a0297a544048737e744fc2b1b456f0e11f4dbf66e0d4610706e55a218efca3",
-   "git_blob": "d2110213b49aa5338c5c4003902f8a3988ad1ddd",
-   "mode": "100644",
-   "role": "explanation"
-  },
-  {
    "path": "examples/failed_fit.py",
    "sha256": "ee284739623b775efbd87ec95d6320de7363e0b8cf5fdebe274953c902eb9172",
    "git_blob": "a9147be44075ceb12353be98201d8477c2997781",
    "mode": "100644",
    "role": "example"
-  },
-  {
-   "path": "examples/fitting.md",
-   "sha256": "babdc804798403d45c636b961ade52a6edfb9f32a5ef7d1c35eaf3bbfa027adc",
-   "git_blob": "f690c3482426584a6e849333ee535ef0eb0e06ca",
-   "mode": "100644",
-   "role": "explanation"
   },
   {
    "path": "examples/fitting.py",
@@ -110,25 +75,11 @@
    "role": "example"
   },
   {
-   "path": "examples/fixed_params.md",
-   "sha256": "a46c1e5f858625d9f93d0402bf42c8673c6a42600dc54de93c6eda047ea7a7d1",
-   "git_blob": "c17eac659cc8944ca4de285544960b3b49611e89",
-   "mode": "100644",
-   "role": "explanation"
-  },
-  {
    "path": "examples/fixed_params.py",
    "sha256": "e156fe6885d46e842dfdf7e4a9f3711c02fbe02bd32807960bd18c09aabcfb84",
    "git_blob": "7f17c4e7cc775964a729fd9d65454032551699fe",
    "mode": "100644",
    "role": "example"
-  },
-  {
-   "path": "examples/global_optimizer.md",
-   "sha256": "05a332f53f25ee6210916031865433ad6d66c1c87e6143d5c0c866e37dc20cd5",
-   "git_blob": "fc05408cffdc1b3f640b722ad4c05b7cab30ac6a",
-   "mode": "100644",
-   "role": "explanation"
   },
   {
    "path": "examples/global_optimizer.py",
@@ -138,32 +89,11 @@
    "role": "example"
   },
   {
-   "path": "examples/index.md",
-   "sha256": "cd42aa19b307781365fd8a59edd4f2a43bff4a9bfef1a2b93e350d35f6f07d94",
-   "git_blob": "4ef61203ecbb85dcc387d8afa5d53878bd01630a",
-   "mode": "100644",
-   "role": "explanation"
-  },
-  {
-   "path": "examples/misspecified_model.md",
-   "sha256": "5a58fff02b551b41a355ab9aa4db5725ff45ce9bfb03954cf9d5ad4e7f754a1c",
-   "git_blob": "650c014f9c8c3b6c8e3a5e7f7d9e1ed1e5d00eb3",
-   "mode": "100644",
-   "role": "explanation"
-  },
-  {
    "path": "examples/misspecified_model.py",
    "sha256": "4c0e8c18e26c83b4a8514db3bcfbd41f1ec128db05bca8cf67a39f4a86b67c0e",
    "git_blob": "4427966f2b68b74bb1e5d1c6cfd30c8b343bfbc2",
    "mode": "100644",
    "role": "example"
-  },
-  {
-   "path": "examples/multi_dataset.md",
-   "sha256": "c4502200643e6f3892c7cb03dbf23e0e918f96d138623c378082a199b9542d49",
-   "git_blob": "c0d75f96f65108ff8dcad7bc9ec4d203dfc2adcb",
-   "mode": "100644",
-   "role": "explanation"
   },
   {
    "path": "examples/multi_dataset_1d.py",
@@ -180,25 +110,11 @@
    "role": "example"
   },
   {
-   "path": "examples/robust_fitting.md",
-   "sha256": "0fe78f01e956edd6274f3d37a2ae570f6cb839fa3fdb36ba4d852a0f6d70815e",
-   "git_blob": "8d214887d249a26d2d02876e320a78929814921b",
-   "mode": "100644",
-   "role": "explanation"
-  },
-  {
    "path": "examples/robust_fitting.py",
    "sha256": "6e188623893cc06cc9e2cfd35a34e86cb63f72ed4ec518503fe81333ce74abaa",
    "git_blob": "49dca8d0d3f3d09399cdc4d585058cbafbee77de",
    "mode": "100644",
    "role": "example"
-  },
-  {
-   "path": "examples/shared_params.md",
-   "sha256": "b83b72c16afd61bfd580c9566c6af6ae8e7fbe64d3c6d1d5eb4d7fbaf2d0915b",
-   "git_blob": "8c440602194dc5c670a29eeb8cf730187439ce70",
-   "mode": "100644",
-   "role": "explanation"
   },
   {
    "path": "examples/shared_params.py",
@@ -208,25 +124,11 @@
    "role": "example"
   },
   {
-   "path": "examples/spectrafit_vs_lmfit_complex.md",
-   "sha256": "8ed2e679f6b77d4e484525c46c6eeb3a98f206e83c8ad3bbf69851c0f0583479",
-   "git_blob": "243678e0774eed7efc76ba2e925ba7c4e0d2eaff",
-   "mode": "100644",
-   "role": "explanation"
-  },
-  {
    "path": "examples/spectrafit_vs_lmfit_complex.py",
    "sha256": "3570544d4d4eee2402f3c438e9035e12e052c2b0d91e03165ac2ab4e31dd7695",
    "git_blob": "32dacf505658a35aca65a76c1e75a24327b1828c",
    "mode": "100644",
    "role": "example"
-  },
-  {
-   "path": "examples/spectrafit_vs_lmfit_moderate.md",
-   "sha256": "8fba43182a8fc88454c00d872f2ca1a2afcc0870f8958118825548f284701135",
-   "git_blob": "74eaf19c9effce1fba8ab3bc38b6dbfab765cfcd",
-   "mode": "100644",
-   "role": "explanation"
   },
   {
    "path": "examples/spectrafit_vs_lmfit_moderate.py",
@@ -236,25 +138,11 @@
    "role": "example"
   },
   {
-   "path": "examples/varpro_vs_lm.md",
-   "sha256": "6f1f8696a3a15c1bfd7055464094d1778bae17e3ad1376e0b18a98413a43283c",
-   "git_blob": "07a7a727f1a7b9e03fce55050670fb439ba7a208",
-   "mode": "100644",
-   "role": "explanation"
-  },
-  {
    "path": "examples/varpro_vs_lm.py",
    "sha256": "ff0ac46342545190451fd09881091bfefa551506c8d3bb6e1314f6e57f65fab6",
    "git_blob": "dc51ed13848c24ea1333777274a277ba04a2cb69",
    "mode": "100644",
    "role": "example"
-  },
-  {
-   "path": "examples/weighted_fitting.md",
-   "sha256": "afc43dc2398fd932339d41b3737c1d36cb8f280fd2e6053cd9c8e2a290935a7d",
-   "git_blob": "ce9731eaaddce42b7b21e617e9891de580b23c7f",
-   "mode": "100644",
-   "role": "explanation"
   },
   {
    "path": "examples/weighted_fitting.py",
@@ -264,5 +152,92 @@
    "role": "example"
   }
  ],
- "files_sha256": "7eb9531e86c72667d8882edb601e7eb6a2c526b5b05cd4217d2b0d3b6f3c58b7"
+ "not_mirrored": [
+  {
+   "path": "docs/tutorials/gallery/3d_fitting.md",
+   "git_blob": "2f912a7841a7abc8d1cba3ab9fff9e42b8f42a03",
+   "reason": "page of the documentation site (front matter, attribute lists, snippet includes, images under _static/ that are not in the folder); summarised in the generated examples/README.md"
+  },
+  {
+   "path": "docs/tutorials/gallery/bounded_fitting.md",
+   "git_blob": "c40e28e4116461bedc5caef37b4544c5b185dfe7",
+   "reason": "page of the documentation site (front matter, attribute lists, snippet includes, images under _static/ that are not in the folder); summarised in the generated examples/README.md"
+  },
+  {
+   "path": "docs/tutorials/gallery/confidence_intervals.md",
+   "git_blob": "ebfffa0f8dc91a10fded263a9ad3f40818fa6e68",
+   "reason": "page of the documentation site (front matter, attribute lists, snippet includes, images under _static/ that are not in the folder); summarised in the generated examples/README.md"
+  },
+  {
+   "path": "docs/tutorials/gallery/failed_fit.md",
+   "git_blob": "d2110213b49aa5338c5c4003902f8a3988ad1ddd",
+   "reason": "page of the documentation site (front matter, attribute lists, snippet includes, images under _static/ that are not in the folder); summarised in the generated examples/README.md"
+  },
+  {
+   "path": "docs/tutorials/gallery/fitting.md",
+   "git_blob": "f690c3482426584a6e849333ee535ef0eb0e06ca",
+   "reason": "page of the documentation site (front matter, attribute lists, snippet includes, images under _static/ that are not in the folder); summarised in the generated examples/README.md"
+  },
+  {
+   "path": "docs/tutorials/gallery/fixed_params.md",
+   "git_blob": "c17eac659cc8944ca4de285544960b3b49611e89",
+   "reason": "page of the documentation site (front matter, attribute lists, snippet includes, images under _static/ that are not in the folder); summarised in the generated examples/README.md"
+  },
+  {
+   "path": "docs/tutorials/gallery/global_optimizer.md",
+   "git_blob": "fc05408cffdc1b3f640b722ad4c05b7cab30ac6a",
+   "reason": "page of the documentation site (front matter, attribute lists, snippet includes, images under _static/ that are not in the folder); summarised in the generated examples/README.md"
+  },
+  {
+   "path": "docs/tutorials/gallery/index.md",
+   "git_blob": "4ef61203ecbb85dcc387d8afa5d53878bd01630a",
+   "reason": "page of the documentation site (front matter, attribute lists, snippet includes, images under _static/ that are not in the folder); summarised in the generated examples/README.md"
+  },
+  {
+   "path": "docs/tutorials/gallery/misspecified_model.md",
+   "git_blob": "650c014f9c8c3b6c8e3a5e7f7d9e1ed1e5d00eb3",
+   "reason": "page of the documentation site (front matter, attribute lists, snippet includes, images under _static/ that are not in the folder); summarised in the generated examples/README.md"
+  },
+  {
+   "path": "docs/tutorials/gallery/multi_dataset.md",
+   "git_blob": "c0d75f96f65108ff8dcad7bc9ec4d203dfc2adcb",
+   "reason": "page of the documentation site (front matter, attribute lists, snippet includes, images under _static/ that are not in the folder); summarised in the generated examples/README.md"
+  },
+  {
+   "path": "docs/tutorials/gallery/robust_fitting.md",
+   "git_blob": "8d214887d249a26d2d02876e320a78929814921b",
+   "reason": "page of the documentation site (front matter, attribute lists, snippet includes, images under _static/ that are not in the folder); summarised in the generated examples/README.md"
+  },
+  {
+   "path": "docs/tutorials/gallery/shared_params.md",
+   "git_blob": "8c440602194dc5c670a29eeb8cf730187439ce70",
+   "reason": "page of the documentation site (front matter, attribute lists, snippet includes, images under _static/ that are not in the folder); summarised in the generated examples/README.md"
+  },
+  {
+   "path": "docs/tutorials/gallery/spectrafit_vs_lmfit_complex.md",
+   "git_blob": "243678e0774eed7efc76ba2e925ba7c4e0d2eaff",
+   "reason": "page of the documentation site (front matter, attribute lists, snippet includes, images under _static/ that are not in the folder); summarised in the generated examples/README.md"
+  },
+  {
+   "path": "docs/tutorials/gallery/spectrafit_vs_lmfit_moderate.md",
+   "git_blob": "74eaf19c9effce1fba8ab3bc38b6dbfab765cfcd",
+   "reason": "page of the documentation site (front matter, attribute lists, snippet includes, images under _static/ that are not in the folder); summarised in the generated examples/README.md"
+  },
+  {
+   "path": "docs/tutorials/gallery/varpro_vs_lm.md",
+   "git_blob": "07a7a727f1a7b9e03fce55050670fb439ba7a208",
+   "reason": "page of the documentation site (front matter, attribute lists, snippet includes, images under _static/ that are not in the folder); summarised in the generated examples/README.md"
+  },
+  {
+   "path": "docs/tutorials/gallery/weighted_fitting.md",
+   "git_blob": "ce9731eaaddce42b7b21e617e9891de580b23c7f",
+   "reason": "page of the documentation site (front matter, attribute lists, snippet includes, images under _static/ that are not in the folder); summarised in the generated examples/README.md"
+  }
+ ],
+ "generated": {
+  "path": "examples/README.md",
+  "sha256": "40f9bf637cf2c41d1d4deafbeeed087f04ff2cabfe3589a3c6fb512b30bac2ad",
+  "from": "the gallery pages at the source commit, by scripts/mirror_gallery.py"
+ },
+ "files_sha256": "9e6b789f65383dbb62dbe3bac0599a983746da4e5d8d96cdb303b2199e541b8f"
 }

@@ -41,8 +41,8 @@ The 151-case timing archive shipped in the release (measured before the release)
 still verified by SHA-256 and copied to ``results/archived/``; the paper no longer
 uses it.
 
-``--examples`` is a separate target (#71): it runs the example gallery mirrored into
-``examples/`` (``scripts/mirror_gallery.py``, source commit and SHA-256 per file in
+``--examples`` is a separate target: it runs the Python files of the example gallery mirrored
+into ``examples/`` (``scripts/mirror_gallery.py``, source commit and SHA-256 per file in
 ``examples-manifest.json``) as a smoke run with ``MPLBACKEND=Agg`` and a timeout per
 script, and records exit code and wall time of each in ``results/examples-smoke.json``.
 It needs no network and does not regenerate anything else.
@@ -165,12 +165,12 @@ TIMING_OVERLAY = {
     "results/timing/bench_summary.json": "reproducibility/figures/bench_summary.json",
     "results/timing/ladder/ladder.json": "reproducibility/ladder/ladder.json",
 }
-# The example gallery (#71): mirrored 1:1 by scripts/mirror_gallery.py, run by --examples.
+# The Python files of the example gallery: mirrored by scripts/mirror_gallery.py, run by --examples.
 EXAMPLES = HERE / "examples"
 EXAMPLES_MANIFEST = HERE / "examples-manifest.json"
 EXAMPLES_SMOKE = "examples-smoke.json"
 EXAMPLES_TIMEOUT_S = 600.0
-# Mirrored files the smoke run does not execute, with the reason. The mirror stays 1:1;
+# Mirrored files the smoke run does not execute, with the reason. The mirror is not edited;
 # a script that needs network, data outside the gallery or a GUI is listed here instead.
 EXAMPLES_SKIP: dict[str, str] = {
     "examples/misspecified_model.py":
@@ -726,9 +726,10 @@ def benchmark(source: Path, reps: int) -> dict:
 
 
 def verify_examples() -> dict:
-    """The mirrored files must be the ones ``examples-manifest.json`` records."""
+    """The mirrored files and the generated README must be the ones ``examples-manifest.json`` records."""
     manifest = json.loads(EXAMPLES_MANIFEST.read_text())
-    listed = {f["path"] for f in manifest["files"]}
+    generated = manifest["generated"]
+    listed = {f["path"] for f in manifest["files"]} | {generated["path"]}
     present = {p.relative_to(HERE).as_posix() for p in EXAMPLES.rglob("*")
                if p.is_file() and "__pycache__" not in p.parts}
     if listed != present:
@@ -738,6 +739,8 @@ def verify_examples() -> dict:
         got = sha256(HERE / f["path"])
         if got != f["sha256"]:
             raise SystemExit(f"{f['path']} has sha256 {got}, the manifest records {f['sha256']}")
+    if sha256(HERE / generated["path"]) != generated["sha256"]:
+        raise SystemExit(f"{generated['path']} differs from the one scripts/mirror_gallery.py generated")
     return manifest
 
 
