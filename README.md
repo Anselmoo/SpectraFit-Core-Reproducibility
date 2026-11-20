@@ -493,24 +493,27 @@ class. In
 
 ### Changes in 1.3.1
 
-Release 1.3.1 (2026-11-20) adds one measurement and changes no existing result. It is pinned to
-the same spectrafit-core 0.1.3 wheel and the same `v0.1.3` export as 1.3.0.
+Release 1.3.1 is pinned to the same spectrafit-core 0.1.3 wheel and the same `v0.1.3` export as
+1.3.0.
 
-- New target `interop-fe-l23` (`results/interop-fe-l23/`): the Fe L2,3 constrained model, one
-  graph JSON file (`reproducibility/interop/fe_l23_constrained.graph.json` of the release),
-  fitted by SpectraFit-Core and by lmfit through the release's translator
-  (`reproducibility/interop/fe_l23_lmfit.py`, run unchanged from the export). It shows that a
-  second implementation executes the same graph file and reaches the same end point. Listed in
-  `run-archive.sh` with the untimed targets (thread caps 1).
-- New claims `interop-01` to `interop-04` in `reproduce.py`: both fits report success and are
-  stationary by the script's measure; RSS relative difference at most 1e-6; largest relative
-  parameter difference at most 1e-3; the lmfit translation equals the engine model to 1e-10
-  relative at both endpoints. These thresholds were fixed **after** the first (cloud) run of
-  20 Nov 2026, not before it. The claims read the stored `results/interop-fe-l23/fe_l23_lmfit.json`
-  and are evaluated by `reproduce.py` (`core` and `--check`).
-- Not regenerated: `results/claims-report.json` is still the record of the 1.3.0 `core` run
-  (38 claims, without `interop-01` to `interop-04`), and `results/overview/` does not include
-  the new target. No other file under `results/` or `figures/` changed.
+- **Target `interop-fe-l23` and its claims.** The new target (`results/interop-fe-l23/`) fits the
+  Fe L2,3 constrained model, one graph JSON file
+  (`reproducibility/interop/fe_l23_constrained.graph.json` of the release), with SpectraFit-Core
+  and with lmfit through the release's translator (`reproducibility/interop/fe_l23_lmfit.py`,
+  run unchanged from the export); it is listed in `run-archive.sh` with the untimed targets
+  (thread caps 1). The claims `interop-01` to `interop-04` in `reproduce.py`: both fits report
+  success and are stationary by the script's measure; RSS relative difference at most 1e-6;
+  largest relative parameter difference at most 1e-3; the lmfit translation equals the engine
+  model to 1e-10 relative at both end points. The claims read the stored
+  `results/interop-fe-l23/fe_l23_lmfit.json` and are evaluated by `reproduce.py` (`core` and
+  `--check`); `results/claims-report.json` is the record of the 1.3.0 `core` run and does not
+  list them.
+- **New layout of `examples/`.** The folder holds the Python files of the gallery only, with
+  `examples/README.md` generated from the gallery pages (see [Examples](#examples)).
+- **Known failures clarified** (see [Known failures and limitations](#known-failures-and-limitations)).
+- **README reorganized** for a first-time reader: sections are moved under new or renamed
+  headings, with a quick-start line for `--examples` and two cross-references added; the text
+  is otherwise not rewritten except in the three items above.
 
 **Note on `interop-fe-l23`.** The stored values were measured on terra (AMD EPYC; NumPy SIMD level X86_V3). A first run of the same script on 20 Nov 2026 on another x86-64 host (Intel Xeon with AVX-512; same `uv.lock`, same compiled extension) gave the same SpectraFit-Core fit in the compared quantities, while lmfit took a different path: 3619 instead of 4116 function evaluations and an RSS of 22377892.949 instead of 22377891.326, and the last digits of several NumPy-computed quantities differed. On that host, a rerun with `NPY_DISABLE_CPU_FEATURES="X86_V4 AVX512_ICL AVX512_SPR"` and `OPENBLAS_CORETYPE=Haswell` gave the terra values in the compared quantities. This is consistent with CPU-dependent kernel dispatch in NumPy and OpenBLAS; it was observed for this one fit and was not tested as a general property. On both hosts both fits end stationary and satisfy `interop-01` to `interop-04`, whose thresholds were set after the first run.
 

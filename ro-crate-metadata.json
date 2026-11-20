@@ -5224,15 +5224,15 @@
   {
    "@id": ".zenodo.json",
    "@type": "File",
-   "contentSize": 2334,
-   "sha256": "74b2f809153dc7a5730cb5ed98efec946c226aa02c3d071ddf01bc6c06e260f8",
+   "contentSize": 2736,
+   "sha256": "046c7c7a148d63be4c1961b5df5c392d36b1a27f0c52b652245501b43fc1404e",
    "encodingFormat": "application/json"
   },
   {
    "@id": "CITATION.cff",
    "@type": "File",
-   "contentSize": 2112,
-   "sha256": "ad0361fd24a325f54aad83b35bb8eb266357689442efe48bf3bc5e3e531cfbb4",
+   "contentSize": 2086,
+   "sha256": "4f756b906ab780da414a5158a544e84fae025135c8891e672b7bec43f5aa1401",
    "encodingFormat": "application/x-yaml",
    "description": "How to cite this repository."
   },
@@ -5246,8 +5246,8 @@
   {
    "@id": "README.md",
    "@type": "File",
-   "contentSize": 37752,
-   "sha256": "848c7379af5d7a73dbd01f6d97ec4ce1c1a41b86bf686a8abb4b41b5e0b89f27",
+   "contentSize": 37893,
+   "sha256": "0d28e31e79be053770e7e8c029964791556fc34e437b5b3cd415691294f7f477",
    "encodingFormat": "text/markdown",
    "description": "What this repository is, how to rerun it, and what is regenerated versus archived."
   },
@@ -5618,7 +5618,7 @@
    "@id": "pyproject.toml",
    "@type": "File",
    "contentSize": 1060,
-   "sha256": "4039c387c5fea41da950dbaa6c6667ae5a49312ec68f669859f3b247d88ae169",
+   "sha256": "cc3e9083c181e6500f9f51bb9bcaafc8f38c18ca8c31d001cf967d3161fc0077",
    "encodingFormat": "application/toml",
    "description": "Environment definition for `uv run --locked reproduce.py`."
   },
@@ -14876,7 +14876,7 @@
    "@id": "uv.lock",
    "@type": "File",
    "contentSize": 133079,
-   "sha256": "7e59cbcaa291acbbae197b71e46cbb8bf873c630711b1e14a9fc24ff61fa765f",
+   "sha256": "70dd4f2d92c02bb3dac06d5dac11b65914ee11644e510ae83879102e2cfe4b7f",
    "encodingFormat": "application/toml",
    "description": "Hash-pinned resolution of the environment, including the spectrafit-core wheel."
   },
