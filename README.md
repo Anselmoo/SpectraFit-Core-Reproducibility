@@ -1,6 +1,6 @@
 # SpectraFit-Core-Reproducibility
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23171640.svg)](https://doi.org/10.5281/zenodo.23171640)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24397364.svg)](https://doi.org/10.5281/zenodo.24397364)
 
 Results and figures of the article on `spectrafit-core`, regenerated from
 the published release, with every number stated in the article checked against the
@@ -468,7 +468,7 @@ ladder rungs, fifty seeds) had at most one regression per run; in 0.1.3 the seed
 
 | | How |
 |---|---|
-| Findable | this repository: concept DOI `10.5281/zenodo.23171640` (version DOI of 1.3.0 assigned by Zenodo at release; 1.2.0: `10.5281/zenodo.23451597`); software DOI `10.5281/zenodo.24282350` (0.1.3), concept `10.5281/zenodo.23043544`; tag and commit in `pins.toml`; `ro-crate-metadata.json` lists every file with size, digest and description |
+| Findable | this repository: DOI `10.5281/zenodo.24397364` (1.3.0), concept DOI `10.5281/zenodo.23171640`; software DOI `10.5281/zenodo.24282350` (0.1.3), concept `10.5281/zenodo.23043544`; tag and commit in `pins.toml`; `ro-crate-metadata.json` lists every file with size, digest and description |
 | Accessible | wheel from PyPI, source from GitHub, both by open protocols; no credentials |
 | Interoperable | JSON results, PDF and PNG figures, RO-Crate 1.1 metadata |
 | Reusable | MIT licence (`LICENSE`); `provenance.json` records host, versions and script hashes; `uv.lock` fixes the environment; `checksums.sha256` verifies with `sha256sum -c`; `CITATION.cff` |
