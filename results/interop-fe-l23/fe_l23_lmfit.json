@@ -2,9 +2,9 @@
  "header": {
   "command": "/home/cloud/projects/SpectraFit-Core-Reproducibility/.venv/bin/python /home/cloud/projects/SpectraFit-Core-Reproducibility/.cache/work/reproducibility/interop/fe_l23_lmfit.py --out /home/cloud/projects/SpectraFit-Core-Reproducibility/results/interop-fe-l23",
   "cwd": "/home/cloud/projects/SpectraFit-Core-Reproducibility/.cache/work",
-  "started_utc": "2026-11-20T16:20:33+00:00",
-  "finished_utc": "2026-11-20T16:20:36+00:00",
-  "git_commit": "dc5bdd01a5f967b68a8bbdac6a564b673cef3188",
+  "started_utc": "2026-11-20T21:37:16+00:00",
+  "finished_utc": "2026-11-20T21:37:19+00:00",
+  "git_commit": "eacc39e0064d4fa6c3d91bb7add8177c93e3ef7f",
   "git_dirty": false,
   "versions": {
    "spectrafit-core": "0.1.3",
@@ -83,7 +83,7 @@
  ],
  "sfc": {
   "backend": "spectrafit-core fit, FitOptions(solver='lm')",
-  "wall_s": 0.35050849000003836,
+  "wall_s": 0.16703864699957194,
   "termination": {
    "success": true,
    "message": "converged_ftol",
@@ -282,7 +282,7 @@
  },
  "lmfit": {
   "backend": "lmfit Model.fit(method='leastsq')",
-  "wall_s": 2.3976666199999954,
+  "wall_s": 2.141403337001975,
   "termination": {
    "success": true,
    "message": "Fit succeeded.",
