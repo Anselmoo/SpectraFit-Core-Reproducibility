@@ -17,11 +17,12 @@ copy of the benchmark suite:
 | timing data | measured on terra with that wheel and the tag's harness, `results/timing/` | SHA-256 in `pins.toml [timing_inputs]` |
 | example gallery, `examples/` | the Python files of `docs/tutorials/gallery/` of spectrafit-core, copied byte for byte from one commit | commit, SHA-256 and git blob id per file in `examples-manifest.json` |
 
-## Run it
+## Quick start
 
 ```bash
 uv run --locked reproduce.py                 # about 10 s after the first install
 uv run --locked reproduce.py --check         # regenerate elsewhere and compare; writes nothing
+uv run --locked reproduce.py --examples      # run the scripts of examples/ (see Examples)
 uv run --locked reproduce.py --source ~/path/to/SpectraFit-Core   # reuse a checkout that has the tag
 ```
 
@@ -45,7 +46,50 @@ the article no longer holds on the data.
 `uv run --locked reproduce.py` is the equivalent that works: wheel from PyPI plus
 the scripts from the tag.
 
-## What is regenerated, and what is not
+## Examples
+
+`examples/` holds the Python files of the example gallery of spectrafit-core
+(`docs/tutorials/gallery/`: the examples, the snippet and the helper modules they import),
+copied byte for byte from one commit by `scripts/mirror_gallery.py`. Nothing in it is
+edited. The Markdown pages of the gallery are pages of the documentation site and are not
+mirrored; the mirror step generates `examples/README.md` instead: one entry per example, in
+the order of the gallery index page, with the title and description of its page, a link to
+the script and the figure of the `gallery` target. `examples-manifest.json` records the
+source commit, the git tree id of the gallery folder at that commit, the SHA-256, git blob id
+and role of every mirrored file, the source files left out with the reason, and the SHA-256
+of the generated README.
+
+```bash
+uv run --locked reproduce.py --examples           # smoke run, writes results/examples-smoke.json
+uv run --locked reproduce.py --examples --check   # the same, record in .cache/ only
+uv run --locked --group audit pytest tests/       # per-file identity, manifest, README, smoke run
+uv run --locked scripts/mirror_gallery.py --source ~/path/to/spectrafit-core --commit <rev>
+```
+
+`--examples` runs every example and snippet once, from a copy in `.cache/` (the figures
+the scripts write never enter `examples/`), with `MPLBACKEND=Agg`, the installed wheel
+only on the import path and a timeout per script (`--examples-timeout`, default 600 s),
+and records exit code and wall time of each. It needs no network and regenerates
+nothing else. `misspecified_model.py` is mirrored but not run: it reads a measured
+spectrum from the root of a spectrafit-core checkout, outside the gallery folder
+(`EXAMPLES_SKIP` in `reproduce.py`).
+
+The gallery is mirrored from tag `v0.1.3` of spectrafit-core (commit `952c5c95`, git tree
+`9f99621f`) and runs against the pinned wheel 0.1.3. The `gallery` target runs every script,
+including `misspecified_model.py` with the measured spectrum copied from the release export
+(`--spectrum-dir`), and records the fits in
+`results/gallery/gallery.json`.
+
+`tests/test_examples.py` recomputes the SHA-256 and git blob id of every mirrored file
+and compares them with the manifest, so identity with the source files is checked without
+the source, and checks that every figure linked in `examples/README.md` exists. With
+`SPECTRAFIT_CORE_SOURCE` pointing to a checkout that holds the recorded commit, every file
+is also compared with that commit object, and the README is generated again from it and
+compared.
+
+## Article and files
+
+### What is regenerated, and what is not
 
 **Regenerated on every run**
 
@@ -130,10 +174,43 @@ uv run --locked --group benchmark reproduce.py --benchmark --reps 4
 The measured rung at `--reps 4` took 70 minutes on terra. The result is written to
 `results/provenance.json` under `benchmark_on_this_host`; it never replaces the stored files.
 
-## Targets (from release 1.3.0)
+### What a run writes
+
+```
+results/
+  nist_table2.json, nist_table2_tol1e15.json, nist_head_to_head.json   regenerated
+  eels_fe2o3.json      the fit behind Figure 4, regenerated
+  timing/              the timing of record, measured with 0.1.3 (ladder, seed sweep,
+                       summary, agreement, bias, host snapshots, provenance)
+  timing-0.1.2-2026-10-16/, timing-2026-10-06/
+                       the two measurements with 0.1.2, kept unchanged
+  archived/            the 151-case timing files as shipped in the release (superseded)
+  release-archive/     the three NIST files as shipped in the release
+  claims-report.json   every number the article states, recomputed, with pass/fail
+  drift-report.json    regenerated Table 1 against the release's archived copy
+  provenance.json      repository commit, host (kernel, C library, CPU flags,
+                       BLAS/LAPACK built and loaded), versions, script hashes
+  examples-smoke.json  exit code and wall time of every example (--examples only)
+figures/               four figures, PDF and PNG
+ro-crate-metadata.json RO-Crate 1.1 description of this repository
+checksums.sha256       SHA-256 of every file above
+```
+
+Every number stated in the article has an entry in `results/claims-report.json`;
+the run fails when one no longer holds. Three values that legitimately differ between
+hosts (the platform, the number of datasets that improve at 1e-15, the largest
+drift) are read from the data rather than stated as constants.
+
+`--check` compares result files without their wall-clock fields (`ms` in
+`nist_head_to_head.json`), which change on every run. It is a same-platform test.
+On a different operating system or CPU the last digits of the fits differ, so
+`--check` reports a difference there; the criterion across platforms is
+`claims-report.json`.
+
+## Targets
 
 `reproduce.py --targets` runs one or more targets; `core` (the default) is everything described
-above. The others extend the archive for spectrafit-core 0.1.3:
+in [Article and files](#article-and-files). The others extend the archive for spectrafit-core 0.1.3:
 
 | Target | What it runs | Writes |
 |---|---|---|
@@ -191,81 +268,11 @@ python3 scripts/dry_run_env.py --venv <dir>/venv --group benchmark --group audit
 
 Every `run.json` records the thread setting (`library-defaults` or `caps-1`).
 
-## Examples
+## Measurements and hosts
 
-`examples/` holds the Python files of the example gallery of spectrafit-core
-(`docs/tutorials/gallery/`: the examples, the snippet and the helper modules they import),
-copied byte for byte from one commit by `scripts/mirror_gallery.py`. Nothing in it is
-edited. The Markdown pages of the gallery are pages of the documentation site and are not
-mirrored; the mirror step generates `examples/README.md` instead: one entry per example, in
-the order of the gallery index page, with the title and description of its page, a link to
-the script and the figure of the `gallery` target. `examples-manifest.json` records the
-source commit, the git tree id of the gallery folder at that commit, the SHA-256, git blob id
-and role of every mirrored file, the source files left out with the reason, and the SHA-256
-of the generated README.
+The note on `interop-fe-l23` and the host of its first run is in [Changes in 1.3.1](#changes-in-131).
 
-```bash
-uv run --locked reproduce.py --examples           # smoke run, writes results/examples-smoke.json
-uv run --locked reproduce.py --examples --check   # the same, record in .cache/ only
-uv run --locked --group audit pytest tests/       # per-file identity, manifest, README, smoke run
-uv run --locked scripts/mirror_gallery.py --source ~/path/to/spectrafit-core --commit <rev>
-```
-
-`--examples` runs every example and snippet once, from a copy in `.cache/` (the figures
-the scripts write never enter `examples/`), with `MPLBACKEND=Agg`, the installed wheel
-only on the import path and a timeout per script (`--examples-timeout`, default 600 s),
-and records exit code and wall time of each. It needs no network and regenerates
-nothing else. `misspecified_model.py` is mirrored but not run: it reads a measured
-spectrum from the root of a spectrafit-core checkout, outside the gallery folder
-(`EXAMPLES_SKIP` in `reproduce.py`).
-
-The gallery is mirrored from tag `v0.1.3` of spectrafit-core (commit `952c5c95`, git tree
-`9f99621f`) and runs against the pinned wheel 0.1.3. The `gallery` target runs every script,
-including `misspecified_model.py` with the measured spectrum copied from the release export
-(`--spectrum-dir`), and records the fits in
-`results/gallery/gallery.json`.
-
-`tests/test_examples.py` recomputes the SHA-256 and git blob id of every mirrored file
-and compares them with the manifest, so identity with the source files is checked without
-the source, and checks that every figure linked in `examples/README.md` exists. With
-`SPECTRAFIT_CORE_SOURCE` pointing to a checkout that holds the recorded commit, every file
-is also compared with that commit object, and the README is generated again from it and
-compared.
-
-## What a run writes
-
-```
-results/
-  nist_table2.json, nist_table2_tol1e15.json, nist_head_to_head.json   regenerated
-  eels_fe2o3.json      the fit behind Figure 4, regenerated
-  timing/              the timing of record, measured with 0.1.3 (ladder, seed sweep,
-                       summary, agreement, bias, host snapshots, provenance)
-  timing-0.1.2-2026-10-16/, timing-2026-10-06/
-                       the two measurements with 0.1.2, kept unchanged
-  archived/            the 151-case timing files as shipped in the release (superseded)
-  release-archive/     the three NIST files as shipped in the release
-  claims-report.json   every number the article states, recomputed, with pass/fail
-  drift-report.json    regenerated Table 1 against the release's archived copy
-  provenance.json      repository commit, host (kernel, C library, CPU flags,
-                       BLAS/LAPACK built and loaded), versions, script hashes
-  examples-smoke.json  exit code and wall time of every example (--examples only)
-figures/               four figures, PDF and PNG
-ro-crate-metadata.json RO-Crate 1.1 description of this repository
-checksums.sha256       SHA-256 of every file above
-```
-
-Every number stated in the article has an entry in `results/claims-report.json`;
-the run fails when one no longer holds. Three values that legitimately differ between
-hosts (the platform, the number of datasets that improve at 1e-15, the largest
-drift) are read from the data rather than stated as constants.
-
-`--check` compares result files without their wall-clock fields (`ms` in
-`nist_head_to_head.json`), which change on every run. It is a same-platform test.
-On a different operating system or CPU the last digits of the fits differ, so
-`--check` reports a difference there; the criterion across platforms is
-`claims-report.json`.
-
-## Where the results are produced
+### Where the results are produced
 
 The results of record are produced on **terra**, a dedicated 16-core Linux
 machine (AMD EPYC, Ubuntu 22.04) that is independent of the machines on which
@@ -298,7 +305,7 @@ release were generated there too, so accuracy and speed come from one machine.
 - `results/other-hosts/` keeps runs on other machines for comparison; they are not
   the results of record. Each has its own `README.md`.
 
-## Timing: archive against measurements
+### Timing: archive against measurements
 
 The archived timing (151 cases, pre-release commit `990a4c7`, August 2026) next to
 the two measurements with release 0.1.2 (160 cases, October 2026) and the measurement of
@@ -374,61 +381,7 @@ alone explains:
 Every number the article states is recomputed from `results/timing/` (0.1.3) in
 `results/claims-report.json`.
 
-## Changes in 1.3.1
-
-Release 1.3.1 (2026-11-20) adds one measurement and changes no existing result. It is pinned to
-the same spectrafit-core 0.1.3 wheel and the same `v0.1.3` export as 1.3.0.
-
-- New target `interop-fe-l23` (`results/interop-fe-l23/`): the Fe L2,3 constrained model, one
-  graph JSON file (`reproducibility/interop/fe_l23_constrained.graph.json` of the release),
-  fitted by SpectraFit-Core and by lmfit through the release's translator
-  (`reproducibility/interop/fe_l23_lmfit.py`, run unchanged from the export). It shows that a
-  second implementation executes the same graph file and reaches the same end point. Listed in
-  `run-archive.sh` with the untimed targets (thread caps 1).
-- New claims `interop-01` to `interop-04` in `reproduce.py`: both fits report success and are
-  stationary by the script's measure; RSS relative difference at most 1e-6; largest relative
-  parameter difference at most 1e-3; the lmfit translation equals the engine model to 1e-10
-  relative at both endpoints. These thresholds were fixed **after** the first (cloud) run of
-  20 Nov 2026, not before it. The claims read the stored `results/interop-fe-l23/fe_l23_lmfit.json`
-  and are evaluated by `reproduce.py` (`core` and `--check`).
-- Not regenerated: `results/claims-report.json` is still the record of the 1.3.0 `core` run
-  (38 claims, without `interop-01` to `interop-04`), and `results/overview/` does not include
-  the new target. No other file under `results/` or `figures/` changed.
-
-**Note on `interop-fe-l23`.** The stored values were measured on terra (AMD EPYC; NumPy SIMD level X86_V3). A first run of the same script on 20 Nov 2026 on another x86-64 host (Intel Xeon with AVX-512; same `uv.lock`, same compiled extension) gave the same SpectraFit-Core fit in the compared quantities, while lmfit took a different path: 3619 instead of 4116 function evaluations and an RSS of 22377892.949 instead of 22377891.326, and the last digits of several NumPy-computed quantities differed. On that host, a rerun with `NPY_DISABLE_CPU_FEATURES="X86_V4 AVX512_ICL AVX512_SPR"` and `OPENBLAS_CORETYPE=Haswell` gave the terra values in the compared quantities. This is consistent with CPU-dependent kernel dispatch in NumPy and OpenBLAS; it was observed for this one fit and was not tested as a general property. On both hosts both fits end stationary and satisfy `interop-01` to `interop-04`, whose thresholds were set after the first run.
-
-## Deviations in 1.3.0
-
-Claims of `results/claims-report.json` whose check was changed for spectrafit-core 0.1.3,
-with the 1.2.0 check and the 0.1.3 value. All values are from `results/eels_fe2o3.json`
-(Fe L2,3 edge of Fe2O3, 700 to 735 eV); both 95 % intervals below have
-`boundary_affected: true` (a parameter is at a bound at a point inside the interval, where the
-asymptotic levels do not hold).
-
-| claim | 1.2.0 check | 0.1.3 value | 1.3.0 check |
-|---|---|---|---|
-| eels-09a | without the relationships, the 95 % profile interval of the L3 step is open at the lower end of the grid or wider than 1500 counts | closed, 725 to 1325 counts, width 600 | the interval is recorded on its grid |
-| eels-09b | with the relationships the 95 % interval is closed and at least ten times narrower than without them | closed, bisected width 74.45 counts; ratio 600 / 74.45 = 8.06 | the interval is closed; width and ratio are recorded |
-| eels-09c | the 68 % half-width of the constrained profile agrees with the reported standard error of the L3 step within 25 % | half-width 18.67, standard error 33.90 (difference 45 %) | both are recorded |
-
-**The fit without the relationships, from the default start.** In 0.1.2 it ended at the same
-L3 step as the fit with the relationships (1703.56 counts, RSS 22,492,836). In 0.1.3 it does
-not reach the lowest RSS found for the same model, bounds and data:
-
-| fit without the relationships | L3 step (counts) | RSS |
-|---|---|---|
-| from the default start (reported; success true, termination converged_ftol) | 636.97 | 21,934,809 |
-| best of the 50 seeded starts (eels-07) | – | 22,018,943 |
-| profile of the L3 step, lowest point | 1000 | 20,737,479 |
-
-At the lowest profile point `step_l3.sigma`, `step_l2.sigma`, `l3_e.center` and `l2_c.center`
-are at their lower bounds. The archive therefore states no standard error and no branching
-ratio for the fit without the relationships: eels-04 records the three rows above, eels-05
-states the branching ratio with the relationships only (0.820 ± 0.002), and eels-06 compares
-the widths of the two 95 % profile intervals instead of standard errors. No start, bound or
-setting of the fit was changed for 1.3.0.
-
-## Known failures
+## Known failures and limitations
 
 `results/bench-ablation/manifest.json` and the five ladder rungs of the timing of record
 (`results/timing/ladder/rungs/rung_*/manifest.json`) report `gate_state` "fail" with six
@@ -536,19 +489,63 @@ class. In
 | 20260651 | 4 | CX-017, CX-019, CX-020, ED-020 |
 | 20260652 | 5 | CX-010, CX-016, CX-017, CX-020, LS-018 |
 
-## FAIR
+## Changes per release
 
-| | How |
-|---|---|
-| Findable | this repository: concept DOI `10.5281/zenodo.23171640` (version DOI of 1.3.1 assigned by Zenodo at release; 1.3.0: `10.5281/zenodo.24397364`); software DOI `10.5281/zenodo.24282350` (0.1.3), concept `10.5281/zenodo.23043544`; tag and commit in `pins.toml`; `ro-crate-metadata.json` lists every file with size, digest and description |
-| Accessible | wheel from PyPI, source from GitHub, both by open protocols; no credentials |
-| Interoperable | JSON results, PDF and PNG figures, RO-Crate 1.1 metadata |
-| Reusable | MIT licence (`LICENSE`); `provenance.json` records host, versions and script hashes; `uv.lock` fixes the environment; `checksums.sha256` verifies with `sha256sum -c`; `CITATION.cff` |
+### Changes in 1.3.1
 
-Each GitHub release of this repository is archived on Zenodo, which assigns it a DOI
-of its own; `CITATION.cff` says how to cite it together with the spectrafit-core release.
+Release 1.3.1 (2026-11-20) adds one measurement and changes no existing result. It is pinned to
+the same spectrafit-core 0.1.3 wheel and the same `v0.1.3` export as 1.3.0.
 
-## spectrafit-core 0.1.0 to 0.1.2
+- New target `interop-fe-l23` (`results/interop-fe-l23/`): the Fe L2,3 constrained model, one
+  graph JSON file (`reproducibility/interop/fe_l23_constrained.graph.json` of the release),
+  fitted by SpectraFit-Core and by lmfit through the release's translator
+  (`reproducibility/interop/fe_l23_lmfit.py`, run unchanged from the export). It shows that a
+  second implementation executes the same graph file and reaches the same end point. Listed in
+  `run-archive.sh` with the untimed targets (thread caps 1).
+- New claims `interop-01` to `interop-04` in `reproduce.py`: both fits report success and are
+  stationary by the script's measure; RSS relative difference at most 1e-6; largest relative
+  parameter difference at most 1e-3; the lmfit translation equals the engine model to 1e-10
+  relative at both endpoints. These thresholds were fixed **after** the first (cloud) run of
+  20 Nov 2026, not before it. The claims read the stored `results/interop-fe-l23/fe_l23_lmfit.json`
+  and are evaluated by `reproduce.py` (`core` and `--check`).
+- Not regenerated: `results/claims-report.json` is still the record of the 1.3.0 `core` run
+  (38 claims, without `interop-01` to `interop-04`), and `results/overview/` does not include
+  the new target. No other file under `results/` or `figures/` changed.
+
+**Note on `interop-fe-l23`.** The stored values were measured on terra (AMD EPYC; NumPy SIMD level X86_V3). A first run of the same script on 20 Nov 2026 on another x86-64 host (Intel Xeon with AVX-512; same `uv.lock`, same compiled extension) gave the same SpectraFit-Core fit in the compared quantities, while lmfit took a different path: 3619 instead of 4116 function evaluations and an RSS of 22377892.949 instead of 22377891.326, and the last digits of several NumPy-computed quantities differed. On that host, a rerun with `NPY_DISABLE_CPU_FEATURES="X86_V4 AVX512_ICL AVX512_SPR"` and `OPENBLAS_CORETYPE=Haswell` gave the terra values in the compared quantities. This is consistent with CPU-dependent kernel dispatch in NumPy and OpenBLAS; it was observed for this one fit and was not tested as a general property. On both hosts both fits end stationary and satisfy `interop-01` to `interop-04`, whose thresholds were set after the first run.
+
+### Deviations in 1.3.0
+
+Claims of `results/claims-report.json` whose check was changed for spectrafit-core 0.1.3,
+with the 1.2.0 check and the 0.1.3 value. All values are from `results/eels_fe2o3.json`
+(Fe L2,3 edge of Fe2O3, 700 to 735 eV); both 95 % intervals below have
+`boundary_affected: true` (a parameter is at a bound at a point inside the interval, where the
+asymptotic levels do not hold).
+
+| claim | 1.2.0 check | 0.1.3 value | 1.3.0 check |
+|---|---|---|---|
+| eels-09a | without the relationships, the 95 % profile interval of the L3 step is open at the lower end of the grid or wider than 1500 counts | closed, 725 to 1325 counts, width 600 | the interval is recorded on its grid |
+| eels-09b | with the relationships the 95 % interval is closed and at least ten times narrower than without them | closed, bisected width 74.45 counts; ratio 600 / 74.45 = 8.06 | the interval is closed; width and ratio are recorded |
+| eels-09c | the 68 % half-width of the constrained profile agrees with the reported standard error of the L3 step within 25 % | half-width 18.67, standard error 33.90 (difference 45 %) | both are recorded |
+
+**The fit without the relationships, from the default start.** In 0.1.2 it ended at the same
+L3 step as the fit with the relationships (1703.56 counts, RSS 22,492,836). In 0.1.3 it does
+not reach the lowest RSS found for the same model, bounds and data:
+
+| fit without the relationships | L3 step (counts) | RSS |
+|---|---|---|
+| from the default start (reported; success true, termination converged_ftol) | 636.97 | 21,934,809 |
+| best of the 50 seeded starts (eels-07) | – | 22,018,943 |
+| profile of the L3 step, lowest point | 1000 | 20,737,479 |
+
+At the lowest profile point `step_l3.sigma`, `step_l2.sigma`, `l3_e.center` and `l2_c.center`
+are at their lower bounds. The archive therefore states no standard error and no branching
+ratio for the fit without the relationships: eels-04 records the three rows above, eels-05
+states the branching ratio with the relationships only (0.820 ± 0.002), and eels-06 compares
+the widths of the two 95 % profile intervals instead of standard errors. No start, bound or
+setting of the fit was changed for 1.3.0.
+
+### spectrafit-core 0.1.0 to 0.1.2
 
 Two defects of the 0.1.0 release surfaced when its results were regenerated, and
 both are fixed in 0.1.1:
@@ -576,3 +573,15 @@ copy archived in the release; on the host of record the two agree in every cell.
 the JAX compile budget described above, so `--benchmark` completes on terra. The
 library sources and every file under `reproducibility/` (NIST tables and timing
 archives) are identical to 0.1.1. Releases 1.3.0 and 1.3.1 of this repository are pinned to 0.1.3.
+
+## FAIR and citation
+
+| | How |
+|---|---|
+| Findable | this repository: concept DOI `10.5281/zenodo.23171640` (version DOI of 1.3.1 assigned by Zenodo at release; 1.3.0: `10.5281/zenodo.24397364`); software DOI `10.5281/zenodo.24282350` (0.1.3), concept `10.5281/zenodo.23043544`; tag and commit in `pins.toml`; `ro-crate-metadata.json` lists every file with size, digest and description |
+| Accessible | wheel from PyPI, source from GitHub, both by open protocols; no credentials |
+| Interoperable | JSON results, PDF and PNG figures, RO-Crate 1.1 metadata |
+| Reusable | MIT licence (`LICENSE`); `provenance.json` records host, versions and script hashes; `uv.lock` fixes the environment; `checksums.sha256` verifies with `sha256sum -c`; `CITATION.cff` |
+
+Each GitHub release of this repository is archived on Zenodo, which assigns it a DOI
+of its own; `CITATION.cff` says how to cite it together with the spectrafit-core release.
