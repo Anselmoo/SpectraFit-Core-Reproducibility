@@ -383,13 +383,11 @@ the same spectrafit-core 0.1.3 wheel and the same `v0.1.3` export as 1.3.0.
   relative at both endpoints. These thresholds were fixed **after** the first (cloud) run of
   20 Nov 2026, not before it. The claims read the stored `results/interop-fe-l23/fe_l23_lmfit.json`
   and are evaluated by `reproduce.py` (`core` and `--check`).
-- The run on terra does not repeat the first (cloud) run in every digit, although wheel, lock
-  file and compiled extension are the same: the SpectraFit-Core fit is identical, the lmfit fit
-  takes 4,116 instead of 3,619 evaluations and ends at a slightly different point. All four
-  claims hold on both runs. Numbers and what was checked: `results/interop-fe-l23/README.md`.
 - Not regenerated: `results/claims-report.json` is still the record of the 1.3.0 `core` run
   (38 claims, without `interop-01` to `interop-04`), and `results/overview/` does not include
   the new target. No other file under `results/` or `figures/` changed.
+
+**Note on `interop-fe-l23`.** The stored values were measured on terra (AMD EPYC; NumPy SIMD level X86_V3). A first run of the same script on 20 Nov 2026 on another x86-64 host (Intel Xeon with AVX-512; same `uv.lock`, same compiled extension) gave the same SpectraFit-Core fit in the compared quantities, while lmfit took a different path: 3619 instead of 4116 function evaluations and an RSS of 22377892.949 instead of 22377891.326, and the last digits of several NumPy-computed quantities differed. On that host, a rerun with `NPY_DISABLE_CPU_FEATURES="X86_V4 AVX512_ICL AVX512_SPR"` and `OPENBLAS_CORETYPE=Haswell` gave the terra values in the compared quantities. This is consistent with CPU-dependent kernel dispatch in NumPy and OpenBLAS; it was observed for this one fit and was not tested as a general property. On both hosts both fits end stationary and satisfy `interop-01` to `interop-04`, whose thresholds were set after the first run.
 
 ## Deviations in 1.3.0
 
