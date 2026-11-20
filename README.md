@@ -1,6 +1,6 @@
 # SpectraFit-Core-Reproducibility
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24397364.svg)](https://doi.org/10.5281/zenodo.24397364)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23171640.svg)](https://doi.org/10.5281/zenodo.23171640)
 
 Results and figures of the article on `spectrafit-core`, regenerated from
 the published release, with every number stated in the article checked against the
@@ -366,6 +366,31 @@ alone explains:
 Every number the article states is recomputed from `results/timing/` (0.1.3) in
 `results/claims-report.json`.
 
+## Changes in 1.3.1
+
+Release 1.3.1 (2026-11-20) adds one measurement and changes no existing result. It is pinned to
+the same spectrafit-core 0.1.3 wheel and the same `v0.1.3` export as 1.3.0.
+
+- New target `interop-fe-l23` (`results/interop-fe-l23/`): the Fe L2,3 constrained model, one
+  graph JSON file (`reproducibility/interop/fe_l23_constrained.graph.json` of the release),
+  fitted by SpectraFit-Core and by lmfit through the release's translator
+  (`reproducibility/interop/fe_l23_lmfit.py`, run unchanged from the export). It shows that a
+  second implementation executes the same graph file and reaches the same end point. Listed in
+  `run-archive.sh` with the untimed targets (thread caps 1).
+- New claims `interop-01` to `interop-04` in `reproduce.py`: both fits report success and are
+  stationary by the script's measure; RSS relative difference at most 1e-6; largest relative
+  parameter difference at most 1e-3; the lmfit translation equals the engine model to 1e-10
+  relative at both endpoints. These thresholds were fixed **after** the first (cloud) run of
+  20 Nov 2026, not before it. The claims read the stored `results/interop-fe-l23/fe_l23_lmfit.json`
+  and are evaluated by `reproduce.py` (`core` and `--check`).
+- The run on terra does not repeat the first (cloud) run in every digit, although wheel, lock
+  file and compiled extension are the same: the SpectraFit-Core fit is identical, the lmfit fit
+  takes 4,116 instead of 3,619 evaluations and ends at a slightly different point. All four
+  claims hold on both runs. Numbers and what was checked: `results/interop-fe-l23/README.md`.
+- Not regenerated: `results/claims-report.json` is still the record of the 1.3.0 `core` run
+  (38 claims, without `interop-01` to `interop-04`), and `results/overview/` does not include
+  the new target. No other file under `results/` or `figures/` changed.
+
 ## Deviations in 1.3.0
 
 Claims of `results/claims-report.json` whose check was changed for spectrafit-core 0.1.3,
@@ -469,7 +494,7 @@ ladder rungs, fifty seeds) had at most one regression per run; in 0.1.3 the seed
 
 | | How |
 |---|---|
-| Findable | this repository: DOI `10.5281/zenodo.24397364` (1.3.0), concept DOI `10.5281/zenodo.23171640`; software DOI `10.5281/zenodo.24282350` (0.1.3), concept `10.5281/zenodo.23043544`; tag and commit in `pins.toml`; `ro-crate-metadata.json` lists every file with size, digest and description |
+| Findable | this repository: concept DOI `10.5281/zenodo.23171640` (version DOI of 1.3.1 assigned by Zenodo at release; 1.3.0: `10.5281/zenodo.24397364`); software DOI `10.5281/zenodo.24282350` (0.1.3), concept `10.5281/zenodo.23043544`; tag and commit in `pins.toml`; `ro-crate-metadata.json` lists every file with size, digest and description |
 | Accessible | wheel from PyPI, source from GitHub, both by open protocols; no credentials |
 | Interoperable | JSON results, PDF and PNG figures, RO-Crate 1.1 metadata |
 | Reusable | MIT licence (`LICENSE`); `provenance.json` records host, versions and script hashes; `uv.lock` fixes the environment; `checksums.sha256` verifies with `sha256sum -c`; `CITATION.cff` |
@@ -504,4 +529,4 @@ copy archived in the release; on the host of record the two agree in every cell.
 0.1.2 changes only the benchmark harness and the version metadata: it releases
 the JAX compile budget described above, so `--benchmark` completes on terra. The
 library sources and every file under `reproducibility/` (NIST tables and timing
-archives) are identical to 0.1.1. Release 1.3.0 of this repository is pinned to 0.1.3.
+archives) are identical to 0.1.1. Releases 1.3.0 and 1.3.1 of this repository are pinned to 0.1.3.
