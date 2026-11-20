@@ -1001,7 +1001,8 @@ INTEROP_SCRIPT = Path("reproducibility") / "interop" / "fe_l23_lmfit.py"
 INTEROP_JSON = Path("interop-fe-l23") / "fe_l23_lmfit.json"
 # The first run, 20 Nov 2026, in a cloud sandbox (Ubuntu 24.04.5, x86_64, the same uv.lock, compiled
 # extension sha256 2e672905...1ebd). Every run is compared with it value by value; a difference is
-# reported in the run's README, never adjusted. The model gap was recorded to three digits.
+# reported in the run's README, never adjusted. The model gap is compared to three significant digits.
+# The values below are taken from that run's record, results/interop-fe-l23/reference-2026-11-20.json.
 INTEROP_REFERENCE = {
     "sfc.termination.success": True, "sfc.termination.message": "converged_ftol",
     "sfc.rss": 22377890.07972057, "sfc.termination.nfev": 90, "sfc.termination.njev": 64,
@@ -1026,7 +1027,7 @@ def _dig(record: dict, dotted: str) -> object:
 
 
 def interop_vs_reference(record: dict) -> list[str]:
-    """One line per reference quantity: identical, or both values."""
+    """One line per reference quantity: identical (the model gap: agrees to 3 significant digits), or both values."""
     lines = []
     for key, ref in INTEROP_REFERENCE.items():
         got = _dig(record, key)
@@ -1034,7 +1035,7 @@ def interop_vs_reference(record: dict) -> list[str]:
     for key, ref in INTEROP_REFERENCE_GAP.items():
         got = _dig(record, key)
         shown = f"{got:.3g}" if isinstance(got, float) else repr(got)
-        lines.append(f"{key} (3 digits): {'identical' if shown == ref else 'DIFFERS'} "
+        lines.append(f"{key} (3 digits): {'agrees to 3 significant digits' if shown == ref else 'DIFFERS'} "
                      f"(this run {got!r}, reference {ref})")
     return lines
 
@@ -1052,12 +1053,14 @@ def t_interop_fe_l23(source: Path, ctx: dict) -> None:
         r.notes.append("header.git_commit and header.git_dirty in fe_l23_lmfit.json are this archive's "
                        "commit and state: the release export in .cache/work has no .git, so the script's "
                        "git call resolves to the enclosing repository; the release commit is pins.toml [source]")
+        r.notes.append("the reference run's record is reference-2026-11-20.json in this folder, as written by "
+                       "that run")
         record = json.loads((out / "fe_l23_lmfit.json").read_text())
         diffs = interop_vs_reference(record)
         n_diff = sum("DIFFERS" in d for d in diffs)
         r.notes.append(f"compared with the reference run of 20 Nov 2026 (cloud sandbox, Ubuntu 24.04.5, x86_64, "
                        f"same uv.lock and compiled extension): {len(diffs) - n_diff} of {len(diffs)} "
-                       f"quantities identical")
+                       f"quantities identical or agreeing to 3 significant digits")
         r.notes.extend(diffs)
 
 

@@ -399,6 +399,9 @@
      "@id": "results/interop-fe-l23/fe_l23_side_by_side.txt"
     },
     {
+     "@id": "results/interop-fe-l23/reference-2026-11-20.json"
+    },
+    {
      "@id": "results/interop-fe-l23/run.json"
     },
     {
@@ -5625,8 +5628,8 @@
   {
    "@id": "reproduce.py",
    "@type": "File",
-   "contentSize": 72342,
-   "sha256": "a5037812e2a8e7104f33c8db6f7bc7ef1e1976a1ea6071605e580a7df78d9ca2",
+   "contentSize": 72708,
+   "sha256": "75bdf2fdfb43600ed923501dbcad7718bc0c0af7d23ff907091c46ad5d9e99ff",
    "encodingFormat": "text/x-python",
    "description": "Entry point. Regenerates results/ and figures/ from the pinned release and checks every number the paper states."
   },
@@ -6107,6 +6110,13 @@
    "contentSize": 25996,
    "sha256": "74e63002e991f92562adb789ad7c7b850d2a58a9962be15e9d97b15ed939018c",
    "encodingFormat": "text/plain"
+  },
+  {
+   "@id": "results/interop-fe-l23/reference-2026-11-20.json",
+   "@type": "File",
+   "contentSize": 12860,
+   "sha256": "4cbf476a0d260a13ccbfbd095dd541d7e626e043e403acb40767b3e6d35bbe37",
+   "encodingFormat": "application/json"
   },
   {
    "@id": "results/interop-fe-l23/run.json",
