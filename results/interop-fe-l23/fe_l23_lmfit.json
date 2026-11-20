@@ -1,0 +1,522 @@
+{
+ "header": {
+  "command": "/home/cloud/projects/SpectraFit-Core-Reproducibility/.venv/bin/python /home/cloud/projects/SpectraFit-Core-Reproducibility/.cache/work/reproducibility/interop/fe_l23_lmfit.py --out /home/cloud/projects/SpectraFit-Core-Reproducibility/results/interop-fe-l23",
+  "cwd": "/home/cloud/projects/SpectraFit-Core-Reproducibility/.cache/work",
+  "started_utc": "2026-11-20T16:20:33+00:00",
+  "finished_utc": "2026-11-20T16:20:36+00:00",
+  "git_commit": "dc5bdd01a5f967b68a8bbdac6a564b673cef3188",
+  "git_dirty": false,
+  "versions": {
+   "spectrafit-core": "0.1.3",
+   "lmfit": "1.3.4",
+   "scipy": "1.18.0",
+   "numpy": "2.5.1"
+  },
+  "python": "3.13.13",
+  "host": "terra Linux-5.15.0-203-generic-x86_64-with-glibc2.35 x86_64",
+  "thread_caps": {
+   "OMP_NUM_THREADS": "1",
+   "OPENBLAS_NUM_THREADS": "1",
+   "MKL_NUM_THREADS": "1",
+   "RAYON_NUM_THREADS": "1"
+  },
+  "random_draws": "none (one fixed start: the graph file's values)",
+  "inputs": {
+   "spectrum": "reproducibility/spectra/eelsdb-fe2o3-l23/DspecTi3wqG.msa",
+   "spectrum_sha256": "28e88f85350c353f524c828740c533312dc897505410ac940cd544060df963d4",
+   "graph": "fe_l23_constrained.graph.json",
+   "graph_sha256": "1b73d27c9aa218ef8339d4e96c00a79654ed4759dc337e16864ef43eb3d907be",
+   "translator_sha256": "057bd9228b0a70f9741537ef2aa9bd172314ddbb5c52ab3911f107a46dd1316c",
+   "fig_eels_sha256_checked": null
+  },
+  "window_ev": [
+   700.0,
+   735.0
+  ],
+  "n_points": 701,
+  "n_free": 30,
+  "measure": {
+   "AT_BOUND_REL": 0.0001,
+   "H_REL": 6.06e-06,
+   "THETA_FLOOR": 0.001,
+   "GN_TOL": 1e-06,
+   "EQUIV_TOL": 1e-10
+  }
+ },
+ "translation_notes": [
+  "step_l3.center: bounds [705.0, 715.0] of a tied parameter are not applied by SpectraFit-Core and are not passed to lmfit",
+  "step_l2.amplitude: bounds [0.0, inf] of a tied parameter are not applied by SpectraFit-Core and are not passed to lmfit",
+  "step_l2.center: bounds [718.0, 728.0] of a tied parameter are not applied by SpectraFit-Core and are not passed to lmfit",
+  "step_l2.sigma: bounds [0.3, 5.0] of a tied parameter are not applied by SpectraFit-Core and are not passed to lmfit"
+ ],
+ "free": [
+  "bg.c",
+  "step_l3.amplitude",
+  "step_l3.sigma",
+  "l3_a.amplitude",
+  "l3_a.center",
+  "l3_a.sigma",
+  "l3_b.amplitude",
+  "l3_b.center",
+  "l3_b.sigma",
+  "l3_c.amplitude",
+  "l3_c.center",
+  "l3_c.sigma",
+  "l3_d.amplitude",
+  "l3_d.center",
+  "l3_d.sigma",
+  "l3_e.amplitude",
+  "l3_e.center",
+  "l3_e.sigma",
+  "l3_s.amplitude",
+  "l3_s.center",
+  "l3_s.sigma",
+  "l2_a.amplitude",
+  "l2_a.center",
+  "l2_a.sigma",
+  "l2_b.amplitude",
+  "l2_b.center",
+  "l2_b.sigma",
+  "l2_c.amplitude",
+  "l2_c.center",
+  "l2_c.sigma"
+ ],
+ "sfc": {
+  "backend": "spectrafit-core fit, FitOptions(solver='lm')",
+  "wall_s": 0.35050849000003836,
+  "termination": {
+   "success": true,
+   "message": "converged_ftol",
+   "n_iter": 64,
+   "nfev": 90,
+   "njev": 64
+  },
+  "params": {
+   "bg.c": {
+    "value": 5638.693743000587,
+    "stderr": 30.80428446951161,
+    "free": true
+   },
+   "step_l3.amplitude": {
+    "value": 1700.656645387946,
+    "stderr": 33.90189570760345,
+    "free": true
+   },
+   "step_l3.center": {
+    "value": 710.7378329134845,
+    "stderr": null,
+    "free": false
+   },
+   "step_l3.sigma": {
+    "value": 0.3612110346695948,
+    "stderr": 0.28691690426916455,
+    "free": true
+   },
+   "step_l2.amplitude": {
+    "value": 850.328322693973,
+    "stderr": null,
+    "free": false
+   },
+   "step_l2.center": {
+    "value": 723.8830277886801,
+    "stderr": null,
+    "free": false
+   },
+   "step_l2.sigma": {
+    "value": 0.3612110346695948,
+    "stderr": null,
+    "free": false
+   },
+   "l3_a.amplitude": {
+    "value": 2223.204489226925,
+    "stderr": 1200.4352890470093,
+    "free": true
+   },
+   "l3_a.center": {
+    "value": 709.0538324257915,
+    "stderr": 0.5588131529478356,
+    "free": true
+   },
+   "l3_a.sigma": {
+    "value": 0.7357225977678853,
+    "stderr": 0.20086313163061684,
+    "free": true
+   },
+   "l3_b.amplitude": {
+    "value": 10282.977090216355,
+    "stderr": 1031.0554669802916,
+    "free": true
+   },
+   "l3_b.center": {
+    "value": 709.2776378123306,
+    "stderr": 0.005879841948296267,
+    "free": true
+   },
+   "l3_b.sigma": {
+    "value": 0.2929880298466766,
+    "stderr": 0.011794663767319694,
+    "free": true
+   },
+   "l3_c.amplitude": {
+    "value": 16953.84056337119,
+    "stderr": 1411.2043797571107,
+    "free": true
+   },
+   "l3_c.center": {
+    "value": 710.7378329134845,
+    "stderr": 0.008296693700548204,
+    "free": true
+   },
+   "l3_c.sigma": {
+    "value": 0.33158900658253004,
+    "stderr": 0.009704988729449604,
+    "free": true
+   },
+   "l3_d.amplitude": {
+    "value": 13229.69065998416,
+    "stderr": 1807.5735946474217,
+    "free": true
+   },
+   "l3_d.center": {
+    "value": 711.0560782684021,
+    "stderr": 0.10921707047719942,
+    "free": true
+   },
+   "l3_d.sigma": {
+    "value": 0.7565561969519169,
+    "stderr": 0.05496634086015155,
+    "free": true
+   },
+   "l3_e.amplitude": {
+    "value": 5381.285956769434,
+    "stderr": 417.2883232744445,
+    "free": true
+   },
+   "l3_e.center": {
+    "value": 712.6478062486265,
+    "stderr": 0.2577097337481408,
+    "free": true
+   },
+   "l3_e.sigma": {
+    "value": 1.6914829375911073,
+    "stderr": 0.2623786194290145,
+    "free": true
+   },
+   "l3_s.amplitude": {
+    "value": 1163.0198533699331,
+    "stderr": 139.9006645239876,
+    "free": true
+   },
+   "l3_s.center": {
+    "value": 717.1598487753885,
+    "stderr": 0.502763006771173,
+    "free": true
+   },
+   "l3_s.sigma": {
+    "value": 1.8574880912089007,
+    "stderr": 0.3139589979227613,
+    "free": true
+   },
+   "l2_a.amplitude": {
+    "value": 2489.484324367032,
+    "stderr": 104.3575605237463,
+    "free": true
+   },
+   "l2_a.center": {
+    "value": 722.3620092195997,
+    "stderr": 0.012862226575611386,
+    "free": true
+   },
+   "l2_a.sigma": {
+    "value": 0.35851435430233203,
+    "stderr": 0.01829434064949466,
+    "free": true
+   },
+   "l2_b.amplitude": {
+    "value": 749.8709382911516,
+    "stderr": 99.19672910081948,
+    "free": true
+   },
+   "l2_b.center": {
+    "value": 723.8830277886801,
+    "stderr": 0.06375416675098146,
+    "free": true
+   },
+   "l2_b.sigma": {
+    "value": 0.25632328689488726,
+    "stderr": 0.04232212963721142,
+    "free": true
+   },
+   "l2_c.amplitude": {
+    "value": 3766.728623795113,
+    "stderr": 82.2818737824824,
+    "free": true
+   },
+   "l2_c.center": {
+    "value": 724.0,
+    "stderr": 0.05111809432735645,
+    "free": true
+   },
+   "l2_c.sigma": {
+    "value": 1.5562034448120314,
+    "stderr": 0.028664648329502176,
+    "free": true
+   }
+  },
+  "rss": 22377890.07972057,
+  "tied_values_gap_rel": 0.0,
+  "model_gap_lmfit_vs_engine": 4.6833141576503374e-17,
+  "model_gap_ok": true,
+  "stationarity": {
+   "gn_decrease_rel": 3.6171712122092596e-07,
+   "stationary": true,
+   "pg_norm_rel": 0.00020910150655655587,
+   "pg_scaled_max_rel": 0.10644950755180531,
+   "active": {
+    "l2_c.center": "lower"
+   },
+   "held": [
+    "l2_c.center"
+   ]
+  }
+ },
+ "lmfit": {
+  "backend": "lmfit Model.fit(method='leastsq')",
+  "wall_s": 2.3976666199999954,
+  "termination": {
+   "success": true,
+   "message": "Fit succeeded.",
+   "ier": 1,
+   "lmdif_message": "Both actual and predicted relative reductions in the sum of squares\n  are at most 0.000000",
+   "nfev": 4116,
+   "errorbars": true,
+   "rss_backend": 22377891.325548965
+  },
+  "params": {
+   "bg.c": {
+    "value": 5638.705830014732,
+    "stderr": 30.8046172871633,
+    "free": true
+   },
+   "step_l3.amplitude": {
+    "value": 1700.6478828056063,
+    "stderr": 33.90145575190002,
+    "free": true
+   },
+   "step_l3.center": {
+    "value": 710.7378375108228,
+    "stderr": 0.00829689038517413,
+    "free": false
+   },
+   "step_l3.sigma": {
+    "value": 0.36120941129393946,
+    "stderr": 0.2868802244311657,
+    "free": true
+   },
+   "step_l2.amplitude": {
+    "value": 850.3239414028031,
+    "stderr": 16.95072785350972,
+    "free": false
+   },
+   "step_l2.center": {
+    "value": 723.8830271472823,
+    "stderr": 0.0637496945080824,
+    "free": false
+   },
+   "step_l2.sigma": {
+    "value": 0.36120941129393946,
+    "stderr": 0.28688022433595367,
+    "free": false
+   },
+   "l3_a.amplitude": {
+    "value": 2224.425650190858,
+    "stderr": 1200.1653758158116,
+    "free": true
+   },
+   "l3_a.center": {
+    "value": 709.0539727581673,
+    "stderr": 0.5587346210223028,
+    "free": true
+   },
+   "l3_a.sigma": {
+    "value": 0.7358209933882902,
+    "stderr": 0.20075791365096624,
+    "free": true
+   },
+   "l3_b.amplitude": {
+    "value": 10282.87298134106,
+    "stderr": 1030.9949606146079,
+    "free": true
+   },
+   "l3_b.center": {
+    "value": 709.2776385794855,
+    "stderr": 0.005878249656794501,
+    "free": true
+   },
+   "l3_b.sigma": {
+    "value": 0.2929873183282299,
+    "stderr": 0.01179475836523367,
+    "free": true
+   },
+   "l3_c.amplitude": {
+    "value": 16954.90688452691,
+    "stderr": 1411.13849260333,
+    "free": true
+   },
+   "l3_c.center": {
+    "value": 710.7378375108228,
+    "stderr": 0.008296890370765435,
+    "free": true
+   },
+   "l3_c.sigma": {
+    "value": 0.3315994558023573,
+    "stderr": 0.00970371265765017,
+    "free": true
+   },
+   "l3_d.amplitude": {
+    "value": 13231.648421443175,
+    "stderr": 1809.5858868421308,
+    "free": true
+   },
+   "l3_d.center": {
+    "value": 711.0561150212033,
+    "stderr": 0.10925691880655858,
+    "free": true
+   },
+   "l3_d.sigma": {
+    "value": 0.7566304635733762,
+    "stderr": 0.0550260902358466,
+    "free": true
+   },
+   "l3_e.amplitude": {
+    "value": 5380.171617761927,
+    "stderr": 417.6664202398247,
+    "free": true
+   },
+   "l3_e.center": {
+    "value": 712.6485875795765,
+    "stderr": 0.25766571043428976,
+    "free": true
+   },
+   "l3_e.sigma": {
+    "value": 1.690980144425205,
+    "stderr": 0.2624680792114109,
+    "free": true
+   },
+   "l3_s.amplitude": {
+    "value": 1163.205427649007,
+    "stderr": 139.96477345614576,
+    "free": true
+   },
+   "l3_s.center": {
+    "value": 717.1594564731149,
+    "stderr": 0.5030286194988648,
+    "free": true
+   },
+   "l3_s.sigma": {
+    "value": 1.8575819098246842,
+    "stderr": 0.31410118750073324,
+    "free": true
+   },
+   "l2_a.amplitude": {
+    "value": 2489.4795602697322,
+    "stderr": 104.3640150335506,
+    "free": true
+   },
+   "l2_a.center": {
+    "value": 722.3620098460043,
+    "stderr": 0.012862223004762634,
+    "free": true
+   },
+   "l2_a.sigma": {
+    "value": 0.3585147480141524,
+    "stderr": 0.018295517931761172,
+    "free": true
+   },
+   "l2_b.amplitude": {
+    "value": 749.8792087961759,
+    "stderr": 99.19666542656466,
+    "free": true
+   },
+   "l2_b.center": {
+    "value": 723.8830271472823,
+    "stderr": 0.06374969459828302,
+    "free": true
+   },
+   "l2_b.sigma": {
+    "value": 0.2563253447872033,
+    "stderr": 0.04232265121098147,
+    "free": true
+   },
+   "l2_c.amplitude": {
+    "value": 3766.7190035734875,
+    "stderr": 82.28605374526134,
+    "free": true
+   },
+   "l2_c.center": {
+    "value": 724.0000000000731,
+    "stderr": 0.17717781676565025,
+    "free": true
+   },
+   "l2_c.sigma": {
+    "value": 1.5562076867115704,
+    "stderr": 0.028665544418011,
+    "free": true
+   }
+  },
+  "rss": 22377891.325548954,
+  "tied_values_gap_rel": 0.0,
+  "model_gap_lmfit_vs_engine": 1.8733269799123812e-16,
+  "model_gap_ok": true,
+  "stationarity": {
+   "gn_decrease_rel": 4.3824083698809056e-07,
+   "stationary": true,
+   "pg_norm_rel": 0.00027547853418992223,
+   "pg_scaled_max_rel": 0.11385941486357502,
+   "active": {
+    "l2_c.center": "lower"
+   },
+   "held": [
+    "l2_c.center"
+   ]
+  }
+ },
+ "comparison": {
+  "rss_lmfit_minus_sfc": 1.2458283826708794,
+  "rss_rel_diff": 5.567228984648028e-08,
+  "param_rel_diff_max": 0.0005492796410993442,
+  "param_rel_diff_argmax": "l3_a.amplitude",
+  "param_rel_diff": {
+   "bg.c": 2.1435840808929285e-06,
+   "step_l3.amplitude": 5.152469996443591e-06,
+   "step_l3.sigma": 4.494258202358744e-06,
+   "l3_a.amplitude": 0.0005492796410993442,
+   "l3_a.center": 1.9791498110861127e-07,
+   "l3_a.sigma": 0.00013374010898054004,
+   "l3_b.amplitude": 1.0124390473890799e-05,
+   "l3_b.center": 1.0816003137490226e-09,
+   "l3_b.sigma": 2.4284898160819712e-06,
+   "l3_c.amplitude": 6.289555170324633e-05,
+   "l3_c.center": 6.468402499460533e-09,
+   "l3_c.sigma": 3.1512564107383105e-05,
+   "l3_d.amplitude": 0.00014798240634121584,
+   "l3_d.center": 5.168762676049479e-08,
+   "l3_d.sigma": 9.816405147228273e-05,
+   "l3_e.amplitude": 0.00020707671297506917,
+   "l3_e.center": 1.0963774016074989e-06,
+   "l3_e.sigma": 0.00029724991883059513,
+   "l3_s.amplitude": 0.00015956243441268424,
+   "l3_s.center": 5.470220819296538e-07,
+   "l3_s.sigma": 5.050832693223001e-05,
+   "l2_a.amplitude": 1.9136884105601764e-06,
+   "l2_a.center": 8.671615853219575e-10,
+   "l2_a.sigma": 1.098175890708784e-06,
+   "l2_b.amplitude": 1.102923796889318e-05,
+   "l2_b.center": 8.860517625105379e-10,
+   "l2_b.sigma": 8.028503149220425e-06,
+   "l2_c.amplitude": 2.553999129300071e-06,
+   "l2_c.center": 1.0096773018646285e-13,
+   "l2_c.sigma": 2.7258001215076503e-06
+  }
+ }
+}

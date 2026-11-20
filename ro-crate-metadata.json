@@ -435,6 +435,18 @@
      "@id": "results/gallery/run.json"
     },
     {
+     "@id": "results/interop-fe-l23/README.md"
+    },
+    {
+     "@id": "results/interop-fe-l23/fe_l23_lmfit.json"
+    },
+    {
+     "@id": "results/interop-fe-l23/fe_l23_side_by_side.txt"
+    },
+    {
+     "@id": "results/interop-fe-l23/run.json"
+    },
+    {
      "@id": "results/nist-both/README.md"
     },
     {
@@ -5279,8 +5291,8 @@
   {
    "@id": "README.md",
    "@type": "File",
-   "contentSize": 31385,
-   "sha256": "d0bbe2ac80c0bb12b9806dfea30ea4c171b494c118b8f89f61b5b51ae7684202",
+   "contentSize": 31403,
+   "sha256": "ba04ac431fb8c47acbbaee1304196330d6fca2f93375e1114e2de6a2262b809e",
    "encodingFormat": "text/markdown",
    "description": "What this repository is, how to rerun it, and what is regenerated versus archived."
   },
@@ -6238,6 +6250,34 @@
    "@type": "File",
    "contentSize": 4819,
    "sha256": "197d155c189302fa041b2a14047d012b0e2dd5815218919cc9262ef59cef885c",
+   "encodingFormat": "application/json"
+  },
+  {
+   "@id": "results/interop-fe-l23/README.md",
+   "@type": "File",
+   "contentSize": 7108,
+   "sha256": "f568e0aface81fb89fca5688007bf4412e1f1cde033a8a3802f44939b7c77144",
+   "encodingFormat": "text/markdown"
+  },
+  {
+   "@id": "results/interop-fe-l23/fe_l23_lmfit.json",
+   "@type": "File",
+   "contentSize": 13088,
+   "sha256": "1278cad81cd0852a3763750380d5733655cdffe5373ce5d888b621fa9822f698",
+   "encodingFormat": "application/json"
+  },
+  {
+   "@id": "results/interop-fe-l23/fe_l23_side_by_side.txt",
+   "@type": "File",
+   "contentSize": 25996,
+   "sha256": "74e63002e991f92562adb789ad7c7b850d2a58a9962be15e9d97b15ed939018c",
+   "encodingFormat": "text/plain"
+  },
+  {
+   "@id": "results/interop-fe-l23/run.json",
+   "@type": "File",
+   "contentSize": 3952,
+   "sha256": "5109bd2b20eab2740530ed3af3255bbd884ef207555ef882557c034dda252eff",
    "encodingFormat": "application/json"
   },
   {

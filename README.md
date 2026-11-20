@@ -183,7 +183,7 @@ python3 scripts/dry_run_env.py --venv <dir>/venv --group benchmark --group audit
 2. `bench-tolerance` and `bench-ablation`, with thread caps of 1 (`OMP`, `OPENBLAS`, `MKL`,
    `RAYON_NUM_THREADS=1`), as their reference runs.
 3. The untimed targets: `gallery` (library-default threading; its timings are not counted),
-   `nist-both`, `usage`, `audit-stationarity`, `eels-far`.
+   `nist-both`, `usage`, `audit-stationarity`, `eels-far`, `interop-fe-l23`.
 4. A gate: the run stops until the new timing is assembled into `results/timing/` and pinned in
    `pins.toml` (`bench/RUNBOOK.md` steps 11 and 12). Run it again afterwards; finished targets
    are skipped.
