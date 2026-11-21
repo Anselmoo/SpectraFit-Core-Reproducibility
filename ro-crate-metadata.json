@@ -96,10 +96,10 @@
      "@id": "build_crate.py"
     },
     {
-     "@id": "examples/3d_fitting.md"
+     "@id": "examples/3d_fitting.py"
     },
     {
-     "@id": "examples/3d_fitting.py"
+     "@id": "examples/README.md"
     },
     {
      "@id": "examples/_plotting.py"
@@ -111,52 +111,25 @@
      "@id": "examples/_snippets/stacked_slices.py"
     },
     {
-     "@id": "examples/bounded_fitting.md"
-    },
-    {
      "@id": "examples/bounded_fitting.py"
-    },
-    {
-     "@id": "examples/confidence_intervals.md"
     },
     {
      "@id": "examples/confidence_intervals.py"
     },
     {
-     "@id": "examples/failed_fit.md"
-    },
-    {
      "@id": "examples/failed_fit.py"
-    },
-    {
-     "@id": "examples/fitting.md"
     },
     {
      "@id": "examples/fitting.py"
     },
     {
-     "@id": "examples/fixed_params.md"
-    },
-    {
      "@id": "examples/fixed_params.py"
-    },
-    {
-     "@id": "examples/global_optimizer.md"
     },
     {
      "@id": "examples/global_optimizer.py"
     },
     {
-     "@id": "examples/index.md"
-    },
-    {
-     "@id": "examples/misspecified_model.md"
-    },
-    {
      "@id": "examples/misspecified_model.py"
-    },
-    {
-     "@id": "examples/multi_dataset.md"
     },
     {
      "@id": "examples/multi_dataset_1d.py"
@@ -165,37 +138,19 @@
      "@id": "examples/multi_dataset_2d.py"
     },
     {
-     "@id": "examples/robust_fitting.md"
-    },
-    {
      "@id": "examples/robust_fitting.py"
-    },
-    {
-     "@id": "examples/shared_params.md"
     },
     {
      "@id": "examples/shared_params.py"
     },
     {
-     "@id": "examples/spectrafit_vs_lmfit_complex.md"
-    },
-    {
      "@id": "examples/spectrafit_vs_lmfit_complex.py"
-    },
-    {
-     "@id": "examples/spectrafit_vs_lmfit_moderate.md"
     },
     {
      "@id": "examples/spectrafit_vs_lmfit_moderate.py"
     },
     {
-     "@id": "examples/varpro_vs_lm.md"
-    },
-    {
      "@id": "examples/varpro_vs_lm.py"
-    },
-    {
-     "@id": "examples/weighted_fitting.md"
     },
     {
      "@id": "examples/weighted_fitting.py"
@@ -433,6 +388,21 @@
     },
     {
      "@id": "results/gallery/run.json"
+    },
+    {
+     "@id": "results/interop-fe-l23/README.md"
+    },
+    {
+     "@id": "results/interop-fe-l23/fe_l23_lmfit.json"
+    },
+    {
+     "@id": "results/interop-fe-l23/fe_l23_side_by_side.txt"
+    },
+    {
+     "@id": "results/interop-fe-l23/reference-2026-11-20.json"
+    },
+    {
+     "@id": "results/interop-fe-l23/run.json"
     },
     {
      "@id": "results/nist-both/README.md"
@@ -5257,15 +5227,15 @@
   {
    "@id": ".zenodo.json",
    "@type": "File",
-   "contentSize": 2334,
-   "sha256": "74b2f809153dc7a5730cb5ed98efec946c226aa02c3d071ddf01bc6c06e260f8",
+   "contentSize": 2736,
+   "sha256": "046c7c7a148d63be4c1961b5df5c392d36b1a27f0c52b652245501b43fc1404e",
    "encodingFormat": "application/json"
   },
   {
    "@id": "CITATION.cff",
    "@type": "File",
-   "contentSize": 2112,
-   "sha256": "1d6e0405ca040ea41e6235ea4eb644f327d6b78fc18a439f56603be64c00c44e",
+   "contentSize": 2086,
+   "sha256": "4f756b906ab780da414a5158a544e84fae025135c8891e672b7bec43f5aa1401",
    "encodingFormat": "application/x-yaml",
    "description": "How to cite this repository."
   },
@@ -5279,8 +5249,8 @@
   {
    "@id": "README.md",
    "@type": "File",
-   "contentSize": 31063,
-   "sha256": "be94d8fd772b3c31ed789621043890becbe997bf852ff21176ece17a35340af3",
+   "contentSize": 37893,
+   "sha256": "0d28e31e79be053770e7e8c029964791556fc34e437b5b3cd415691294f7f477",
    "encodingFormat": "text/markdown",
    "description": "What this repository is, how to rerun it, and what is regenerated versus archived."
   },
@@ -5386,18 +5356,10 @@
   {
    "@id": "build_crate.py",
    "@type": "File",
-   "contentSize": 17118,
-   "sha256": "a0d5a019545b5b01f93cce47c1e0ddcd7377d7f0e180e45435d436344af03ccf",
+   "contentSize": 17545,
+   "sha256": "b9dca7162dfe3be7ac3060e8e4e5ffab46c08f7d3e80f9525ec344d34bdfcb92",
    "encodingFormat": "text/x-python",
    "description": "Writes this RO-Crate metadata document."
-  },
-  {
-   "@id": "examples/3d_fitting.md",
-   "@type": "File",
-   "contentSize": 5194,
-   "sha256": "ae09c0081119779787dfe3e25710416acb76e0edd3e98462947d14659056bd31",
-   "encodingFormat": "text/markdown",
-   "description": "Gallery of spectrafit-core, page that explains the examples; mirrored 1:1 from docs/tutorials/gallery at commit 952c5c954eed."
   },
   {
    "@id": "examples/3d_fitting.py",
@@ -5406,6 +5368,14 @@
    "sha256": "1d900ac243b5815edea4e8f962b5f069a04053888b1450306aa3663dc5638ac7",
    "encodingFormat": "text/x-python",
    "description": "Gallery of spectrafit-core, runnable example; mirrored 1:1 from docs/tutorials/gallery at commit 952c5c954eed."
+  },
+  {
+   "@id": "examples/README.md",
+   "@type": "File",
+   "contentSize": 6918,
+   "sha256": "40f9bf637cf2c41d1d4deafbeeed087f04ff2cabfe3589a3c6fb512b30bac2ad",
+   "encodingFormat": "text/markdown",
+   "description": "Index of the examples, generated by scripts/mirror_gallery.py from the gallery pages: title and description of each example, its script and its figure."
   },
   {
    "@id": "examples/_plotting.py",
@@ -5432,28 +5402,12 @@
    "description": "Gallery of spectrafit-core, runnable snippet included into an explanation page; mirrored 1:1 from docs/tutorials/gallery at commit 952c5c954eed."
   },
   {
-   "@id": "examples/bounded_fitting.md",
-   "@type": "File",
-   "contentSize": 3953,
-   "sha256": "6d62d4b76cd976f02621b06a56b56eeb37dd9879f0509be5d39f28408ebaf3eb",
-   "encodingFormat": "text/markdown",
-   "description": "Gallery of spectrafit-core, page that explains the examples; mirrored 1:1 from docs/tutorials/gallery at commit 952c5c954eed."
-  },
-  {
    "@id": "examples/bounded_fitting.py",
    "@type": "File",
    "contentSize": 6164,
    "sha256": "cdacbf440878f7651f3301c7c29ee19d540c86833d1364dd230c16d959ac9d71",
    "encodingFormat": "text/x-python",
    "description": "Gallery of spectrafit-core, runnable example; mirrored 1:1 from docs/tutorials/gallery at commit 952c5c954eed."
-  },
-  {
-   "@id": "examples/confidence_intervals.md",
-   "@type": "File",
-   "contentSize": 4301,
-   "sha256": "4538586211634828af1369d0df928a33254ed2f688218622f978dd6018238ce9",
-   "encodingFormat": "text/markdown",
-   "description": "Gallery of spectrafit-core, page that explains the examples; mirrored 1:1 from docs/tutorials/gallery at commit 952c5c954eed."
   },
   {
    "@id": "examples/confidence_intervals.py",
@@ -5464,28 +5418,12 @@
    "description": "Gallery of spectrafit-core, runnable example; mirrored 1:1 from docs/tutorials/gallery at commit 952c5c954eed."
   },
   {
-   "@id": "examples/failed_fit.md",
-   "@type": "File",
-   "contentSize": 5741,
-   "sha256": "39a0297a544048737e744fc2b1b456f0e11f4dbf66e0d4610706e55a218efca3",
-   "encodingFormat": "text/markdown",
-   "description": "Gallery of spectrafit-core, page that explains the examples; mirrored 1:1 from docs/tutorials/gallery at commit 952c5c954eed."
-  },
-  {
    "@id": "examples/failed_fit.py",
    "@type": "File",
    "contentSize": 7457,
    "sha256": "ee284739623b775efbd87ec95d6320de7363e0b8cf5fdebe274953c902eb9172",
    "encodingFormat": "text/x-python",
    "description": "Gallery of spectrafit-core, runnable example; mirrored 1:1 from docs/tutorials/gallery at commit 952c5c954eed."
-  },
-  {
-   "@id": "examples/fitting.md",
-   "@type": "File",
-   "contentSize": 3850,
-   "sha256": "babdc804798403d45c636b961ade52a6edfb9f32a5ef7d1c35eaf3bbfa027adc",
-   "encodingFormat": "text/markdown",
-   "description": "Gallery of spectrafit-core, page that explains the examples; mirrored 1:1 from docs/tutorials/gallery at commit 952c5c954eed."
   },
   {
    "@id": "examples/fitting.py",
@@ -5496,28 +5434,12 @@
    "description": "Gallery of spectrafit-core, runnable example; mirrored 1:1 from docs/tutorials/gallery at commit 952c5c954eed."
   },
   {
-   "@id": "examples/fixed_params.md",
-   "@type": "File",
-   "contentSize": 4143,
-   "sha256": "a46c1e5f858625d9f93d0402bf42c8673c6a42600dc54de93c6eda047ea7a7d1",
-   "encodingFormat": "text/markdown",
-   "description": "Gallery of spectrafit-core, page that explains the examples; mirrored 1:1 from docs/tutorials/gallery at commit 952c5c954eed."
-  },
-  {
    "@id": "examples/fixed_params.py",
    "@type": "File",
    "contentSize": 6941,
    "sha256": "e156fe6885d46e842dfdf7e4a9f3711c02fbe02bd32807960bd18c09aabcfb84",
    "encodingFormat": "text/x-python",
    "description": "Gallery of spectrafit-core, runnable example; mirrored 1:1 from docs/tutorials/gallery at commit 952c5c954eed."
-  },
-  {
-   "@id": "examples/global_optimizer.md",
-   "@type": "File",
-   "contentSize": 3699,
-   "sha256": "05a332f53f25ee6210916031865433ad6d66c1c87e6143d5c0c866e37dc20cd5",
-   "encodingFormat": "text/markdown",
-   "description": "Gallery of spectrafit-core, page that explains the examples; mirrored 1:1 from docs/tutorials/gallery at commit 952c5c954eed."
   },
   {
    "@id": "examples/global_optimizer.py",
@@ -5528,36 +5450,12 @@
    "description": "Gallery of spectrafit-core, runnable example; mirrored 1:1 from docs/tutorials/gallery at commit 952c5c954eed."
   },
   {
-   "@id": "examples/index.md",
-   "@type": "File",
-   "contentSize": 11527,
-   "sha256": "cd42aa19b307781365fd8a59edd4f2a43bff4a9bfef1a2b93e350d35f6f07d94",
-   "encodingFormat": "text/markdown",
-   "description": "Gallery of spectrafit-core, page that explains the examples; mirrored 1:1 from docs/tutorials/gallery at commit 952c5c954eed."
-  },
-  {
-   "@id": "examples/misspecified_model.md",
-   "@type": "File",
-   "contentSize": 6603,
-   "sha256": "5a58fff02b551b41a355ab9aa4db5725ff45ce9bfb03954cf9d5ad4e7f754a1c",
-   "encodingFormat": "text/markdown",
-   "description": "Gallery of spectrafit-core, page that explains the examples; mirrored 1:1 from docs/tutorials/gallery at commit 952c5c954eed."
-  },
-  {
    "@id": "examples/misspecified_model.py",
    "@type": "File",
    "contentSize": 8776,
    "sha256": "4c0e8c18e26c83b4a8514db3bcfbd41f1ec128db05bca8cf67a39f4a86b67c0e",
    "encodingFormat": "text/x-python",
    "description": "Gallery of spectrafit-core, runnable example; mirrored 1:1 from docs/tutorials/gallery at commit 952c5c954eed."
-  },
-  {
-   "@id": "examples/multi_dataset.md",
-   "@type": "File",
-   "contentSize": 7978,
-   "sha256": "c4502200643e6f3892c7cb03dbf23e0e918f96d138623c378082a199b9542d49",
-   "encodingFormat": "text/markdown",
-   "description": "Gallery of spectrafit-core, page that explains the examples; mirrored 1:1 from docs/tutorials/gallery at commit 952c5c954eed."
   },
   {
    "@id": "examples/multi_dataset_1d.py",
@@ -5576,28 +5474,12 @@
    "description": "Gallery of spectrafit-core, runnable example; mirrored 1:1 from docs/tutorials/gallery at commit 952c5c954eed."
   },
   {
-   "@id": "examples/robust_fitting.md",
-   "@type": "File",
-   "contentSize": 3878,
-   "sha256": "0fe78f01e956edd6274f3d37a2ae570f6cb839fa3fdb36ba4d852a0f6d70815e",
-   "encodingFormat": "text/markdown",
-   "description": "Gallery of spectrafit-core, page that explains the examples; mirrored 1:1 from docs/tutorials/gallery at commit 952c5c954eed."
-  },
-  {
    "@id": "examples/robust_fitting.py",
    "@type": "File",
    "contentSize": 5777,
    "sha256": "6e188623893cc06cc9e2cfd35a34e86cb63f72ed4ec518503fe81333ce74abaa",
    "encodingFormat": "text/x-python",
    "description": "Gallery of spectrafit-core, runnable example; mirrored 1:1 from docs/tutorials/gallery at commit 952c5c954eed."
-  },
-  {
-   "@id": "examples/shared_params.md",
-   "@type": "File",
-   "contentSize": 7478,
-   "sha256": "b83b72c16afd61bfd580c9566c6af6ae8e7fbe64d3c6d1d5eb4d7fbaf2d0915b",
-   "encodingFormat": "text/markdown",
-   "description": "Gallery of spectrafit-core, page that explains the examples; mirrored 1:1 from docs/tutorials/gallery at commit 952c5c954eed."
   },
   {
    "@id": "examples/shared_params.py",
@@ -5608,28 +5490,12 @@
    "description": "Gallery of spectrafit-core, runnable example; mirrored 1:1 from docs/tutorials/gallery at commit 952c5c954eed."
   },
   {
-   "@id": "examples/spectrafit_vs_lmfit_complex.md",
-   "@type": "File",
-   "contentSize": 8931,
-   "sha256": "8ed2e679f6b77d4e484525c46c6eeb3a98f206e83c8ad3bbf69851c0f0583479",
-   "encodingFormat": "text/markdown",
-   "description": "Gallery of spectrafit-core, page that explains the examples; mirrored 1:1 from docs/tutorials/gallery at commit 952c5c954eed."
-  },
-  {
    "@id": "examples/spectrafit_vs_lmfit_complex.py",
    "@type": "File",
    "contentSize": 18124,
    "sha256": "3570544d4d4eee2402f3c438e9035e12e052c2b0d91e03165ac2ab4e31dd7695",
    "encodingFormat": "text/x-python",
    "description": "Gallery of spectrafit-core, runnable example; mirrored 1:1 from docs/tutorials/gallery at commit 952c5c954eed."
-  },
-  {
-   "@id": "examples/spectrafit_vs_lmfit_moderate.md",
-   "@type": "File",
-   "contentSize": 7286,
-   "sha256": "8fba43182a8fc88454c00d872f2ca1a2afcc0870f8958118825548f284701135",
-   "encodingFormat": "text/markdown",
-   "description": "Gallery of spectrafit-core, page that explains the examples; mirrored 1:1 from docs/tutorials/gallery at commit 952c5c954eed."
   },
   {
    "@id": "examples/spectrafit_vs_lmfit_moderate.py",
@@ -5640,28 +5506,12 @@
    "description": "Gallery of spectrafit-core, runnable example; mirrored 1:1 from docs/tutorials/gallery at commit 952c5c954eed."
   },
   {
-   "@id": "examples/varpro_vs_lm.md",
-   "@type": "File",
-   "contentSize": 4610,
-   "sha256": "6f1f8696a3a15c1bfd7055464094d1778bae17e3ad1376e0b18a98413a43283c",
-   "encodingFormat": "text/markdown",
-   "description": "Gallery of spectrafit-core, page that explains the examples; mirrored 1:1 from docs/tutorials/gallery at commit 952c5c954eed."
-  },
-  {
    "@id": "examples/varpro_vs_lm.py",
    "@type": "File",
    "contentSize": 7242,
    "sha256": "ff0ac46342545190451fd09881091bfefa551506c8d3bb6e1314f6e57f65fab6",
    "encodingFormat": "text/x-python",
    "description": "Gallery of spectrafit-core, runnable example; mirrored 1:1 from docs/tutorials/gallery at commit 952c5c954eed."
-  },
-  {
-   "@id": "examples/weighted_fitting.md",
-   "@type": "File",
-   "contentSize": 4947,
-   "sha256": "afc43dc2398fd932339d41b3737c1d36cb8f280fd2e6053cd9c8e2a290935a7d",
-   "encodingFormat": "text/markdown",
-   "description": "Gallery of spectrafit-core, page that explains the examples; mirrored 1:1 from docs/tutorials/gallery at commit 952c5c954eed."
   },
   {
    "@id": "examples/weighted_fitting.py",
@@ -5674,10 +5524,10 @@
   {
    "@id": "examples-manifest.json",
    "@type": "File",
-   "contentSize": 9030,
-   "sha256": "520d741c1a0cec9442cb0dcfb43c3d4f7dfed780d30790da9f6ebc87e4bb2112",
+   "contentSize": 10585,
+   "sha256": "7a21c5946cede131b503f5abed1dbbe6071ba141bf4df926720e9adea1eaa45f",
    "encodingFormat": "application/json",
-   "description": "Source commit, git tree id and per-file SHA-256 of examples/; verifies itself (files_sha256)."
+   "description": "Source commit, per-file SHA-256 and git blob id of examples/, the source files left out with the reason, the generated README; verifies itself (files_sha256)."
   },
   {
    "@id": "figures/figure1_architecture.pdf",
@@ -5771,15 +5621,15 @@
    "@id": "pyproject.toml",
    "@type": "File",
    "contentSize": 1060,
-   "sha256": "4039c387c5fea41da950dbaa6c6667ae5a49312ec68f669859f3b247d88ae169",
+   "sha256": "cc3e9083c181e6500f9f51bb9bcaafc8f38c18ca8c31d001cf967d3161fc0077",
    "encodingFormat": "application/toml",
    "description": "Environment definition for `uv run --locked reproduce.py`."
   },
   {
    "@id": "reproduce.py",
    "@type": "File",
-   "contentSize": 65470,
-   "sha256": "1970281a2d56c999b6cd459fd502bd13e91d025f933a14b15f24597714bfbf9f",
+   "contentSize": 72708,
+   "sha256": "75bdf2fdfb43600ed923501dbcad7718bc0c0af7d23ff907091c46ad5d9e99ff",
    "encodingFormat": "text/x-python",
    "description": "Entry point. Regenerates results/ and figures/ from the pinned release and checks every number the paper states."
   },
@@ -6238,6 +6088,41 @@
    "@type": "File",
    "contentSize": 4819,
    "sha256": "197d155c189302fa041b2a14047d012b0e2dd5815218919cc9262ef59cef885c",
+   "encodingFormat": "application/json"
+  },
+  {
+   "@id": "results/interop-fe-l23/README.md",
+   "@type": "File",
+   "contentSize": 3908,
+   "sha256": "a097304f0dbd8346250b83263e3c5e5b99f5c370ec03149da26340869d84b9ca",
+   "encodingFormat": "text/markdown"
+  },
+  {
+   "@id": "results/interop-fe-l23/fe_l23_lmfit.json",
+   "@type": "File",
+   "contentSize": 13087,
+   "sha256": "a9f74e2afe9b89487638ba5c1b1fa6c149c16f8d3ef2a58beb950fdc85db3fd4",
+   "encodingFormat": "application/json"
+  },
+  {
+   "@id": "results/interop-fe-l23/fe_l23_side_by_side.txt",
+   "@type": "File",
+   "contentSize": 25996,
+   "sha256": "74e63002e991f92562adb789ad7c7b850d2a58a9962be15e9d97b15ed939018c",
+   "encodingFormat": "text/plain"
+  },
+  {
+   "@id": "results/interop-fe-l23/reference-2026-11-20.json",
+   "@type": "File",
+   "contentSize": 12860,
+   "sha256": "4cbf476a0d260a13ccbfbd095dd541d7e626e043e403acb40767b3e6d35bbe37",
+   "encodingFormat": "application/json"
+  },
+  {
+   "@id": "results/interop-fe-l23/run.json",
+   "@type": "File",
+   "contentSize": 4208,
+   "sha256": "a37b93b3cd5341dddcdb246919f948c982148583c8f527a80f2ce06fb59ed674",
    "encodingFormat": "application/json"
   },
   {
@@ -14852,8 +14737,8 @@
   {
    "@id": "run-archive.sh",
    "@type": "File",
-   "contentSize": 6902,
-   "sha256": "57b0029dac7f1d84f8691cb09d127d047c2c3d0418a9de0c93d2d7704d2fb9e9",
+   "contentSize": 6962,
+   "sha256": "4df1a542afd3da6fa314c0774524bc69826122fce36fa7e78953d6bfc71d35b4",
    "encodingFormat": "text/x-shellscript"
   },
   {
@@ -14888,17 +14773,17 @@
   {
    "@id": "scripts/gallery_run.py",
    "@type": "File",
-   "contentSize": 16418,
-   "sha256": "9101c059699d795530295bcb56ddb477c7cefb3ffb75c3491fbf08f887e853f1",
+   "contentSize": 15923,
+   "sha256": "1e6b67c6061a0927a30310a2e986390d853a5dd2253656e4b9b345e95275b05a",
    "encodingFormat": "text/x-python"
   },
   {
    "@id": "scripts/mirror_gallery.py",
    "@type": "File",
-   "contentSize": 8456,
-   "sha256": "08cd499d7c8e8892108c4c82f009169b5ce0fc15363755896eebb6761bfff190",
+   "contentSize": 15244,
+   "sha256": "5c8baf722849520074acd11ddc1297ac35caf8b103a28f31ef7c73c7d2ff9b3f",
    "encodingFormat": "text/x-python",
-   "description": "Mirrors the example gallery of spectrafit-core (docs/tutorials/gallery) 1:1 from a commit into examples/ and writes examples-manifest.json."
+   "description": "Mirrors the Python files of the example gallery of spectrafit-core (docs/tutorials/gallery) byte for byte from a commit into examples/, generates examples/README.md and writes examples-manifest.json."
   },
   {
    "@id": "scripts/overview.mplstyle",
@@ -14978,10 +14863,10 @@
   {
    "@id": "tests/test_examples.py",
    "@type": "File",
-   "contentSize": 5873,
-   "sha256": "b8ebf4733dad9f068a5d17fbd588e00066e2635d89230a4a05e355ef3ace68f4",
+   "contentSize": 7218,
+   "sha256": "eaad87938fcab94f1db77ea6fcad8970798491f5822f65fac6c75f4605e94ec3",
    "encodingFormat": "text/x-python",
-   "description": "Tests of the examples mirror: byte identity with the source tree, the manifest, the smoke run."
+   "description": "Tests of the examples mirror: every file against the manifest (and the source commit when given), the generated README and its figures, the smoke run."
   },
   {
    "@id": "usage/expected.json",
@@ -15001,7 +14886,7 @@
    "@id": "uv.lock",
    "@type": "File",
    "contentSize": 133079,
-   "sha256": "7e59cbcaa291acbbae197b71e46cbb8bf873c630711b1e14a9fc24ff61fa765f",
+   "sha256": "70dd4f2d92c02bb3dac06d5dac11b65914ee11644e510ae83879102e2cfe4b7f",
    "encodingFormat": "application/toml",
    "description": "Hash-pinned resolution of the environment, including the spectrafit-core wheel."
   },

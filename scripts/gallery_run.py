@@ -28,9 +28,9 @@ Recorded per script: exit code, wall time, the figures it wrote (copied to
 ``<out>/figures/``) and its fits. ``<out>/gallery.json`` holds everything; the script exits
 non-zero if any script fails.
 
-Drift check: with ``--source`` (a spectrafit-core checkout) and ``--ref``, the git tree id of
-``docs/tutorials/gallery`` at that ref must equal the tree id that ``examples-manifest.json``
-records and that the mirrored bytes give; otherwise the run fails.
+Drift check: every mirrored file must hash to the git blob id ``examples-manifest.json``
+records; with ``--source`` (a spectrafit-core checkout) and ``--ref``, also to the blob of the
+same path in ``docs/tutorials/gallery`` at that ref. The result is recorded per file.
 """
 
 from __future__ import annotations
@@ -248,39 +248,27 @@ def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
-def git_tree_of_bytes(root: Path) -> str:
-    """Git tree id of a folder computed from its files (``git hash-object``-compatible)."""
-    def tree(d: Path) -> bytes:
-        entries = []
-        for p in d.iterdir():
-            if p.name == "__pycache__":
-                continue
-            if p.is_dir():
-                entries.append((b"40000", p.name.encode(), bytes.fromhex(tree_id(p))))
-            else:
-                data = p.read_bytes()
-                blob = hashlib.sha1(b"blob %d\0" % len(data) + data).digest()
-                mode = b"100755" if os.access(p, os.X_OK) else b"100644"
-                entries.append((mode, p.name.encode(), blob))
-        entries.sort(key=lambda e: e[1] + (b"/" if e[0] == b"40000" else b""))
-        return b"".join(m + b" " + n + b"\0" + h for m, n, h in entries)
-
-    def tree_id(d: Path) -> str:
-        body = tree(d)
-        return hashlib.sha1(b"tree %d\0" % len(body) + body).hexdigest()
-
-    return tree_id(root)
+def git_blob_id(data: bytes) -> str:
+    return hashlib.sha1(b"blob %d\0" % len(data) + data).hexdigest()
 
 
 def drift_check(source: Path | None, ref: str | None, manifest: dict) -> dict:
-    mirrored = git_tree_of_bytes(EXAMPLES)
-    rec = {"manifest_tree": manifest["source"]["tree"], "mirrored_tree": mirrored}
+    """Blob id of every mirrored file against the manifest and, with ``--source``, against ``--ref``."""
+    rec: dict = {"files": {}}
     if source is not None and ref:
-        got = subprocess.run(["git", "rev-parse", f"{ref}:{GALLERY.as_posix()}"], cwd=source, capture_output=True,
-                             text=True, check=True).stdout.strip()
-        rec |= {"ref": ref, "ref_commit": subprocess.run(["git", "rev-parse", ref], cwd=source, capture_output=True,
-                                                         text=True, check=True).stdout.strip(), "ref_tree": got}
-    rec["equal"] = len({v for k, v in rec.items() if k.endswith("_tree")}) == 1
+        rec["ref"] = ref
+        rec["ref_commit"] = subprocess.run(["git", "rev-parse", ref], cwd=source, capture_output=True,
+                                           text=True, check=True).stdout.strip()
+    for f in manifest["files"]:
+        row = {"manifest": f["git_blob"], "mirrored": git_blob_id((HERE / f["path"]).read_bytes())}
+        if "ref" in rec:
+            rel = f["path"].removeprefix("examples/")
+            proc = subprocess.run(["git", "rev-parse", f"{ref}:{(GALLERY / rel).as_posix()}"], cwd=source,
+                                  capture_output=True, text=True, check=False)
+            row["ref"] = proc.stdout.strip() if proc.returncode == 0 else None
+        row["equal"] = len(set(row.values())) == 1
+        rec["files"][f["path"]] = row
+    rec["equal"] = all(r["equal"] for r in rec["files"].values())
     return rec
 
 

@@ -41,8 +41,8 @@ The 151-case timing archive shipped in the release (measured before the release)
 still verified by SHA-256 and copied to ``results/archived/``; the paper no longer
 uses it.
 
-``--examples`` is a separate target (#71): it runs the example gallery mirrored into
-``examples/`` (``scripts/mirror_gallery.py``, source commit and SHA-256 per file in
+``--examples`` is a separate target: it runs the Python files of the example gallery mirrored
+into ``examples/`` (``scripts/mirror_gallery.py``, source commit and SHA-256 per file in
 ``examples-manifest.json``) as a smoke run with ``MPLBACKEND=Agg`` and a timeout per
 script, and records exit code and wall time of each in ``results/examples-smoke.json``.
 It needs no network and does not regenerate anything else.
@@ -69,6 +69,7 @@ Targets (``--targets``, comma-separated, default ``core``)
 ``bench-tolerance``     the benchmark at the libraries' default stopping tolerances and at one common tolerance
 ``bench-ablation``      analytic against finite-difference Jacobian (backend ``spectrafit_fd``)
 ``audit-stationarity``  stationarity of every benchmark endpoint at the common tolerance (solver audit)
+``interop-fe-l23``      the Fe L2,3 constrained graph JSON fitted by SpectraFit-Core and by lmfit (from 1.3.1)
 ``overview``            ``results/overview/overview.html`` and ``overview.pdf`` from the outputs above
 
 Each target writes ``results/<target>/`` with a ``README.md`` and ``run.json`` (command, times,
@@ -164,12 +165,12 @@ TIMING_OVERLAY = {
     "results/timing/bench_summary.json": "reproducibility/figures/bench_summary.json",
     "results/timing/ladder/ladder.json": "reproducibility/ladder/ladder.json",
 }
-# The example gallery (#71): mirrored 1:1 by scripts/mirror_gallery.py, run by --examples.
+# The Python files of the example gallery: mirrored by scripts/mirror_gallery.py, run by --examples.
 EXAMPLES = HERE / "examples"
 EXAMPLES_MANIFEST = HERE / "examples-manifest.json"
 EXAMPLES_SMOKE = "examples-smoke.json"
 EXAMPLES_TIMEOUT_S = 600.0
-# Mirrored files the smoke run does not execute, with the reason. The mirror stays 1:1;
+# Mirrored files the smoke run does not execute, with the reason. The mirror is not edited;
 # a script that needs network, data outside the gallery or a GUI is listed here instead.
 EXAMPLES_SKIP: dict[str, str] = {
     "examples/misspecified_model.py":
@@ -512,6 +513,10 @@ def claims(results: Path, nist_dir: Path | None = None) -> list[dict]:
                                         "at_bound": gmin.get("at_bound")}}
     below_default = bool(gmin) and gmin["rss"] < min(free["rss"], ms_best)
 
+    # The interop target's record, read from the stored results (as the timing is), also under --check.
+    interop_path = RESULTS / INTEROP_JSON
+    interop = json.loads(interop_path.read_text()) if interop_path.exists() else None
+
     def c(cid: str, source: str, statement: str, observed: object, ok: bool) -> dict:
         return {"id": cid, "source": source, "statement": statement, "observed": observed, "ok": bool(ok)}
 
@@ -651,7 +656,49 @@ def claims(results: Path, nist_dir: Path | None = None) -> list[dict]:
           eels.get("at_bound"),
           isinstance(eels.get("at_bound"), dict)
           and {"free", "constrained", "free_default_start"} <= set(eels["at_bound"])),
+        *interop_claims(interop, c, reg),
     ]
+
+
+def interop_claims(rec: dict | None, c, reg: str) -> list[dict]:
+    """Claims of the interop-fe-l23 target (from 1.3.1).
+
+    The thresholds were fixed after the first run (cloud sandbox, 20 Nov 2026), not before it.
+    """
+    if rec is None:
+        missing = f"{INTEROP_JSON.as_posix()} not found; run --targets interop-fe-l23"
+        return [c(f"interop-0{i}", reg, s, missing, False) for i, s in enumerate(INTEROP_STATEMENTS, 1)]
+    sfc, lm, cmp_ = rec["sfc"], rec["lmfit"], rec["comparison"]
+
+    def term(b: dict) -> dict:
+        return {"success": b["termination"]["success"], "message": b["termination"]["message"],
+                "gn_decrease_rel": b["stationarity"]["gn_decrease_rel"],
+                "stationary": b["stationarity"]["stationary"]}
+
+    gaps = {"sfc": sfc["model_gap_lmfit_vs_engine"], "lmfit": lm["model_gap_lmfit_vs_engine"]}
+    s1, s2, s3, s4 = INTEROP_STATEMENTS
+    return [
+        c("interop-01", reg, s1, {"sfc": term(sfc), "lmfit": term(lm)},
+          all(b["termination"]["success"] is True and b["stationarity"]["stationary"] is True
+              for b in (sfc, lm))),
+        c("interop-02", reg, s2, {"rss_sfc": sfc["rss"], "rss_lmfit": lm["rss"],
+                                  "rss_rel_diff": cmp_["rss_rel_diff"]},
+          abs(cmp_["rss_rel_diff"]) <= 1e-6),
+        c("interop-03", reg, s3, {"param_rel_diff_max": cmp_["param_rel_diff_max"],
+                                  "argmax": cmp_["param_rel_diff_argmax"]},
+          cmp_["param_rel_diff_max"] <= 1e-3),
+        c("interop-04", reg, s4, gaps, all(g <= 1e-10 for g in gaps.values())),
+    ]
+
+
+INTEROP_STATEMENTS = (
+    ("the Fe L2,3 constrained graph JSON is fitted by SpectraFit-Core and by lmfit; both report success "
+     "and both endpoints are stationary by the script's measure (Gauss-Newton decrease / RSS <= 1e-6)"),
+    "the RSS of the two endpoints differs by at most 1e-6 relative",
+    "the largest relative difference of a free parameter between the two endpoints is at most 1e-3",
+    ("the lmfit translation equals the engine model (spectrafit_core.evaluate) to 1e-10 relative at both "
+     "endpoints"),
+)
 
 
 # --------------------------------------------------------------------------- optional timing
@@ -679,9 +726,10 @@ def benchmark(source: Path, reps: int) -> dict:
 
 
 def verify_examples() -> dict:
-    """The mirrored files must be the ones ``examples-manifest.json`` records."""
+    """The mirrored files and the generated README must be the ones ``examples-manifest.json`` records."""
     manifest = json.loads(EXAMPLES_MANIFEST.read_text())
-    listed = {f["path"] for f in manifest["files"]}
+    generated = manifest["generated"]
+    listed = {f["path"] for f in manifest["files"]} | {generated["path"]}
     present = {p.relative_to(HERE).as_posix() for p in EXAMPLES.rglob("*")
                if p.is_file() and "__pycache__" not in p.parts}
     if listed != present:
@@ -691,6 +739,8 @@ def verify_examples() -> dict:
         got = sha256(HERE / f["path"])
         if got != f["sha256"]:
             raise SystemExit(f"{f['path']} has sha256 {got}, the manifest records {f['sha256']}")
+    if sha256(HERE / generated["path"]) != generated["sha256"]:
+        raise SystemExit(f"{generated['path']} differs from the one scripts/mirror_gallery.py generated")
     return manifest
 
 
@@ -877,7 +927,7 @@ def write_checksums(root: Path = HERE) -> None:
 # --------------------------------------------------------------------------- targets
 
 TARGETS = ("core", "nist-both", "usage", "gallery", "eels-far", "bench-tolerance", "bench-ablation",
-           "audit-stationarity", "overview")
+           "audit-stationarity", "interop-fe-l23", "overview")
 # The benchmark runs of the solver audit and the Jacobian ablation, at the harness defaults.
 BENCH_REPS, BENCH_MC = 5, 20
 ABLATION_BACKENDS = "spectrafit,spectrafit_fd,lmfit,jax,scipy-ls-lm,scipy-ls-trf,scipy-ls-dogbox"
@@ -944,6 +994,74 @@ def t_nist_both(source: Path, ctx: dict) -> None:
         run([sys.executable, "nist_table2.py", "--start", "both", "--out", str(out / "nist_table2_both.json")],
             cwd=source / UPSTREAM_FIGS, env=ctx["env"])
         r.notes.append(f"upstream script sha256 {sha256(source / UPSTREAM_FIGS / 'nist_table2.py')}")
+
+
+# The release's second implementation: the Fe L2,3 constrained graph JSON fitted by lmfit.
+INTEROP_SCRIPT = Path("reproducibility") / "interop" / "fe_l23_lmfit.py"
+INTEROP_JSON = Path("interop-fe-l23") / "fe_l23_lmfit.json"
+# The first run, 20 Nov 2026, in a cloud sandbox (Ubuntu 24.04.5, x86_64, the same uv.lock, compiled
+# extension sha256 2e672905...1ebd). Every run is compared with it value by value; a difference is
+# reported in the run's README, never adjusted. The model gap is compared to three significant digits.
+# The values below are taken from that run's record, results/interop-fe-l23/reference-2026-11-20.json.
+INTEROP_REFERENCE = {
+    "sfc.termination.success": True, "sfc.termination.message": "converged_ftol",
+    "sfc.rss": 22377890.07972057, "sfc.termination.nfev": 90, "sfc.termination.njev": 64,
+    "sfc.stationarity.stationary": True, "sfc.stationarity.gn_decrease_rel": 3.6171712122110617e-07,
+    "sfc.stationarity.active": {"l2_c.center": "lower"},
+    "lmfit.termination.success": True, "lmfit.termination.message": "Fit succeeded.",
+    "lmfit.rss": 22377892.949173372, "lmfit.termination.nfev": 3619,
+    "lmfit.stationarity.stationary": True, "lmfit.stationarity.gn_decrease_rel": 6.685595510085018e-07,
+    "lmfit.stationarity.active": {"l2_c.center": "lower"},
+    "comparison.rss_rel_diff": 1.282271380536494e-07,
+    "comparison.param_rel_diff_max": 4.1647585229427766e-04,
+    "comparison.param_rel_diff_argmax": "l3_e.sigma",
+}
+INTEROP_REFERENCE_GAP = {"sfc.model_gap_lmfit_vs_engine": "1.87e-16", "lmfit.model_gap_lmfit_vs_engine": "1.87e-16"}
+
+
+def _dig(record: dict, dotted: str) -> object:
+    node: object = record
+    for part in dotted.split("."):
+        node = node[part] if isinstance(node, dict) and part in node else None
+    return node
+
+
+def interop_vs_reference(record: dict) -> list[str]:
+    """One line per reference quantity: identical (the model gap: agrees to 3 significant digits), or both values."""
+    lines = []
+    for key, ref in INTEROP_REFERENCE.items():
+        got = _dig(record, key)
+        lines.append(f"{key}: {'identical' if got == ref else 'DIFFERS'} (this run {got!r}, reference {ref!r})")
+    for key, ref in INTEROP_REFERENCE_GAP.items():
+        got = _dig(record, key)
+        shown = f"{got:.3g}" if isinstance(got, float) else repr(got)
+        lines.append(f"{key} (3 digits): {'agrees to 3 significant digits' if shown == ref else 'DIFFERS'} "
+                     f"(this run {got!r}, reference {ref})")
+    return lines
+
+
+def t_interop_fe_l23(source: Path, ctx: dict) -> None:
+    out = RESULTS / "interop-fe-l23"
+    shown = out.relative_to(HERE) if out.is_relative_to(HERE) else out
+    with run_record.Run(out, "interop-fe-l23", f"{INTEROP_SCRIPT.as_posix()} --out {shown}",
+                        "Fe L2,3 constrained model, one graph JSON file, fitted by SpectraFit-Core and by "
+                        "lmfit (the release's graph_to_lmfit.py translation).") as r:
+        run([sys.executable, str(source / INTEROP_SCRIPT), "--out", str(out)], cwd=source, env=ctx["env"])
+        r.notes.append(f"upstream script sha256 {sha256(source / INTEROP_SCRIPT)}; translator sha256 "
+                       f"{sha256(source / INTEROP_SCRIPT.parent / 'graph_to_lmfit.py')}; graph sha256 "
+                       f"{sha256(source / INTEROP_SCRIPT.parent / 'fe_l23_constrained.graph.json')}")
+        r.notes.append("header.git_commit and header.git_dirty in fe_l23_lmfit.json are this archive's "
+                       "commit and state: the release export in .cache/work has no .git, so the script's "
+                       "git call resolves to the enclosing repository; the release commit is pins.toml [source]")
+        r.notes.append("the reference run's record is reference-2026-11-20.json in this folder, as written by "
+                       "that run")
+        record = json.loads((out / "fe_l23_lmfit.json").read_text())
+        diffs = interop_vs_reference(record)
+        n_diff = sum("DIFFERS" in d for d in diffs)
+        r.notes.append(f"compared with the reference run of 20 Nov 2026 (cloud sandbox, Ubuntu 24.04.5, x86_64, "
+                       f"same uv.lock and compiled extension): {len(diffs) - n_diff} of {len(diffs)} "
+                       f"quantities identical or agreeing to 3 significant digits")
+        r.notes.extend(diffs)
 
 
 def t_usage(source: Path, ctx: dict) -> None:
@@ -1043,7 +1161,8 @@ def t_overview(source: Path, ctx: dict) -> None:
 
 TARGET_FUNCS = {"nist-both": t_nist_both, "usage": t_usage, "gallery": t_gallery, "eels-far": t_eels_far,
                 "bench-tolerance": t_bench_tolerance, "bench-ablation": t_bench_ablation,
-                "audit-stationarity": t_audit_stationarity, "overview": t_overview}
+                "audit-stationarity": t_audit_stationarity, "interop-fe-l23": t_interop_fe_l23,
+                "overview": t_overview}
 
 
 def core(args: argparse.Namespace, source: Path, versions: dict, repository: dict) -> int:
