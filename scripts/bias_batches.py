@@ -40,6 +40,7 @@ import timeit
 from datetime import UTC, datetime
 from pathlib import Path
 
+HERE = Path(__file__).resolve().parent.parent
 UPSTREAM = Path("reproducibility") / "figures" / "measure_audit_bias.py"
 PARITY = Path("tests") / "parity" / "test_kernel_parity.py"
 LOCK = Path.home() / ".cache" / "terra-bench.lock"
@@ -129,7 +130,9 @@ def main() -> int:
 
     reference = None
     if a.reference.exists():
-        reference = {"file": a.reference.as_posix(), "sha256": sha256(a.reference),
+        ref = a.reference.resolve()
+        shown = ref.relative_to(HERE) if ref.is_relative_to(HERE) else Path(ref.name)  # no host paths
+        reference = {"file": shown.as_posix(), "sha256": sha256(a.reference),
                      "bias": json.loads(a.reference.read_text())["bias"]}
     a.out.mkdir(parents=True, exist_ok=True)
     rec = {
