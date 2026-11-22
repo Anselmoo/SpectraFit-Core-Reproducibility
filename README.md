@@ -222,6 +222,8 @@ in [Article and files](#article-and-files). The others extend the archive for sp
 | `bench-ablation` | analytic against finite-difference Jacobian (backend `spectrafit_fd`) with every comparator (`bench/ablation_summary.py`) | `results/bench-ablation/` |
 | `audit-stationarity` | stationarity of every benchmark endpoint of SpectraFit-Core, SciPy trf and lmfit at the common tolerance (`audit/`) | `results/audit-stationarity/` |
 | `interop-fe-l23` | from 1.3.1: the Fe L2,3 constrained model as one graph JSON file, fitted by SpectraFit-Core and by lmfit through the release's translator, `reproducibility/interop/fe_l23_lmfit.py` of the release; each run is compared value by value with the reference run of 20 Nov 2026 | `results/interop-fe-l23/` |
+| `nist-params` | from 1.3.2: the 22 NIST StRD problems from Start 2 at the shipped tolerance, fitted as the release's `nist_table2.py` fits them; stores the fitted parameter values of SpectraFit-Core and lmfit next to the certified values and standard deviations (`scripts/nist_params.py`). Guard: the worst LRE recomputed from these values must equal both columns of `results/nist_table2.json` cell for cell, otherwise nothing is written; claim `nist-params-01` also requires the same 22 datasets and no null cell in the table | `results/nist-params/` |
+| `bias-batches` | from 1.3.2: the serialisation-bias measurement of the release's `measure_audit_bias.py` (gaussian, 97 points, 7 batches of 2000 NumPy and of 200 wheel evaluations), with every batch time kept and the per-evaluation values derived as that script derives them (`scripts/bias_batches.py`); load and `/proc/stat` before and after each side | `results/bias-batches/` |
 | `overview` | `results/overview/overview.html` and `overview.pdf`, generated from the outputs above | `results/overview/` |
 
 Every target folder holds a `README.md` and a `run.json`: command, start and end time, load,
@@ -260,7 +262,9 @@ python3 scripts/dry_run_env.py --venv <dir>/venv --group benchmark --group audit
 2. `bench-tolerance` and `bench-ablation`, with thread caps of 1 (`OMP`, `OPENBLAS`, `MKL`,
    `RAYON_NUM_THREADS=1`), as their reference runs.
 3. The untimed targets: `gallery` (library-default threading; its timings are not counted),
-   `nist-both`, `usage`, `audit-stationarity`, `eels-far`, `interop-fe-l23`.
+   `nist-both`, `usage`, `audit-stationarity`, `eels-far`, `interop-fe-l23`, `nist-params`;
+   then `bias-batches` (library-default threading, as step 9 of the timing chain; timed, so on a
+   quiet host).
 4. A gate: the run stops until the new timing is assembled into `results/timing/` and pinned in
    `pins.toml` (`bench/RUNBOOK.md` steps 11 and 12). Run it again afterwards; finished targets
    are skipped.

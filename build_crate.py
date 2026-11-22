@@ -20,7 +20,7 @@ HERE = Path(__file__).resolve().parent
 PINS = tomllib.loads((HERE / "pins.toml").read_text())
 CRATE_NAME = "ro-crate-metadata.json"
 CHECKSUMS_NAME = "checksums.sha256"
-SKIP_DIRS = {".git", ".cache", ".venv", "__pycache__", ".pytest_cache", ".ruff_cache"}
+SKIP_DIRS = {".git", ".cache", ".claude", ".venv", "__pycache__", ".pytest_cache", ".ruff_cache"}
 SKIP_FILES = {CRATE_NAME, CHECKSUMS_NAME, ".DS_Store"}
 
 AUTHOR_ID = "https://orcid.org/0000-0003-4543-4833"

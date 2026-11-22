@@ -70,7 +70,9 @@ Targets (``--targets``, comma-separated, default ``core``)
 ``bench-ablation``      analytic against finite-difference Jacobian (backend ``spectrafit_fd``)
 ``audit-stationarity``  stationarity of every benchmark endpoint at the common tolerance (solver audit)
 ``interop-fe-l23``      the Fe L2,3 constrained graph JSON fitted by SpectraFit-Core and by lmfit (from 1.3.1)
-``overview``            ``results/overview/overview.html`` and ``overview.pdf`` from the outputs above
+``nist-params``         fitted parameter values of SpectraFit-Core and lmfit on the 22 NIST problems (from 1.3.2)
+``bias-batches``        the serialisation-bias measurement with every timed batch kept (from 1.3.2)
+``overview``          ``results/overview/overview.html`` and ``overview.pdf`` from the outputs above
 
 Each target writes ``results/<target>/`` with a ``README.md`` and ``run.json`` (command, times,
 load, host, Python, wheel SHA-256, SHA-256 of every file).
@@ -139,7 +141,8 @@ EELS_JSON = "eels_fe2o3.json"
 EELS_FIGURE = "figure4_eels"
 # What the scripts read: the harness, the figure scripts with their inputs, and the
 # crate manifests that fig_architecture.py counts.
-EXPORT_PATHS = ["reproducibility", "python/oracles", "crates", "Cargo.toml"]
+# tests/parity/test_kernel_parity.py: the grid and parameters measure_audit_bias.py imports (bias-batches).
+EXPORT_PATHS = ["reproducibility", "python/oracles", "tests/parity/test_kernel_parity.py", "crates", "Cargo.toml"]
 SOLVERS = ["spectrafit_core", "lmfit", "scipy_lm", "scipy_trf"]
 TIMING = RESULTS / "timing"
 # The product name in the figure labels. The release's figure scripts print the package
@@ -516,6 +519,11 @@ def claims(results: Path, nist_dir: Path | None = None) -> list[dict]:
     # The interop target's record, read from the stored results (as the timing is), also under --check.
     interop_path = RESULTS / INTEROP_JSON
     interop = json.loads(interop_path.read_text()) if interop_path.exists() else None
+    # The nist-params target's record and run, read from the stored results as well.
+    nist_params_path = RESULTS / NIST_PARAMS_JSON
+    nist_params = json.loads(nist_params_path.read_text()) if nist_params_path.exists() else None
+    nist_params_run_path = nist_params_path.with_name("run.json")
+    nist_params_run = json.loads(nist_params_run_path.read_text()) if nist_params_run_path.exists() else None
 
     def c(cid: str, source: str, statement: str, observed: object, ok: bool) -> dict:
         return {"id": cid, "source": source, "statement": statement, "observed": observed, "ok": bool(ok)}
@@ -657,7 +665,49 @@ def claims(results: Path, nist_dir: Path | None = None) -> list[dict]:
           isinstance(eels.get("at_bound"), dict)
           and {"free", "constrained", "free_default_start"} <= set(eels["at_bound"])),
         *interop_claims(interop, c, reg),
+        # against the stored Table 1 file, the one the target's guard compared with
+        nist_params_claim(nist_params, nist_params_run, RESULTS / "nist_table2.json", c, reg),
     ]
+
+
+NIST_PARAMS_JSON = Path("nist-params") / "nist_params.json"
+NIST_PARAMS_TABLE_NOTE = "results/nist_table2.json sha256 at run time "
+NIST_PARAMS_STATEMENT = (
+    "the parameter values of SpectraFit-Core and lmfit stored by the nist-params target give, recomputed, "
+    "the worst LRE of both columns of Table 1 (results/nist_table2.json) cell for cell on all 22 datasets; "
+    "the target writes its record only if this guard passes")
+
+
+def nist_params_claim(rec: dict | None, run_rec: dict | None, table: Path, c, reg: str) -> dict:
+    """Claim of the nist-params target (from 1.3.2). No threshold: it records that the guard passed.
+
+    Holds when the record exists (the script writes it only after the guard passed), covers 22
+    datasets with values for both libraries, the Table 1 file names the same datasets and has no
+    null cell in either column (the guard skips null cells), and the run that wrote the record
+    guarded against the Table 1 file checked here (same SHA-256).
+    """
+    if rec is None:
+        return c("nist-params-01", reg, NIST_PARAMS_STATEMENT,
+                 f"{NIST_PARAMS_JSON.as_posix()} not found; run --targets nist-params", False)
+    rows = rec.get("datasets", {})
+    both = sorted(n for n, r in rows.items()
+                  if r.get("spectrafit_core", {}).get("values") and r.get("lmfit", {}).get("values"))
+    notes = (run_rec or {}).get("notes", [])
+    guarded = next((n.removeprefix(NIST_PARAMS_TABLE_NOTE) for n in notes
+                    if n.startswith(NIST_PARAMS_TABLE_NOTE)), None)
+    current = sha256(table) if table.exists() else None
+    # The script's guard skips a null table cell; here every one of the 44 cells must be non-null
+    # and the table must name the same datasets, so that the guard compared all of them.
+    cols = {d["name"]: d["columns"] for d in json.loads(table.read_text())["datasets"]} if table.exists() else {}
+    null_cells = sorted(f"{n}/{col}" for n, cs in cols.items() for col in ("spectrafit_core", "lmfit")
+                        if cs.get(col) is None)
+    observed = {"n_datasets": len(rows), "n_with_both_columns": len(both),
+                "same_datasets_as_table": set(cols) == set(rows), "null_table_cells": null_cells,
+                "run_status": (run_rec or {}).get("status"),
+                "table_sha256_guarded": guarded, "table_sha256_now": current}
+    ok = (len(rows) == 22 and len(both) == 22 and observed["same_datasets_as_table"] and not null_cells
+          and observed["run_status"] == "ok" and guarded is not None and guarded == current)
+    return c("nist-params-01", reg, NIST_PARAMS_STATEMENT, observed, ok)
 
 
 def interop_claims(rec: dict | None, c, reg: str) -> list[dict]:
@@ -914,7 +964,7 @@ def provenance(source: Path, versions: dict[str, str], extra: dict) -> dict:
 
 def write_checksums(root: Path = HERE) -> None:
     """One manifest over everything in ``root`` that a reader may want to verify."""
-    skip_dirs = {".git", ".cache", ".venv", "__pycache__", ".pytest_cache", ".ruff_cache", "cache"}
+    skip_dirs = {".git", ".cache", ".claude", ".venv", "__pycache__", ".pytest_cache", ".ruff_cache", "cache"}
     lines = []
     for path in sorted(root.rglob("*")):
         rel = path.relative_to(root)
@@ -927,7 +977,7 @@ def write_checksums(root: Path = HERE) -> None:
 # --------------------------------------------------------------------------- targets
 
 TARGETS = ("core", "nist-both", "usage", "gallery", "eels-far", "bench-tolerance", "bench-ablation",
-           "audit-stationarity", "interop-fe-l23", "overview")
+           "audit-stationarity", "interop-fe-l23", "nist-params", "bias-batches", "overview")
 # The benchmark runs of the solver audit and the Jacobian ablation, at the harness defaults.
 BENCH_REPS, BENCH_MC = 5, 20
 ABLATION_BACKENDS = "spectrafit,spectrafit_fd,lmfit,jax,scipy-ls-lm,scipy-ls-trf,scipy-ls-dogbox"
@@ -1064,6 +1114,42 @@ def t_interop_fe_l23(source: Path, ctx: dict) -> None:
         r.notes.extend(diffs)
 
 
+NIST_PARAMS_SCRIPT = HERE / "scripts" / "nist_params.py"
+BIAS_SCRIPT = HERE / "scripts" / "bias_batches.py"
+
+
+def t_nist_params(source: Path, ctx: dict) -> None:
+    out = RESULTS / "nist-params"
+    table = RESULTS / "nist_table2.json"
+    with run_record.Run(out, "nist-params", "scripts/nist_params.py --source <export> --out results/nist-params",
+                        "NIST StRD, 22 datasets, Start 2, shipped tolerance: fitted parameter values of "
+                        "SpectraFit-Core and lmfit next to the certified values and standard deviations, "
+                        "fitted as the release's nist_table2.py fits them.") as r:
+        r.notes.append(f"{NIST_PARAMS_TABLE_NOTE}{sha256(table)}")
+        r.notes.append(f"script sha256 {sha256(NIST_PARAMS_SCRIPT)}; upstream nist_table2.py sha256 "
+                       f"{sha256(source / UPSTREAM_FIGS / 'nist_table2.py')}")
+        r.notes.append("guard: the worst LRE of both libraries, recomputed from the stored values with the "
+                       "release's worst_lre, equals the spectrafit_core and lmfit columns of "
+                       "results/nist_table2.json cell for cell; the script writes nist_params.json only if it does")
+        run([sys.executable, str(NIST_PARAMS_SCRIPT), "--source", str(source), "--table", str(table),
+             "--out", str(out)], cwd=source / UPSTREAM_FIGS, env=ctx["env"])
+
+
+def t_bias_batches(source: Path, ctx: dict) -> None:
+    out = RESULTS / "bias-batches"
+    reference = RESULTS / "timing" / "audit_bias.json"
+    with run_record.Run(out, "bias-batches", "scripts/bias_batches.py --source <export> --out results/bias-batches",
+                        "Serialisation bias (gaussian, 97 points): every one of the 7 timed batches of the "
+                        "NumPy path (2000 evaluations each) and of the wheel path (200 each), with the "
+                        "per-evaluation values derived as measure_audit_bias.py derives them.") as r:
+        r.notes.append(f"script sha256 {sha256(BIAS_SCRIPT)}; upstream measure_audit_bias.py sha256 "
+                       f"{sha256(source / UPSTREAM_FIGS / 'measure_audit_bias.py')}")
+        r.notes.append("timed: run on a quiet host; load and the /proc/stat cpu line before and after each "
+                       "side are in bias_batches.json (steal is the 8th field)")
+        run([sys.executable, str(BIAS_SCRIPT), "--source", str(source), "--reference", str(reference),
+             "--out", str(out)], cwd=source / UPSTREAM_FIGS, env=ctx["env"])
+
+
 def t_usage(source: Path, ctx: dict) -> None:
     out = RESULTS / "usage"
     with run_record.Run(out, "usage", "scripts/usage_smoke.py",
@@ -1162,7 +1248,7 @@ def t_overview(source: Path, ctx: dict) -> None:
 TARGET_FUNCS = {"nist-both": t_nist_both, "usage": t_usage, "gallery": t_gallery, "eels-far": t_eels_far,
                 "bench-tolerance": t_bench_tolerance, "bench-ablation": t_bench_ablation,
                 "audit-stationarity": t_audit_stationarity, "interop-fe-l23": t_interop_fe_l23,
-                "overview": t_overview}
+                "nist-params": t_nist_params, "bias-batches": t_bias_batches, "overview": t_overview}
 
 
 def core(args: argparse.Namespace, source: Path, versions: dict, repository: dict) -> int:
@@ -1178,7 +1264,7 @@ def core(args: argparse.Namespace, source: Path, versions: dict, repository: dic
     report = claims(results)
     failed = [c for c in report if not c["ok"]]
     shipped = {c["id"]: c["ok"] for c in claims(results, results / "release-archive")
-               if c["id"].startswith("nist")}
+               if c["id"].startswith("nist") and not c["id"].startswith("nist-params")}
     for c in report:
         if c["id"] in shipped:
             c["holds_on_release_archive"] = shipped[c["id"]]

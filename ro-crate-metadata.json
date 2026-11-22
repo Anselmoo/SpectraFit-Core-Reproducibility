@@ -3957,6 +3957,9 @@
      "@id": "run-archive.sh"
     },
     {
+     "@id": "scripts/bias_batches.py"
+    },
+    {
      "@id": "scripts/claims_compare.py"
     },
     {
@@ -3973,6 +3976,9 @@
     },
     {
      "@id": "scripts/mirror_gallery.py"
+    },
+    {
+     "@id": "scripts/nist_params.py"
     },
     {
      "@id": "scripts/overview.mplstyle"
@@ -5249,8 +5255,8 @@
   {
    "@id": "README.md",
    "@type": "File",
-   "contentSize": 37879,
-   "sha256": "e5376a7134c28d781eeedf1a4e31b4364038896906b3f268a3e1e2bb3435bb80",
+   "contentSize": 38946,
+   "sha256": "502328e3ade303a19f5f33bb85e7de06ceafeb159217faad42fa6cf43d91e1d9",
    "encodingFormat": "text/markdown",
    "description": "What this repository is, how to rerun it, and what is regenerated versus archived."
   },
@@ -5356,8 +5362,8 @@
   {
    "@id": "build_crate.py",
    "@type": "File",
-   "contentSize": 17545,
-   "sha256": "b9dca7162dfe3be7ac3060e8e4e5ffab46c08f7d3e80f9525ec344d34bdfcb92",
+   "contentSize": 17556,
+   "sha256": "15057db9b2d8943c951d1717dd6344fcb6f55aff13fdec00ffb62d06090b6bdc",
    "encodingFormat": "text/x-python",
    "description": "Writes this RO-Crate metadata document."
   },
@@ -5628,8 +5634,8 @@
   {
    "@id": "reproduce.py",
    "@type": "File",
-   "contentSize": 72708,
-   "sha256": "75bdf2fdfb43600ed923501dbcad7718bc0c0af7d23ff907091c46ad5d9e99ff",
+   "contentSize": 78971,
+   "sha256": "5d04f689359b00083e7e85b42364301d979362a0364f3267311e8f48041dabeb",
    "encodingFormat": "text/x-python",
    "description": "Entry point. Regenerates results/ and figures/ from the pinned release and checks every number the paper states."
   },
@@ -14737,9 +14743,16 @@
   {
    "@id": "run-archive.sh",
    "@type": "File",
-   "contentSize": 6962,
-   "sha256": "4df1a542afd3da6fa314c0774524bc69826122fce36fa7e78953d6bfc71d35b4",
+   "contentSize": 7197,
+   "sha256": "844486dbb3af96cedce1334e677350f8d34a664b1322cd760187804683a9e839",
    "encodingFormat": "text/x-shellscript"
+  },
+  {
+   "@id": "scripts/bias_batches.py",
+   "@type": "File",
+   "contentSize": 7488,
+   "sha256": "0e9764168bbd62a52fa45915c97c0eb81232319fbfdc6249189f72a030371e0a",
+   "encodingFormat": "text/x-python"
   },
   {
    "@id": "scripts/claims_compare.py",
@@ -14784,6 +14797,13 @@
    "sha256": "5c8baf722849520074acd11ddc1297ac35caf8b103a28f31ef7c73c7d2ff9b3f",
    "encodingFormat": "text/x-python",
    "description": "Mirrors the Python files of the example gallery of spectrafit-core (docs/tutorials/gallery) byte for byte from a commit into examples/, generates examples/README.md and writes examples-manifest.json."
+  },
+  {
+   "@id": "scripts/nist_params.py",
+   "@type": "File",
+   "contentSize": 3544,
+   "sha256": "f3ebaa0f3371aaccc5b6ef60d497ef4dce395ce224eccce62a1a41bdf07bda35",
+   "encodingFormat": "text/x-python"
   },
   {
    "@id": "scripts/overview.mplstyle",
