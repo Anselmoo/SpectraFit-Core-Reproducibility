@@ -261,6 +261,15 @@
      "@id": "results/bench-tolerance/summary.json"
     },
     {
+     "@id": "results/bias-batches/README.md"
+    },
+    {
+     "@id": "results/bias-batches/bias_batches.json"
+    },
+    {
+     "@id": "results/bias-batches/run.json"
+    },
+    {
      "@id": "results/claims-report.json"
     },
     {
@@ -412,6 +421,15 @@
     },
     {
      "@id": "results/nist-both/run.json"
+    },
+    {
+     "@id": "results/nist-params/README.md"
+    },
+    {
+     "@id": "results/nist-params/nist_params.json"
+    },
+    {
+     "@id": "results/nist-params/run.json"
     },
     {
      "@id": "results/nist_head_to_head.json"
@@ -3957,6 +3975,9 @@
      "@id": "run-archive.sh"
     },
     {
+     "@id": "scripts/bias_batches.py"
+    },
+    {
      "@id": "scripts/claims_compare.py"
     },
     {
@@ -3973,6 +3994,9 @@
     },
     {
      "@id": "scripts/mirror_gallery.py"
+    },
+    {
+     "@id": "scripts/nist_params.py"
     },
     {
      "@id": "scripts/overview.mplstyle"
@@ -5227,15 +5251,15 @@
   {
    "@id": ".zenodo.json",
    "@type": "File",
-   "contentSize": 2736,
-   "sha256": "046c7c7a148d63be4c1961b5df5c392d36b1a27f0c52b652245501b43fc1404e",
+   "contentSize": 3225,
+   "sha256": "e77f496ec5d64cc889efa3c57447dd46bdbe5c515600defdc3db2fff65db407a",
    "encodingFormat": "application/json"
   },
   {
    "@id": "CITATION.cff",
    "@type": "File",
-   "contentSize": 2230,
-   "sha256": "c885e7fb81642778183cc406ef60c2a8110529cf1f8bc248af5624bad3dbea95",
+   "contentSize": 2204,
+   "sha256": "b54d1496a8038edb827c29ae542dd419457c4fbb3ab42b73d3c5d5bece29bea2",
    "encodingFormat": "application/x-yaml",
    "description": "How to cite this repository."
   },
@@ -5249,8 +5273,8 @@
   {
    "@id": "README.md",
    "@type": "File",
-   "contentSize": 37879,
-   "sha256": "e5376a7134c28d781eeedf1a4e31b4364038896906b3f268a3e1e2bb3435bb80",
+   "contentSize": 41729,
+   "sha256": "be7d9481ff10f1f8e5a383fabf0d65421d1479078d6dcd34deeba78cc186b574",
    "encodingFormat": "text/markdown",
    "description": "What this repository is, how to rerun it, and what is regenerated versus archived."
   },
@@ -5356,8 +5380,8 @@
   {
    "@id": "build_crate.py",
    "@type": "File",
-   "contentSize": 17545,
-   "sha256": "b9dca7162dfe3be7ac3060e8e4e5ffab46c08f7d3e80f9525ec344d34bdfcb92",
+   "contentSize": 17556,
+   "sha256": "15057db9b2d8943c951d1717dd6344fcb6f55aff13fdec00ffb62d06090b6bdc",
    "encodingFormat": "text/x-python",
    "description": "Writes this RO-Crate metadata document."
   },
@@ -5621,15 +5645,15 @@
    "@id": "pyproject.toml",
    "@type": "File",
    "contentSize": 1060,
-   "sha256": "cc3e9083c181e6500f9f51bb9bcaafc8f38c18ca8c31d001cf967d3161fc0077",
+   "sha256": "1b6efba02c323103959f486cddcffa1e7d4ca098c3e1c932e31b331b9c7e4eb9",
    "encodingFormat": "application/toml",
    "description": "Environment definition for `uv run --locked reproduce.py`."
   },
   {
    "@id": "reproduce.py",
    "@type": "File",
-   "contentSize": 72708,
-   "sha256": "75bdf2fdfb43600ed923501dbcad7718bc0c0af7d23ff907091c46ad5d9e99ff",
+   "contentSize": 78971,
+   "sha256": "5d04f689359b00083e7e85b42364301d979362a0364f3267311e8f48041dabeb",
    "encodingFormat": "text/x-python",
    "description": "Entry point. Regenerates results/ and figures/ from the pinned release and checks every number the paper states."
   },
@@ -5784,6 +5808,27 @@
    "@type": "File",
    "contentSize": 4878,
    "sha256": "132a32c5d10ebad7a26f9d08694e3cd7cce39bd2b64cfce68854ab9a6a563680",
+   "encodingFormat": "application/json"
+  },
+  {
+   "@id": "results/bias-batches/README.md",
+   "@type": "File",
+   "contentSize": 1530,
+   "sha256": "87fd762dcc3b82c86c3a695d74b2a5aeb57ba0eb4f519c29259c2b6ea52449ab",
+   "encodingFormat": "text/markdown"
+  },
+  {
+   "@id": "results/bias-batches/bias_batches.json",
+   "@type": "File",
+   "contentSize": 4576,
+   "sha256": "8c3980d76b56aefcdb9e51ab5ba037402eb5b48caa41065544467fc920ba7964",
+   "encodingFormat": "application/json"
+  },
+  {
+   "@id": "results/bias-batches/run.json",
+   "@type": "File",
+   "contentSize": 1675,
+   "sha256": "86e918f3695d6a0c9e9d2e5e90b885ec7fceb39f6b27a96612c48011668cb236",
    "encodingFormat": "application/json"
   },
   {
@@ -6144,6 +6189,27 @@
    "@type": "File",
    "contentSize": 1385,
    "sha256": "177bec68b7b40ce5c3cf525ffcad4c3a58811bc4a456989a3b3d961600c7aac8",
+   "encodingFormat": "application/json"
+  },
+  {
+   "@id": "results/nist-params/README.md",
+   "@type": "File",
+   "contentSize": 1711,
+   "sha256": "9f3dac7814fe9a9619f1a2430fc2c995cb67c542cc56c7eab05227abe95bdc0f",
+   "encodingFormat": "text/markdown"
+  },
+  {
+   "@id": "results/nist-params/nist_params.json",
+   "@type": "File",
+   "contentSize": 20783,
+   "sha256": "bb55b21d10747104cc888ad115dd75c33cb60ae52bc6321e5bbd0b93ab413d19",
+   "encodingFormat": "application/json"
+  },
+  {
+   "@id": "results/nist-params/run.json",
+   "@type": "File",
+   "contentSize": 1869,
+   "sha256": "7e65788e761b29bef761527ef2e8db2484434928ec2b07fb4f333cbf3044bf00",
    "encodingFormat": "application/json"
   },
   {
@@ -14737,9 +14803,16 @@
   {
    "@id": "run-archive.sh",
    "@type": "File",
-   "contentSize": 6962,
-   "sha256": "4df1a542afd3da6fa314c0774524bc69826122fce36fa7e78953d6bfc71d35b4",
+   "contentSize": 7197,
+   "sha256": "844486dbb3af96cedce1334e677350f8d34a664b1322cd760187804683a9e839",
    "encodingFormat": "text/x-shellscript"
+  },
+  {
+   "@id": "scripts/bias_batches.py",
+   "@type": "File",
+   "contentSize": 7667,
+   "sha256": "9ce59f94b1dbc81acc17028a0923b736b73dfb1ca2057edc22c4dc940aa6fbbc",
+   "encodingFormat": "text/x-python"
   },
   {
    "@id": "scripts/claims_compare.py",
@@ -14784,6 +14857,13 @@
    "sha256": "5c8baf722849520074acd11ddc1297ac35caf8b103a28f31ef7c73c7d2ff9b3f",
    "encodingFormat": "text/x-python",
    "description": "Mirrors the Python files of the example gallery of spectrafit-core (docs/tutorials/gallery) byte for byte from a commit into examples/, generates examples/README.md and writes examples-manifest.json."
+  },
+  {
+   "@id": "scripts/nist_params.py",
+   "@type": "File",
+   "contentSize": 3544,
+   "sha256": "f3ebaa0f3371aaccc5b6ef60d497ef4dce395ce224eccce62a1a41bdf07bda35",
+   "encodingFormat": "text/x-python"
   },
   {
    "@id": "scripts/overview.mplstyle",
@@ -14886,7 +14966,7 @@
    "@id": "uv.lock",
    "@type": "File",
    "contentSize": 133079,
-   "sha256": "70dd4f2d92c02bb3dac06d5dac11b65914ee11644e510ae83879102e2cfe4b7f",
+   "sha256": "39539f24d7926866a2b68dcb286082858e71c27089c4470e762b92a167defbc6",
    "encodingFormat": "application/toml",
    "description": "Hash-pinned resolution of the environment, including the spectrafit-core wheel."
   },

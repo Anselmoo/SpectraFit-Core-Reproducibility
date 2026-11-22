@@ -1,0 +1,226 @@
+{
+ "schema": "bias-batches/1",
+ "model": "gaussian",
+ "n_points": 97,
+ "upstream": {
+  "script": "reproducibility/figures/measure_audit_bias.py",
+  "sha256": "9f6cff2f8477e25cd666abc38164f2427552b3c952ee2ab8dd2527c31523f486",
+  "parity_module": "tests/parity/test_kernel_parity.py",
+  "parity_module_sha256": "4ef885b72faf95504fb22ce93e43956d984cf3df3d831ec71cf39b1a084fa5a5",
+  "lines_checked": [
+   "key = \"gaussian\"",
+   "n, n_w, repeat = 2000, 200, 7",
+   "t_np = min(timeit.repeat(lambda: model.one(_X, params), number=n, repeat=repeat)) / n",
+   "timeit.repeat(lambda: _wheel_eval(key, _X, params), number=n_w, repeat=repeat),",
+   "/ n_w",
+   "\"numpy_us\": t_np * 1e6,",
+   "\"wheel_us\": t_wh * 1e6,",
+   "\"ratio\": t_wh / t_np,"
+  ]
+ },
+ "numpy": {
+  "evaluations_per_batch": 2000,
+  "repeat": 7,
+  "batch_s": [
+   0.019971102010458708,
+   0.013848099013557658,
+   0.013636027026223019,
+   0.013778709020698443,
+   0.014402764005353674,
+   0.014049741992494091,
+   0.014036510983714834
+  ],
+  "per_evaluation_us": [
+   9.985551005229354,
+   6.924049506778829,
+   6.818013513111509,
+   6.8893545103492215,
+   7.201382002676837,
+   7.024870996247046,
+   7.018255491857417
+  ],
+  "host_start": {
+   "utc": "2026-11-22T20:42:40Z",
+   "load": [
+    0.0,
+    0.15,
+    0.47
+   ],
+   "proc_stat_cpu": [
+    1876741,
+    611,
+    134881,
+    300211581,
+    554327,
+    0,
+    3679,
+    9681,
+    0,
+    0
+   ]
+  },
+  "host_end": {
+   "utc": "2026-11-22T20:42:41Z",
+   "load": [
+    0.0,
+    0.15,
+    0.47
+   ],
+   "proc_stat_cpu": [
+    1876752,
+    611,
+    134881,
+    300211737,
+    554327,
+    0,
+    3679,
+    9681,
+    0,
+    0
+   ]
+  },
+  "proc_stat_cpu_delta": {
+   "user": 11,
+   "nice": 0,
+   "system": 0,
+   "idle": 156,
+   "iowait": 0,
+   "irq": 0,
+   "softirq": 0,
+   "steal": 0,
+   "guest": 0,
+   "guest_nice": 0
+  }
+ },
+ "wheel": {
+  "evaluations_per_batch": 200,
+  "repeat": 7,
+  "batch_s": [
+   0.033644580020336434,
+   0.03209219698328525,
+   0.03201177599839866,
+   0.03269113099668175,
+   0.03222978700068779,
+   0.03304948500590399,
+   0.03294409401132725
+  ],
+  "per_evaluation_us": [
+   168.22290010168217,
+   160.46098491642624,
+   160.0588799919933,
+   163.45565498340875,
+   161.14893500343896,
+   165.24742502951995,
+   164.72047005663626
+  ],
+  "host_start": {
+   "utc": "2026-11-22T20:42:41Z",
+   "load": [
+    0.0,
+    0.15,
+    0.47
+   ],
+   "proc_stat_cpu": [
+    1876752,
+    611,
+    134881,
+    300211737,
+    554327,
+    0,
+    3679,
+    9681,
+    0,
+    0
+   ]
+  },
+  "host_end": {
+   "utc": "2026-11-22T20:42:41Z",
+   "load": [
+    0.0,
+    0.15,
+    0.47
+   ],
+   "proc_stat_cpu": [
+    1876775,
+    611,
+    134881,
+    300212081,
+    554327,
+    0,
+    3679,
+    9681,
+    0,
+    0
+   ]
+  },
+  "proc_stat_cpu_delta": {
+   "user": 23,
+   "nice": 0,
+   "system": 0,
+   "idle": 344,
+   "iowait": 0,
+   "irq": 0,
+   "softirq": 0,
+   "steal": 0,
+   "guest": 0,
+   "guest_nice": 0
+  }
+ },
+ "derived_as_release": {
+  "numpy_us": 6.818013513111509,
+  "wheel_us": 160.0588799919933,
+  "ratio": 23.47588189495211,
+  "n_points": 97
+ },
+ "reference": {
+  "file": "results/timing/audit_bias.json",
+  "sha256": "58b524237fb652bfeb057d90aa3e457bcd6fe22117d4c7383105b0735886c651",
+  "bias": {
+   "numpy_us": 6.5234930079896,
+   "wheel_us": 139.43418001872487,
+   "ratio": 21.37415949522041,
+   "n_points": 97
+  }
+ },
+ "busiest_processes": {
+  "before": [
+   "    PID NLWP %CPU   RSS COMMAND",
+   " 269109    1 24.0 29616 python",
+   " 227645   20  1.5 446828 claude",
+   " 269106    3  1.0 26972 uv",
+   "      1    1  0.0 13120 systemd",
+   "      2    1  0.0     0 kthreadd",
+   "      3    1  0.0     0 rcu_gp",
+   "      4    1  0.0     0 rcu_par_gp",
+   "      5    1  0.0     0 slub_flushwq",
+   "      6    1  0.0     0 netns",
+   "      8    1  0.0     0 kworker/0:0H-kblockd",
+   "     10    1  0.0     0 mm_percpu_wq"
+  ],
+  "after": [
+   "    PID NLWP %CPU   RSS COMMAND",
+   " 269109    1 24.0 29616 python",
+   " 227645   20  1.5 446828 claude",
+   " 269106    3  1.0 26972 uv",
+   "      1    1  0.0 13120 systemd",
+   "      2    1  0.0     0 kthreadd",
+   "      3    1  0.0     0 rcu_gp",
+   "      4    1  0.0     0 rcu_par_gp",
+   "      5    1  0.0     0 slub_flushwq",
+   "      6    1  0.0     0 netns",
+   "      8    1  0.0     0 kworker/0:0H-kblockd",
+   "     10    1  0.0     0 mm_percpu_wq"
+  ]
+ },
+ "host": {
+  "node": "terra",
+  "machine": "x86_64",
+  "python": "3.13.13",
+  "threads": {
+   "OMP_NUM_THREADS": null,
+   "OPENBLAS_NUM_THREADS": null,
+   "MKL_NUM_THREADS": null,
+   "RAYON_NUM_THREADS": null
+  }
+ }
+}
