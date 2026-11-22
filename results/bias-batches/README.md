@@ -5,11 +5,11 @@ Serialisation bias (gaussian, 97 points): every one of the 7 timed batches of th
 | item | value |
 |---|---|
 | command | `scripts/bias_batches.py --source <export> --out results/bias-batches` |
-| start / end (UTC) | 2026-11-22T20:08:53Z / 2026-11-22T20:08:54Z |
-| wall time | 0.8 s |
-| load average (1, 5, 15 min) before / after | [0.44, 0.42, 0.43] / [0.44, 0.42, 0.43] |
+| start / end (UTC) | 2026-11-22T20:42:40Z / 2026-11-22T20:42:41Z |
+| wall time | 0.9 s |
+| load average (1, 5, 15 min) before / after | [0.0, 0.15, 0.47] / [0.0, 0.15, 0.47] |
 | host | terra (Linux-5.15.0-203-generic-x86_64-with-glibc2.35, 16 cores) |
-| archive commit | `9ce0cd13807a92d98490451e311dad541998ca0c` (working tree modified) |
+| archive commit | `ac585202fa931f37e5c683725ffedcd6252cc8ff` (working tree modified) |
 | Python | 3.13.13 |
 | spectrafit-core | 0.1.3 |
 | wheel SHA-256 | `0d909b5faf1b5f47cbfb81b074b6ee0f44a523c6daf8303c8f2d4e1c878f6e43` (uv.lock) |
@@ -24,5 +24,5 @@ Notes:
 
 Files (SHA-256):
 
-- `bias_batches.json` `5bae0f447cb80e333a049b44aec041c2e49e3b419a5b6b5c60fdbe374161e14b`
+- `bias_batches.json` `8c3980d76b56aefcdb9e51ab5ba037402eb5b48caa41065544467fc920ba7964`
 

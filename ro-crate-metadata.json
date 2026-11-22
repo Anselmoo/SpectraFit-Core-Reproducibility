@@ -5813,22 +5813,22 @@
   {
    "@id": "results/bias-batches/README.md",
    "@type": "File",
-   "contentSize": 1532,
-   "sha256": "4bee7187482d6a5f995c294ae6ef8561b4636a3e36c832474437855653f6bf26",
+   "contentSize": 1530,
+   "sha256": "87fd762dcc3b82c86c3a695d74b2a5aeb57ba0eb4f519c29259c2b6ea52449ab",
    "encodingFormat": "text/markdown"
   },
   {
    "@id": "results/bias-batches/bias_batches.json",
    "@type": "File",
-   "contentSize": 4548,
-   "sha256": "5bae0f447cb80e333a049b44aec041c2e49e3b419a5b6b5c60fdbe374161e14b",
+   "contentSize": 4576,
+   "sha256": "8c3980d76b56aefcdb9e51ab5ba037402eb5b48caa41065544467fc920ba7964",
    "encodingFormat": "application/json"
   },
   {
    "@id": "results/bias-batches/run.json",
    "@type": "File",
-   "contentSize": 1677,
-   "sha256": "927fed68a2d1cf7889c3807bb53550a2c5cce5436830c4a4518b3c64428ad3d7",
+   "contentSize": 1675,
+   "sha256": "86e918f3695d6a0c9e9d2e5e90b885ec7fceb39f6b27a96612c48011668cb236",
    "encodingFormat": "application/json"
   },
   {

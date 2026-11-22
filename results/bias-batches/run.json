@@ -2,23 +2,23 @@
  "schema": "harness-run/1",
  "target": "bias-batches",
  "command": "scripts/bias_batches.py --source <export> --out results/bias-batches",
- "start_utc": "2026-11-22T20:08:53Z",
- "end_utc": "2026-11-22T20:08:54Z",
- "wall_s": 0.8,
+ "start_utc": "2026-11-22T20:42:40Z",
+ "end_utc": "2026-11-22T20:42:41Z",
+ "wall_s": 0.9,
  "load_start": [
-  0.44,
-  0.42,
-  0.43
+  0.0,
+  0.15,
+  0.47
  ],
  "load_end": [
-  0.44,
-  0.42,
-  0.43
+  0.0,
+  0.15,
+  0.47
  ],
  "status": "ok",
  "environment": {
   "archive": {
-   "commit": "9ce0cd13807a92d98490451e311dad541998ca0c",
+   "commit": "ac585202fa931f37e5c683725ffedcd6252cc8ff",
    "dirty": true
   },
   "host": "terra",
@@ -54,6 +54,6 @@
   "timed: run on a quiet host; load and the /proc/stat cpu line before and after each side are in bias_batches.json (steal is the 8th field)"
  ],
  "files_sha256": {
-  "bias_batches.json": "5bae0f447cb80e333a049b44aec041c2e49e3b419a5b6b5c60fdbe374161e14b"
+  "bias_batches.json": "8c3980d76b56aefcdb9e51ab5ba037402eb5b48caa41065544467fc920ba7964"
  }
 }
