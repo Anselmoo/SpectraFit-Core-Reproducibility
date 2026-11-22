@@ -495,6 +495,44 @@ class. In
 
 ## Changes per release
 
+### Changes in 1.3.2
+
+Release 1.3.2 is pinned to the same spectrafit-core 0.1.3 wheel and the same `v0.1.3` export as
+1.3.0 and 1.3.1. It adds two targets and one claim; the stored results of the earlier targets
+are unchanged.
+
+- **Target `nist-params` and claim `nist-params-01`.** `results/nist_table2.json` gives the
+  worst log relative error (LRE) per dataset and library, not the fitted parameter values. The
+  new target (`results/nist-params/`, `scripts/nist_params.py`) fits the 22 NIST StRD problems
+  from Start 2 at the shipped tolerance with `fit_spectrafit` and `fit_lmfit` of the release's
+  `nist_table2.py`, and stores the parameter values of both libraries next to the certified
+  values and certified standard deviations. Its guard recomputes the worst LRE of both libraries
+  from the stored values and compares it with the `spectrafit_core` and `lmfit` columns of
+  `results/nist_table2.json` cell for cell; if a cell differs, nothing is written. On terra the
+  guard passed for all 22 datasets in both columns. The claim `nist-params-01` has no threshold:
+  it holds when the record exists for all 22 datasets with values of both libraries, the table
+  names the same datasets and has no null cell, and the run guarded against the stored table
+  (same SHA-256). It is evaluated by `reproduce.py` (`core` and `--check`);
+  `results/claims-report.json` remains the record of the 1.3.0 `core` run and does not list it.
+  The target is listed in `run-archive.sh` with the untimed targets (thread caps 1).
+- **Target `bias-batches`.** `results/timing/audit_bias.json` keeps, per side, only the minimum
+  of 7 timed batches. The new target (`results/bias-batches/`, `scripts/bias_batches.py`)
+  repeats the measurement of the release's `measure_audit_bias.py` (gaussian model, 97 points,
+  7 batches of 2000 NumPy and of 200 wheel evaluations), with the grid and parameters imported
+  from the release's `tests/parity/test_kernel_parity.py` (now part of the export). It stores
+  every batch time of both sides and derives the per-evaluation values with that script's
+  expressions; it records the load and the `/proc/stat` cpu line before and after each side and
+  holds the benchmark lock while it measures. It runs with library-default threading, as step 9
+  of the timing chain that wrote `results/timing/audit_bias.json`. No claim is attached;
+  `results/timing/audit_bias.json` and the claims computed from it are unchanged. The stored
+  run (terra, 22 Nov 2026; load 0.00 at the start, steal 0 on both sides) next to the timing of
+  record:
+
+  | per evaluation | NumPy | wheel | ratio |
+  |---|---|---|---|
+  | `results/timing/audit_bias.json` | 6.52 us | 139.43 us | 21.37 |
+  | `results/bias-batches/bias_batches.json` | 6.82 us | 160.06 us | 23.48 |
+
 ### Changes in 1.3.1
 
 Release 1.3.1 is pinned to the same spectrafit-core 0.1.3 wheel and the same `v0.1.3` export as
@@ -579,7 +617,7 @@ copy archived in the release; on the host of record the two agree in every cell.
 0.1.2 changes only the benchmark harness and the version metadata: it releases
 the JAX compile budget described above, so `--benchmark` completes on terra. The
 library sources and every file under `reproducibility/` (NIST tables and timing
-archives) are identical to 0.1.1. Releases 1.3.0 and 1.3.1 of this repository are pinned to 0.1.3.
+archives) are identical to 0.1.1. Releases 1.3.0, 1.3.1 and 1.3.2 of this repository are pinned to 0.1.3.
 
 ## FAIR and citation
 
