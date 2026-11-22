@@ -261,6 +261,15 @@
      "@id": "results/bench-tolerance/summary.json"
     },
     {
+     "@id": "results/bias-batches/README.md"
+    },
+    {
+     "@id": "results/bias-batches/bias_batches.json"
+    },
+    {
+     "@id": "results/bias-batches/run.json"
+    },
+    {
      "@id": "results/claims-report.json"
     },
     {
@@ -412,6 +421,15 @@
     },
     {
      "@id": "results/nist-both/run.json"
+    },
+    {
+     "@id": "results/nist-params/README.md"
+    },
+    {
+     "@id": "results/nist-params/nist_params.json"
+    },
+    {
+     "@id": "results/nist-params/run.json"
     },
     {
      "@id": "results/nist_head_to_head.json"
@@ -5793,6 +5811,27 @@
    "encodingFormat": "application/json"
   },
   {
+   "@id": "results/bias-batches/README.md",
+   "@type": "File",
+   "contentSize": 1532,
+   "sha256": "4bee7187482d6a5f995c294ae6ef8561b4636a3e36c832474437855653f6bf26",
+   "encodingFormat": "text/markdown"
+  },
+  {
+   "@id": "results/bias-batches/bias_batches.json",
+   "@type": "File",
+   "contentSize": 4548,
+   "sha256": "5bae0f447cb80e333a049b44aec041c2e49e3b419a5b6b5c60fdbe374161e14b",
+   "encodingFormat": "application/json"
+  },
+  {
+   "@id": "results/bias-batches/run.json",
+   "@type": "File",
+   "contentSize": 1677,
+   "sha256": "927fed68a2d1cf7889c3807bb53550a2c5cce5436830c4a4518b3c64428ad3d7",
+   "encodingFormat": "application/json"
+  },
+  {
    "@id": "results/claims-report.json",
    "@type": "File",
    "contentSize": 15858,
@@ -6150,6 +6189,27 @@
    "@type": "File",
    "contentSize": 1385,
    "sha256": "177bec68b7b40ce5c3cf525ffcad4c3a58811bc4a456989a3b3d961600c7aac8",
+   "encodingFormat": "application/json"
+  },
+  {
+   "@id": "results/nist-params/README.md",
+   "@type": "File",
+   "contentSize": 1711,
+   "sha256": "9f3dac7814fe9a9619f1a2430fc2c995cb67c542cc56c7eab05227abe95bdc0f",
+   "encodingFormat": "text/markdown"
+  },
+  {
+   "@id": "results/nist-params/nist_params.json",
+   "@type": "File",
+   "contentSize": 20783,
+   "sha256": "bb55b21d10747104cc888ad115dd75c33cb60ae52bc6321e5bbd0b93ab413d19",
+   "encodingFormat": "application/json"
+  },
+  {
+   "@id": "results/nist-params/run.json",
+   "@type": "File",
+   "contentSize": 1869,
+   "sha256": "7e65788e761b29bef761527ef2e8db2484434928ec2b07fb4f333cbf3044bf00",
    "encodingFormat": "application/json"
   },
   {
