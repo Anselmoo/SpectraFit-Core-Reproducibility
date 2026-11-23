@@ -1,0 +1,80 @@
+{
+ "schema": "bias-series/1",
+ "n": 1000,
+ "n_completed": 1000,
+ "n_failed": 0,
+ "failed_runs": [],
+ "cpu": 2,
+ "percentiles": "numpy.percentile, linear interpolation",
+ "stats": {
+  "numpy_us": {
+   "median": 6.84255150554236,
+   "p5": 6.681121783185517,
+   "p95": 7.00776529556606,
+   "min": 6.5507815015735105,
+   "max": 8.102475490886718
+  },
+  "wheel_us": {
+   "median": 152.88490256352816,
+   "p5": 150.91096506512258,
+   "p95": 157.29267524147872,
+   "min": 149.14725004928187,
+   "max": 174.92851009592414
+  },
+  "ratio": {
+   "median": 22.414717246115753,
+   "p5": 21.80851250059127,
+   "p95": 23.051500657601494,
+   "min": 19.004659152112136,
+   "max": 24.0531765887937
+  }
+ },
+ "drift": {
+  "median_runs_1_100": {
+   "numpy_us": 6.857664746348746,
+   "wheel_us": 152.7351299591828,
+   "ratio": 22.31003034055383
+  },
+  "median_last_100": {
+   "numpy_us": 6.81673100189073,
+   "wheel_us": 152.9331650090171,
+   "ratio": 22.449802580018094
+  },
+  "last_runs": [
+   901,
+   1000
+  ]
+ },
+ "host": {
+  "first_start_utc": "2026-11-23T07:24:00Z",
+  "last_end_utc": "2026-11-23T07:37:31Z",
+  "claude_cpu_s_during_runs": 5.4,
+  "max_load_1min": 1.19,
+  "max_steal_fraction": 0.0008149959250203749,
+  "cpu2_scaling_cur_freq_khz": null,
+  "cpu2_scaling_governor": null
+ },
+ "bias_batches_script_sha256": "9ce59f94b1dbc81acc17028a0923b736b73dfb1ca2057edc22c4dc940aa6fbbc",
+ "reference": {
+  "audit_bias": {
+   "file": "results/timing/audit_bias.json",
+   "sha256": "58b524237fb652bfeb057d90aa3e457bcd6fe22117d4c7383105b0735886c651",
+   "values": {
+    "numpy_us": 6.5234930079896,
+    "wheel_us": 139.43418001872487,
+    "ratio": 21.37415949522041,
+    "n_points": 97
+   }
+  },
+  "bias_batches": {
+   "file": "results/bias-batches/bias_batches.json",
+   "sha256": "8c3980d76b56aefcdb9e51ab5ba037402eb5b48caa41065544467fc920ba7964",
+   "values": {
+    "numpy_us": 6.818013513111509,
+    "wheel_us": 160.0588799919933,
+    "ratio": 23.47588189495211,
+    "n_points": 97
+   }
+  }
+ }
+}

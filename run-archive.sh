@@ -13,6 +13,7 @@
 #                       thread caps 1 (untimed)
 #   bias-batches        library-default threading, as step 9 of the timing chain (timed: run it
 #                       on a quiet host; it holds the benchmark lock while it measures)
+#   bias-series         as bias-batches, 1000 times, each in a fresh process pinned to CPU 2
 #   gate                stops the run until results/timing/ holds the new timing and pins.toml
 #                       records its SHA-256 (bench/RUNBOOK.md steps 11 and 12); run again after
 #   core, overview      thread caps 1 (untimed; core computes the claims from results/timing/)
@@ -35,7 +36,7 @@
 set -u
 cd "$(dirname "$0")" || exit 2
 TARGETS=(timing bench-tolerance bench-ablation gallery nist-both usage audit-stationarity eels-far interop-fe-l23
-         nist-params bias-batches gate core overview)
+         nist-params bias-batches bias-series gate core overview)
 PYTHON=${PYTHON:-"uv run --locked --group benchmark --group audit python"}
 RESULTS_DIR=${RESULTS_DIR:-results}
 export SPECTRAFIT_VERSION=${SPECTRAFIT_VERSION:-0.1.3}
@@ -58,7 +59,7 @@ for a in ${EXTRA[@]+"${EXTRA[@]}"}; do [ "$a" = --dry-run ] && DRY=1; done
 
 threads() {
   case "$1" in
-    timing|gallery|bias-batches) unset "${THREAD_VARS[@]}" ;;
+    timing|gallery|bias-batches|bias-series) unset "${THREAD_VARS[@]}" ;;
     *) for v in "${THREAD_VARS[@]}"; do export "$v=1"; done ;;
   esac
 }
