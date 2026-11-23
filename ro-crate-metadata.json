@@ -270,6 +270,18 @@
      "@id": "results/bias-batches/run.json"
     },
     {
+     "@id": "results/bias-series/README.md"
+    },
+    {
+     "@id": "results/bias-series/bias_series.json"
+    },
+    {
+     "@id": "results/bias-series/run.json"
+    },
+    {
+     "@id": "results/bias-series/runs.jsonl"
+    },
+    {
      "@id": "results/claims-report.json"
     },
     {
@@ -3978,6 +3990,9 @@
      "@id": "scripts/bias_batches.py"
     },
     {
+     "@id": "scripts/bias_series.py"
+    },
+    {
      "@id": "scripts/claims_compare.py"
     },
     {
@@ -5251,8 +5266,8 @@
   {
    "@id": ".zenodo.json",
    "@type": "File",
-   "contentSize": 3225,
-   "sha256": "e77f496ec5d64cc889efa3c57447dd46bdbe5c515600defdc3db2fff65db407a",
+   "contentSize": 3330,
+   "sha256": "8c4063c4d97f3617d7739e6b95df9264ce9184c5c78b0c2e09ed3dda45e79baa",
    "encodingFormat": "application/json"
   },
   {
@@ -5273,8 +5288,8 @@
   {
    "@id": "README.md",
    "@type": "File",
-   "contentSize": 41729,
-   "sha256": "be7d9481ff10f1f8e5a383fabf0d65421d1479078d6dcd34deeba78cc186b574",
+   "contentSize": 42217,
+   "sha256": "f77e130cc4c28448e16d82f27cea06d9102a4bc1156a2605b58fab80ef9a2af4",
    "encodingFormat": "text/markdown",
    "description": "What this repository is, how to rerun it, and what is regenerated versus archived."
   },
@@ -5652,8 +5667,8 @@
   {
    "@id": "reproduce.py",
    "@type": "File",
-   "contentSize": 78971,
-   "sha256": "5d04f689359b00083e7e85b42364301d979362a0364f3267311e8f48041dabeb",
+   "contentSize": 80071,
+   "sha256": "8c71a0e2b04d6bb0dd97dc91c728e0c30b43028d19f7072ac5f4861356cd1573",
    "encodingFormat": "text/x-python",
    "description": "Entry point. Regenerates results/ and figures/ from the pinned release and checks every number the paper states."
   },
@@ -5830,6 +5845,33 @@
    "contentSize": 1675,
    "sha256": "86e918f3695d6a0c9e9d2e5e90b885ec7fceb39f6b27a96612c48011668cb236",
    "encodingFormat": "application/json"
+  },
+  {
+   "@id": "results/bias-series/README.md",
+   "@type": "File",
+   "contentSize": 1545,
+   "sha256": "1c0f3fc51460c45ee0e89fad6110e1044c4d9758760979249130e987ba7a5af8",
+   "encodingFormat": "text/markdown"
+  },
+  {
+   "@id": "results/bias-series/bias_series.json",
+   "@type": "File",
+   "contentSize": 1981,
+   "sha256": "d72e8843fa5b99770c546de7e6d491d0b87edceb74e2d31dc1c880b8d079b594",
+   "encodingFormat": "application/json"
+  },
+  {
+   "@id": "results/bias-series/run.json",
+   "@type": "File",
+   "contentSize": 1764,
+   "sha256": "5f4e7d81ed69e75661cd8bcf319799ec316380527737b06c96d1f02f099e2a40",
+   "encodingFormat": "application/json"
+  },
+  {
+   "@id": "results/bias-series/runs.jsonl",
+   "@type": "File",
+   "contentSize": 1142029,
+   "sha256": "b254283ab0c6321f4eb1e5d129db7c08d468b76e134c16bdcf4404e587c41491"
   },
   {
    "@id": "results/claims-report.json",
@@ -14803,8 +14845,8 @@
   {
    "@id": "run-archive.sh",
    "@type": "File",
-   "contentSize": 7197,
-   "sha256": "844486dbb3af96cedce1334e677350f8d34a664b1322cd760187804683a9e839",
+   "contentSize": 7314,
+   "sha256": "b0ebde8c294eb83f6acc2f5bb5d256af4aea1e4bf32cb8389184042a3a9cef15",
    "encodingFormat": "text/x-shellscript"
   },
   {
@@ -14812,6 +14854,13 @@
    "@type": "File",
    "contentSize": 7667,
    "sha256": "9ce59f94b1dbc81acc17028a0923b736b73dfb1ca2057edc22c4dc940aa6fbbc",
+   "encodingFormat": "text/x-python"
+  },
+  {
+   "@id": "scripts/bias_series.py",
+   "@type": "File",
+   "contentSize": 11735,
+   "sha256": "063bb570587aab4ec51dc52c257f9e9e59506df8977a7d46d38135fcb89e35c5",
    "encodingFormat": "text/x-python"
   },
   {

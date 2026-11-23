@@ -72,6 +72,7 @@ Targets (``--targets``, comma-separated, default ``core``)
 ``interop-fe-l23``      the Fe L2,3 constrained graph JSON fitted by SpectraFit-Core and by lmfit (from 1.3.1)
 ``nist-params``         fitted parameter values of SpectraFit-Core and lmfit on the 22 NIST problems (from 1.3.2)
 ``bias-batches``        the serialisation-bias measurement with every timed batch kept (from 1.3.2)
+``bias-series``         that measurement 1000 times, each in a fresh process, with per-run host state (from 1.3.2)
 ``overview``          ``results/overview/overview.html`` and ``overview.pdf`` from the outputs above
 
 Each target writes ``results/<target>/`` with a ``README.md`` and ``run.json`` (command, times,
@@ -977,7 +978,8 @@ def write_checksums(root: Path = HERE) -> None:
 # --------------------------------------------------------------------------- targets
 
 TARGETS = ("core", "nist-both", "usage", "gallery", "eels-far", "bench-tolerance", "bench-ablation",
-           "audit-stationarity", "interop-fe-l23", "nist-params", "bias-batches", "overview")
+           "audit-stationarity", "interop-fe-l23", "nist-params", "bias-batches", "bias-series",
+           "overview")
 # The benchmark runs of the solver audit and the Jacobian ablation, at the harness defaults.
 BENCH_REPS, BENCH_MC = 5, 20
 ABLATION_BACKENDS = "spectrafit,spectrafit_fd,lmfit,jax,scipy-ls-lm,scipy-ls-trf,scipy-ls-dogbox"
@@ -1116,6 +1118,7 @@ def t_interop_fe_l23(source: Path, ctx: dict) -> None:
 
 NIST_PARAMS_SCRIPT = HERE / "scripts" / "nist_params.py"
 BIAS_SCRIPT = HERE / "scripts" / "bias_batches.py"
+BIAS_SERIES_SCRIPT = HERE / "scripts" / "bias_series.py"
 
 
 def t_nist_params(source: Path, ctx: dict) -> None:
@@ -1148,6 +1151,20 @@ def t_bias_batches(source: Path, ctx: dict) -> None:
                        "side are in bias_batches.json (steal is the 8th field)")
         run([sys.executable, str(BIAS_SCRIPT), "--source", str(source), "--reference", str(reference),
              "--out", str(out)], cwd=source / UPSTREAM_FIGS, env=ctx["env"])
+
+
+def t_bias_series(source: Path, ctx: dict) -> None:
+    # bias_series.py writes README.md and run.json itself (through run_record), next to runs.jsonl.
+    # A finished series is kept; an interrupted one continues after its last complete run (--resume).
+    out = RESULTS / "bias-series"
+    if (out / "bias_series.json").exists():
+        print(f"bias-series: {out.relative_to(HERE) if out.is_relative_to(HERE) else out.name} holds a finished "
+              "series; remove the folder to measure again")
+        return
+    resume = ["--resume"] if (out / "runs.jsonl").exists() else []
+    # --out relative to the repository root, so that the recorded command holds no host path.
+    run([sys.executable, str(BIAS_SERIES_SCRIPT), "--source", str(source), "--n", "1000",
+         "--out", os.path.relpath(out, HERE), *resume], cwd=HERE, env=ctx["env"])
 
 
 def t_usage(source: Path, ctx: dict) -> None:
@@ -1248,7 +1265,8 @@ def t_overview(source: Path, ctx: dict) -> None:
 TARGET_FUNCS = {"nist-both": t_nist_both, "usage": t_usage, "gallery": t_gallery, "eels-far": t_eels_far,
                 "bench-tolerance": t_bench_tolerance, "bench-ablation": t_bench_ablation,
                 "audit-stationarity": t_audit_stationarity, "interop-fe-l23": t_interop_fe_l23,
-                "nist-params": t_nist_params, "bias-batches": t_bias_batches, "overview": t_overview}
+                "nist-params": t_nist_params, "bias-batches": t_bias_batches,
+                "bias-series": t_bias_series, "overview": t_overview}
 
 
 def core(args: argparse.Namespace, source: Path, versions: dict, repository: dict) -> int:
