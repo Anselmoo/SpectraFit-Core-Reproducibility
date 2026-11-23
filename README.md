@@ -1,6 +1,6 @@
 # SpectraFit-Core-Reproducibility
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24413477.svg)](https://doi.org/10.5281/zenodo.24413477)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.24458891.svg)](https://doi.org/10.5281/zenodo.24458891)
 
 Results and figures of the article on `spectrafit-core`, regenerated from
 the published release, with every number stated in the article checked against the
@@ -626,7 +626,7 @@ archives) are identical to 0.1.1. Releases 1.3.0, 1.3.1 and 1.3.2 of this reposi
 
 | | How |
 |---|---|
-| Findable | this repository: DOI `10.5281/zenodo.24413477` (1.3.1; 1.3.0: `10.5281/zenodo.24397364`), concept DOI `10.5281/zenodo.23171640`; software DOI `10.5281/zenodo.24282350` (0.1.3), concept `10.5281/zenodo.23043544`; tag and commit in `pins.toml`; `ro-crate-metadata.json` lists every file with size, digest and description |
+| Findable | this repository: DOI `10.5281/zenodo.24458891` (1.3.2; 1.3.1: `10.5281/zenodo.24413477`; 1.3.0: `10.5281/zenodo.24397364`), concept DOI `10.5281/zenodo.23171640`; software DOI `10.5281/zenodo.24282350` (0.1.3), concept `10.5281/zenodo.23043544`; tag and commit in `pins.toml`; `ro-crate-metadata.json` lists every file with size, digest and description |
 | Accessible | wheel from PyPI, source from GitHub, both by open protocols; no credentials |
 | Interoperable | JSON results, PDF and PNG figures, RO-Crate 1.1 metadata |
 | Reusable | MIT licence (`LICENSE`); `provenance.json` records host, versions and script hashes; `uv.lock` fixes the environment; `checksums.sha256` verifies with `sha256sum -c`; `CITATION.cff` |
